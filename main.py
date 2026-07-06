@@ -14,8 +14,17 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
+# Fix AttributeError: module 'PIL.Image' has no attribute 'ANTIALIAS' for MoviePy
+import PIL.Image
+if not hasattr(PIL.Image, 'ANTIALIAS'):
+    if hasattr(PIL.Image, 'Resampling'):
+        PIL.Image.ANTIALIAS = PIL.Image.Resampling.LANCZOS
+    else:
+        PIL.Image.ANTIALIAS = PIL.Image.LANCZOS
+
 # MoviePy
 from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, TextClip
+
 from moviepy.video.tools.subtitles import SubtitlesClip
 from moviepy.video.fx.all import loop
 
