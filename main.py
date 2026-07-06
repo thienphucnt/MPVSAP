@@ -40,8 +40,7 @@ def generate_content(api_key):
     script_prompt = (
         "Write a highly engaging, fast-paced 130-word script about a terrifying, lesser-known space fact "
         "or an ancient mystery. Do not include any stage directions, titles, or emojis. Output only the spoken text. "
-        "Under no circumstances should the script mention or allude to Vietnamese history, regional politics, "
-        "state governments, or global conflicts."
+        "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, state officials, south-east Asian maritime borders, or global geopolitical conflicts."
     )
     
     print(f"Generating script using {model_name}...")
