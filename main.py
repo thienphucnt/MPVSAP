@@ -23,7 +23,8 @@ if not hasattr(PIL.Image, 'ANTIALIAS'):
         PIL.Image.ANTIALIAS = PIL.Image.LANCZOS
 
 # MoviePy
-from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, TextClip
+from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, TextClip, concatenate_videoclips
+
 
 from moviepy.video.tools.subtitles import SubtitlesClip
 from moviepy.video.fx.all import loop
@@ -144,67 +145,136 @@ def parse_vtt(vtt_path):
     print(f"Parsed {len(subtitles)} subtitle cues.")
     return subtitles
 
+def make_short_burst_subtitles(subs_list, max_words=3):
+    short_subs = []
+    for (start, end), text in subs_list:
+        words = text.split()
+        if not words:
+            continue
+        
+        # If word count <= max_words, keep original cue
+        if len(words) <= max_words:
+            short_subs.append(((start, end), text))
+            continue
+            
+        # Group words into chunks of max_words
+        chunks = []
+        for i in range(0, len(words), max_words):
+            chunks.append(" ".join(words[i:i+max_words]))
+            
+        # Distribute timing proportionally
+        total_words = len(words)
+        duration = end - start
+        current_time = start
+        
+        for chunk in chunks:
+            chunk_word_count = len(chunk.split())
+            chunk_duration = duration * (chunk_word_count / total_words)
+            chunk_end = current_time + chunk_duration
+            short_subs.append(((current_time, chunk_end), chunk))
+            current_time = chunk_end
+            
+    print(f"Split {len(subs_list)} original cues into {len(short_subs)} short-burst subtitle cues.")
+    return short_subs
+
 # --- 4. PEXELS VIDEO DOWNLOADER ---
-def download_pexels_video(api_key, min_duration):
-    print("Searching for background video on Pexels...")
-    query = random.choice(["dark space", "abstract mystery"])
+def download_pexels_videos(api_key, min_duration, script_text, gemini_key):
+    print("Extracting visual search keywords from script using Gemini...")
+    keywords = []
+    
+    try:
+        client = genai.Client(api_key=gemini_key)
+        prompt = (
+            f"Based on the following script, extract exactly 3 distinct, highly visual space-themed search keywords "
+            f"(e.g., 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor') that can be used to search for background videos on Pexels. "
+            f"Output ONLY the three keywords separated by commas, with no punctuation or extra text.\n\n"
+            f"Script:\n{script_text}"
+        )
+        response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
+        keywords = [k.strip() for k in response.text.split(",") if k.strip()]
+        keywords = [k for k in keywords if len(k) > 1][:3]
+        print("Gemini extracted keywords:", keywords)
+    except Exception as e:
+        print("Failed to extract keywords via Gemini, using defaults:", e)
+        
+    # Ensure we always have exactly 3 keywords
+    default_pool = ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"]
+    while len(keywords) < 3:
+        cand = random.choice(default_pool)
+        if cand not in keywords:
+            keywords.append(cand)
+            
+    print(f"Final keywords list for video search: {keywords}")
+    
+    video_paths = []
     headers = {"Authorization": api_key}
     url = "https://api.pexels.com/videos/search"
-    params = {
-        "query": query,
-        "orientation": "portrait",
-        "size": "medium",
-        "per_page": 15
-    }
     
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status()
-    data = response.json()
-    
-    videos = data.get("videos", [])
-    if not videos:
-        raise Exception(f"No videos found on Pexels for query: {query}")
+    for i, kw in enumerate(keywords):
+        print(f"Searching Pexels for keyword: '{kw}'...")
+        params = {
+            "query": kw,
+            "orientation": "portrait",
+            "size": "medium",
+            "per_page": 10
+        }
         
-    suitable_videos = [v for v in videos if v.get("duration", 0) >= min_duration]
-    if not suitable_videos:
-        print("No videos met the minimum duration. Falling back to all top search results.")
-        suitable_videos = videos
-        
-    selected_video = random.choice(suitable_videos[:10])
-    video_files = selected_video.get("video_files", [])
-    if not video_files:
-        raise Exception("No files found in selected video.")
-        
-    mp4_files = [f for f in video_files if f.get("file_type") == "video/mp4"]
-    if not mp4_files:
-        mp4_files = video_files
-        
-    # Find HD files or sort closest to 1080x1920
-    hd_files = [f for f in mp4_files if f.get("quality") == "hd"]
-    if hd_files:
-        hd_files.sort(key=lambda x: abs(x.get("width", 0) - 1080) + abs(x.get("height", 0) - 1920))
-        best_file = hd_files[0]
-    else:
-        mp4_files.sort(key=lambda x: abs(x.get("width", 0) - 1080) + abs(x.get("height", 0) - 1920))
-        best_file = mp4_files[0]
-        
-    video_url = best_file.get("link")
-    print(f"Downloading video (ID: {selected_video.get('id')}) from {video_url}...")
-    
-    video_path = "background.mp4"
-    video_response = requests.get(video_url, stream=True)
-    video_response.raise_for_status()
-    
-    with open(video_path, "wb") as f:
-        for chunk in video_response.iter_content(chunk_size=8192):
-            if chunk:
-                f.write(chunk)
+        try:
+            response = requests.get(url, headers=headers, params=params, timeout=15)
+            response.raise_for_status()
+            data = response.json()
+            videos = data.get("videos", [])
+            if not videos:
+                print(f"No videos found for '{kw}', falling back to default search...")
+                params["query"] = "dark space"
+                response = requests.get(url, headers=headers, params=params, timeout=15)
+                response.raise_for_status()
+                data = response.json()
+                videos = data.get("videos", [])
                 
-    print("Download finished. Saved as background.mp4")
-    return video_path
+            selected_video = random.choice(videos[:5])
+            video_files = selected_video.get("video_files", [])
+            
+            mp4_files = [f for f in video_files if f.get("file_type") == "video/mp4"]
+            if not mp4_files:
+                mp4_files = video_files
+                
+            hd_files = [f for f in mp4_files if f.get("quality") == "hd"]
+            if hd_files:
+                hd_files.sort(key=lambda x: abs(x.get("width", 0) - 1080) + abs(x.get("height", 0) - 1920))
+                best_file = hd_files[0]
+            else:
+                mp4_files.sort(key=lambda x: abs(x.get("width", 0) - 1080) + abs(x.get("height", 0) - 1920))
+                best_file = mp4_files[0]
+                
+            video_url = best_file.get("link")
+            clip_path = f"background_clip_{i}.mp4"
+            print(f"Downloading clip {i} from: {video_url}")
+            
+            video_response = requests.get(video_url, stream=True, timeout=30)
+            video_response.raise_for_status()
+            with open(clip_path, "wb") as f:
+                for chunk in video_response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+            video_paths.append(clip_path)
+            print(f"Saved clip {i} as: {clip_path}")
+        except Exception as e:
+            print(f"Failed to fetch video for '{kw}':", e)
+            if video_paths:
+                dup_path = f"background_clip_{i}.mp4"
+                import shutil
+                shutil.copy(video_paths[0], dup_path)
+                video_paths.append(dup_path)
+                print(f"Duplicated {video_paths[0]} to {dup_path} as fallback.")
+            else:
+                raise e
+                
+    return video_paths
+
 
 # --- 5. VIDEO ASSEMBLY (MOVIEPY) ---
-def assemble_video(video_path, audio_path, subs_list, output_path):
+def assemble_video(video_paths, audio_path, subs_list, output_path):
     print("Assembling final video short with MoviePy...")
     import os
     
@@ -212,18 +282,27 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
     
-    bg_clip = VideoFileClip(video_path)
-    # Crop/resize background to exactly 1080x1920
-    bg_clip = bg_clip.resize(newsize=(1080, 1920))
+    # 2. Adjust Video Length and create concatenated multi-clip background with Ken Burns effect
+    segment_duration = audio_duration / len(video_paths)
+    clips = []
     
-    # 2. Adjust Video Length to Audio Length
-    if bg_clip.duration < audio_duration:
-        print(f"Background video ({bg_clip.duration:.2f}s) is shorter than audio ({audio_duration:.2f}s). Looping video.")
-        bg_clip = loop(bg_clip, duration=audio_duration)
-    else:
-        print(f"Background video ({bg_clip.duration:.2f}s) is longer than audio ({audio_duration:.2f}s). Trimming video.")
-        bg_clip = bg_clip.subclip(0, audio_duration)
+    for i, v_path in enumerate(video_paths):
+        print(f"Processing background clip {i}: {v_path}")
+        c = VideoFileClip(v_path)
+        c = c.resize(newsize=(1080, 1920))
         
+        # Ensure the clip is long enough
+        if c.duration < segment_duration:
+            c = loop(c, duration=segment_duration)
+        else:
+            c = c.subclip(0, segment_duration)
+            
+        # Apply Ken Burns effect (zoom in slowly by 1.1x over the segment duration)
+        c = c.resize(lambda t: 1.0 + 0.1 * (t / segment_duration)).set_position('center')
+        clips.append(c)
+        
+    bg_clip = concatenate_videoclips(clips)
+    
     # 3. Create Caption Clip Maker
     def make_textclip(text):
         wrapped_text = "\n".join(textwrap.wrap(text, width=20))
@@ -283,7 +362,6 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
     else:
         print("No background music track found in music/ folder, using voice only.")
         final_clip = final_clip.set_audio(audio_clip)
-
         
     # 6. Render Output File
     print(f"Rendering final short to {output_path}...")
@@ -299,13 +377,25 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
     
     # 7. Release Resources
     bg_clip.close()
+    for c in clips:
+        c.close()
     audio_clip.close()
     subtitles.close()
     if music_clip:
         music_clip.close()
     final_clip.close()
+    
+    # Clean up downloaded segment clips
+    for v_path in video_paths:
+        try:
+            if os.path.exists(v_path):
+                os.remove(v_path)
+        except Exception as e:
+            print(f"Could not remove temporary clip {v_path}:", e)
+            
     print("Assembly complete.")
     return output_path
+
 
 
 # --- 6A. YOUTUBE UPLOADER ---
@@ -638,20 +728,22 @@ def main():
     # 3. Audio (TTS) & Subtitles
     audio_path, vtt_path = generate_audio_and_subtitles(script_text)
     
-    # 4. Parse Subtitles
-    subs_list = parse_vtt(vtt_path)
+    # 4. Parse Subtitles and split into rapid short-burst cues
+    raw_subs_list = parse_vtt(vtt_path)
+    subs_list = make_short_burst_subtitles(raw_subs_list, max_words=3)
     
     # Get audio length to find matching background length
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
     audio_clip.close()
     
-    # 5. Background video
-    video_path = download_pexels_video(pexels_key, audio_duration)
+    # 5. Background video clips
+    video_paths = download_pexels_videos(pexels_key, audio_duration, script_text, gemini_key)
     
     # 6. Assembly
     output_path = "final_short.mp4"
-    assemble_video(video_path, audio_path, subs_list, output_path)
+    assemble_video(video_paths, audio_path, subs_list, output_path)
+
     
     # 7. Upload to Platforms with isolated try/except blocks
     
