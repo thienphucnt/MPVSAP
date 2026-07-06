@@ -1,0 +1,70 @@
+name: Daily Shorts Generator & Uploader
+
+on:
+  schedule:
+    # Runs at 14:00 UTC daily
+    - cron: '0 14 * * *'
+  workflow_dispatch: # Allows manual run for testing
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    # Required permissions to commit and push heartbeat.txt back to the repository
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg imagemagick
+          
+          # Fix ImageMagick security policies that restrict TextClip label/path operations
+          echo "Applying ImageMagick security policy patches..."
+          if [ -f /etc/ImageMagick-6/policy.xml ]; then
+            sudo sed -i 's/<policy domain="path" rights="none" pattern="@\*"/<!-- <policy domain="path" rights="none" pattern="@\*" -->/g' /etc/ImageMagick-6/policy.xml
+            sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-6/policy.xml
+          fi
+          if [ -f /etc/ImageMagick-7/policy.xml ]; then
+            sudo sed -i 's/<policy domain="path" rights="none" pattern="@\*"/<!-- <policy domain="path" rights="none" pattern="@\*" -->/g' /etc/ImageMagick-7/policy.xml
+            sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-7/policy.xml
+          fi
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Video Pipeline & Publish
+        env:
+          # Core API Keys
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          AFFILIATE_LINK: ${{ secrets.AFFILIATE_LINK }}
+
+          # YouTube Data API Credentials
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+
+          # TikTok Content Posting API Credentials
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+
+          # Meta Graph API Credentials (Instagram & Facebook Reels)
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: |
+          python main.py
