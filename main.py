@@ -9,7 +9,7 @@ import subprocess
 import requests
 
 # Google APIs
-import google.generativeai as genai
+from google import genai
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -21,11 +21,11 @@ from moviepy.video.fx.all import loop
 
 # --- 1. GEMINI CONTENT GENERATION ---
 def generate_content(api_key):
-    print("Initializing Gemini API...")
-    genai.configure(api_key=api_key)
+    print("Initializing Gemini API with new google-genai SDK...")
+    client = genai.Client(api_key=api_key)
     
-    # We use gemini-1.5-flash as our default model
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    # We use gemini-2.5-flash as our default model
+    model_name = "gemini-2.5-flash"
     
     script_prompt = (
         "Write a highly engaging, fast-paced 130-word script about a terrifying, lesser-known space fact "
@@ -34,8 +34,11 @@ def generate_content(api_key):
         "state governments, or global conflicts."
     )
     
-    print("Generating script...")
-    script_response = model.generate_content(script_prompt)
+    print(f"Generating script using {model_name}...")
+    script_response = client.models.generate_content(
+        model=model_name,
+        contents=script_prompt
+    )
     script_text = script_response.text.strip()
     print("Generated Script:\n", script_text)
     
@@ -45,14 +48,18 @@ def generate_content(api_key):
         f"Script:\n{script_text}"
     )
     
-    print("Generating title...")
-    title_response = model.generate_content(title_prompt)
+    print(f"Generating title using {model_name}...")
+    title_response = client.models.generate_content(
+        model=model_name,
+        contents=title_prompt
+    )
     title_text = title_response.text.strip()
     # Strip any enclosing quotes
     title_text = title_text.replace('"', '').replace("'", "")
     print("Generated Title:", title_text)
     
     return script_text, title_text
+
 
 # --- 2. TTS & SUBTITLE GENERATION ---
 def generate_audio_and_subtitles(script_text):

@@ -1,0 +1,4 @@
+.env
+client_secrets.json
+*.mp4
+app_logo.png
