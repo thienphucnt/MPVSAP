@@ -10,6 +10,7 @@ on:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+    timeout-minutes: 30  # Prevent hung renders consuming the full 6-hour limit
 
     # Required permissions to commit and push heartbeat.txt back to the repository
     permissions:
@@ -24,6 +25,7 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
+          cache-dependency-path: requirements.txt  # Deterministic cache key tied to exact deps
 
 
       - name: Install System Dependencies
