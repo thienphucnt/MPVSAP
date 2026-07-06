@@ -303,26 +303,30 @@ def assemble_video(video_paths, audio_path, subs_list, output_path):
         
     bg_clip = concatenate_videoclips(clips)
     
-    # 3. Create Caption Clip Maker
-    def make_textclip(text):
-        wrapped_text = "\n".join(textwrap.wrap(text, width=20))
-        return TextClip(
+    # 3. Create and Overlay Subtitles (Custom rendering for maximum readability)
+    sub_clips = []
+    for (start, end), text in subs_list:
+        wrapped_text = "\n".join(textwrap.wrap(text, width=15))
+        txt_clip = TextClip(
             wrapped_text,
             font="Arial-Bold",
-            fontsize=80,
+            fontsize=120,      # Huge, punchy size
             color="yellow",
             stroke_color="black",
-            stroke_width=5,
-            size=(950, None),
-            method="caption",
+            stroke_width=6,    # Thick outline
+            method="label",    # Render at exact font size
             align="center"
         )
+        duration = end - start
+        txt_clip = (txt_clip
+                    .set_start(start)
+                    .set_duration(duration)
+                    .set_position(('center', 'center')))
+        sub_clips.append(txt_clip)
         
-    # 4. Create and Overlay Subtitles
-    subtitles = SubtitlesClip(subs_list, make_textclip=make_textclip)
-    final_clip = CompositeVideoClip([bg_clip, subtitles.set_pos(('center', 'center'))])
+    final_clip = CompositeVideoClip([bg_clip] + sub_clips)
     
-    # 5. Select and Mix Background Music
+    # 4. Select and Mix Background Music
     music_dir = "music"
     music_clip = None
     music_path = None
@@ -363,7 +367,7 @@ def assemble_video(video_paths, audio_path, subs_list, output_path):
         print("No background music track found in music/ folder, using voice only.")
         final_clip = final_clip.set_audio(audio_clip)
         
-    # 6. Render Output File
+    # 5. Render Output File
     print(f"Rendering final short to {output_path}...")
     final_clip.write_videofile(
         output_path,
@@ -375,15 +379,17 @@ def assemble_video(video_paths, audio_path, subs_list, output_path):
         logger=None
     )
     
-    # 7. Release Resources
+    # 6. Release Resources
     bg_clip.close()
     for c in clips:
         c.close()
     audio_clip.close()
-    subtitles.close()
+    for s in sub_clips:
+        s.close()
     if music_clip:
         music_clip.close()
     final_clip.close()
+
     
     # Clean up downloaded segment clips
     for v_path in video_paths:
