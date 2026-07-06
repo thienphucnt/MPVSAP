@@ -47,12 +47,12 @@ def generate_content(client):
         "SCRIPT: <script here>\n\n"
         "Task 1 — TITLE: A single highly engaging, click-worthy YouTube Shorts title "
         "under 50 characters. No quotes, emojis, or markdown.\n\n"
-        "Task 2 — SCRIPT: A highly engaging, fast-paced 130-word script about a "
-        "terrifying, lesser-known space fact or an ancient mystery. "
-        "No stage directions, titles, or emojis. Output only the spoken text. "
-        "Under no circumstances should the script mention, reference, or allude to "
-        "Vietnamese history, regional politics, state officials, south-east Asian "
-        "maritime borders, or global geopolitical conflicts."
+        "Task 2 — SCRIPT: Write a highly engaging, fast-paced 130-word script about a "
+        "terrifying, real-life space mystery or unsettling astrophysics fact. Make it "
+        "sound grounded but deeply ominous. Do not include stage directions, titles, "
+        "emojis or em dashes. Output only the spoken text. Under no circumstances "
+        "should the script mention regional politics, state officials, or global "
+        "geopolitical conflicts."
     )
 
     print(f"Generating script and title in a single call using {model_name}...")
@@ -92,7 +92,7 @@ def generate_audio_and_subtitles(script_text):
         "--text", script_text,
         "--write-media", audio_path,
         "--write-subtitles", vtt_path,
-        "--voice", "en-US-JennyNeural"
+        "--voice", "en-GB-RyanNeural"
     ]
 
     # timeout=120 prevents the runner hanging if edge-tts network call stalls
