@@ -243,27 +243,21 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
     subtitles = SubtitlesClip(subs_list, make_textclip=make_textclip)
     final_clip = CompositeVideoClip([bg_clip, subtitles.set_pos(('center', 'center'))])
     
-    # 5. Download and Mix Background Music
-    music_path = "background_music.mp3"
+    # 5. Select and Mix Background Music
+    music_dir = "music"
     music_clip = None
+    music_path = None
     
-    if not os.path.exists(music_path):
-        print("Downloading space ambient background music...")
-        try:
-            music_url = "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/55/Dreamstate_Logic_-_Zero_Point_%28space_ambient%2C_dark_ambient%29.ogg/Dreamstate_Logic_-_Zero_Point_%28space_ambient%2C_dark_ambient%29.ogg.mp3"
-            headers = {"User-Agent": "Mozilla/5.0"}
-            r = requests.get(music_url, headers=headers, stream=True)
-            r.raise_for_status()
-            with open(music_path, "wb") as f:
-                for chunk in r.iter_content(chunk_size=8192):
-                    f.write(chunk)
-            print("Background music downloaded successfully.")
-        except Exception as e:
-            print("Failed to download background music, continuing without music:", e)
+    if os.path.exists(music_dir):
+        music_files = [os.path.join(music_dir, f) for f in os.listdir(music_dir) if f.endswith(".mp3")]
+        if music_files:
+            import random
+            music_path = random.choice(music_files)
+            print(f"Selected background music track: {music_path}")
             
-    if os.path.exists(music_path):
+    if music_path and os.path.exists(music_path):
         try:
-            print("Mixing background music into audio track...")
+            print(f"Mixing background music ({os.path.basename(music_path)}) into audio track...")
             from moviepy.audio.AudioClip import CompositeAudioClip
             
             music_clip = AudioFileClip(music_path)
@@ -287,7 +281,9 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
             print("Failed to mix background music, using voice only:", e)
             final_clip = final_clip.set_audio(audio_clip)
     else:
+        print("No background music track found in music/ folder, using voice only.")
         final_clip = final_clip.set_audio(audio_clip)
+
         
     # 6. Render Output File
     print(f"Rendering final short to {output_path}...")
