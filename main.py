@@ -206,6 +206,7 @@ def download_pexels_video(api_key, min_duration):
 # --- 5. VIDEO ASSEMBLY (MOVIEPY) ---
 def assemble_video(video_path, audio_path, subs_list, output_path):
     print("Assembling final video short with MoviePy...")
+    import os
     
     # 1. Load Audio and Video
     audio_clip = AudioFileClip(audio_path)
@@ -225,15 +226,15 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
         
     # 3. Create Caption Clip Maker
     def make_textclip(text):
-        wrapped_text = "\n".join(textwrap.wrap(text, width=22))
+        wrapped_text = "\n".join(textwrap.wrap(text, width=20))
         return TextClip(
             wrapped_text,
             font="Arial-Bold",
-            fontsize=60,
-            color="white",
+            fontsize=80,
+            color="yellow",
             stroke_color="black",
-            stroke_width=3,
-            size=(900, None),
+            stroke_width=5,
+            size=(950, None),
             method="caption",
             align="center"
         )
@@ -242,9 +243,52 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
     subtitles = SubtitlesClip(subs_list, make_textclip=make_textclip)
     final_clip = CompositeVideoClip([bg_clip, subtitles.set_pos(('center', 'center'))])
     
-    # 5. Attach Audio Track
-    final_clip = final_clip.set_audio(audio_clip)
+    # 5. Download and Mix Background Music
+    music_path = "background_music.mp3"
+    music_clip = None
     
+    if not os.path.exists(music_path):
+        print("Downloading space ambient background music...")
+        try:
+            music_url = "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/55/Dreamstate_Logic_-_Zero_Point_%28space_ambient%2C_dark_ambient%29.ogg/Dreamstate_Logic_-_Zero_Point_%28space_ambient%2C_dark_ambient%29.ogg.mp3"
+            headers = {"User-Agent": "Mozilla/5.0"}
+            r = requests.get(music_url, headers=headers, stream=True)
+            r.raise_for_status()
+            with open(music_path, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+            print("Background music downloaded successfully.")
+        except Exception as e:
+            print("Failed to download background music, continuing without music:", e)
+            
+    if os.path.exists(music_path):
+        try:
+            print("Mixing background music into audio track...")
+            from moviepy.audio.AudioClip import CompositeAudioClip
+            
+            music_clip = AudioFileClip(music_path)
+            
+            if music_clip.duration < audio_duration:
+                from moviepy.audio.fx.all import audio_loop
+                music_clip = audio_loop(music_clip, duration=audio_duration)
+            else:
+                # Select a random start offset to make background music variation between shorts
+                import random
+                max_start = max(0, music_clip.duration - audio_duration - 5)
+                start_time = random.uniform(0, max_start)
+                music_clip = music_clip.subclip(start_time, start_time + audio_duration)
+                
+            # Lower volume to 8% so it stays in background
+            music_clip = music_clip.volumex(0.08)
+            
+            final_audio = CompositeAudioClip([audio_clip, music_clip])
+            final_clip = final_clip.set_audio(final_audio)
+        except Exception as e:
+            print("Failed to mix background music, using voice only:", e)
+            final_clip = final_clip.set_audio(audio_clip)
+    else:
+        final_clip = final_clip.set_audio(audio_clip)
+        
     # 6. Render Output File
     print(f"Rendering final short to {output_path}...")
     final_clip.write_videofile(
@@ -261,9 +305,12 @@ def assemble_video(video_path, audio_path, subs_list, output_path):
     bg_clip.close()
     audio_clip.close()
     subtitles.close()
+    if music_clip:
+        music_clip.close()
     final_clip.close()
     print("Assembly complete.")
     return output_path
+
 
 # --- 6A. YOUTUBE UPLOADER ---
 def upload_to_youtube(video_path, title, description, client_id, client_secret, refresh_token):
@@ -620,9 +667,14 @@ def main():
                 youtube_client_id, youtube_client_secret, youtube_refresh_token
             )
         except Exception as e:
-            print("ERROR uploading to YouTube:", e)
+            error_str = str(e)
+            if "quotaExceeded" in error_str:
+                print("WARNING: YouTube API daily upload quota exceeded! You have reached your 10,000 daily unit limit. Upload skipped.")
+            else:
+                print("ERROR uploading to YouTube:", e)
     else:
         print("YouTube credentials missing, skipping YouTube upload.")
+
         
     # TikTok Upload
     if tiktok_client_key and tiktok_client_secret and tiktok_refresh_token:
