@@ -82,7 +82,7 @@ def generate_audio_and_subtitles(script_text):
         "--text", script_text,
         "--write-media", audio_path,
         "--write-subtitles", vtt_path,
-        "--voice", "en-US-ChristopherNeural"
+        "--voice", "en-US-JennyNeural"
     ]
     
     subprocess.run(cmd, check=True)
