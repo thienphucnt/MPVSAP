@@ -8,6 +8,8 @@ import datetime
 import textwrap
 import subprocess
 import requests
+from pathlib import Path
+from typing import List, Tuple, Optional
 
 # Google APIs
 from google import genai
@@ -37,7 +39,7 @@ from moviepy.audio.fx.all import audio_loop
 # 1. GEMINI CONTENT GENERATION
 #    Single API round-trip returns both TITLE and SCRIPT in one call.
 # ---------------------------------------------------------------------------
-def generate_content(client):
+def generate_content(client: genai.Client) -> Tuple[str, str]:
     model_name = "gemini-2.5-flash"
 
     # One prompt, structured output — halves latency and API surface area.
@@ -82,7 +84,7 @@ def generate_content(client):
 # ---------------------------------------------------------------------------
 # 2. TTS & SUBTITLE GENERATION
 # ---------------------------------------------------------------------------
-def generate_audio_and_subtitles(script_text):
+def generate_audio_and_subtitles(script_text: str) -> Tuple[str, str]:
     print("Generating TTS voiceover and WebVTT subtitles via edge-tts...")
     audio_path = "voice.mp3"
     vtt_path = "subtitles.vtt"
@@ -104,7 +106,7 @@ def generate_audio_and_subtitles(script_text):
 # ---------------------------------------------------------------------------
 # 3. WebVTT SUBTITLE PARSER
 # ---------------------------------------------------------------------------
-def time_to_seconds(time_str):
+def time_to_seconds(time_str: str) -> float:
     time_str = time_str.replace(',', '.')
     parts = time_str.split(':')
     if len(parts) == 3:
@@ -120,7 +122,7 @@ def time_to_seconds(time_str):
     return int(h) * 3600 + int(m) * 60 + float(s)
 
 
-def parse_vtt(vtt_path):
+def parse_vtt(vtt_path: str) -> List[Tuple[Tuple[float, float], str]]:
     print(f"Parsing WebVTT subtitle file: {vtt_path}")
     with open(vtt_path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -147,7 +149,7 @@ def parse_vtt(vtt_path):
     return subtitles
 
 
-def make_short_burst_subtitles(subs_list, max_words=3):
+def make_short_burst_subtitles(subs_list: List[Tuple[Tuple[float, float], str]], max_words: int = 3) -> List[Tuple[Tuple[float, float], str]]:
     short_subs = []
     for (start, end), text in subs_list:
         words = text.split()
@@ -179,7 +181,7 @@ def make_short_burst_subtitles(subs_list, max_words=3):
 # 4. PEXELS VIDEO DOWNLOADER
 #    Accepts the shared Gemini client — no second instantiation.
 # ---------------------------------------------------------------------------
-def download_pexels_videos(api_key, script_text, client):
+def download_pexels_videos(api_key: str, script_text: str, client: genai.Client) -> List[str]:
     print("Extracting visual search keywords from script using Gemini...")
     keywords = []
 
@@ -231,6 +233,9 @@ def download_pexels_videos(api_key, script_text, client):
             mp4_files = [f for f in selected.get("video_files", []) if f.get("file_type") == "video/mp4"]
             if not mp4_files:
                 mp4_files = selected.get("video_files", [])
+            
+            if not mp4_files:
+                raise Exception(f"No valid MP4 files found in Pexels response for keyword '{kw}'")
 
             hd = [f for f in mp4_files if f.get("quality") == "hd"]
             pool = hd if hd else mp4_files
@@ -276,7 +281,7 @@ def download_pexels_videos(api_key, script_text, client):
 # ---------------------------------------------------------------------------
 # 5. VIDEO ASSEMBLY (MOVIEPY)
 # ---------------------------------------------------------------------------
-def assemble_video(video_paths, audio_path, subs_list, output_path):
+def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tuple[Tuple[float, float], str]], output_path: str) -> str:
     print("Assembling final video short with MoviePy...")
 
     audio_clip = AudioFileClip(audio_path)
@@ -325,16 +330,16 @@ def assemble_video(video_paths, audio_path, subs_list, output_path):
     final_clip = CompositeVideoClip([bg_clip] + sub_clips)
 
     # --- Background music ---
-    music_dir = "music"
+    music_dir = Path("music")
     music_clip = None
 
-    if os.path.exists(music_dir):
-        music_files = [os.path.join(music_dir, f) for f in os.listdir(music_dir) if f.endswith(".mp3")]
+    if music_dir.exists() and music_dir.is_dir():
+        music_files = list(music_dir.glob("*.mp3"))
         if music_files:
             music_path = random.choice(music_files)
-            print(f"Selected background music: {os.path.basename(music_path)}")
+            print(f"Selected background music: {music_path.name}")
             try:
-                m = AudioFileClip(music_path)
+                m = AudioFileClip(str(music_path))
                 if m.duration < audio_duration:
                     m = audio_loop(m, duration=audio_duration)
                 else:
@@ -380,8 +385,9 @@ def assemble_video(video_paths, audio_path, subs_list, output_path):
     # Clean up downloaded segment clips
     for v_path in video_paths:
         try:
-            if os.path.exists(v_path):
-                os.remove(v_path)
+            vp = Path(v_path)
+            if vp.exists():
+                vp.unlink()
         except Exception as e:
             print(f"Could not remove {v_path}:", e)
 
@@ -392,7 +398,7 @@ def assemble_video(video_paths, audio_path, subs_list, output_path):
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path, title, description, client_id, client_secret, refresh_token):
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str) -> None:
     print("Uploading to YouTube Shorts...")
     creds = Credentials(
         token=None,
@@ -435,7 +441,7 @@ def upload_to_youtube(video_path, title, description, client_id, client_secret, 
 # ---------------------------------------------------------------------------
 # 6B. TIKTOK UPLOADER
 # ---------------------------------------------------------------------------
-def upload_to_tiktok(video_path, title, client_key, client_secret, refresh_token):
+def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret: str, refresh_token: str) -> None:
     print("Uploading to TikTok...")
 
     token_resp = requests.post(
@@ -512,7 +518,7 @@ def upload_to_tiktok(video_path, title, client_key, client_secret, refresh_token
 # ---------------------------------------------------------------------------
 # 6C. META (FACEBOOK REELS) UPLOADER
 # ---------------------------------------------------------------------------
-def upload_to_facebook(video_path, description, page_id, access_token):
+def upload_to_facebook(video_path: str, description: str, page_id: str, access_token: str) -> None:
     print("Uploading to Facebook Reels...")
 
     # Use v21.0 — v18.0 is deprecated
@@ -559,7 +565,7 @@ def upload_to_facebook(video_path, description, page_id, access_token):
 # ---------------------------------------------------------------------------
 # 6D. META (INSTAGRAM REELS) UPLOADER
 # ---------------------------------------------------------------------------
-def upload_to_temp_host(file_path):
+def upload_to_temp_host(file_path: str) -> str:
     # Try Catbox first
     try:
         with open(file_path, "rb") as f:
@@ -577,9 +583,9 @@ def upload_to_temp_host(file_path):
 
     # Fallback to transfer.sh
     try:
-        filename = os.path.basename(file_path)
+        file_p = Path(file_path)
         with open(file_path, "rb") as f:
-            resp = requests.put(f"https://transfer.sh/{filename}", data=f, timeout=60)
+            resp = requests.put(f"https://transfer.sh/{file_p.name}", data=f, timeout=60)
         if resp.status_code == 200:
             print(f"Uploaded to transfer.sh: {resp.text.strip()}")
             return resp.text.strip()
@@ -589,7 +595,7 @@ def upload_to_temp_host(file_path):
     raise Exception("Failed to upload video to any temporary host for Meta Graph API.")
 
 
-def upload_to_instagram(video_path, caption, ig_account_id, access_token):
+def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, access_token: str) -> None:
     print("Uploading to Instagram Reels...")
 
     public_url = upload_to_temp_host(video_path)
@@ -641,7 +647,7 @@ def upload_to_instagram(video_path, caption, ig_account_id, access_token):
 # 7. 60-DAY HEARTBEAT & GIT PERSISTENCE
 #    Git identity set via env vars — no git config subprocess calls needed.
 # ---------------------------------------------------------------------------
-def update_heartbeat_and_push():
+def update_heartbeat_and_push() -> None:
     print("Updating heartbeat...")
     timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
     with open("heartbeat.txt", "w", encoding="utf-8") as f:
@@ -674,7 +680,7 @@ def update_heartbeat_and_push():
 # ---------------------------------------------------------------------------
 # MAIN CONTROLLER
 # ---------------------------------------------------------------------------
-def main():
+def main() -> None:
     print("Starting automated short-form video generation pipeline...")
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
