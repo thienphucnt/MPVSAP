@@ -103,7 +103,7 @@ def download_piper_model() -> str:
     for path, filename in [(onnx_path, "en_GB-alan-medium.onnx"), (json_path, "en_GB-alan-medium.onnx.json")]:
         if not path.exists():
             print(f"Downloading Piper model {filename}...")
-            r = HTTP_SESSION.get(base_url + filename, stream=True)
+            r = HTTP_SESSION.get(base_url + filename, stream=True, timeout=30)
             r.raise_for_status()
             with open(path, "wb") as f:
                 for chunk in r.iter_content(chunk_size=1024 * 1024):
@@ -221,7 +221,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client)
                     dl = HTTP_SESSION.get(video_url, stream=True, timeout=30)
                     dl.raise_for_status()
                     with open(clip_path, "wb") as f:
-                        for chunk in dl.iter_content(chunk_size=8192):
+                        for chunk in dl.iter_content(chunk_size=1024 * 1024):
                             if chunk:
                                 f.write(chunk)
                     return clip_path
@@ -455,7 +455,8 @@ def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret
             "client_secret": client_secret,
             "grant_type": "refresh_token",
             "refresh_token": refresh_token
-        }
+        },
+        timeout=30
     )
     token_resp.raise_for_status()
     token_json = token_resp.json()
@@ -468,7 +469,7 @@ def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret
     if new_rt and new_rt != refresh_token:
         print(f"New TikTok Refresh Token: {new_rt}")
 
-    video_size = os.path.getsize(video_path)
+    video_size = Path(video_path).stat().st_size
     scopes = token_json.get("scope", "")
     init_url = (
         "https://open.tiktokapis.com/v2/post/publish/video/init/"
@@ -492,7 +493,8 @@ def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret
                 "chunk_size": video_size,
                 "total_chunk_count": 1
             }
-        }
+        },
+        timeout=30
     )
     init_resp.raise_for_status()
     init_json = init_resp.json()
@@ -512,7 +514,8 @@ def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret
                 "Content-Length": str(video_size),
                 "Content-Range": f"bytes 0-{video_size - 1}/{video_size}"
             },
-            data=f
+            data=f,
+            timeout=120
         )
     put_resp.raise_for_status()
     print(f"TikTok upload successful! Publish ID: {publish_id}")
@@ -527,7 +530,7 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
     # Use v21.0 — v18.0 is deprecated
     base = f"https://graph.facebook.com/v21.0/{page_id}/video_reels"
 
-    init_resp = HTTP_SESSION.post(base, params={"upload_phase": "start", "access_token": access_token})
+    init_resp = HTTP_SESSION.post(base, params={"upload_phase": "start", "access_token": access_token}, timeout=30)
     init_resp.raise_for_status()
     init_json = init_resp.json()
 
@@ -537,7 +540,7 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
         raise Exception(f"Facebook init invalid: {init_json}")
 
     # Stream file — no full RAM load
-    file_size = os.path.getsize(video_path)
+    file_size = Path(video_path).stat().st_size
     with open(video_path, "rb") as f:
         upload_resp = HTTP_SESSION.post(
             upload_url,
@@ -547,7 +550,8 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
                 "file_size": str(file_size),
                 "Content-Type": "application/octet-stream"
             },
-            data=f
+            data=f,
+            timeout=120
         )
     upload_resp.raise_for_status()
 
@@ -559,7 +563,8 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
             "video_state": "PUBLISHED",
             "description": description,
             "access_token": access_token
-        }
+        },
+        timeout=30
     )
     publish_resp.raise_for_status()
     print(f"Facebook Reel published! Video ID: {video_id}")
@@ -611,7 +616,8 @@ def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, acces
             "video_url": public_url,
             "caption": caption,
             "access_token": access_token
-        }
+        },
+        timeout=30
     )
     container_resp.raise_for_status()
     creation_id = container_resp.json().get("id")
@@ -623,7 +629,8 @@ def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, acces
     for i in range(20):
         status_resp = HTTP_SESSION.get(
             f"https://graph.facebook.com/v21.0/{creation_id}",
-            params={"fields": "status_code", "access_token": access_token}
+            params={"fields": "status_code", "access_token": access_token},
+            timeout=30
         )
         status_resp.raise_for_status()
         status_code = status_resp.json().get("status_code")
@@ -640,7 +647,8 @@ def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, acces
 
     publish_resp = HTTP_SESSION.post(
         f"https://graph.facebook.com/v21.0/{ig_account_id}/media_publish",
-        params={"creation_id": creation_id, "access_token": access_token}
+        params={"creation_id": creation_id, "access_token": access_token},
+        timeout=30
     )
     publish_resp.raise_for_status()
     print("Instagram Reel published successfully!")
