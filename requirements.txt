@@ -6,3 +6,4 @@ piper-tts==1.2.0
 faster-whisper==1.0.3
 onnxruntime==1.17.1
 requests
+numpy<2
