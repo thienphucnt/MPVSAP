@@ -106,7 +106,7 @@ def download_piper_model() -> str:
             r = HTTP_SESSION.get(base_url + filename, stream=True)
             r.raise_for_status()
             with open(path, "wb") as f:
-                for chunk in r.iter_content(chunk_size=8192):
+                for chunk in r.iter_content(chunk_size=1024 * 1024):
                     f.write(chunk)
     return str(onnx_path)
 
@@ -339,8 +339,8 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     m = audio_loop(m, duration=audio_duration)
                 else:
                     max_start = max(0, m.duration - audio_duration - 5)
-                    m = m.subclip(random.uniform(0, max_start),
-                                  random.uniform(0, max_start) + audio_duration)
+                    start_time = random.uniform(0, max_start)
+                    m = m.subclip(start_time, start_time + audio_duration)
                 music_clip = m.volumex(0.08)
                 final_clip = final_clip.set_audio(CompositeAudioClip([audio_clip, music_clip]))
             except Exception as e:
