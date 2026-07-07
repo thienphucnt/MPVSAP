@@ -47,17 +47,20 @@ from moviepy.audio.fx.all import audio_loop
 # 1. GEMINI CONTENT GENERATION
 #    Single API round-trip returns both TITLE and SCRIPT in one call.
 # ---------------------------------------------------------------------------
-def generate_content(client: genai.Client) -> Tuple[str, str]:
+def generate_content(client: genai.Client) -> Tuple[str, str, str]:
     model_name = "gemini-2.5-flash"
 
     # One prompt, structured output — halves latency and API surface area.
     prompt = (
-        "Complete BOTH tasks and return them in EXACTLY this format with no extra text:\n"
+        "Complete ALL THREE tasks and return them in EXACTLY this format with no extra text:\n"
         "TITLE: <title here>\n"
+        "DESC: <description here>\n"
         "SCRIPT: <script here>\n\n"
         "Task 1 — TITLE: A single highly engaging, click-worthy YouTube Shorts title "
         "under 50 characters. No quotes, emojis, or markdown.\n\n"
-        "Task 2 — SCRIPT: Write a highly engaging, fast-paced 130-word script about a "
+        "Task 2 — DESC: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end. "
+        "Do not include the full script here.\n\n"
+        "Task 3 — SCRIPT: Write a highly engaging, fast-paced 130-word script about a "
         "terrifying, real-life space mystery or unsettling astrophysics fact. Make it "
         "sound grounded but deeply ominous. Do not include stage directions, titles, "
         "emojis or em dashes. Output only the spoken text. Under no circumstances "
@@ -70,23 +73,27 @@ def generate_content(client: genai.Client) -> Tuple[str, str]:
     text = response.text.strip()
 
     title_match = re.search(r'^TITLE:\s*(.+)$', text, re.MULTILINE)
+    desc_match = re.search(r'^DESC:\s*(.+)$', text, re.MULTILINE)
     script_match = re.search(r'^SCRIPT:\s*([\s\S]+)', text, re.MULTILINE)
 
     title_text = title_match.group(1).strip() if title_match else ""
+    desc_text = desc_match.group(1).strip() if desc_match else ""
     script_text = script_match.group(1).strip() if script_match else ""
 
     # Fallback: if the model ignores the format instruction
-    if not title_text or not script_text:
+    if not title_text or not script_text or not desc_text:
         print("WARNING: Could not parse structured response — using raw text as script.")
         script_text = text
         title_text = text[:48].split(".")[0]
+        desc_text = "Discover the terrifying secrets of the universe... #space #mystery #astrophysics"
 
     # Strip all quote variants (straight, curly, backtick) from title
     title_text = re.sub(r'["\'\`\u2018\u2019\u201c\u201d]', '', title_text).strip()
 
     print("Generated Title:", title_text)
+    print("Generated Description:", desc_text)
     print("Generated Script:\n", script_text)
-    return script_text, title_text
+    return script_text, title_text, desc_text
 
 
 # ---------------------------------------------------------------------------
@@ -718,7 +725,7 @@ def main() -> None:
     client = genai.Client(api_key=gemini_key)
 
     # 1. Content generation (single API call)
-    script_text, title = generate_content(client)
+    script_text, title, description = generate_content(client)
 
     # 2 & 3. Audio + subtitles via local Piper TTS + Faster-Whisper
     audio_path, subs_list = generate_audio_and_subtitles(script_text)
@@ -729,9 +736,6 @@ def main() -> None:
     # 5. Assemble — audio_duration computed once inside assemble_video
     output_path = "final_short.mp4"
     assemble_video(video_paths, audio_path, subs_list, output_path)
-
-    # Updated CTA copy as per spec
-    description = f"{script_text}\n\nAccess the hidden vault here: {affiliate_link}"
 
     # 6. Upload to platforms — each in an isolated try/except
     if youtube_client_id and youtube_client_secret and youtube_refresh_token:
