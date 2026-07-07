@@ -9,8 +9,12 @@ import textwrap
 import subprocess
 import requests
 import wave
+import concurrent.futures
 from pathlib import Path
 from typing import List, Tuple, Optional
+
+# Global shared HTTP session for connection pooling (TCP keep-alive)
+HTTP_SESSION = requests.Session()
 
 from piper.voice import PiperVoice
 from faster_whisper import WhisperModel
@@ -99,7 +103,7 @@ def download_piper_model() -> str:
     for path, filename in [(onnx_path, "en_GB-alan-medium.onnx"), (json_path, "en_GB-alan-medium.onnx.json")]:
         if not path.exists():
             print(f"Downloading Piper model {filename}...")
-            r = requests.get(base_url + filename, stream=True)
+            r = HTTP_SESSION.get(base_url + filename, stream=True)
             r.raise_for_status()
             with open(path, "wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
@@ -178,24 +182,21 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client)
 
     print(f"Final keywords for video search: {keywords}")
 
-    video_paths = []
     headers = {"Authorization": api_key}
     search_url = "https://api.pexels.com/videos/search"
 
-    for i, kw in enumerate(keywords):
+    def fetch_and_download(kw: str, index: int) -> str:
         print(f"Searching Pexels for keyword: '{kw}'...")
-        # per_page:5 — we only pick from [:5] anyway, no need to fetch 10
         params = {"query": kw, "orientation": "portrait", "size": "medium", "per_page": 5}
-
         try:
-            resp = requests.get(search_url, headers=headers, params=params, timeout=15)
+            resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
             resp.raise_for_status()
             videos = resp.json().get("videos", [])
 
             if not videos:
                 print(f"No videos for '{kw}', falling back to 'dark space'...")
                 params["query"] = "dark space"
-                resp = requests.get(search_url, headers=headers, params=params, timeout=15)
+                resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
                 resp.raise_for_status()
                 videos = resp.json().get("videos", [])
 
@@ -205,45 +206,57 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client)
                 mp4_files = selected.get("video_files", [])
             
             if not mp4_files:
-                raise Exception(f"No valid MP4 files found in Pexels response for keyword '{kw}'")
+                raise Exception(f"No valid MP4 files found for '{kw}'")
 
             hd = [f for f in mp4_files if f.get("quality") == "hd"]
             pool = hd if hd else mp4_files
             pool.sort(key=lambda x: abs(x.get("width", 0) - 1080) + abs(x.get("height", 0) - 1920))
             video_url = pool[0].get("link")
 
-            clip_path = f"background_clip_{i}.mp4"
-            print(f"Downloading clip {i} from Pexels...")
+            clip_path = f"background_clip_{index}.mp4"
+            print(f"Downloading clip {index} from Pexels...")
 
-            # Retry up to 3 times with 2-second backoff
             for attempt in range(3):
                 try:
-                    dl = requests.get(video_url, stream=True, timeout=30)
+                    dl = HTTP_SESSION.get(video_url, stream=True, timeout=30)
                     dl.raise_for_status()
                     with open(clip_path, "wb") as f:
                         for chunk in dl.iter_content(chunk_size=8192):
                             if chunk:
                                 f.write(chunk)
-                    break
+                    return clip_path
                 except Exception as dl_err:
-                    print(f"Download attempt {attempt + 1} failed: {dl_err}")
+                    print(f"Download attempt {attempt + 1} failed for clip {index}: {dl_err}")
                     if attempt < 2:
                         time.sleep(2)
                     else:
                         raise
-
-            video_paths.append(clip_path)
-            print(f"Saved clip {i} as: {clip_path}")
-
         except Exception as e:
             print(f"Failed to fetch video for '{kw}':", e)
-            if video_paths:
-                dup_path = f"background_clip_{i}.mp4"
-                shutil.copy(video_paths[0], dup_path)
-                video_paths.append(dup_path)
-                print(f"Duplicated {video_paths[0]} to {dup_path} as fallback.")
-            else:
-                raise
+            raise
+
+    # Download in parallel using ThreadPoolExecutor
+    video_paths = [None] * 3
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords)}
+        for future in concurrent.futures.as_completed(future_to_index):
+            i = future_to_index[future]
+            try:
+                video_paths[i] = future.result()
+            except Exception as exc:
+                print(f"Clip {i} generated an exception: {exc}")
+    
+    # Fallback for any failed downloads by duplicating successful ones
+    successful = [p for p in video_paths if p is not None]
+    if not successful:
+        raise Exception("All Pexels downloads failed.")
+    
+    for i in range(3):
+        if video_paths[i] is None:
+            dup_path = f"background_clip_{i}.mp4"
+            shutil.copy(successful[0], dup_path)
+            video_paths[i] = dup_path
+            print(f"Duplicated {successful[0]} to {dup_path} as fallback.")
 
     return video_paths
 
@@ -338,6 +351,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         temp_audiofile=temp_audio,
         remove_temp=True,
         threads=2,
+        preset="ultrafast",
         logger=None
     )
 
@@ -414,7 +428,7 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
 def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret: str, refresh_token: str) -> None:
     print("Uploading to TikTok...")
 
-    token_resp = requests.post(
+    token_resp = HTTP_SESSION.post(
         "https://open.tiktokapis.com/v2/oauth/token/",
         headers={"Content-Type": "application/x-www-form-urlencoded"},
         data={
@@ -443,7 +457,7 @@ def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret
         else "https://open.tiktokapis.com/v2/post/publish/inbox/video/init/"
     )
 
-    init_resp = requests.post(
+    init_resp = HTTP_SESSION.post(
         init_url,
         headers={"Authorization": f"Bearer {access_token}",
                  "Content-Type": "application/json; charset=UTF-8"},
@@ -472,7 +486,7 @@ def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret
 
     # Stream file directly — never loads entire binary into RAM
     with open(video_path, "rb") as f:
-        put_resp = requests.put(
+        put_resp = HTTP_SESSION.put(
             upload_url,
             headers={
                 "Content-Type": "video/mp4",
@@ -494,7 +508,7 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
     # Use v21.0 — v18.0 is deprecated
     base = f"https://graph.facebook.com/v21.0/{page_id}/video_reels"
 
-    init_resp = requests.post(base, params={"upload_phase": "start", "access_token": access_token})
+    init_resp = HTTP_SESSION.post(base, params={"upload_phase": "start", "access_token": access_token})
     init_resp.raise_for_status()
     init_json = init_resp.json()
 
@@ -506,7 +520,7 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
     # Stream file — no full RAM load
     file_size = os.path.getsize(video_path)
     with open(video_path, "rb") as f:
-        upload_resp = requests.post(
+        upload_resp = HTTP_SESSION.post(
             upload_url,
             headers={
                 "Authorization": f"OAuth {access_token}",
@@ -518,7 +532,7 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
         )
     upload_resp.raise_for_status()
 
-    publish_resp = requests.post(
+    publish_resp = HTTP_SESSION.post(
         base,
         params={
             "upload_phase": "finish",
@@ -539,7 +553,7 @@ def upload_to_temp_host(file_path: str) -> str:
     # Try Catbox first
     try:
         with open(file_path, "rb") as f:
-            resp = requests.post(
+            resp = HTTP_SESSION.post(
                 "https://catbox.moe/user/api.php",
                 data={"reqtype": "fileupload"},
                 files={"fileToUpload": f},
@@ -555,7 +569,7 @@ def upload_to_temp_host(file_path: str) -> str:
     try:
         file_p = Path(file_path)
         with open(file_path, "rb") as f:
-            resp = requests.put(f"https://transfer.sh/{file_p.name}", data=f, timeout=60)
+            resp = HTTP_SESSION.put(f"https://transfer.sh/{file_p.name}", data=f, timeout=60)
         if resp.status_code == 200:
             print(f"Uploaded to transfer.sh: {resp.text.strip()}")
             return resp.text.strip()
@@ -571,7 +585,7 @@ def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, acces
     public_url = upload_to_temp_host(video_path)
 
     # Use v21.0
-    container_resp = requests.post(
+    container_resp = HTTP_SESSION.post(
         f"https://graph.facebook.com/v21.0/{ig_account_id}/media",
         params={
             "media_type": "REELS",
@@ -588,7 +602,7 @@ def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, acces
     print(f"Polling container {creation_id}...")
     # Exponential backoff: 10s, 20s, 40s … capped at 60s
     for i in range(20):
-        status_resp = requests.get(
+        status_resp = HTTP_SESSION.get(
             f"https://graph.facebook.com/v21.0/{creation_id}",
             params={"fields": "status_code", "access_token": access_token}
         )
@@ -605,7 +619,7 @@ def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, acces
     else:
         raise Exception("Instagram container timed out.")
 
-    publish_resp = requests.post(
+    publish_resp = HTTP_SESSION.post(
         f"https://graph.facebook.com/v21.0/{ig_account_id}/media_publish",
         params={"creation_id": creation_id, "access_token": access_token}
     )
