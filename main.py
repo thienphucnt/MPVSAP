@@ -18,6 +18,41 @@ HTTP_SESSION = requests.Session()
 
 from piper.voice import PiperVoice
 from faster_whisper import WhisperModel
+import argparse
+
+# Global mapping for our three distinct content buckets
+CATEGORIES = {
+    "space": {
+        "voice_model": "en_GB-alan-medium",
+        "voice_url_path": "en/en_GB/alan/medium/",
+        "topic_desc": "a terrifying, real-life space mystery or unsettling astrophysics fact",
+        "tone": "grounded but deeply ominous",
+        "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
+        "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
+        "music_subfolder": "space",
+        "playlist_env": "YT_PLAYLIST_SPACE"
+    },
+    "history": {
+        "voice_model": "en_US-lessac-medium",
+        "voice_url_path": "en/en_US/lessac/medium/",
+        "topic_desc": "a bizarre, morbid, funny, or unsettling real historical fact (e.g. strange ancient customs, odd ruler behaviors)",
+        "tone": "factual, compelling, but highly entertaining",
+        "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
+        "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
+        "music_subfolder": "history",
+        "playlist_env": "YT_PLAYLIST_HISTORY"
+    },
+    "tech": {
+        "voice_model": "en_US-joe-medium",
+        "voice_url_path": "en/en_US/joe/medium/",
+        "topic_desc": "an exciting, mind-bending, or futuristic technology fact (e.g. quantum computing breakthrough, weird coding history, AI advancements)",
+        "tone": "thrilling, cutting-edge, and highly engaging",
+        "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
+        "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
+        "music_subfolder": "tech",
+        "playlist_env": "YT_PLAYLIST_TECH"
+    }
+}
 
 # Google APIs
 from google import genai
@@ -47,8 +82,9 @@ from moviepy.audio.fx.all import audio_loop
 # 1. GEMINI CONTENT GENERATION
 #    Single API round-trip returns both TITLE and SCRIPT in one call.
 # ---------------------------------------------------------------------------
-def generate_content(client: genai.Client) -> Tuple[str, str, str]:
+def generate_content(client: genai.Client, category: str) -> Tuple[str, str, str]:
     model_name = "gemini-2.5-flash"
+    cat_info = CATEGORIES[category]
 
     # One prompt, structured output — halves latency and API surface area.
     prompt = (
@@ -59,16 +95,16 @@ def generate_content(client: genai.Client) -> Tuple[str, str, str]:
         "Task 1 — TITLE: A single highly engaging, click-worthy YouTube Shorts title "
         "under 50 characters. No quotes, emojis, or markdown.\n\n"
         "Task 2 — DESC: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end. "
-        "Do not include the full script here.\n\n"
-        "Task 3 — SCRIPT: Write a highly engaging, fast-paced 130-word script about a "
-        "terrifying, real-life space mystery or unsettling astrophysics fact. Make it "
-        "sound grounded but deeply ominous. Do not include stage directions, titles, "
+        "One of the hashtags MUST be #oddfactsshorts. Do not include the full script here.\n\n"
+        f"Task 3 — SCRIPT: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
+        f"Make it sound {cat_info['tone']}. Do not include stage directions, titles, "
         "emojis or em dashes. Output only the spoken text. Under no circumstances "
         "should the script mention regional politics, state officials, or global "
-        "geopolitical conflicts."
+        "geopolitical conflicts. Under no circumstances should the script mention, reference, "
+        "or allude to Vietnamese history, Vietnamese regional politics, or Vietnamese state officials."
     )
 
-    print(f"Generating script and title in a single call using {model_name}...")
+    print(f"Generating script, title, and description for category '{category}' in a single call using {model_name}...")
     response = client.models.generate_content(model=model_name, contents=prompt)
     text = response.text.strip()
 
@@ -85,7 +121,7 @@ def generate_content(client: genai.Client) -> Tuple[str, str, str]:
         print("WARNING: Could not parse structured response — using raw text as script.")
         script_text = text
         title_text = text[:48].split(".")[0]
-        desc_text = "Discover the terrifying secrets of the universe... #space #mystery #astrophysics"
+        desc_text = f"Discover some of the oddest facts in the universe! #oddfactsshorts #{category} #facts #shorts"
 
     # Strip all quote variants (straight, curly, backtick) from title
     title_text = re.sub(r'["\'\`\u2018\u2019\u201c\u201d]', '', title_text).strip()
@@ -99,15 +135,15 @@ def generate_content(client: genai.Client) -> Tuple[str, str, str]:
 # ---------------------------------------------------------------------------
 # 2 & 3. TTS & SUBTITLE GENERATION (LOCAL PIPER TTS + FASTER-WHISPER)
 # ---------------------------------------------------------------------------
-def download_piper_model() -> str:
+def download_piper_model(voice_model: str, voice_url_path: str) -> str:
     model_dir = Path("models")
     model_dir.mkdir(exist_ok=True)
-    onnx_path = model_dir / "en_GB-alan-medium.onnx"
-    json_path = model_dir / "en_GB-alan-medium.onnx.json"
+    onnx_path = model_dir / f"{voice_model}.onnx"
+    json_path = model_dir / f"{voice_model}.onnx.json"
 
-    base_url = "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/alan/medium/"
+    base_url = f"https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/{voice_url_path}"
 
-    for path, filename in [(onnx_path, "en_GB-alan-medium.onnx"), (json_path, "en_GB-alan-medium.onnx.json")]:
+    for path, filename in [(onnx_path, f"{voice_model}.onnx"), (json_path, f"{voice_model}.onnx.json")]:
         if not path.exists():
             print(f"Downloading Piper model {filename}...")
             r = HTTP_SESSION.get(base_url + filename, stream=True, timeout=30)
@@ -118,11 +154,12 @@ def download_piper_model() -> str:
     return str(onnx_path)
 
 
-def generate_audio_and_subtitles(script_text: str) -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
+def generate_audio_and_subtitles(script_text: str, category: str) -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
     print("Generating TTS voiceover via Piper TTS (100% local)...")
     audio_path = "voice.wav"
 
-    model_path = download_piper_model()
+    cat_info = CATEGORIES[category]
+    model_path = download_piper_model(cat_info["voice_model"], cat_info["voice_url_path"])
     voice = PiperVoice.load(model_path)
     
     with wave.open(audio_path, "wb") as wav_file:
@@ -162,15 +199,16 @@ def generate_audio_and_subtitles(script_text: str) -> Tuple[str, List[Tuple[Tupl
 # 4. PEXELS VIDEO DOWNLOADER
 #    Accepts the shared Gemini client — no second instantiation.
 # ---------------------------------------------------------------------------
-def download_pexels_videos(api_key: str, script_text: str, client: genai.Client) -> List[str]:
+def download_pexels_videos(api_key: str, script_text: str, client: genai.Client, category: str) -> List[str]:
     print("Extracting visual search keywords from script using Gemini...")
     keywords = []
+    cat_info = CATEGORIES[category]
 
     try:
         prompt = (
-            "Extract exactly 3 distinct, highly visual space-themed search keywords "
-            "(e.g. 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor') "
-            "from the script below. These will be used to search for portrait videos. "
+            f"Extract exactly 3 distinct, highly visual search keywords from the script below "
+            f"that are relevant to {category} (e.g. {cat_info['kw_examples']}). "
+            "These will be used to search for portrait background videos on Pexels. "
             "Output ONLY the three keywords separated by commas, no extra text.\n\n"
             f"Script:\n{script_text}"
         )
@@ -181,7 +219,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client)
         print("Failed to extract keywords via Gemini, using defaults:", e)
 
     # Guarantee exactly 3 keywords
-    default_pool = ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"]
+    default_pool = cat_info["kw_defaults"]
     while len(keywords) < 3:
         cand = random.choice(default_pool)
         if cand not in keywords:
@@ -271,7 +309,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client)
 # ---------------------------------------------------------------------------
 # 5. VIDEO ASSEMBLY (MOVIEPY)
 # ---------------------------------------------------------------------------
-def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tuple[Tuple[float, float], str]], output_path: str) -> str:
+def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tuple[Tuple[float, float], str]], output_path: str, category: str) -> str:
     print("Assembling final video short with MoviePy...")
 
     audio_clip = AudioFileClip(audio_path)
@@ -335,8 +373,17 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     music_dir = Path("music")
     music_clip = None
 
-    if music_dir.exists() and music_dir.is_dir():
-        music_files = list(music_dir.glob("*.mp3"))
+    cat_info = CATEGORIES[category]
+    cat_music_dir = music_dir / cat_info["music_subfolder"]
+
+    # Try category subdirectory, fallback to root music directory
+    target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
+
+    if target_dir.exists() and target_dir.is_dir():
+        music_files = list(target_dir.glob("*.mp3"))
+        if not music_files and target_dir != music_dir:
+            music_files = list(music_dir.glob("*.mp3"))
+
         if music_files:
             music_path = random.choice(music_files)
             print(f"Selected background music: {music_path.name}")
@@ -408,7 +455,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str) -> None:
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None) -> None:
     print("Uploading to YouTube Shorts...")
     creds = Credentials(
         token=None,
@@ -416,7 +463,7 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         token_uri="https://oauth2.googleapis.com/token",
         client_id=client_id,
         client_secret=client_secret,
-        scopes=["https://www.googleapis.com/auth/youtube.upload"]
+        scopes=["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube"]
     )
     youtube = build("youtube", "v3", credentials=creds)
 
@@ -424,7 +471,7 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         "snippet": {
             "title": title,
             "description": description,
-            "tags": ["shorts", "space", "mystery", "terrifying"],
+            "tags": ["shorts", "oddfactsshorts", "facts", "mystery"],
             "categoryId": "28"
         },
         "status": {
@@ -445,7 +492,25 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         if status:
             print(f"YouTube Upload Progress: {int(status.progress() * 100)}%")
 
-    print(f"YouTube upload successful! Video ID: {response.get('id')}")
+    video_id = response.get("id")
+    print(f"YouTube upload successful! Video ID: {video_id}")
+
+    if video_id and playlist_id:
+        print(f"Adding video {video_id} to playlist {playlist_id}...")
+        try:
+            body = {
+                "snippet": {
+                    "playlistId": playlist_id,
+                    "resourceId": {
+                        "kind": "youtube#video",
+                        "videoId": video_id
+                    }
+                }
+            }
+            youtube.playlistItems().insert(part="snippet", body=body).execute()
+            print("Successfully added video to playlist.")
+        except Exception as e:
+            print(f"Failed to add video to playlist: {e}")
 
 
 # ---------------------------------------------------------------------------
@@ -703,19 +768,6 @@ def main() -> None:
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
     pexels_key  = os.environ.get("PEXELS_API_KEY")
-    affiliate_link = os.environ.get("AFFILIATE_LINK", "http://example.com/affiliate")
-
-    youtube_client_id     = os.environ.get("YOUTUBE_CLIENT_ID")
-    youtube_client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
-    youtube_refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
-
-    tiktok_client_key    = os.environ.get("TIKTOK_CLIENT_KEY")
-    tiktok_client_secret = os.environ.get("TIKTOK_CLIENT_SECRET")
-    tiktok_refresh_token = os.environ.get("TIKTOK_REFRESH_TOKEN")
-
-    meta_access_token = os.environ.get("META_PAGE_ACCESS_TOKEN")
-    ig_account_id     = os.environ.get("IG_ACCOUNT_ID")
-    fb_page_id        = os.environ.get("FB_PAGE_ID")
 
     if not gemini_key or not pexels_key:
         print("CRITICAL: GEMINI_API_KEY and PEXELS_API_KEY are required.")
@@ -724,24 +776,52 @@ def main() -> None:
     # Single shared Gemini client — instantiated once, reused everywhere
     client = genai.Client(api_key=gemini_key)
 
+    # Parse command line overrides
+    parser = argparse.ArgumentParser(description="Automated short-form video generation pipeline")
+    parser.add_argument("--category", choices=["space", "history", "tech"], help="Force script category selection")
+    args = parser.parse_args()
+
+    # Route content selection
+    if args.category:
+        category = args.category
+        print(f"CLI Override: selected category '{category}'")
+    else:
+        category = random.choice(["space", "history", "tech"])
+        print(f"Randomly selected category: '{category}'")
+
     # 1. Content generation (single API call)
-    script_text, title, description = generate_content(client)
+    script_text, title, description = generate_content(client, category)
 
     # 2 & 3. Audio + subtitles via local Piper TTS + Faster-Whisper
-    audio_path, subs_list = generate_audio_and_subtitles(script_text)
+    audio_path, subs_list = generate_audio_and_subtitles(script_text, category)
 
     # 4. Download 3 contextual Pexels clips (shared client, no second instantiation)
-    video_paths = download_pexels_videos(pexels_key, script_text, client)
+    video_paths = download_pexels_videos(pexels_key, script_text, client, category)
 
     # 5. Assemble — audio_duration computed once inside assemble_video
     output_path = "final_short.mp4"
-    assemble_video(video_paths, audio_path, subs_list, output_path)
+    assemble_video(video_paths, audio_path, subs_list, output_path, category)
+
+    # Initialize credential variables
+    youtube_client_id     = os.environ.get("YOUTUBE_CLIENT_ID")
+    youtube_client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
+    youtube_refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
+    tiktok_client_key     = os.environ.get("TIKTOK_CLIENT_KEY")
+    tiktok_client_secret  = os.environ.get("TIKTOK_CLIENT_SECRET")
+    tiktok_refresh_token  = os.environ.get("TIKTOK_REFRESH_TOKEN")
+    meta_access_token     = os.environ.get("META_PAGE_ACCESS_TOKEN")
+    ig_account_id         = os.environ.get("IG_ACCOUNT_ID")
+    fb_page_id            = os.environ.get("FB_PAGE_ID")
+
+    # Resolve target YouTube Playlist ID from environment variables
+    cat_info = CATEGORIES[category]
+    playlist_id = os.environ.get(cat_info["playlist_env"])
 
     # 6. Upload to platforms — each in an isolated try/except
     if youtube_client_id and youtube_client_secret and youtube_refresh_token:
         try:
             upload_to_youtube(output_path, title, description,
-                              youtube_client_id, youtube_client_secret, youtube_refresh_token)
+                              youtube_client_id, youtube_client_secret, youtube_refresh_token, playlist_id)
         except Exception as e:
             if "quotaExceeded" in str(e):
                 print("WARNING: YouTube quota exceeded — upload skipped.")

@@ -74,6 +74,9 @@ jobs:
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YT_PLAYLIST_SPACE: ${{ secrets.YT_PLAYLIST_SPACE }}
+          YT_PLAYLIST_HISTORY: ${{ secrets.YT_PLAYLIST_HISTORY }}
+          YT_PLAYLIST_TECH: ${{ secrets.YT_PLAYLIST_TECH }}
 
           # TikTok Content Posting API Credentials
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
