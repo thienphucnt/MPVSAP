@@ -196,5 +196,17 @@ Exchange the token so it does not expire after 2 hours. Run these requests in a 
 
 ---
 
-## 5. Affiliate Link
-Save your product promotion URL as `AFFILIATE_LINK` (e.g., `https://amazon.com/...`). It will be appended to every uploaded video description.
+## 5. YouTube Playlist IDs (Multi-Category Routing)
+
+The pipeline automatically categorizes scripts and assigns uploads to specific playlists. Create these three playlists in your YouTube Studio and save their IDs as GitHub Secrets:
+1. **YT_PLAYLIST_SPACE**: Playlist ID for space mysteries.
+2. **YT_PLAYLIST_HISTORY**: Playlist ID for history facts.
+3. **YT_PLAYLIST_TECH**: Playlist ID for tech breakthroughs.
+
+*Note: You can locate a Playlist ID in the browser URL when viewing the playlist (e.g., `https://www.youtube.com/playlist?list=PL...`). Copy everything after `list=`.*
+
+---
+
+## 6. Affiliate Link (Optional)
+Save your product promotion URL as `AFFILIATE_LINK` (e.g., `https://amazon.com/...`). Currently, the video description is configured to be clean of CTAs (following the rebrand to OddFactsShorts), but you can re-enable this secret in the code when you are ready to monetize.
+
