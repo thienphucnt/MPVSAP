@@ -35,6 +35,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-huggingface-
 
+      - name: Cache Piper Models
+        uses: actions/cache@v3
+        with:
+          path: models
+          key: ${{ runner.os }}-piper-models-v1
+
 
       - name: Install System Dependencies
         run: |
