@@ -142,7 +142,7 @@ def generate_audio_and_subtitles(script_text: str) -> Tuple[str, List[Tuple[Tupl
             
             start = chunk_words[0].start
             end = chunk_words[-1].end
-            text = " ".join([w.word.strip() for w in chunk_words])
+            text = " ".join(w.word.strip() for w in chunk_words)
             
             if text:
                 subs_list.append(((start, end), text))
@@ -289,11 +289,10 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     bg_clip = concatenate_videoclips(clips)
 
-    # --- Subtitle overlay ---
-    sub_clips = []
-    for (start, end), text in subs_list:
+    # --- Subtitle overlay (Threaded TextClip generation for ImageMagick I/O) ---
+    def create_text_clip(start, end, text):
         wrapped = "\n".join(textwrap.wrap(text, width=15))
-        txt = (
+        return (
             TextClip(
                 wrapped,
                 font="Arial-Bold",
@@ -308,7 +307,20 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             .set_duration(end - start)
             .set_position(('center', 'center'))
         )
-        sub_clips.append(txt)
+
+    print(f"Generating {len(subs_list)} TextClips (ImageMagick)...")
+    sub_clips = [None] * len(subs_list)
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        future_to_idx = {executor.submit(create_text_clip, s, e, t): i for i, ((s, e), t) in enumerate(subs_list)}
+        for future in concurrent.futures.as_completed(future_to_idx):
+            i = future_to_idx[future]
+            try:
+                sub_clips[i] = future.result()
+            except Exception as exc:
+                print(f"TextClip {i} generated an exception: {exc}")
+    
+    # Filter out any failed clips
+    sub_clips = [c for c in sub_clips if c is not None]
 
     final_clip = CompositeVideoClip([bg_clip] + sub_clips)
 
@@ -366,7 +378,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     if music_clip:
         music_clip.close()
 
-    # Clean up downloaded segment clips
+    # Clean up downloaded segment clips and generated audio
     for v_path in video_paths:
         try:
             vp = Path(v_path)
@@ -374,6 +386,13 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 vp.unlink()
         except Exception as e:
             print(f"Could not remove {v_path}:", e)
+            
+    try:
+        ap = Path(audio_path)
+        if ap.exists():
+            ap.unlink()
+    except Exception as e:
+        print(f"Could not remove {audio_path}:", e)
 
     print("Assembly complete.")
     return output_path
