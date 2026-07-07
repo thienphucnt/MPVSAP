@@ -27,6 +27,14 @@ jobs:
           cache: 'pip'
           cache-dependency-path: requirements.txt  # Deterministic cache key tied to exact deps
 
+      - name: Cache HuggingFace Models
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/huggingface
+          key: ${{ runner.os }}-huggingface-faster-whisper-base
+          restore-keys: |
+            ${{ runner.os }}-huggingface-
+
 
       - name: Install System Dependencies
         run: |

@@ -8,8 +8,12 @@ import datetime
 import textwrap
 import subprocess
 import requests
+import wave
 from pathlib import Path
 from typing import List, Tuple, Optional
+
+from piper.voice import PiperVoice
+from faster_whisper import WhisperModel
 
 # Google APIs
 from google import genai
@@ -82,99 +86,65 @@ def generate_content(client: genai.Client) -> Tuple[str, str]:
 
 
 # ---------------------------------------------------------------------------
-# 2. TTS & SUBTITLE GENERATION
+# 2 & 3. TTS & SUBTITLE GENERATION (LOCAL PIPER TTS + FASTER-WHISPER)
 # ---------------------------------------------------------------------------
-def generate_audio_and_subtitles(script_text: str) -> Tuple[str, str]:
-    print("Generating TTS voiceover and WebVTT subtitles via edge-tts...")
-    audio_path = "voice.mp3"
-    vtt_path = "subtitles.vtt"
+def download_piper_model() -> str:
+    model_dir = Path("models")
+    model_dir.mkdir(exist_ok=True)
+    onnx_path = model_dir / "en_GB-alan-medium.onnx"
+    json_path = model_dir / "en_GB-alan-medium.onnx.json"
 
-    cmd = [
-        sys.executable, "-m", "edge_tts",
-        "--text", script_text,
-        "--write-media", audio_path,
-        "--write-subtitles", vtt_path,
-        "--voice", "en-GB-RyanNeural"
-    ]
+    base_url = "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/alan/medium/"
 
-    # timeout=120 prevents the runner hanging if edge-tts network call stalls
-    subprocess.run(cmd, check=True, timeout=120)
-    print(f"TTS generated: {audio_path}, Subtitles: {vtt_path}")
-    return audio_path, vtt_path
-
-
-# ---------------------------------------------------------------------------
-# 3. WebVTT SUBTITLE PARSER
-# ---------------------------------------------------------------------------
-def time_to_seconds(time_str: str) -> float:
-    time_str = time_str.replace(',', '.')
-    parts = time_str.split(':')
-    if len(parts) == 3:
-        h, m, s = parts
-    elif len(parts) == 2:
-        h, (m, s) = 0, parts
-    else:
-        return float(time_str)
-
-    if '.' in s:
-        s_int, ms = s.split('.')
-        return int(h) * 3600 + int(m) * 60 + int(s_int) + float("0." + ms)
-    return int(h) * 3600 + int(m) * 60 + float(s)
+    for path, filename in [(onnx_path, "en_GB-alan-medium.onnx"), (json_path, "en_GB-alan-medium.onnx.json")]:
+        if not path.exists():
+            print(f"Downloading Piper model {filename}...")
+            r = requests.get(base_url + filename, stream=True)
+            r.raise_for_status()
+            with open(path, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+    return str(onnx_path)
 
 
-def parse_vtt(vtt_path: str) -> List[Tuple[Tuple[float, float], str]]:
-    print(f"Parsing WebVTT subtitle file: {vtt_path}")
-    with open(vtt_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+def generate_audio_and_subtitles(script_text: str) -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
+    print("Generating TTS voiceover via Piper TTS (100% local)...")
+    audio_path = "voice.wav"
 
-    subtitles = []
-    for block in re.split(r'\n\s*\n', content):
-        block = block.strip()
-        if not block or "-->" not in block:
-            continue
-        lines = block.split('\n')
-        time_line = next((l for l in lines if "-->" in l), None)
-        if not time_line:
-            continue
-        text_lines = [l for l in lines[lines.index(time_line) + 1:] if l.strip()]
-        parts = time_line.split("-->")
-        if len(parts) == 2:
-            start_sec = time_to_seconds(parts[0].strip())
-            end_sec = time_to_seconds(parts[1].strip().split()[0])
-            text = " ".join(text_lines).strip()
-            if text:
-                subtitles.append(((start_sec, end_sec), text))
-
-    print(f"Parsed {len(subtitles)} subtitle cues.")
-    return subtitles
-
-
-def make_short_burst_subtitles(subs_list: List[Tuple[Tuple[float, float], str]], max_words: int = 3) -> List[Tuple[Tuple[float, float], str]]:
-    short_subs = []
-    for (start, end), text in subs_list:
-        words = text.split()
+    model_path = download_piper_model()
+    voice = PiperVoice.load(model_path)
+    
+    with wave.open(audio_path, "wb") as wav_file:
+        voice.synthesize(script_text, wav_file)
+        
+    print(f"TTS generated: {audio_path}")
+    
+    print("Transcribing with Faster-Whisper to generate timestamps...")
+    model = WhisperModel("base", device="cpu", compute_type="int8")
+    segments, info = model.transcribe(audio_path, word_timestamps=True)
+    
+    subs_list = []
+    max_words = 3
+    
+    for segment in segments:
+        words = segment.words
         if not words:
             continue
-        if len(words) <= max_words:
-            short_subs.append(((start, end), text))
-            continue
-
-        duration = end - start
-        total_words = len(words)
-        current_time = start
-
-        for i in range(0, total_words, max_words):
+            
+        for i in range(0, len(words), max_words):
             chunk_words = words[i:i + max_words]
-            chunk = " ".join(chunk_words)
-            # Word count already known — no redundant re-split
-            chunk_count = len(chunk_words)
-            chunk_duration = duration * (chunk_count / total_words)
-            chunk_end = current_time + chunk_duration
-            short_subs.append(((current_time, chunk_end), chunk))
-            current_time = chunk_end
-
-    print(f"Split {len(subs_list)} cues into {len(short_subs)} short-burst cues.")
-    return short_subs
+            if not chunk_words: 
+                continue
+            
+            start = chunk_words[0].start
+            end = chunk_words[-1].end
+            text = " ".join([w.word.strip() for w in chunk_words])
+            
+            if text:
+                subs_list.append(((start, end), text))
+                
+    print(f"Generated {len(subs_list)} short-burst subtitle cues.")
+    return audio_path, subs_list
 
 
 # ---------------------------------------------------------------------------
@@ -709,11 +679,8 @@ def main() -> None:
     # 1. Content generation (single API call)
     script_text, title = generate_content(client)
 
-    # 2. Audio + subtitles
-    audio_path, vtt_path = generate_audio_and_subtitles(script_text)
-
-    # 3. Parse + burst subtitles
-    subs_list = make_short_burst_subtitles(parse_vtt(vtt_path), max_words=3)
+    # 2 & 3. Audio + subtitles via local Piper TTS + Faster-Whisper
+    audio_path, subs_list = generate_audio_and_subtitles(script_text)
 
     # 4. Download 3 contextual Pexels clips (shared client, no second instantiation)
     video_paths = download_pexels_videos(pexels_key, script_text, client)
