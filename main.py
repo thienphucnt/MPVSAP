@@ -95,7 +95,7 @@ def generate_content(client: genai.Client, category: str) -> Tuple[str, str, str
         "Task 1 — TITLE: A single highly engaging, click-worthy YouTube Shorts title "
         "under 50 characters. No quotes, emojis, or markdown.\n\n"
         "Task 2 — DESC: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end. "
-        "One of the hashtags MUST be #oddfactsshorts. Do not include the full script here.\n\n"
+        "One of the hashtags MUST be #nichefactsshorts. Do not include the full script here.\n\n"
         f"Task 3 — SCRIPT: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
         f"Make it sound {cat_info['tone']}. Do not include stage directions, titles, "
         "emojis or em dashes. Output only the spoken text. Under no circumstances "
@@ -121,7 +121,7 @@ def generate_content(client: genai.Client, category: str) -> Tuple[str, str, str
         print("WARNING: Could not parse structured response — using raw text as script.")
         script_text = text
         title_text = text[:48].split(".")[0]
-        desc_text = f"Discover some of the oddest facts in the universe! #oddfactsshorts #{category} #facts #shorts"
+        desc_text = f"Discover some of the most interesting niche facts in the universe! #nichefactsshorts #{category} #facts #shorts"
 
     # Strip all quote variants (straight, curly, backtick) from title
     title_text = re.sub(r'["\'\`\u2018\u2019\u201c\u201d]', '', title_text).strip()
@@ -471,7 +471,7 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         "snippet": {
             "title": title,
             "description": description,
-            "tags": ["shorts", "oddfactsshorts", "facts", "mystery"],
+            "tags": ["shorts", "nichefactsshorts", "facts", "mystery"],
             "categoryId": "28"
         },
         "status": {
