@@ -132,7 +132,7 @@ def generate_audio_and_subtitles(script_text: str) -> Tuple[str, List[Tuple[Tupl
     
     print("Transcribing with Faster-Whisper to generate timestamps...")
     model = WhisperModel("base", device="cpu", compute_type="int8")
-    segments, info = model.transcribe(audio_path, word_timestamps=True)
+    segments, info = model.transcribe(audio_path, word_timestamps=True, initial_prompt=script_text)
     
     subs_list = []
     max_words = 3
