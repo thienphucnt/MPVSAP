@@ -44,8 +44,14 @@ jobs:
 
       - name: Install System Dependencies
         run: |
-          sudo apt-get update || true
-          sudo apt-get install -y ffmpeg imagemagick
+          # Check if ffmpeg and ImageMagick (convert) are already pre-installed to bypass apt-get overhead
+          if ! command -v ffmpeg &> /dev/null || ! command -v convert &> /dev/null; then
+            echo "System dependencies missing! Initiating fallback installation..."
+            sudo apt-get update || true
+            sudo apt-get install -y ffmpeg imagemagick
+          else
+            echo "System dependencies (ffmpeg and ImageMagick) are pre-installed. Skipping apt-get update."
+          fi
           
           # Fix ImageMagick security policies that restrict TextClip label/path operations
           echo "Applying ImageMagick security policy patches..."
