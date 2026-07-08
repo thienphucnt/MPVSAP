@@ -111,7 +111,23 @@ def generate_content(client: genai.Client, category: str, recent_titles: List[st
     )
 
     print(f"Generating script, title, and description for category '{category}' in a single call using {model_name}...")
-    response = client.models.generate_content(model=model_name, contents=prompt)
+    
+    # Outer retry loop with exponential backoff for transient API spikes (503 / 429)
+    max_retries = 5
+    response = None
+    for attempt in range(max_retries):
+        try:
+            response = client.models.generate_content(model=model_name, contents=prompt)
+            break
+        except Exception as e:
+            is_transient = any(err in str(e) for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "high demand"])
+            if is_transient and attempt < max_retries - 1:
+                wait_time = (2 ** attempt) + random.uniform(0, 1)
+                print(f"Gemini API rate limited/unavailable (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
+                time.sleep(wait_time)
+            else:
+                raise
+
     text = response.text.strip()
 
     title_match = re.search(r'^TITLE:\s*(.+)$', text, re.MULTILINE)
@@ -218,7 +234,22 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
             "Output ONLY the three keywords separated by commas, no extra text.\n\n"
             f"Script:\n{script_text}"
         )
-        response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
+        # Outer retry loop with exponential backoff for transient API spikes (503 / 429)
+        max_retries = 5
+        response = None
+        for attempt in range(max_retries):
+            try:
+                response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
+                break
+            except Exception as e:
+                is_transient = any(err in str(e) for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "high demand"])
+                if is_transient and attempt < max_retries - 1:
+                    wait_time = (2 ** attempt) + random.uniform(0, 1)
+                    print(f"Gemini API rate limited/unavailable during keyword extraction (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
+                    time.sleep(wait_time)
+                else:
+                    raise
+
         keywords = [k.strip() for k in response.text.split(",") if k.strip() and len(k.strip()) > 1][:3]
         print("Gemini extracted keywords:", keywords)
     except Exception as e:
