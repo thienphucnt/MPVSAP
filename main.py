@@ -286,6 +286,9 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
                 resp.raise_for_status()
                 videos = resp.json().get("videos", [])
 
+            if not videos:
+                raise Exception(f"No videos found on Pexels for keyword '{kw}' or fallback 'dark space'.")
+
             selected = random.choice(videos[:5])
             mp4_files = [f for f in selected.get("video_files", []) if f.get("file_type") == "video/mp4"]
             if not mp4_files:
@@ -296,7 +299,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
 
             hd = [f for f in mp4_files if f.get("quality") == "hd"]
             pool = hd if hd else mp4_files
-            pool.sort(key=lambda x: abs(x.get("width", 0) - 1080) + abs(x.get("height", 0) - 1920))
+            pool.sort(key=lambda x: abs((x.get("width") or 0) - 1080) + abs((x.get("height") or 0) - 1920))
             video_url = pool[0].get("link")
 
             clip_path = f"background_clip_{index}.mp4"
@@ -338,7 +341,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
         raise Exception("All Pexels downloads failed.")
     
     for i in range(3):
-        if video_paths[i] === None:
+        if video_paths[i] is None:
             dup_path = f"background_clip_{i}.mp4"
             shutil.copy(successful[0], dup_path)
             video_paths[i] = dup_path
@@ -382,12 +385,20 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     # --- Subtitle overlay (Threaded TextClip generation for ImageMagick I/O) ---
     def create_text_clip(start, end, text):
-        wrapped = "\n".join(textwrap.wrap(text, width=15))
+        lines = textwrap.wrap(text, width=15)
+        wrapped = "\n".join(lines)
+        max_line_len = max(len(l) for l in lines) if lines else 0
+        
+        # Dynamically scale down font size if line length is extremely long
+        current_fontsize = 120
+        if max_line_len > 12:
+            current_fontsize = int(120 * (12 / max_line_len))
+
         return (
             TextClip(
                 wrapped,
                 font="Arial-Bold",
-                fontsize=120,
+                fontsize=current_fontsize,
                 color="yellow",
                 stroke_color="black",
                 stroke_width=6,
@@ -754,10 +765,10 @@ def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, acces
         status_code = status_resp.json().get("status_code")
         print(f"Container status check {i + 1}: {status_code}")
 
-        if status_code == "FINISHED":
+        if status_code in ["FINISHED", "PUBLISHED"]:
             break
-        elif status_code == "ERROR":
-            raise Exception(f"Instagram container failed: {status_resp.json()}")
+        elif status_code in ["ERROR", "EXPIRED"]:
+            raise Exception(f"Instagram container failed with status {status_code}: {status_resp.json()}")
 
         time.sleep(min(10 * (2 ** i), 60))  # exponential backoff, max 60s
     else:
@@ -814,7 +825,6 @@ def update_heartbeat_and_push() -> None:
 # ---------------------------------------------------------------------------
 def main() -> None:
     print("Starting automated short-form video generation pipeline...")
-    # raise Exception("Simulated pipeline crash for self-healing test. Please remove this exception to fix the pipeline.")
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
     pexels_key  = os.environ.get("PEXELS_API_KEY")
