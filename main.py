@@ -167,6 +167,13 @@ def generate_content(client: genai.Client, category: str, recent_titles: List[st
     # Strip all quote variants (straight, curly, backtick) from title
     title_text = re.sub(r'["\'\`\u2018\u2019\u201c\u201d]', '', title_text).strip()
 
+    # Sanitize script text to strip markdown formatting (asterisks, underscores, backticks)
+    # and stage directions inside brackets or parentheses to prevent TTS/Whisper rendering issues.
+    script_text = re.sub(r'[\*_`]', '', script_text)
+    script_text = re.sub(r'\[.*?\]', '', script_text)
+    script_text = re.sub(r'\(.*?\)', '', script_text)
+    script_text = re.sub(r'\s+', ' ', script_text).strip()
+
     print("Generated Title:", title_text)
     print("Generated Description:", desc_text)
     print("Generated Script:\n", script_text)
@@ -227,7 +234,7 @@ def generate_audio_and_subtitles(script_text: str, category: str) -> Tuple[str, 
             
             start = chunk_words[0].start
             end = chunk_words[-1].end
-            text = " ".join(w.word.strip() for w in chunk_words)
+            text = " ".join(w.word.replace('*', '').strip() for w in chunk_words)
             
             if text:
                 subs_list.append(((start, end), text))
