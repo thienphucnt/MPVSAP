@@ -61,22 +61,38 @@ def main():
         "```"
     )
 
-    print("Sending diagnosis request to Gemini 2.5 Pro...")
+    print("Sending diagnosis request to Gemini...")
     
     # Outer retry loop for the healer itself in case AI Studio is busy
+    # Falls back to gemini-2.5-flash if gemini-2.5-pro has exceeded quota
+    model_to_use = "gemini-2.5-pro"
     max_retries = 3
     response = None
     for attempt in range(max_retries):
         try:
+            print(f"Attempting diagnosis using {model_to_use}...")
             response = client.models.generate_content(
-                model="gemini-2.5-pro",
+                model=model_to_use,
                 contents=prompt
             )
             break
         except Exception as e:
+            is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
+            if is_quota_or_rate_limit and model_to_use == "gemini-2.5-pro":
+                print("Gemini 2.5 Pro quota exceeded. Falling back to Gemini 2.5 Flash for diagnostics...")
+                model_to_use = "gemini-2.5-flash"
+                try:
+                    response = client.models.generate_content(
+                        model=model_to_use,
+                        contents=prompt
+                    )
+                    break
+                except Exception as flash_err:
+                    e = flash_err
+
             if attempt < max_retries - 1:
                 wait_time = (2 ** attempt) + random.uniform(0, 1)
-                print(f"Gemini API busy (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s...")
+                print(f"Gemini API busy (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
                 time.sleep(wait_time)
             else:
                 raise
