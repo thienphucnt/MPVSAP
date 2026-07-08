@@ -44,7 +44,7 @@ jobs:
 
       - name: Install System Dependencies
         run: |
-          sudo apt-get update
+          sudo apt-get update || true
           sudo apt-get install -y ffmpeg imagemagick
           
           # Fix ImageMagick security policies that restrict TextClip label/path operations
