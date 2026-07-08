@@ -5,7 +5,6 @@ import time
 import random
 from pathlib import Path
 from google import genai
-from google.genai import types
 
 def main():
     print("Starting AI Self-Healing Diagnostic script...")

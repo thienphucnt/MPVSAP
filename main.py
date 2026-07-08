@@ -31,7 +31,8 @@ CATEGORIES = {
         "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
         "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
         "music_subfolder": "space",
-        "playlist_env": "YT_PLAYLIST_SPACE"
+        "playlist_env": "YT_PLAYLIST_SPACE",
+        "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"]
     },
     "history": {
         "voice_model": "en_US-lessac-medium",
@@ -41,7 +42,8 @@ CATEGORIES = {
         "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
         "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
         "music_subfolder": "history",
-        "playlist_env": "YT_PLAYLIST_HISTORY"
+        "playlist_env": "YT_PLAYLIST_HISTORY",
+        "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"]
     },
     "tech": {
         "voice_model": "en_US-joe-medium",
@@ -51,7 +53,8 @@ CATEGORIES = {
         "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
         "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
         "music_subfolder": "tech",
-        "playlist_env": "YT_PLAYLIST_TECH"
+        "playlist_env": "YT_PLAYLIST_TECH",
+        "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"]
     }
 }
 
@@ -77,6 +80,27 @@ from moviepy.editor import (
 from moviepy.video.fx.all import loop
 from moviepy.audio.AudioClip import CompositeAudioClip
 from moviepy.audio.fx.all import audio_loop
+
+
+# ---------------------------------------------------------------------------
+# SHARED GEMINI RETRY HELPER
+# ---------------------------------------------------------------------------
+def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, max_retries: int = 5):
+    """Call Gemini with exponential backoff for transient 503/429 errors."""
+    response = None
+    for attempt in range(max_retries):
+        try:
+            response = client.models.generate_content(model=model, contents=prompt)
+            return response
+        except Exception as e:
+            is_transient = any(err in str(e) for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "high demand"])
+            if is_transient and attempt < max_retries - 1:
+                wait_time = (2 ** attempt) + random.uniform(0, 1)
+                print(f"Gemini API transient error (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
+                time.sleep(wait_time)
+            else:
+                raise
+    raise Exception(f"Gemini API failed after {max_retries} retry attempts.")
 
 
 # ---------------------------------------------------------------------------
@@ -111,27 +135,11 @@ def generate_content(client: genai.Client, category: str, recent_titles: List[st
     )
 
     print(f"Generating script, title, and description for category '{category}' in a single call using {model_name}...")
-    
-    # Outer retry loop with exponential backoff for transient API spikes (503 / 429)
-    max_retries = 5
-    response = None
-    for attempt in range(max_retries):
-        try:
-            response = client.models.generate_content(model=model_name, contents=prompt)
-            break
-        except Exception as e:
-            is_transient = any(err in str(e) for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "high demand"])
-            if is_transient and attempt < max_retries - 1:
-                wait_time = (2 ** attempt) + random.uniform(0, 1)
-                print(f"Gemini API rate limited/unavailable (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
-                time.sleep(wait_time)
-            else:
-                raise
-
+    response = gemini_generate_with_retry(client, model_name, prompt)
     text = response.text.strip()
 
     title_match = re.search(r'^TITLE:\s*(.+)$', text, re.MULTILINE)
-    desc_match = re.search(r'^DESC:\s*(.+)$', text, re.MULTILINE)
+    desc_match = re.search(r'^DESC:\s*([\s\S]+?)(?=^SCRIPT:)', text, re.MULTILINE)
     script_match = re.search(r'^SCRIPT:\s*([\s\S]+)', text, re.MULTILINE)
 
     title_text = title_match.group(1).strip() if title_match else ""
@@ -234,22 +242,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
             "Output ONLY the three keywords separated by commas, no extra text.\n\n"
             f"Script:\n{script_text}"
         )
-        # Outer retry loop with exponential backoff for transient API spikes (503 / 429)
-        max_retries = 5
-        response = None
-        for attempt in range(max_retries):
-            try:
-                response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
-                break
-            except Exception as e:
-                is_transient = any(err in str(e) for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "high demand"])
-                if is_transient and attempt < max_retries - 1:
-                    wait_time = (2 ** attempt) + random.uniform(0, 1)
-                    print(f"Gemini API rate limited/unavailable during keyword extraction (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
-                    time.sleep(wait_time)
-                else:
-                    raise
-
+        response = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
         keywords = [k.strip() for k in response.text.split(",") if k.strip() and len(k.strip()) > 1][:3]
         print("Gemini extracted keywords:", keywords)
     except Exception as e:
@@ -497,7 +490,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None) -> None:
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space") -> None:
     print("Uploading to YouTube Shorts...")
     creds = Credentials(
         token=None,
@@ -513,7 +506,7 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         "snippet": {
             "title": title,
             "description": description,
-            "tags": ["shorts", "nichefactsshorts", "facts", "mystery"],
+            "tags": CATEGORIES.get(category, CATEGORIES["space"])["yt_tags"],
             "categoryId": "28"
         },
         "status": {
@@ -796,6 +789,7 @@ def update_heartbeat_and_push() -> None:
                 ["git", "commit", "-m", f"Automated heartbeat: {timestamp} [skip ci]"],
                 check=True, env=git_env
             )
+            subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True, env=git_env)
             subprocess.run(["git", "push"], check=True, env=git_env)
             print("Heartbeat pushed successfully.")
         else:
@@ -873,61 +867,71 @@ def main() -> None:
     output_path = "final_short.mp4"
     assemble_video(video_paths, audio_path, subs_list, output_path, category)
 
-    # Initialize credential variables
-    youtube_client_id     = os.environ.get("YOUTUBE_CLIENT_ID")
-    youtube_client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
-    youtube_refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
-    tiktok_client_key     = os.environ.get("TIKTOK_CLIENT_KEY")
-    tiktok_client_secret  = os.environ.get("TIKTOK_CLIENT_SECRET")
-    tiktok_refresh_token  = os.environ.get("TIKTOK_REFRESH_TOKEN")
-    meta_access_token     = os.environ.get("META_PAGE_ACCESS_TOKEN")
-    ig_account_id         = os.environ.get("IG_ACCOUNT_ID")
-    fb_page_id            = os.environ.get("FB_PAGE_ID")
+    try:
+        # Initialize credential variables
+        youtube_client_id     = os.environ.get("YOUTUBE_CLIENT_ID")
+        youtube_client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
+        youtube_refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
+        tiktok_client_key     = os.environ.get("TIKTOK_CLIENT_KEY")
+        tiktok_client_secret  = os.environ.get("TIKTOK_CLIENT_SECRET")
+        tiktok_refresh_token  = os.environ.get("TIKTOK_REFRESH_TOKEN")
+        meta_access_token     = os.environ.get("META_PAGE_ACCESS_TOKEN")
+        ig_account_id         = os.environ.get("IG_ACCOUNT_ID")
+        fb_page_id            = os.environ.get("FB_PAGE_ID")
 
-    # Resolve target YouTube Playlist ID from environment variables
-    cat_info = CATEGORIES[category]
-    playlist_id = os.environ.get(cat_info["playlist_env"])
+        # Resolve target YouTube Playlist ID from environment variables
+        cat_info = CATEGORIES[category]
+        playlist_id = os.environ.get(cat_info["playlist_env"])
 
-    # 6. Upload to platforms — each in an isolated try/except
-    if youtube_client_id and youtube_client_secret and youtube_refresh_token:
+        # 6. Upload to platforms — each in an isolated try/except
+        if youtube_client_id and youtube_client_secret and youtube_refresh_token:
+            try:
+                upload_to_youtube(output_path, title, description,
+                                  youtube_client_id, youtube_client_secret, youtube_refresh_token, playlist_id, category)
+            except Exception as e:
+                if "quotaExceeded" in str(e):
+                    print("WARNING: YouTube quota exceeded — upload skipped.")
+                else:
+                    print("ERROR uploading to YouTube:", e)
+        else:
+            print("YouTube credentials missing, skipping.")
+
+        if tiktok_client_key and tiktok_client_secret and tiktok_refresh_token:
+            try:
+                upload_to_tiktok(output_path, title,
+                                 tiktok_client_key, tiktok_client_secret, tiktok_refresh_token)
+            except Exception as e:
+                print("ERROR uploading to TikTok:", e)
+        else:
+            print("TikTok credentials missing, skipping.")
+
+        if fb_page_id and meta_access_token:
+            try:
+                upload_to_facebook(output_path, description, fb_page_id, meta_access_token)
+            except Exception as e:
+                print("ERROR uploading to Facebook Reels:", e)
+        else:
+            print("Facebook credentials missing, skipping.")
+
+        if ig_account_id and meta_access_token:
+            try:
+                upload_to_instagram(output_path, description, ig_account_id, meta_access_token)
+            except Exception as e:
+                print("ERROR uploading to Instagram Reels:", e)
+        else:
+            print("Instagram credentials missing, skipping.")
+
+        # 7. Heartbeat commit
+        update_heartbeat_and_push()
+
+    finally:
+        # Clean up rendered video file
         try:
-            upload_to_youtube(output_path, title, description,
-                              youtube_client_id, youtube_client_secret, youtube_refresh_token, playlist_id)
+            op = Path(output_path)
+            if op.exists():
+                op.unlink()
         except Exception as e:
-            if "quotaExceeded" in str(e):
-                print("WARNING: YouTube quota exceeded — upload skipped.")
-            else:
-                print("ERROR uploading to YouTube:", e)
-    else:
-        print("YouTube credentials missing, skipping.")
-
-    if tiktok_client_key and tiktok_client_secret and tiktok_refresh_token:
-        try:
-            upload_to_tiktok(output_path, title,
-                             tiktok_client_key, tiktok_client_secret, tiktok_refresh_token)
-        except Exception as e:
-            print("ERROR uploading to TikTok:", e)
-    else:
-        print("TikTok credentials missing, skipping.")
-
-    if fb_page_id and meta_access_token:
-        try:
-            upload_to_facebook(output_path, description, fb_page_id, meta_access_token)
-        except Exception as e:
-            print("ERROR uploading to Facebook Reels:", e)
-    else:
-        print("Facebook credentials missing, skipping.")
-
-    if ig_account_id and meta_access_token:
-        try:
-            upload_to_instagram(output_path, description, ig_account_id, meta_access_token)
-        except Exception as e:
-            print("ERROR uploading to Instagram Reels:", e)
-    else:
-        print("Instagram credentials missing, skipping.")
-
-    # 7. Heartbeat commit
-    update_heartbeat_and_push()
+            print(f"Could not remove {output_path}:", e)
 
     print("Pipeline execution complete.")
 

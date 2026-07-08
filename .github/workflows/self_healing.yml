@@ -10,6 +10,7 @@ jobs:
   diagnose-and-heal:
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     permissions:
       contents: write
@@ -19,42 +20,73 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Check Heal Attempt Counter
+        id: check_counter
+        run: |
+          MAX_ATTEMPTS=3
+          COUNTER_FILE="heal_attempts.txt"
+          CURRENT=0
+          if [ -f "$COUNTER_FILE" ]; then
+            CURRENT=$(cat "$COUNTER_FILE" | tr -d '[:space:]')
+            # Validate it's a number
+            if ! [[ "$CURRENT" =~ ^[0-9]+$ ]]; then
+              CURRENT=0
+            fi
+          fi
+          echo "Current heal attempts: $CURRENT"
+          if [ "$CURRENT" -ge "$MAX_ATTEMPTS" ]; then
+            echo "Max heal attempts ($MAX_ATTEMPTS) reached. Stopping to prevent infinite loop."
+            echo "should_continue=false" >> $GITHUB_OUTPUT
+          else
+            NEXT=$((CURRENT + 1))
+            echo "$NEXT" > "$COUNTER_FILE"
+            echo "Heal attempt $NEXT of $MAX_ATTEMPTS"
+            echo "should_continue=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Set up Python 3.11
+        if: steps.check_counter.outputs.should_continue == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.check_counter.outputs.should_continue == 'true'
         run: |
           pip install google-genai
 
       - name: Fetch Failed Logs
+        if: steps.check_counter.outputs.should_continue == 'true'
         run: |
           gh run view ${{ github.event.workflow_run.id }} --log > failed_logs.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Self-Healing Diagnostics
+        if: steps.check_counter.outputs.should_continue == 'true'
+        id: heal
         run: |
           python self_heal.py
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Push Code Fixes (If any)
+      - name: Push Code Fixes & Counter
+        if: steps.check_counter.outputs.should_continue == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -n "$(git status --porcelain main.py)" ]; then
-            git add main.py
-            git commit -m "AI Self-Healing: Auto-fixed code crash [skip ci]"
+          git add -A
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "AI Self-Healing: Auto-diagnosed and applied fix [skip ci]"
             git pull --rebase origin main
             git push origin main
-            echo "Pushing fixes back to main branch."
+            echo "Changes pushed to main branch."
           else
             echo "No code changes made."
           fi
 
       - name: Re-trigger Video Pipeline
+        if: steps.check_counter.outputs.should_continue == 'true'
         run: |
           gh workflow run "Daily Shorts Generator & Uploader"
         env:

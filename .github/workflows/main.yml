@@ -28,7 +28,7 @@ jobs:
           cache-dependency-path: requirements.txt  # Deterministic cache key tied to exact deps
 
       - name: Cache HuggingFace Models
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
           key: ${{ runner.os }}-huggingface-faster-whisper-base
@@ -36,7 +36,7 @@ jobs:
             ${{ runner.os }}-huggingface-
 
       - name: Cache Piper Models
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: models
           key: ${{ runner.os }}-piper-models-v1
@@ -95,3 +95,17 @@ jobs:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
         run: |
           python main.py
+
+      - name: Reset Self-Healing Counter
+        run: |
+          if [ -f heal_attempts.txt ]; then
+            echo "0" > heal_attempts.txt
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add heal_attempts.txt
+            if [ -n "$(git status --porcelain heal_attempts.txt)" ]; then
+              git commit -m "Reset heal counter after successful run [skip ci]"
+              git pull --rebase origin main
+              git push origin main
+            fi
+          fi
