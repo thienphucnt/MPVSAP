@@ -338,7 +338,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
         raise Exception("All Pexels downloads failed.")
     
     for i in range(3):
-        if video_paths[i] is None:
+        if video_paths[i] === None:
             dup_path = f"background_clip_{i}.mp4"
             shutil.copy(successful[0], dup_path)
             video_paths[i] = dup_path
@@ -814,7 +814,7 @@ def update_heartbeat_and_push() -> None:
 # ---------------------------------------------------------------------------
 def main() -> None:
     print("Starting automated short-form video generation pipeline...")
-    raise Exception("Simulated pipeline crash for self-healing test. Please remove this exception to fix the pipeline.")
+    # raise Exception("Simulated pipeline crash for self-healing test. Please remove this exception to fix the pipeline.")
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
     pexels_key  = os.environ.get("PEXELS_API_KEY")
