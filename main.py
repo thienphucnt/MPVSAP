@@ -19,6 +19,7 @@ HTTP_SESSION = requests.Session()
 from piper.voice import PiperVoice
 from faster_whisper import WhisperModel
 import argparse
+import json
 
 # Global mapping for our three distinct content buckets
 CATEGORIES = {
@@ -82,9 +83,13 @@ from moviepy.audio.fx.all import audio_loop
 # 1. GEMINI CONTENT GENERATION
 #    Single API round-trip returns both TITLE and SCRIPT in one call.
 # ---------------------------------------------------------------------------
-def generate_content(client: genai.Client, category: str) -> Tuple[str, str, str]:
+def generate_content(client: genai.Client, category: str, recent_titles: List[str]) -> Tuple[str, str, str]:
     model_name = "gemini-2.5-flash"
     cat_info = CATEGORIES[category]
+
+    exclude_instruction = ""
+    if recent_titles:
+        exclude_instruction = f"\n- Do NOT write about or reference any of these topics/titles: {', '.join(recent_titles)}. Choose a completely different concept."
 
     # One prompt, structured output — halves latency and API surface area.
     prompt = (
@@ -102,6 +107,7 @@ def generate_content(client: genai.Client, category: str) -> Tuple[str, str, str
         "should the script mention regional politics, state officials, or global "
         "geopolitical conflicts. Under no circumstances should the script mention, reference, "
         "or allude to Vietnamese history, Vietnamese regional politics, or Vietnamese state officials."
+        f"{exclude_instruction}"
     )
 
     print(f"Generating script, title, and description for category '{category}' in a single call using {model_name}...")
@@ -750,6 +756,8 @@ def update_heartbeat_and_push() -> None:
             "GIT_COMMITTER_EMAIL": "github-actions[bot]@users.noreply.github.com",
         }
         subprocess.run(["git", "add", "heartbeat.txt"], check=True, env=git_env)
+        if os.path.exists("past_topics.json"):
+            subprocess.run(["git", "add", "past_topics.json"], check=True, env=git_env)
         status = subprocess.run(["git", "status", "--porcelain"],
                                 capture_output=True, text=True, env=git_env)
         if status.stdout.strip():
@@ -794,8 +802,35 @@ def main() -> None:
         category = random.choice(["space", "history", "tech"])
         print(f"Randomly selected category: '{category}'")
 
+    # Load past topics history to prevent duplicates
+    past_topics_path = Path("past_topics.json")
+    past_topics = []
+    if past_topics_path.exists():
+        try:
+            with open(past_topics_path, "r", encoding="utf-8") as f:
+                past_topics = json.load(f)
+        except Exception as e:
+            print("Failed to load past topics:", e)
+
+    # Extract recent titles for this category to pass as exclusions
+    recent_titles = [item["title"] for item in past_topics if item.get("category") == category][-15:]
+    print("Recent titles to exclude:", recent_titles)
+
     # 1. Content generation (single API call)
-    script_text, title, description = generate_content(client, category)
+    script_text, title, description = generate_content(client, category, recent_titles)
+
+    # Append new title and save history
+    past_topics.append({
+        "category": category,
+        "title": title,
+        "timestamp": datetime.datetime.utcnow().isoformat()
+    })
+    past_topics = past_topics[-100:]  # Cap history size to prevent file bloat
+    try:
+        with open(past_topics_path, "w", encoding="utf-8") as f:
+            json.dump(past_topics, f, indent=2)
+    except Exception as e:
+        print("Failed to save past topics:", e)
 
     # 2 & 3. Audio + subtitles via local Piper TTS + Faster-Whisper
     audio_path, subs_list = generate_audio_and_subtitles(script_text, category)
