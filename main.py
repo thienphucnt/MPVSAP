@@ -323,10 +323,15 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         print(f"Processing background clip {i}: {v_path}")
         c = VideoFileClip(v_path).resize(newsize=(1080, 1920))
 
+        # Pad duration slightly to prevent last-frame wrap-around/flash glitch
+        pad = 0.5
         if c.duration < segment_duration:
-            c = loop(c, duration=segment_duration)
+            c = loop(c, duration=segment_duration + pad)
         else:
-            c = c.subclip(0, segment_duration)
+            subclip_end = min(c.duration, segment_duration + pad)
+            c = c.subclip(0, subclip_end)
+
+        c = c.set_duration(segment_duration)
 
         # Ken Burns: safe closure via default-arg binding (avoids late-binding bug)
         c = c.resize(lambda t, d=segment_duration: 1.0 + 0.1 * (t / d)).set_position('center')
