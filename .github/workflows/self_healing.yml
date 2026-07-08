@@ -1,0 +1,61 @@
+name: AI Self-Healing & Diagnostics
+
+on:
+  workflow_run:
+    workflows: ["Daily Shorts Generator & Uploader"]
+    types:
+      - completed
+
+jobs:
+  diagnose-and-heal:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install google-genai
+
+      - name: Fetch Failed Logs
+        run: |
+          gh run view ${{ github.event.workflow_run.id }} --log > failed_logs.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Self-Healing Diagnostics
+        run: |
+          python self_heal.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Push Code Fixes (If any)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain main.py)" ]; then
+            git add main.py
+            git commit -m "AI Self-Healing: Auto-fixed code crash [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+            echo "Pushing fixes back to main branch."
+          else
+            echo "No code changes made."
+          fi
+
+      - name: Re-trigger Video Pipeline
+        run: |
+          gh workflow run "Daily Shorts Generator & Uploader"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

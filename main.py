@@ -84,7 +84,7 @@ from moviepy.audio.fx.all import audio_loop
 #    Single API round-trip returns both TITLE and SCRIPT in one call.
 # ---------------------------------------------------------------------------
 def generate_content(client: genai.Client, category: str, recent_titles: List[str]) -> Tuple[str, str, str]:
-    model_name = "gemini-2.5-flash"
+    model_name = "gemini-2.5-pro"
     cat_info = CATEGORIES[category]
 
     exclude_instruction = ""
