@@ -376,7 +376,7 @@ def download_font() -> str:
         with open(font_path, "wb") as f:
             for chunk in r.iter_content(chunk_size=1024 * 1024):
                 f.write(chunk)
-    return str(font_path)
+    return str(font_path.resolve().absolute())
 
 
 # ---------------------------------------------------------------------------
