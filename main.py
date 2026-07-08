@@ -803,6 +803,7 @@ def update_heartbeat_and_push() -> None:
 # ---------------------------------------------------------------------------
 def main() -> None:
     print("Starting automated short-form video generation pipeline...")
+    raise Exception("Simulated pipeline crash for self-healing test. Please remove this exception to fix the pipeline.")
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
     pexels_key  = os.environ.get("PEXELS_API_KEY")
