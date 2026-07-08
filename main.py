@@ -361,10 +361,30 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
 
 
 # ---------------------------------------------------------------------------
+# FONT DOWNLOADER HELPER
+# ---------------------------------------------------------------------------
+def download_font() -> str:
+    """Download Anton-Regular from Google Fonts if not cached locally."""
+    font_dir = Path("fonts")
+    font_dir.mkdir(exist_ok=True)
+    font_path = font_dir / "Anton-Regular.ttf"
+    if not font_path.exists():
+        print("Downloading Anton-Regular font...")
+        url = "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf"
+        r = HTTP_SESSION.get(url, stream=True, timeout=30)
+        r.raise_for_status()
+        with open(font_path, "wb") as f:
+            for chunk in r.iter_content(chunk_size=1024 * 1024):
+                f.write(chunk)
+    return str(font_path)
+
+
+# ---------------------------------------------------------------------------
 # 5. VIDEO ASSEMBLY (MOVIEPY)
 # ---------------------------------------------------------------------------
 def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tuple[Tuple[float, float], str]], output_path: str, category: str) -> str:
     print("Assembling final video short with MoviePy...")
+    font_path = download_font()
 
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
@@ -395,23 +415,24 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     # --- Subtitle overlay (Threaded TextClip generation for ImageMagick I/O) ---
     def create_text_clip(start, end, text):
-        lines = textwrap.wrap(text, width=15)
+        # Shorts best practice: UPPERCASE and tight line wraps (max 12 chars per line)
+        lines = textwrap.wrap(text.upper(), width=12)
         wrapped = "\n".join(lines)
         max_line_len = max(len(l) for l in lines) if lines else 0
         
-        # Dynamically scale down font size if line length is extremely long
-        current_fontsize = 120
-        if max_line_len > 12:
-            current_fontsize = int(120 * (12 / max_line_len))
+        # Anton is a tall, narrow font, so we can use a larger baseline size (150)
+        current_fontsize = 150
+        if max_line_len > 10:
+            current_fontsize = int(150 * (10 / max_line_len))
 
         return (
             TextClip(
                 wrapped,
-                font="Arial-Bold",
+                font=font_path,
                 fontsize=current_fontsize,
                 color="yellow",
                 stroke_color="black",
-                stroke_width=6,
+                stroke_width=5,
                 method="label",
                 align="center"
             )
