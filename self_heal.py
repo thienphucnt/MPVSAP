@@ -64,7 +64,7 @@ def main():
     print("Sending diagnosis request to Gemini...")
     
     # Robust fallback model chain for diagnostic run
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
     max_retries = 3
     response = None
     last_error = None

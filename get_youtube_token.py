@@ -4,7 +4,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 # Load client secrets file
 flow = InstalledAppFlow.from_client_secrets_file(
     'client_secrets.json',
-    scopes=['https://www.googleapis.com/auth/youtube.upload']
+    scopes=['https://www.googleapis.com/auth/youtube']
 )
 
 # This will launch a local server and open your browser

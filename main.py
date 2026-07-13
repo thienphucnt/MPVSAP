@@ -76,8 +76,12 @@ CATEGORIES = {
 def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, max_retries: int = 5):
     """Call Gemini with fallback model chain and exponential backoff for transient errors."""
     # Complete chain of models to try in sequence if we hit quota or rate limits
+<<<<<<< Updated upstream
     # Updated to use valid and available Gemini models.
     model_fallback_chain = ["gemini-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+=======
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
+>>>>>>> Stashed changes
     
     # Start with the requested model, or position in the chain if matches
     if model in model_fallback_chain:
