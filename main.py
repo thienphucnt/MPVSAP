@@ -434,19 +434,25 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         padded_text = f" {text.upper().strip()} "
         text_color = get_word_color(text)
 
+        clip = TextClip(
+            padded_text,
+            font=font_path,
+            fontsize=85, # Smaller, legible font size
+            color=text_color,
+            bg_color="black", # Solid black background box
+            stroke_color="black",
+            stroke_width=3, # Outline width 3
+            method="label",
+            align="center",
+            transparent=False # Keep background solid in ImageMagick
+        )
+        
+        # Force convert RGBA to RGB to prevent MoviePy's shape-broadcasting crash
+        if hasattr(clip, "img") and clip.img is not None and len(clip.img.shape) == 3 and clip.img.shape[2] == 4:
+            clip.img = clip.img[:, :, :3]
+
         return (
-            TextClip(
-                padded_text,
-                font=font_path,
-                fontsize=85, # Smaller, legible font size
-                color=text_color,
-                bg_color="black", # Solid black background box
-                stroke_color="black",
-                stroke_width=3, # Outline width 3
-                method="label",
-                align="center",
-                transparent=False # Keep RGB to prevent compositing shape mismatches
-            )
+            clip
             .set_start(start)
             .set_duration(end - start)
             .set_position(('center', 1350)) # Positioned at Y=1350 (around lowest laptop area, avoiding overlays)
