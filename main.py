@@ -266,10 +266,14 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
 
     try:
         prompt = (
-            f"Extract exactly 3 distinct, highly visual search keywords from the script below "
-            f"that are relevant to {category} (e.g. {cat_info['kw_examples']}). "
-            "These will be used to search for portrait background videos on Pexels. "
-            "Output ONLY the three keywords separated by commas, no extra text.\n\n"
+            f"You are a video editor selecting stock footage queries. "
+            f"Extract exactly 3 distinct search terms from the script below. "
+            f"These terms will be used to search for portrait background stock videos on Pexels.\n"
+            f"Rules:\n"
+            f"1. Choose words that are high-availability stock video terms, NOT overly specific historical names or abstract concepts. "
+            f"(e.g., instead of 'Cadaver Synod' or 'Pope Formosus', use 'spooky cathedral candles' or 'medieval judge').\n"
+            f"2. Ensure the terms reflect the visual theme and mood of {category} (e.g. {cat_info['kw_examples']}).\n"
+            f"3. Output ONLY the three terms separated by commas, with no quotes, markdown, or extra text.\n\n"
             f"Script:\n{script_text}"
         )
         response = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
@@ -299,14 +303,16 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
             videos = resp.json().get("videos", [])
 
             if not videos:
-                print(f"No videos for '{kw}', falling back to 'dark space'...")
-                params["query"] = "dark space"
+                # Fallback to a random default query for the category to keep thematic consistency
+                fallback_kw = random.choice(cat_info["kw_defaults"])
+                print(f"No videos for '{kw}', falling back to category default: '{fallback_kw}'...")
+                params["query"] = fallback_kw
                 resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
                 resp.raise_for_status()
                 videos = resp.json().get("videos", [])
 
             if not videos:
-                raise Exception(f"No videos found on Pexels for keyword '{kw}' or fallback 'dark space'.")
+                raise Exception(f"No videos found on Pexels for keyword '{kw}' or category fallback.")
 
             selected = random.choice(videos[:5])
             mp4_files = [f for f in selected.get("video_files", []) if f.get("file_type") == "video/mp4"]
@@ -492,7 +498,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     max_start = max(0, m.duration - audio_duration - 5)
                     start_time = random.uniform(0, max_start)
                     m = m.subclip(start_time, start_time + audio_duration)
-                music_clip = m.volumex(0.08)
+                music_clip = m.volumex(0.18)
                 final_clip = final_clip.set_audio(CompositeAudioClip([audio_clip, music_clip]))
             except Exception as e:
                 print("Failed to mix music, using voice only:", e)
