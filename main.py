@@ -434,30 +434,22 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         padded_text = f" {text.upper().strip()} "
         text_color = get_word_color(text)
 
-        clip = TextClip(
-            padded_text,
-            font=font_path,
-            fontsize=85, # Smaller, legible font size
-            color=text_color,
-            bg_color="black", # Solid black background box
-            stroke_color="black",
-            stroke_width=3, # Outline width 3
-            method="label",
-            align="center",
-            transparent=False # Keep background solid in ImageMagick
-        )
-        
-        # Force convert RGBA to RGB to prevent MoviePy's shape-broadcasting crash
-        if hasattr(clip, "img") and clip.img is not None and len(clip.img.shape) == 3 and clip.img.shape[2] == 4:
-            clip.img = clip.img[:, :, :3]
-            clip.make_frame = lambda t: clip.img
-
         return (
-            clip
+            TextClip(
+                padded_text,
+                font=font_path,
+                fontsize=85, # Smaller, legible font size
+                color=text_color,
+                bg_color="rgba(0,0,0,0.6)", # Dark semi-transparent background box natively handled via alpha
+                stroke_color="black",
+                stroke_width=3, # Outline width 3
+                method="label",
+                align="center",
+                transparent=True # Let MoviePy generate the alpha mask from the 4th channel
+            )
             .set_start(start)
             .set_duration(end - start)
             .set_position(('center', 1350)) # Positioned at Y=1350 (around lowest laptop area, avoiding overlays)
-            .set_opacity(0.85) # Make the black box semi-transparent while keeping text bright and highly visible
             .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0) # Pop-in bounce effect
         )
 
@@ -508,7 +500,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     m = m.subclip(start_time, start_time + audio_duration)
                 
                 # Render sliced/looped music to a temporary file
-                music_clip = m.volumex(0.10) # 0.10 volume level
+                music_clip = m.volumex(0.22) # 0.22 volume level
                 music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
                 m.close()
                 music_clip.close()
