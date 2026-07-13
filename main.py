@@ -146,7 +146,9 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
         "will read naturally without pronouncing symbol names. "
         "Under no circumstances should the script mention regional politics, state officials, or global "
         "geopolitical conflicts. Under no circumstances should the script mention, reference, "
-        "or allude to Vietnamese history, Vietnamese regional politics, or Vietnamese state officials."
+        "or allude to Vietnamese history, Vietnamese regional politics, or Vietnamese state officials. "
+        "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
+        "Ensure all numbers, sizes, and masses are strictly factually accurate (e.g. do NOT claim a planet is billions of times the size of Earth; verify planetary mass/volume limits)."
         f"{exclude_instruction}"
     )
 
@@ -973,6 +975,130 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
 
 
 # ---------------------------------------------------------------------------
+# YOUTUBE COMMENTS MODERATION AND INTERACTION HELPER
+# ---------------------------------------------------------------------------
+def moderate_and_respond_to_comments(client_id: str, client_secret: str, refresh_token: str, client: genai.Client) -> None:
+    """Fetch recent comments on uploaded videos, like them, and reply in a natural human-like tone."""
+    print("Checking for new comments and likes to interact with...")
+    try:
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=["https://www.googleapis.com/auth/youtube"]
+        )
+        youtube = build("youtube", "v3", credentials=creds)
+
+        # 1. Get channel ID and uploads playlist
+        ch_resp = youtube.channels().list(mine=True, part="id,contentDetails").execute()
+        if not ch_resp.get("items"):
+            print("No channels found for credentials.")
+            return
+        channel_id = ch_resp["items"][0]["id"]
+        uploads_playlist = ch_resp["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+
+        # 2. Get last 5 uploaded videos
+        playlist_resp = youtube.playlistItems().list(
+            playlistId=uploads_playlist,
+            part="snippet",
+            maxResults=5
+        ).execute()
+
+        for video_item in playlist_resp.get("items", []):
+            video_id = video_item["snippet"]["resourceId"]["videoId"]
+            video_title = video_item["snippet"]["title"]
+            print(f"Checking comments for video: '{video_title}' ({video_id})...")
+
+            # 3. Fetch comment threads
+            try:
+                comment_resp = youtube.commentThreads().list(
+                    videoId=video_id,
+                    part="snippet",
+                    maxResults=20
+                ).execute()
+            except Exception as thread_err:
+                print(f"Could not fetch comments for video {video_id}: {thread_err}")
+                continue
+
+            for thread in comment_resp.get("items", []):
+                top_comment = thread["snippet"]["topLevelComment"]
+                comment_id = top_comment["id"]
+                author_name = top_comment["snippet"]["authorDisplayName"]
+                author_channel_id = top_comment["snippet"].get("authorChannelId", {}).get("value")
+                comment_text = top_comment["snippet"]["textDisplay"]
+
+                # Skip if it is our own comment
+                if author_channel_id == channel_id:
+                    continue
+
+                # 4. Check if we already replied to this comment thread
+                already_replied = False
+                if thread["snippet"]["totalReplyCount"] > 0:
+                    try:
+                        replies_resp = youtube.comments().list(
+                            parentId=comment_id,
+                            part="snippet",
+                            maxResults=100
+                        ).execute()
+                        for reply in replies_resp.get("items", []):
+                            if reply["snippet"].get("authorChannelId", {}).get("value") == channel_id:
+                                already_replied = True
+                                break
+                    except Exception as reply_err:
+                        print(f"Could not list replies for comment {comment_id}: {reply_err}")
+
+                if already_replied:
+                    continue
+
+                print(f"New comment from {author_name}: '{comment_text}'")
+
+                # 5. Heart/Like the comment
+                try:
+                    youtube.comments().setRating(id=comment_id, rating="like").execute()
+                    print(f"Liked comment {comment_id}!")
+                except Exception as rate_err:
+                    print(f"Failed to like comment: {rate_err}")
+
+                # 6. Generate reply with Gemini
+                prompt = (
+                    f"You are the owner of a YouTube channel about niche facts. A viewer left this comment on your video titled '{video_title}':\n"
+                    f"Viewer Comment: '{comment_text}'\n\n"
+                    f"Write a short, natural, human-like response. Rules:\n"
+                    f"1. Keep it extremely brief (usually 1 sentence, maximum 2). Use casual lowercase, friendly tone.\n"
+                    f"2. Do NOT sound like a generic AI assistant. Do not use words like 'indeed', 'moreover', 'certainly', 'delighted', or formal structures.\n"
+                    f"3. If they point out a factual mistake or correction, be humble and say something like 'whoops, you are totally right. my bad, thanks for the correction!' or 'Good catch! Thanks for pointing that out.'\n"
+                    f"4. If they say something positive like 'cool' or 'nice video', say 'thanks!' or 'glad you liked it!' or 'yeah, it's wild'.\n"
+                    f"5. Do not use emojis unless very subtle (e.g. simple smile). Output ONLY the raw response text, no quotes or formatting."
+                )
+                try:
+                    response = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
+                    reply_text = response.text.strip()
+                    # Clean surrounding quotes
+                    reply_text = re.sub(r'^["\'\s]+|["\'\s]+$', '', reply_text)
+
+                    print(f"Replying: '{reply_text}'")
+
+                    # 7. Post the reply
+                    youtube.comments().insert(
+                        part="snippet",
+                        body={
+                            "snippet": {
+                                "parentId": comment_id,
+                                "textOriginal": reply_text
+                            }
+                        }
+                    ).execute()
+                    print("Reply posted successfully!")
+                except Exception as reply_post_err:
+                    print(f"Failed to reply to comment: {reply_post_err}")
+
+    except Exception as sync_err:
+        print("Failed to run comment moderation and sync:", sync_err)
+
+
+# ---------------------------------------------------------------------------
 # MAIN CONTROLLER
 # ---------------------------------------------------------------------------
 def main() -> None:
@@ -1110,6 +1236,18 @@ def main() -> None:
 
         # 7. Heartbeat commit
         update_heartbeat_and_push()
+
+        # 8. Moderate and respond to comments on YouTube
+        if youtube_client_id and youtube_client_secret and youtube_refresh_token:
+            try:
+                moderate_and_respond_to_comments(
+                    youtube_client_id,
+                    youtube_client_secret,
+                    youtube_refresh_token,
+                    client
+                )
+            except Exception as comment_err:
+                print("Failed to moderate comments:", comment_err)
 
     finally:
         # Clean up rendered video file
