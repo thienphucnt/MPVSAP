@@ -118,25 +118,27 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 # 1. GEMINI CONTENT GENERATION
 #    Single API round-trip returns both TITLE and SCRIPT in one call.
 # ---------------------------------------------------------------------------
-def generate_content(client: genai.Client, category: str, recent_titles: List[str]) -> Tuple[str, str, str]:
+def generate_content(client: genai.Client, category: str, recent_topics: List[str]) -> Tuple[str, str, str, str]:
     model_name = "gemini-2.5-pro"
     cat_info = CATEGORIES[category]
 
     exclude_instruction = ""
-    if recent_titles:
-        exclude_instruction = f"\n- Do NOT write about or reference any of these topics/titles: {', '.join(recent_titles)}. Choose a completely different concept."
+    if recent_topics:
+        exclude_instruction = f"\n- Do NOT write about, reference, or base the script on the same core concepts, subjects, or historical events as any of these recent videos: {', '.join(recent_topics)}. You must choose a completely different concept."
 
     # One prompt, structured output — halves latency and API surface area.
     prompt = (
-        "Complete ALL THREE tasks and return them in EXACTLY this format with no extra text:\n"
+        "Complete ALL FOUR tasks and return them in EXACTLY this format with no extra text:\n"
         "TITLE: <title here>\n"
+        "TOPIC: <topic here>\n"
         "DESC: <description here>\n"
         "SCRIPT: <script here>\n\n"
         "Task 1 — TITLE: A single highly engaging, click-worthy YouTube Shorts title "
         "under 50 characters. No quotes, emojis, or markdown.\n\n"
-        "Task 2 — DESC: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end. "
+        "Task 2 — TOPIC: A 2-3 word name of the core subject or event (e.g., Emu War, Fermi Paradox, Great Attractor, Titanic).\n\n"
+        "Task 3 — DESC: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end. "
         "One of the hashtags MUST be #nichefactsshorts. Do not include the full script here.\n\n"
-        f"Task 3 — SCRIPT: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
+        f"Task 4 — SCRIPT: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
         f"Make it sound {cat_info['tone']}. Do not include stage directions, titles, "
         "emojis, or em dashes. Output only the spoken text. "
         "Under no circumstances use any markdown formatting, asterisks (*), underscores (_), backticks, or styling highlights. "
@@ -148,23 +150,26 @@ def generate_content(client: genai.Client, category: str, recent_titles: List[st
         f"{exclude_instruction}"
     )
 
-    print(f"Generating script, title, and description for category '{category}' in a single call using {model_name}...")
+    print(f"Generating script, title, topic, and description for category '{category}' in a single call using {model_name}...")
     response = gemini_generate_with_retry(client, model_name, prompt)
     text = response.text.strip()
 
     title_match = re.search(r'^TITLE:\s*(.+)$', text, re.MULTILINE)
+    topic_match = re.search(r'^TOPIC:\s*(.+)$', text, re.MULTILINE)
     desc_match = re.search(r'^DESC:\s*([\s\S]+?)(?=^SCRIPT:)', text, re.MULTILINE)
     script_match = re.search(r'^SCRIPT:\s*([\s\S]+)', text, re.MULTILINE)
 
     title_text = title_match.group(1).strip() if title_match else ""
+    topic_text = topic_match.group(1).strip() if topic_match else ""
     desc_text = desc_match.group(1).strip() if desc_match else ""
     script_text = script_match.group(1).strip() if script_match else ""
 
     # Fallback: if the model ignores the format instruction
-    if not title_text or not script_text or not desc_text:
+    if not title_text or not topic_text or not script_text or not desc_text:
         print("WARNING: Could not parse structured response — using raw text as script.")
         script_text = text
         title_text = text[:48].split(".")[0]
+        topic_text = category
         desc_text = f"Discover some of the most interesting niche facts in the universe! #nichefactsshorts #{category} #facts #shorts"
 
     # Strip all quote variants (straight, curly, backtick) from title
@@ -178,9 +183,10 @@ def generate_content(client: genai.Client, category: str, recent_titles: List[st
     script_text = re.sub(r'\s+', ' ', script_text).strip()
 
     print("Generated Title:", title_text)
+    print("Generated Topic:", topic_text)
     print("Generated Description:", desc_text)
     print("Generated Script:\n", script_text)
-    return script_text, title_text, desc_text
+    return script_text, title_text, desc_text, topic_text
 
 
 # ---------------------------------------------------------------------------
@@ -220,7 +226,10 @@ def generate_audio_and_subtitles(script_text: str, category: str) -> Tuple[str, 
     
     print("Transcribing with Faster-Whisper to generate timestamps...")
     model = WhisperModel("base", device="cpu", compute_type="int8")
-    segments, info = model.transcribe(audio_path, word_timestamps=True, initial_prompt=script_text)
+    
+    # Truncate prompt to first 40 words (~50 tokens) to prevent context window overflow (448-token cap)
+    prompt_hint = " ".join(script_text.split()[:40])
+    segments, info = model.transcribe(audio_path, word_timestamps=True, initial_prompt=prompt_hint)
     
     subs_list = []
     max_words = 3
@@ -890,17 +899,18 @@ def main() -> None:
         except Exception as e:
             print("Failed to load past topics:", e)
 
-    # Extract recent titles for this category to pass as exclusions
-    recent_titles = [item["title"] for item in past_topics if item.get("category") == category][-15:]
-    print("Recent titles to exclude:", recent_titles)
+    # Extract recent topics for this category to pass as exclusions (fallback to title if topic missing)
+    recent_topics = [item.get("topic") or item["title"] for item in past_topics if item.get("category") == category][-15:]
+    print("Recent topics to exclude:", recent_topics)
 
     # 1. Content generation (single API call)
-    script_text, title, description = generate_content(client, category, recent_titles)
+    script_text, title, description, topic = generate_content(client, category, recent_topics)
 
-    # Append new title and save history
+    # Append new title, topic, and save history
     past_topics.append({
         "category": category,
         "title": title,
+        "topic": topic,
         "timestamp": datetime.datetime.utcnow().isoformat()
     })
     past_topics = past_topics[-100:]  # Cap history size to prevent file bloat
