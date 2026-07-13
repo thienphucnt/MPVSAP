@@ -29,8 +29,13 @@ jobs:
 
       - name: Install System Dependencies
         run: |
-          sudo apt-get update || true
-          sudo apt-get install -y ffmpeg imagemagick
+          if command -v ffmpeg &> /dev/null && command -v convert &> /dev/null; then
+            echo "ffmpeg and imagemagick are already pre-installed. Skipping installation."
+          else
+            echo "Missing pre-installed dependencies. Installing..."
+            sudo apt-get update || true
+            sudo apt-get install -y ffmpeg imagemagick
+          fi
           
           # Fix ImageMagick security policies that restrict TextClip operations
           echo "Applying ImageMagick security policy patches..."
