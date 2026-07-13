@@ -429,7 +429,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             return "#FFFFFF" # White for fillers
         return random.choice(["#FFFF00", "#00FF00", "#00FFFF"]) # Yellow, Green, Cyan highlights
 
-    # --- Subtitle overlay (Safe Zone positioned at Y=0.78, Impact-styled with dark box) ---
+    # --- Subtitle overlay (Safe Zone positioned at Y=1350, Impact-styled with dark box) ---
     def create_text_clip(start, end, text):
         padded_text = f" {text.upper().strip()} "
         text_color = get_word_color(text)
@@ -440,15 +440,16 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 font=font_path,
                 fontsize=85, # Smaller, legible font size
                 color=text_color,
-                bg_color="rgba(0,0,0,0.6)", # Dark semi-transparent background box
+                bg_color="#000000a0", # Dark semi-transparent background box
                 stroke_color="black",
                 stroke_width=3, # Outline width 3
                 method="label",
-                align="center"
+                align="center",
+                transparent=False # Disable keying out the bg_color
             )
             .set_start(start)
             .set_duration(end - start)
-            .set_position(('center', 0.78)) # Positioned at Y=0.78 (above channel info and description, avoiding overlaps)
+            .set_position(('center', 1350)) # Positioned at Y=1350 (around lowest laptop area, avoiding overlays)
             .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0) # Pop-in bounce effect
         )
 
