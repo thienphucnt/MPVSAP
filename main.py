@@ -450,6 +450,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         # Force convert RGBA to RGB to prevent MoviePy's shape-broadcasting crash
         if hasattr(clip, "img") and clip.img is not None and len(clip.img.shape) == 3 and clip.img.shape[2] == 4:
             clip.img = clip.img[:, :, :3]
+            clip.make_frame = lambda t: clip.img
 
         return (
             clip
