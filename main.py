@@ -74,32 +74,47 @@ CATEGORIES = {
 # SHARED GEMINI RETRY HELPER
 # ---------------------------------------------------------------------------
 def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, max_retries: int = 5):
-    """Call Gemini with exponential backoff for transient 503/429 errors."""
-    response = None
-    current_model = model
-    for attempt in range(max_retries):
-        try:
-            response = client.models.generate_content(model=current_model, contents=prompt)
-            return response
-        except Exception as e:
-            is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
-            if is_quota_or_rate_limit and current_model == "gemini-2.5-pro":
-                print("Gemini 2.5 Pro quota exceeded. Falling back to Gemini 2.5 Flash...")
-                current_model = "gemini-2.5-flash"
-                try:
-                    response = client.models.generate_content(model=current_model, contents=prompt)
-                    return response
-                except Exception as flash_err:
-                    e = flash_err
+    """Call Gemini with fallback model chain and exponential backoff for transient errors."""
+    # Complete chain of models to try in sequence if we hit quota or rate limits
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
+    
+    # Start with the requested model, or position in the chain if matches
+    if model in model_fallback_chain:
+        start_idx = model_fallback_chain.index(model)
+        candidates = model_fallback_chain[start_idx:]
+    else:
+        candidates = [model] + model_fallback_chain
 
-            is_transient = any(err in str(e) for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "high demand"])
-            if is_transient and attempt < max_retries - 1:
-                wait_time = (2 ** attempt) + random.uniform(0, 1)
-                print(f"Gemini API transient error (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
-                time.sleep(wait_time)
-            else:
-                raise
-    raise Exception(f"Gemini API failed after {max_retries} retry attempts.")
+    last_error = None
+    for current_model in candidates:
+        success = False
+        for attempt in range(max_retries):
+            try:
+                print(f"Trying Gemini model: {current_model}...")
+                response = client.models.generate_content(model=current_model, contents=prompt)
+                return response
+            except Exception as e:
+                last_error = e
+                is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
+                is_transient = any(err in str(e) or err in str(e).upper() for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "HIGH DEMAND"])
+                
+                # If we hit quota/rate limits, break out of the retry loop of the current model and try the next model in the fallback chain
+                if is_quota_or_rate_limit:
+                    print(f"Model {current_model} quota exceeded or rate limited. Moving to next fallback model...")
+                    break
+                
+                if is_transient and attempt < max_retries - 1:
+                    wait_time = (2 ** attempt) + random.uniform(0, 1)
+                    print(f"Gemini API transient error on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
+                    time.sleep(wait_time)
+                else:
+                    # Non-transient error, raise immediately
+                    raise
+        if success:
+            break
+
+    # If we exhausted all candidates
+    raise Exception(f"Gemini API failed after exhausting all fallback models. Last error: {last_error}")
 
 
 # ---------------------------------------------------------------------------

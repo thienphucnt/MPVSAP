@@ -63,39 +63,43 @@ def main():
 
     print("Sending diagnosis request to Gemini...")
     
-    # Outer retry loop for the healer itself in case AI Studio is busy
-    # Falls back to gemini-2.5-flash if gemini-2.5-pro has exceeded quota
-    model_to_use = "gemini-2.5-pro"
+    # Robust fallback model chain for diagnostic run
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
     max_retries = 3
     response = None
-    for attempt in range(max_retries):
-        try:
-            print(f"Attempting diagnosis using {model_to_use}...")
-            response = client.models.generate_content(
-                model=model_to_use,
-                contents=prompt
-            )
-            break
-        except Exception as e:
-            is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
-            if is_quota_or_rate_limit and model_to_use == "gemini-2.5-pro":
-                print("Gemini 2.5 Pro quota exceeded. Falling back to Gemini 2.5 Flash for diagnostics...")
-                model_to_use = "gemini-2.5-flash"
-                try:
-                    response = client.models.generate_content(
-                        model=model_to_use,
-                        contents=prompt
-                    )
-                    break
-                except Exception as flash_err:
-                    e = flash_err
+    last_error = None
 
-            if attempt < max_retries - 1:
-                wait_time = (2 ** attempt) + random.uniform(0, 1)
-                print(f"Gemini API busy (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
-                time.sleep(wait_time)
-            else:
-                raise
+    for current_model in model_fallback_chain:
+        success = False
+        for attempt in range(max_retries):
+            try:
+                print(f"Attempting diagnosis using model: {current_model}...")
+                response = client.models.generate_content(
+                    model=current_model,
+                    contents=prompt
+                )
+                success = True
+                break
+            except Exception as e:
+                last_error = e
+                is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
+                is_transient = any(err in str(e) or err in str(e).upper() for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "HIGH DEMAND"])
+
+                if is_quota_or_rate_limit:
+                    print(f"Model {current_model} quota exceeded. Trying next fallback...")
+                    break
+
+                if is_transient and attempt < max_retries - 1:
+                    wait_time = (2 ** attempt) + random.uniform(0, 1)
+                    print(f"Gemini API busy on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
+                    time.sleep(wait_time)
+                else:
+                    raise
+        if success:
+            break
+
+    if response is None:
+        raise Exception(f"AI Self-Healing failed to contact any Gemini model. Last error: {last_error}")
 
     analysis = response.text.strip()
     print("Received diagnosis from Gemini.")
