@@ -475,6 +475,9 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     # --- Background music ---
     music_dir = Path("music")
     music_clip = None
+    final_audio = None
+    music_temp_path = f"temp-music-{os.getpid()}.wav"
+    mixed_audio_path = f"mixed-audio-{os.getpid()}.wav"
 
     cat_info = CATEGORIES[category]
     cat_music_dir = music_dir / cat_info["music_subfolder"]
@@ -498,11 +501,40 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     max_start = max(0, m.duration - audio_duration - 5)
                     start_time = random.uniform(0, max_start)
                     m = m.subclip(start_time, start_time + audio_duration)
+                
+                # Render sliced/looped music to a temporary file
                 music_clip = m.volumex(0.18)
-                final_clip = final_clip.set_audio(CompositeAudioClip([audio_clip, music_clip]))
+                music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
+                m.close()
+                music_clip.close()
+                music_clip = None
+
+                # Mix voice.wav and temp-music.wav using FFMPEG for absolute stability
+                cmd = [
+                    "ffmpeg", "-y",
+                    "-i", audio_path,
+                    "-i", music_temp_path,
+                    "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0",
+                    "-c:a", "pcm_s16le",
+                    mixed_audio_path
+                ]
+                subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+                # Clean up temp music file
+                if os.path.exists(music_temp_path):
+                    os.remove(music_temp_path)
+
+                # Load mixed audio
+                final_audio = AudioFileClip(mixed_audio_path)
+                final_clip = final_clip.set_audio(final_audio)
             except Exception as e:
                 print("Failed to mix music, using voice only:", e)
                 final_clip = final_clip.set_audio(audio_clip)
+                if os.path.exists(music_temp_path):
+                    try:
+                        os.remove(music_temp_path)
+                    except Exception:
+                        pass
         else:
             final_clip = final_clip.set_audio(audio_clip)
     else:
@@ -534,6 +566,15 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     audio_clip.close()
     if music_clip:
         music_clip.close()
+    if final_audio:
+        final_audio.close()
+
+    # Clean up mixed audio temp file if created
+    if os.path.exists(mixed_audio_path):
+        try:
+            os.remove(mixed_audio_path)
+        except Exception as clean_err:
+            print("Failed to clean up mixed audio file:", clean_err)
 
     # Clean up downloaded segment clips and generated audio
     for v_path in video_paths:
