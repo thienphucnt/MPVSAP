@@ -137,7 +137,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
         "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
         "{\n"
         '  "script": "<script text>",\n'
-        '  "visual_keywords": ["keyword1", "keyword2", "keyword3"],\n'
+        '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
         '  "title": "<title text>",\n'
         '  "description": "<description text>",\n'
         '  "topic": "<2-3 words naming the core concept>"\n'
@@ -146,7 +146,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
         f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
         "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
         "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
-        "Task 2 — visual_keywords: An array of 3 highly generic, atmospheric search terms (e.g. ['deep space', 'pitch black darkness', 'stars'] instead of literal script terms) suitable for Pexels search.\n\n"
+        "Task 2 — visual_keywords: An array of 6 highly generic, atmospheric search terms (e.g. ['deep space', 'pitch black darkness', 'stars', 'nebula', 'galaxy', 'black hole'] instead of literal script terms) suitable for Pexels search.\n\n"
         "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters.\n\n"
         "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
         "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
@@ -207,9 +207,9 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
 # ---------------------------------------------------------------------------
 # 2 & 3. TTS & SUBTITLE GENERATION (EDGE TTS ONLINE)
 # ---------------------------------------------------------------------------
-async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path: str) -> List[Tuple[float, float, str]]:
+async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path: str, rate: str = "+12%") -> List[Tuple[float, float, str]]:
     import edge_tts
-    communicate = edge_tts.Communicate(text, voice, boundary="WordBoundary")
+    communicate = edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary")
     words = []
     
     with open(audio_path, "wb") as audio_file:
@@ -235,8 +235,8 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
     print("Generating TTS voiceover via Edge TTS...")
     audio_path = "voice.wav"
     
-    primary_voice = "en-GB-RyanNeural"
-    fallback_voice = "en-US-SteffanNeural"
+    primary_voice = "en-US-BrianNeural"
+    fallback_voice = "en-US-AndrewNeural"
     
     words = []
     try:
@@ -249,9 +249,9 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
             print("Fallback voice also failed:", fallback_err)
             raise
             
-    # Parse word timestamps into 1-2 word subtitle chunks (hyper-kinetic layout)
+    # Parse word timestamps into 1-word subtitle chunks (hyper-kinetic layout)
     subs_list = []
-    max_words = 2
+    max_words = 1
     for i in range(0, len(words), max_words):
         chunk_words = words[i:i + max_words]
         if not chunk_words:
@@ -273,9 +273,9 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str) -> 
     print("Preparing download of background video clips from Pexels...")
     cat_info = CATEGORIES[category]
 
-    # Guarantee exactly 3 keywords
+    # Guarantee exactly 6 keywords
     default_pool = cat_info["kw_defaults"]
-    while len(keywords) < 3:
+    while len(keywords) < 6:
         cand = random.choice(default_pool)
         if cand not in keywords:
             keywords.append(cand)
@@ -339,9 +339,9 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str) -> 
             raise
 
     # Download in parallel using ThreadPoolExecutor
-    video_paths = [None] * 3
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords[:3])}
+    video_paths = [None] * 6
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords[:6])}
         for future in concurrent.futures.as_completed(future_to_index):
             i = future_to_index[future]
             try:
@@ -354,7 +354,7 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str) -> 
     if not successful:
         raise Exception("All Pexels downloads failed.")
     
-    for i in range(3):
+    for i in range(6):
         if video_paths[i] is None:
             dup_path = f"background_clip_{i}.mp4"
             shutil.copy(successful[0], dup_path)
@@ -411,28 +411,36 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
         c = c.set_duration(segment_duration)
 
-        # Ken Burns continuous slow-zoom effect (scale from 1.0 to 1.1x)
-        c = c.resize(lambda t, d=segment_duration: 1.0 + 0.1 * (t / d)).set_position('center')
+        # Ken Burns continuous slow-zoom effect (scale from 1.0 to 1.15x for faster scene changes)
+        c = c.resize(lambda t, d=segment_duration: 1.0 + 0.15 * (t / d)).set_position('center')
         clips.append(c)
 
     bg_clip = concatenate_videoclips(clips)
 
-    # --- Subtitle overlay (Safe Zone centered at Y=0.50, Impact-styled) ---
+    # Helper function for smart subtitle word highlighting
+    def get_word_color(word: str) -> str:
+        clean = re.sub(r"[^\w]", "", word.upper())
+        fillers = {
+            "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
+            "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
+            "FROM", "ARE", "WERE", "BEEN", "BUT", "SO", "IF", "THEY", "THEIR", "YOU", "YOUR"
+        }
+        if clean in fillers:
+            return "#FFFFFF" # White for fillers
+        return random.choice(["#FFFF00", "#00FF00", "#00FFFF"]) # Yellow, Green, Cyan highlights
+
+    # --- Subtitle overlay (Safe Zone positioned at Y=0.78, Impact-styled with dark box) ---
     def create_text_clip(start, end, text):
-        lines = textwrap.wrap(text.upper(), width=12)
-        wrapped = "\n".join(lines)
-        max_line_len = max(len(l) for l in lines) if lines else 0
-        
-        current_fontsize = 150
-        if max_line_len > 10:
-            current_fontsize = int(150 * (10 / max_line_len))
+        padded_text = f" {text.upper().strip()} "
+        text_color = get_word_color(text)
 
         return (
             TextClip(
-                wrapped,
+                padded_text,
                 font=font_path,
-                fontsize=current_fontsize,
-                color="#FFFF00", # Yellow
+                fontsize=85, # Smaller, legible font size
+                color=text_color,
+                bg_color="rgba(0,0,0,0.6)", # Dark semi-transparent background box
                 stroke_color="black",
                 stroke_width=3, # Outline width 3
                 method="label",
@@ -440,7 +448,8 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             )
             .set_start(start)
             .set_duration(end - start)
-            .set_position(('center', 'center')) # Perfectly centered vertically (Y=0.50, inside 0.35-0.65 safe zone)
+            .set_position(('center', 0.78)) # Positioned at Y=0.78 (above channel info and description, avoiding overlaps)
+            .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0) # Pop-in bounce effect
         )
 
     print(f"Generating {len(subs_list)} TextClips (ImageMagick)...")
