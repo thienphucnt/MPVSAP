@@ -41,6 +41,7 @@ HTTP_SESSION = requests.Session()
 # Global mapping for our three distinct content buckets
 CATEGORIES = {
     "Scary Space Mysteries": {
+        "db_key": "space",
         "playlist_env": "YT_PLAYLIST_SPACE",
         "topic_desc": "a terrifying, real-life space mystery or unsettling astrophysics fact",
         "tone": "grounded but deeply ominous",
@@ -50,6 +51,7 @@ CATEGORIES = {
         "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"]
     },
     "Morbid or Silly History Facts": {
+        "db_key": "history",
         "playlist_env": "YT_PLAYLIST_HISTORY",
         "topic_desc": "a bizarre, morbid, funny, or unsettling real historical fact (e.g. strange ancient customs, odd ruler behaviors)",
         "tone": "factual, compelling, but highly entertaining",
@@ -59,6 +61,7 @@ CATEGORIES = {
         "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"]
     },
     "Exciting Tech Facts": {
+        "db_key": "tech",
         "playlist_env": "YT_PLAYLIST_TECH",
         "topic_desc": "an exciting, mind-bending, or futuristic technology fact (e.g. quantum computing breakthrough, weird coding history, AI advancements)",
         "tone": "thrilling, cutting-edge, and highly engaging",
@@ -946,16 +949,19 @@ def main() -> None:
             past_topics
         )
 
+    # Resolve short database key for history lookup/storage
+    db_category = CATEGORIES[category]["db_key"]
+
     # Extract recent topics for this category to pass as exclusions (fallback to title if topic missing)
-    recent_topics = [item.get("topic") or item["title"] for item in past_topics if item.get("category") == category][-15:]
+    recent_topics = [item.get("topic") or item["title"] for item in past_topics if item.get("category") == db_category][-15:]
     print("Recent topics to exclude:", recent_topics)
 
     # 1. Content generation (single API call)
     script_text, visual_keywords, title, description, topic = generate_content(client, category, recent_topics)
 
-    # Append new title, topic, and save history
+    # Append new title, topic, and save history using the short database category key
     past_topics.append({
-        "category": category,
+        "category": db_category,
         "title": title,
         "topic": topic,
         "timestamp": datetime.datetime.utcnow().isoformat()
