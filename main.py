@@ -191,7 +191,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
 # ---------------------------------------------------------------------------
 async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path: str) -> List[Tuple[float, float, str]]:
     import edge_tts
-    communicate = edge_tts.Communicate(text, voice)
+    communicate = edge_tts.Communicate(text, voice, boundary="WordBoundary")
     words = []
     
     with open(audio_path, "wb") as audio_file:
