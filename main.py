@@ -211,7 +211,7 @@ def download_piper_model(voice_model: str, voice_url_path: str) -> str:
     return str(onnx_path)
 
 
-def generate_audio_and_subtitles(script_text: str, category: str) -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
+def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "") -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
     print("Generating TTS voiceover via Piper TTS (100% local)...")
     audio_path = "voice.wav"
 
@@ -227,8 +227,8 @@ def generate_audio_and_subtitles(script_text: str, category: str) -> Tuple[str, 
     print("Transcribing with Faster-Whisper to generate timestamps...")
     model = WhisperModel("base", device="cpu", compute_type="int8")
     
-    # Truncate prompt to first 40 words (~50 tokens) to prevent context window overflow (448-token cap)
-    prompt_hint = " ".join(script_text.split()[:40])
+    # Use topic and category as non-sentential hot-words (prevents beginning skip and keeps context small)
+    prompt_hint = f"{topic}, {category.capitalize()} facts" if topic else f"{category.capitalize()} facts"
     segments, info = model.transcribe(audio_path, word_timestamps=True, initial_prompt=prompt_hint)
     
     subs_list = []
@@ -1045,7 +1045,7 @@ def main() -> None:
         print("Failed to save past topics:", e)
 
     # 2 & 3. Audio + subtitles via local Piper TTS + Faster-Whisper
-    audio_path, subs_list = generate_audio_and_subtitles(script_text, category)
+    audio_path, subs_list = generate_audio_and_subtitles(script_text, category, topic)
 
     # 4. Download 3 contextual Pexels clips (shared client, no second instantiation)
     video_paths = download_pexels_videos(pexels_key, script_text, client, category)
