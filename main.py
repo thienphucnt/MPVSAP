@@ -440,16 +440,17 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 font=font_path,
                 fontsize=85, # Smaller, legible font size
                 color=text_color,
-                bg_color="#000000a0", # Dark semi-transparent background box
+                bg_color="black", # Solid black background box
                 stroke_color="black",
                 stroke_width=3, # Outline width 3
                 method="label",
                 align="center",
-                transparent=False # Disable keying out the bg_color
+                transparent=False # Keep RGB to prevent compositing shape mismatches
             )
             .set_start(start)
             .set_duration(end - start)
             .set_position(('center', 1350)) # Positioned at Y=1350 (around lowest laptop area, avoiding overlays)
+            .set_opacity(0.85) # Make the black box semi-transparent while keeping text bright and highly visible
             .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0) # Pop-in bounce effect
         )
 
