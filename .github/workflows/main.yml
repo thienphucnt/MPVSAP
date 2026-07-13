@@ -51,7 +51,6 @@ jobs:
           # Core API Keys
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          AFFILIATE_LINK: ${{ secrets.AFFILIATE_LINK }}
 
           # YouTube Data API Credentials
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}

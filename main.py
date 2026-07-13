@@ -624,11 +624,10 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         except Exception as e:
             print("Failed to add video to playlist:", e)
 
-    # Post Pinned Comment containing Affiliate Link & CTA
+    # Post Pinned Comment containing CTA
     if video_id:
-        affiliate_link = os.environ.get("AFFILIATE_LINK", "")
         cta_text = "Hit subscribe for more dark facts!"
-        comment_text = f"{cta_text} Check out this: {affiliate_link}" if affiliate_link else cta_text
+        comment_text = cta_text
         print(f"Posting top-level comment on video {video_id}...")
         try:
             comment_body = {
