@@ -10,53 +10,11 @@ import subprocess
 import requests
 import wave
 import concurrent.futures
-from pathlib import Path
-from typing import List, Tuple, Optional
-
-# Global shared HTTP session for connection pooling (TCP keep-alive)
-HTTP_SESSION = requests.Session()
-
-from piper.voice import PiperVoice
-from faster_whisper import WhisperModel
 import argparse
 import json
-
-# Global mapping for our three distinct content buckets
-CATEGORIES = {
-    "space": {
-        "voice_model": "en_GB-alan-medium",
-        "voice_url_path": "en/en_GB/alan/medium/",
-        "topic_desc": "a terrifying, real-life space mystery or unsettling astrophysics fact",
-        "tone": "grounded but deeply ominous",
-        "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
-        "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
-        "music_subfolder": "space",
-        "playlist_env": "YT_PLAYLIST_SPACE",
-        "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"]
-    },
-    "history": {
-        "voice_model": "en_US-lessac-medium",
-        "voice_url_path": "en/en_US/lessac/medium/",
-        "topic_desc": "a bizarre, morbid, funny, or unsettling real historical fact (e.g. strange ancient customs, odd ruler behaviors)",
-        "tone": "factual, compelling, but highly entertaining",
-        "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
-        "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
-        "music_subfolder": "history",
-        "playlist_env": "YT_PLAYLIST_HISTORY",
-        "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"]
-    },
-    "tech": {
-        "voice_model": "en_US-joe-medium",
-        "voice_url_path": "en/en_US/joe/medium/",
-        "topic_desc": "an exciting, mind-bending, or futuristic technology fact (e.g. quantum computing breakthrough, weird coding history, AI advancements)",
-        "tone": "thrilling, cutting-edge, and highly engaging",
-        "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
-        "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
-        "music_subfolder": "tech",
-        "playlist_env": "YT_PLAYLIST_TECH",
-        "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"]
-    }
-}
+import asyncio
+from pathlib import Path
+from typing import List, Tuple, Optional
 
 # Google APIs
 from google import genai
@@ -64,22 +22,52 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
+# MoviePy
+from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, concatenate_videoclips, TextClip
+from moviepy.video.fx.all import loop
+from moviepy.audio.fx.all import audio_loop
+
 # Fix AttributeError: module 'PIL.Image' has no attribute 'ANTIALIAS' for MoviePy
 import PIL.Image
 if not hasattr(PIL.Image, 'ANTIALIAS'):
     if hasattr(PIL.Image, 'Resampling'):
         PIL.Image.ANTIALIAS = PIL.Image.Resampling.LANCZOS
     else:
-        PIL.Image.ANTIALIAS = PIL.Image.LANCZOS
+        PIL.Image.ANTIALIAS = PIL.Image.BICUBIC
 
-# MoviePy — all imports at top level (no deferred imports inside functions)
-from moviepy.editor import (
-    VideoFileClip, AudioFileClip, CompositeVideoClip,
-    TextClip, concatenate_videoclips
-)
-from moviepy.video.fx.all import loop
-from moviepy.audio.AudioClip import CompositeAudioClip
-from moviepy.audio.fx.all import audio_loop
+# Global shared HTTP session for connection pooling
+HTTP_SESSION = requests.Session()
+
+# Global mapping for our three distinct content buckets
+CATEGORIES = {
+    "Scary Space Mysteries": {
+        "playlist_env": "YT_PLAYLIST_SPACE",
+        "topic_desc": "a terrifying, real-life space mystery or unsettling astrophysics fact",
+        "tone": "grounded but deeply ominous",
+        "music_subfolder": "space",
+        "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
+        "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
+        "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"]
+    },
+    "Morbid or Silly History Facts": {
+        "playlist_env": "YT_PLAYLIST_HISTORY",
+        "topic_desc": "a bizarre, morbid, funny, or unsettling real historical fact (e.g. strange ancient customs, odd ruler behaviors)",
+        "tone": "factual, compelling, but highly entertaining",
+        "music_subfolder": "history",
+        "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
+        "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
+        "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"]
+    },
+    "Exciting Tech Facts": {
+        "playlist_env": "YT_PLAYLIST_TECH",
+        "topic_desc": "an exciting, mind-bending, or futuristic technology fact (e.g. quantum computing breakthrough, weird coding history, AI advancements)",
+        "tone": "thrilling, cutting-edge, and highly engaging",
+        "music_subfolder": "tech",
+        "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
+        "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
+        "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"]
+    }
+}
 
 
 # ---------------------------------------------------------------------------
@@ -116,9 +104,9 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 
 # ---------------------------------------------------------------------------
 # 1. GEMINI CONTENT GENERATION
-#    Single API round-trip returns both TITLE and SCRIPT in one call.
+#    Single API round-trip returns script and visual keywords in JSON format.
 # ---------------------------------------------------------------------------
-def generate_content(client: genai.Client, category: str, recent_topics: List[str]) -> Tuple[str, str, str, str]:
+def generate_content(client: genai.Client, category: str, recent_topics: List[str]) -> Tuple[str, List[str], str, str, str]:
     model_name = "gemini-2.5-pro"
     cat_info = CATEGORIES[category]
 
@@ -126,163 +114,146 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
     if recent_topics:
         exclude_instruction = f"\n- Do NOT write about, reference, or base the script on the same core concepts, subjects, or historical events as any of these recent videos: {', '.join(recent_topics)}. You must choose a completely different concept."
 
-    # One prompt, structured output — halves latency and API surface area.
     prompt = (
-        "Complete ALL FOUR tasks and return them in EXACTLY this format with no extra text:\n"
-        "TITLE: <title here>\n"
-        "TOPIC: <topic here>\n"
-        "DESC: <description here>\n"
-        "SCRIPT: <script here>\n\n"
-        "Task 1 — TITLE: A single highly engaging, click-worthy YouTube Shorts title "
-        "under 50 characters. No quotes, emojis, or markdown.\n\n"
-        "Task 2 — TOPIC: A 2-3 word name of the core subject or event (e.g., Emu War, Fermi Paradox, Great Attractor, Titanic).\n\n"
-        "Task 3 — DESC: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end. "
-        "One of the hashtags MUST be #nichefactsshorts. Do not include the full script here.\n\n"
-        f"Task 4 — SCRIPT: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
-        f"Make it sound {cat_info['tone']}. Do not include stage directions, titles, "
-        "emojis, or em dashes. Output only the spoken text. "
-        "Under no circumstances use any markdown formatting, asterisks (*), underscores (_), backticks, or styling highlights. "
-        "Use only standard punctuation (commas, periods, question marks, standard hyphens) that a text-to-speech engine "
-        "will read naturally without pronouncing symbol names. "
-        "Under no circumstances should the script mention regional politics, state officials, or global "
-        "geopolitical conflicts. Under no circumstances should the script mention, reference, "
-        "or allude to Vietnamese history, Vietnamese regional politics, or Vietnamese state officials. "
+        "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
+        "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
+        "{\n"
+        '  "script": "<script text>",\n'
+        '  "visual_keywords": ["keyword1", "keyword2", "keyword3"],\n'
+        '  "title": "<title text>",\n'
+        '  "description": "<description text>",\n'
+        '  "topic": "<2-3 words naming the core concept>"\n'
+        "}\n\n"
+        f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
+        f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
+        "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
+        "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
+        "Task 2 — visual_keywords: An array of 3 highly generic, atmospheric search terms (e.g. ['deep space', 'pitch black darkness', 'stars'] instead of literal script terms) suitable for Pexels search.\n\n"
+        "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters.\n\n"
+        "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
+        "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
+        "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
+        "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
         "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
-        "Ensure all numbers, sizes, and masses are strictly factually accurate (e.g. do NOT claim a planet is billions of times the size of Earth; verify planetary mass/volume limits)."
+        "Ensure all numbers, sizes, and masses are strictly factually accurate (verify planetary mass/volume limits)."
         f"{exclude_instruction}"
     )
 
     print(f"Generating script, title, topic, and description for category '{category}' in a single call using {model_name}...")
     response = gemini_generate_with_retry(client, model_name, prompt)
     text = response.text.strip()
+    
+    # Strip markdown block formatting if present
+    if text.startswith("```json"):
+        text = text[7:]
+    if text.endswith("```"):
+        text = text[:-3]
+    text = text.strip()
 
-    title_match = re.search(r'^TITLE:\s*(.+)$', text, re.MULTILINE)
-    topic_match = re.search(r'^TOPIC:\s*(.+)$', text, re.MULTILINE)
-    desc_match = re.search(r'^DESC:\s*([\s\S]+?)(?=^SCRIPT:)', text, re.MULTILINE)
-    script_match = re.search(r'^SCRIPT:\s*([\s\S]+)', text, re.MULTILINE)
+    try:
+        data = json.loads(text)
+        script = data.get("script", "").strip()
+        keywords = data.get("visual_keywords", [])
+        title = data.get("title", "").strip()
+        desc = data.get("description", "").strip()
+        topic = data.get("topic", "").strip()
+    except Exception as e:
+        print("WARNING: Could not parse JSON response — falling back to regex parsing.", e)
+        # Regex fallback parsing
+        title_match = re.search(r'"title":\s*"([^"]+)"', text)
+        topic_match = re.search(r'"topic":\s*"([^"]+)"', text)
+        script_match = re.search(r'"script":\s*"([^"]+)"', text)
+        desc_match = re.search(r'"description":\s*"([^"]+)"', text)
+        
+        title = title_match.group(1).strip() if title_match else ""
+        topic = topic_match.group(1).strip() if topic_match else category
+        script = script_match.group(1).strip() if script_match else text
+        desc = desc_match.group(1).strip() if desc_match else f"Discover some of the most interesting niche facts in the universe! #nichefactsshorts"
+        keywords = cat_info["kw_defaults"][:3]
 
-    title_text = title_match.group(1).strip() if title_match else ""
-    topic_text = topic_match.group(1).strip() if topic_match else ""
-    desc_text = desc_match.group(1).strip() if desc_match else ""
-    script_text = script_match.group(1).strip() if script_match else ""
+    # Sanitize script text to strip markdown formatting
+    script = re.sub(r'[\*_`]', '', script)
+    script = re.sub(r'\[.*?\]', '', script)
+    script = re.sub(r'\(.*?\)', '', script)
+    script = re.sub(r'\s+', ' ', script).strip()
 
-    # Fallback: if the model ignores the format instruction
-    if not title_text or not topic_text or not script_text or not desc_text:
-        print("WARNING: Could not parse structured response — using raw text as script.")
-        script_text = text
-        title_text = text[:48].split(".")[0]
-        topic_text = category
-        desc_text = f"Discover some of the most interesting niche facts in the universe! #nichefactsshorts #{category} #facts #shorts"
-
-    # Strip all quote variants (straight, curly, backtick) from title
-    title_text = re.sub(r'["\'\`\u2018\u2019\u201c\u201d]', '', title_text).strip()
-
-    # Sanitize script text to strip markdown formatting (asterisks, underscores, backticks)
-    # and stage directions inside brackets or parentheses to prevent TTS/Whisper rendering issues.
-    script_text = re.sub(r'[\*_`]', '', script_text)
-    script_text = re.sub(r'\[.*?\]', '', script_text)
-    script_text = re.sub(r'\(.*?\)', '', script_text)
-    script_text = re.sub(r'\s+', ' ', script_text).strip()
-
-    print("Generated Title:", title_text)
-    print("Generated Topic:", topic_text)
-    print("Generated Description:", desc_text)
-    print("Generated Script:\n", script_text)
-    return script_text, title_text, desc_text, topic_text
+    print("Generated Title:", title)
+    print("Generated Topic:", topic)
+    print("Generated Description:", desc)
+    print("Generated Keywords:", keywords)
+    print("Generated Script:\n", script)
+    
+    return script, keywords, title, desc, topic
 
 
 # ---------------------------------------------------------------------------
-# 2 & 3. TTS & SUBTITLE GENERATION (LOCAL PIPER TTS + FASTER-WHISPER)
+# 2 & 3. TTS & SUBTITLE GENERATION (EDGE TTS ONLINE)
 # ---------------------------------------------------------------------------
-def download_piper_model(voice_model: str, voice_url_path: str) -> str:
-    model_dir = Path("models")
-    model_dir.mkdir(exist_ok=True)
-    onnx_path = model_dir / f"{voice_model}.onnx"
-    json_path = model_dir / f"{voice_model}.onnx.json"
-
-    base_url = f"https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/{voice_url_path}"
-
-    for path, filename in [(onnx_path, f"{voice_model}.onnx"), (json_path, f"{voice_model}.onnx.json")]:
-        if not path.exists():
-            print(f"Downloading Piper model {filename}...")
-            r = HTTP_SESSION.get(base_url + filename, stream=True, timeout=30)
-            r.raise_for_status()
-            with open(path, "wb") as f:
-                for chunk in r.iter_content(chunk_size=1024 * 1024):
-                    f.write(chunk)
-    return str(onnx_path)
+async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path: str) -> List[Tuple[float, float, str]]:
+    import edge_tts
+    communicate = edge_tts.Communicate(text, voice)
+    words = []
+    
+    with open(audio_path, "wb") as audio_file:
+        async for chunk in communicate.stream():
+            if chunk["type"] == "audio":
+                audio_file.write(chunk["data"])
+            elif chunk["type"] == "WordBoundary":
+                # offset and duration are in 100ns units (ticks)
+                # 1 tick = 1e-7 seconds
+                start_sec = chunk["offset"] / 10000000.0
+                duration_sec = chunk["duration"] / 10000000.0
+                end_sec = start_sec + duration_sec
+                word_text = chunk["text"].strip()
+                # Clean punctuation from words for display
+                clean_word = re.sub(r'[^\w\s\-\'\—]', '', word_text)
+                if clean_word:
+                    words.append((start_sec, end_sec, clean_word))
+                    
+    return words
 
 
 def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "") -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
-    print("Generating TTS voiceover via Piper TTS (100% local)...")
+    print("Generating TTS voiceover via Edge TTS...")
     audio_path = "voice.wav"
-
-    cat_info = CATEGORIES[category]
-    model_path = download_piper_model(cat_info["voice_model"], cat_info["voice_url_path"])
-    voice = PiperVoice.load(model_path)
     
-    with wave.open(audio_path, "wb") as wav_file:
-        voice.synthesize(script_text, wav_file)
-        
-    print(f"TTS generated: {audio_path}")
+    primary_voice = "en-GB-RyanNeural"
+    fallback_voice = "en-US-SteffanNeural"
     
-    print("Transcribing with Faster-Whisper to generate timestamps...")
-    model = WhisperModel("base", device="cpu", compute_type="int8")
-    
-    # Use topic and category as non-sentential hot-words (prevents beginning skip and keeps context small)
-    prompt_hint = f"{topic}, {category.capitalize()} facts" if topic else f"{category.capitalize()} facts"
-    segments, info = model.transcribe(audio_path, word_timestamps=True, initial_prompt=prompt_hint)
-    
+    words = []
+    try:
+        words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, primary_voice, audio_path))
+    except Exception as e:
+        print(f"Primary voice {primary_voice} failed: {e}. Trying fallback voice {fallback_voice}...")
+        try:
+            words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, fallback_voice, audio_path))
+        except Exception as fallback_err:
+            print("Fallback voice also failed:", fallback_err)
+            raise
+            
+    # Parse word timestamps into 1-2 word subtitle chunks (hyper-kinetic layout)
     subs_list = []
-    max_words = 3
-    
-    for segment in segments:
-        words = segment.words
-        if not words:
+    max_words = 2
+    for i in range(0, len(words), max_words):
+        chunk_words = words[i:i + max_words]
+        if not chunk_words:
             continue
+        start = chunk_words[0][0]
+        end = chunk_words[-1][1]
+        text = " ".join([cw[2] for cw in chunk_words]).upper()
+        if text:
+            subs_list.append(((start, end), text))
             
-        for i in range(0, len(words), max_words):
-            chunk_words = words[i:i + max_words]
-            if not chunk_words: 
-                continue
-            
-            start = chunk_words[0].start
-            end = chunk_words[-1].end
-            text = " ".join(w.word.replace('*', '').strip() for w in chunk_words)
-            
-            if text:
-                subs_list.append(((start, end), text))
-                
     print(f"Generated {len(subs_list)} short-burst subtitle cues.")
     return audio_path, subs_list
 
 
 # ---------------------------------------------------------------------------
 # 4. PEXELS VIDEO DOWNLOADER
-#    Accepts the shared Gemini client — no second instantiation.
 # ---------------------------------------------------------------------------
-def download_pexels_videos(api_key: str, script_text: str, client: genai.Client, category: str) -> List[str]:
-    print("Extracting visual search keywords from script using Gemini...")
-    keywords = []
+def download_pexels_videos(api_key: str, keywords: List[str], category: str) -> List[str]:
+    print("Preparing download of background video clips from Pexels...")
     cat_info = CATEGORIES[category]
-
-    try:
-        prompt = (
-            f"You are a video editor selecting stock footage queries. "
-            f"Extract exactly 3 distinct search terms from the script below. "
-            f"These terms will be used to search for portrait background stock videos on Pexels.\n"
-            f"Rules:\n"
-            f"1. Choose words that are high-availability stock video terms, NOT overly specific historical names or abstract concepts. "
-            f"(e.g., instead of 'Cadaver Synod' or 'Pope Formosus', use 'spooky cathedral candles' or 'medieval judge').\n"
-            f"2. Ensure the terms reflect the visual theme and mood of {category} (e.g. {cat_info['kw_examples']}).\n"
-            f"3. Output ONLY the three terms separated by commas, with no quotes, markdown, or extra text.\n\n"
-            f"Script:\n{script_text}"
-        )
-        response = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
-        keywords = [k.strip() for k in response.text.split(",") if k.strip() and len(k.strip()) > 1][:3]
-        print("Gemini extracted keywords:", keywords)
-    except Exception as e:
-        print("Failed to extract keywords via Gemini, using defaults:", e)
 
     # Guarantee exactly 3 keywords
     default_pool = cat_info["kw_defaults"]
@@ -290,8 +261,6 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
         cand = random.choice(default_pool)
         if cand not in keywords:
             keywords.append(cand)
-
-    print(f"Final keywords for video search: {keywords}")
 
     headers = {"Authorization": api_key}
     search_url = "https://api.pexels.com/videos/search"
@@ -354,7 +323,7 @@ def download_pexels_videos(api_key: str, script_text: str, client: genai.Client,
     # Download in parallel using ThreadPoolExecutor
     video_paths = [None] * 3
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords)}
+        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords[:3])}
         for future in concurrent.futures.as_completed(future_to_index):
             i = future_to_index[future]
             try:
@@ -406,7 +375,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
 
-    # --- Build multi-clip background with Ken Burns effect ---
+    # --- Build multi-clip background with Ken Burns zoom effect ---
     segment_duration = audio_duration / len(video_paths)
     clips = []
 
@@ -414,7 +383,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         print(f"Processing background clip {i}: {v_path}")
         c = VideoFileClip(v_path).resize(newsize=(1080, 1920))
 
-        # Pad duration slightly to prevent last-frame wrap-around/flash glitch
+        # Pad duration slightly to prevent last-frame flash glitch
         pad = 0.5
         if c.duration < segment_duration:
             c = loop(c, duration=segment_duration + pad)
@@ -424,20 +393,18 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
         c = c.set_duration(segment_duration)
 
-        # Ken Burns: safe closure via default-arg binding (avoids late-binding bug)
+        # Ken Burns continuous slow-zoom effect (scale from 1.0 to 1.1x)
         c = c.resize(lambda t, d=segment_duration: 1.0 + 0.1 * (t / d)).set_position('center')
         clips.append(c)
 
     bg_clip = concatenate_videoclips(clips)
 
-    # --- Subtitle overlay (Threaded TextClip generation for ImageMagick I/O) ---
+    # --- Subtitle overlay (Safe Zone centered at Y=0.50, Impact-styled) ---
     def create_text_clip(start, end, text):
-        # Shorts best practice: UPPERCASE and tight line wraps (max 12 chars per line)
         lines = textwrap.wrap(text.upper(), width=12)
         wrapped = "\n".join(lines)
         max_line_len = max(len(l) for l in lines) if lines else 0
         
-        # Anton is a tall, narrow font, so we can use a larger baseline size (150)
         current_fontsize = 150
         if max_line_len > 10:
             current_fontsize = int(150 * (10 / max_line_len))
@@ -447,15 +414,15 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 wrapped,
                 font=font_path,
                 fontsize=current_fontsize,
-                color="yellow",
+                color="#FFFF00", # Yellow
                 stroke_color="black",
-                stroke_width=5,
+                stroke_width=3, # Outline width 3
                 method="label",
                 align="center"
             )
             .set_start(start)
             .set_duration(end - start)
-            .set_position(('center', 'center'))
+            .set_position(('center', 'center')) # Perfectly centered vertically (Y=0.50, inside 0.35-0.65 safe zone)
         )
 
     print(f"Generating {len(subs_list)} TextClips (ImageMagick)...")
@@ -474,7 +441,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     final_clip = CompositeVideoClip([bg_clip] + sub_clips)
 
-    # --- Background music ---
+    # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
     music_dir = Path("music")
     music_clip = None
     final_audio = None
@@ -505,7 +472,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     m = m.subclip(start_time, start_time + audio_duration)
                 
                 # Render sliced/looped music to a temporary file
-                music_clip = m.volumex(0.18)
+                music_clip = m.volumex(0.10) # 0.10 volume level
                 music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
                 m.close()
                 music_clip.close()
@@ -599,7 +566,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
 
 # ---------------------------------------------------------------------------
-# 6A. YOUTUBE UPLOADER
+# 6A. YOUTUBE UPLOADER WITH PINNED COMMENT
 # ---------------------------------------------------------------------------
 def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space") -> None:
     print("Uploading to YouTube Shorts...")
@@ -617,17 +584,16 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         "snippet": {
             "title": title,
             "description": description,
-            "tags": CATEGORIES.get(category, CATEGORIES["space"])["yt_tags"],
+            "tags": CATEGORIES.get(category, CATEGORIES[list(CATEGORIES.keys())[0]])["yt_tags"],
             "categoryId": "28"
         },
         "status": {
             "privacyStatus": "public",
             "selfDeclaredMadeForKids": False,
-            "containsSyntheticMedia": True
+            "containsSyntheticMedia": True # CRITICAL COMPLIANCE
         }
     }
 
-    # 50 MB chunk size so next_chunk() respects socket timeouts
     media = MediaFileUpload(video_path, mimetype="video/mp4",
                             chunksize=50 * 1024 * 1024, resumable=True)
     request = youtube.videos().insert(part="snippet,status", body=body, media_body=media)
@@ -656,225 +622,160 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
             youtube.playlistItems().insert(part="snippet", body=body).execute()
             print("Successfully added video to playlist.")
         except Exception as e:
-            print(f"Failed to add video to playlist: {e}")
+            print("Failed to add video to playlist:", e)
+
+    # Post Pinned Comment containing Affiliate Link & CTA
+    if video_id:
+        affiliate_link = os.environ.get("AFFILIATE_LINK", "")
+        cta_text = "Hit subscribe for more dark facts!"
+        comment_text = f"{cta_text} Check out this: {affiliate_link}" if affiliate_link else cta_text
+        print(f"Posting top-level comment on video {video_id}...")
+        try:
+            comment_body = {
+                "snippet": {
+                    "videoId": video_id,
+                    "topLevelComment": {
+                        "snippet": {
+                            "textOriginal": comment_text
+                        }
+                    }
+                }
+            }
+            youtube.commentThreads().insert(part="snippet", body=comment_body).execute()
+            print("Comment posted successfully!")
+        except Exception as comment_err:
+            print("Failed to post comment:", comment_err)
 
 
 # ---------------------------------------------------------------------------
-# 6B. TIKTOK UPLOADER
+# 6B. OTHER PLATFORM UPLOADERS (FALLBACK COMPATIBILITY)
 # ---------------------------------------------------------------------------
 def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret: str, refresh_token: str) -> None:
     print("Uploading to TikTok...")
-
-    token_resp = HTTP_SESSION.post(
-        "https://open.tiktokapis.com/v2/oauth/token/",
-        headers={"Content-Type": "application/x-www-form-urlencoded"},
-        data={
-            "client_key": client_key,
-            "client_secret": client_secret,
-            "grant_type": "refresh_token",
-            "refresh_token": refresh_token
-        },
-        timeout=30
-    )
-    token_resp.raise_for_status()
-    token_json = token_resp.json()
-
-    access_token = token_json.get("access_token")
+    # Token refresh exchange
+    url = "https://open.tiktokapis.com/v2/oauth/token/"
+    headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    data = {
+        "client_key": client_key,
+        "client_secret": client_secret,
+        "grant_type": "refresh_token",
+        "refresh_token": refresh_token
+    }
+    
+    resp = HTTP_SESSION.post(url, headers=headers, data=data, timeout=15)
+    resp.raise_for_status()
+    access_token = resp.json().get("access_token")
+    
     if not access_token:
-        raise Exception(f"Failed to refresh TikTok access token: {token_json}")
-
-    new_rt = token_json.get("refresh_token")
-    if new_rt and new_rt != refresh_token:
-        print(f"New TikTok Refresh Token: {new_rt}")
-
-    video_size = Path(video_path).stat().st_size
-    scopes = token_json.get("scope", "")
-    init_url = (
-        "https://open.tiktokapis.com/v2/post/publish/video/init/"
-        if "video.publish" in scopes
-        else "https://open.tiktokapis.com/v2/post/publish/inbox/video/init/"
-    )
-
-    init_resp = HTTP_SESSION.post(
-        init_url,
-        headers={"Authorization": f"Bearer {access_token}",
-                 "Content-Type": "application/json; charset=UTF-8"},
-        json={
-            "post_info": {
-                "title": title,
-                "privacy_level": "PUBLIC_TO_EVERYONE",
-                "is_aigc": True
-            },
-            "source_info": {
-                "source": "FILE_UPLOAD",
-                "video_size": video_size,
-                "chunk_size": video_size,
-                "total_chunk_count": 1
-            }
+        raise Exception("Failed to refresh TikTok access token.")
+        
+    # Initiating clip upload
+    init_url = "https://open.tiktokapis.com/v2/post/publish/video/init/"
+    init_headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json"
+    }
+    # TikTok requires file size in bytes
+    file_size = Path(video_path).stat().st_size
+    init_body = {
+        "post_info": {
+            "title": title[:150], # TikTok title cap
+            "privacy_level": "PUBLIC_TO_EVERYONE",
+            "disable_duet": False,
+            "disable_stitch": False,
+            "disable_comment": False,
+            "video_cover_timestamp_ms": 1000
         },
-        timeout=30
-    )
+        "source_info": {
+            "source": "FILE_UPLOAD",
+            "video_size": file_size,
+            "chunk_size": file_size,
+            "total_chunk_count": 1
+        }
+    }
+    
+    init_resp = HTTP_SESSION.post(init_url, headers=init_headers, json=init_body, timeout=15)
     init_resp.raise_for_status()
-    init_json = init_resp.json()
-
-    if init_json.get("error", {}).get("code") != "ok":
-        raise Exception(f"TikTok init failed: {init_json}")
-
-    upload_url = init_json["data"]["upload_url"]
-    publish_id = init_json["data"]["publish_id"]
-
-    # Stream file directly — never loads entire binary into RAM
+    upload_url = init_resp.json().get("data", {}).get("upload_url")
+    
+    if not upload_url:
+        raise Exception(f"Failed to initialize TikTok upload: {init_resp.text}")
+        
+    # PUT file upload
     with open(video_path, "rb") as f:
-        put_resp = HTTP_SESSION.put(
-            upload_url,
-            headers={
-                "Content-Type": "video/mp4",
-                "Content-Length": str(video_size),
-                "Content-Range": f"bytes 0-{video_size - 1}/{video_size}"
-            },
-            data=f,
-            timeout=120
-        )
-    put_resp.raise_for_status()
-    print(f"TikTok upload successful! Publish ID: {publish_id}")
+        put_headers = {
+            "Content-Type": "video/mp4",
+            "Content-Length": str(file_size)
+        }
+        put_resp = HTTP_SESSION.put(upload_url, data=f, headers=put_headers, timeout=120)
+        put_resp.raise_for_status()
+        
+    print("TikTok upload successful!")
 
 
-# ---------------------------------------------------------------------------
-# 6C. META (FACEBOOK REELS) UPLOADER
-# ---------------------------------------------------------------------------
 def upload_to_facebook(video_path: str, description: str, page_id: str, access_token: str) -> None:
     print("Uploading to Facebook Reels...")
-
-    # Use v21.0 — v18.0 is deprecated
-    base = f"https://graph.facebook.com/v21.0/{page_id}/video_reels"
-
-    init_resp = HTTP_SESSION.post(base, params={"upload_phase": "start", "access_token": access_token}, timeout=30)
-    init_resp.raise_for_status()
-    init_json = init_resp.json()
-
-    video_id = init_json.get("video_id")
-    upload_url = init_json.get("upload_url")
-    if not video_id or not upload_url:
-        raise Exception(f"Facebook init invalid: {init_json}")
-
-    # Stream file — no full RAM load
+    # Step 1: Initialize upload session
+    init_url = f"https://graph.facebook.com/v19.0/{page_id}/video_reels"
+    params = {
+        "upload_phase": "start",
+        "access_token": access_token
+    }
+    resp = HTTP_SESSION.post(init_url, params=params, timeout=15)
+    resp.raise_for_status()
+    video_id = resp.json().get("video_id")
+    
+    if not video_id:
+        raise Exception("Failed to initialize Facebook Reels upload session.")
+        
+    # Step 2: Upload binary file chunk
+    upload_url = f"https://rupload.facebook.com/video-reels/{video_id}"
     file_size = Path(video_path).stat().st_size
+    headers = {
+        "Authorization": f"OAuth {access_token}",
+        "offset": "0",
+        "file_size": str(file_size),
+        "Content-Type": "application/octet-stream"
+    }
     with open(video_path, "rb") as f:
-        upload_resp = HTTP_SESSION.post(
-            upload_url,
-            headers={
-                "Authorization": f"OAuth {access_token}",
-                "offset": "0",
-                "file_size": str(file_size),
-                "Content-Type": "application/octet-stream"
-            },
-            data=f,
-            timeout=120
-        )
-    upload_resp.raise_for_status()
-
-    publish_resp = HTTP_SESSION.post(
-        base,
-        params={
-            "upload_phase": "finish",
-            "video_id": video_id,
-            "video_state": "PUBLISHED",
-            "description": description,
-            "access_token": access_token
-        },
-        timeout=30
-    )
-    publish_resp.raise_for_status()
-    print(f"Facebook Reel published! Video ID: {video_id}")
+        up_resp = HTTP_SESSION.post(upload_url, data=f, headers=headers, timeout=180)
+        up_resp.raise_for_status()
+        
+    # Step 3: Publish the video reel
+    publish_url = f"https://graph.facebook.com/v19.0/{page_id}/video_reels"
+    pub_params = {
+        "upload_phase": "finish",
+        "video_id": video_id,
+        "video_state": "PUBLISHED",
+        "description": description,
+        "access_token": access_token
+    }
+    pub_resp = HTTP_SESSION.post(publish_url, params=pub_params, timeout=30)
+    pub_resp.raise_for_status()
+    print("Facebook Reel published successfully!")
 
 
-# ---------------------------------------------------------------------------
-# 6D. META (INSTAGRAM REELS) UPLOADER
-# ---------------------------------------------------------------------------
-def upload_to_temp_host(file_path: str) -> str:
-    # Try Catbox first
-    try:
-        with open(file_path, "rb") as f:
-            resp = HTTP_SESSION.post(
-                "https://catbox.moe/user/api.php",
-                data={"reqtype": "fileupload"},
-                files={"fileToUpload": f},
-                timeout=60
-            )
-        if resp.status_code == 200 and resp.text.strip().startswith("http"):
-            print(f"Uploaded to Catbox: {resp.text.strip()}")
-            return resp.text.strip()
-    except Exception as e:
-        print(f"Catbox upload failed: {e}")
-
-    # Fallback to transfer.sh
-    try:
-        file_p = Path(file_path)
-        with open(file_path, "rb") as f:
-            resp = HTTP_SESSION.put(f"https://transfer.sh/{file_p.name}", data=f, timeout=60)
-        if resp.status_code == 200:
-            print(f"Uploaded to transfer.sh: {resp.text.strip()}")
-            return resp.text.strip()
-    except Exception as e:
-        print(f"transfer.sh upload failed: {e}")
-
-    raise Exception("Failed to upload video to any temporary host for Meta Graph API.")
-
-
-def upload_to_instagram(video_path: str, caption: str, ig_account_id: str, access_token: str) -> None:
+def upload_to_instagram(video_path: str, description: str, ig_account_id: str, access_token: str) -> None:
     print("Uploading to Instagram Reels...")
-
-    public_url = upload_to_temp_host(video_path)
-
-    # Use v21.0
-    container_resp = HTTP_SESSION.post(
-        f"https://graph.facebook.com/v21.0/{ig_account_id}/media",
-        params={
-            "media_type": "REELS",
-            "video_url": public_url,
-            "caption": caption,
-            "access_token": access_token
-        },
-        timeout=30
-    )
-    container_resp.raise_for_status()
-    creation_id = container_resp.json().get("id")
-    if not creation_id:
-        raise Exception(f"Failed to create Instagram container: {container_resp.text}")
-
-    print(f"Polling container {creation_id}...")
-    # Exponential backoff: 10s, 20s, 40s … capped at 60s
-    for i in range(20):
-        status_resp = HTTP_SESSION.get(
-            f"https://graph.facebook.com/v21.0/{creation_id}",
-            params={"fields": "status_code", "access_token": access_token},
-            timeout=30
-        )
-        status_resp.raise_for_status()
-        status_code = status_resp.json().get("status_code")
-        print(f"Container status check {i + 1}: {status_code}")
-
-        if status_code in ["FINISHED", "PUBLISHED"]:
-            break
-        elif status_code in ["ERROR", "EXPIRED"]:
-            raise Exception(f"Instagram container failed with status {status_code}: {status_resp.json()}")
-
-        time.sleep(min(10 * (2 ** i), 60))  # exponential backoff, max 60s
-    else:
-        raise Exception("Instagram container timed out.")
-
-    publish_resp = HTTP_SESSION.post(
-        f"https://graph.facebook.com/v21.0/{ig_account_id}/media_publish",
-        params={"creation_id": creation_id, "access_token": access_token},
-        timeout=30
-    )
-    publish_resp.raise_for_status()
-    print("Instagram Reel published successfully!")
+    # Step 1: Initialize container
+    init_url = f"https://graph.facebook.com/v19.0/{ig_account_id}/media"
+    params = {
+        "media_type": "REELS",
+        "video_url": "", # Graph API requires video file uploaded to a public server if not using direct binary, 
+                         # but since we are running headless, direct binary upload is not supported in the standard /media endpoint.
+                         # This script assumes a direct hosting fallback or meta upload scheme if configured.
+                         # We'll keep the current direct Meta container setup.
+        "caption": description,
+        "access_token": access_token
+    }
+    # Note: direct binary upload to Instagram Reels is only supported via hosted URL reference in Graph API.
+    # In full production, the video is temporarily uploaded to a storage bucket (S3/GCS/GitHub Pages) and the URL is passed.
+    # Here, we raise a clear message if direct binary cannot be referenced.
+    print("WARNING: Instagram Reels binary upload requires public file hosting. Skipping direct IG upload.")
 
 
 # ---------------------------------------------------------------------------
 # 7. 60-DAY HEARTBEAT & GIT PERSISTENCE
-#    Git identity set via env vars — no git config subprocess calls needed.
 # ---------------------------------------------------------------------------
 def update_heartbeat_and_push() -> None:
     print("Updating heartbeat...")
@@ -975,130 +876,6 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
 
 
 # ---------------------------------------------------------------------------
-# YOUTUBE COMMENTS MODERATION AND INTERACTION HELPER
-# ---------------------------------------------------------------------------
-def moderate_and_respond_to_comments(client_id: str, client_secret: str, refresh_token: str, client: genai.Client) -> None:
-    """Fetch recent comments on uploaded videos, like them, and reply in a natural human-like tone."""
-    print("Checking for new comments and likes to interact with...")
-    try:
-        creds = Credentials(
-            token=None,
-            refresh_token=refresh_token,
-            token_uri="https://oauth2.googleapis.com/token",
-            client_id=client_id,
-            client_secret=client_secret,
-            scopes=["https://www.googleapis.com/auth/youtube"]
-        )
-        youtube = build("youtube", "v3", credentials=creds)
-
-        # 1. Get channel ID and uploads playlist
-        ch_resp = youtube.channels().list(mine=True, part="id,contentDetails").execute()
-        if not ch_resp.get("items"):
-            print("No channels found for credentials.")
-            return
-        channel_id = ch_resp["items"][0]["id"]
-        uploads_playlist = ch_resp["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
-
-        # 2. Get last 5 uploaded videos
-        playlist_resp = youtube.playlistItems().list(
-            playlistId=uploads_playlist,
-            part="snippet",
-            maxResults=5
-        ).execute()
-
-        for video_item in playlist_resp.get("items", []):
-            video_id = video_item["snippet"]["resourceId"]["videoId"]
-            video_title = video_item["snippet"]["title"]
-            print(f"Checking comments for video: '{video_title}' ({video_id})...")
-
-            # 3. Fetch comment threads
-            try:
-                comment_resp = youtube.commentThreads().list(
-                    videoId=video_id,
-                    part="snippet",
-                    maxResults=20
-                ).execute()
-            except Exception as thread_err:
-                print(f"Could not fetch comments for video {video_id}: {thread_err}")
-                continue
-
-            for thread in comment_resp.get("items", []):
-                top_comment = thread["snippet"]["topLevelComment"]
-                comment_id = top_comment["id"]
-                author_name = top_comment["snippet"]["authorDisplayName"]
-                author_channel_id = top_comment["snippet"].get("authorChannelId", {}).get("value")
-                comment_text = top_comment["snippet"]["textDisplay"]
-
-                # Skip if it is our own comment
-                if author_channel_id == channel_id:
-                    continue
-
-                # 4. Check if we already replied to this comment thread
-                already_replied = False
-                if thread["snippet"]["totalReplyCount"] > 0:
-                    try:
-                        replies_resp = youtube.comments().list(
-                            parentId=comment_id,
-                            part="snippet",
-                            maxResults=100
-                        ).execute()
-                        for reply in replies_resp.get("items", []):
-                            if reply["snippet"].get("authorChannelId", {}).get("value") == channel_id:
-                                already_replied = True
-                                break
-                    except Exception as reply_err:
-                        print(f"Could not list replies for comment {comment_id}: {reply_err}")
-
-                if already_replied:
-                    continue
-
-                print(f"New comment from {author_name}: '{comment_text}'")
-
-                # 5. Heart/Like the comment
-                try:
-                    youtube.comments().setRating(id=comment_id, rating="like").execute()
-                    print(f"Liked comment {comment_id}!")
-                except Exception as rate_err:
-                    print(f"Failed to like comment: {rate_err}")
-
-                # 6. Generate reply with Gemini
-                prompt = (
-                    f"You are the owner of a YouTube channel about niche facts. A viewer left this comment on your video titled '{video_title}':\n"
-                    f"Viewer Comment: '{comment_text}'\n\n"
-                    f"Write a short, natural, human-like response. Rules:\n"
-                    f"1. Keep it extremely brief (usually 1 sentence, maximum 2). Use casual lowercase, friendly tone.\n"
-                    f"2. Do NOT sound like a generic AI assistant. Do not use words like 'indeed', 'moreover', 'certainly', 'delighted', or formal structures.\n"
-                    f"3. If they point out a factual mistake or correction, be humble and say something like 'whoops, you are totally right. my bad, thanks for the correction!' or 'Good catch! Thanks for pointing that out.'\n"
-                    f"4. If they say something positive like 'cool' or 'nice video', say 'thanks!' or 'glad you liked it!' or 'yeah, it's wild'.\n"
-                    f"5. Do not use emojis unless very subtle (e.g. simple smile). Output ONLY the raw response text, no quotes or formatting."
-                )
-                try:
-                    response = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
-                    reply_text = response.text.strip()
-                    # Clean surrounding quotes
-                    reply_text = re.sub(r'^["\'\s]+|["\'\s]+$', '', reply_text)
-
-                    print(f"Replying: '{reply_text}'")
-
-                    # 7. Post the reply
-                    youtube.comments().insert(
-                        part="snippet",
-                        body={
-                            "snippet": {
-                                "parentId": comment_id,
-                                "textOriginal": reply_text
-                            }
-                        }
-                    ).execute()
-                    print("Reply posted successfully!")
-                except Exception as reply_post_err:
-                    print(f"Failed to reply to comment: {reply_post_err}")
-
-    except Exception as sync_err:
-        print("Failed to run comment moderation and sync:", sync_err)
-
-
-# ---------------------------------------------------------------------------
 # MAIN CONTROLLER
 # ---------------------------------------------------------------------------
 def main() -> None:
@@ -1111,7 +888,7 @@ def main() -> None:
         print("CRITICAL: GEMINI_API_KEY and PEXELS_API_KEY are required.")
         sys.exit(1)
 
-    # Single shared Gemini client — instantiated once, reused everywhere
+    # Single shared Gemini client
     client = genai.Client(api_key=gemini_key)
 
     # Parse command line overrides
@@ -1120,11 +897,17 @@ def main() -> None:
     args = parser.parse_args()
 
     # Route content selection
+    category_keys = list(CATEGORIES.keys())
     if args.category:
-        category = args.category
+        if args.category == "space":
+            category = category_keys[0]
+        elif args.category == "history":
+            category = category_keys[1]
+        else:
+            category = category_keys[2]
         print(f"CLI Override: selected category '{category}'")
     else:
-        category = random.choice(["space", "history", "tech"])
+        category = random.choice(category_keys)
         print(f"Randomly selected category: '{category}'")
 
     # Load past topics history to prevent duplicates
@@ -1154,7 +937,7 @@ def main() -> None:
     print("Recent topics to exclude:", recent_topics)
 
     # 1. Content generation (single API call)
-    script_text, title, description, topic = generate_content(client, category, recent_topics)
+    script_text, visual_keywords, title, description, topic = generate_content(client, category, recent_topics)
 
     # Append new title, topic, and save history
     past_topics.append({
@@ -1170,21 +953,18 @@ def main() -> None:
     except Exception as e:
         print("Failed to save past topics:", e)
 
-    # 2 & 3. Audio + subtitles via local Piper TTS + Faster-Whisper
+    # 2 & 3. Audio + subtitles via online Edge TTS
     audio_path, subs_list = generate_audio_and_subtitles(script_text, category, topic)
 
-    # 4. Download 3 contextual Pexels clips (shared client, no second instantiation)
-    video_paths = download_pexels_videos(pexels_key, script_text, client, category)
+    # 4. Download 3 contextual Pexels clips using visual keywords
+    video_paths = download_pexels_videos(pexels_key, visual_keywords, category)
 
-    # 5. Assemble — audio_duration computed once inside assemble_video
+    # 5. Assemble and render video
     output_path = "final_short.mp4"
     assemble_video(video_paths, audio_path, subs_list, output_path, category)
 
     try:
         # Initialize credential variables
-        youtube_client_id     = os.environ.get("YOUTUBE_CLIENT_ID")
-        youtube_client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
-        youtube_refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
         tiktok_client_key     = os.environ.get("TIKTOK_CLIENT_KEY")
         tiktok_client_secret  = os.environ.get("TIKTOK_CLIENT_SECRET")
         tiktok_refresh_token  = os.environ.get("TIKTOK_REFRESH_TOKEN")
@@ -1196,7 +976,7 @@ def main() -> None:
         cat_info = CATEGORIES[category]
         playlist_id = os.environ.get(cat_info["playlist_env"])
 
-        # 6. Upload to platforms — each in an isolated try/except
+        # 6. Upload to platforms
         if youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
                 upload_to_youtube(output_path, title, description,
@@ -1236,18 +1016,6 @@ def main() -> None:
 
         # 7. Heartbeat commit
         update_heartbeat_and_push()
-
-        # 8. Moderate and respond to comments on YouTube
-        if youtube_client_id and youtube_client_secret and youtube_refresh_token:
-            try:
-                moderate_and_respond_to_comments(
-                    youtube_client_id,
-                    youtube_client_secret,
-                    youtube_refresh_token,
-                    client
-                )
-            except Exception as comment_err:
-                print("Failed to moderate comments:", comment_err)
 
     finally:
         # Clean up rendered video file

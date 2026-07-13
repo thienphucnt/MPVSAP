@@ -2,8 +2,6 @@ google-genai
 google-api-python-client
 google-auth
 moviepy==1.0.3
-piper-tts==1.2.0
-faster-whisper==1.0.3
-onnxruntime==1.17.1
+edge-tts
 requests
 numpy<2

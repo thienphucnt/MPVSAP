@@ -2,8 +2,8 @@ name: Daily Shorts Generator & Uploader
 
 on:
   schedule:
-    # Runs every 4 hours (6 times a day)
-    - cron: '0 */4 * * *'
+    # Runs once daily at 14:00 UTC
+    - cron: '0 14 * * *'
 
   workflow_dispatch: # Allows manual run for testing
 
@@ -25,43 +25,20 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
-          cache-dependency-path: requirements.txt  # Deterministic cache key tied to exact deps
-
-      - name: Cache HuggingFace Models
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/huggingface
-          key: ${{ runner.os }}-huggingface-faster-whisper-base
-          restore-keys: |
-            ${{ runner.os }}-huggingface-
-
-      - name: Cache Piper Models
-        uses: actions/cache@v4
-        with:
-          path: models
-          key: ${{ runner.os }}-piper-models-v1
-
+          cache-dependency-path: requirements.txt
 
       - name: Install System Dependencies
         run: |
-          # Check if ffmpeg and ImageMagick (convert) are already pre-installed to bypass apt-get overhead
-          if ! command -v ffmpeg &> /dev/null || ! command -v convert &> /dev/null; then
-            echo "System dependencies missing! Initiating fallback installation..."
-            sudo apt-get update || true
-            sudo apt-get install -y ffmpeg imagemagick
-          else
-            echo "System dependencies (ffmpeg and ImageMagick) are pre-installed. Skipping apt-get update."
-          fi
+          sudo apt-get update || true
+          sudo apt-get install -y ffmpeg imagemagick
           
-          # Fix ImageMagick security policies that restrict TextClip label/path operations
+          # Fix ImageMagick security policies that restrict TextClip operations
           echo "Applying ImageMagick security policy patches..."
           if [ -f /etc/ImageMagick-6/policy.xml ]; then
-            sudo sed -i 's/<policy domain="path" rights="none" pattern="@\*"/<!-- <policy domain="path" rights="none" pattern="@\*" -->/g' /etc/ImageMagick-6/policy.xml
-            sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-6/policy.xml
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml
           fi
           if [ -f /etc/ImageMagick-7/policy.xml ]; then
-            sudo sed -i 's/<policy domain="path" rights="none" pattern="@\*"/<!-- <policy domain="path" rights="none" pattern="@\*" -->/g' /etc/ImageMagick-7/policy.xml
-            sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-7/policy.xml
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-7/policy.xml
           fi
 
       - name: Install Python Dependencies
