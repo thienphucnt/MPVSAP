@@ -48,7 +48,8 @@ CATEGORIES = {
         "music_subfolder": "space",
         "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
         "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
-        "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"]
+        "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"],
+        "title_hashtags": "#space #shorts"
     },
     "Morbid or Silly History Facts": {
         "db_key": "history",
@@ -58,7 +59,8 @@ CATEGORIES = {
         "music_subfolder": "history",
         "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
         "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
-        "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"]
+        "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"],
+        "title_hashtags": "#history #shorts"
     },
     "Exciting Tech Facts": {
         "db_key": "tech",
@@ -68,7 +70,8 @@ CATEGORIES = {
         "music_subfolder": "tech",
         "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
         "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
-        "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"]
+        "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"],
+        "title_hashtags": "#tech #shorts"
     }
 }
 
@@ -969,9 +972,12 @@ def main() -> None:
     # 1. Content generation (single API call)
     script_text, visual_keywords, title, description, topic = generate_content(client, category, recent_topics)
 
-    # Strip any hashtags from the title to keep it clean and match user request
+    # Strip any generated hashtags from the title and trim extra spaces
     title = re.sub(r'#\S+', '', title)
     title = re.sub(r'\s+', ' ', title).strip()
+
+    # Append standard title hashtags for this category (e.g. #space #shorts)
+    title = f"{title} {CATEGORIES[category]['title_hashtags']}"
 
     # Append new title, topic, and save history using the short database category key
     past_topics.append({
