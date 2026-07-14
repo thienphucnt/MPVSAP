@@ -147,7 +147,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
         "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
         "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
         "Task 2 — visual_keywords: An array of 6 highly generic, atmospheric search terms (e.g. ['deep space', 'pitch black darkness', 'stars', 'nebula', 'galaxy', 'black hole'] instead of literal script terms) suitable for Pexels search.\n\n"
-        "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters.\n\n"
+        "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
         "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
         "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
         "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
@@ -968,6 +968,10 @@ def main() -> None:
 
     # 1. Content generation (single API call)
     script_text, visual_keywords, title, description, topic = generate_content(client, category, recent_topics)
+
+    # Strip any hashtags from the title to keep it clean and match user request
+    title = re.sub(r'#\S+', '', title)
+    title = re.sub(r'\s+', ' ', title).strip()
 
     # Append new title, topic, and save history using the short database category key
     past_topics.append({
