@@ -175,7 +175,7 @@ def main():
     import time
     import random
 
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest", "gemini-pro-latest"]
     success = False
     
     for model in model_fallback_chain:
@@ -215,8 +215,14 @@ def main():
             except Exception as e:
                 is_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA", "RATE_LIMIT"])
                 if is_rate_limit and attempt < max_retries - 1:
-                    wait_time = (5 * (attempt + 1)) + random.uniform(1, 3)
-                    print(f"Rate limited on {model}. Retrying in {wait_time:.2f}s... Error: {e}")
+                    # Parse dynamic retry delay from Gemini API response
+                    match = re.search(r"retry in ([0-9\.]+)s", str(e))
+                    if match:
+                        wait_time = float(match.group(1)) + random.uniform(1, 3)
+                        print(f"Gemini API requested wait. Sleeping for {wait_time:.2f}s before retry...")
+                    else:
+                        wait_time = (15 * (attempt + 1)) + random.uniform(2, 5)
+                        print(f"Rate limited on {model}. Retrying in {wait_time:.2f}s... Error: {e}")
                     time.sleep(wait_time)
                 else:
                     print(f"Error executing agent with {model}: {e}. Trying next fallback...")
