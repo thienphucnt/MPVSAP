@@ -95,7 +95,7 @@ class VideoFormatConfig:
             self.sub_fontsize = 55
             self.sub_position = ('center', 800)
             self.clip_count = 3
-            self.segment_count = 8
+            self.segment_count = 7
             self.is_short = False
 
 
@@ -193,21 +193,22 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
             '  "segments": [\n'
             '    {\n'
-            '      "script": "<highly engaging 95-word script for fact 1>",\n'
-            '      "visual_keywords": ["keyword1", "keyword2", "keyword3"],\n'
-            '      "topic": "<2-3 words naming the core concept of fact 1>"\n'
+            '      "script": "<highly engaging 95-word script>",\n'
+            '      "visual_keywords": ["literal_keyword1", "literal_keyword2", "literal_keyword3"],\n'
+            '      "topic": "<2-3 words naming the core concept of this segment>"\n'
             '    },\n'
-            '    ... (exactly ' + str(config.segment_count) + ' segments)\n'
+            '    ... (exactly 10 candidate segments)\n'
             '  ]\n'
             "}\n\n"
-            f"Write a compilation of {config.segment_count} distinct, highly engaging facts about {cat_info['topic_desc']}. "
+            f"Write a compilation of exactly 10 distinct candidate facts about {cat_info['topic_desc']}. "
             f"Make the tone {cat_info['tone']}. Each segment must have a fast-paced 95-word script, strategically inserting ellipses (...) and em-dashes (—) for dramatic pacing.\n"
             "CRITICAL ALGORITHMIC RETENTION DIRECTIVES:\n"
-            "1. THE HOOK (Segment 1): Start immediately with the core mind-bending premise. No intros, welcome greetings, or channel branding. Jump straight into the fact.\n"
-            "2. OPEN LOOPS (Teasers): In segments 2, 4, and 6, inject a brief teaser sentence (5-8 words) hinting at the final mind-bending fact/revelation in segment 8 (e.g., 'But this is nothing compared to the final truth we'll uncover' or 'This will all make sense when we reveal our final fact').\n"
-            "3. WORD COUNT CALIBRATION: Keep each segment script strictly around 90-100 words. Do not include stage directions, headers, or emojis.\n"
-            "4. CALL TO ACTION: End the last segment (Segment 8) with a short Call-To-Action (e.g., 'Subscribe to Niche Facts for more mysteries').\n\n"
-            "For each segment, provide 3 highly generic, atmospheric search terms for Pexels search.\n\n"
+            "1. NO INTRO/OUTRO REPETITIONS: Individual segments must not repeat hooks or CTA calls. "
+            "Only Segment 1 should contain a powerful introductory hook (0-15s) starting immediately (no welcomes or channel greetings). "
+            "Middle segments (2 through 9) must contain raw, unique facts with no intros, hooks, or outros. "
+            "Only Segment 10 should append a short, natural subscribe Call-to-Action at the very end.\n"
+            "2. LITERAL B-ROLL SEARCH TERMS: In visual_keywords, provide 3 literal, concrete search terms (e.g., if writing about abstract concepts like 'quantum entanglement' or 'time dilation', output literal B-roll keywords like 'glowing particles', 'laser beam', 'clock gears', 'abstract network' instead of abstract terms) suitable for Pexels search.\n"
+            "3. UNIQUE TOPICS: Ensure each of the 10 candidate segments covers a completely different, unique fact to avoid any topical duplication.\n\n"
             "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
             "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
             "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
@@ -243,7 +244,38 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
         else:
             title = data.get("title", "").strip()
             description = data.get("description", "").strip()
-            segments = data.get("segments", [])
+            raw_segments = data.get("segments", [])
+            
+            seen_topics = set()
+            unique_segments = []
+            for seg in raw_segments:
+                topic = seg.get("topic", "").strip().lower()
+                topic_norm = re.sub(r"[^\w]", "", topic)
+                if not topic_norm:
+                    continue
+                
+                # Check Jaccard overlap on word sets and substring matching
+                words_set = set(topic.split())
+                is_duplicate = False
+                for seen in seen_topics:
+                    seen_set = set(seen.split())
+                    if words_set and seen_set:
+                        intersection = words_set.intersection(seen_set)
+                        union = words_set.union(seen_set)
+                        jaccard = len(intersection) / len(union) if len(union) > 0 else 0
+                        if jaccard > 0.4:
+                            is_duplicate = True
+                            break
+                    seen_norm = re.sub(r"[^\w]", "", seen)
+                    if topic_norm in seen_norm or seen_norm in topic_norm:
+                        is_duplicate = True
+                        break
+                
+                if not is_duplicate:
+                    seen_topics.add(topic)
+                    unique_segments.append(seg)
+            
+            segments = unique_segments[:config.segment_count]
     except Exception as e:
         print("WARNING: Could not parse JSON response — falling back to manual parsing.", e)
         title = f"Mind-Blowing {category} Facts"
@@ -299,7 +331,8 @@ async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path
 
 def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "") -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
     print("Generating TTS voiceover via Edge TTS...")
-    audio_path = "voice.wav"
+    clean_topic = re.sub(r"[^\w]", "_", topic) if topic else "voice"
+    audio_path = f"{clean_topic}.wav"
     
     primary_voice = "en-US-BrianNeural"
     fallback_voice = "en-US-AndrewNeural"
@@ -523,13 +556,57 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
         highlight = random.choice(["&H0000FFFF", "&H0000FF00", "&H00FFFF00"])
         return f"{{\\1c{highlight}}}"
         
-    for (start, end), text in subs_list:
-        start_str = format_ass_time(start)
-        end_str = format_ass_time(end)
-        word_text = text.upper().strip()
-        color_tag = get_ass_color_tag(word_text)
-        line_text = f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{color_tag}{word_text}"
-        lines.append(line_text)
+    if not config.is_short:
+        # Group single-word cues into phrases of 3-5 words (targeting 4)
+        phrases = []
+        current_phrase = []
+        for item in subs_list:
+            current_phrase.append(item)
+            (start, end), word = item
+            ends_with_punc = word.endswith(('.', '?', '!', ',', ';', ':'))
+            if len(current_phrase) >= 4 or ends_with_punc:
+                phrases.append(current_phrase)
+                current_phrase = []
+        if current_phrase:
+            phrases.append(current_phrase)
+
+        # Generate overlapping color-highlighted lines for each phrase
+        for phrase in phrases:
+            for i, active_item in enumerate(phrase):
+                (active_start, active_end), _ = active_item
+                
+                line_parts = []
+                for j, item in enumerate(phrase):
+                    (_, _), w_text = item
+                    w_text_upper = w_text.upper().strip()
+                    if j == i:
+                        # Active word highlighted in Yellow (&H0000FFFF)
+                        line_parts.append(f"{{\\1c&H0000FFFF}}{w_text_upper}{{\\1c&H00FFFFFF}}")
+                    else:
+                        line_parts.append(w_text_upper)
+                
+                line_text = " ".join(line_parts)
+                start_str = format_ass_time(active_start)
+                
+                # Extend end time of intermediate active word to next word start to avoid flicker
+                if i < len(phrase) - 1:
+                    next_start = phrase[i+1][0][0]
+                    end_time = max(active_end, next_start)
+                else:
+                    end_time = active_end
+                
+                end_str = format_ass_time(end_time)
+                line_text = f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{line_text}"
+                lines.append(line_text)
+    else:
+        # Standard one-word-at-a-time flashing for Shorts
+        for (start, end), text in subs_list:
+            start_str = format_ass_time(start)
+            end_str = format_ass_time(end)
+            word_text = text.upper().strip()
+            color_tag = get_ass_color_tag(word_text)
+            line_text = f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{color_tag}{word_text}"
+            lines.append(line_text)
         
     with open(output_ass_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
@@ -1385,14 +1462,16 @@ def run_daily_upload_pipeline_once() -> None:
 
     # Dry run mode check
     if args.dry_run:
-        print("\n[DRY RUN] Dry-run enabled. Simulating speech synthesis...")
+        print("\n[DRY RUN] Dry-run enabled. Simulating speech synthesis (mocked)...")
         for idx, seg in enumerate(segments):
-            print(f"Dry-run: Generating speech for segment {idx+1}/{len(segments)}...")
-            audio_path = f"dry_run_voice_{idx}.wav"
-            words = asyncio.run(synthesize_speech_and_get_timestamps(seg["script"], "en-US-AndrewNeural", audio_path))
-            print(f"Dry-run Segment {idx+1}: Generated {len(words)} word timestamps.")
-            if os.path.exists(audio_path):
-                os.remove(audio_path)
+            print(f"Dry-run: Simulating speech for segment {idx+1}/{len(segments)}...")
+            words_in_script = seg["script"].split()
+            words = []
+            curr_time = 0.0
+            for w in words_in_script:
+                words.append((curr_time, curr_time + 0.35, w))
+                curr_time += 0.35
+            print(f"Dry-run Segment {idx+1}: Generated {len(words)} mock word timestamps.")
         print("Dry run validation completed successfully!")
         sys.exit(0)
 
