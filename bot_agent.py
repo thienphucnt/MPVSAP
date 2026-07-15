@@ -3,6 +3,7 @@ import re
 import sys
 import json
 import random
+import subprocess
 from pathlib import Path
 from google import genai
 
@@ -20,7 +21,52 @@ def main():
 
     print(f"Received Prompt: {prompt_text}")
 
-    # Load main.py as context
+    # Check if this is a request to trigger/run the pipeline
+    is_run_request = any(
+        phrase in prompt_text.lower()
+        for phrase in ["run pipeline", "trigger pipeline", "run uploader", "run daily uploader", "run upload pipeline", "start pipeline", "run generator", "run daily upload"]
+    )
+
+    if is_run_request:
+        print("\n[ACTION DETECTED] Request to execute/run the video generation pipeline.")
+        
+        # 1. Try to trigger the workflow using gh CLI (removes dependency/runtime overhead if it works)
+        print("Attempting to trigger workflow 'main.yml' via GitHub CLI...")
+        gh_result = subprocess.run(
+            ["gh", "workflow", "run", "main.yml"],
+            capture_output=True,
+            text=True
+        )
+        if gh_result.returncode == 0:
+            print("SUCCESS: Triggered the 'Daily Shorts Generator & Uploader' workflow on GitHub Actions!")
+            print("The pipeline is now running independently in the cloud. You can check the 'Actions' tab to watch its progress.")
+            sys.exit(0)
+        else:
+            print(f"GitHub CLI trigger not authorized or failed (Code {gh_result.returncode}): {gh_result.stderr.strip()}")
+            print("Falling back to executing the pipeline locally on this runner...")
+
+        # 2. Local execution fallback: parse category from prompt
+        category_arg = []
+        if "space" in prompt_text.lower():
+            category_arg = ["--category", "space"]
+        elif "history" in prompt_text.lower():
+            category_arg = ["--category", "history"]
+        elif "tech" in prompt_text.lower():
+            category_arg = ["--category", "tech"]
+
+        print(f"Executing: python main.py {' '.join(category_arg)}")
+        pipeline_res = subprocess.run(
+            [sys.executable, "main.py"] + category_arg,
+            text=False  # stream output directly to stdout/stderr
+        )
+        if pipeline_res.returncode == 0:
+            print("\nSUCCESS: Video generation pipeline completed successfully on this runner!")
+            sys.exit(0)
+        else:
+            print(f"\nERROR: Video generation pipeline failed with exit code: {pipeline_res.returncode}")
+            sys.exit(pipeline_res.returncode)
+
+    # 3. Default coding flow (if not a run request)
     main_path = Path("main.py")
     main_content = main_path.read_text(encoding="utf-8", errors="ignore") if main_path.exists() else ""
 
@@ -53,7 +99,6 @@ def main():
         f"==================================================\n"
     )
 
-    # Use robust model chain for code updates
     model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
     response = None
     
@@ -74,8 +119,6 @@ def main():
         sys.exit(1)
 
     text = response.text.strip()
-    
-    # Strip markdown block formatting if present
     if text.startswith("```json"):
         text = text[7:]
     if text.endswith("```"):
@@ -101,7 +144,6 @@ def main():
 
         target_path = Path(rel_path)
         print(f"Writing updates to {target_path}...")
-        # Create directories if they do not exist
         target_path.parent.mkdir(parents=True, exist_ok=True)
         target_path.write_text(content, encoding="utf-8")
         print(f"Successfully wrote {target_path}")
