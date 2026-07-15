@@ -334,13 +334,13 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 # ---------------------------------------------------------------------------
 # 4. PEXELS VIDEO DOWNLOADER
 # ---------------------------------------------------------------------------
-def download_pexels_videos(api_key: str, keywords: List[str], category: str, orientation: str = "portrait") -> List[str]:
+def download_pexels_videos(api_key: str, keywords: List[str], category: str, orientation: str = "portrait", limit: int = 6, filename_prefix: str = "bg") -> List[str]:
     print("Preparing download of background video clips from Pexels...")
     cat_info = CATEGORIES[category]
 
-    # Guarantee exactly 6 keywords
+    # Guarantee enough keywords
     default_pool = cat_info["kw_defaults"]
-    while len(keywords) < 6:
+    while len(keywords) < limit:
         cand = random.choice(default_pool)
         if cand not in keywords:
             keywords.append(cand)
@@ -381,7 +381,7 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
             pool.sort(key=lambda x: abs((x.get("width") or 0) - 1080) + abs((x.get("height") or 0) - 1920))
             video_url = pool[0].get("link")
 
-            clip_path = f"background_clip_{index}.mp4"
+            clip_path = f"{filename_prefix}_clip_{index}.mp4"
             print(f"Downloading clip {index} from Pexels...")
 
             for attempt in range(3):
@@ -404,9 +404,9 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
             raise
 
     # Download in parallel using ThreadPoolExecutor
-    video_paths = [None] * 6
-    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
-        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords[:6])}
+    video_paths = [None] * limit
+    with concurrent.futures.ThreadPoolExecutor(max_workers=limit) as executor:
+        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords[:limit])}
         for future in concurrent.futures.as_completed(future_to_index):
             i = future_to_index[future]
             try:
@@ -419,9 +419,9 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
     if not successful:
         raise Exception("All Pexels downloads failed.")
     
-    for i in range(6):
+    for i in range(limit):
         if video_paths[i] is None:
-            dup_path = f"background_clip_{i}.mp4"
+            dup_path = f"{filename_prefix}_clip_{i}.mp4"
             shutil.copy(successful[0], dup_path)
             video_paths[i] = dup_path
             print(f"Duplicated {successful[0]} to {dup_path} as fallback.")
