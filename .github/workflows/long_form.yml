@@ -1,0 +1,92 @@
+name: Weekly Widescreen Long-Form Generator & Uploader
+
+on:
+  schedule:
+    # Runs once a week on Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+
+  workflow_dispatch: # Allows manual run for testing
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60  # Allow up to 60 minutes for rendering heavy 10-fact widescreen compilations
+
+    # Required permissions to commit and push heartbeat.txt back to the repository
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install System Dependencies
+        run: |
+          if command -v ffmpeg &> /dev/null && command -v convert &> /dev/null; then
+            echo "ffmpeg and imagemagick are already pre-installed. Skipping installation."
+          else
+            echo "Missing pre-installed dependencies. Installing..."
+            sudo apt-get update || true
+            sudo apt-get install -y ffmpeg imagemagick
+          fi
+          
+          # Fix ImageMagick security policies that restrict TextClip operations
+          echo "Applying ImageMagick security policy patches..."
+          if [ -f /etc/ImageMagick-6/policy.xml ]; then
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml
+          fi
+          if [ -f /etc/ImageMagick-7/policy.xml ]; then
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-7/policy.xml
+          fi
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Widescreen Pipeline & Publish
+        env:
+          # Core API Keys
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+
+          # YouTube Data API Credentials
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YT_PLAYLIST_SPACE: ${{ secrets.YT_PLAYLIST_SPACE }}
+          YT_PLAYLIST_HISTORY: ${{ secrets.YT_PLAYLIST_HISTORY }}
+          YT_PLAYLIST_TECH: ${{ secrets.YT_PLAYLIST_TECH }}
+
+          # TikTok Content Posting API Credentials (Not used for long form but kept for compatibility)
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+
+          # Meta Graph API Credentials (Instagram & Facebook Reels - Not used for long form)
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: |
+          python main.py --format long
+
+      - name: Reset Self-Healing Counter
+        run: |
+          if [ -f heal_attempts.txt ]; then
+            echo "0" > heal_attempts.txt
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add heal_attempts.txt
+            if [ -n "$(git status --porcelain heal_attempts.txt)" ]; then
+              git commit -m "Reset heal counter after successful long-form run [skip ci]"
+              git pull --rebase origin main
+              git push origin main
+            fi
+          fi
