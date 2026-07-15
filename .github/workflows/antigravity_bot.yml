@@ -1,0 +1,68 @@
+name: Antigravity Autonomous Coder Bot
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
+
+jobs:
+  antigravity-bot:
+    # Only run if the issue description or comment contains the tag @antigravity
+    if: |
+      (github.event.issue && contains(github.event.issue.body, '@antigravity')) ||
+      (github.event.comment && contains(github.event.comment.body, '@antigravity'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install google-genai
+
+      - name: Extract Prompt
+        id: extract_prompt
+        run: |
+          # Check if triggered by comment or issue
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            RAW_PROMPT="${{ github.event.comment.body }}"
+          else
+            RAW_PROMPT="${{ github.event.issue.body }}"
+          fi
+          
+          # Remove the @antigravity trigger word and set env
+          CLEANED_PROMPT=$(echo "$RAW_PROMPT" | sed 's/@antigravity//g' | xargs)
+          echo "BOT_PROMPT=$CLEANED_PROMPT" >> $GITHUB_ENV
+
+      - name: Run Antigravity AI Bot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python bot_agent.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          # Only commit if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Antigravity Bot: Fulfill user request from issue #${{ github.event.issue.number }} [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+            echo "Changes pushed successfully!"
+          else
+            echo "No code changes generated."
+          fi
