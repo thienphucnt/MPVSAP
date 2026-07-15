@@ -91,7 +91,7 @@ class VideoFormatConfig:
             self.sub_fontsize = 55
             self.sub_position = ('center', 800)
             self.clip_count = 3
-            self.segment_count = 5
+            self.segment_count = 10
             self.is_short = False
 
 
@@ -100,8 +100,7 @@ class VideoFormatConfig:
 # ---------------------------------------------------------------------------
 def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, max_retries: int = 5):
     """Call Gemini with fallback model chain and exponential backoff for transient errors."""
-    # Complete chain of models to try in sequence if we hit quota or rate limits
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest", "gemini-pro-latest"]
     
     # Start with the requested model, or position in the chain if matches
     if model in model_fallback_chain:
