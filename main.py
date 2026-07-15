@@ -29,6 +29,7 @@ from moviepy.audio.fx.all import audio_loop
 
 # Fix AttributeError: module 'PIL.Image' has no attribute 'ANTIALIAS' for MoviePy
 import PIL.Image
+import numpy as np
 if not hasattr(PIL.Image, 'ANTIALIAS'):
     if hasattr(PIL.Image, 'Resampling'):
         PIL.Image.ANTIALIAS = PIL.Image.Resampling.LANCZOS
@@ -564,7 +565,26 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             subclip_end = min(c.duration, segment_duration + pad)
             c = c.subclip(0, subclip_end)
         c = c.set_duration(segment_duration)
-        c = c.resize(lambda t, d=segment_duration: 1.0 + 0.15 * (t / d)).set_position('center')
+        
+        # Apply Ken Burns zoom effect using a frame filter to keep the output resolution constant (preventing stride static)
+        def zoom_filter(get_frame, t, dur=segment_duration):
+            frame = get_frame(t)
+            scale = 1.0 + 0.15 * (t / dur)
+            target_w, target_h = config.resolution
+            
+            new_w = int(target_w * scale)
+            new_h = int(target_h * scale)
+            
+            img = PIL.Image.fromarray(frame)
+            img_resized = img.resize((new_w, new_h), PIL.Image.ANTIALIAS)
+            
+            left = (new_w - target_w) // 2
+            top = (new_h - target_h) // 2
+            
+            img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
+            return np.array(img_cropped)
+            
+        c = c.fl(zoom_filter)
         clips.append(c)
 
     bg_clip = concatenate_videoclips(clips)
