@@ -1100,33 +1100,7 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         except Exception as e:
             print("Failed to add video to playlist:", e)
 
-    # Post Pinned Comment containing CTA
-    if video_id:
-        cta_text = "Hit subscribe for more dark facts!"
-        if related_video_id:
-            comment_text = f"🎥 Watch the full documentary: https://youtu.be/{related_video_id}\n\n{cta_text}"
-        else:
-            comment_text = cta_text
 
-        print(f"Posting top-level comment on video {video_id}...")
-        try:
-            comment_body = {
-                "snippet": {
-                    "videoId": video_id,
-                    "topLevelComment": {
-                        "snippet": {
-                            "textOriginal": comment_text
-                        }
-                    }
-                }
-            }
-            youtube.commentThreads().insert(part="snippet", body=comment_body).execute()
-            print("Comment posted successfully!")
-        except Exception as comment_err:
-            if "insufficientPermissions" in str(comment_err) or "insufficient scopes" in str(comment_err).lower():
-                print("Note: Comment posting skipped. This requires Google verification/audit of your Developer Console OAuth App.")
-            else:
-                print("Failed to post comment:", comment_err)
 
     return video_id
 
