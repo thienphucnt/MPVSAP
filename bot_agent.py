@@ -145,31 +145,45 @@ def main():
         "4. When you are done, summarize what changes you made and present them clearly in your final response text."
     )
 
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
+    import time
+    import random
+
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
     success = False
     
     for model in model_fallback_chain:
-        try:
-            print(f"Starting agent run using model: {model}...")
-            response = client.models.generate_content(
-                model=model,
-                contents=f"User request: {prompt_text}",
-                config=types.GenerateContentConfig(
-                    system_instruction=system_instruction,
-                    tools=[read_file, write_file, list_dir, run_command]
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                print(f"Starting agent run using model: {model} (attempt {attempt + 1}/{max_retries})...")
+                response = client.models.generate_content(
+                    model=model,
+                    contents=f"User request: {prompt_text}",
+                    config=types.GenerateContentConfig(
+                        system_instruction=system_instruction,
+                        tools=[read_file, write_file, list_dir, run_command]
+                    )
                 )
-            )
-            print("\nAgent run completed. Response summary:")
-            print(response.text)
-            Path("bot_comment.md").write_text(
-                f"### 🤖 Autonomous Coder Run Summary\n\n"
-                f"{response.text}",
-                encoding="utf-8"
-            )
-            success = True
+                print("\nAgent run completed. Response summary:")
+                print(response.text)
+                Path("bot_comment.md").write_text(
+                    f"### 🤖 Autonomous Coder Run Summary\n\n"
+                    f"{response.text}",
+                    encoding="utf-8"
+                )
+                success = True
+                break
+            except Exception as e:
+                is_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA", "RATE_LIMIT"])
+                if is_rate_limit and attempt < max_retries - 1:
+                    wait_time = (5 * (attempt + 1)) + random.uniform(1, 3)
+                    print(f"Rate limited on {model}. Retrying in {wait_time:.2f}s... Error: {e}")
+                    time.sleep(wait_time)
+                else:
+                    print(f"Error executing agent with {model}: {e}. Trying next fallback...")
+                    break
+        if success:
             break
-        except Exception as e:
-            print(f"Error executing agent with {model}: {e}. Trying next model...")
 
     if not success:
         print("Error: Agent run failed across all models.")
