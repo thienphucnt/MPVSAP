@@ -8,9 +8,10 @@ on:
 
 jobs:
   antigravity-bot:
+    # Triggers on the word 'antigravity' (case-insensitive) or '/bot' command
     if: |
-      (github.event.issue && contains(github.event.issue.body, '@antigravity')) ||
-      (github.event.comment && contains(github.event.comment.body, '@antigravity'))
+      (github.event.issue && (contains(github.event.issue.body, 'antigravity') || contains(github.event.issue.body, '/bot'))) ||
+      (github.event.comment && (contains(github.event.comment.body, 'antigravity') || contains(github.event.comment.body, '/bot')))
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -61,7 +62,8 @@ jobs:
           else
             RAW_PROMPT="${{ github.event.issue.body }}"
           fi
-          CLEANED_PROMPT=$(echo "$RAW_PROMPT" | sed 's/@antigravity//g' | xargs)
+          # Strip trigger keywords like @antigravity, antigravity, /bot, /antigravity case-insensitively
+          CLEANED_PROMPT=$(echo "$RAW_PROMPT" | sed -E 's/(@?antigravity|\/?bot)//gi' | xargs)
           echo "BOT_PROMPT=$CLEANED_PROMPT" >> $GITHUB_ENV
 
       - name: Run Antigravity AI Bot
