@@ -94,7 +94,7 @@ class VideoFormatConfig:
             self.sub_fontsize = 55
             self.sub_position = ('center', 800)
             self.clip_count = 3
-            self.segment_count = 30
+            self.segment_count = 8
             self.is_short = False
 
 
@@ -188,11 +188,11 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
             "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
             "{\n"
-            '  "title": "<Click-worthy widescreen title under 70 characters>",\n'
+            '  "title": "<Click-worthy widescreen title between 40 and 60 characters, front-loading the primary hook>",\n'
             '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
             '  "segments": [\n'
             '    {\n'
-            '      "script": "<highly engaging 90-word script for fact 1>",\n'
+            '      "script": "<highly engaging 95-word script for fact 1>",\n'
             '      "visual_keywords": ["keyword1", "keyword2", "keyword3"],\n'
             '      "topic": "<2-3 words naming the core concept of fact 1>"\n'
             '    },\n'
@@ -200,10 +200,12 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             '  ]\n'
             "}\n\n"
             f"Write a compilation of {config.segment_count} distinct, highly engaging facts about {cat_info['topic_desc']}. "
-            f"Each segment should have a fast-paced 90-word script. "
-            f"Make the tone {cat_info['tone']}. End the last segment with a short Call-To-Action (e.g., 'Subscribe to Niche Facts for more mysteries'). "
-            "Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—). "
-            "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
+            f"Make the tone {cat_info['tone']}. Each segment must have a fast-paced 95-word script, strategically inserting ellipses (...) and em-dashes (—) for dramatic pacing.\n"
+            "CRITICAL ALGORITHMIC RETENTION DIRECTIVES:\n"
+            "1. THE HOOK (Segment 1): Start immediately with the core mind-bending premise. No intros, welcome greetings, or channel branding. Jump straight into the fact.\n"
+            "2. OPEN LOOPS (Teasers): In segments 2, 4, and 6, inject a brief teaser sentence (5-8 words) hinting at the final mind-bending fact/revelation in segment 8 (e.g., 'But this is nothing compared to the final truth we'll uncover' or 'This will all make sense when we reveal our final fact').\n"
+            "3. WORD COUNT CALIBRATION: Keep each segment script strictly around 90-100 words. Do not include stage directions, headers, or emojis.\n"
+            "4. CALL TO ACTION: End the last segment (Segment 8) with a short Call-To-Action (e.g., 'Subscribe to Niche Facts for more mysteries').\n\n"
             "For each segment, provide 3 highly generic, atmospheric search terms for Pexels search.\n\n"
             "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
             "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
@@ -430,6 +432,23 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str) -> 
 # ---------------------------------------------------------------------------
 # FONT DOWNLOADER HELPER
 # ---------------------------------------------------------------------------
+def register_font_linux(font_path: str):
+    if sys.platform.startswith("linux"):
+        try:
+            dest_dir = Path.home() / ".local/share/fonts"
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = dest_dir / "Anton-Regular.ttf"
+            if not dest_file.exists():
+                import shutil
+                shutil.copy(font_path, dest_file)
+                print(f"Copied font to Linux local fonts: {dest_file}")
+                # Run fc-cache to update font cache
+                subprocess.run(["fc-cache", "-f"], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                print("Registered font with fc-cache.")
+        except Exception as e:
+            print("Failed to register font on Linux system:", e)
+
+
 def download_font() -> str:
     """Download Anton-Regular from Google Fonts if not cached locally."""
     font_dir = Path("fonts")
@@ -443,20 +462,91 @@ def download_font() -> str:
         with open(font_path, "wb") as f:
             for chunk in r.iter_content(chunk_size=1024 * 1024):
                 f.write(chunk)
-    return str(font_path.resolve().absolute())
+    font_abs_path = str(font_path.resolve().absolute())
+    register_font_linux(font_abs_path)
+    return font_abs_path
+
+
+def format_ass_time(seconds: float) -> str:
+    seconds = max(0.0, seconds)
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    secs = int(seconds % 60)
+    centiseconds = int(round((seconds - int(seconds)) * 100))
+    if centiseconds >= 100:
+        secs += centiseconds // 100
+        centiseconds = centiseconds % 100
+    if secs >= 60:
+        minutes += secs // 60
+        secs = secs % 60
+    if minutes >= 60:
+        hours += minutes // 60
+        minutes = minutes % 60
+    return f"{hours}:{minutes:02d}:{secs:02d}.{centiseconds:02d}"
+
+
+def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_ass_path: str, category: str, config: VideoFormatConfig) -> None:
+    print(f"Generating ASS subtitles file: {output_ass_path}...")
+    font_name = "Anton"
+    play_res_x = config.resolution[0]
+    play_res_y = config.resolution[1]
+    
+    sub_y = config.sub_position[1]
+    margin_v = play_res_y - sub_y
+    
+    lines = [
+        "[Script Info]",
+        "; Script generated by Antigravity Hybrid Video Engine",
+        "ScriptType: v4.00+",
+        f"PlayResX: {play_res_x}",
+        f"PlayResY: {play_res_y}",
+        "ScaledBorderAndShadow: yes",
+        "",
+        "[V4+ Styles]",
+        "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
+        f"Style: Default,{font_name},{config.sub_fontsize},&H00FFFFFF,&H0000FFFF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,1,3.5,0,2,10,10,{margin_v},1",
+        "",
+        "[Events]",
+        "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"
+    ]
+    
+    def get_ass_color_tag(word: str) -> str:
+        clean = re.sub(r"[^\w]", "", word.upper())
+        fillers = {
+            "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
+            "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
+            "FROM", "ARE", "WERE", "BEEN", "BUT", "SO", "IF", "THEY", "THEIR", "YOU", "YOUR"
+        }
+        if clean in fillers:
+            return ""
+        highlight = random.choice(["&H0000FFFF", "&H0000FF00", "&H00FFFF00"])
+        return f"{{\\1c{highlight}}}"
+        
+    for (start, end), text in subs_list:
+        start_str = format_ass_time(start)
+        end_str = format_ass_time(end)
+        word_text = text.upper().strip()
+        color_tag = get_ass_color_tag(word_text)
+        line_text = f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{color_tag}{word_text}"
+        lines.append(line_text)
+        
+    with open(output_ass_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+    print(f"ASS file written successfully.")
 
 
 # ---------------------------------------------------------------------------
-# 5. VIDEO ASSEMBLY (MOVIEPY)
+# 5. VIDEO ASSEMBLY (MOVIEPY & FFmpeg)
 # ---------------------------------------------------------------------------
 def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tuple[Tuple[float, float], str]], output_path: str, category: str, config: Optional[VideoFormatConfig] = None, mix_music: bool = True) -> str:
-    print("Assembling final video short with MoviePy...")
+    print("Assembling video...")
     if config is None:
         config = VideoFormatConfig("short")
         
     font_path = download_font()
     music_clip = None
     final_audio = None
+    mixed_audio_path = f"mixed-audio-{os.getpid()}.wav"
 
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
@@ -466,91 +556,27 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     clips = []
 
     for i, v_path in enumerate(video_paths):
-        print(f"Processing background clip {i}: {v_path}")
         c = VideoFileClip(v_path).resize(newsize=config.resolution)
-
-        # Pad duration slightly to prevent last-frame flash glitch
         pad = 0.5
         if c.duration < segment_duration:
             c = loop(c, duration=segment_duration + pad)
         else:
             subclip_end = min(c.duration, segment_duration + pad)
             c = c.subclip(0, subclip_end)
-
         c = c.set_duration(segment_duration)
-
-        # Ken Burns continuous slow-zoom effect (scale from 1.0 to 1.15x for faster scene changes)
         c = c.resize(lambda t, d=segment_duration: 1.0 + 0.15 * (t / d)).set_position('center')
         clips.append(c)
 
     bg_clip = concatenate_videoclips(clips)
 
-    # Helper function for smart subtitle word highlighting
-    def get_word_color(word: str) -> str:
-        clean = re.sub(r"[^\w]", "", word.upper())
-        fillers = {
-            "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
-            "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
-            "FROM", "ARE", "WERE", "BEEN", "BUT", "SO", "IF", "THEY", "THEIR", "YOU", "YOUR"
-        }
-        if clean in fillers:
-            return "#FFFFFF" # White for fillers
-        return random.choice(["#FFFF00", "#00FF00", "#00FFFF"]) # Yellow, Green, Cyan highlights
-
-    # --- Subtitle overlay ---
-    def create_text_clip(start, end, text):
-        padded_text = f" {text.upper().strip()} "
-        text_color = get_word_color(text)
-
-        return (
-            TextClip(
-                padded_text,
-                font=font_path,
-                fontsize=config.sub_fontsize,
-                color=text_color,
-                bg_color="rgba(0,0,0,0.6)", # Dark semi-transparent background box natively handled via alpha
-                transparent=True,
-                stroke_color="black",
-                stroke_width=3,
-                method="label",
-                align="center"
-            )
-            .set_start(start)
-            .set_duration(end - start)
-            .set_position(config.sub_position)
-            .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0) # Pop-in bounce effect
-        )
-
-    print(f"Generating {len(subs_list)} TextClips (ImageMagick)...")
-    sub_clips = [None] * len(subs_list)
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        future_to_idx = {executor.submit(create_text_clip, s, e, t): i for i, ((s, e), t) in enumerate(subs_list)}
-        for future in concurrent.futures.as_completed(future_to_idx):
-            i = future_to_idx[future]
-            try:
-                sub_clips[i] = future.result()
-            except Exception as exc:
-                print(f"TextClip {i} generated an exception: {exc}")
-    
-    # Filter out any failed clips
-    sub_clips = [c for c in sub_clips if c is not None]
-
-    final_clip = CompositeVideoClip([bg_clip] + sub_clips)
-
-    if not mix_music:
-        final_clip = final_clip.set_audio(audio_clip)
-    else:
-        # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
+    # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
+    final_audio_clip = audio_clip
+    if mix_music:
         music_dir = Path("music")
-        music_clip = None
-        final_audio = None
         music_temp_path = f"temp-music-{os.getpid()}.wav"
-        mixed_audio_path = f"mixed-audio-{os.getpid()}.wav"
 
         cat_info = CATEGORIES[category]
         cat_music_dir = music_dir / cat_info["music_subfolder"]
-
-        # Try category subdirectory, fallback to root music directory
         target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
 
         if target_dir.exists() and target_dir.is_dir():
@@ -570,14 +596,10 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         start_time = random.uniform(0, max_start)
                         m = m.subclip(start_time, start_time + audio_duration)
                     
-                    # Render sliced/looped music to a temporary file
-                    music_clip = m.volumex(0.22) # 0.22 volume level
+                    music_clip = m.volumex(0.18)
                     music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
-                    m.close()
-                    music_clip.close()
-                    music_clip = None
 
-                    # Mix voice.wav and temp-music.wav using FFMPEG for absolute stability
+                    # Mix using ffmpeg
                     cmd = [
                         "ffmpeg", "-y",
                         "-i", audio_path,
@@ -587,77 +609,149 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         mixed_audio_path
                     ]
                     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-                    # Clean up temp music file
-                    if os.path.exists(music_temp_path):
-                        os.remove(music_temp_path)
-
-                    # Load mixed audio
                     final_audio = AudioFileClip(mixed_audio_path)
-                    final_clip = final_clip.set_audio(final_audio)
+                    final_audio_clip = final_audio
                 except Exception as e:
-                    print("Failed to mix music, using voice only:", e)
-                    final_clip = final_clip.set_audio(audio_clip)
+                    print("Failed to mix background music, using voice-only:", e)
+                finally:
                     if os.path.exists(music_temp_path):
                         try:
                             os.remove(music_temp_path)
                         except Exception:
                             pass
-            else:
-                final_clip = final_clip.set_audio(audio_clip)
-        else:
-            final_clip = final_clip.set_audio(audio_clip)
 
-    # --- Render — threads=2 saturates both runner vCPUs ---
-    print(f"Rendering to {output_path}...")
-    temp_audio = f"temp-audio-{os.getpid()}.m4a"  # PID-scoped to avoid collision
-    final_clip.write_videofile(
-        output_path,
-        fps=30,
-        codec="libx264",
-        audio_codec="aac",
-        temp_audiofile=temp_audio,
-        remove_temp=True,
-        threads=2,
-        preset="ultrafast",
-        logger=None
-    )
+    bg_clip = bg_clip.set_audio(final_audio_clip)
 
-    # --- Release in correct order: composite first, then components ---
-    final_clip.close()
+    # Try high-performance FFmpeg ASS subtitle burning first
+    ass_path = f"subtitles_{os.getpid()}.ass"
+    temp_no_subs = f"temp_no_subs_{os.getpid()}.mp4"
+    ffmpeg_success = False
+
+    try:
+        generate_ass_file(subs_list, ass_path, category, config)
+        print("Rendering background video (no subtitles)...")
+        bg_clip.write_videofile(
+            temp_no_subs,
+            fps=30,
+            codec="libx264",
+            audio_codec="aac",
+            threads=2,
+            preset="ultrafast",
+            logger=None
+        )
+        
+        print("Burning ASS subtitles using FFmpeg...")
+        cmd = [
+            "ffmpeg", "-y",
+            "-i", temp_no_subs,
+            "-vf", f"ass={ass_path}",
+            "-c:a", "copy",
+            output_path
+        ]
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print("Successfully completed video generation via high-performance FFmpeg ASS engine!")
+        ffmpeg_success = True
+    except Exception as ass_err:
+        print(f"FFmpeg ASS engine failed ({ass_err}), falling back to MoviePy subtitle rendering...")
+
+    # Fallback to MoviePy rendering if FFmpeg failed
+    if not ffmpeg_success:
+        if os.path.exists(temp_no_subs):
+            try: os.remove(temp_no_subs)
+            except Exception: pass
+
+        print("Falling back to rendering subtitles with MoviePy (heavy RAM usage)...")
+        
+        def get_word_color(word: str) -> str:
+            clean = re.sub(r"[^\w]", "", word.upper())
+            fillers = {
+                "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
+                "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
+                "FROM", "ARE", "WERE", "BEEN", "BUT", "SO", "IF", "THEY", "THEIR", "YOU", "YOUR"
+            }
+            if clean in fillers:
+                return "#FFFFFF"
+            return random.choice(["#FFFF00", "#00FF00", "#00FFFF"])
+
+        def create_text_clip(start, end, text):
+            padded_text = f" {text.upper().strip()} "
+            text_color = get_word_color(text)
+            return (
+                TextClip(
+                    padded_text,
+                    font=font_path,
+                    fontsize=config.sub_fontsize,
+                    color=text_color,
+                    bg_color="rgba(0,0,0,0.6)",
+                    transparent=True,
+                    stroke_color="black",
+                    stroke_width=3,
+                    method="label",
+                    align="center"
+                )
+                .set_start(start)
+                .set_duration(end - start)
+                .set_position(config.sub_position)
+                .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0)
+            )
+
+        sub_clips = []
+        for (s, e), t in subs_list:
+            try:
+                sub_clips.append(create_text_clip(s, e, t))
+            except Exception as exc:
+                print(f"Failed to create TextClip for '{t}':", exc)
+
+        final_clip = CompositeVideoClip([bg_clip] + sub_clips)
+        final_clip.write_videofile(
+            output_path,
+            fps=30,
+            codec="libx264",
+            audio_codec="aac",
+            threads=2,
+            preset="ultrafast",
+            logger=None
+        )
+        final_clip.close()
+        for s in sub_clips:
+            s.close()
+
+    # --- Clean up resources ---
     bg_clip.close()
     for c in clips:
         c.close()
-    for s in sub_clips:
-        s.close()
     audio_clip.close()
     if music_clip:
         music_clip.close()
     if final_audio:
         final_audio.close()
 
-    # Clean up mixed audio temp file if created
-    if mix_music and os.path.exists(mixed_audio_path):
-        try:
-            os.remove(mixed_audio_path)
-        except Exception as clean_err:
-            print("Failed to clean up mixed audio file:", clean_err)
+    # Clean up temp files
+    if os.path.exists(temp_no_subs):
+        try: os.remove(temp_no_subs)
+        except Exception: pass
+    if os.path.exists(ass_path):
+        try: os.remove(ass_path)
+        except Exception: pass
+    if os.path.exists(mixed_audio_path):
+        try: os.remove(mixed_audio_path)
+        except Exception: pass
 
-    # Clean up downloaded segment clips and generated audio
+    # Clean up downloaded video clips
     for v_path in video_paths:
         try:
             vp = Path(v_path)
             if vp.exists():
                 vp.unlink()
-        except Exception as e:
-            print(f"Could not remove {v_path}:", e)
-            
+        except Exception:
+            pass
+
     try:
         ap = Path(audio_path)
         if ap.exists():
             ap.unlink()
     except Exception as e:
-            print(f"Could not remove {audio_path}:", e)
+        print(f"Could not remove {audio_path}:", e)
 
     print("Assembly complete.")
     return output_path
@@ -665,7 +759,6 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
 # ---------------------------------------------------------------------------
 # 5B. THEMATIC WIDESCREEN THUMBNAIL GENERATOR (PILLOW)
-# ---------------------------------------------------------------------------
 def download_pexels_image(pexels_key: str, query: str) -> Optional[str]:
     import urllib.parse
     print(f"Searching Pexels for thumbnail backdrop with query: '{query}'...")
