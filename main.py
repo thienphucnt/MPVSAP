@@ -76,13 +76,32 @@ CATEGORIES = {
 }
 
 
+class VideoFormatConfig:
+    def __init__(self, format_type: str = "short"):
+        self.format_type = format_type
+        if format_type == "short":
+            self.resolution = (1080, 1920)
+            self.sub_fontsize = 85
+            self.sub_position = ('center', 1350)
+            self.clip_count = 3
+            self.segment_count = 1
+            self.is_short = True
+        else:
+            self.resolution = (1920, 1080)
+            self.sub_fontsize = 55
+            self.sub_position = ('center', 800)
+            self.clip_count = 3
+            self.segment_count = 5
+            self.is_short = False
+
+
 # ---------------------------------------------------------------------------
 # SHARED GEMINI RETRY HELPER
 # ---------------------------------------------------------------------------
 def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, max_retries: int = 5):
     """Call Gemini with fallback model chain and exponential backoff for transient errors."""
     # Complete chain of models to try in sequence if we hit quota or rate limits
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
+    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro", "gemini-1.5-flash"]
     
     # Start with the requested model, or position in the chain if matches
     if model in model_fallback_chain:
@@ -127,7 +146,7 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 # 1. GEMINI CONTENT GENERATION
 #    Single API round-trip returns script and visual keywords in JSON format.
 # ---------------------------------------------------------------------------
-def generate_content(client: genai.Client, category: str, recent_topics: List[str]) -> Tuple[str, List[str], str, str, str]:
+def generate_content(client: genai.Client, category: str, recent_topics: List[str], config: VideoFormatConfig) -> Tuple[str, str, List[dict]]:
     model_name = "gemini-2.5-pro"
     cat_info = CATEGORIES[category]
 
@@ -135,32 +154,61 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
     if recent_topics:
         exclude_instruction = f"\n- Do NOT write about, reference, or base the script on the same core concepts, subjects, or historical events as any of these recent videos: {', '.join(recent_topics)}. You must choose a completely different concept."
 
-    prompt = (
-        "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
-        "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
-        "{\n"
-        '  "script": "<script text>",\n'
-        '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
-        '  "title": "<title text>",\n'
-        '  "description": "<description text>",\n'
-        '  "topic": "<2-3 words naming the core concept>"\n'
-        "}\n\n"
-        f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
-        f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
-        "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
-        "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
-        "Task 2 — visual_keywords: An array of 6 highly generic, atmospheric search terms (e.g. ['deep space', 'pitch black darkness', 'stars', 'nebula', 'galaxy', 'black hole'] instead of literal script terms) suitable for Pexels search.\n\n"
-        "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
-        "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
-        "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
-        "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
-        "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
-        "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
-        "Ensure all numbers, sizes, and masses are strictly factually accurate (verify planetary mass/volume limits)."
-        f"{exclude_instruction}"
-    )
+    if config.is_short:
+        prompt = (
+            "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
+            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
+            "{\n"
+            '  "script": "<script text>",\n'
+            '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
+            '  "title": "<title text>",\n'
+            '  "description": "<description text>",\n'
+            '  "topic": "<2-3 words naming the core concept>"\n'
+            "}\n\n"
+            f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
+            f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
+            "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
+            "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
+            "Task 2 — visual_keywords: An array of 6 highly generic, atmospheric search terms (e.g. ['deep space', 'pitch black darkness', 'stars', 'nebula', 'galaxy', 'black hole'] instead of literal script terms) suitable for Pexels search.\n\n"
+            "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
+            "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
+            "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
+            "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
+            "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
+            "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
+            "Ensure all numbers, sizes, and masses are strictly factually accurate (verify planetary mass/volume limits)."
+            f"{exclude_instruction}"
+        )
+    else:
+        prompt = (
+            "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
+            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
+            "{\n"
+            '  "title": "<Click-worthy widescreen title under 70 characters>",\n'
+            '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
+            '  "segments": [\n'
+            '    {\n'
+            '      "script": "<highly engaging 90-word script for fact 1>",\n'
+            '      "visual_keywords": ["keyword1", "keyword2", "keyword3"],\n'
+            '      "topic": "<2-3 words naming the core concept of fact 1>"\n'
+            '    },\n'
+            '    ... (exactly ' + str(config.segment_count) + ' segments)\n'
+            '  ]\n'
+            "}\n\n"
+            f"Write a compilation of {config.segment_count} distinct, highly engaging facts about {cat_info['topic_desc']}. "
+            f"Each segment should have a fast-paced 90-word script. "
+            f"Make the tone {cat_info['tone']}. End the last segment with a short Call-To-Action (e.g., 'Subscribe to Niche Facts for more mysteries'). "
+            "Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—). "
+            "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
+            "For each segment, provide 3 highly generic, atmospheric search terms for Pexels search.\n\n"
+            "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
+            "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
+            "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
+            "Ensure all numbers, sizes, and masses are strictly factually accurate."
+            f"{exclude_instruction}"
+        )
 
-    print(f"Generating script, title, topic, and description for category '{category}' in a single call using {model_name}...")
+    print(f"Generating script data for category '{category}' in a single call using {model_name}...")
     response = gemini_generate_with_retry(client, model_name, prompt)
     text = response.text.strip()
     
@@ -171,40 +219,48 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
         text = text[:-3]
     text = text.strip()
 
+    title = ""
+    description = ""
+    segments = []
+
     try:
         data = json.loads(text)
-        script = data.get("script", "").strip()
-        keywords = data.get("visual_keywords", [])
-        title = data.get("title", "").strip()
-        desc = data.get("description", "").strip()
-        topic = data.get("topic", "").strip()
+        if config.is_short:
+            title = data.get("title", "").strip()
+            description = data.get("description", "").strip()
+            segments = [{
+                "script": data.get("script", "").strip(),
+                "visual_keywords": data.get("visual_keywords", []),
+                "topic": data.get("topic", "").strip()
+            }]
+        else:
+            title = data.get("title", "").strip()
+            description = data.get("description", "").strip()
+            segments = data.get("segments", [])
     except Exception as e:
-        print("WARNING: Could not parse JSON response — falling back to regex parsing.", e)
-        # Regex fallback parsing
-        title_match = re.search(r'"title":\s*"([^"]+)"', text)
-        topic_match = re.search(r'"topic":\s*"([^"]+)"', text)
-        script_match = re.search(r'"script":\s*"([^"]+)"', text)
-        desc_match = re.search(r'"description":\s*"([^"]+)"', text)
-        
-        title = title_match.group(1).strip() if title_match else ""
-        topic = topic_match.group(1).strip() if topic_match else category
-        script = script_match.group(1).strip() if script_match else text
-        desc = desc_match.group(1).strip() if desc_match else f"Discover some of the most interesting niche facts in the universe! #nichefactsshorts"
-        keywords = cat_info["kw_defaults"][:3]
+        print("WARNING: Could not parse JSON response — falling back to manual parsing.", e)
+        title = f"Mind-Blowing {category} Facts"
+        description = f"Discover some of the most interesting niche facts in the universe! #nichefacts"
+        segments = [{
+            "script": "Space is full of mysterious phenomena that science is only beginning to understand...",
+            "visual_keywords": cat_info["kw_defaults"][:3],
+            "topic": "Space Mysteries"
+        }]
 
-    # Sanitize script text to strip markdown formatting
-    script = re.sub(r'[\*_`]', '', script)
-    script = re.sub(r'\[.*?\]', '', script)
-    script = re.sub(r'\(.*?\)', '', script)
-    script = re.sub(r'\s+', ' ', script).strip()
+    # Clean up scripts in segments
+    for seg in segments:
+        script = seg.get("script", "").strip()
+        script = re.sub(r'[\*_`]', '', script)
+        script = re.sub(r'\[.*?\]', '', script)
+        script = re.sub(r'\(.*?\)', '', script)
+        script = re.sub(r'\s+', ' ', script).strip()
+        seg["script"] = script
 
     print("Generated Title:", title)
-    print("Generated Topic:", topic)
-    print("Generated Description:", desc)
-    print("Generated Keywords:", keywords)
-    print("Generated Script:\n", script)
+    print("Generated Description:", description)
+    print(f"Generated {len(segments)} segments.")
     
-    return script, keywords, title, desc, topic
+    return title, description, segments
 
 
 # ---------------------------------------------------------------------------
@@ -389,8 +445,11 @@ def download_font() -> str:
 # ---------------------------------------------------------------------------
 # 5. VIDEO ASSEMBLY (MOVIEPY)
 # ---------------------------------------------------------------------------
-def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tuple[Tuple[float, float], str]], output_path: str, category: str) -> str:
+def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tuple[Tuple[float, float], str]], output_path: str, category: str, config: Optional[VideoFormatConfig] = None, mix_music: bool = True) -> str:
     print("Assembling final video short with MoviePy...")
+    if config is None:
+        config = VideoFormatConfig("short")
+        
     font_path = download_font()
 
     audio_clip = AudioFileClip(audio_path)
@@ -402,7 +461,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     for i, v_path in enumerate(video_paths):
         print(f"Processing background clip {i}: {v_path}")
-        c = VideoFileClip(v_path).resize(newsize=(1080, 1920))
+        c = VideoFileClip(v_path).resize(newsize=config.resolution)
 
         # Pad duration slightly to prevent last-frame flash glitch
         pad = 0.5
@@ -432,7 +491,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             return "#FFFFFF" # White for fillers
         return random.choice(["#FFFF00", "#00FF00", "#00FFFF"]) # Yellow, Green, Cyan highlights
 
-    # --- Subtitle overlay (Safe Zone positioned at Y=1350, Impact-styled with dark box) ---
+    # --- Subtitle overlay ---
     def create_text_clip(start, end, text):
         padded_text = f" {text.upper().strip()} "
         text_color = get_word_color(text)
@@ -441,18 +500,18 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             TextClip(
                 padded_text,
                 font=font_path,
-                fontsize=85, # Smaller, legible font size
+                fontsize=config.sub_fontsize,
                 color=text_color,
                 bg_color="rgba(0,0,0,0.6)", # Dark semi-transparent background box natively handled via alpha
+                transparent=True,
                 stroke_color="black",
-                stroke_width=3, # Outline width 3
+                stroke_width=3,
                 method="label",
-                align="center",
-                transparent=True # Let MoviePy generate the alpha mask from the 4th channel
+                align="center"
             )
             .set_start(start)
             .set_duration(end - start)
-            .set_position(('center', 1350)) # Positioned at Y=1350 (around lowest laptop area, avoiding overlays)
+            .set_position(config.sub_position)
             .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0) # Pop-in bounce effect
         )
 
@@ -472,74 +531,76 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     final_clip = CompositeVideoClip([bg_clip] + sub_clips)
 
-    # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
-    music_dir = Path("music")
-    music_clip = None
-    final_audio = None
-    music_temp_path = f"temp-music-{os.getpid()}.wav"
-    mixed_audio_path = f"mixed-audio-{os.getpid()}.wav"
+    if not mix_music:
+        final_clip = final_clip.set_audio(audio_clip)
+    else:
+        # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
+        music_dir = Path("music")
+        music_clip = None
+        final_audio = None
+        music_temp_path = f"temp-music-{os.getpid()}.wav"
+        mixed_audio_path = f"mixed-audio-{os.getpid()}.wav"
 
-    cat_info = CATEGORIES[category]
-    cat_music_dir = music_dir / cat_info["music_subfolder"]
+        cat_info = CATEGORIES[category]
+        cat_music_dir = music_dir / cat_info["music_subfolder"]
 
-    # Try category subdirectory, fallback to root music directory
-    target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
+        # Try category subdirectory, fallback to root music directory
+        target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
 
-    if target_dir.exists() and target_dir.is_dir():
-        music_files = list(target_dir.glob("*.mp3"))
-        if not music_files and target_dir != music_dir:
-            music_files = list(music_dir.glob("*.mp3"))
+        if target_dir.exists() and target_dir.is_dir():
+            music_files = list(target_dir.glob("*.mp3"))
+            if not music_files and target_dir != music_dir:
+                music_files = list(music_dir.glob("*.mp3"))
 
-        if music_files:
-            music_path = random.choice(music_files)
-            print(f"Selected background music: {music_path.name}")
-            try:
-                m = AudioFileClip(str(music_path))
-                if m.duration < audio_duration:
-                    m = audio_loop(m, duration=audio_duration)
-                else:
-                    max_start = max(0, m.duration - audio_duration - 5)
-                    start_time = random.uniform(0, max_start)
-                    m = m.subclip(start_time, start_time + audio_duration)
-                
-                # Render sliced/looped music to a temporary file
-                music_clip = m.volumex(0.22) # 0.22 volume level
-                music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
-                m.close()
-                music_clip.close()
-                music_clip = None
+            if music_files:
+                music_path = random.choice(music_files)
+                print(f"Selected background music: {music_path.name}")
+                try:
+                    m = AudioFileClip(str(music_path))
+                    if m.duration < audio_duration:
+                        m = audio_loop(m, duration=audio_duration)
+                    else:
+                        max_start = max(0, m.duration - audio_duration - 5)
+                        start_time = random.uniform(0, max_start)
+                        m = m.subclip(start_time, start_time + audio_duration)
+                    
+                    # Render sliced/looped music to a temporary file
+                    music_clip = m.volumex(0.22) # 0.22 volume level
+                    music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
+                    m.close()
+                    music_clip.close()
+                    music_clip = None
 
-                # Mix voice.wav and temp-music.wav using FFMPEG for absolute stability
-                cmd = [
-                    "ffmpeg", "-y",
-                    "-i", audio_path,
-                    "-i", music_temp_path,
-                    "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0",
-                    "-c:a", "pcm_s16le",
-                    mixed_audio_path
-                ]
-                subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    # Mix voice.wav and temp-music.wav using FFMPEG for absolute stability
+                    cmd = [
+                        "ffmpeg", "-y",
+                        "-i", audio_path,
+                        "-i", music_temp_path,
+                        "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0",
+                        "-c:a", "pcm_s16le",
+                        mixed_audio_path
+                    ]
+                    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-                # Clean up temp music file
-                if os.path.exists(music_temp_path):
-                    os.remove(music_temp_path)
-
-                # Load mixed audio
-                final_audio = AudioFileClip(mixed_audio_path)
-                final_clip = final_clip.set_audio(final_audio)
-            except Exception as e:
-                print("Failed to mix music, using voice only:", e)
-                final_clip = final_clip.set_audio(audio_clip)
-                if os.path.exists(music_temp_path):
-                    try:
+                    # Clean up temp music file
+                    if os.path.exists(music_temp_path):
                         os.remove(music_temp_path)
-                    except Exception:
-                        pass
+
+                    # Load mixed audio
+                    final_audio = AudioFileClip(mixed_audio_path)
+                    final_clip = final_clip.set_audio(final_audio)
+                except Exception as e:
+                    print("Failed to mix music, using voice only:", e)
+                    final_clip = final_clip.set_audio(audio_clip)
+                    if os.path.exists(music_temp_path):
+                        try:
+                            os.remove(music_temp_path)
+                        except Exception:
+                            pass
+            else:
+                final_clip = final_clip.set_audio(audio_clip)
         else:
             final_clip = final_clip.set_audio(audio_clip)
-    else:
-        print("No music folder found, using voice only.")
-        final_clip = final_clip.set_audio(audio_clip)
 
     # --- Render — threads=2 saturates both runner vCPUs ---
     print(f"Rendering to {output_path}...")
@@ -570,7 +631,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         final_audio.close()
 
     # Clean up mixed audio temp file if created
-    if os.path.exists(mixed_audio_path):
+    if mix_music and os.path.exists(mixed_audio_path):
         try:
             os.remove(mixed_audio_path)
         except Exception as clean_err:
@@ -909,7 +970,7 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
 # MAIN CONTROLLER
 # ---------------------------------------------------------------------------
 def run_daily_upload_pipeline_once() -> None:
-    print("Starting automated short-form video generation pipeline (triggered manually)...")
+    print("Starting automated video generation pipeline...")
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
     pexels_key  = os.environ.get("PEXELS_API_KEY")
@@ -922,8 +983,10 @@ def run_daily_upload_pipeline_once() -> None:
     client = genai.Client(api_key=gemini_key)
 
     # Parse command line overrides
-    parser = argparse.ArgumentParser(description="Automated short-form video generation pipeline")
+    parser = argparse.ArgumentParser(description="Automated video generation pipeline")
     parser.add_argument("--category", choices=["space", "history", "tech"], help="Force script category selection")
+    parser.add_argument("--format", choices=["short", "long"], default="short", help="Format of video to generate")
+    parser.add_argument("--dry-run", action="store_true", help="Perform content generation and TTS without video rendering")
     args = parser.parse_args()
 
     # Route content selection
@@ -962,28 +1025,34 @@ def run_daily_upload_pipeline_once() -> None:
             past_topics
         )
 
-    # Resolve short database key for history lookup/storage
+    # Resolve database key for history lookup/storage
     db_category = CATEGORIES[category]["db_key"]
 
     # Extract recent topics for this category to pass as exclusions (fallback to title if topic missing)
     recent_topics = [item.get("topic") or item["title"] for item in past_topics if item.get("category") == db_category][-15:]
     print("Recent topics to exclude:", recent_topics)
 
-    # 1. Content generation (single API call)
-    script_text, visual_keywords, title, description, topic = generate_content(client, category, recent_topics)
+    # Initialize video format config
+    video_format = args.format
+    config = VideoFormatConfig(video_format)
+    print(f"Selected Video Format: {config.format_type} (is_short={config.is_short})")
+
+    # 1. Content generation
+    title, description, segments = generate_content(client, category, recent_topics, config)
 
     # Strip any generated hashtags from the title and trim extra spaces
     title = re.sub(r'#\S+', '', title)
     title = re.sub(r'\s+', ' ', title).strip()
 
-    # Append standard title hashtags for this category (e.g. #space #shorts)
-    title = f"{title} {CATEGORIES[category]['title_hashtags']}"
+    # Append standard title hashtags only for Shorts
+    if config.is_short:
+        title = f"{title} {CATEGORIES[category]['title_hashtags']}"
 
-    # Append new title, topic, and save history using the short database category key
+    # Append new title, topic, and save history using the database category key
     past_topics.append({
         "category": db_category,
         "title": title,
-        "topic": topic,
+        "topic": segments[0]["topic"],
         "timestamp": datetime.datetime.utcnow().isoformat()
     })
     past_topics = past_topics[-100:]  # Cap history size to prevent file bloat
@@ -993,15 +1062,133 @@ def run_daily_upload_pipeline_once() -> None:
     except Exception as e:
         print("Failed to save past topics:", e)
 
-    # 2 & 3. Audio + subtitles via online Edge TTS
-    audio_path, subs_list = generate_audio_and_subtitles(script_text, category, topic)
+    # Dry run mode check
+    if args.dry_run:
+        print("\n[DRY RUN] Dry-run enabled. Simulating speech synthesis...")
+        for idx, seg in enumerate(segments):
+            print(f"Dry-run: Generating speech for segment {idx+1}/{len(segments)}...")
+            audio_path = f"dry_run_voice_{idx}.wav"
+            words = asyncio.run(synthesize_speech_and_get_timestamps(seg["script"], "en-US-AndrewNeural", audio_path))
+            print(f"Dry-run Segment {idx+1}: Generated {len(words)} word timestamps.")
+            if os.path.exists(audio_path):
+                os.remove(audio_path)
+        print("Dry run validation completed successfully!")
+        sys.exit(0)
 
-    # 4. Download 3 contextual Pexels clips using visual keywords
-    video_paths = download_pexels_videos(pexels_key, visual_keywords, category)
+    # 2. Rendering block
+    output_path = "final_output.mp4"
 
-    # 5. Assemble and render video
-    output_path = "final_short.mp4"
-    assemble_video(video_paths, audio_path, subs_list, output_path, category)
+    if config.is_short:
+        # Standard Shorts path (single segment)
+        seg = segments[0]
+        audio_path, subs_list = generate_audio_and_subtitles(seg["script"], category, seg["topic"])
+        video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category)
+        assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)
+    else:
+        # Long-form path (stitch multiple segments)
+        segment_files = []
+        for idx, seg in enumerate(segments):
+            print(f"\n--- Rendering Segment {idx + 1}/{len(segments)}: {seg['topic']} ---")
+            seg_audio_path, seg_subs_list = generate_audio_and_subtitles(seg["script"], category, f"longform_seg_{idx}")
+            seg_video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category)
+            seg_output_path = f"temp_segment_{idx}_{os.getpid()}.mp4"
+            
+            # Assemble segment voice-only (no background music)
+            assemble_video(seg_video_paths, seg_audio_path, seg_subs_list, seg_output_path, category, config, mix_music=False)
+            segment_files.append(seg_output_path)
+
+        # Concatenate all clips
+        print("\n--- Concatenating all segments into final long-form video ---")
+        clips = [VideoFileClip(f) for f in segment_files]
+        concatenated_video = concatenate_videoclips(clips)
+
+        # Mix a continuous background music track across the entire video
+        music_dir = Path("music")
+        cat_info = CATEGORIES[category]
+        cat_music_dir = music_dir / cat_info["music_subfolder"]
+        target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
+
+        mixed = False
+        mixed_audio_path = f"mixed-longform-{os.getpid()}.wav"
+        if target_dir.exists() and target_dir.is_dir():
+            music_files = list(target_dir.glob("*.mp3"))
+            if not music_files and target_dir != music_dir:
+                music_files = list(music_dir.glob("*.mp3"))
+
+            if music_files:
+                music_path = random.choice(music_files)
+                print(f"Selected continuous background music: {music_path.name}")
+                try:
+                    voice_temp_path = f"temp-voice-{os.getpid()}.wav"
+                    concatenated_video.audio.write_audiofile(voice_temp_path, fps=44100, logger=None)
+                    total_duration = concatenated_video.duration
+
+                    # Loop/crop background music to match total duration
+                    m = AudioFileClip(str(music_path))
+                    if m.duration < total_duration:
+                        m = audio_loop(m, duration=total_duration)
+                    else:
+                        max_start = max(0, m.duration - total_duration - 5)
+                        start_time = random.uniform(0, max_start)
+                        m = m.subclip(start_time, start_time + total_duration)
+
+                    music_temp_path = f"temp-music-{os.getpid()}.wav"
+                    music_clip = m.volumex(0.18) # 0.18 volume level for background track
+                    music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
+                    m.close()
+                    music_clip.close()
+
+                    # Mix
+                    cmd = [
+                        "ffmpeg", "-y",
+                        "-i", voice_temp_path,
+                        "-i", music_temp_path,
+                        "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0",
+                        "-c:a", "pcm_s16le",
+                        mixed_audio_path
+                    ]
+                    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+                    if os.path.exists(voice_temp_path):
+                        os.remove(voice_temp_path)
+                    if os.path.exists(music_temp_path):
+                        os.remove(music_temp_path)
+
+                    final_audio = AudioFileClip(mixed_audio_path)
+                    concatenated_video = concatenated_video.set_audio(final_audio)
+                    mixed = True
+                except Exception as e:
+                    print("Failed to mix continuous music for long-form:", e)
+
+        print(f"Rendering final concatenated video to {output_path}...")
+        temp_audio = f"temp-audio-{os.getpid()}.m4a"
+        concatenated_video.write_videofile(
+            output_path,
+            fps=30,
+            codec="libx264",
+            audio_codec="aac",
+            temp_audiofile=temp_audio,
+            remove_temp=True,
+            threads=2,
+            preset="ultrafast",
+            logger=None
+        )
+
+        concatenated_video.close()
+        for c in clips:
+            c.close()
+
+        # Clean up temporary segments
+        for f in segment_files:
+            try:
+                os.remove(f)
+            except Exception:
+                pass
+        if mixed and os.path.exists(mixed_audio_path):
+            try:
+                os.remove(mixed_audio_path)
+            except Exception:
+                pass
 
     try:
         # Initialize credential variables
@@ -1016,7 +1203,7 @@ def run_daily_upload_pipeline_once() -> None:
         cat_info = CATEGORIES[category]
         playlist_id = os.environ.get(cat_info["playlist_env"])
 
-        # 6. Upload to platforms
+        # 3. Upload to platforms (Only upload to TikTok/Meta for Shorts)
         if youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
                 upload_to_youtube(output_path, title, description,
@@ -1029,32 +1216,33 @@ def run_daily_upload_pipeline_once() -> None:
         else:
             print("YouTube credentials missing, skipping.")
 
-        if tiktok_client_key and tiktok_client_secret and tiktok_refresh_token:
-            try:
-                upload_to_tiktok(output_path, title,
-                                 tiktok_client_key, tiktok_client_secret, tiktok_refresh_token)
-            except Exception as e:
-                print("ERROR uploading to TikTok:", e)
-        else:
-            print("TikTok credentials missing, skipping.")
+        if config.is_short:
+            if tiktok_client_key and tiktok_client_secret and tiktok_refresh_token:
+                try:
+                    upload_to_tiktok(output_path, title,
+                                     tiktok_client_key, tiktok_client_secret, tiktok_refresh_token)
+                except Exception as e:
+                    print("ERROR uploading to TikTok:", e)
+            else:
+                print("TikTok credentials missing, skipping.")
 
-        if fb_page_id and meta_access_token:
-            try:
-                upload_to_facebook(output_path, description, fb_page_id, meta_access_token)
-            except Exception as e:
-                print("ERROR uploading to Facebook Reels:", e)
-        else:
-            print("Facebook credentials missing, skipping.")
+            if fb_page_id and meta_access_token:
+                try:
+                    upload_to_facebook(output_path, description, fb_page_id, meta_access_token)
+                except Exception as e:
+                    print("ERROR uploading to Facebook Reels:", e)
+            else:
+                print("Facebook credentials missing, skipping.")
 
-        if ig_account_id and meta_access_token:
-            try:
-                upload_to_instagram(output_path, description, ig_account_id, meta_access_token)
-            except Exception as e:
-                print("ERROR uploading to Instagram Reels:", e)
-        else:
-            print("Instagram credentials missing, skipping.")
+            if ig_account_id and meta_access_token:
+                try:
+                    upload_to_instagram(output_path, description, ig_account_id, meta_access_token)
+                except Exception as e:
+                    print("ERROR uploading to Instagram Reels:", e)
+            else:
+                print("Instagram credentials missing, skipping.")
 
-        # 7. Heartbeat commit
+        # 4. Heartbeat commit
         update_heartbeat_and_push()
 
     finally:
