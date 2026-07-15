@@ -94,7 +94,7 @@ class VideoFormatConfig:
             self.sub_fontsize = 55
             self.sub_position = ('center', 800)
             self.clip_count = 3
-            self.segment_count = 10
+            self.segment_count = 30
             self.is_short = False
 
 
@@ -455,6 +455,8 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         config = VideoFormatConfig("short")
         
     font_path = download_font()
+    music_clip = None
+    final_audio = None
 
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
