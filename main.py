@@ -38,6 +38,9 @@ if not hasattr(PIL.Image, 'ANTIALIAS'):
 
 # Global shared HTTP session for connection pooling
 HTTP_SESSION = requests.Session()
+HTTP_SESSION.headers.update({
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+})
 
 # Global mapping for our three distinct content buckets
 CATEGORIES = {
@@ -863,9 +866,9 @@ def download_pexels_image(pexels_key: str, query: str) -> Optional[str]:
     url = f"https://api.pexels.com/v1/search?query={urllib.parse.quote(query)}&per_page=1"
     
     try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=15) as r:
-            data = json.loads(r.read().decode("utf-8"))
+        resp = HTTP_SESSION.get(url, headers=headers, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
         
         photos = data.get("photos", [])
         if photos:
@@ -873,10 +876,10 @@ def download_pexels_image(pexels_key: str, query: str) -> Optional[str]:
             print(f"Downloading Pexels backdrop: {img_url}")
             temp_path = f"temp_thumb_bg_{os.getpid()}.jpg"
             
-            img_req = urllib.request.Request(img_url)
-            with urllib.request.urlopen(img_req, timeout=15) as img_r:
-                with open(temp_path, "wb") as f:
-                    f.write(img_r.read())
+            img_resp = HTTP_SESSION.get(img_url, timeout=15)
+            img_resp.raise_for_status()
+            with open(temp_path, "wb") as f:
+                f.write(img_resp.content)
             return temp_path
     except Exception as e:
         print("Failed to download Pexels thumbnail backdrop:", e)
@@ -1120,7 +1123,10 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
             youtube.commentThreads().insert(part="snippet", body=comment_body).execute()
             print("Comment posted successfully!")
         except Exception as comment_err:
-            print("Failed to post comment:", comment_err)
+            if "insufficientPermissions" in str(comment_err) or "insufficient scopes" in str(comment_err).lower():
+                print("Note: Comment posting skipped. This requires Google verification/audit of your Developer Console OAuth App.")
+            else:
+                print("Failed to post comment:", comment_err)
 
     return video_id
 
