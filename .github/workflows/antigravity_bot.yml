@@ -95,6 +95,23 @@ jobs:
         run: |
           python bot_agent.py
 
+      - name: Post Comment on Issue
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f bot_comment.md ]; then
+            # Add mention tag to the user who triggered the event
+            TRIGGER_USER="${{ github.event.sender.login }}"
+            # Prepend mention tag to the comment file
+            echo -e "Hi @${TRIGGER_USER},\n\n$(cat bot_comment.md)" > bot_comment.md
+            
+            # Post comment using GitHub CLI
+            gh issue comment ${{ github.event.issue.number }} --body-file bot_comment.md
+          else
+            echo "No comment file generated."
+          fi
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"

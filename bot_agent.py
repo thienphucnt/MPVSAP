@@ -87,6 +87,11 @@ def main():
         if gh_result.returncode == 0:
             print("SUCCESS: Triggered the 'Daily Shorts Generator & Uploader' workflow on GitHub Actions!")
             print("The pipeline is now running independently in the cloud. You can check the 'Actions' tab to watch its progress.")
+            Path("bot_comment.md").write_text(
+                "I successfully triggered the **Daily Shorts Generator & Uploader** workflow in the cloud!\n\n"
+                "You can check its real-time progress on the **Actions** tab of your repository.",
+                encoding="utf-8"
+            )
             sys.exit(0)
         else:
             print(f"GitHub CLI trigger not authorized or failed (Code {gh_result.returncode}): {gh_result.stderr.strip()}")
@@ -108,9 +113,20 @@ def main():
         )
         if pipeline_res.returncode == 0:
             print("\nSUCCESS: Video generation pipeline completed successfully on this runner!")
+            Path("bot_comment.md").write_text(
+                "I executed the video generation and upload pipeline locally on the runner!\n\n"
+                "✅ **Status:** Completed successfully.\n"
+                "🎥 **Result:** Video has been rendered and uploaded to your YouTube channel.",
+                encoding="utf-8"
+            )
             sys.exit(0)
         else:
             print(f"\nERROR: Video generation pipeline failed with exit code: {pipeline_res.returncode}")
+            Path("bot_comment.md").write_text(
+                f"I attempted to run the video generation and upload pipeline locally, but it failed with exit status code `{pipeline_res.returncode}`.\n\n"
+                "❌ Please check the action run logs for more details.",
+                encoding="utf-8"
+            )
             sys.exit(pipeline_res.returncode)
 
     # 3. Autonomous Tool-Use Agent execution
@@ -145,6 +161,11 @@ def main():
             )
             print("\nAgent run completed. Response summary:")
             print(response.text)
+            Path("bot_comment.md").write_text(
+                f"### 🤖 Autonomous Coder Run Summary\n\n"
+                f"{response.text}",
+                encoding="utf-8"
+            )
             success = True
             break
         except Exception as e:
@@ -152,6 +173,11 @@ def main():
 
     if not success:
         print("Error: Agent run failed across all models.")
+        Path("bot_comment.md").write_text(
+            "❌ I attempted to process your request using the autonomous coding agent, but encountered errors across all models.\n\n"
+            "Please check the action run logs for more details.",
+            encoding="utf-8"
+        )
         sys.exit(1)
 
     print("AI Bot agent changes applied and verified successfully.")
