@@ -23,6 +23,27 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Extract Prompt
+        id: extract_prompt
+        run: |
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            RAW_PROMPT="${{ github.event.comment.body }}"
+          else
+            RAW_PROMPT="${{ github.event.issue.body }}"
+          fi
+          # Strip trigger keywords like @antigravity, antigravity, /bot, /antigravity case-insensitively
+          CLEANED_PROMPT=$(echo "$RAW_PROMPT" | sed -E 's/(@?antigravity|\/?bot)//gi' | xargs)
+          echo "BOT_PROMPT=$CLEANED_PROMPT" >> $GITHUB_ENV
+
+      - name: Acknowledge Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COMMENT_URL=$(gh issue comment ${{ github.event.issue.number }} --body "👋 Hi @${{ github.event.sender.login }}, I've received your request: '*$BOT_PROMPT*'. I am initializing the cloud environment and starting to process... ⚙️")
+          COMMENT_ID=$(echo "$COMMENT_URL" | grep -oE 'issuecomment-[0-9]+' | sed 's/issuecomment-//')
+          echo "COMMENT_ID=$COMMENT_ID" >> $GITHUB_ENV
+          echo "Created acknowledgment comment ID: $COMMENT_ID"
+
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -53,27 +74,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Extract Prompt
-        id: extract_prompt
-        run: |
-          if [ "${{ github.event_name }}" = "issue_comment" ]; then
-            RAW_PROMPT="${{ github.event.comment.body }}"
-          else
-            RAW_PROMPT="${{ github.event.issue.body }}"
-          fi
-          # Strip trigger keywords like @antigravity, antigravity, /bot, /antigravity case-insensitively
-          CLEANED_PROMPT=$(echo "$RAW_PROMPT" | sed -E 's/(@?antigravity|\/?bot)//gi' | xargs)
-          echo "BOT_PROMPT=$CLEANED_PROMPT" >> $GITHUB_ENV
-
-      - name: Acknowledge Request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          COMMENT_URL=$(gh issue comment ${{ github.event.issue.number }} --body "👋 Hi @${{ github.event.sender.login }}, I've received your request: '*$BOT_PROMPT*'. I am initializing the cloud environment and starting to process... ⚙️")
-          COMMENT_ID=$(echo "$COMMENT_URL" | grep -oE 'issuecomment-[0-9]+' | sed 's/issuecomment-//')
-          echo "COMMENT_ID=$COMMENT_ID" >> $GITHUB_ENV
-          echo "Created acknowledgment comment ID: $COMMENT_ID"
 
       - name: Run Antigravity AI Bot
         env:
