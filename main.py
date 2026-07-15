@@ -114,7 +114,6 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 
     last_error = None
     for current_model in candidates:
-        success = False
         for attempt in range(max_retries):
             try:
                 print(f"Trying Gemini model: {current_model}...")
@@ -125,22 +124,25 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
                 is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
                 is_transient = any(err in str(e) or err in str(e).upper() for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "HIGH DEMAND"])
                 
-                # If we hit quota/rate limits, break out of the retry loop of the current model and try the next model in the fallback chain
-                if is_quota_or_rate_limit:
-                    print(f"Model {current_model} quota exceeded or rate limited. Moving to next fallback model...")
-                    break
-                
-                if is_transient and attempt < max_retries - 1:
+                if is_quota_or_rate_limit and attempt < max_retries - 1:
+                    # Parse dynamic retry delay from Gemini API response
+                    match = re.search(r"retry in ([0-9\.]+)s", str(e))
+                    if match:
+                        wait_time = float(match.group(1)) + random.uniform(1, 3)
+                        print(f"Gemini API requested wait. Sleeping for {wait_time:.2f}s before retry...")
+                    else:
+                        wait_time = 25.0 + random.uniform(2, 5)
+                        print(f"Model {current_model} rate limited. Retrying in {wait_time:.2f}s...")
+                    time.sleep(wait_time)
+                elif is_transient and attempt < max_retries - 1:
                     wait_time = (2 ** attempt) + random.uniform(0, 1)
                     print(f"Gemini API transient error on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
                     time.sleep(wait_time)
                 else:
-                    # Non-transient error, raise immediately
-                    raise
-        if success:
-            break
+                    # Non-transient or exhausted retries, break to try next model in fallback chain
+                    print(f"Model {current_model} failed or exhausted. Trying next fallback model...")
+                    break
 
-    # If we exhausted all candidates
     raise Exception(f"Gemini API failed after exhausting all fallback models. Last error: {last_error}")
 
 
