@@ -66,6 +66,15 @@ jobs:
           CLEANED_PROMPT=$(echo "$RAW_PROMPT" | sed -E 's/(@?antigravity|\/?bot)//gi' | xargs)
           echo "BOT_PROMPT=$CLEANED_PROMPT" >> $GITHUB_ENV
 
+      - name: Acknowledge Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COMMENT_URL=$(gh issue comment ${{ github.event.issue.number }} --body "👋 Hi @${{ github.event.sender.login }}, I've received your request: '*$BOT_PROMPT*'. I am initializing the cloud environment and starting to process... ⚙️")
+          COMMENT_ID=$(echo "$COMMENT_URL" | grep -oE 'issuecomment-[0-9]+' | sed 's/issuecomment-//')
+          echo "COMMENT_ID=$COMMENT_ID" >> $GITHUB_ENV
+          echo "Created acknowledgment comment ID: $COMMENT_ID"
+
       - name: Run Antigravity AI Bot
         env:
           # GitHub CLI Token (use default secrets.GITHUB_TOKEN)
@@ -101,13 +110,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -f bot_comment.md ]; then
-            # Add mention tag to the user who triggered the event
             TRIGGER_USER="${{ github.event.sender.login }}"
-            # Prepend mention tag to the comment file
-            echo -e "Hi @${TRIGGER_USER},\n\n$(cat bot_comment.md)" > bot_comment.md
+            echo -e "Hi @${TRIGGER_USER},\n\n$(cat bot_comment.md)" > final_comment.md
             
-            # Post comment using GitHub CLI
-            gh issue comment ${{ github.event.issue.number }} --body-file bot_comment.md
+            if [ -n "$COMMENT_ID" ]; then
+              echo "Updating acknowledgment comment ID: $COMMENT_ID..."
+              gh api -X PATCH repos/${{ github.repository }}/issues/comments/$COMMENT_ID -F body=@final_comment.md
+            else
+              echo "No acknowledgment comment ID found. Posting a new comment..."
+              gh issue comment ${{ github.event.issue.number }} --body-file final_comment.md
+            fi
           else
             echo "No comment file generated."
           fi
