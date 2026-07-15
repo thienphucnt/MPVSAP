@@ -832,7 +832,7 @@ def generate_thumbnail(title: str, category: str, pexels_key: str, output_path: 
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER WITH PINNED COMMENT
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None) -> None:
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None) -> Optional[str]:
     print("Uploading to YouTube...")
     creds = Credentials(
         token=None,
@@ -906,7 +906,11 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
     # Post Pinned Comment containing CTA
     if video_id:
         cta_text = "Hit subscribe for more dark facts!"
-        comment_text = cta_text
+        if related_video_id:
+            comment_text = f"🎥 Watch the full documentary: https://youtu.be/{related_video_id}\n\n{cta_text}"
+        else:
+            comment_text = cta_text
+
         print(f"Posting top-level comment on video {video_id}...")
         try:
             comment_body = {
@@ -923,6 +927,8 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
             print("Comment posted successfully!")
         except Exception as comment_err:
             print("Failed to post comment:", comment_err)
+
+    return video_id
 
 
 # ---------------------------------------------------------------------------
@@ -1227,6 +1233,13 @@ def run_daily_upload_pipeline_once() -> None:
     # 1. Content generation
     title, description, segments = generate_content(client, category, recent_topics, config)
 
+    # Resolve related long-form video link for Shorts-to-Long funneling
+    related_long_video_id = None
+    for item in reversed(past_topics):
+        if item.get("category") == db_category and item.get("is_long") == True and item.get("youtube_video_id"):
+            related_long_video_id = item["youtube_video_id"]
+            break
+
     # Strip any generated hashtags from the title and trim extra spaces
     title = re.sub(r'#\S+', '', title)
     title = re.sub(r'\s+', ' ', title).strip()
@@ -1234,6 +1247,10 @@ def run_daily_upload_pipeline_once() -> None:
     # Append standard title hashtags only for Shorts
     if config.is_short:
         title = f"{title} {CATEGORIES[category]['title_hashtags']}"
+        if related_long_video_id:
+            link_str = f"🎥 Watch full documentary: https://youtu.be/{related_long_video_id}"
+            description = f"{link_str}\n\n{description}"
+            print(f"Funnel link added to description pointing to: {related_long_video_id}")
 
     # Append new title, topic, and save history using the database category key
     past_topics.append({
@@ -1424,10 +1441,25 @@ def run_daily_upload_pipeline_once() -> None:
         playlist_id = os.environ.get(cat_info["playlist_env"])
 
         # 3. Upload to platforms (Only upload to TikTok/Meta for Shorts)
+        uploaded_video_id = None
         if youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
-                upload_to_youtube(output_path, title, description,
-                                  youtube_client_id, youtube_client_secret, youtube_refresh_token, playlist_id, category, thumbnail_path)
+                uploaded_video_id = upload_to_youtube(
+                    output_path, title, description,
+                    youtube_client_id, youtube_client_secret, youtube_refresh_token,
+                    playlist_id, category, thumbnail_path, related_long_video_id
+                )
+                
+                # Update past_topics with uploaded video metadata
+                if uploaded_video_id and past_topics:
+                    past_topics[-1]["youtube_video_id"] = uploaded_video_id
+                    past_topics[-1]["is_long"] = not config.is_short
+                    try:
+                        with open(past_topics_path, "w", encoding="utf-8") as f:
+                            json.dump(past_topics, f, indent=2)
+                        print(f"Successfully recorded uploaded video ID {uploaded_video_id} in history database.")
+                    except Exception as hist_err:
+                        print("Failed to update history database with video ID:", hist_err)
             except Exception as e:
                 if "quotaExceeded" in str(e):
                     print("WARNING: YouTube quota exceeded — upload skipped.")
