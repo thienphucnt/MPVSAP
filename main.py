@@ -49,7 +49,8 @@ CATEGORIES = {
         "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
         "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
         "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"],
-        "title_hashtags": "#space #shorts"
+        "title_hashtags": "#space #shorts",
+        "yt_category_id": "28"
     },
     "Morbid or Silly History Facts": {
         "db_key": "history",
@@ -60,7 +61,8 @@ CATEGORIES = {
         "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
         "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
         "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"],
-        "title_hashtags": "#history #shorts"
+        "title_hashtags": "#history #shorts",
+        "yt_category_id": "23"
     },
     "Exciting Tech Facts": {
         "db_key": "tech",
@@ -71,7 +73,8 @@ CATEGORIES = {
         "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
         "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
         "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"],
-        "title_hashtags": "#tech #shorts"
+        "title_hashtags": "#tech #shorts",
+        "yt_category_id": "28"
     }
 }
 
@@ -657,10 +660,180 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
 
 # ---------------------------------------------------------------------------
+# 5B. THEMATIC WIDESCREEN THUMBNAIL GENERATOR (PILLOW)
+# ---------------------------------------------------------------------------
+def download_pexels_image(pexels_key: str, query: str) -> Optional[str]:
+    import urllib.parse
+    print(f"Searching Pexels for thumbnail backdrop with query: '{query}'...")
+    headers = {"Authorization": pexels_key}
+    url = f"https://api.pexels.com/v1/search?query={urllib.parse.quote(query)}&per_page=1"
+    
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = json.loads(r.read().decode("utf-8"))
+        
+        photos = data.get("photos", [])
+        if photos:
+            img_url = photos[0]["src"]["large2x"]
+            print(f"Downloading Pexels backdrop: {img_url}")
+            temp_path = f"temp_thumb_bg_{os.getpid()}.jpg"
+            
+            img_req = urllib.request.Request(img_url)
+            with urllib.request.urlopen(img_req, timeout=15) as img_r:
+                with open(temp_path, "wb") as f:
+                    f.write(img_r.read())
+            return temp_path
+    except Exception as e:
+        print("Failed to download Pexels thumbnail backdrop:", e)
+    return None
+
+
+def generate_thumbnail(title: str, category: str, pexels_key: str, output_path: str = "thumbnail.jpg") -> Optional[str]:
+    print("Generating widescreen thumbnail (1280x720)...")
+    from PIL import Image, ImageDraw, ImageFont, ImageFilter
+    cat_info = CATEGORIES[category]
+    
+    # 1. Acquire backdrop image
+    bg_query = random.choice(cat_info["kw_defaults"])
+    bg_path = download_pexels_image(pexels_key, bg_query)
+    
+    if bg_path and os.path.exists(bg_path):
+        try:
+            img = Image.open(bg_path)
+            img = img.resize((1280, 720), Image.Resampling.LANCZOS)
+            # Soft focus blur to direct attention to titles
+            img = img.filter(ImageFilter.GaussianBlur(3))
+        except Exception as e:
+            print("Failed to load backdrop, using default clean dark background:", e)
+            img = Image.new("RGB", (1280, 720), color=(15, 15, 20))
+    else:
+        img = Image.new("RGB", (1280, 720), color=(15, 15, 20))
+        
+    draw = ImageDraw.Draw(img, "RGBA")
+    
+    # 2. Smooth vignette/dark overlay
+    draw.rectangle([(0, 0), (1280, 720)], fill=(10, 10, 15, 130))
+    
+    # 3. Text layout
+    font_file = download_font()
+    title_text = title.upper().strip()
+    words = title_text.split()
+    
+    lines = []
+    current_line = []
+    font_size = 70
+    font = ImageFont.truetype(font_file, font_size)
+    
+    for word in words:
+        test_line = " ".join(current_line + [word])
+        bbox = draw.textbbox((0, 0), test_line, font=font)
+        w = bbox[2] - bbox[0]
+        if w < 1000:
+            current_line.append(word)
+        else:
+            if current_line:
+                lines.append(" ".join(current_line))
+            current_line = [word]
+    if current_line:
+        lines.append(" ".join(current_line))
+        
+    # Calculate dimensions
+    total_height = 0
+    line_spacing = 15
+    line_heights = []
+    line_widths = []
+    
+    for line in lines:
+        bbox = draw.textbbox((0, 0), line, font=font)
+        w = bbox[2] - bbox[0]
+        h = bbox[3] - bbox[1]
+        line_widths.append(w)
+        line_heights.append(h)
+        total_height += h + line_spacing
+        
+    total_height -= line_spacing
+    
+    start_y = (720 - total_height) // 2 + 40
+    
+    def is_highlight(wrd: str) -> bool:
+        clean = re.sub(r"[^\w]", "", wrd.upper())
+        fillers = {
+            "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
+            "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
+            "FROM", "ARE", "WERE", "BEEN", "BUT", "SO", "IF"
+        }
+        return clean not in fillers
+        
+    # Draw text with highlighted keywords and drop-shadows
+    for idx, line in enumerate(lines):
+        line_words = line.split()
+        line_w = line_widths[idx]
+        start_x = (1280 - line_w) // 2
+        y = start_y
+        
+        for word in line_words:
+            # Color: Neon Yellow for key concepts, pure white for fillers
+            color = (255, 235, 59, 255) if is_highlight(word) else (255, 255, 255, 255)
+            
+            # Shadow offset
+            draw.text((start_x + 4, y + 4), word, font=font, fill=(0, 0, 0, 200))
+            draw.text((start_x, y), word, font=font, fill=color)
+            
+            word_bbox = draw.textbbox((0, 0), word, font=font)
+            space_bbox = draw.textbbox((0, 0), " ", font=font)
+            word_w = word_bbox[2] - word_bbox[0]
+            space_w = space_bbox[2] - space_bbox[0]
+            start_x += word_w + space_w
+            
+        start_y += line_heights[idx] + line_spacing
+        
+    # 4. Brand Category badge
+    badge_text = cat_info["db_key"].upper() + " DOCUMENTARY"
+    badge_font = ImageFont.truetype(font_file, 26)
+    badge_bbox = draw.textbbox((0, 0), badge_text, font=badge_font)
+    badge_w = badge_bbox[2] - badge_bbox[0]
+    badge_h = badge_bbox[3] - badge_bbox[1]
+    
+    badge_x = (1280 - badge_w) // 2
+    badge_y = 55
+    
+    # Theme-colored pill backgrounds
+    if category == "Morbid or Silly History Facts":
+        badge_color = (229, 57, 53, 230)      # Crimson Red
+    elif category == "Exciting Tech Facts":
+        badge_color = (67, 160, 71, 230)       # Green
+    else:
+        badge_color = (30, 144, 255, 230)      # Dodger Blue
+        
+    padding_x = 24
+    padding_y = 8
+    draw.rounded_rectangle(
+        [badge_x - padding_x, badge_y - padding_y, badge_x + badge_w + padding_x, badge_y + badge_h + padding_y],
+        radius=14,
+        fill=badge_color
+    )
+    
+    draw.text((badge_x + 1, badge_y + 1), badge_text, font=badge_font, fill=(0, 0, 0, 160))
+    draw.text((badge_x, badge_y), badge_text, font=badge_font, fill=(255, 255, 255, 255))
+    
+    img.save(output_path, "JPEG", quality=95)
+    print(f"Thumbnail saved successfully to: {output_path}")
+    
+    if bg_path and os.path.exists(bg_path):
+        try:
+            os.remove(bg_path)
+        except Exception:
+            pass
+            
+    return output_path
+
+
+# ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER WITH PINNED COMMENT
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space") -> None:
-    print("Uploading to YouTube Shorts...")
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None) -> None:
+    print("Uploading to YouTube...")
     creds = Credentials(
         token=None,
         refresh_token=refresh_token,
@@ -671,12 +844,15 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
     )
     youtube = build("youtube", "v3", credentials=creds)
 
+    cat_data = CATEGORIES.get(category, CATEGORIES[list(CATEGORIES.keys())[0]])
+    category_id = cat_data.get("yt_category_id", "28")
+
     body = {
         "snippet": {
             "title": title,
             "description": description,
-            "tags": CATEGORIES.get(category, CATEGORIES[list(CATEGORIES.keys())[0]])["yt_tags"],
-            "categoryId": "28"
+            "tags": cat_data["yt_tags"],
+            "categoryId": category_id
         },
         "status": {
             "privacyStatus": "public",
@@ -697,6 +873,18 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
 
     video_id = response.get("id")
     print(f"YouTube upload successful! Video ID: {video_id}")
+
+    # Upload custom thumbnail if generated
+    if video_id and thumbnail_path and Path(thumbnail_path).exists():
+        print(f"Uploading custom thumbnail {thumbnail_path} for video {video_id}...")
+        try:
+            youtube.thumbnails().set(
+                videoId=video_id,
+                media_body=MediaFileUpload(thumbnail_path, mimetype="image/jpeg")
+            ).execute()
+            print("Successfully uploaded custom thumbnail.")
+        except Exception as e:
+            print("Failed to upload custom thumbnail:", e)
 
     if video_id and playlist_id:
         print(f"Adding video {video_id} to playlist {playlist_id}...")
@@ -1076,6 +1264,7 @@ def run_daily_upload_pipeline_once() -> None:
 
     # 2. Rendering block
     output_path = "final_output.mp4"
+    thumbnail_path = None
 
     if config.is_short:
         # Standard Shorts path (single segment)
@@ -1086,9 +1275,20 @@ def run_daily_upload_pipeline_once() -> None:
     else:
         # Long-form path (stitch multiple segments)
         segment_files = []
+        segment_durations = []
         for idx, seg in enumerate(segments):
             print(f"\n--- Rendering Segment {idx + 1}/{len(segments)}: {seg['topic']} ---")
             seg_audio_path, seg_subs_list = generate_audio_and_subtitles(seg["script"], category, f"longform_seg_{idx}")
+            
+            # Record segment audio duration for automated description chapters
+            try:
+                ac = AudioFileClip(seg_audio_path)
+                segment_durations.append(ac.duration)
+                ac.close()
+            except Exception as e:
+                print("Failed to read audio clip duration:", e)
+                segment_durations.append(45.0) # default fallback
+                
             seg_video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category)
             seg_output_path = f"temp_segment_{idx}_{os.getpid()}.mp4"
             
@@ -1189,6 +1389,27 @@ def run_daily_upload_pipeline_once() -> None:
             except Exception:
                 pass
 
+        # Generate automated description chapters using actual durations
+        timestamps = []
+        current_time = 0.0
+        for idx, seg in enumerate(segments):
+            minutes = int(current_time // 60)
+            seconds = int(current_time % 60)
+            timestamp_str = f"{minutes}:{seconds:02d}"
+            timestamps.append(f"{timestamp_str} - {seg['topic']}")
+            current_time += segment_durations[idx]
+            
+        description = f"{description}\n\nChapters:\n" + "\n".join(timestamps)
+        print("Updated description with dynamic chapters:\n", description)
+
+        # Generate widescreen thumbnail (Pillow)
+        try:
+            thumbnail_path = f"thumbnail_{os.getpid()}.jpg"
+            generate_thumbnail(title, category, pexels_key, thumbnail_path)
+        except Exception as e:
+            print("Failed to generate custom thumbnail:", e)
+            thumbnail_path = None
+
     try:
         # Initialize credential variables
         tiktok_client_key     = os.environ.get("TIKTOK_CLIENT_KEY")
@@ -1206,7 +1427,7 @@ def run_daily_upload_pipeline_once() -> None:
         if youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
                 upload_to_youtube(output_path, title, description,
-                                  youtube_client_id, youtube_client_secret, youtube_refresh_token, playlist_id, category)
+                                  youtube_client_id, youtube_client_secret, youtube_refresh_token, playlist_id, category, thumbnail_path)
             except Exception as e:
                 if "quotaExceeded" in str(e):
                     print("WARNING: YouTube quota exceeded — upload skipped.")
@@ -1245,13 +1466,18 @@ def run_daily_upload_pipeline_once() -> None:
         update_heartbeat_and_push()
 
     finally:
-        # Clean up rendered video file
+        # Clean up rendered video file and thumbnail
         try:
             op = Path(output_path)
             if op.exists():
                 op.unlink()
         except Exception as e:
             print(f"Could not remove {output_path}:", e)
+        if thumbnail_path and os.path.exists(thumbnail_path):
+            try:
+                os.remove(thumbnail_path)
+            except Exception as e:
+                print(f"Could not remove thumbnail {thumbnail_path}:", e)
 
     print("Pipeline execution complete.")
 
