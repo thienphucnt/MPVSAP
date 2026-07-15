@@ -9,7 +9,7 @@ flow = InstalledAppFlow.from_client_secrets_file(
 
 # This will launch a local server and open your browser
 print("Please authenticate in the browser window that opens...")
-credentials = flow.run_local_server(port=8080, prompt='consent')
+credentials = flow.run_local_server(port=0, prompt='consent')
 
 print("\n--- COPY THESE TO GITHUB SECRETS ---")
 print("YOUTUBE_CLIENT_ID:", credentials.client_id)
