@@ -1,11 +1,58 @@
 import os
 import re
 import sys
-import json
-import random
 import subprocess
 from pathlib import Path
 from google import genai
+from google.genai import types
+
+# Define developer tools for Gemini to use autonomously
+def read_file(path: str) -> str:
+    """Reads the contents of a file in the workspace. The path must be relative to the repository root."""
+    p = Path(path)
+    if not p.exists():
+        return f"Error: File '{path}' does not exist."
+    try:
+        return p.read_text(encoding="utf-8", errors="ignore")
+    except Exception as e:
+        return f"Error reading file: {e}"
+
+def write_file(path: str, content: str) -> str:
+    """Creates or overwrites a file with the specified content. The path must be relative to the repository root."""
+    p = Path(path)
+    try:
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(content, encoding="utf-8")
+        return f"Successfully wrote content to '{path}'"
+    except Exception as e:
+        return f"Error writing file: {e}"
+
+def list_dir(path: str = ".") -> str:
+    """Lists files and folders inside the specified directory path. The path must be relative to the repository root."""
+    p = Path(path)
+    if not p.exists() or not p.is_dir():
+        return f"Error: '{path}' is not a valid directory."
+    try:
+        entries = []
+        for x in p.iterdir():
+            t = "DIR" if x.is_dir() else "FILE"
+            entries.append(f"[{t}] {x.name}")
+        return "\n".join(entries) if entries else "(Empty directory)"
+    except Exception as e:
+        return f"Error listing directory: {e}"
+
+def run_command(command: str) -> str:
+    """Runs a shell/terminal command in the workspace and returns the exit code, stdout, and stderr."""
+    print(f"--- Running agent command: {command} ---")
+    try:
+        # Run in bash shell with 120s timeout
+        res = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=120)
+        output = f"Exit Code: {res.returncode}\nStdout:\n{res.stdout}\nStderr:\n{res.stderr}"
+        return output
+    except subprocess.TimeoutExpired:
+        return "Error: Command execution timed out after 120 seconds."
+    except Exception as e:
+        return f"Error running command: {e}"
 
 def main():
     print("Starting Antigravity GitHub Bot Agent...")
@@ -66,101 +113,48 @@ def main():
             print(f"\nERROR: Video generation pipeline failed with exit code: {pipeline_res.returncode}")
             sys.exit(pipeline_res.returncode)
 
-    # 3. Default coding flow (if not a run request)
-    main_path = Path("main.py")
-    main_content = main_path.read_text(encoding="utf-8", errors="ignore") if main_path.exists() else ""
-
+    # 3. Autonomous Tool-Use Agent execution
+    print("\n[AGENTIC DEV WORKFLOW DETECTED] Initializing Gemini autonomous coding loop...")
     client = genai.Client(api_key=api_key)
 
     system_instruction = (
-        "You are Antigravity, an expert agentic AI software developer. "
-        "Your task is to analyze the user's prompt request, inspect the codebase, and write the necessary code changes. "
-        "Return your response ONLY as a valid JSON object matching the format below. Do not include markdown code block tags (like ```json), quotes, or extra text.\n"
-        "JSON Schema:\n"
-        "{\n"
-        '  "explanation": "<explain what you did>",\n'
-        '  "files": [\n'
-        "    {\n"
-        '      "path": "relative/path/to/file.py",\n'
-        '      "content": "<full file content including modifications>"\n'
-        "    }\n"
-        "  ]\n"
-        "}"
-    )
-
-    user_prompt = (
-        f"User Prompt Request:\n"
-        f"==================================================\n"
-        f"{prompt_text}\n"
-        f"==================================================\n\n"
-        f"Current 'main.py' codebase:\n"
-        f"==================================================\n"
-        f"{main_content}\n"
-        f"==================================================\n"
+        "You are Antigravity, a powerful autonomous agentic AI coding assistant running on a GitHub Actions VM. "
+        "Your goal is to inspect the codebase and implement the user's issue request completely. "
+        "You have full tool capabilities to list directory structures, read code files, write/update code files, "
+        "and execute shell commands (e.g. running python scripts, compiling code, or running tests). "
+        "Instructions:\n"
+        "1. Inspect files and search contents to understand the repository structure.\n"
+        "2. Make the edits necessary to resolve the prompt.\n"
+        "3. You must verify that your changes are correct and compile successfully (e.g. run 'python -m py_compile main.py' or equivalent) before you finish.\n"
+        "4. When you are done, summarize what changes you made and present them clearly in your final response text."
     )
 
     model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
-    response = None
+    success = False
     
     for model in model_fallback_chain:
         try:
-            print(f"Calling Gemini using model: {model}...")
+            print(f"Starting agent run using model: {model}...")
             response = client.models.generate_content(
                 model=model,
-                contents=user_prompt,
-                config={"system_instruction": system_instruction}
+                contents=f"User request: {prompt_text}",
+                config=types.GenerateContentConfig(
+                    system_instruction=system_instruction,
+                    tools=[read_file, write_file, list_dir, run_command]
+                )
             )
+            print("\nAgent run completed. Response summary:")
+            print(response.text)
+            success = True
             break
         except Exception as e:
-            print(f"Error calling {model}: {e}. Trying next model...")
+            print(f"Error executing agent with {model}: {e}. Trying next model...")
 
-    if not response or not response.text:
-        print("Error: Failed to get response from Gemini.")
+    if not success:
+        print("Error: Agent run failed across all models.")
         sys.exit(1)
 
-    text = response.text.strip()
-    if text.startswith("```json"):
-        text = text[7:]
-    if text.endswith("```"):
-        text = text[:-3]
-    text = text.strip()
-
-    try:
-        data = json.loads(text)
-    except Exception as e:
-        print(f"ERROR: Could not parse response as JSON. Raw text was:\n{text}")
-        sys.exit(1)
-
-    explanation = data.get("explanation", "No explanation provided.")
-    files_to_update = data.get("files", [])
-
-    print(f"\nAI Explanation of changes:\n{explanation}\n")
-
-    for file_info in files_to_update:
-        rel_path = file_info.get("path")
-        content = file_info.get("content")
-        if not rel_path or not content:
-            continue
-
-        target_path = Path(rel_path)
-        print(f"Writing updates to {target_path}...")
-        target_path.parent.mkdir(parents=True, exist_ok=True)
-        target_path.write_text(content, encoding="utf-8")
-        print(f"Successfully wrote {target_path}")
-
-    print("Checking if codebase compiles clean...")
-    import py_compile
-    for file_info in files_to_update:
-        rel_path = file_info.get("path")
-        if rel_path and rel_path.endswith(".py"):
-            try:
-                py_compile.compile(rel_path, doraise=True)
-                print(f"  {rel_path} compiled successfully!")
-            except Exception as e:
-                print(f"  ERROR: {rel_path} has syntax errors: {e}")
-                sys.exit(1)
-
-    print("AI Bot changes applied successfully.")
+    print("AI Bot agent changes applied and verified successfully.")
 
 if __name__ == "__main__":
     main()
