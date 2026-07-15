@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import json
 import subprocess
 from pathlib import Path
 from google import genai
@@ -131,6 +132,31 @@ def main():
 
     # 3. Autonomous Tool-Use Agent execution
     print("\n[AGENTIC DEV WORKFLOW DETECTED] Initializing Gemini autonomous coding loop...")
+
+    # Load issue context history if available
+    issue_context_path = Path("issue_context.json")
+    conversation_history = ""
+    if issue_context_path.exists():
+        try:
+            with open(issue_context_path, "r", encoding="utf-8") as f:
+                issue_data = json.load(f)
+            
+            title = issue_data.get("title", "")
+            body = issue_data.get("body", "")
+            comments = issue_data.get("comments", [])
+            
+            conversation_history += f"Issue Title: {title}\n"
+            conversation_history += f"Issue Description:\n===================\n{body}\n===================\n\n"
+            conversation_history += "Conversation History:\n"
+            
+            for comment in comments:
+                author = comment.get("author", {}).get("login", "unknown")
+                comment_body = comment.get("body", "")
+                created_at = comment.get("createdAt", "")
+                conversation_history += f"- [{author} at {created_at}]: {comment_body}\n"
+        except Exception as e:
+            print("Failed to parse issue context:", e)
+
     client = genai.Client(api_key=api_key)
 
     system_instruction = (
@@ -138,6 +164,7 @@ def main():
         "Your goal is to inspect the codebase and implement the user's issue request completely. "
         "You have full tool capabilities to list directory structures, read code files, write/update code files, "
         "and execute shell commands (e.g. running python scripts, compiling code, or running tests). "
+        "You are given the full conversation history of the GitHub issue thread for context. "
         "Instructions:\n"
         "1. Inspect files and search contents to understand the repository structure.\n"
         "2. Make the edits necessary to resolve the prompt.\n"
@@ -156,9 +183,21 @@ def main():
         for attempt in range(max_retries):
             try:
                 print(f"Starting agent run using model: {model} (attempt {attempt + 1}/{max_retries})...")
+                
+                # Construct context-aware prompt
+                prompt_content = f"User Request: {prompt_text}\n"
+                if conversation_history:
+                    prompt_content = (
+                        f"Here is the context of the GitHub Issue thread conversation so far:\n"
+                        f"==================================================\n"
+                        f"{conversation_history}\n"
+                        f"==================================================\n\n"
+                        f"Please fulfill the user's latest request: '{prompt_text}' based on this conversation context."
+                    )
+                
                 response = client.models.generate_content(
                     model=model,
-                    contents=f"User request: {prompt_text}",
+                    contents=prompt_content,
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
                         tools=[read_file, write_file, list_dir, run_command]

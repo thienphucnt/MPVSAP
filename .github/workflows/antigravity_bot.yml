@@ -23,6 +23,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Fetch Issue Context
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue view ${{ github.event.issue.number }} --json title,body,comments > issue_context.json
+
+
       - name: Extract Prompt
         id: extract_prompt
         run: |
