@@ -908,7 +908,7 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
 # ---------------------------------------------------------------------------
 # MAIN CONTROLLER
 # ---------------------------------------------------------------------------
-def main() -> None:
+def run_daily_upload_pipeline_once() -> None:
     print("Starting automated short-form video generation pipeline (triggered manually)...")
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
@@ -1070,4 +1070,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    run_daily_upload_pipeline_once()
