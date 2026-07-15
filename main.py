@@ -23,7 +23,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # MoviePy
-from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, concatenate_videoclips, TextClip
+from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, concatenate_videoclips, TextClip, concatenate_audioclips
 from moviepy.video.fx.all import loop
 from moviepy.audio.fx.all import audio_loop
 
@@ -334,7 +334,7 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 # ---------------------------------------------------------------------------
 # 4. PEXELS VIDEO DOWNLOADER
 # ---------------------------------------------------------------------------
-def download_pexels_videos(api_key: str, keywords: List[str], category: str) -> List[str]:
+def download_pexels_videos(api_key: str, keywords: List[str], category: str, orientation: str = "portrait") -> List[str]:
     print("Preparing download of background video clips from Pexels...")
     cat_info = CATEGORIES[category]
 
@@ -350,7 +350,7 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str) -> 
 
     def fetch_and_download(kw: str, index: int) -> str:
         print(f"Searching Pexels for keyword: '{kw}'...")
-        params = {"query": kw, "orientation": "portrait", "size": "medium", "per_page": 5}
+        params = {"query": kw, "orientation": orientation, "size": "medium", "per_page": 5}
         try:
             resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
             resp.raise_for_status()
@@ -1384,134 +1384,76 @@ def run_daily_upload_pipeline_once() -> None:
         # Standard Shorts path (single segment)
         seg = segments[0]
         audio_path, subs_list = generate_audio_and_subtitles(seg["script"], category, seg["topic"])
-        video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category)
+        video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category, orientation="portrait")
         assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)
     else:
-        # Long-form path (stitch multiple segments)
-        segment_files = []
+        # Long-form path: single-pass rendering to avoid nested re-encoding
+        all_video_paths = []
+        all_audio_paths = []
+        all_subs_list = []
         segment_durations = []
+        current_time = 0.0
+
         for idx, seg in enumerate(segments):
-            print(f"\n--- Rendering Segment {idx + 1}/{len(segments)}: {seg['topic']} ---")
+            print(f"\n--- Preparing Segment {idx + 1}/{len(segments)}: {seg['topic']} ---")
             seg_audio_path, seg_subs_list = generate_audio_and_subtitles(seg["script"], category, f"longform_seg_{idx}")
             
             # Record segment audio duration for automated description chapters
             try:
                 ac = AudioFileClip(seg_audio_path)
-                segment_durations.append(ac.duration)
+                dur = ac.duration
+                segment_durations.append(dur)
                 ac.close()
             except Exception as e:
                 print("Failed to read audio clip duration:", e)
-                segment_durations.append(45.0) # default fallback
+                dur = 45.0 # default fallback
+                segment_durations.append(dur)
                 
-            seg_video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category)
-            seg_output_path = f"temp_segment_{idx}_{os.getpid()}.mp4"
+            # Offset subtitles for the current segment to align with concatenated audio timeline
+            for (start, end), text in seg_subs_list:
+                all_subs_list.append(((start + current_time, end + current_time), text))
             
-            # Assemble segment voice-only (no background music)
-            assemble_video(seg_video_paths, seg_audio_path, seg_subs_list, seg_output_path, category, config, mix_music=False)
-            segment_files.append(seg_output_path)
+            # Download Pexels clips with unique prefixes to prevent filename collision
+            seg_video_paths = download_pexels_videos(
+                pexels_key, 
+                seg["visual_keywords"], 
+                category, 
+                orientation="landscape",
+                filename_prefix=f"seg{idx}"
+            )
+            all_video_paths.extend(seg_video_paths)
+            all_audio_paths.append(seg_audio_path)
+            current_time += dur
 
-        # Concatenate all clips
-        print("\n--- Concatenating all segments into final long-form video ---")
-        clips = [VideoFileClip(f) for f in segment_files]
-        concatenated_video = concatenate_videoclips(clips)
+        # Concatenate all segment audio files into a single master audio track
+        print("\n--- Concatenating all segment audio files ---")
+        audio_clips = [AudioFileClip(p) for p in all_audio_paths]
+        concat_audio = concatenate_audioclips(audio_clips)
+        master_audio_path = f"master_audio_{os.getpid()}.wav"
+        concat_audio.write_audiofile(master_audio_path, fps=44100, logger=None)
+        concat_audio.close()
+        for ac in audio_clips:
+            ac.close()
 
-        # Mix a continuous background music track across the entire video
-        music_dir = Path("music")
-        cat_info = CATEGORIES[category]
-        cat_music_dir = music_dir / cat_info["music_subfolder"]
-        target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
-
-        mixed = False
-        mixed_audio_path = f"mixed-longform-{os.getpid()}.wav"
-        if target_dir.exists() and target_dir.is_dir():
-            music_files = list(target_dir.glob("*.mp3"))
-            if not music_files and target_dir != music_dir:
-                music_files = list(music_dir.glob("*.mp3"))
-
-            if music_files:
-                music_path = random.choice(music_files)
-                print(f"Selected continuous background music: {music_path.name}")
-                try:
-                    voice_temp_path = f"temp-voice-{os.getpid()}.wav"
-                    concatenated_video.audio.write_audiofile(voice_temp_path, fps=44100, logger=None)
-                    total_duration = concatenated_video.duration
-
-                    # Loop/crop background music to match total duration
-                    m = AudioFileClip(str(music_path))
-                    if m.duration < total_duration:
-                        m = audio_loop(m, duration=total_duration)
-                    else:
-                        max_start = max(0, m.duration - total_duration - 5)
-                        start_time = random.uniform(0, max_start)
-                        m = m.subclip(start_time, start_time + total_duration)
-
-                    music_temp_path = f"temp-music-{os.getpid()}.wav"
-                    music_clip = m.volumex(0.18) # 0.18 volume level for background track
-                    music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
-                    m.close()
-                    music_clip.close()
-
-                    # Mix
-                    cmd = [
-                        "ffmpeg", "-y",
-                        "-i", voice_temp_path,
-                        "-i", music_temp_path,
-                        "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0",
-                        "-c:a", "pcm_s16le",
-                        mixed_audio_path
-                    ]
-                    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-                    if os.path.exists(voice_temp_path):
-                        os.remove(voice_temp_path)
-                    if os.path.exists(music_temp_path):
-                        os.remove(music_temp_path)
-
-                    final_audio = AudioFileClip(mixed_audio_path)
-                    concatenated_video = concatenated_video.set_audio(final_audio)
-                    mixed = True
-                except Exception as e:
-                    print("Failed to mix continuous music for long-form:", e)
-
-        print(f"Rendering final concatenated video to {output_path}...")
-        temp_audio = f"temp-audio-{os.getpid()}.m4a"
-        concatenated_video.write_videofile(
-            output_path,
-            fps=30,
-            codec="libx264",
-            audio_codec="aac",
-            temp_audiofile=temp_audio,
-            remove_temp=True,
-            threads=2,
-            preset="ultrafast",
-            logger=None
-        )
-
-        concatenated_video.close()
-        for c in clips:
-            c.close()
-
-        # Clean up temporary segments
-        for f in segment_files:
+        # Clean up individual segment audio files now that they are merged
+        for p in all_audio_paths:
             try:
-                os.remove(f)
+                os.remove(p)
             except Exception:
                 pass
-        if mixed and os.path.exists(mixed_audio_path):
-            try:
-                os.remove(mixed_audio_path)
-            except Exception:
-                pass
+
+        # Call assemble_video to perform the single-pass video render and burn all subtitles
+        assemble_video(all_video_paths, master_audio_path, all_subs_list, output_path, category, config, mix_music=True)
 
         # Generate automated description chapters using actual durations
         timestamps = []
-        current_time = 0.0
+        chap_time = 0.0
         for idx, seg in enumerate(segments):
-            minutes = int(current_time // 60)
-            seconds = int(current_time % 60)
+            minutes = int(chap_time // 60)
+            seconds = int(chap_time % 60)
             timestamp_str = f"{minutes}:{seconds:02d}"
             timestamps.append(f"{timestamp_str} - {seg['topic']}")
-            current_time += segment_durations[idx]
+            chap_time += segment_durations[idx]
             
         description = f"{description}\n\nChapters:\n" + "\n".join(timestamps)
         print("Updated description with dynamic chapters:\n", description)
