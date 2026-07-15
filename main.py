@@ -590,7 +590,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         if ap.exists():
             ap.unlink()
     except Exception as e:
-        print(f"Could not remove {audio_path}:", e)
+            print(f"Could not remove {audio_path}:", e)
 
     print("Assembly complete.")
     return output_path
@@ -909,7 +909,7 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
 # MAIN CONTROLLER
 # ---------------------------------------------------------------------------
 def main() -> None:
-    print("Starting automated short-form video generation pipeline...")
+    print("Starting automated short-form video generation pipeline (triggered manually)...")
 
     gemini_key  = os.environ.get("GEMINI_API_KEY")
     pexels_key  = os.environ.get("PEXELS_API_KEY")
