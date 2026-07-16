@@ -1,10 +1,5 @@
 [
   {
-    "category": "history",
-    "title": "Why Victorians Wore Dead Peoples Hair",
-    "timestamp": "2026-07-11T09:15:18.564992"
-  },
-  {
     "category": "space",
     "title": "The Terrifying Reason Space Is Silent",
     "timestamp": "2026-07-11T12:48:24.305003"
@@ -531,6 +526,14 @@
     "topic": "Body Snatching",
     "timestamp": "2026-07-15T21:08:10.901808",
     "youtube_video_id": "Me5z7Am5p0U",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "They Built a Sun... In a Lab! #tech #shorts",
+    "topic": "Fusion Ignition",
+    "timestamp": "2026-07-16T02:55:12.119985",
+    "youtube_video_id": "Qo2v4wUnl4Q",
     "is_long": false
   }
 ]
