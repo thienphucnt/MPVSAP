@@ -1,11 +1,6 @@
 [
   {
     "category": "tech",
-    "title": "This Tech Repairs Itself! Mind Blown",
-    "timestamp": "2026-07-11T20:37:27.199373"
-  },
-  {
-    "category": "tech",
     "title": "New AI Thinks Like a Human!",
     "timestamp": "2026-07-12T01:25:15.381119"
   },
@@ -540,6 +535,14 @@
     "topic": "Dark Energy",
     "timestamp": "2026-07-16T10:17:11.443129",
     "youtube_video_id": "qrueRUHyKnw",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "The Ultimate Cosmic Reset #space #shorts",
+    "topic": "Vacuum Decay",
+    "timestamp": "2026-07-16T14:06:12.953016",
+    "youtube_video_id": "oVBPCav-EmM",
     "is_long": false
   }
 ]
