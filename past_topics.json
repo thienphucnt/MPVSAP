@@ -1,11 +1,6 @@
 [
   {
     "category": "tech",
-    "title": "This Crystal Defies Physics!",
-    "timestamp": "2026-07-11T16:41:13.746288"
-  },
-  {
-    "category": "tech",
     "title": "This Tech Repairs Itself! Mind Blown",
     "timestamp": "2026-07-11T20:37:27.199373"
   },
@@ -537,6 +532,14 @@
     "topic": "Headless Chicken",
     "timestamp": "2026-07-16T06:27:11.756434",
     "youtube_video_id": "DJOo2XgL0g8",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "Dark Energy: The Universe's Silent Killer #space #shorts",
+    "topic": "Dark Energy",
+    "timestamp": "2026-07-16T10:17:11.443129",
+    "youtube_video_id": "qrueRUHyKnw",
     "is_long": false
   }
 ]
