@@ -696,7 +696,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         start_time = random.uniform(0, max_start)
                         m = m.subclip(start_time, start_time + audio_duration)
                     
-                    music_clip = m.volumex(0.18)
+                    music_clip = m.volumex(0.08)
                     music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
 
                     # Mix using ffmpeg
