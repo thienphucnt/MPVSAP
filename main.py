@@ -177,7 +177,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
             "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
             "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
-            "Task 2 — visual_keywords: An array of 6 highly generic, atmospheric search terms (e.g. ['deep space', 'pitch black darkness', 'stars', 'nebula', 'galaxy', 'black hole'] instead of literal script terms) suitable for Pexels search.\n\n"
+            "Task 2 — visual_keywords: An array of 6 concrete, literal search terms describing the actual entities, animals, actions, or settings mentioned in the script (e.g., if writing about a headless chicken, output ['chicken', 'rooster', 'farm animal', 'poultry farm', 'farmland', 'vintage farm'] instead of abstract loops) that are highly searchable on stock video websites.\n\n"
             "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
             "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
             "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
