@@ -1,10 +1,5 @@
 [
   {
-    "category": "history",
-    "title": "Renting Pineapples Was Once a Status Symbol",
-    "timestamp": "2026-07-12T16:43:51.232515"
-  },
-  {
     "category": "space",
     "title": "The Terrifying Silence of Space",
     "timestamp": "2026-07-12T20:35:06.697002"
@@ -555,6 +550,14 @@
     "topic": "CMB Cold Spot",
     "timestamp": "2026-07-17T06:24:16.598496",
     "youtube_video_id": "glra_MwveMo",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "Invisible Computers Are Watching Us #tech #shorts",
+    "topic": "Smart Dust",
+    "timestamp": "2026-07-17T10:06:11.356049",
+    "youtube_video_id": "6YmqxLwwFA8",
     "is_long": false
   }
 ]
