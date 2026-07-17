@@ -1,10 +1,5 @@
 [
   {
-    "category": "space",
-    "title": "The Universes Vanishing Act",
-    "timestamp": "2026-07-12T12:50:33.339325"
-  },
-  {
     "category": "history",
     "title": "Renting Pineapples Was Once a Status Symbol",
     "timestamp": "2026-07-12T16:43:51.232515"
@@ -552,6 +547,14 @@
     "topic": "Great Stink",
     "timestamp": "2026-07-17T02:58:11.875724",
     "youtube_video_id": "eF4RfJBCBuo",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "The Universe's Terrifying Cold Spot #space #shorts",
+    "topic": "CMB Cold Spot",
+    "timestamp": "2026-07-17T06:24:16.598496",
+    "youtube_video_id": "glra_MwveMo",
     "is_long": false
   }
 ]
