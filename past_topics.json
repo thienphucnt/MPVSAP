@@ -1,11 +1,6 @@
 [
   {
     "category": "space",
-    "title": "Spaces Terrifying True Emptiness",
-    "timestamp": "2026-07-12T09:42:16.410219"
-  },
-  {
-    "category": "space",
     "title": "The Universes Vanishing Act",
     "timestamp": "2026-07-12T12:50:33.339325"
   },
@@ -549,6 +544,14 @@
     "topic": "Tabby's Star Mystery",
     "timestamp": "2026-07-16T21:09:14.587623",
     "youtube_video_id": "py82lilS4Vs",
+    "is_long": false
+  },
+  {
+    "category": "history",
+    "title": "The Smell That Shut Down London #history #shorts",
+    "topic": "Great Stink",
+    "timestamp": "2026-07-17T02:58:11.875724",
+    "youtube_video_id": "eF4RfJBCBuo",
     "is_long": false
   }
 ]
