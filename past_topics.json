@@ -1,10 +1,5 @@
 [
   {
-    "category": "history",
-    "title": "Australia declared war on BIRDS",
-    "timestamp": "2026-07-13T01:26:33.293194"
-  },
-  {
     "category": "tech",
     "title": "Sound Can Now Sculpt Matter!",
     "topic": "Acoustic Levitation",
@@ -561,6 +556,14 @@
     "topic": "London Beer Flood",
     "timestamp": "2026-07-17T13:50:15.986876",
     "youtube_video_id": "85HxhsbeA_4",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "Diamond Batteries: Immortal Energy! #tech #shorts",
+    "topic": "Diamond Batteries",
+    "timestamp": "2026-07-17T17:20:12.958853",
+    "youtube_video_id": "e5a5SLW52gE",
     "is_long": false
   }
 ]
