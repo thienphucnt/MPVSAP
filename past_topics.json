@@ -1,11 +1,6 @@
 [
   {
     "category": "space",
-    "title": "Your Beautiful Stars Are Lying",
-    "timestamp": "2026-07-13T02:07:55.873741"
-  },
-  {
-    "category": "space",
     "title": "Your reality could vanish right now.",
     "timestamp": "2026-07-13T02:07:55.873743"
   },
@@ -581,6 +576,14 @@
     "topic": "Bentham's Auto-Icon",
     "timestamp": "2026-07-18T17:05:13.837923",
     "youtube_video_id": "ZnrfaZupsKA",
+    "is_long": false
+  },
+  {
+    "category": "history",
+    "title": "Ancient Head Surgery Was Horrific! #history #shorts",
+    "topic": "Ancient Trepanation",
+    "timestamp": "2026-07-18T20:58:11.635130",
+    "youtube_video_id": "-9nmugvHN4g",
     "is_long": false
   }
 ]
