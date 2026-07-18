@@ -1,11 +1,6 @@
 [
   {
     "category": "space",
-    "title": "Our Galaxy is Racing Towards WHAT?!",
-    "timestamp": "2026-07-13T02:07:55.873736"
-  },
-  {
-    "category": "space",
     "title": "Your Universe Is FAKE",
     "timestamp": "2026-07-13T02:07:55.873738"
   },
@@ -572,6 +567,14 @@
     "topic": "Pig War",
     "timestamp": "2026-07-18T06:12:19.455149",
     "youtube_video_id": "cgR1UbwW8MQ",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "Stars Ejected Into Cosmic Exile #space #shorts",
+    "topic": "Hypervelocity Stars",
+    "timestamp": "2026-07-18T09:41:13.814145",
+    "youtube_video_id": "nDTBS73Mykg",
     "is_long": false
   }
 ]
