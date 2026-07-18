@@ -1,11 +1,6 @@
 [
   {
     "category": "space",
-    "title": "Something Is Pulling Us",
-    "timestamp": "2026-07-13T02:07:55.873720"
-  },
-  {
-    "category": "space",
     "title": "Something UNSEEN is Dragging Our Galaxy",
     "timestamp": "2026-07-13T02:07:55.873734"
   },
@@ -566,6 +561,14 @@
     "topic": "Sin-Eaters",
     "timestamp": "2026-07-17T21:04:17.722871",
     "youtube_video_id": "39SLdlkDER8",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "We're Trapped in a Cosmic Void #space #shorts",
+    "topic": "KBC Void",
+    "timestamp": "2026-07-18T02:50:13.729119",
+    "youtube_video_id": "oqDWlA_9LZY",
     "is_long": false
   }
 ]
