@@ -1,11 +1,6 @@
 [
   {
     "category": "space",
-    "title": "Your reality could vanish right now.",
-    "timestamp": "2026-07-13T02:07:55.873743"
-  },
-  {
-    "category": "space",
     "title": "You Wont See This Apocalypse Coming",
     "timestamp": "2026-07-13T02:07:55.873744"
   },
@@ -584,6 +579,14 @@
     "topic": "Ancient Trepanation",
     "timestamp": "2026-07-18T20:58:11.635130",
     "youtube_video_id": "-9nmugvHN4g",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "Buildings That BREATHE?! #tech #shorts",
+    "topic": "Bio-Engineered Carbon Capture",
+    "timestamp": "2026-07-19T03:19:12.174729",
+    "youtube_video_id": "NnxXv8hBDuI",
     "is_long": false
   }
 ]
