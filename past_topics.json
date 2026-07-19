@@ -1,11 +1,5 @@
 [
   {
-    "category": "history",
-    "title": "When Londons river was a killer",
-    "topic": "Great Stink",
-    "timestamp": "2026-07-13T02:08:19.874753"
-  },
-  {
     "category": "space",
     "title": "Worlds Without Suns Are Terrifying",
     "topic": "Rogue Planets",
@@ -590,6 +584,14 @@
     "topic": "Stray Dog War",
     "timestamp": "2026-07-19T06:37:11.462860",
     "youtube_video_id": "j13UUdU3Sjw",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "Universe's Largest Structure is TERRIFYING #space #shorts",
+    "topic": "Cosmic Great Wall",
+    "timestamp": "2026-07-19T09:59:12.287925",
+    "youtube_video_id": "RNqN27TZ4II",
     "is_long": false
   }
 ]
