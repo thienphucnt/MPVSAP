@@ -44,6 +44,18 @@ def list_dir(path: str = ".") -> str:
 
 def run_command(command: str) -> str:
     """Runs a shell/terminal command in the workspace and returns the exit code, stdout, and stderr."""
+    # Guardrail against executing main.py directly
+    cmd_lower = command.lower()
+    if "main.py" in cmd_lower:
+        if "py_compile" in cmd_lower or "-m py_compile" in cmd_lower:
+            pass
+        else:
+            return (
+                "Error: Direct execution of the video generation/upload pipeline ('main.py') "
+                "is permanently blocked inside this coder agent environment to prevent runner time limits "
+                "and workspace corruption. Please write/update files or run tests instead."
+            )
+            
     print(f"--- Running agent command: {command} ---")
     try:
         # Run in bash shell with 120s timeout
@@ -195,14 +207,56 @@ def main():
                         f"Please fulfill the user's latest request: '{prompt_text}' based on this conversation context."
                     )
                 
-                response = client.models.generate_content(
+                # Map tool names to Python functions
+                tool_map = {
+                    "read_file": read_file,
+                    "write_file": write_file,
+                    "list_dir": list_dir,
+                    "run_command": run_command
+                }
+                
+                # Start multi-turn chat session with tools enabled
+                chat = client.chats.create(
                     model=model,
-                    contents=prompt_content,
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
                         tools=[read_file, write_file, list_dir, run_command]
                     )
                 )
+                
+                # Send prompt
+                response = chat.send_message(prompt_content)
+                
+                # Iterate on function call responses
+                max_steps = 15
+                for step in range(max_steps):
+                    function_calls = response.function_calls
+                    if not function_calls:
+                        break
+                        
+                    print(f"Step {step + 1}: Executing {len(function_calls)} tool calls...")
+                    tool_responses = []
+                    for call in function_calls:
+                        func_name = call.name
+                        func_args = call.args
+                        
+                        if func_name in tool_map:
+                            try:
+                                result = tool_map[func_name](**func_args)
+                            except Exception as ex:
+                                result = f"Error executing tool: {ex}"
+                        else:
+                            result = f"Error: Tool '{func_name}' is not recognized."
+                            
+                        print(f"  Tool '{func_name}' -> Result preview: {str(result)[:200]}...")
+                        tool_responses.append(
+                            types.Part.from_function_response(
+                                name=func_name,
+                                response={"result": result}
+                            )
+                        )
+                    response = chat.send_message(tool_responses)
+                    
                 print("\nAgent run completed. Response summary:")
                 print(response.text)
                 Path("bot_comment.md").write_text(

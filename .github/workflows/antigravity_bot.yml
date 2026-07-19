@@ -131,6 +131,12 @@ jobs:
             echo "No comment file generated."
           fi
 
+      - name: Verify Code Syntax
+        run: |
+          if [ -f main.py ]; then
+            python -m py_compile main.py
+          fi
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
