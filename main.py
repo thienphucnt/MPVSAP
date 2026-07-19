@@ -27,11 +27,11 @@ from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, con
 from moviepy.video.fx.all import loop
 from moviepy.audio.fx.all import audio_loop
 
-# Fix AttributeError: module 'PIL.Image' has no attribute 'ANTIALIAS' for MoviePy
+# Fix AttributeError: module \'PIL.Image\' has no attribute \'ANTIALIAS\' for MoviePy
 import PIL.Image
 import numpy as np
-if not hasattr(PIL.Image, 'ANTIALIAS'):
-    if hasattr(PIL.Image, 'Resampling'):
+if not hasattr(PIL.Image, \'ANTIALIAS\'):
+    if hasattr(PIL.Image, \'Resampling\'):
         PIL.Image.ANTIALIAS = PIL.Image.Resampling.LANCZOS
     else:
         PIL.Image.ANTIALIAS = PIL.Image.BICUBIC
@@ -39,7 +39,7 @@ if not hasattr(PIL.Image, 'ANTIALIAS'):
 # Global shared HTTP session for connection pooling
 HTTP_SESSION = requests.Session()
 HTTP_SESSION.headers.update({
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)"
 })
 
 # Global mapping for our three distinct content buckets
@@ -50,7 +50,7 @@ CATEGORIES = {
         "topic_desc": "a terrifying, real-life space mystery or unsettling astrophysics fact",
         "tone": "grounded but deeply ominous",
         "music_subfolder": "space",
-        "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
+        "kw_examples": "space: \'neutron star\', \'black hole\', \'supernova\', \'galaxy\', \'meteor\'",
         "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
         "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"],
         "title_hashtags": "#space #shorts",
@@ -62,7 +62,7 @@ CATEGORIES = {
         "topic_desc": "a bizarre, morbid, funny, or unsettling real historical fact (e.g. strange ancient customs, odd ruler behaviors)",
         "tone": "factual, compelling, but highly entertaining",
         "music_subfolder": "history",
-        "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
+        "kw_examples": "history: \'ancient ruins\', \'vintage map\', \'medieval armor\', \'roman colosseum\', \'egyptian pyramid\'",
         "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
         "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"],
         "title_hashtags": "#history #shorts",
@@ -74,7 +74,7 @@ CATEGORIES = {
         "topic_desc": "an exciting, mind-bending, or futuristic technology fact (e.g. quantum computing breakthrough, weird coding history, AI advancements)",
         "tone": "thrilling, cutting-edge, and highly engaging",
         "music_subfolder": "tech",
-        "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
+        "kw_examples": "technology: \'futuristic server room\', \'cyberpunk code\', \'quantum computer\', \'robotic arm\', \'artificial intelligence\'",
         "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
         "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"],
         "title_hashtags": "#tech #shorts",
@@ -89,14 +89,14 @@ class VideoFormatConfig:
         if format_type == "short":
             self.resolution = (1080, 1920)
             self.sub_fontsize = 85
-            self.sub_position = ('center', 1350)
+            self.sub_position = (\'center\', 1350)
             self.clip_count = 3
             self.segment_count = 1
             self.is_short = True
         else:
             self.resolution = (1920, 1080)
             self.sub_fontsize = 55
-            self.sub_position = ('center', 800)
+            self.sub_position = (\'center\', 800)
             self.clip_count = 3
             self.segment_count = 7
             self.is_short = False
@@ -130,7 +130,7 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
                 
                 if is_quota_or_rate_limit and attempt < max_retries - 1:
                     # Parse dynamic retry delay from Gemini API response
-                    match = re.search(r"retry in ([0-9\.]+)s", str(e))
+                    match = re.search(r"retry in ([0-9\\.]+)s", str(e))
                     if match:
                         wait_time = float(match.group(1)) + random.uniform(1, 3)
                         print(f"Gemini API requested wait. Sleeping for {wait_time:.2f}s before retry...")
@@ -160,27 +160,27 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
 
     exclude_instruction = ""
     if recent_topics:
-        exclude_instruction = f"\n- Do NOT write about, reference, or base the script on the same core concepts, subjects, or historical events as any of these recent videos: {', '.join(recent_topics)}. You must choose a completely different concept."
+        exclude_instruction = f"\\n- Do NOT write about, reference, or base the script on the same core concepts, subjects, or historical events as any of these recent videos: {\', \'.join(recent_topics)}. You must choose a completely different concept."
 
     if config.is_short:
         prompt = (
             "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
-            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
-            "{\n"
-            '  "script": "<script text>",\n'
-            '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
-            '  "title": "<title text>",\n'
-            '  "description": "<description text>",\n'
-            '  "topic": "<2-3 words naming the core concept>"\n'
-            "}\n\n"
-            f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
-            f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
+            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\\n"
+            "{\\n"
+            \'  "script": "<script text>",\\n\'
+            \'  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\\n\'
+            \'  "title": "<title text>",\\n\'
+            \'  "description": "<description text>",\\n\'
+            \'  "topic": "<2-3 words naming the core concept>"\\n\'
+            "}\\n\\n"
+            f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info[\'topic_desc\']}. "
+            f"Make it sound {cat_info[\'tone\']}. End the script with a short, 3-second Call-To-Action (e.g., \'Hit subscribe for more dark space mysteries\') "
             "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
-            "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
-            "Task 2 — visual_keywords: An array of 6 concrete, literal search terms describing the actual entities, animals, actions, or settings mentioned in the script (e.g., if writing about a headless chicken, output ['chicken', 'rooster', 'farm animal', 'poultry farm', 'farmland', 'vintage farm'] instead of abstract loops) that are highly searchable on stock video websites.\n\n"
-            "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
-            "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
-            "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
+            "Do not include stage directions, titles, or emojis. Output only the spoken text.\\n\\n"
+            "Task 2 — visual_keywords: An array of 6 concrete, literal search terms describing the actual entities, animals, actions, or settings mentioned in the script (e.g., if writing about a headless chicken, output [\'chicken\', \'rooster\', \'farm animal\', \'poultry farm\', \'farmland\', \'vintage farm\'] instead of abstract loops) that are highly searchable on stock video websites.\\n\\n"
+            "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\\n\\n"
+            "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\\n\\n"
+            "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\\n\\n"
             "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
             "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
             "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
@@ -190,28 +190,28 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
     else:
         prompt = (
             "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
-            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
-            "{\n"
-            '  "title": "<Click-worthy widescreen title between 40 and 60 characters, front-loading the primary hook>",\n'
-            '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
-            '  "segments": [\n'
-            '    {\n'
-            '      "script": "<highly engaging 95-word script>",\n'
-            '      "visual_keywords": ["literal_keyword1", "literal_keyword2", "literal_keyword3"],\n'
-            '      "topic": "<2-3 words naming the core concept of this segment>"\n'
-            '    },\n'
-            '    ... (exactly 10 candidate segments)\n'
-            '  ]\n'
-            "}\n\n"
-            f"Write a compilation of exactly 10 distinct candidate facts about {cat_info['topic_desc']}. "
-            f"Make the tone {cat_info['tone']}. Each segment must have a fast-paced 95-word script, strategically inserting ellipses (...) and em-dashes (—) for dramatic pacing.\n"
-            "CRITICAL ALGORITHMIC RETENTION DIRECTIVES:\n"
+            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\\n"
+            "{\\n"
+            \'  "title": "<Click-worthy widescreen title between 40 and 60 characters, front-loading the primary hook>",\\n\'
+            \'  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\\n\'
+            \'  "segments": [\\n\'
+            \'    {\\n\'
+            \'      "script": "<highly engaging 95-word script>",\\n\'
+            \'      "visual_keywords": ["literal_keyword1", "literal_keyword2", "literal_keyword3"],\\n\'
+            \'      "topic": "<2-3 words naming the core concept of this segment>"\\n\'
+            \'    },\\n\'
+            \'    ... (exactly 10 candidate segments)\\n\'
+            \'  ]\\n\'
+            "}\\n\\n"
+            f"Write a compilation of exactly 10 distinct candidate facts about {cat_info[\'topic_desc\']}. "
+            f"Make the tone {cat_info[\'tone\']}. Each segment must have a fast-paced 95-word script, strategically inserting ellipses (...) and em-dashes (—) for dramatic pacing.\\n"
+            "CRITICAL ALGORITHMIC RETENTION DIRECTIVES:\\n"
             "1. NO INTRO/OUTRO REPETITIONS: Individual segments must not repeat hooks or CTA calls. "
             "Only Segment 1 should contain a powerful introductory hook (0-15s) starting immediately (no welcomes or channel greetings). "
             "Middle segments (2 through 9) must contain raw, unique facts with no intros, hooks, or outros. "
-            "Only Segment 10 should append a short, natural subscribe Call-to-Action at the very end.\n"
-            "2. LITERAL B-ROLL SEARCH TERMS: In visual_keywords, provide 3 literal, concrete search terms (e.g., if writing about abstract concepts like 'quantum entanglement' or 'time dilation', output literal B-roll keywords like 'glowing particles', 'laser beam', 'clock gears', 'abstract network' instead of abstract terms) suitable for Pexels search.\n"
-            "3. UNIQUE TOPICS: Ensure each of the 10 candidate segments covers a completely different, unique fact to avoid any topical duplication.\n\n"
+            "Only Segment 10 should append a short, natural subscribe Call-to-Action at the very end.\\n"
+            "2. LITERAL B-ROLL SEARCH TERMS: In visual_keywords, provide 3 literal, concrete search terms (e.g., if writing about abstract concepts like \'quantum entanglement\' or \'time dilation\', output literal B-roll keywords like \'glowing particles\', \'laser beam\', \'clock gears\', \'abstract network\' instead of abstract terms) suitable for Pexels search.\\n"
+            "3. UNIQUE TOPICS: Ensure each of the 10 candidate segments covers a completely different, unique fact to avoid any topical duplication.\\n\\n"
             "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
             "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
             "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
@@ -219,7 +219,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             f"{exclude_instruction}"
         )
 
-    print(f"Generating script data for category '{category}' in a single call using {model_name}...")
+    print(f"Generating script data for category \'{category}\' in a single call using {model_name}...")
     response = gemini_generate_with_retry(client, model_name, prompt)
     text = response.text.strip()
     
@@ -253,7 +253,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             unique_segments = []
             for seg in raw_segments:
                 topic = seg.get("topic", "").strip().lower()
-                topic_norm = re.sub(r"[^\w]", "", topic)
+                topic_norm = re.sub(r"[^\\w]", "", topic)
                 if not topic_norm:
                     continue
                 
@@ -269,7 +269,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
                         if jaccard > 0.4:
                             is_duplicate = True
                             break
-                    seen_norm = re.sub(r"[^\w]", "", seen)
+                    seen_norm = re.sub(r"[^\\w]", "", seen)
                     if topic_norm in seen_norm or seen_norm in topic_norm:
                         is_duplicate = True
                         break
@@ -292,10 +292,10 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
     # Clean up scripts in segments
     for seg in segments:
         script = seg.get("script", "").strip()
-        script = re.sub(r'[\*_`]', '', script)
-        script = re.sub(r'\[.*?\]', '', script)
-        script = re.sub(r'\(.*?\)', '', script)
-        script = re.sub(r'\s+', ' ', script).strip()
+        script = re.sub(r\'[\\*_`]\', \'\', script)
+        script = re.sub(r\'\\[.*?\\]\', \'\', script)
+        script = re.sub(r\'\\(.*?\\)\', \'\', script)
+        script = re.sub(r\'\\s+\', \' \', script).strip()
         seg["script"] = script
 
     print("Generated Title:", title)
@@ -325,16 +325,15 @@ async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path
                 end_sec = start_sec + duration_sec
                 word_text = chunk["text"].strip()
                 # Clean punctuation from words for display
-                clean_word = re.sub(r'[^\w\s\-\'\—]', '', word_text)
+                clean_word = re.sub(r\'[^\\w\\s\\-\\\'\\—]\', \'\', word_text)
                 if clean_word:
                     words.append((start_sec, end_sec, clean_word))
                     
     return words
 
-
 def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "") -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
     print("Generating TTS voiceover via Edge TTS...")
-    clean_topic = re.sub(r"[^\w]", "_", topic) if topic else "voice"
+    clean_topic = re.sub(r"[^\\w]", "_", topic) if topic else "voice"
     audio_path = f"{clean_topic}.wav"
     
     primary_voice = "en-US-BrianNeural"
@@ -360,7 +359,7 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
             continue
         start = chunk_words[0][0]
         end = chunk_words[-1][1]
-        text = " ".join([cw[2] for cw in chunk_words]).upper()
+        text = " ".join([cw[2] for cw_orig in chunk_words for cw in cw_orig if len(cw)==3]).upper() # Fixed: Added condition for cw_orig length
         if text:
             subs_list.append(((start, end), text))
             
@@ -386,7 +385,7 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
     search_url = "https://api.pexels.com/videos/search"
 
     def fetch_and_download(kw: str, index: int) -> str:
-        print(f"Searching Pexels for keyword: '{kw}'...")
+        print(f"Searching Pexels for keyword: \'{kw}\'...")
         params = {"query": kw, "orientation": orientation, "size": "medium", "per_page": 5}
         try:
             resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
@@ -396,14 +395,14 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
             if not videos:
                 # Fallback to a random default query for the category to keep thematic consistency
                 fallback_kw = random.choice(cat_info["kw_defaults"])
-                print(f"No videos for '{kw}', falling back to category default: '{fallback_kw}'...")
+                print(f"No videos for \'{kw}\', falling back to category default: \'{fallback_kw}\'...")
                 params["query"] = fallback_kw
                 resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
                 resp.raise_for_status()
                 videos = resp.json().get("videos", [])
 
             if not videos:
-                raise Exception(f"No videos found on Pexels for keyword '{kw}' or category fallback.")
+                raise Exception(f"No videos found on Pexels for keyword \'{kw}\' or category fallback.")
 
             selected = random.choice(videos[:5])
             mp4_files = [f for f in selected.get("video_files", []) if f.get("file_type") == "video/mp4"]
@@ -411,11 +410,11 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
                 mp4_files = selected.get("video_files", [])
             
             if not mp4_files:
-                raise Exception(f"No valid MP4 files found for '{kw}'")
+                raise Exception(f"No valid MP4 files found for \'{kw}\'")
 
             hd = [f for f in mp4_files if f.get("quality") == "hd"]
             pool = hd if hd else mp4_files
-            pool.sort(key=lambda x: abs((x.get("width") or 0) - 1080) + abs((x.get("height") or 0) - 1920))
+            pool.sort(key=lambda x: abs((x.get("width") or 0) - 1080) + abs((x.get("height") or 0) - 1920)))
             video_url = pool[0].get("link")
 
             clip_path = f"{filename_prefix}_clip_{index}.mp4"
@@ -437,7 +436,7 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
                     else:
                         raise
         except Exception as e:
-            print(f"Failed to fetch video for '{kw}':", e)
+            print(f"Failed to fetch video for \'{kw}\':", e)
             raise
 
     # Download in parallel using ThreadPoolExecutor
@@ -485,7 +484,6 @@ def register_font_linux(font_path: str):
         except Exception as e:
             print("Failed to register font on Linux system:", e)
 
-
 def download_font() -> str:
     """Download Anton-Regular from Google Fonts if not cached locally."""
     font_dir = Path("fonts")
@@ -503,7 +501,6 @@ def download_font() -> str:
     register_font_linux(font_abs_path)
     return font_abs_path
 
-
 def format_ass_time(seconds: float) -> str:
     seconds = max(0.0, seconds)
     hours = int(seconds // 3600)
@@ -520,7 +517,6 @@ def format_ass_time(seconds: float) -> str:
         hours += minutes // 60
         minutes = minutes % 60
     return f"{hours}:{minutes:02d}:{secs:02d}.{centiseconds:02d}"
-
 
 def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_ass_path: str, category: str, config: VideoFormatConfig) -> None:
     print(f"Generating ASS subtitles file: {output_ass_path}...")
@@ -548,7 +544,7 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
     ]
     
     def get_ass_color_tag(word: str) -> str:
-        clean = re.sub(r"[^\w]", "", word.upper())
+        clean = re.sub(r"[^\\w]", "", word.upper())
         fillers = {
             "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
             "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
@@ -557,7 +553,7 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
         if clean in fillers:
             return ""
         highlight = random.choice(["&H0000FFFF", "&H0000FF00", "&H00FFFF00"])
-        return f"{{\\1c{highlight}}}"
+        return f"{{\\\\1c{highlight}}}"
         
     if not config.is_short:
         # Group single-word cues into phrases of 3-5 words (targeting 4)
@@ -566,7 +562,7 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
         for item in subs_list:
             current_phrase.append(item)
             (start, end), word = item
-            ends_with_punc = word.endswith(('.', '?', '!', ',', ';', ':'))
+            ends_with_punc = word.endswith((\'.\', \'?\', \'!\', \',\', \';\', \':\'))
             if len(current_phrase) >= 4 or ends_with_punc:
                 phrases.append(current_phrase)
                 current_phrase = []
@@ -584,7 +580,7 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
                     w_text_upper = w_text.upper().strip()
                     if j == i:
                         # Active word highlighted in Yellow (&H0000FFFF)
-                        line_parts.append(f"{{\\1c&H0000FFFF}}{w_text_upper}{{\\1c&H00FFFFFF}}")
+                        line_parts.append(f"{{\\\\1c&H0000FFFF}}{w_text_upper}{{\\\\1c&H00FFFFFF}}")
                     else:
                         line_parts.append(w_text_upper)
                 
@@ -612,7 +608,7 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
             lines.append(line_text)
         
     with open(output_ass_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
+        f.write("\\n".join(lines) + "\\n")
     print(f"ASS file written successfully.")
 
 
@@ -632,12 +628,14 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
 
-    # --- Build multi-clip background with Ken Burns zoom effect ---
+    # --- Build multi-clip background with Ken Burns zoom effect ---\
     segment_duration = audio_duration / len(video_paths)
     clips = []
 
     for i, v_path in enumerate(video_paths):
         c = VideoFileClip(v_path).resize(newsize=config.resolution)
+        c = c.set_opacity(1) # Ensure clip has an alpha channel for compositing
+
         pad = 0.5
         if c.duration < segment_duration:
             c = loop(c, duration=segment_duration + pad)
@@ -669,7 +667,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     bg_clip = concatenate_videoclips(clips)
 
-    # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
+    # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---\
     final_audio_clip = audio_clip
     if mix_music:
         music_dir = Path("music")
@@ -729,7 +727,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
     try:
         generate_ass_file(subs_list, ass_path, category, config)
-        print("Rendering background video (no subtitles)...")
+        print("Rendering background video (no subtitles)...\n")
         bg_clip.write_videofile(
             temp_no_subs,
             fps=30,
@@ -740,7 +738,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             logger=None
         )
         
-        print("Burning ASS subtitles using FFmpeg...")
+        print("Burning ASS subtitles using FFmpeg...\n")
         cmd = [
             "ffmpeg", "-y",
             "-i", temp_no_subs,
@@ -760,10 +758,10 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             try: os.remove(temp_no_subs)
             except Exception: pass
 
-        print("Falling back to rendering subtitles with MoviePy (heavy RAM usage)...")
+        print("Falling back to rendering subtitles with MoviePy (heavy RAM usage)...\n")
         
         def get_word_color(word: str) -> str:
-            clean = re.sub(r"[^\w]", "", word.upper())
+            clean = re.sub(r"[^\\w]", "", word.upper())
             fillers = {
                 "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
                 "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
@@ -800,7 +798,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             try:
                 sub_clips.append(create_text_clip(s, e, t))
             except Exception as exc:
-                print(f"Failed to create TextClip for '{t}':", exc)
+                print(f"Failed to create TextClip for \'{t}\':", exc)
 
         final_clip = CompositeVideoClip([bg_clip] + sub_clips)
         final_clip.write_videofile(
@@ -816,7 +814,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         for s in sub_clips:
             s.close()
 
-    # --- Clean up resources ---
+    # --- Clean up resources ---\
     bg_clip.close()
     for c in clips:
         c.close()
@@ -861,7 +859,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 # 5B. THEMATIC WIDESCREEN THUMBNAIL GENERATOR (PILLOW)
 def download_pexels_image(pexels_key: str, query: str) -> Optional[str]:
     import urllib.parse
-    print(f"Searching Pexels for thumbnail backdrop with query: '{query}'...")
+    print(f"Searching Pexels for thumbnail backdrop with query: \'{query}\'...")
     headers = {"Authorization": pexels_key}
     url = f"https://api.pexels.com/v1/search?query={urllib.parse.quote(query)}&per_page=1"
     
@@ -884,7 +882,6 @@ def download_pexels_image(pexels_key: str, query: str) -> Optional[str]:
     except Exception as e:
         print("Failed to download Pexels thumbnail backdrop:", e)
     return None
-
 
 def generate_thumbnail(title: str, category: str, pexels_key: str, output_path: str = "thumbnail.jpg") -> Optional[str]:
     print("Generating widescreen thumbnail (1280x720)...")
@@ -954,7 +951,7 @@ def generate_thumbnail(title: str, category: str, pexels_key: str, output_path: 
     start_y = (720 - total_height) // 2 + 40
     
     def is_highlight(wrd: str) -> bool:
-        clean = re.sub(r"[^\w]", "", wrd.upper())
+        clean = re.sub(r"[^\\w]", "", wrd.upper())
         fillers = {
             "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
             "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
@@ -1170,7 +1167,6 @@ def upload_to_tiktok(video_path: str, title: str, client_key: str, client_secret
         
     print("TikTok upload successful!")
 
-
 def upload_to_facebook(video_path: str, description: str, page_id: str, access_token: str) -> None:
     print("Uploading to Facebook Reels...")
     # Step 1: Initialize upload session
@@ -1212,7 +1208,6 @@ def upload_to_facebook(video_path: str, description: str, page_id: str, access_t
     pub_resp.raise_for_status()
     print("Facebook Reel published successfully!")
 
-
 def upload_to_instagram(video_path: str, description: str, ig_account_id: str, access_token: str) -> None:
     print("Uploading to Instagram Reels...")
     # Step 1: Initialize container
@@ -1222,7 +1217,7 @@ def upload_to_instagram(video_path: str, description: str, ig_account_id: str, a
         "video_url": "", # Graph API requires video file uploaded to a public server if not using direct binary, 
                          # but since we are running headless, direct binary upload is not supported in the standard /media endpoint.
                          # This script assumes a direct hosting fallback or meta upload scheme if configured.
-                         # We'll keep the current direct Meta container setup.
+                         # We\'ll keep the current direct Meta container setup.
         "caption": description,
         "access_token": access_token
     }
@@ -1311,7 +1306,7 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
                 for item in res.get("items", []):
                     title = item.get("snippet", {}).get("title", "").strip()
                     if title and title.lower().strip() not in existing_titles:
-                        print(f"Found missing title from YouTube: '{title}'")
+                        print(f"Found missing title from YouTube: \'{title}\'")
                         new_items.append({
                             "category": category,
                             "title": title,
@@ -1365,10 +1360,10 @@ def run_daily_upload_pipeline_once() -> None:
             category = category_keys[1]
         else:
             category = category_keys[2]
-        print(f"CLI Override: selected category '{category}'")
+        print(f"CLI Override: selected category \'{category}\'")
     else:
         category = random.choice(category_keys)
-        print(f"Randomly selected category: '{category}'")
+        print(f"Randomly selected category: \'{category}\'")
 
     # Load past topics history to prevent duplicates
     past_topics_path = Path("past_topics.json")
@@ -1415,15 +1410,15 @@ def run_daily_upload_pipeline_once() -> None:
             break
 
     # Strip any generated hashtags from the title and trim extra spaces
-    title = re.sub(r'#\S+', '', title)
-    title = re.sub(r'\s+', ' ', title).strip()
+    title = re.sub(r\'#\\S+\', \'\', title)
+    title = re.sub(r\'\\s+\', \' \', title).strip()
 
     # Append standard title hashtags only for Shorts
     if config.is_short:
-        title = f"{title} {CATEGORIES[category]['title_hashtags']}"
+        title = f"{title} {CATEGORIES[category][\'title_hashtags\']}"
         if related_long_video_id:
             link_str = f"🎥 Watch full documentary: https://youtu.be/{related_long_video_id}"
-            description = f"{link_str}\n\n{description}"
+            description = f"{link_str}\\n\\n{description}"
             print(f"Funnel link added to description pointing to: {related_long_video_id}")
 
     # Append new title, topic, and save history using the database category key
@@ -1442,7 +1437,7 @@ def run_daily_upload_pipeline_once() -> None:
 
     # Dry run mode check
     if args.dry_run:
-        print("\n[DRY RUN] Dry-run enabled. Simulating speech synthesis (mocked)...")
+        print("\\n[DRY RUN] Dry-run enabled. Simulating speech synthesis (mocked)...")
         for idx, seg in enumerate(segments):
             print(f"Dry-run: Simulating speech for segment {idx+1}/{len(segments)}...")
             words_in_script = seg["script"].split()
@@ -1463,7 +1458,8 @@ def run_daily_upload_pipeline_once() -> None:
         # Standard Shorts path (single segment)
         seg = segments[0]
         audio_path, subs_list = generate_audio_and_subtitles(seg["script"], category, seg["topic"])
-        video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category, orientation="portrait")
+        visual_keywords = seg["visual_keywords"] + CATEGORIES[category]["kw_defaults"][:6-len(seg["visual_keywords"])]
+        video_paths = download_pexels_videos(pexels_key, visual_keywords, category, orientation="portrait")
         assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)
     else:
         # Long-form path: single-pass rendering to avoid nested re-encoding
@@ -1474,7 +1470,7 @@ def run_daily_upload_pipeline_once() -> None:
         current_time = 0.0
 
         for idx, seg in enumerate(segments):
-            print(f"\n--- Preparing Segment {idx + 1}/{len(segments)}: {seg['topic']} ---")
+            print(f"\\n--- Preparing Segment {idx + 1}/{len(segments)}: {seg[\'topic\']} ---")
             seg_audio_path, seg_subs_list = generate_audio_and_subtitles(seg["script"], category, f"longform_seg_{idx}")
             
             # Record segment audio duration for automated description chapters
@@ -1490,12 +1486,13 @@ def run_daily_upload_pipeline_once() -> None:
                 
             # Offset subtitles for the current segment to align with concatenated audio timeline
             for (start, end), text in seg_subs_list:
-                all_subs_list.append(((start + current_time, end + current_time), text))
+                all_subs_list.append(((start + current_time, end + current_time), text)))
             
             # Download Pexels clips with unique prefixes to prevent filename collision
+            visual_keywords = seg["visual_keywords"] + CATEGORIES[category]["kw_defaults"][:6-len(seg["visual_keywords"])]
             seg_video_paths = download_pexels_videos(
                 pexels_key, 
-                seg["visual_keywords"], 
+                visual_keywords, 
                 category, 
                 orientation="landscape",
                 filename_prefix=f"seg{idx}"
@@ -1505,7 +1502,7 @@ def run_daily_upload_pipeline_once() -> None:
             current_time += dur
 
         # Concatenate all segment audio files into a single master audio track
-        print("\n--- Concatenating all segment audio files ---")
+        print("\\n--- Concatenating all segment audio files ---")
         audio_clips = [AudioFileClip(p) for p in all_audio_paths]
         concat_audio = concatenate_audioclips(audio_clips)
         master_audio_path = f"master_audio_{os.getpid()}.wav"
@@ -1531,11 +1528,11 @@ def run_daily_upload_pipeline_once() -> None:
             minutes = int(chap_time // 60)
             seconds = int(chap_time % 60)
             timestamp_str = f"{minutes}:{seconds:02d}"
-            timestamps.append(f"{timestamp_str} - {seg['topic']}")
+            timestamps.append(f"{timestamp_str} - {seg[\'topic\']}")
             chap_time += segment_durations[idx]
             
-        description = f"{description}\n\nChapters:\n" + "\n".join(timestamps)
-        print("Updated description with dynamic chapters:\n", description)
+        description = f"{description}\\n\\nChapters:\\n" + "\\n".join(timestamps)
+        print("Updated description with dynamic chapters:\\n", description)
 
         # Generate widescreen thumbnail (Pillow)
         try:
@@ -1623,7 +1620,7 @@ def run_daily_upload_pipeline_once() -> None:
                 op.unlink()
         except Exception as e:
             print(f"Could not remove {output_path}:", e)
-        if thumbnail_path and os.path.exists(thumbnail_path):
+        if thumbnail_path and os.path.exists(thumbnail_path):\
             try:
                 os.remove(thumbnail_path)
             except Exception as e:
