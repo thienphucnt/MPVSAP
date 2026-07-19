@@ -1238,20 +1238,70 @@ def upload_to_instagram(video_path: str, description: str, ig_account_id: str, a
 def update_heartbeat_and_push() -> None:
     print("Updating heartbeat...")
     timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    with open("heartbeat.txt", "w", encoding="utf-8") as f:
-        f.write(timestamp)
-
+    
+    # Define git environment
+    git_env = {
+        **os.environ,
+        "GIT_AUTHOR_NAME": "github-actions[bot]",
+        "GIT_AUTHOR_EMAIL": "github-actions[bot]@users.noreply.github.com",
+        "GIT_COMMITTER_NAME": "github-actions[bot]",
+        "GIT_COMMITTER_EMAIL": "github-actions[bot]@users.noreply.github.com",
+    }
+    
     try:
-        git_env = {
-            **os.environ,
-            "GIT_AUTHOR_NAME": "github-actions[bot]",
-            "GIT_AUTHOR_EMAIL": "github-actions[bot]@users.noreply.github.com",
-            "GIT_COMMITTER_NAME": "github-actions[bot]",
-            "GIT_COMMITTER_EMAIL": "github-actions[bot]@users.noreply.github.com",
-        }
+        # 1. Fetch origin to know the latest remote state
+        subprocess.run(["git", "fetch", "origin"], check=True, env=git_env)
+        
+        # 2. Merge past_topics.json programmatically with remote version
+        local_topics = []
+        if os.path.exists("past_topics.json"):
+            try:
+                with open("past_topics.json", "r", encoding="utf-8") as f:
+                    local_topics = json.load(f)
+            except Exception as e:
+                print("Failed to read local past_topics.json:", e)
+                
+        remote_topics = []
+        try:
+            show_proc = subprocess.run(
+                ["git", "show", "origin/main:past_topics.json"],
+                capture_output=True, text=True, check=True, env=git_env
+            )
+            remote_topics = json.loads(show_proc.stdout)
+        except Exception as e:
+            print("Failed to read remote past_topics.json (falling back to local only):", e)
+            remote_topics = local_topics
+            
+        # Combine lists removing duplicates (by title/timestamp)
+        merged_topics = list(remote_topics)
+        seen_keys = { (item.get("title"), item.get("timestamp")) for item in remote_topics }
+        
+        for item in local_topics:
+            key = (item.get("title"), item.get("timestamp"))
+            if key not in seen_keys:
+                merged_topics.append(item)
+                seen_keys.add(key)
+                
+        # Limit history size to prevent file bloat
+        merged_topics = merged_topics[-100:]
+        
+        # Save merged topics locally
+        with open("past_topics.json", "w", encoding="utf-8") as f:
+            json.dump(merged_topics, f, indent=2)
+            
+        # Write heartbeat
+        with open("heartbeat.txt", "w", encoding="utf-8") as f:
+            f.write(timestamp)
+            
+        # 3. Align git index to origin/main without discarding our merged files
+        subprocess.run(["git", "reset", "origin/main"], check=True, env=git_env)
+        
+        # 4. Add files
         subprocess.run(["git", "add", "heartbeat.txt"], check=True, env=git_env)
         if os.path.exists("past_topics.json"):
             subprocess.run(["git", "add", "past_topics.json"], check=True, env=git_env)
+            
+        # 5. Commit & Push
         status = subprocess.run(["git", "status", "--porcelain"],
                                 capture_output=True, text=True, env=git_env)
         if status.stdout.strip():
@@ -1259,9 +1309,27 @@ def update_heartbeat_and_push() -> None:
                 ["git", "commit", "-m", f"Automated heartbeat: {timestamp} [skip ci]"],
                 check=True, env=git_env
             )
-            subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True, env=git_env)
-            subprocess.run(["git", "push"], check=True, env=git_env)
-            print("Heartbeat pushed successfully.")
+            # Push with retry
+            for attempt in range(3):
+                try:
+                    subprocess.run(["git", "push", "origin", "main"], check=True, env=git_env)
+                    print("Heartbeat pushed successfully.")
+                    break
+                except Exception as push_err:
+                    print(f"Push attempt {attempt+1} failed: {push_err}")
+                    if attempt < 2:
+                        print("Retrying git fetch, merge, and reset...")
+                        subprocess.run(["git", "fetch", "origin"], check=True, env=git_env)
+                        subprocess.run(["git", "reset", "origin/main"], check=True, env=git_env)
+                        with open("past_topics.json", "w", encoding="utf-8") as f:
+                            json.dump(merged_topics, f, indent=2)
+                        with open("heartbeat.txt", "w", encoding="utf-8") as f:
+                            f.write(timestamp)
+                        subprocess.run(["git", "add", "heartbeat.txt", "past_topics.json"], check=True, env=git_env)
+                        subprocess.run(
+                            ["git", "commit", "-m", f"Automated heartbeat: {timestamp} [skip ci]"],
+                            check=True, env=git_env
+                        )
         else:
             print("No changes to commit for heartbeat.")
     except Exception as e:
