@@ -1,11 +1,5 @@
 [
   {
-    "category": "space",
-    "title": "Worlds Without Suns Are Terrifying",
-    "topic": "Rogue Planets",
-    "timestamp": "2026-07-13T02:23:31.419020"
-  },
-  {
     "category": "tech",
     "title": "The Material That BENDS REALITY!",
     "topic": "Programmable Metamaterials",
@@ -592,6 +586,14 @@
     "topic": "Cosmic Great Wall",
     "timestamp": "2026-07-19T09:59:12.287925",
     "youtube_video_id": "RNqN27TZ4II",
+    "is_long": false
+  },
+  {
+    "category": "history",
+    "title": "The Pope Who Declared War on Cats #history #shorts",
+    "topic": "Pope's Cat War",
+    "timestamp": "2026-07-19T18:15:13.352885",
+    "youtube_video_id": "LFqsx85NxCk",
     "is_long": false
   }
 ]
