@@ -1,11 +1,5 @@
 [
   {
-    "category": "tech",
-    "title": "The Material That BENDS REALITY!",
-    "topic": "Programmable Metamaterials",
-    "timestamp": "2026-07-13T04:22:18.119637"
-  },
-  {
     "category": "history",
     "title": "When Your Pants Literally Exploded",
     "topic": "Exploding Pants",
@@ -594,6 +588,14 @@
     "topic": "Pope's Cat War",
     "timestamp": "2026-07-19T18:15:13.352885",
     "youtube_video_id": "LFqsx85NxCk",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "The Universe is Leaving Us Behind #space #shorts",
+    "topic": "Cosmic Expansion",
+    "timestamp": "2026-07-19T20:59:11.021967",
+    "youtube_video_id": "1oWGQSZ-NBo",
     "is_long": false
   }
 ]
