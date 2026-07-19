@@ -1,15 +1,5 @@
 [
   {
-    "category": "space",
-    "title": "You Wont See This Apocalypse Coming",
-    "timestamp": "2026-07-13T02:07:55.873744"
-  },
-  {
-    "category": "history",
-    "title": "The City That Danced to Death",
-    "timestamp": "2026-07-13T02:07:56.035215"
-  },
-  {
     "category": "history",
     "title": "When Londons river was a killer",
     "topic": "Great Stink",
@@ -587,6 +577,19 @@
     "topic": "Bio-Engineered Carbon Capture",
     "timestamp": "2026-07-19T03:19:12.174729",
     "youtube_video_id": "NnxXv8hBDuI",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
+    "timestamp": "2026-07-19T06:33:33.006559"
+  },
+  {
+    "category": "history",
+    "title": "The War Started by a Dog?! #history #shorts",
+    "topic": "Stray Dog War",
+    "timestamp": "2026-07-19T06:37:11.462860",
+    "youtube_video_id": "j13UUdU3Sjw",
     "is_long": false
   }
 ]
