@@ -1,11 +1,5 @@
 [
   {
-    "category": "space",
-    "title": "The Universe is Tearing Itself Apart",
-    "topic": "Accelerated Expansion",
-    "timestamp": "2026-07-13T05:45:04.469797"
-  },
-  {
     "category": "history",
     "title": "They Tried a DEAD Pope! Unbelievable History",
     "topic": "Cadaver Synod",
@@ -598,6 +592,14 @@
     "topic": "Oaken Bucket War",
     "timestamp": "2026-07-20T03:34:10.024141",
     "youtube_video_id": "DfPUh6fB7ro",
+    "is_long": false
+  },
+  {
+    "category": "history",
+    "title": "Strasbourg's Deadly Dance Plague #history #shorts",
+    "topic": "Dancing Plague",
+    "timestamp": "2026-07-20T06:55:10.095559",
+    "youtube_video_id": "9mhdFN5pbvg",
     "is_long": false
   }
 ]
