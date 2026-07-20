@@ -65,8 +65,7 @@ jobs:
             echo "ffmpeg and imagemagick are pre-installed. Skipping installation."
           else
             echo "Missing pre-installed dependencies. Installing..."
-            sudo apt-get update || true
-            sudo apt-get install -y ffmpeg imagemagick
+            sudo apt-get install -y ffmpeg imagemagick || (sudo apt-get update && sudo apt-get install -y ffmpeg imagemagick)
           fi
           
           # Fix ImageMagick security policies that restrict TextClip operations
