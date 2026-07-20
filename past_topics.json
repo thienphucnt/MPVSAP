@@ -1,11 +1,5 @@
 [
   {
-    "category": "history",
-    "title": "When Your Pants Literally Exploded",
-    "topic": "Exploding Pants",
-    "timestamp": "2026-07-13T05:33:46.188402"
-  },
-  {
     "category": "space",
     "title": "The Universe is Tearing Itself Apart",
     "topic": "Accelerated Expansion",
@@ -596,6 +590,14 @@
     "topic": "Cosmic Expansion",
     "timestamp": "2026-07-19T20:59:11.021967",
     "youtube_video_id": "1oWGQSZ-NBo",
+    "is_long": false
+  },
+  {
+    "category": "history",
+    "title": "War Started by a BUCKET?! #history #shorts",
+    "topic": "Oaken Bucket War",
+    "timestamp": "2026-07-20T03:34:10.024141",
+    "youtube_video_id": "DfPUh6fB7ro",
     "is_long": false
   }
 ]
