@@ -177,7 +177,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
             "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
             "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
-            "Task 2 — visual_keywords: An array of 6 concrete, literal search terms describing the actual entities, animals, actions, or settings mentioned in the script (e.g., if writing about a headless chicken, output ['chicken', 'rooster', 'farm animal', 'poultry farm', 'farmland', 'vintage farm'] instead of abstract loops) that are highly searchable on stock video websites.\n\n"
+            "Task 2 — visual_keywords: An array of 6 concrete, literal search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the script, you MUST include their exact name as a proper noun with correct capitalization (e.g. 'Albert Einstein', 'Mike the Headless Chicken', 'London', 'Andromeda Galaxy') as the first keyword(s) in the array. For general settings, use lowercase generic terms.\n\n"
             "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
             "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
             "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
@@ -210,7 +210,7 @@ def generate_content(client: genai.Client, category: str, recent_topics: List[st
             "Only Segment 1 should contain a powerful introductory hook (0-15s) starting immediately (no welcomes or channel greetings). "
             "Middle segments (2 through 9) must contain raw, unique facts with no intros, hooks, or outros. "
             "Only Segment 10 should append a short, natural subscribe Call-to-Action at the very end.\n"
-            "2. LITERAL B-ROLL SEARCH TERMS: In visual_keywords, provide 3 literal, concrete search terms (e.g., if writing about abstract concepts like 'quantum entanglement' or 'time dilation', output literal B-roll keywords like 'glowing particles', 'laser beam', 'clock gears', 'abstract network' instead of abstract terms) suitable for Pexels search.\n"
+            "2. LITERAL B-ROLL SEARCH TERMS & ENTITIES: In visual_keywords, provide 3 literal, concrete search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the segment script, you MUST include their exact name as a proper noun with correct capitalization (e.g., 'Albert Einstein', 'Tabby\\'s Star', 'Apollo 11') as the first keyword in the array. For general settings, use lowercase generic terms.\n"
             "3. UNIQUE TOPICS: Ensure each of the 10 candidate segments covers a completely different, unique fact to avoid any topical duplication.\n\n"
             "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
             "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
@@ -371,86 +371,199 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 # ---------------------------------------------------------------------------
 # 4. PEXELS VIDEO DOWNLOADER
 # ---------------------------------------------------------------------------
-def download_pexels_videos(api_key: str, keywords: List[str], category: str, orientation: str = "portrait", limit: int = 6, filename_prefix: str = "bg") -> List[str]:
-    print("Preparing download of background video clips from Pexels...")
-    cat_info = CATEGORIES[category]
+def search_wikimedia_image(query: str) -> Optional[str]:
+    """Query Wikimedia Commons for a specific entity and return its direct image URL if found."""
+    search_url = "https://commons.wikimedia.org/w/api.php"
+    params = {
+        "action": "query",
+        "format": "json",
+        "list": "search",
+        "srsearch": query,
+        "srnamespace": 6,  # Namespace 6 is strictly for File: namespace in Wikimedia
+        "srlimit": 5
+    }
+    
+    try:
+        resp = HTTP_SESSION.get(search_url, params=params, timeout=15)
+        resp.raise_for_status()
+        results = resp.json().get("query", {}).get("search", [])
+        if not results:
+            print(f"No search results on Wikimedia for '{query}'")
+            return None
+            
+        # Get URL for the first result
+        first_title = results[0]["title"]
+        img_params = {
+            "action": "query",
+            "format": "json",
+            "titles": first_title,
+            "prop": "imageinfo",
+            "iiprop": "url"
+        }
+        img_resp = HTTP_SESSION.get(search_url, params=img_params, timeout=15)
+        img_resp.raise_for_status()
+        pages = img_resp.json().get("query", {}).get("pages", {})
+        for page_id, page in pages.items():
+            info = page.get("imageinfo", [])
+            if info:
+                return info[0]["url"]
+    except Exception as e:
+        print(f"Wikimedia search failed for '{query}':", e)
+    return None
 
+def download_wikimedia_image(url: str, index: int) -> Optional[str]:
+    """Download a Wikimedia image to a temporary file."""
+    temp_path = f"temp_wiki_{index}_{os.getpid()}.jpg"
+    try:
+        resp = HTTP_SESSION.get(url, timeout=20)
+        resp.raise_for_status()
+        with open(temp_path, "wb") as f:
+            f.write(resp.content)
+        return temp_path
+    except Exception as e:
+        print(f"Failed to download Wikimedia image from {url}: {e}")
+        if os.path.exists(temp_path):
+            try:
+                os.remove(temp_path)
+            except Exception:
+                pass
+    return None
+
+def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[int, int], output_path: str) -> None:
+    """Animate a static image into a dynamic zoom-in video clip (Ken Burns effect)."""
+    from moviepy.editor import ImageClip
+    w, h = target_res
+    
+    clip = ImageClip(image_path).set_duration(duration)
+    img_w, img_h = clip.size
+    scale = max(w / img_w, h / img_h)
+    
+    # Resize to fill screen
+    clip = clip.resize(scale)
+    
+    # Slow zoom-in Ken Burns effect (1.0 to 1.10 over duration)
+    def zoom_fn(t):
+        return 1.0 + 0.10 * (t / duration)
+        
+    try:
+        clip = clip.resize(zoom_fn)
+    except Exception as e:
+        print("Failed to apply dynamic zoom, using static resize:", e)
+        clip = clip.resize(target_res)
+        
+    # Crop to exact target size
+    clip = clip.crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
+    clip.write_videofile(output_path, fps=30, logger=None)
+    clip.close()
+
+def download_single_pexels_video(api_key: str, kw: str, index: int, orientation: str, filename_prefix: str, category: str) -> Optional[str]:
+    """Download a single background clip from Pexels API matching the keyword."""
+    cat_info = CATEGORIES[category]
+    headers = {"Authorization": api_key}
+    search_url = "https://api.pexels.com/videos/search"
+    params = {"query": kw, "orientation": orientation, "size": "medium", "per_page": 5}
+    
+    try:
+        resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
+        resp.raise_for_status()
+        videos = resp.json().get("videos", [])
+        
+        if not videos:
+            fallback_kw = random.choice(cat_info["kw_defaults"])
+            print(f"No videos for '{kw}', falling back to category default: '{fallback_kw}'...")
+            params["query"] = fallback_kw
+            resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
+            resp.raise_for_status()
+            videos = resp.json().get("videos", [])
+            
+        if videos:
+            selected = random.choice(videos[:5])
+            mp4_files = [f for f in selected.get("video_files", []) if f.get("file_type") == "video/mp4"]
+            if not mp4_files:
+                mp4_files = selected.get("video_files", [])
+            if mp4_files:
+                hd = [f for f in mp4_files if f.get("quality") == "hd"]
+                pool = hd if hd else mp4_files
+                pool.sort(key=lambda x: abs((x.get("width") or 0) - 1080) + abs((x.get("height") or 0) - 1920))
+                video_url = pool[0].get("link")
+                
+                clip_path = f"{filename_prefix}_clip_{index}.mp4"
+                for attempt in range(3):
+                    try:
+                        dl = HTTP_SESSION.get(video_url, stream=True, timeout=30)
+                        dl.raise_for_status()
+                        with open(clip_path, "wb") as f:
+                            for chunk in dl.iter_content(chunk_size=1024 * 1024):
+                                if chunk:
+                                    f.write(chunk)
+                        return clip_path
+                    except Exception as e:
+                        print(f"Download attempt {attempt+1} failed: {e}")
+                        time.sleep(1)
+    except Exception as e:
+        print(f"Failed to fetch Pexels video for '{kw}':", e)
+    return None
+
+def download_pexels_videos(api_key: str, keywords: List[str], category: str, orientation: str = "portrait", limit: int = 6, filename_prefix: str = "bg") -> List[str]:
+    print("Preparing download of background video clips from Pexels and Wikimedia...")
+    cat_info = CATEGORIES[category]
+    
     # Guarantee enough keywords
     default_pool = cat_info["kw_defaults"]
     while len(keywords) < limit:
         cand = random.choice(default_pool)
         if cand not in keywords:
             keywords.append(cand)
-
-    headers = {"Authorization": api_key}
-    search_url = "https://api.pexels.com/videos/search"
-
-    def fetch_and_download(kw: str, index: int) -> str:
-        print(f"Searching Pexels for keyword: '{kw}'...")
-        params = {"query": kw, "orientation": orientation, "size": "medium", "per_page": 5}
-        try:
-            resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
-            resp.raise_for_status()
-            videos = resp.json().get("videos", [])
-
-            if not videos:
-                # Fallback to a random default query for the category to keep thematic consistency
-                fallback_kw = random.choice(cat_info["kw_defaults"])
-                print(f"No videos for '{kw}', falling back to category default: '{fallback_kw}'...")
-                params["query"] = fallback_kw
-                resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
-                resp.raise_for_status()
-                videos = resp.json().get("videos", [])
-
-            if not videos:
-                raise Exception(f"No videos found on Pexels for keyword '{kw}' or category fallback.")
-
-            selected = random.choice(videos[:5])
-            mp4_files = [f for f in selected.get("video_files", []) if f.get("file_type") == "video/mp4"]
-            if not mp4_files:
-                mp4_files = selected.get("video_files", [])
             
-            if not mp4_files:
-                raise Exception(f"No valid MP4 files found for '{kw}'")
+    # Process each keyword. If it is a proper noun, we try Wikimedia first. Otherwise, we fetch from Pexels.
+    def process_keyword(kw: str, index: int) -> str:
+        # Check if proper noun (contains uppercase letters)
+        is_proper_noun = any(char.isupper() for char in kw)
+        clip_path = f"{filename_prefix}_clip_{index}.mp4"
+        
+        if is_proper_noun:
+            print(f"Keyword '{kw}' is a proper noun. Searching Wikimedia Commons...")
+            wiki_url = search_wikimedia_image(kw)
+            if wiki_url:
+                image_path = download_wikimedia_image(wiki_url, index)
+                if image_path:
+                    try:
+                        target_res = (1080, 1920) if orientation == "portrait" else (1920, 1080)
+                        clip_dur = 17.0 if orientation == "portrait" else 8.0
+                        make_image_video_clip(image_path, clip_dur, target_res, clip_path)
+                        return clip_path
+                    except Exception as e:
+                        print(f"Failed to create image-to-video clip for proper noun '{kw}': {e}")
+                    finally:
+                        if image_path and os.path.exists(image_path):
+                            try:
+                                os.remove(image_path)
+                            except Exception:
+                                pass
+                                
+        # Fallback to Pexels
+        p_path = download_single_pexels_video(api_key, kw, index, orientation, filename_prefix, category)
+        if p_path:
+            return p_path
+            
+        # Hard fallback to a category default video search
+        fallback_kw = random.choice(cat_info["kw_defaults"])
+        p_path = download_single_pexels_video(api_key, fallback_kw, index, orientation, filename_prefix, category)
+        if p_path:
+            return p_path
+            
+        raise Exception(f"Failed to download B-roll for keyword '{kw}' and fallback '{fallback_kw}'")
 
-            hd = [f for f in mp4_files if f.get("quality") == "hd"]
-            pool = hd if hd else mp4_files
-            pool.sort(key=lambda x: abs((x.get("width") or 0) - 1080) + abs((x.get("height") or 0) - 1920))
-            video_url = pool[0].get("link")
-
-            clip_path = f"{filename_prefix}_clip_{index}.mp4"
-            print(f"Downloading clip {index} from Pexels...")
-
-            for attempt in range(3):
-                try:
-                    dl = HTTP_SESSION.get(video_url, stream=True, timeout=30)
-                    dl.raise_for_status()
-                    with open(clip_path, "wb") as f:
-                        for chunk in dl.iter_content(chunk_size=1024 * 1024):
-                            if chunk:
-                                f.write(chunk)
-                    return clip_path
-                except Exception as dl_err:
-                    print(f"Download attempt {attempt + 1} failed for clip {index}: {dl_err}")
-                    if attempt < 2:
-                        time.sleep(2)
-                    else:
-                        raise
-        except Exception as e:
-            print(f"Failed to fetch video for '{kw}':", e)
-            raise
-
-    # Download in parallel using ThreadPoolExecutor
     video_paths = [None] * limit
     with concurrent.futures.ThreadPoolExecutor(max_workers=limit) as executor:
-        future_to_index = {executor.submit(fetch_and_download, kw, i): i for i, kw in enumerate(keywords[:limit])}
-        for future in concurrent.futures.as_completed(future_to_index):
-            i = future_to_index[future]
+        futures = {executor.submit(process_keyword, keywords[i], i): i for i in range(limit)}
+        for future in concurrent.futures.as_completed(futures):
+            idx = futures[future]
             try:
-                video_paths[i] = future.result()
-            except Exception as exc:
-                print(f"Clip {i} generated an exception: {exc}")
-    
+                video_paths[idx] = future.result()
+            except Exception as e:
+                print(f"Error fetching B-roll clip {idx}: {e}")
+                
     # Fallback for any failed downloads by duplicating successful ones
     successful = [p for p in video_paths if p is not None]
     if not successful:
