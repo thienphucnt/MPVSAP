@@ -1,11 +1,5 @@
 [
   {
-    "category": "history",
-    "title": "They Tried a DEAD Pope! Unbelievable History",
-    "topic": "Cadaver Synod",
-    "timestamp": "2026-07-13T05:50:47.671956"
-  },
-  {
     "category": "tech",
     "title": "Quantum Entanglement: Faster Than Light!",
     "topic": "Quantum Entanglement",
@@ -600,6 +594,14 @@
     "topic": "Dancing Plague",
     "timestamp": "2026-07-20T06:55:10.095559",
     "youtube_video_id": "9mhdFN5pbvg",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "Invisible Tech Is REAL #tech #shorts",
+    "topic": "Metamaterials Tech",
+    "timestamp": "2026-07-20T11:00:12.895132",
+    "youtube_video_id": "A6N27pPS8q4",
     "is_long": false
   }
 ]
