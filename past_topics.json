@@ -1,12 +1,6 @@
 [
   {
     "category": "space",
-    "title": "Cosmic Truth: Your Reality is Unstable",
-    "topic": "False Vacuum Decay",
-    "timestamp": "2026-07-13T07:38:23.918607"
-  },
-  {
-    "category": "space",
     "title": "The Cold Spot: Universe's Terrifying Scar",
     "topic": "Cosmic Cold Spot",
     "timestamp": "2026-07-13T08:16:27.052134"
@@ -606,6 +600,14 @@
     "topic": "Matrioshka Brain",
     "timestamp": "2026-07-20T18:12:10.814728",
     "youtube_video_id": "26KNHFgx7Gk",
+    "is_long": false
+  },
+  {
+    "category": "space",
+    "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
+    "topic": "Great Attractor",
+    "timestamp": "2026-07-20T21:19:13.274876",
+    "youtube_video_id": "WmVy2XIvW74",
     "is_long": false
   }
 ]
