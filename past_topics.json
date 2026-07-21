@@ -1,12 +1,6 @@
 [
   {
     "category": "space",
-    "title": "The Cold Spot: Universe's Terrifying Scar",
-    "topic": "Cosmic Cold Spot",
-    "timestamp": "2026-07-13T08:16:27.052134"
-  },
-  {
-    "category": "space",
     "title": "The Universe's Silent Death Ray",
     "topic": "Gamma-Ray Bursts",
     "timestamp": "2026-07-13T08:50:20.886528"
@@ -608,6 +602,14 @@
     "topic": "Great Attractor",
     "timestamp": "2026-07-20T21:19:13.274876",
     "youtube_video_id": "WmVy2XIvW74",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "Smell the Internet? #tech #shorts",
+    "topic": "Digital Olfaction",
+    "timestamp": "2026-07-21T03:00:10.707793",
+    "youtube_video_id": "FS-JA4pMmeI",
     "is_long": false
   }
 ]
