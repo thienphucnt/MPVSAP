@@ -1,11 +1,6 @@
 [
   {
     "category": "space",
-    "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
-    "timestamp": "2026-07-14T17:18:38.492511"
-  },
-  {
-    "category": "space",
     "title": "The Universe's Silent Death Ray #space #shorts",
     "timestamp": "2026-07-14T17:18:38.492527"
   },
@@ -616,6 +611,14 @@
     "topic": "Liquid Metal Robotics",
     "timestamp": "2026-07-21T14:04:10.553060",
     "youtube_video_id": "LgC4t8Uraac",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "Computers That Waste ZERO Energy?! #tech #shorts",
+    "topic": "Reversible Computing",
+    "timestamp": "2026-07-21T17:29:12.133591",
+    "youtube_video_id": "qH91MwWfUHM",
     "is_long": false
   }
 ]
