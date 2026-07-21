@@ -1,12 +1,6 @@
 [
   {
     "category": "space",
-    "title": "The Big Rip: Ultimate Cosmic Horror",
-    "topic": "Big Rip",
-    "timestamp": "2026-07-14T13:23:44.260620"
-  },
-  {
-    "category": "space",
     "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
     "timestamp": "2026-07-14T17:18:38.492511"
   },
@@ -614,6 +608,14 @@
     "topic": "Space Roar",
     "timestamp": "2026-07-21T10:32:10.966270",
     "youtube_video_id": "e0O9JpsiKZE",
+    "is_long": false
+  },
+  {
+    "category": "tech",
+    "title": "Terminator 2 Robots Are ALMOST Here! #tech #shorts",
+    "topic": "Liquid Metal Robotics",
+    "timestamp": "2026-07-21T14:04:10.553060",
+    "youtube_video_id": "LgC4t8Uraac",
     "is_long": false
   }
 ]
