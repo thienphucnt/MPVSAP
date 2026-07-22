@@ -102,6 +102,9 @@ class VideoFormatConfig:
             self.is_short = False
 
 
+WATERMARK_HANDLE = os.getenv("WATERMARK_HANDLE", "@NicheFactsShorts")
+
+
 # ---------------------------------------------------------------------------
 # SHARED GEMINI RETRY HELPER
 # ---------------------------------------------------------------------------
@@ -1207,14 +1210,15 @@ def format_ass_time(seconds: float) -> str:
     return f"{hours}:{minutes:02d}:{secs:02d}.{centiseconds:02d}"
 
 
-def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_ass_path: str, category: str, config: VideoFormatConfig) -> None:
-    print(f"Generating ASS subtitles file: {output_ass_path}...")
+def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_ass_path: str, category: str, config: VideoFormatConfig, watermark_handle: str = WATERMARK_HANDLE) -> None:
+    print(f"Generating ASS subtitles & watermark file: {output_ass_path}...")
     font_name = "Anton"
     play_res_x = config.resolution[0]
     play_res_y = config.resolution[1]
     
     sub_y = config.sub_position[1]
     margin_v = play_res_y - sub_y
+    watermark_margin_v = max(40, int(play_res_y * 0.20))  # Lower-center safe zone anchored below main captions
     
     lines = [
         "[Script Info]",
@@ -1227,10 +1231,17 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
         "[V4+ Styles]",
         "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
         f"Style: Default,{font_name},{config.sub_fontsize},&H00FFFFFF,&H0000FFFF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,1,3.5,0,2,10,10,{margin_v},1",
+        f"Style: Watermark,{font_name},36,&HA8FFFFFF,&HA8FFFFFF,&H90000000,&H00000000,-1,0,0,0,100,100,0,0,1,2.0,1,2,10,10,{watermark_margin_v},1",
         "",
         "[Events]",
         "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"
     ]
+    
+    # Add persistent visual watermark event across the full video timeline
+    if config.is_short and subs_list:
+        total_start = format_ass_time(subs_list[0][0][0])
+        total_end = format_ass_time(subs_list[-1][0][1] + 3.0)
+        lines.append(f"Dialogue: 0,{total_start},{total_end},Watermark,,0,0,0,,{watermark_handle}")
     
     def get_ass_color_tag(word: str) -> str:
         clean = re.sub(r"[^\w]", "", word.upper())
@@ -1486,6 +1497,31 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 sub_clips.append(create_text_clip(s, e, t))
             except Exception as exc:
                 print(f"Failed to create TextClip for '{t}':", exc)
+
+        # Persistent Watermark Overlay Layer (33% Opacity, lower-center safe zone)
+        if config.is_short:
+            try:
+                watermark_y = int(config.resolution[1] * 0.78)
+                watermark_clip = (
+                    TextClip(
+                        WATERMARK_HANDLE,
+                        font=font_path,
+                        fontsize=36,
+                        color="white",
+                        stroke_color="black",
+                        stroke_width=2,
+                        transparent=True,
+                        method="label",
+                        align="center"
+                    )
+                    .set_start(0)
+                    .set_duration(bg_clip.duration)
+                    .set_position(("center", watermark_y))
+                    .set_opacity(0.33)
+                )
+                sub_clips.append(watermark_clip)
+            except Exception as wm_err:
+                print("Failed to add MoviePy watermark overlay clip:", wm_err)
 
         final_clip = CompositeVideoClip([bg_clip] + sub_clips)
         final_clip.write_videofile(
