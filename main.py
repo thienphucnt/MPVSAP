@@ -23,7 +23,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # MoviePy
-from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, concatenate_videoclips, TextClip, concatenate_audioclips
+from moviepy.editor import VideoFileClip, AudioFileClip, CompositeVideoClip, concatenate_videoclips, TextClip, concatenate_audioclips, VideoClip, ImageClip
 from moviepy.video.fx.all import loop
 from moviepy.audio.fx.all import audio_loop
 
@@ -104,6 +104,41 @@ class VideoFormatConfig:
 
 WATERMARK_HANDLE = os.getenv("WATERMARK_HANDLE", "@NicheFactsShorts")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+
+
+def get_or_create_cta_asset() -> str:
+    """Ensure a transparent CTA subscribe prompt asset exists in assets/cta_subscribe.png."""
+    assets_dir = Path("assets")
+    assets_dir.mkdir(exist_ok=True)
+    cta_path = assets_dir / "cta_subscribe.png"
+    if not cta_path.exists():
+        img = PIL.Image.new("RGBA", (450, 110), (0, 0, 0, 0))
+        draw = PIL.ImageDraw.Draw(img)
+        draw.rounded_rectangle([5, 5, 445, 105], radius=20, fill=(220, 20, 60, 225), outline=(255, 255, 255, 255), width=3)
+        font = PIL.ImageFont.load_default()
+        draw.text((225, 55), "🔔 SUBSCRIBE FOR MORE", fill=(255, 255, 255, 255), anchor="mm", font=font)
+        img.save(cta_path)
+    return str(cta_path.resolve())
+
+
+def create_progress_bar_clip(duration: float, resolution: Tuple[int, int], color: Tuple[int, int, int] = (0, 229, 255)) -> VideoClip:
+    """Generate a 5-pixel high solid accent progress bar at the bottom scaling 0% -> 100% over video duration."""
+    w, h = resolution
+    bar_height = 5
+    y_pos = h - bar_height
+
+    def make_frame(t):
+        frame = np.zeros((bar_height, w, 3), dtype=np.uint8)
+        current_w = max(1, min(w, int(w * (t / float(duration)))))
+        frame[:, :current_w] = color
+        return frame
+
+    return (
+        VideoClip(make_frame, duration=duration)
+        .set_position((0, y_pos))
+        .set_start(0)
+    )
+
 
 
 def send_webhook_notification(title: str, message: str, status: str = "success", video_url: Optional[str] = None):
@@ -666,12 +701,16 @@ def generate_content(
                 "}\n\n"
                 f"{source_text_prompt}"
                 "DIRECTIVES FOR HIGH AUDIENCE RETENTION ACROSS ALL 5 VARIANTS:\n"
-                "1. STORY STRUCTURE (STRICTLY NO LISTICLES / TOP 3 FORMATS): Each variant must tell a fast-paced 130-word story based on the source text.\n"
+                "1. INFINITE LOOP SCRIPT ENGINEERING (STRICT RULE): The script MUST be engineered for a seamless audio and narrative loop. "
+                "The final sentence of the script MUST grammatically and logically lead directly into the first sentence of the script "
+                "(e.g., Ending: '...and that is why nobody ever suspected that' -> Beginning: 'This ancient secret was buried for centuries...'). "
+                "When auto-replayed on YouTube Shorts, the viewer must not realize it restarted.\n"
+                "2. STORY STRUCTURE (STRICTLY NO LISTICLES / TOP 3 FORMATS): Each variant must tell a fast-paced 130-word story based on the source text.\n"
                 "   - Seconds 0-3 (THE HOOK): Immediate dramatic, mysterious, or shocking open loop line. NO channel greetings.\n"
                 "   - Seconds 3-45 (NARRATIVE & CONFLICT): Build escalating tension or reveal an unexpected mystery/conflict.\n"
                 "   - Seconds 45-60 (PAYOFF & LOOP CTA): Deliver a mind-bending resolution ending with a 3-second loop CTA.\n"
-                "2. DRAMATIC PACING: Force natural pauses using ellipses (...) and em-dashes (—).\n"
-                "3. PROPER NOUN VISUAL KEYWORDS: Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
+                "3. DRAMATIC PACING: Force natural pauses using ellipses (...) and em-dashes (—).\n"
+                "4. PROPER NOUN VISUAL KEYWORDS: Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
                 f"Tone: {cat_info['tone']}.\n"
                 "Under no circumstances mention regional politics or Vietnamese history."
                 f"{dynamic_exclude}"
@@ -1394,11 +1433,28 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
 
-    # --- Build multi-clip background with Ken Burns zoom effect ---
-    segment_duration = audio_duration / len(video_paths)
-    clips = []
+    # --- Build multi-clip background with Ken Burns zoom effect & Visual Loop Synchronization ---
+    num_clips = len(video_paths)
+    if config.is_short and num_clips >= 3:
+        # Front-loaded visual overdrive (3 asset changes in 0-2s) + Final 1.5s Visual Loop Bridge
+        loop_end_dur = 1.5
+        rem_time = max(0.1, audio_duration - 2.0 - loop_end_dur)
+        rem_clips = max(1, num_clips - 3)
+        per_rem = rem_time / float(rem_clips)
 
-    for i, v_path in enumerate(video_paths):
+        durations = [0.6, 0.6, 0.8]
+        durations.extend([per_rem] * rem_clips)
+
+        # Append opening visual asset (video_paths[0]) at the end for 100% seamless visual loop
+        video_paths_to_use = list(video_paths) + [video_paths[0]]
+        durations.append(loop_end_dur)
+    else:
+        video_paths_to_use = list(video_paths)
+        durations = [audio_duration / float(len(video_paths_to_use))] * len(video_paths_to_use)
+
+    clips = []
+    for i, v_path in enumerate(video_paths_to_use):
+        segment_duration = durations[i]
         c = VideoFileClip(v_path).resize(newsize=config.resolution)
         pad = 0.5
         if c.duration < segment_duration:
@@ -1407,11 +1463,18 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             subclip_end = min(c.duration, segment_duration + pad)
             c = c.subclip(0, subclip_end)
         c = c.set_duration(segment_duration)
+
+        # Apply smooth 0.4s crossfade transition to the final visual loop clip
+        if config.is_short and i == len(video_paths_to_use) - 1:
+            try:
+                c = c.crossfadein(0.4)
+            except Exception as cf_err:
+                print("Crossfade fallback:", cf_err)
         
-        # Apply Ken Burns zoom effect using a frame filter to keep the output resolution constant (preventing stride static)
+        # Apply Ken Burns zoom effect using a frame filter to keep resolution constant
         def zoom_filter(get_frame, t, dur=segment_duration):
             frame = get_frame(t)
-            scale = 1.0 + 0.15 * (t / dur)
+            scale = 1.0 + 0.15 * (t / max(0.01, dur))
             target_w, target_h = config.resolution
             
             new_w = int(target_w * scale)
@@ -1430,6 +1493,36 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         clips.append(c)
 
     bg_clip = concatenate_videoclips(clips)
+
+    # Add dynamic retention overlays (Visual Progress Bar & CTA Subscribe Overlay)
+    retention_overlays = []
+    if config.is_short:
+        try:
+            # 1. Dynamic 5px Visual Progress Bar at bottom
+            pbar_clip = create_progress_bar_clip(audio_duration, config.resolution)
+            retention_overlays.append(pbar_clip)
+        except Exception as pbar_err:
+            print("Failed to add progress bar clip:", pbar_err)
+
+        try:
+            # 2. Automated CTA Overlay in final 5 seconds
+            cta_asset_path = get_or_create_cta_asset()
+            cta_start = max(0.0, audio_duration - 5.0)
+            cta_dur = audio_duration - cta_start
+            cta_y = int(config.resolution[1] * 0.70)
+            cta_clip = (
+                ImageClip(cta_asset_path)
+                .set_start(cta_start)
+                .set_duration(cta_dur)
+                .set_position(("center", cta_y))
+                .resize(lambda t: min(1.0, 0.5 + 0.5 * (t / 0.3)) if t < 0.3 else 1.0)
+            )
+            retention_overlays.append(cta_clip)
+        except Exception as cta_err:
+            print("Failed to add CTA overlay clip:", cta_err)
+
+    if retention_overlays:
+        bg_clip = CompositeVideoClip([bg_clip] + retention_overlays)
 
     # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
     final_audio_clip = audio_clip
