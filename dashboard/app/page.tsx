@@ -60,7 +60,7 @@ interface RunEntry {
 
 export default function TelemetryDashboard() {
   const [runs, setRuns] = useState<RunEntry[]>([]);
-  const [selectedRunId, setSelectedRunId] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<string>("");
   const [showErrorTrace, setShowErrorTrace] = useState<boolean>(false);
 
   useEffect(() => {
@@ -70,7 +70,8 @@ export default function TelemetryDashboard() {
         const loadedRuns = data.default as RunEntry[];
         setRuns(loadedRuns);
         if (loadedRuns.length > 0) {
-          setSelectedRunId(loadedRuns[loadedRuns.length - 1].id);
+          const dates = Array.from(new Set(loadedRuns.map((r) => r.timestamp.split("T")[0]))).sort().reverse();
+          setSelectedDate(dates[0]);
         }
       })
       .catch((err) => {
@@ -78,24 +79,45 @@ export default function TelemetryDashboard() {
       });
   }, []);
 
-  const selectedRun = runs.find((r) => r.id === selectedRunId) || runs[runs.length - 1];
+  // Group runs by Calendar Date YYYY-MM-DD
+  const runsByDate = runs.reduce((acc, run) => {
+    const dateKey = run.timestamp.split("T")[0];
+    if (!acc[dateKey]) {
+      acc[dateKey] = [];
+    }
+    acc[dateKey].push(run);
+    return acc;
+  }, {} as Record<string, RunEntry[]>);
+
+  const availableDates = Object.keys(runsByDate).sort().reverse();
+  const selectedDayRuns = runsByDate[selectedDate] || [];
+  const isTournamentDay = selectedDayRuns.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
 
   // Calculated KPI Stats
   const totalRuns = runs.length;
   const successfulRuns = runs.filter((r) => r.status === "SUCCESS").length;
   const successRate = totalRuns > 0 ? ((successfulRuns / totalRuns) * 100).toFixed(1) : "100.0";
   const avgRenderTime = totalRuns > 0 ? (runs.reduce((acc, r) => acc + r.render_time_seconds, 0) / totalRuns).toFixed(1) : "0.0";
-  const latestQAScore = selectedRun?.script_variants
-    ? (selectedRun.script_variants.reduce((acc, v) => Math.max(acc, v.score), 0)).toFixed(2)
+  const latestQAScore = selectedDayRuns.length > 0 && selectedDayRuns[0].script_variants
+    ? Math.max(...selectedDayRuns[0].script_variants.map((v) => v.score)).toFixed(2)
     : "9.71";
 
   // Recharts formatted data
-  const chartData = runs.map((r, i) => ({
-    name: `Run ${i + 1}`,
-    date: r.timestamp.split("T")[0],
-    renderTime: r.render_time_seconds,
-    topScore: r.script_variants ? Math.max(...r.script_variants.map((v) => v.score)) : 9.0
-  }));
+  const chartData = availableDates.slice().reverse().map((date) => {
+    const dayRuns = runsByDate[date];
+    const topScore = Math.max(...dayRuns.flatMap((r) => r.script_variants ? r.script_variants.map((v) => v.score) : [5.0]));
+    const avgRender = dayRuns.reduce((a, b) => a + b.render_time_seconds, 0) / dayRuns.length;
+    return {
+      date,
+      topScore,
+      renderTime: roundNum(avgRender, 1),
+      count: dayRuns.length
+    };
+  });
+
+  function roundNum(num: number, dec: number) {
+    return Number(Math.round(Number(num + "e" + dec)) + "e-" + dec);
+  }
 
   const getCategoryBadgeColor = (cat: string) => {
     switch (cat?.toLowerCase()) {
@@ -246,189 +268,229 @@ export default function TelemetryDashboard() {
         </div>
       </div>
 
-      {/* DAILY INSPECTOR MATRIX & 5-VARIANT TOURNAMENT COMPARISON */}
-      {selectedRun && (
+      {/* DAILY INSPECTOR MATRIX (CALENDAR DATE DROPDOWN) */}
+      {selectedDayRuns.length > 0 && (
         <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
               <h2 className="text-xl font-bold text-white flex items-center gap-2">
                 <FileText className="w-5 h-5 text-[#00FF66]" />
-                Daily Tournament & Run Inspector Matrix
+                Daily Inspector Matrix & Run History
               </h2>
               <p className="text-xs text-gray-400 mt-0.5">
-                Timestamp: {selectedRun.timestamp} | Category: <span className="font-bold text-white">{selectedRun.category}</span>
+                Date: <span className="font-bold text-white font-mono">{selectedDate}</span> | Total Videos Generated: <span className="font-bold text-[#00E5FF]">{selectedDayRuns.length} Videos</span>
               </p>
             </div>
 
             <div className="flex items-center gap-3">
+              <span className="text-xs text-gray-400 font-bold uppercase">Select Date:</span>
               <select
-                value={selectedRun.id}
-                onChange={(e) => setSelectedRunId(e.target.value)}
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
                 className="bg-[#0b0f19] text-white border border-[#1f2d4d] px-4 py-2 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]"
               >
-                {runs.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.timestamp.split("T")[0]} - {r.category} ({r.status})
-                  </option>
-                ))}
+                {availableDates.map((date) => {
+                  const count = runsByDate[date].length;
+                  const isTourn = runsByDate[date].some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
+                  return (
+                    <option key={date} value={date}>
+                      {date} — {count} {count === 1 ? "Video" : "Videos"} {isTourn ? "(🏆 Tournament)" : "(⚡ 6/Day)"}
+                    </option>
+                  );
+                })}
               </select>
-
-              {selectedRun.youtube_url && (
-                <a
-                  href={selectedRun.youtube_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/40 px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-600/30 transition-all"
-                >
-                  <Youtube className="w-4 h-4" />
-                  Watch Short
-                </a>
-              )}
             </div>
           </div>
 
-          {/* WINNING SCRIPT BANNER */}
-          <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
-            <div className="flex items-center justify-between">
-              <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(selectedRun.category)}`}>
-                🏆 WINNING SCRIPT: {selectedRun.winning_script?.title || "Selected Variant"}
+          {/* ERA ARCHITECTURE BADGE BANNER */}
+          <div className="flex items-center justify-between bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d]">
+            <div className="flex items-center gap-3">
+              <span className={`px-3 py-1 rounded-full text-xs font-bold border ${isTournamentDay ? "bg-purple-950/60 text-purple-300 border-purple-800/40" : "bg-cyan-950/60 text-cyan-300 border-cyan-800/40"}`}>
+                {isTournamentDay ? "🏆 Modern 5-Variant Tournament Era" : "⚡ Pre-Tournament Legacy Era (6 Videos/Day)"}
               </span>
-              <span className="text-xs font-mono text-gray-400">
-                Theme Color: <strong style={{ color: selectedRun.winning_script?.color_theme || "#00E5FF" }}>{selectedRun.winning_script?.color_theme || "#00E5FF"}</strong>
+              <span className="text-xs text-gray-400">
+                {isTournamentDay 
+                  ? "1 high-input video/day produced with surplus compute time & Auto-QA tournament." 
+                  : "6 videos generated & uploaded per day across Space, History, and Tech categories."}
               </span>
-            </div>
-            <p className="text-sm italic text-gray-200 bg-[#131b2e] p-4 rounded-lg border border-[#1f2d4d]">
-              "{selectedRun.winning_script?.text || "No text available"}"
-            </p>
-            <div className="flex gap-2">
-              {selectedRun.winning_script?.hashtags?.map((tag, i) => (
-                <span key={i} className="text-xs font-mono text-cyan-400 bg-cyan-950/40 px-2.5 py-1 rounded-md border border-cyan-800/40">
-                  {tag}
-                </span>
-              ))}
             </div>
           </div>
 
-          {/* DEEP METADATA VAULT (EXCLUSIVE ATTRIBUTES OUTSIDE YOUTUBE STUDIO) */}
-          <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#00E5FF] flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#00E5FF]" />
-              Deep Metadata Vault (Exclusive Attributes Outside YouTube Studio)
-            </h4>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                <span className="font-bold text-gray-400 block uppercase text-[10px]">🌐 Scraped Source Knowledge Origin</span>
-                <a 
-                  href={selectedRun.source_url || "https://en.wikipedia.org/wiki/Portal:Space"} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="text-[#00E5FF] hover:underline font-mono truncate block"
-                >
-                  {selectedRun.source_url || "https://en.wikipedia.org/wiki/Portal:Space"}
-                </a>
-              </div>
+          {/* PRE-TOURNAMENT ERA: LIST OF ALL VIDEOS GENERATED ON SELECTED DATE */}
+          {!isTournamentDay ? (
+            <div className="space-y-6">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">
+                Daily Video Output ({selectedDayRuns.length} Generated & Uploaded Clips)
+              </h3>
 
-              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                <span className="font-bold text-gray-400 block uppercase text-[10px]">🎵 Background Audio Track</span>
-                <span className="font-mono text-white block">{selectedRun.music_track || "space_ambient_cinematic.mp3"}</span>
-              </div>
-
-              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                <span className="font-bold text-gray-400 block uppercase text-[10px]">🎙️ Kokoro Neural Voice Actor</span>
-                <span className="font-mono text-[#00FF66] block">{selectedRun.voice_actor || "af_sarah (Kokoro-82M Neural CPU)"}</span>
-              </div>
-
-              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                <span className="font-bold text-gray-400 block uppercase text-[10px]">🔍 Scraped Search Keywords</span>
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {(selectedRun.search_keywords || ["cosmic void", "astrophysics", "deep space"]).map((kw, i) => (
-                    <span key={i} className="bg-blue-950/60 text-blue-300 border border-blue-800/40 px-2 py-0.5 rounded text-[10px]">
-                      {kw}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                <span className="font-bold text-gray-400 block uppercase text-[10px]">🖼️ Visual Asset Mix & Salience Zoom</span>
-                <span className="font-mono text-yellow-300 block">{selectedRun.visual_asset_types || "3 Pexels 4K Clips + 1 Salience-Zoomed Focal Image"}</span>
-              </div>
-
-              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                <span className="font-bold text-gray-400 block uppercase text-[10px]">🔤 FFmpeg Subtitle & ASS Engine</span>
-                <span className="font-mono text-gray-200 block">{selectedRun.ass_subtitle_engine || "FFmpeg ASS Engine (Anton-Regular Bold)"}</span>
-              </div>
-            </div>
-          </div>
-          {/* 5-VARIANT COMPARISON GRID & ERA NOTICE */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
-                {selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY" 
-                  ? "⚡ Pre-Tournament Era Breakdown (Legacy Single-Script Mode)" 
-                  : "🏆 5-Variant Auto-QA Tournament Breakdown"}
-              </h4>
-              <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#131b2e] border border-[#1f2d4d] text-cyan-300">
-                {selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY"
-                  ? "Legacy High-Volume (6 Videos/Day)"
-                  : "Modern Era (1 High-Quality Video/Day)"}
-              </span>
-            </div>
-
-            <div className={`grid gap-4 ${selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY" ? "grid-cols-1" : "grid-cols-1 md:grid-cols-5"}`}>
-              {selectedRun.script_variants?.map((v) => {
-                const isWinner = v.title === selectedRun.winning_script?.title || selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY";
-                return (
-                  <div
-                    key={v.variant_id}
-                    className={`p-4 rounded-xl border flex flex-col justify-between space-y-3 ${
-                      isWinner
-                        ? "bg-[#00FF66]/10 border-[#00FF66]/50 ring-1 ring-[#00FF66]/30"
-                        : "bg-[#0b0f19] border-[#1f2d4d]"
-                    }`}
-                  >
-                    <div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-xs font-bold text-gray-400">
-                          {selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY" ? "Legacy Script Mode" : `Variant ${v.variant_id}`}
-                        </span>
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${v.score >= 9 ? "bg-[#00FF66]/20 text-[#00FF66]" : "bg-yellow-500/20 text-yellow-400"}`}>
-                          {v.score} / 10
-                        </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {selectedDayRuns.map((run, i) => (
+                  <div key={run.id} className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-gray-400 font-mono">Clip #{i + 1}</span>
+                          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${getCategoryBadgeColor(run.category)}`}>
+                            {run.category}
+                          </span>
+                        </div>
+                        <h4 className="text-md font-bold text-white mt-1">{run.winning_script?.title || "Video Clip"}</h4>
                       </div>
-                      <h5 className="text-xs font-bold text-white mt-2 line-clamp-2">{v.title}</h5>
-                      <span className="text-[10px] uppercase font-mono text-gray-400 block mt-1">{v.angle}</span>
-                      <p className="text-xs text-gray-300 mt-2 line-clamp-3 italic">"{v.hook}"</p>
+
+                      <div className="flex flex-col items-end gap-1">
+                        <span className="text-xs font-bold px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400">
+                          Score: {run.script_variants?.[0]?.score || 5.2} / 10
+                        </span>
+                        {run.youtube_url && (
+                          <a
+                            href={run.youtube_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-1 text-[11px] font-bold text-red-400 hover:underline mt-1"
+                          >
+                            <Youtube className="w-3.5 h-3.5" /> Watch Short
+                          </a>
+                        )}
+                      </div>
                     </div>
-                    <div className="pt-2 border-t border-[#1f2d4d]">
-                      <p className="text-[11px] text-gray-400 line-clamp-3">{v.critique}</p>
+
+                    <p className="text-xs italic text-gray-300 bg-[#131b2e] p-3 rounded-lg border border-[#1f2d4d]">
+                      "{run.winning_script?.text || "No script text available"}"
+                    </p>
+
+                    {/* ATTRIBUTES FOR THIS INDIVIDUAL CLIP */}
+                    <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-[#1f2d4d]">
+                      <div>
+                        <span className="text-gray-400 font-bold block">🌐 Knowledge Source:</span>
+                        <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
+                          {run.source_url}
+                        </a>
+                      </div>
+                      <div>
+                        <span className="text-gray-400 font-bold block">🎵 Audio Track:</span>
+                        <span className="font-mono text-gray-200">{run.music_track}</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-400 font-bold block">🎙️ Voice Engine:</span>
+                        <span className="font-mono text-[#00FF66]">{run.voice_actor}</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-400 font-bold block">🖼️ Visual Asset Mix:</span>
+                        <span className="font-mono text-yellow-300">{run.visual_asset_types}</span>
+                      </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* FAILURE & ERROR LOG CONTAINERS */}
-          {selectedRun.status === "FAILED" && (
-            <div className="bg-red-950/30 border border-red-500/40 p-4 rounded-xl space-y-2">
-              <div 
-                onClick={() => setShowErrorTrace(!showErrorTrace)}
-                className="flex items-center justify-between cursor-pointer text-red-400 text-sm font-bold"
-              >
-                <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5" />
-                  <span>Pipeline Execution Traceback (Click to Toggle)</span>
-                </div>
-                {showErrorTrace ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                ))}
               </div>
+            </div>
+          ) : (
+            /* MODERN TOURNAMENT ERA (1 VIDEO/DAY WITH 5-VARIANT BREAKDOWN) */
+            <div className="space-y-6">
+              {selectedDayRuns.map((run) => (
+                <div key={run.id} className="space-y-6">
+                  {/* WINNING SCRIPT BANNER */}
+                  <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(run.category)}`}>
+                        🏆 WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
+                      </span>
+                      {run.youtube_url && (
+                        <a
+                          href={run.youtube_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/40 px-4 py-1.5 rounded-xl text-xs font-bold hover:bg-red-600/30 transition-all"
+                        >
+                          <Youtube className="w-4 h-4" /> Watch Short
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-sm italic text-gray-200 bg-[#131b2e] p-4 rounded-lg border border-[#1f2d4d]">
+                      "{run.winning_script?.text || "No text available"}"
+                    </p>
+                  </div>
 
-              {showErrorTrace && (
-                <pre className="text-xs font-mono bg-black/60 p-4 rounded-lg text-red-300 overflow-x-auto border border-red-900/50 mt-2">
-                  {selectedRun.error_traceback || "No explicit traceback recorded."}
-                </pre>
-              )}
+                  {/* DEEP METADATA VAULT */}
+                  <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#00E5FF] flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-[#00E5FF]" />
+                      Deep Metadata Vault (Exclusive Attributes Outside YouTube Studio)
+                    </h4>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🌐 Scraped Source Knowledge Origin</span>
+                        <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
+                          {run.source_url}
+                        </a>
+                      </div>
+                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🎵 Background Audio Track</span>
+                        <span className="font-mono text-white block">{run.music_track}</span>
+                      </div>
+                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🎙️ Kokoro Neural Voice Actor</span>
+                        <span className="font-mono text-[#00FF66] block">{run.voice_actor}</span>
+                      </div>
+                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🔍 Scraped Search Keywords</span>
+                        <div className="flex flex-wrap gap-1 mt-1">
+                          {(run.search_keywords || []).map((kw, i) => (
+                            <span key={i} className="bg-blue-950/60 text-blue-300 border border-blue-800/40 px-2 py-0.5 rounded text-[10px]">
+                              {kw}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🖼️ Visual Asset Mix & Salience Zoom</span>
+                        <span className="font-mono text-yellow-300 block">{run.visual_asset_types}</span>
+                      </div>
+                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🔤 FFmpeg Subtitle & ASS Engine</span>
+                        <span className="font-mono text-gray-200 block">{run.ass_subtitle_engine}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 5-VARIANT COMPARISON GRID */}
+                  <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
+                      🏆 5-Variant Auto-QA Tournament Breakdown
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                      {run.script_variants?.map((v) => {
+                        const isWinner = v.title === run.winning_script?.title;
+                        return (
+                          <div
+                            key={v.variant_id}
+                            className={`p-4 rounded-xl border flex flex-col justify-between space-y-3 ${
+                              isWinner
+                                ? "bg-[#00FF66]/10 border-[#00FF66]/50 ring-1 ring-[#00FF66]/30"
+                                : "bg-[#0b0f19] border-[#1f2d4d]"
+                            }`}
+                          >
+                            <div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-xs font-bold text-gray-400">Variant {v.variant_id}</span>
+                                <span className={`text-xs font-bold px-2 py-0.5 rounded ${v.score >= 9 ? "bg-[#00FF66]/20 text-[#00FF66]" : "bg-yellow-500/20 text-yellow-400"}`}>
+                                  {v.score} / 10
+                                </span>
+                              </div>
+                              <h5 className="text-xs font-bold text-white mt-2 line-clamp-2">{v.title}</h5>
+                              <span className="text-[10px] uppercase font-mono text-gray-400 block mt-1">{v.angle}</span>
+                              <p className="text-xs text-gray-300 mt-2 line-clamp-3 italic">"{v.hook}"</p>
+                            </div>
+                            <div className="pt-2 border-t border-[#1f2d4d]">
+                              <p className="text-[11px] text-gray-400 line-clamp-3">{v.critique}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>
