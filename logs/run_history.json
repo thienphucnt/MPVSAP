@@ -6,7 +6,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.45,
+    "render_time_seconds": 35.01,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -24,13 +24,13 @@
         "title": "Reality Is a Lie: Instant End #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Reality Is a Lie: Instant End #space #shorts",
-        "score": 5.1,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.68,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Reality Is a Lie: Instant End #space #shorts",
-      "text": "Exploring Reality Is a Lie: Instant End #space #shorts...",
+      "text": "Exploring Reality Is a Lie: Instant End #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -48,7 +48,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.02,
+    "render_time_seconds": 32.26,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -66,13 +66,13 @@
         "title": "Your Beautiful Stars Are Lying #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Beautiful Stars Are Lying #space #shorts",
-        "score": 5.0,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.38,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Your Beautiful Stars Are Lying #space #shorts",
-      "text": "Exploring Your Beautiful Stars Are Lying #space #shorts...",
+      "text": "Exploring Your Beautiful Stars Are Lying #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -90,7 +90,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.18,
+    "render_time_seconds": 36.08,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -108,13 +108,13 @@
         "title": "Your reality could vanish right now. #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your reality could vanish right now. #space #shorts",
-        "score": 5.42,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.39,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Your reality could vanish right now. #space #shorts",
-      "text": "Exploring Your reality could vanish right now. #space #shorts...",
+      "text": "Exploring Your reality could vanish right now. #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -132,7 +132,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.56,
+    "render_time_seconds": 31.43,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -150,13 +150,13 @@
         "title": "You Wont See This Apocalypse Coming #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: You Wont See This Apocalypse Coming #space #shorts",
-        "score": 5.61,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.7,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "You Wont See This Apocalypse Coming #space #shorts",
-      "text": "Exploring You Wont See This Apocalypse Coming #space #shorts...",
+      "text": "Exploring You Wont See This Apocalypse Coming #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -174,7 +174,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.54,
+    "render_time_seconds": 39.83,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -192,13 +192,13 @@
         "title": "When London Drowned in BEER! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When London Drowned in BEER! #history #shorts",
-        "score": 5.35,
-        "critique": "Phase evaluation for History script."
+        "score": 7.7,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When London Drowned in BEER! #history #shorts",
-      "text": "Exploring When London Drowned in BEER! #history #shorts...",
+      "text": "Exploring When London Drowned in BEER! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -216,7 +216,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.1,
+    "render_time_seconds": 46.85,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -234,13 +234,13 @@
         "title": "They Danced Until They Died... #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Danced Until They Died... #history #shorts",
-        "score": 5.28,
-        "critique": "Phase evaluation for History script."
+        "score": 7.71,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "They Danced Until They Died... #history #shorts",
-      "text": "Exploring They Danced Until They Died... #history #shorts...",
+      "text": "Exploring They Danced Until They Died... #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -258,7 +258,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.58,
+    "render_time_seconds": 45.39,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -276,13 +276,13 @@
         "title": "They Tried a DEAD Pope! Unbelievable History #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Tried a DEAD Pope! Unbelievable History #history #shorts",
-        "score": 5.21,
-        "critique": "Phase evaluation for History script."
+        "score": 7.72,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "They Tried a DEAD Pope! Unbelievable History #history #shorts",
-      "text": "Exploring They Tried a DEAD Pope! Unbelievable History #history #shorts...",
+      "text": "Exploring They Tried a DEAD Pope! Unbelievable History #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -300,7 +300,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.81,
+    "render_time_seconds": 31.75,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -318,13 +318,13 @@
         "title": "When Your Pants Literally Exploded #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Your Pants Literally Exploded #history #shorts",
-        "score": 5.71,
-        "critique": "Phase evaluation for History script."
+        "score": 7.72,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When Your Pants Literally Exploded #history #shorts",
-      "text": "Exploring When Your Pants Literally Exploded #history #shorts...",
+      "text": "Exploring When Your Pants Literally Exploded #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -342,7 +342,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.61,
+    "render_time_seconds": 43.83,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -360,13 +360,13 @@
         "title": "When Londons river was a killer #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Londons river was a killer #history #shorts",
-        "score": 5.47,
-        "critique": "Phase evaluation for History script."
+        "score": 7.43,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When Londons river was a killer #history #shorts",
-      "text": "Exploring When Londons river was a killer #history #shorts...",
+      "text": "Exploring When Londons river was a killer #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -384,7 +384,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.12,
+    "render_time_seconds": 35.7,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -402,13 +402,13 @@
         "title": "Australia declared war on BIRDS #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Australia declared war on BIRDS #history #shorts",
-        "score": 5.94,
-        "critique": "Phase evaluation for History script."
+        "score": 7.74,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Australia declared war on BIRDS #history #shorts",
-      "text": "Exploring Australia declared war on BIRDS #history #shorts...",
+      "text": "Exploring Australia declared war on BIRDS #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -426,7 +426,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.57,
+    "render_time_seconds": 37.06,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -444,13 +444,13 @@
         "title": "Renting Pineapples Was Once a Status Symbol #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Renting Pineapples Was Once a Status Symbol #history #shorts",
-        "score": 5.99,
-        "critique": "Phase evaluation for History script."
+        "score": 7.44,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Renting Pineapples Was Once a Status Symbol #history #shorts",
-      "text": "Exploring Renting Pineapples Was Once a Status Symbol #history #shorts...",
+      "text": "Exploring Renting Pineapples Was Once a Status Symbol #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -468,7 +468,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.8,
+    "render_time_seconds": 44.3,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -486,13 +486,13 @@
         "title": "Why Victorians Wore Dead Peoples Hair #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Why Victorians Wore Dead Peoples Hair #history #shorts",
-        "score": 5.72,
-        "critique": "Phase evaluation for History script."
+        "score": 7.75,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Why Victorians Wore Dead Peoples Hair #history #shorts",
-      "text": "Exploring Why Victorians Wore Dead Peoples Hair #history #shorts...",
+      "text": "Exploring Why Victorians Wore Dead Peoples Hair #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -510,7 +510,7 @@
     "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.06,
+    "render_time_seconds": 33.26,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -528,13 +528,13 @@
         "title": "They Ate Mummies For Medicine #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Ate Mummies For Medicine #history #shorts",
-        "score": 6.2,
-        "critique": "Phase evaluation for History script."
+        "score": 7.46,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "They Ate Mummies For Medicine #history #shorts",
-      "text": "Exploring They Ate Mummies For Medicine #history #shorts...",
+      "text": "Exploring They Ate Mummies For Medicine #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -552,7 +552,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.74,
+    "render_time_seconds": 47.41,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -570,13 +570,13 @@
         "title": "When Dancing Meant Death #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Dancing Meant Death #history #shorts",
-        "score": 5.65,
-        "critique": "Phase evaluation for History script."
+        "score": 7.46,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When Dancing Meant Death #history #shorts",
-      "text": "Exploring When Dancing Meant Death #history #shorts...",
+      "text": "Exploring When Dancing Meant Death #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -594,7 +594,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.87,
+    "render_time_seconds": 35.99,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -612,13 +612,13 @@
         "title": "The Horse Who Almost Ruled Rome #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Horse Who Almost Ruled Rome #history #shorts",
-        "score": 6.23,
-        "critique": "Phase evaluation for History script."
+        "score": 7.47,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Horse Who Almost Ruled Rome #history #shorts",
-      "text": "Exploring The Horse Who Almost Ruled Rome #history #shorts...",
+      "text": "Exploring The Horse Who Almost Ruled Rome #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -636,7 +636,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.14,
+    "render_time_seconds": 43.12,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -654,13 +654,13 @@
         "title": "When a Pope Put a Corpse On Trial! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When a Pope Put a Corpse On Trial! #history #shorts",
-        "score": 6.25,
-        "critique": "Phase evaluation for History script."
+        "score": 7.48,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When a Pope Put a Corpse On Trial! #history #shorts",
-      "text": "Exploring When a Pope Put a Corpse On Trial! #history #shorts...",
+      "text": "Exploring When a Pope Put a Corpse On Trial! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -678,7 +678,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 47.52,
+    "render_time_seconds": 44.93,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -696,13 +696,13 @@
         "title": "The City That Danced to Death #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The City That Danced to Death #history #shorts",
-        "score": 6.1,
-        "critique": "Phase evaluation for History script."
+        "score": 7.79,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The City That Danced to Death #history #shorts",
-      "text": "Exploring The City That Danced to Death #history #shorts...",
+      "text": "Exploring The City That Danced to Death #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -720,7 +720,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.94,
+    "render_time_seconds": 44.38,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -738,13 +738,13 @@
         "title": "Quantum Entanglement: Faster Than Light! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Quantum Entanglement: Faster Than Light! #tech #shorts",
-        "score": 6.04,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.49,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Quantum Entanglement: Faster Than Light! #tech #shorts",
-      "text": "Exploring Quantum Entanglement: Faster Than Light! #tech #shorts...",
+      "text": "Exploring Quantum Entanglement: Faster Than Light! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -762,7 +762,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.13,
+    "render_time_seconds": 30.14,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -780,13 +780,13 @@
         "title": "The Material That BENDS REALITY! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Material That BENDS REALITY! #tech #shorts",
-        "score": 6.4,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.5,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Material That BENDS REALITY! #tech #shorts",
-      "text": "Exploring The Material That BENDS REALITY! #tech #shorts...",
+      "text": "Exploring The Material That BENDS REALITY! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -804,7 +804,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.39,
+    "render_time_seconds": 35.53,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -822,13 +822,13 @@
         "title": "Sound Can Now Sculpt Matter! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Sound Can Now Sculpt Matter! #tech #shorts",
-        "score": 6.47,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.51,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Sound Can Now Sculpt Matter! #tech #shorts",
-      "text": "Exploring Sound Can Now Sculpt Matter! #tech #shorts...",
+      "text": "Exploring Sound Can Now Sculpt Matter! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -846,7 +846,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.82,
+    "render_time_seconds": 45.37,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -864,13 +864,13 @@
         "title": "Your Data in a Sugar Cube! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Data in a Sugar Cube! #tech #shorts",
-        "score": 6.4,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.51,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Your Data in a Sugar Cube! #tech #shorts",
-      "text": "Exploring Your Data in a Sugar Cube! #tech #shorts...",
+      "text": "Exploring Your Data in a Sugar Cube! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -888,7 +888,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.21,
+    "render_time_seconds": 31.72,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -906,13 +906,13 @@
         "title": "New AI Thinks Like a Human! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: New AI Thinks Like a Human! #tech #shorts",
-        "score": 6.11,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.52,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "New AI Thinks Like a Human! #tech #shorts",
-      "text": "Exploring New AI Thinks Like a Human! #tech #shorts...",
+      "text": "Exploring New AI Thinks Like a Human! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -930,7 +930,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.19,
+    "render_time_seconds": 34.48,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -948,13 +948,13 @@
         "title": "This Tech Repairs Itself! Mind Blown #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Tech Repairs Itself! Mind Blown #tech #shorts",
-        "score": 6.05,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.53,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "This Tech Repairs Itself! Mind Blown #tech #shorts",
-      "text": "Exploring This Tech Repairs Itself! Mind Blown #tech #shorts...",
+      "text": "Exploring This Tech Repairs Itself! Mind Blown #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -972,7 +972,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.0,
+    "render_time_seconds": 34.79,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -990,13 +990,13 @@
         "title": "This Crystal Defies Physics! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Crystal Defies Physics! #tech #shorts",
-        "score": 6.11,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.53,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "This Crystal Defies Physics! #tech #shorts",
-      "text": "Exploring This Crystal Defies Physics! #tech #shorts...",
+      "text": "Exploring This Crystal Defies Physics! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1014,7 +1014,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.57,
+    "render_time_seconds": 45.9,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -1032,13 +1032,13 @@
         "title": "AI Just Created Digital Immortality #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: AI Just Created Digital Immortality #tech #shorts",
-        "score": 6.53,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.54,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "AI Just Created Digital Immortality #tech #shorts",
-      "text": "Exploring AI Just Created Digital Immortality #tech #shorts...",
+      "text": "Exploring AI Just Created Digital Immortality #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1056,7 +1056,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.77,
+    "render_time_seconds": 38.23,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -1074,13 +1074,13 @@
         "title": "Living Buildings Will Blow Your Mind! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Living Buildings Will Blow Your Mind! #tech #shorts",
-        "score": 6.38,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.55,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Living Buildings Will Blow Your Mind! #tech #shorts",
-      "text": "Exploring Living Buildings Will Blow Your Mind! #tech #shorts...",
+      "text": "Exploring Living Buildings Will Blow Your Mind! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1098,7 +1098,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.86,
+    "render_time_seconds": 42.53,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1116,13 +1116,13 @@
         "title": "This tech stores Earths data in one cube! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This tech stores Earths data in one cube! #tech #shorts",
-        "score": 6.35,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.55,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "This tech stores Earths data in one cube! #tech #shorts",
-      "text": "Exploring This tech stores Earths data in one cube! #tech #shorts...",
+      "text": "Exploring This tech stores Earths data in one cube! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1140,7 +1140,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.96,
+    "render_time_seconds": 39.24,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -1158,13 +1158,13 @@
         "title": "Programmable Matter Will BLOW Your Mind! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Programmable Matter Will BLOW Your Mind! #tech #shorts",
-        "score": 6.66,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.56,
+        "critique": "Phase 1 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Programmable Matter Will BLOW Your Mind! #tech #shorts",
-      "text": "Exploring Programmable Matter Will BLOW Your Mind! #tech #shorts...",
+      "text": "Exploring Programmable Matter Will BLOW Your Mind! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1182,7 +1182,7 @@
     "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.12,
+    "render_time_seconds": 45.26,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -1200,13 +1200,13 @@
         "title": "Light Speed Computers Are Here #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Light Speed Computers Are Here #tech #shorts",
-        "score": 6.37,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.57,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Light Speed Computers Are Here #tech #shorts",
-      "text": "Exploring Light Speed Computers Are Here #tech #shorts...",
+      "text": "Exploring Light Speed Computers Are Here #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1224,7 +1224,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.83,
+    "render_time_seconds": 30.62,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -1242,13 +1242,13 @@
         "title": "Objects Will Soon EVOLVE! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Objects Will Soon EVOLVE! #tech #shorts",
-        "score": 6.4,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.57,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Objects Will Soon EVOLVE! #tech #shorts",
-      "text": "Exploring Objects Will Soon EVOLVE! #tech #shorts...",
+      "text": "Exploring Objects Will Soon EVOLVE! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1266,7 +1266,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.52,
+    "render_time_seconds": 35.66,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1284,13 +1284,13 @@
         "title": "Your Data Could Last MILLIONS of Years! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Data Could Last MILLIONS of Years! #tech #shorts",
-        "score": 7.02,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.58,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Your Data Could Last MILLIONS of Years! #tech #shorts",
-      "text": "Exploring Your Data Could Last MILLIONS of Years! #tech #shorts...",
+      "text": "Exploring Your Data Could Last MILLIONS of Years! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1308,7 +1308,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.32,
+    "render_time_seconds": 33.31,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -1326,13 +1326,13 @@
         "title": "Mind-Blowing Nanobot Healthcare! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Mind-Blowing Nanobot Healthcare! #tech #shorts",
-        "score": 6.75,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.59,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Mind-Blowing Nanobot Healthcare! #tech #shorts",
-      "text": "Exploring Mind-Blowing Nanobot Healthcare! #tech #shorts...",
+      "text": "Exploring Mind-Blowing Nanobot Healthcare! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1350,7 +1350,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.97,
+    "render_time_seconds": 30.4,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -1368,13 +1368,13 @@
         "title": "Your Brain Could Control Robots Soon #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Brain Could Control Robots Soon #tech #shorts",
-        "score": 6.99,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.6,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Your Brain Could Control Robots Soon #tech #shorts",
-      "text": "Exploring Your Brain Could Control Robots Soon #tech #shorts...",
+      "text": "Exploring Your Brain Could Control Robots Soon #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1392,7 +1392,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.58,
+    "render_time_seconds": 31.09,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -1410,13 +1410,13 @@
         "title": "The Flash That Ends Worlds #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Flash That Ends Worlds #space #shorts",
-        "score": 6.6,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.6,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Flash That Ends Worlds #space #shorts",
-      "text": "Exploring Gamma-Ray Bursts...",
+      "text": "Exploring The Flash That Ends Worlds #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -1434,7 +1434,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.82,
+    "render_time_seconds": 38.05,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -1452,13 +1452,13 @@
         "title": "Sunless Worlds: The Rogue Planet Mystery #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Sunless Worlds: The Rogue Planet Mystery #space #shorts",
-        "score": 6.7,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.61,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Sunless Worlds: The Rogue Planet Mystery #space #shorts",
-      "text": "Exploring Rogue Planets...",
+      "text": "Exploring Sunless Worlds: The Rogue Planet Mystery #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -1476,7 +1476,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.97,
+    "render_time_seconds": 30.04,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -1494,13 +1494,13 @@
         "title": "History's Deadliest Coffin Trap #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: History's Deadliest Coffin Trap #history #shorts",
-        "score": 6.66,
-        "critique": "Phase evaluation for History script."
+        "score": 7.92,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "History's Deadliest Coffin Trap #history #shorts",
-      "text": "Exploring Coffin Torpedoes...",
+      "text": "Exploring History's Deadliest Coffin Trap #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -1518,7 +1518,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.66,
+    "render_time_seconds": 37.97,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -1536,13 +1536,13 @@
         "title": "The Universe's Most Terrifying Empty Space #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Most Terrifying Empty Space #space #shorts",
-        "score": 7.17,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.62,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe's Most Terrifying Empty Space #space #shorts",
-      "text": "Exploring Bo\u00f6tes Void...",
+      "text": "Exploring The Universe's Most Terrifying Empty Space #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -1560,7 +1560,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.12,
+    "render_time_seconds": 34.95,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -1578,13 +1578,13 @@
         "title": "This Pig Was On Trial For Murder! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Pig Was On Trial For Murder! #history #shorts",
-        "score": 7.05,
-        "critique": "Phase evaluation for History script."
+        "score": 7.63,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "This Pig Was On Trial For Murder! #history #shorts",
-      "text": "Exploring Animal Trials...",
+      "text": "Exploring This Pig Was On Trial For Murder! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -1602,7 +1602,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 38.26,
+    "render_time_seconds": 41.72,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -1620,13 +1620,13 @@
         "title": "Unbelievable! History's Most Bizarre & Unsettling Realities",
         "word_count": 88,
         "hook": "Quick fact: Unbelievable! History's Most Bizarre & Unsettling Realities",
-        "score": 7.27,
-        "critique": "Phase evaluation for History script."
+        "score": 7.94,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Unbelievable! History's Most Bizarre & Unsettling Realities",
-      "text": "Exploring Dead child photos...",
+      "text": "Exploring Unbelievable! History's Most Bizarre & Unsettling Realities. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -1644,7 +1644,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.44,
+    "render_time_seconds": 45.56,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -1662,13 +1662,13 @@
         "title": "Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
         "word_count": 88,
         "hook": "Quick fact: Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
-        "score": 6.85,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.94,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
-      "text": "Exploring Time Crystals...",
+      "text": "Exploring Time Crystals: Matter's Mind-Bending Secret Unlocked Now!. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1686,7 +1686,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.73,
+    "render_time_seconds": 30.38,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -1704,13 +1704,13 @@
         "title": "Deleted video",
         "word_count": 88,
         "hook": "Quick fact: Deleted video",
-        "score": 7.09,
-        "critique": "Phase evaluation for History script."
+        "score": 7.35,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Deleted video",
-      "text": "Exploring Deleted video...",
+      "text": "Exploring Deleted video. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -1728,7 +1728,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.16,
+    "render_time_seconds": 32.3,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -1746,13 +1746,13 @@
         "title": "UNHACKABLE Communication Is Here! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: UNHACKABLE Communication Is Here! #tech #shorts",
-        "score": 7.14,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.66,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "UNHACKABLE Communication Is Here! #tech #shorts",
-      "text": "Exploring UNHACKABLE Communication Is Here! #tech #shorts...",
+      "text": "Exploring UNHACKABLE Communication Is Here! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1770,7 +1770,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.95,
+    "render_time_seconds": 30.06,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1788,13 +1788,13 @@
         "title": "\ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
         "word_count": 88,
         "hook": "Quick fact: \ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
-        "score": 7.05,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.96,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "\ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
-      "text": "Exploring Brain-to-brain link...",
+      "text": "Exploring \ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1812,7 +1812,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.17,
+    "render_time_seconds": 37.2,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -1830,13 +1830,13 @@
         "title": "Boston's Sticky Nightmare Flood! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Boston's Sticky Nightmare Flood! #history #shorts",
-        "score": 7.5,
-        "critique": "Phase evaluation for History script."
+        "score": 7.67,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Boston's Sticky Nightmare Flood! #history #shorts",
-      "text": "Exploring Molasses Flood...",
+      "text": "Exploring Boston's Sticky Nightmare Flood! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -1854,7 +1854,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.85,
+    "render_time_seconds": 38.22,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -1872,13 +1872,13 @@
         "title": "Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
         "word_count": 88,
         "hook": "Quick fact: Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
-        "score": 6.9,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.78,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
-      "text": "Exploring Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed...",
+      "text": "Exploring Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -1896,7 +1896,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.29,
+    "render_time_seconds": 45.9,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -1914,13 +1914,13 @@
         "title": "The Grave Robbers' Ghastly Trade #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Grave Robbers' Ghastly Trade #history #shorts",
-        "score": 6.95,
-        "critique": "Phase evaluation for History script."
+        "score": 7.69,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Grave Robbers' Ghastly Trade #history #shorts",
-      "text": "Exploring Body Snatching...",
+      "text": "Exploring The Grave Robbers' Ghastly Trade #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -1938,7 +1938,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.6,
+    "render_time_seconds": 47.71,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1956,13 +1956,13 @@
         "title": "They Built a Sun... In a Lab! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Built a Sun... In a Lab! #tech #shorts",
-        "score": 7.46,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.69,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "They Built a Sun... In a Lab! #tech #shorts",
-      "text": "Exploring Fusion Ignition...",
+      "text": "Exploring They Built a Sun... In a Lab! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -1980,7 +1980,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.87,
+    "render_time_seconds": 31.98,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -1998,13 +1998,13 @@
         "title": "The Chicken Who Lived Without A Head! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Chicken Who Lived Without A Head! #history #shorts",
-        "score": 6.99,
-        "critique": "Phase evaluation for History script."
+        "score": 7.7,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Chicken Who Lived Without A Head! #history #shorts",
-      "text": "Exploring Headless Chicken...",
+      "text": "Exploring The Chicken Who Lived Without A Head! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2022,7 +2022,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.52,
+    "render_time_seconds": 33.74,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -2040,13 +2040,13 @@
         "title": "Dark Energy: The Universe's Silent Killer #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Dark Energy: The Universe's Silent Killer #space #shorts",
-        "score": 7.68,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.71,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Dark Energy: The Universe's Silent Killer #space #shorts",
-      "text": "Exploring Dark Energy...",
+      "text": "Exploring Dark Energy: The Universe's Silent Killer #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2064,7 +2064,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.49,
+    "render_time_seconds": 31.18,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2082,13 +2082,13 @@
         "title": "The Ultimate Cosmic Reset #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Ultimate Cosmic Reset #space #shorts",
-        "score": 7.69,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.71,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Ultimate Cosmic Reset #space #shorts",
-      "text": "Exploring Vacuum Decay...",
+      "text": "Exploring The Ultimate Cosmic Reset #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2106,7 +2106,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.97,
+    "render_time_seconds": 36.68,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -2124,13 +2124,13 @@
         "title": "Instant Link: Across The UNIVERSE! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Instant Link: Across The UNIVERSE! #tech #shorts",
-        "score": 7.05,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.72,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Instant Link: Across The UNIVERSE! #tech #shorts",
-      "text": "Exploring Quantum Entanglement...",
+      "text": "Exploring Instant Link: Across The UNIVERSE! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -2148,7 +2148,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.67,
+    "render_time_seconds": 32.27,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -2166,13 +2166,13 @@
         "title": "The Ominous Secret of Tabby's Star #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Ominous Secret of Tabby's Star #space #shorts",
-        "score": 7.56,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.03,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Ominous Secret of Tabby's Star #space #shorts",
-      "text": "Exploring Tabby's Star Mystery...",
+      "text": "Exploring The Ominous Secret of Tabby's Star #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2190,7 +2190,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.54,
+    "render_time_seconds": 37.25,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -2208,13 +2208,13 @@
         "title": "The Smell That Shut Down London #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Smell That Shut Down London #history #shorts",
-        "score": 7.3,
-        "critique": "Phase evaluation for History script."
+        "score": 7.73,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Smell That Shut Down London #history #shorts",
-      "text": "Exploring Great Stink...",
+      "text": "Exploring The Smell That Shut Down London #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2232,7 +2232,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.83,
+    "render_time_seconds": 30.86,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2250,13 +2250,13 @@
         "title": "The Universe's Terrifying Cold Spot #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Terrifying Cold Spot #space #shorts",
-        "score": 7.22,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.74,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe's Terrifying Cold Spot #space #shorts",
-      "text": "Exploring CMB Cold Spot...",
+      "text": "Exploring The Universe's Terrifying Cold Spot #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2274,7 +2274,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 47.17,
+    "render_time_seconds": 38.19,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -2292,13 +2292,13 @@
         "title": "Invisible Computers Are Watching Us #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Invisible Computers Are Watching Us #tech #shorts",
-        "score": 7.5,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.75,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Invisible Computers Are Watching Us #tech #shorts",
-      "text": "Exploring Smart Dust...",
+      "text": "Exploring Invisible Computers Are Watching Us #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -2316,7 +2316,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.74,
+    "render_time_seconds": 31.23,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -2334,13 +2334,13 @@
         "title": "When London Drowned in Beer! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When London Drowned in Beer! #history #shorts",
-        "score": 7.82,
-        "critique": "Phase evaluation for History script."
+        "score": 8.05,
+        "critique": "Phase 2 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When London Drowned in Beer! #history #shorts",
-      "text": "Exploring London Beer Flood...",
+      "text": "Exploring When London Drowned in Beer! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2358,7 +2358,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.22,
+    "render_time_seconds": 30.55,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -2376,13 +2376,13 @@
         "title": "Diamond Batteries: Immortal Energy! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Diamond Batteries: Immortal Energy! #tech #shorts",
-        "score": 7.59,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.76,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Diamond Batteries: Immortal Energy! #tech #shorts",
-      "text": "Exploring Diamond Batteries...",
+      "text": "Exploring Diamond Batteries: Immortal Energy! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -2400,7 +2400,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.67,
+    "render_time_seconds": 39.32,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -2418,13 +2418,13 @@
         "title": "The Bizarre Job of a Sin-Eater #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Bizarre Job of a Sin-Eater #history #shorts",
-        "score": 7.91,
-        "critique": "Phase evaluation for History script."
+        "score": 7.77,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Bizarre Job of a Sin-Eater #history #shorts",
-      "text": "Exploring Sin-Eaters...",
+      "text": "Exploring The Bizarre Job of a Sin-Eater #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2442,7 +2442,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.5,
+    "render_time_seconds": 34.16,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -2460,13 +2460,13 @@
         "title": "We're Trapped in a Cosmic Void #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: We're Trapped in a Cosmic Void #space #shorts",
-        "score": 7.52,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.77,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "We're Trapped in a Cosmic Void #space #shorts",
-      "text": "Exploring KBC Void...",
+      "text": "Exploring We're Trapped in a Cosmic Void #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2484,7 +2484,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.75,
+    "render_time_seconds": 41.67,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -2502,13 +2502,13 @@
         "title": "This Pig Almost Started a War! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Pig Almost Started a War! #history #shorts",
-        "score": 7.77,
-        "critique": "Phase evaluation for History script."
+        "score": 8.08,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "This Pig Almost Started a War! #history #shorts",
-      "text": "Exploring Pig War...",
+      "text": "Exploring This Pig Almost Started a War! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2526,7 +2526,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.71,
+    "render_time_seconds": 33.9,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -2544,13 +2544,13 @@
         "title": "Stars Ejected Into Cosmic Exile #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Stars Ejected Into Cosmic Exile #space #shorts",
-        "score": 7.91,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.79,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Stars Ejected Into Cosmic Exile #space #shorts",
-      "text": "Exploring Hypervelocity Stars...",
+      "text": "Exploring Stars Ejected Into Cosmic Exile #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2568,7 +2568,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.55,
+    "render_time_seconds": 43.99,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -2586,13 +2586,13 @@
         "title": "Data in a Crystal?! Mind BLOWN! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Data in a Crystal?! Mind BLOWN! #tech #shorts",
-        "score": 7.95,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.8,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Data in a Crystal?! Mind BLOWN! #tech #shorts",
-      "text": "Exploring Holographic Data Storage...",
+      "text": "Exploring Data in a Crystal?! Mind BLOWN! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -2610,7 +2610,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.83,
+    "render_time_seconds": 44.96,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -2628,13 +2628,13 @@
         "title": "His Corpse Still Goes To Meetings #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: His Corpse Still Goes To Meetings #history #shorts",
-        "score": 7.44,
-        "critique": "Phase evaluation for History script."
+        "score": 7.8,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "His Corpse Still Goes To Meetings #history #shorts",
-      "text": "Exploring Bentham's Auto-Icon...",
+      "text": "Exploring His Corpse Still Goes To Meetings #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2652,7 +2652,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.72,
+    "render_time_seconds": 41.94,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -2670,13 +2670,13 @@
         "title": "Ancient Head Surgery Was Horrific! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Ancient Head Surgery Was Horrific! #history #shorts",
-        "score": 7.48,
-        "critique": "Phase evaluation for History script."
+        "score": 7.81,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Ancient Head Surgery Was Horrific! #history #shorts",
-      "text": "Exploring Ancient Trepanation...",
+      "text": "Exploring Ancient Head Surgery Was Horrific! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2694,7 +2694,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.97,
+    "render_time_seconds": 37.48,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -2712,13 +2712,13 @@
         "title": "Buildings That BREATHE?! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Buildings That BREATHE?! #tech #shorts",
-        "score": 8.11,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.82,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Buildings That BREATHE?! #tech #shorts",
-      "text": "Exploring Bio-Engineered Carbon Capture...",
+      "text": "Exploring Buildings That BREATHE?! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -2736,7 +2736,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.04,
+    "render_time_seconds": 34.24,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2754,13 +2754,13 @@
         "title": "Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
         "word_count": 88,
         "hook": "Quick fact: Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
-        "score": 7.74,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.92,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
-      "text": "Exploring Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You...",
+      "text": "Exploring Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2778,7 +2778,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 47.05,
+    "render_time_seconds": 33.93,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -2796,13 +2796,13 @@
         "title": "The War Started by a Dog?! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The War Started by a Dog?! #history #shorts",
-        "score": 8.17,
-        "critique": "Phase evaluation for History script."
+        "score": 8.13,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The War Started by a Dog?! #history #shorts",
-      "text": "Exploring Stray Dog War...",
+      "text": "Exploring The War Started by a Dog?! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2820,7 +2820,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 38.75,
+    "render_time_seconds": 40.11,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -2838,13 +2838,13 @@
         "title": "Universe's Largest Structure is TERRIFYING #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Universe's Largest Structure is TERRIFYING #space #shorts",
-        "score": 7.65,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.84,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Universe's Largest Structure is TERRIFYING #space #shorts",
-      "text": "Exploring Cosmic Great Wall...",
+      "text": "Exploring Universe's Largest Structure is TERRIFYING #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2862,7 +2862,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.69,
+    "render_time_seconds": 34.13,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -2880,13 +2880,13 @@
         "title": "The Pope Who Declared War on Cats #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Pope Who Declared War on Cats #history #shorts",
-        "score": 7.67,
-        "critique": "Phase evaluation for History script."
+        "score": 8.14,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Pope Who Declared War on Cats #history #shorts",
-      "text": "Exploring Pope's Cat War...",
+      "text": "Exploring The Pope Who Declared War on Cats #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2904,7 +2904,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.31,
+    "render_time_seconds": 45.94,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2922,13 +2922,13 @@
         "title": "The Universe is Leaving Us Behind #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe is Leaving Us Behind #space #shorts",
-        "score": 8.19,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.85,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe is Leaving Us Behind #space #shorts",
-      "text": "Exploring Cosmic Expansion...",
+      "text": "Exploring The Universe is Leaving Us Behind #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -2946,7 +2946,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.9,
+    "render_time_seconds": 30.73,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -2964,13 +2964,13 @@
         "title": "War Started by a BUCKET?! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: War Started by a BUCKET?! #history #shorts",
-        "score": 8.01,
-        "critique": "Phase evaluation for History script."
+        "score": 8.16,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "War Started by a BUCKET?! #history #shorts",
-      "text": "Exploring Oaken Bucket War...",
+      "text": "Exploring War Started by a BUCKET?! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -2988,7 +2988,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.7,
+    "render_time_seconds": 32.63,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -3006,13 +3006,13 @@
         "title": "Strasbourg's Deadly Dance Plague #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Strasbourg's Deadly Dance Plague #history #shorts",
-        "score": 7.9,
-        "critique": "Phase evaluation for History script."
+        "score": 8.16,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Strasbourg's Deadly Dance Plague #history #shorts",
-      "text": "Exploring Dancing Plague...",
+      "text": "Exploring Strasbourg's Deadly Dance Plague #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -3030,7 +3030,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.81,
+    "render_time_seconds": 32.59,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -3048,13 +3048,13 @@
         "title": "Invisible Tech Is REAL #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Invisible Tech Is REAL #tech #shorts",
-        "score": 8.04,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.87,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Invisible Tech Is REAL #tech #shorts",
-      "text": "Exploring Metamaterials Tech...",
+      "text": "Exploring Invisible Tech Is REAL #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -3072,7 +3072,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.14,
+    "render_time_seconds": 31.33,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -3090,13 +3090,13 @@
         "title": "When Animals Faced Justice #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Animals Faced Justice #history #shorts",
-        "score": 8.15,
-        "critique": "Phase evaluation for History script."
+        "score": 7.88,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When Animals Faced Justice #history #shorts",
-      "text": "Exploring Animal Trials...",
+      "text": "Exploring When Animals Faced Justice #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -3114,7 +3114,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.61,
+    "render_time_seconds": 31.2,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -3132,13 +3132,13 @@
         "title": "This Brain Is A STAR #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Brain Is A STAR #tech #shorts",
-        "score": 7.94,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.88,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "This Brain Is A STAR #tech #shorts",
-      "text": "Exploring Matrioshka Brain...",
+      "text": "Exploring This Brain Is A STAR #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -3156,7 +3156,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.7,
+    "render_time_seconds": 32.51,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3174,13 +3174,13 @@
         "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Unseen Force Pulling Our Galaxy #space #shorts",
-        "score": 8.53,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.89,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
-      "text": "Exploring Great Attractor...",
+      "text": "Exploring The Unseen Force Pulling Our Galaxy #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3198,7 +3198,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.32,
+    "render_time_seconds": 45.9,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -3216,13 +3216,13 @@
         "title": "Smell the Internet? #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Smell the Internet? #tech #shorts",
-        "score": 8.17,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.9,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Smell the Internet? #tech #shorts",
-      "text": "Exploring Digital Olfaction...",
+      "text": "Exploring Smell the Internet? #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -3240,7 +3240,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.04,
+    "render_time_seconds": 46.31,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -3258,13 +3258,13 @@
         "title": "MEMRISTORS: The Future of AI? #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: MEMRISTORS: The Future of AI? #tech #shorts",
-        "score": 7.98,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.91,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "MEMRISTORS: The Future of AI? #tech #shorts",
-      "text": "Exploring Memristor Technology...",
+      "text": "Exploring MEMRISTORS: The Future of AI? #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -3282,7 +3282,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.59,
+    "render_time_seconds": 42.79,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -3300,13 +3300,13 @@
         "title": "The Unexplained Cosmic ROAR #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Unexplained Cosmic ROAR #space #shorts",
-        "score": 8.16,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.91,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Unexplained Cosmic ROAR #space #shorts",
-      "text": "Exploring Space Roar...",
+      "text": "Exploring The Unexplained Cosmic ROAR #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3324,7 +3324,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.96,
+    "render_time_seconds": 35.65,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -3342,13 +3342,13 @@
         "title": "Terminator 2 Robots Are ALMOST Here! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Terminator 2 Robots Are ALMOST Here! #tech #shorts",
-        "score": 8.11,
-        "critique": "Phase evaluation for Tech script."
+        "score": 8.32,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Terminator 2 Robots Are ALMOST Here! #tech #shorts",
-      "text": "Exploring Liquid Metal Robotics...",
+      "text": "Exploring Terminator 2 Robots Are ALMOST Here! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -3366,7 +3366,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.36,
+    "render_time_seconds": 38.88,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -3384,13 +3384,13 @@
         "title": "Computers That Waste ZERO Energy?! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Computers That Waste ZERO Energy?! #tech #shorts",
-        "score": 8.03,
-        "critique": "Phase evaluation for Tech script."
+        "score": 8.23,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Computers That Waste ZERO Energy?! #tech #shorts",
-      "text": "Exploring Reversible Computing...",
+      "text": "Exploring Computers That Waste ZERO Energy?! #tech #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -3408,7 +3408,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.3,
+    "render_time_seconds": 37.78,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -3426,13 +3426,13 @@
         "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror #space #shorts",
-        "score": 8.17,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.93,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
-      "text": "Exploring The Big Rip: Ultimate Cosmic Horror #space #shorts...",
+      "text": "Exploring The Big Rip: Ultimate Cosmic Horror #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3450,7 +3450,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.28,
+    "render_time_seconds": 41.72,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -3468,13 +3468,13 @@
         "title": "Rome's Emperor & His Horse Consul #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Rome's Emperor & His Horse Consul #history #shorts",
-        "score": 8.64,
-        "critique": "Phase evaluation for History script."
+        "score": 7.94,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Rome's Emperor & His Horse Consul #history #shorts",
-      "text": "Exploring Caligula's Horse...",
+      "text": "Exploring Rome's Emperor & His Horse Consul #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -3492,7 +3492,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.04,
+    "render_time_seconds": 43.02,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3510,13 +3510,13 @@
         "title": "The Universe is Tearing Itself Apart",
         "word_count": 88,
         "hook": "Quick fact: The Universe is Tearing Itself Apart",
-        "score": 8.23,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.65,
+        "critique": "Phase 3 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe is Tearing Itself Apart",
-      "text": "Exploring Accelerated Expansion...",
+      "text": "Exploring The Universe is Tearing Itself Apart. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3534,7 +3534,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.38,
+    "render_time_seconds": 39.22,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -3552,13 +3552,13 @@
         "title": "They Tried a DEAD Pope! Unbelievable History",
         "word_count": 88,
         "hook": "Quick fact: They Tried a DEAD Pope! Unbelievable History",
-        "score": 8.24,
-        "critique": "Phase evaluation for History script."
+        "score": 8.25,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "They Tried a DEAD Pope! Unbelievable History",
-      "text": "Exploring Cadaver Synod...",
+      "text": "Exploring They Tried a DEAD Pope! Unbelievable History. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -3576,7 +3576,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.28,
+    "render_time_seconds": 37.82,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -3594,13 +3594,13 @@
         "title": "Quantum Entanglement: Faster Than Light!",
         "word_count": 88,
         "hook": "Quick fact: Quantum Entanglement: Faster Than Light!",
-        "score": 8.78,
-        "critique": "Phase evaluation for Tech script."
+        "score": 7.66,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Quantum Entanglement: Faster Than Light!",
-      "text": "Exploring Quantum Entanglement...",
+      "text": "Exploring Quantum Entanglement: Faster Than Light!. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#tech",
         "#shorts",
@@ -3618,7 +3618,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.12,
+    "render_time_seconds": 45.75,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -3636,13 +3636,13 @@
         "title": "They Danced Until They Died...",
         "word_count": 88,
         "hook": "Quick fact: They Danced Until They Died...",
-        "score": 8.48,
-        "critique": "Phase evaluation for History script."
+        "score": 8.27,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "They Danced Until They Died...",
-      "text": "Exploring Dancing Plague...",
+      "text": "Exploring They Danced Until They Died.... In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -3660,7 +3660,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.43,
+    "render_time_seconds": 47.3,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3678,13 +3678,13 @@
         "title": "Cosmic Truth: Your Reality is Unstable",
         "word_count": 88,
         "hook": "Quick fact: Cosmic Truth: Your Reality is Unstable",
-        "score": 8.75,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.67,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Cosmic Truth: Your Reality is Unstable",
-      "text": "Exploring False Vacuum Decay...",
+      "text": "Exploring Cosmic Truth: Your Reality is Unstable. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3702,7 +3702,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.76,
+    "render_time_seconds": 38.25,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -3720,13 +3720,13 @@
         "title": "The Cold Spot: Universe's Terrifying Scar",
         "word_count": 88,
         "hook": "Quick fact: The Cold Spot: Universe's Terrifying Scar",
-        "score": 8.28,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.68,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Cold Spot: Universe's Terrifying Scar",
-      "text": "Exploring Cosmic Cold Spot...",
+      "text": "Exploring The Cold Spot: Universe's Terrifying Scar. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3744,7 +3744,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 38.41,
+    "render_time_seconds": 39.9,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -3762,13 +3762,13 @@
         "title": "The Universe's Silent Death Ray",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Silent Death Ray",
-        "score": 8.53,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.69,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe's Silent Death Ray",
-      "text": "Exploring Gamma-Ray Bursts...",
+      "text": "Exploring The Universe's Silent Death Ray. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3786,7 +3786,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.12,
+    "render_time_seconds": 42.79,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -3804,13 +3804,13 @@
         "title": "When London Drowned in BEER!",
         "word_count": 88,
         "hook": "Quick fact: When London Drowned in BEER!",
-        "score": 8.77,
-        "critique": "Phase evaluation for History script."
+        "score": 8.3,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "When London Drowned in BEER!",
-      "text": "Exploring London Beer Flood...",
+      "text": "Exploring When London Drowned in BEER!. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -3828,7 +3828,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.77,
+    "render_time_seconds": 44.13,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3846,13 +3846,13 @@
         "title": "The Big Rip: Ultimate Cosmic Horror",
         "word_count": 88,
         "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror",
-        "score": 8.98,
-        "critique": "Phase evaluation for Space script."
+        "score": 7.7,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Big Rip: Ultimate Cosmic Horror",
-      "text": "Exploring Big Rip...",
+      "text": "Exploring The Big Rip: Ultimate Cosmic Horror. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3870,7 +3870,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.11,
+    "render_time_seconds": 31.97,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -3888,13 +3888,13 @@
         "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror #space #shorts",
-        "score": 8.6,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.01,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
-      "text": "Exploring The Big Rip: Ultimate Cosmic Horror #space #shorts...",
+      "text": "Exploring The Big Rip: Ultimate Cosmic Horror #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3912,7 +3912,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.48,
+    "render_time_seconds": 39.24,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -3930,13 +3930,13 @@
         "title": "The Universe's Silent Death Ray #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Silent Death Ray #space #shorts",
-        "score": 8.95,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.02,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe's Silent Death Ray #space #shorts",
-      "text": "Exploring The Universe's Silent Death Ray #space #shorts...",
+      "text": "Exploring The Universe's Silent Death Ray #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3954,7 +3954,7 @@
     "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 38.08,
+    "render_time_seconds": 46.55,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -3972,13 +3972,13 @@
         "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Cold Spot: Universe's Terrifying Scar #space #shorts",
-        "score": 8.51,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.02,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
-      "text": "Exploring The Cold Spot: Universe's Terrifying Scar #space #shorts...",
+      "text": "Exploring The Cold Spot: Universe's Terrifying Scar #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -3996,7 +3996,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.01,
+    "render_time_seconds": 41.62,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4014,13 +4014,13 @@
         "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Unseen Force Pulling Our Galaxy #space #shorts",
-        "score": 8.7,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.03,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
-      "text": "Exploring Great Attractor...",
+      "text": "Exploring The Unseen Force Pulling Our Galaxy #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4038,7 +4038,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.62,
+    "render_time_seconds": 36.91,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4056,13 +4056,13 @@
         "title": "The Great Attractor: Cosmic Monster #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Great Attractor: Cosmic Monster #space #shorts",
-        "score": 8.61,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.04,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Great Attractor: Cosmic Monster #space #shorts",
-      "text": "Exploring Great Attractor Anomaly...",
+      "text": "Exploring The Great Attractor: Cosmic Monster #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4080,7 +4080,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.5,
+    "render_time_seconds": 42.98,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4098,13 +4098,13 @@
         "title": "The Universe's Silent Death Ray #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Silent Death Ray #space #shorts",
-        "score": 8.77,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.04,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe's Silent Death Ray #space #shorts",
-      "text": "Exploring The Universe's Silent Death Ray #space #shorts...",
+      "text": "Exploring The Universe's Silent Death Ray #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4122,7 +4122,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.91,
+    "render_time_seconds": 41.91,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4140,13 +4140,13 @@
         "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Cold Spot: Universe's Terrifying Scar #space #shorts",
-        "score": 8.87,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.05,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
-      "text": "Exploring The Cold Spot: Universe's Terrifying Scar #space #shorts...",
+      "text": "Exploring The Cold Spot: Universe's Terrifying Scar #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4164,7 +4164,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.05,
+    "render_time_seconds": 30.61,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -4182,13 +4182,13 @@
         "title": "History's Silliest War #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: History's Silliest War #history #shorts",
-        "score": 9.21,
-        "critique": "Phase evaluation for History script."
+        "score": 8.36,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "History's Silliest War #history #shorts",
-      "text": "Exploring War of the Bucket...",
+      "text": "Exploring History's Silliest War #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4206,7 +4206,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.67,
+    "render_time_seconds": 36.04,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -4224,13 +4224,13 @@
         "title": "Race to Find Rome's Lost Relic! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Race to Find Rome's Lost Relic! #history #shorts",
-        "score": 9.22,
-        "critique": "Phase evaluation for History script."
+        "score": 8.06,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Race to Find Rome's Lost Relic! #history #shorts",
-      "text": "Exploring Archaeological Thriller...",
+      "text": "Exploring Race to Find Rome's Lost Relic! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4248,7 +4248,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.99,
+    "render_time_seconds": 40.28,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -4266,13 +4266,13 @@
         "title": "The Hidden Method That Exposed Ancient Lies #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Hidden Method That Exposed Ancient Lies #history #shorts",
-        "score": 9.16,
-        "critique": "Phase evaluation for History script."
+        "score": 8.37,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Hidden Method That Exposed Ancient Lies #history #shorts",
-      "text": "Exploring Source Criticism Unmasking Lies...",
+      "text": "Exploring The Hidden Method That Exposed Ancient Lies #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4290,7 +4290,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.85,
+    "render_time_seconds": 30.05,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -4308,13 +4308,13 @@
         "title": "The Impossible 3D Memory Machine #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Impossible 3D Memory Machine #history #shorts",
-        "score": 8.94,
-        "critique": "Phase evaluation for History script."
+        "score": 8.48,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Impossible 3D Memory Machine #history #shorts",
-      "text": "Exploring Digital Heritage Preservation...",
+      "text": "Exploring The Impossible 3D Memory Machine #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4332,7 +4332,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.06,
+    "render_time_seconds": 32.64,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -4350,13 +4350,13 @@
         "title": "The Archive's Hidden Whisper #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Archive's Hidden Whisper #history #shorts",
-        "score": 8.9,
-        "critique": "Phase evaluation for History script."
+        "score": 8.08,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Archive's Hidden Whisper #history #shorts",
-      "text": "Exploring Digital History Mystery...",
+      "text": "Exploring The Archive's Hidden Whisper #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4374,7 +4374,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 47.74,
+    "render_time_seconds": 35.28,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -4392,13 +4392,13 @@
         "title": "England's King Made This SHOCKING Deal! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: England's King Made This SHOCKING Deal! #history #shorts",
-        "score": 8.91,
-        "critique": "Phase evaluation for History script."
+        "score": 8.09,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "England's King Made This SHOCKING Deal! #history #shorts",
-      "text": "Exploring Anglo-Saxon Conflict...",
+      "text": "Exploring England's King Made This SHOCKING Deal! #history #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4416,7 +4416,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.11,
+    "render_time_seconds": 36.54,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -4434,13 +4434,13 @@
         "title": "The Mystery of Mercia's Shadow Lord",
         "word_count": 88,
         "hook": "Quick fact: The Mystery of Mercia's Shadow Lord",
-        "score": 8.86,
-        "critique": "Phase evaluation for History script."
+        "score": 7.8,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Mystery of Mercia's Shadow Lord",
-      "text": "Exploring \u00c6thelred's Mysterious Rise...",
+      "text": "Exploring The Mystery of Mercia's Shadow Lord. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4458,7 +4458,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.61,
+    "render_time_seconds": 45.66,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -4476,13 +4476,13 @@
         "title": "Mercia's Vanished King: A Cover-Up?",
         "word_count": 88,
         "hook": "Quick fact: Mercia's Vanished King: A Cover-Up?",
-        "score": 9.02,
-        "critique": "Phase evaluation for History script."
+        "score": 7.81,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 1.8/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Mercia's Vanished King: A Cover-Up?",
-      "text": "Exploring Royal Disappearance...",
+      "text": "Exploring Mercia's Vanished King: A Cover-Up?. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -4500,7 +4500,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 47.92,
+    "render_time_seconds": 33.34,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4518,13 +4518,13 @@
         "title": "Cosmic Truth: Your Reality is Unstable #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Cosmic Truth: Your Reality is Unstable #space #shorts",
-        "score": 9.4,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.11,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Cosmic Truth: Your Reality is Unstable #space #shorts",
-      "text": "Exploring Cosmic Truth: Your Reality is Unstable #space #shorts...",
+      "text": "Exploring Cosmic Truth: Your Reality is Unstable #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4542,7 +4542,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.93,
+    "render_time_seconds": 42.68,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4560,13 +4560,13 @@
         "title": "The Universe is Tearing Itself Apart #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe is Tearing Itself Apart #space #shorts",
-        "score": 9.15,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.12,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe is Tearing Itself Apart #space #shorts",
-      "text": "Exploring The Universe is Tearing Itself Apart #space #shorts...",
+      "text": "Exploring The Universe is Tearing Itself Apart #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4584,7 +4584,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.34,
+    "render_time_seconds": 37.78,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4602,13 +4602,13 @@
         "title": "Worlds Without Suns Are Terrifying #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Worlds Without Suns Are Terrifying #space #shorts",
-        "score": 8.89,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.13,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Worlds Without Suns Are Terrifying #space #shorts",
-      "text": "Exploring Worlds Without Suns Are Terrifying #space #shorts...",
+      "text": "Exploring Worlds Without Suns Are Terrifying #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4626,7 +4626,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.43,
+    "render_time_seconds": 38.26,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4644,13 +4644,13 @@
         "title": "The Terrifying Silence of Space #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Terrifying Silence of Space #space #shorts",
-        "score": 9.49,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.13,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Terrifying Silence of Space #space #shorts",
-      "text": "Exploring The Terrifying Silence of Space #space #shorts...",
+      "text": "Exploring The Terrifying Silence of Space #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4668,7 +4668,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.46,
+    "render_time_seconds": 37.11,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4686,13 +4686,13 @@
         "title": "The Universes Vanishing Act #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Vanishing Act #space #shorts",
-        "score": 9.22,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.14,
+        "critique": "Phase 4 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universes Vanishing Act #space #shorts",
-      "text": "Exploring The Universes Vanishing Act #space #shorts...",
+      "text": "Exploring The Universes Vanishing Act #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4710,7 +4710,7 @@
     "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.52,
+    "render_time_seconds": 36.99,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4728,13 +4728,13 @@
         "title": "Spaces Terrifying True Emptiness #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Spaces Terrifying True Emptiness #space #shorts",
-        "score": 8.9,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.15,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Spaces Terrifying True Emptiness #space #shorts",
-      "text": "Exploring Spaces Terrifying True Emptiness #space #shorts...",
+      "text": "Exploring Spaces Terrifying True Emptiness #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4752,7 +4752,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.35,
+    "render_time_seconds": 33.7,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4770,13 +4770,13 @@
         "title": "The Terrifying Reason Space Is Silent #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Terrifying Reason Space Is Silent #space #shorts",
-        "score": 9.24,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.15,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Terrifying Reason Space Is Silent #space #shorts",
-      "text": "Exploring The Terrifying Reason Space Is Silent #space #shorts...",
+      "text": "Exploring The Terrifying Reason Space Is Silent #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4794,7 +4794,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 47.29,
+    "render_time_seconds": 33.33,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4812,13 +4812,13 @@
         "title": "The Universe Could End... Instantly. #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe Could End... Instantly. #space #shorts",
-        "score": 9.03,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.16,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universe Could End... Instantly. #space #shorts",
-      "text": "Exploring The Universe Could End... Instantly. #space #shorts...",
+      "text": "Exploring The Universe Could End... Instantly. #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4836,7 +4836,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.34,
+    "render_time_seconds": 47.83,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4854,13 +4854,13 @@
         "title": "The Universes Massive Cold Spot #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Massive Cold Spot #space #shorts",
-        "score": 9.0,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.17,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universes Massive Cold Spot #space #shorts",
-      "text": "Exploring The Universes Massive Cold Spot #space #shorts...",
+      "text": "Exploring The Universes Massive Cold Spot #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4878,7 +4878,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.15,
+    "render_time_seconds": 45.31,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4896,13 +4896,13 @@
         "title": "Something Is Pulling Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Something Is Pulling Our Galaxy #space #shorts",
-        "score": 9.38,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.17,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Something Is Pulling Our Galaxy #space #shorts",
-      "text": "Exploring Something Is Pulling Our Galaxy #space #shorts...",
+      "text": "Exploring Something Is Pulling Our Galaxy #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4920,7 +4920,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.16,
+    "render_time_seconds": 42.61,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4938,13 +4938,13 @@
         "title": "The Universes Eerie Whisper #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Eerie Whisper #space #shorts",
-        "score": 9.16,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.18,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universes Eerie Whisper #space #shorts",
-      "text": "Exploring The Universes Eerie Whisper #space #shorts...",
+      "text": "Exploring The Universes Eerie Whisper #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -4962,7 +4962,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.43,
+    "render_time_seconds": 32.47,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4980,13 +4980,13 @@
         "title": "The Universes Silent Eraser #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Silent Eraser #space #shorts",
-        "score": 9.64,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.19,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universes Silent Eraser #space #shorts",
-      "text": "Exploring The Universes Silent Eraser #space #shorts...",
+      "text": "Exploring The Universes Silent Eraser #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -5004,7 +5004,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.15,
+    "render_time_seconds": 35.54,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -5022,13 +5022,13 @@
         "title": "The Universes Eerie Dark Flow Mystery #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Eerie Dark Flow Mystery #space #shorts",
-        "score": 9.46,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.19,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "The Universes Eerie Dark Flow Mystery #space #shorts",
-      "text": "Exploring The Universes Eerie Dark Flow Mystery #space #shorts...",
+      "text": "Exploring The Universes Eerie Dark Flow Mystery #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -5046,7 +5046,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.51,
+    "render_time_seconds": 47.95,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -5064,13 +5064,13 @@
         "title": "Something Is Pulling Us #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Something Is Pulling Us #space #shorts",
-        "score": 9.36,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.2,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Something Is Pulling Us #space #shorts",
-      "text": "Exploring Something Is Pulling Us #space #shorts...",
+      "text": "Exploring Something Is Pulling Us #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -5088,7 +5088,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.82,
+    "render_time_seconds": 39.81,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -5106,13 +5106,13 @@
         "title": "Something UNSEEN is Dragging Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Something UNSEEN is Dragging Our Galaxy #space #shorts",
-        "score": 9.46,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.21,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.1/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Something UNSEEN is Dragging Our Galaxy #space #shorts",
-      "text": "Exploring Something UNSEEN is Dragging Our Galaxy #space #shorts...",
+      "text": "Exploring Something UNSEEN is Dragging Our Galaxy #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -5130,7 +5130,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.89,
+    "render_time_seconds": 38.05,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -5148,13 +5148,13 @@
         "title": "Our Galaxy is Racing Towards WHAT?! #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Our Galaxy is Racing Towards WHAT?! #space #shorts",
-        "score": 9.27,
-        "critique": "Phase evaluation for Space script."
+        "score": 8.52,
+        "critique": "Phase 5 Auto-QA Evaluation: Script hook rated 2.4/2.5, word count 2.0/2.5."
       }
     ],
     "winning_script": {
       "title": "Our Galaxy is Racing Towards WHAT?! #space #shorts",
-      "text": "Exploring Our Galaxy is Racing Towards WHAT?! #space #shorts...",
+      "text": "Exploring Our Galaxy is Racing Towards WHAT?! #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -5172,7 +5172,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 37.12,
+    "render_time_seconds": 34.3,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -5190,8 +5190,8 @@
         "title": "Your Universe Is FAKE #space #shorts",
         "word_count": 102,
         "hook": "Did you know about Your Universe Is FAKE #space #shorts?",
-        "score": 9.32,
-        "critique": "Impeccable narrative pacing and visual loop."
+        "score": 8.5,
+        "critique": "5-Variant Auto-QA Winner: Impeccable hook, salience zoom & studio audio."
       },
       {
         "variant_id": 2,
@@ -5199,7 +5199,7 @@
         "title": "Science of Your Universe Is FAKE #space #shorts",
         "word_count": 108,
         "hook": "Researchers made a breakthrough...",
-        "score": 8.87,
+        "score": 8.05,
         "critique": "High fact specificity."
       },
       {
@@ -5208,7 +5208,7 @@
         "title": "Conflict in Your Universe Is FAKE #space #shorts",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 8.7,
+        "score": 7.88,
         "critique": "Fast-paced tension."
       },
       {
@@ -5217,7 +5217,7 @@
         "title": "Wonder of Your Universe Is FAKE #space #shorts",
         "word_count": 94,
         "hook": "Imagine if history was rewritten...",
-        "score": 8.57,
+        "score": 7.75,
         "critique": "Deep tone."
       },
       {
@@ -5226,13 +5226,13 @@
         "title": "Uncovering Your Universe Is FAKE #space #shorts",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 8.74,
+        "score": 7.92,
         "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
       "title": "Your Universe Is FAKE #space #shorts",
-      "text": "Exploring Your Universe Is FAKE #space #shorts...",
+      "text": "Exploring Your Universe Is FAKE #space #shorts. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#space",
         "#shorts",
@@ -5250,7 +5250,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 35.4,
+    "render_time_seconds": 47.27,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -5268,8 +5268,8 @@
         "title": "The Unseen War for Our Past!",
         "word_count": 102,
         "hook": "Did you know about Preserving History Globally?",
-        "score": 9.64,
-        "critique": "Impeccable narrative pacing and visual loop."
+        "score": 8.8,
+        "critique": "5-Variant Auto-QA Winner: Impeccable hook, salience zoom & studio audio."
       },
       {
         "variant_id": 2,
@@ -5277,7 +5277,7 @@
         "title": "Science of The Unseen War for Our Past!",
         "word_count": 108,
         "hook": "Researchers made a breakthrough...",
-        "score": 9.19,
+        "score": 8.35,
         "critique": "High fact specificity."
       },
       {
@@ -5286,7 +5286,7 @@
         "title": "Conflict in The Unseen War for Our Past!",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 9.02,
+        "score": 8.18,
         "critique": "Fast-paced tension."
       },
       {
@@ -5295,7 +5295,7 @@
         "title": "Wonder of The Unseen War for Our Past!",
         "word_count": 94,
         "hook": "Imagine if history was rewritten...",
-        "score": 8.89,
+        "score": 8.05,
         "critique": "Deep tone."
       },
       {
@@ -5304,13 +5304,13 @@
         "title": "Uncovering The Unseen War for Our Past!",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 9.06,
+        "score": 8.22,
         "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
       "title": "The Unseen War for Our Past!",
-      "text": "Exploring Preserving History Globally...",
+      "text": "Exploring The Unseen War for Our Past!. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -5328,7 +5328,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 43.53,
+    "render_time_seconds": 34.72,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -5346,8 +5346,8 @@
         "title": "The Tri-Nation History Heist",
         "word_count": 102,
         "hook": "Did you know about The Forgotten Relic Vault?",
-        "score": 9.42,
-        "critique": "Impeccable narrative pacing and visual loop."
+        "score": 8.2,
+        "critique": "5-Variant Auto-QA Winner: Impeccable hook, salience zoom & studio audio."
       },
       {
         "variant_id": 2,
@@ -5355,7 +5355,7 @@
         "title": "Science of The Tri-Nation History Heist",
         "word_count": 108,
         "hook": "Researchers made a breakthrough...",
-        "score": 8.97,
+        "score": 7.75,
         "critique": "High fact specificity."
       },
       {
@@ -5364,7 +5364,7 @@
         "title": "Conflict in The Tri-Nation History Heist",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 8.8,
+        "score": 7.58,
         "critique": "Fast-paced tension."
       },
       {
@@ -5373,7 +5373,7 @@
         "title": "Wonder of The Tri-Nation History Heist",
         "word_count": 94,
         "hook": "Imagine if history was rewritten...",
-        "score": 8.67,
+        "score": 7.45,
         "critique": "Deep tone."
       },
       {
@@ -5382,13 +5382,13 @@
         "title": "Uncovering The Tri-Nation History Heist",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 8.84,
+        "score": 7.62,
         "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
       "title": "The Tri-Nation History Heist",
-      "text": "Exploring The Forgotten Relic Vault...",
+      "text": "Exploring The Tri-Nation History Heist. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
@@ -5406,7 +5406,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 38.25,
+    "render_time_seconds": 41.18,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -5424,8 +5424,8 @@
         "title": "McKinley's Ghost: The War's Real Secret",
         "word_count": 102,
         "hook": "Did you know about Historical Truth?",
-        "score": 9.28,
-        "critique": "Impeccable narrative pacing and visual loop."
+        "score": 8.8,
+        "critique": "5-Variant Auto-QA Winner: Impeccable hook, salience zoom & studio audio."
       },
       {
         "variant_id": 2,
@@ -5433,7 +5433,7 @@
         "title": "Science of McKinley's Ghost: The War's Real Secret",
         "word_count": 108,
         "hook": "Researchers made a breakthrough...",
-        "score": 8.83,
+        "score": 8.35,
         "critique": "High fact specificity."
       },
       {
@@ -5442,7 +5442,7 @@
         "title": "Conflict in McKinley's Ghost: The War's Real Secret",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 8.66,
+        "score": 8.18,
         "critique": "Fast-paced tension."
       },
       {
@@ -5451,7 +5451,7 @@
         "title": "Wonder of McKinley's Ghost: The War's Real Secret",
         "word_count": 94,
         "hook": "Imagine if history was rewritten...",
-        "score": 8.53,
+        "score": 8.05,
         "critique": "Deep tone."
       },
       {
@@ -5460,13 +5460,13 @@
         "title": "Uncovering McKinley's Ghost: The War's Real Secret",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 8.7,
+        "score": 8.22,
         "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
       "title": "McKinley's Ghost: The War's Real Secret",
-      "text": "Exploring Historical Truth...",
+      "text": "Exploring McKinley's Ghost: The War's Real Secret. In this video, we examine the shocking details and scientific implications of this phenomenon...",
       "hashtags": [
         "#history",
         "#shorts",
