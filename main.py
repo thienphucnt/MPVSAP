@@ -166,6 +166,67 @@ def get_rotating_category(target_date: Optional[datetime.date] = None) -> str:
     return selected
 
 
+def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict]) -> dict:
+    """Ingest rich source text using headless Playwright Chromium, with fail-safe Wikipedia fallback."""
+    print(f"Launching Playwright Headless Scraping for category '{category}'...")
+    
+    category_sources = {
+        "space": [
+            "https://apod.nasa.gov/apod/astropix.html",
+            "https://en.wikipedia.org/wiki/Portal:Spaceflight",
+            "https://en.wikipedia.org/wiki/Portal:Astronomy"
+        ],
+        "history": [
+            "https://www.worldhistory.org/",
+            "https://en.wikipedia.org/wiki/Portal:History",
+            "https://en.wikipedia.org/wiki/Portal:Archaeology"
+        ],
+        "tech": [
+            "https://en.wikipedia.org/wiki/Portal:Computer_science",
+            "https://en.wikipedia.org/wiki/Portal:Technology",
+            "https://en.wikipedia.org/wiki/Emerging_technologies"
+        ]
+    }
+    
+    urls = category_sources.get(category, category_sources["space"])
+    random.shuffle(urls)
+    
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+            )
+            page = context.new_page()
+            
+            for target_url in urls:
+                try:
+                    page.goto(target_url, timeout=15000, wait_until="domcontentloaded")
+                    time.sleep(1)
+                    title = page.title().strip()
+                    
+                    paragraphs = page.locator("p").all_inner_texts()
+                    clean_text = " ".join([p.strip() for p in paragraphs if len(p.strip()) > 35])
+                    words = clean_text.split()[:1200]
+                    
+                    if len(words) >= 80:
+                        print(f"Playwright successfully scraped '{title}' ({len(words)} words) from {target_url}")
+                        browser.close()
+                        return {
+                            "title": title,
+                            "text": " ".join(words),
+                            "url": target_url
+                        }
+                except Exception as ex:
+                    print(f"Playwright navigation attempt failed for {target_url}: {ex}")
+            browser.close()
+    except Exception as e:
+        print(f"Playwright scraper error ({e}). Falling back to Wikipedia API...")
+        
+    return fetch_wikipedia_source_text(category, past_topics)
+
+
 def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
     """Fetch raw, high-quality article text from Wikipedia REST/Action APIs for source grounding."""
     print(f"Fetching raw Wikipedia source text for category '{category}'...")
@@ -438,9 +499,9 @@ def generate_content(
     config: VideoFormatConfig
 ) -> Tuple[str, str, List[dict]]:
     """
-    Two-Pass High-Retention Generation Engine:
-    Pass 1 (Generator): Story-driven script based on ingested Wikipedia source text (Hook -> Narrative -> Payoff).
-    Pass 2 (Evaluator): Auto-QA rubric scoring out of 10. Only 8+ scripts pass.
+    Multi-Variant Tournament Engine:
+    Pass 1: Generate 5 distinct script variants exploring different narrative angles.
+    Pass 2: Score & rank all 5 variants with Pass 2 Auto-QA Evaluator. Select #1 highest scorer (>= 8/10).
     """
     model_name = "gemini-2.5-pro"
     cat_info = CATEGORIES[category]
@@ -455,8 +516,8 @@ def generate_content(
         formatted_prohibited = "\n- ".join(prohibited_list)
         exclude_instruction = (
             "\n\nCRITICAL DUP-PREVENTION DIRECTIVE:\n"
-            "You MUST select a 100% UNUSED and NOVEL topic. Under NO circumstances should you write about, reference, "
-            "or base the script on any of the following subjects, titles, or concepts (or ANY of their variations, synonyms, or related angles):\n"
+            "You MUST select 100% UNUSED and NOVEL concepts. Under NO circumstances should you write about, reference, "
+            "or base scripts on any of the following subjects, titles, or concepts (or ANY of their variations, synonyms, or related angles):\n"
             f"- {formatted_prohibited}\n"
             "If a concept is listed above or closely related to a listed concept, it is STRICTLY PROHIBITED."
         )
@@ -469,8 +530,8 @@ def generate_content(
         if session_rejections:
             rejected_str = "\n- ".join(session_rejections)
             dynamic_exclude += (
-                f"\n\nCRITIQUES & REJECTIONS FROM PREVIOUS ATTEMPTS IN THIS RUN:\n- {rejected_str}\n"
-                "You MUST address the Auto-QA critique above and produce a higher quality, completely fresh script!"
+                f"\n\nCRITIQUES & REJECTIONS FROM PREVIOUS ATTEMPTS:\n- {rejected_str}\n"
+                "Address the Auto-QA critique above and produce higher quality, fresh script variants!"
             )
 
         source_text_prompt = (
@@ -481,28 +542,30 @@ def generate_content(
 
         if config.is_short:
             prompt = (
-                "You are an elite YouTube Shorts Director specializing in high-retention storytelling. "
-                "Complete the following tasks and return ONLY a valid JSON object without markdown formatting:\n"
+                "You are an elite YouTube Shorts Director. Complete the following tasks and return ONLY a valid JSON object without markdown tags:\n"
                 "{\n"
-                '  "script": "<script text>",\n'
-                '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
-                '  "title": "<title text>",\n'
-                '  "description": "<description text>",\n'
-                '  "topic": "<2-3 words naming the core concept>"\n'
+                '  "variants": [\n'
+                '    {\n'
+                '      "angle": "Suspenseful Mystery",\n'
+                '      "script": "<130-word story script>",\n'
+                '      "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
+                '      "title": "<click-worthy title under 50 chars>",\n'
+                '      "description": "<2-sentence summary with 5 hashtags including #nichefactsshorts>",\n'
+                '      "topic": "<2-3 words naming core concept>"\n'
+                '    },\n'
+                '    ... (exactly 5 distinct candidate variants exploring 5 different angles: 1-Suspenseful Mystery, 2-Scientific Breakthrough, 3-Dramatic Conflict, 4-Existential Wonder, 5-Action Mystery)\n'
+                '  ]\n'
                 "}\n\n"
                 f"{source_text_prompt}"
-                "DIRECTIVES FOR HIGH AUDIENCE RETENTION:\n"
-                "1. STORY STRUCTURE (STRICTLY NO LISTICLES / TOP 3 FORMATS): Write a fast-paced, story-driven 130-word script about the ingested source text.\n"
-                "   - Seconds 0-3 (THE HOOK): Start immediately with a dramatic, mysterious, or shocking line that creates an open loop. NO welcome greetings or channel intros.\n"
-                "   - Seconds 3-45 (NARRATIVE & CONFLICT): Build escalating tension or reveal an unexpected mystery/conflict based on the source text.\n"
-                "   - Seconds 45-60 (PAYOFF & LOOP CTA): Deliver a mind-bending resolution, ending with a short 3-second Call-To-Action that loops smoothly back to the opening hook.\n"
-                "2. DRAMATIC PACING: Force natural speech pauses by strategically inserting ellipses (...) and em-dashes (—).\n"
-                "3. PROPER NOUN VISUAL KEYWORDS: In visual_keywords (array of 6 strings), if a specific historical figure, person, animal species, landmark, or event is mentioned, include their exact name as a proper noun with correct capitalization (e.g., 'Albert Einstein', 'Mike the Headless Chicken', 'London') as the first keyword.\n"
-                "4. TITLE: Under 50 characters, click-worthy, front-loading the hook. NO hashtags in title.\n"
-                "5. DESCRIPTION: 2-sentence summary ending with 5 hashtags including #nichefactsshorts.\n"
+                "DIRECTIVES FOR HIGH AUDIENCE RETENTION ACROSS ALL 5 VARIANTS:\n"
+                "1. STORY STRUCTURE (STRICTLY NO LISTICLES / TOP 3 FORMATS): Each variant must tell a fast-paced 130-word story based on the source text.\n"
+                "   - Seconds 0-3 (THE HOOK): Immediate dramatic, mysterious, or shocking open loop line. NO channel greetings.\n"
+                "   - Seconds 3-45 (NARRATIVE & CONFLICT): Build escalating tension or reveal an unexpected mystery/conflict.\n"
+                "   - Seconds 45-60 (PAYOFF & LOOP CTA): Deliver a mind-bending resolution ending with a 3-second loop CTA.\n"
+                "2. DRAMATIC PACING: Force natural pauses using ellipses (...) and em-dashes (—).\n"
+                "3. PROPER NOUN VISUAL KEYWORDS: Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
                 f"Tone: {cat_info['tone']}.\n"
-                "Under no circumstances should the script mention regional politics, state officials, or Vietnamese history.\n"
-                "Ensure all numbers, sizes, and facts are strictly factually accurate to the source."
+                "Under no circumstances mention regional politics or Vietnamese history."
                 f"{dynamic_exclude}"
             )
         else:
@@ -523,15 +586,14 @@ def generate_content(
                 "}\n\n"
                 f"{source_text_prompt}"
                 "DIRECTIVES FOR HIGH AUDIENCE RETENTION:\n"
-                "1. COMPILATION STRUCTURE: Write 10 distinct, highly detailed candidate segments based on the ingested source data.\n"
-                "2. NO REPETITIVE INTROS/OUTROS: Only Segment 1 should contain a powerful introductory hook (0-15s). Middle segments (2-9) contain pure raw facts with no greetings. Only Segment 10 appends a natural subscribe CTA.\n"
+                "1. COMPILATION STRUCTURE: Write 10 distinct, highly detailed candidate segments based on ingested source data.\n"
+                "2. NO REPETITIVE INTROS/OUTROS: Only Segment 1 contains a hook (0-15s). Middle segments (2-9) contain raw facts. Only Segment 10 appends a subscribe CTA.\n"
                 "3. PROPER NOUN B-ROLL: In visual_keywords, include specific proper nouns with capitalization for specific entities.\n\n"
-                "Under no circumstances should the script mention regional politics, state officials, or Vietnamese history.\n"
-                "Ensure all numbers, sizes, and facts are strictly factually accurate."
+                "Under no circumstances should the script mention regional politics, state officials, or Vietnamese history."
                 f"{dynamic_exclude}"
             )
 
-        print(f"Generating script data for category '{category}' (attempt {attempt+1}/{max_retries}) using {model_name}...")
+        print(f"Generating Multi-Variant Tournament scripts for category '{category}' (attempt {attempt+1}/{max_qa_retries}) using {model_name}...")
         response = gemini_generate_with_retry(client, model_name, prompt)
         text = response.text.strip()
         
@@ -541,21 +603,98 @@ def generate_content(
             text = text[:-3]
         text = text.strip()
 
-        title = ""
-        description = ""
-        segments = []
+        if config.is_short:
+            parsed_variants = []
+            try:
+                data = json.loads(text)
+                raw_vars = data.get("variants", [])
+                if isinstance(data, dict) and not raw_vars and "script" in data:
+                    raw_vars = [data]
+                
+                for var in raw_vars:
+                    v_title = var.get("title", "").strip()
+                    v_desc = var.get("description", "").strip()
+                    v_script = var.get("script", "").strip()
+                    v_kw = var.get("visual_keywords", [])
+                    v_topic = var.get("topic", "").strip()
+                    v_angle = var.get("angle", "Story Variant").strip()
+                    
+                    if v_script and v_title:
+                        parsed_variants.append({
+                            "title": v_title,
+                            "description": v_desc,
+                            "script": v_script,
+                            "visual_keywords": v_kw,
+                            "topic": v_topic,
+                            "angle": v_angle
+                        })
+            except Exception as e:
+                print("WARNING: Could not parse multi-variant JSON response — falling back to manual extract.", e)
 
-        try:
-            data = json.loads(text)
-            if config.is_short:
-                title = data.get("title", "").strip()
-                description = data.get("description", "").strip()
-                segments = [{
-                    "script": data.get("script", "").strip(),
-                    "visual_keywords": data.get("visual_keywords", []),
-                    "topic": data.get("topic", "").strip()
+            if not parsed_variants:
+                parsed_variants.append({
+                    "title": f"The Secret of {source_data.get('title', category.capitalize())}",
+                    "description": f"Discover the shocking truth behind {source_data.get('title', category)}! #nichefactsshorts",
+                    "script": "Deep space contains anomalies that challenge our understanding of physics...",
+                    "visual_keywords": cat_info["kw_defaults"][:4],
+                    "topic": "Cosmic Mystery",
+                    "angle": "Fallback"
+                })
+
+            print(f"\n--- RUNNING 5-VARIANT AUTO-QA TOURNAMENT ({len(parsed_variants)} VARIANTS) ---")
+            evaluated_variants = []
+
+            for idx, candidate in enumerate(parsed_variants):
+                v_title = candidate["title"]
+                v_topic = candidate["topic"]
+                v_script = candidate["script"]
+                v_angle = candidate["angle"]
+
+                # 1. Check duplicate guardrail
+                is_dup, reason = is_duplicate_topic(v_title, v_topic, v_script, past_topics)
+                if is_dup:
+                    print(f"  ❌ Variant {idx+1} ('{v_angle}'): REJECTED by Duplicate Guardrail -> {reason}")
+                    continue
+
+                # 2. Evaluate Auto-QA Score
+                score, critique = evaluate_script_quality(client, model_name, v_script, v_title, source_data.get("title", ""), config)
+                print(f"  🏆 Variant {idx+1} ('{v_angle}') -> Score: {score}/10 | Title: '{v_title}' | Critique: {critique}")
+                evaluated_variants.append({
+                    "candidate": candidate,
+                    "score": score,
+                    "critique": critique
+                })
+
+            # Sort by score descending
+            evaluated_variants.sort(key=lambda x: x["score"], reverse=True)
+
+            if evaluated_variants and evaluated_variants[0]["score"] >= 8:
+                winner = evaluated_variants[0]["candidate"]
+                w_score = evaluated_variants[0]["score"]
+                print(f"\n✅ TOURNAMENT WINNER SELECTED: Variant ('{winner['angle']}') with Score {w_score}/10!")
+                print("Winning Title:", winner["title"])
+                print("Winning Topic:", winner["topic"])
+                
+                win_segments = [{
+                    "script": winner["script"],
+                    "visual_keywords": winner["visual_keywords"],
+                    "topic": winner["topic"]
                 }]
+                return winner["title"], winner["description"], win_segments
             else:
+                top_score = evaluated_variants[0]['score'] if evaluated_variants else 0
+                print(f"\n❌ Tournament failed: Top variant scored {top_score}/10 (< 8 threshold). Re-prompting for fresh tournament...")
+                session_rejections.append(f"Tournament Top Score: {top_score}/10 (< 8 threshold).")
+                time.sleep(1)
+                continue
+
+        else:
+            # Long-form multi-segment handling
+            title = ""
+            description = ""
+            segments = []
+            try:
+                data = json.loads(text)
                 title = data.get("title", "").strip()
                 description = data.get("description", "").strip()
                 raw_segments = data.get("segments", [])
@@ -589,81 +728,40 @@ def generate_content(
                         unique_segments.append(seg)
                 
                 segments = unique_segments[:config.segment_count]
-        except Exception as e:
-            print("WARNING: Could not parse JSON response — falling back to manual parsing.", e)
-            title = f"Mind-Blowing {category} Facts"
-            description = f"Discover some of the most interesting niche facts in the universe! #nichefacts"
-            segments = [{
-                "script": "Space is full of mysterious phenomena that science is only beginning to understand...",
-                "visual_keywords": cat_info["kw_defaults"][:3],
-                "topic": "Space Mysteries"
-            }]
+            except Exception as e:
+                print("WARNING: Could not parse long-form JSON response:", e)
+                title = f"Mind-Blowing {category.capitalize()} Documentaries"
+                description = f"Discover deep facts! #nichefacts"
+                segments = [{
+                    "script": "Deep space contains anomalies that science is only beginning to understand...",
+                    "visual_keywords": cat_info["kw_defaults"][:3],
+                    "topic": "Space Mysteries"
+                }]
 
-        # Clean up scripts in segments
-        for seg in segments:
-            script = seg.get("script", "").strip()
-            script = re.sub(r'[\*_`]', '', script)
-            script = re.sub(r'\[.*?\]', '', script)
-            script = re.sub(r'\(.*?\)', '', script)
-            script = re.sub(r'\s+', ' ', script).strip()
-            seg["script"] = script
-
-        # HARD GUARDRAIL VALIDATION: Check for duplicates against full past topics database
-        if config.is_short:
-            is_dup, reason = is_duplicate_topic(title, segments[0]["topic"], segments[0]["script"], past_topics)
-            if is_dup:
-                print(f"[HARD GUARDRAIL REJECTION] Attempt {attempt+1}/{max_qa_retries} generated duplicate content! Reason: {reason}")
-                session_rejections.append(f"Topic: '{segments[0]['topic']}', Title: '{title}' (Reason: {reason})")
-                time.sleep(1)
-                continue
-
-            # PASS 2 AUTO-QA EVALUATOR: Score script out of 10
-            print(f"[PASS 2 AUTO-QA] Running LLM Evaluator for script '{title}'...")
-            score, critique = evaluate_script_quality(client, model_name, segments[0]["script"], title, source_data.get("title", ""), config)
-            print(f"[PASS 2 AUTO-QA SCORE] {score}/10 — Critique: {critique}")
-
-            if score < 8:
-                print(f"[AUTO-QA REJECTION] Attempt {attempt+1}/{max_qa_retries} scored {score}/10 (< 8 threshold). Re-prompting for rewrite...")
-                session_rejections.append(f"Script Scored {score}/10. Critique: {critique}")
-                time.sleep(1)
-                continue
-
-            print(f"[AUTO-QA APPROVED] Script passed all quality and uniqueness checks (Score: {score}/10)!")
-            print("Generated Title:", title)
-            print("Generated Description:", description)
-            print(f"Generated {len(segments)} segments.")
-            return title, description, segments
-        else:
-            has_dup = False
+            # Clean up scripts
             for seg in segments:
-                is_dup, reason = is_duplicate_topic(title, seg["topic"], seg["script"], past_topics)
-                if is_dup:
-                    print(f"[HARD GUARDRAIL REJECTION] Long-form segment topic '{seg['topic']}' rejected: {reason}")
-                    session_rejections.append(f"Segment Topic: '{seg['topic']}' (Reason: {reason})")
-                    has_dup = True
-                    break
-            if has_dup:
-                time.sleep(1)
-                continue
+                script = seg.get("script", "").strip()
+                script = re.sub(r'[\*_`]', '', script)
+                script = re.sub(r'\[.*?\]', '', script)
+                script = re.sub(r'\(.*?\)', '', script)
+                script = re.sub(r'\s+', ' ', script).strip()
+                seg["script"] = script
 
-            # PASS 2 AUTO-QA EVALUATOR FOR LONG-FORM
+            # Pass 2 Auto-QA for long-form
             combined_script = "\n".join([s.get("script", "") for s in segments])
             score, critique = evaluate_script_quality(client, model_name, combined_script, title, source_data.get("title", ""), config)
-            print(f"[PASS 2 AUTO-QA SCORE] {score}/10 — Critique: {critique}")
+            print(f"[LONG-FORM PASS 2 AUTO-QA SCORE] {score}/10 — Critique: {critique}")
 
             if score < 8:
-                print(f"[AUTO-QA REJECTION] Long-form compilation scored {score}/10 (< 8 threshold). Re-prompting for rewrite...")
-                session_rejections.append(f"Longform Compilation Scored {score}/10. Critique: {critique}")
+                print(f"[AUTO-QA REJECTION] Long-form compilation scored {score}/10 (< 8 threshold). Retrying...")
+                session_rejections.append(f"Long-form scored {score}/10. Critique: {critique}")
                 time.sleep(1)
                 continue
 
-            print(f"[AUTO-QA APPROVED] Long-form compilation passed all quality and uniqueness checks (Score: {score}/10)!")
-            print("Generated Title:", title)
-            print("Generated Description:", description)
-            print(f"Generated {len(segments)} segments.")
+            print(f"[AUTO-QA APPROVED] Long-form compilation passed (Score: {score}/10)!")
             return title, description, segments
 
-    print(f"WARNING: Max Auto-QA retries reached ({max_qa_retries}). Returning best generated content.")
+    print(f"WARNING: Max QA retries reached ({max_qa_retries}). Returning best generated content.")
     return title, description, segments
 
 
@@ -803,29 +901,38 @@ def download_wikimedia_image(url: str, index: int) -> Optional[str]:
     return None
 
 def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[int, int], output_path: str) -> None:
-    """Animate a static image into a dynamic zoom-in video clip (Ken Burns effect)."""
+    """Animate a static image into a dynamic video clip with randomized 4-way Ken Burns motion."""
     from moviepy.editor import ImageClip
     w, h = target_res
     
     clip = ImageClip(image_path).set_duration(duration)
     img_w, img_h = clip.size
-    scale = max(w / img_w, h / img_h)
+    scale = max(w / img_w, h / img_h) * 1.12
     
-    # Resize to fill screen
     clip = clip.resize(scale)
+    motion_type = random.choice([0, 1, 2, 3])
     
-    # Slow zoom-in Ken Burns effect (1.0 to 1.10 over duration)
-    def zoom_fn(t):
-        return 1.0 + 0.10 * (t / duration)
+    def zoom_in(t):
+        return 1.0 + 0.12 * (t / duration)
+        
+    def zoom_out(t):
+        return 1.12 - 0.12 * (t / duration)
         
     try:
-        clip = clip.resize(zoom_fn)
+        if motion_type == 0:
+            clip = clip.resize(zoom_in)
+        elif motion_type == 1:
+            clip = clip.resize(zoom_out)
+        elif motion_type == 2:
+            clip = clip.resize(zoom_in)
+        else:
+            clip = clip.resize(zoom_out)
+        clip = clip.crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
     except Exception as e:
-        print("Failed to apply dynamic zoom, using static resize:", e)
+        print("Fallback to standard resize:", e)
         clip = clip.resize(target_res)
+        clip = clip.crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
         
-    # Crop to exact target size
-    clip = clip.crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
     clip.write_videofile(output_path, fps=30, logger=None)
     clip.close()
 
@@ -1955,10 +2062,10 @@ def run_daily_upload_pipeline_once() -> None:
     config = VideoFormatConfig(video_format)
     print(f"Selected Video Format: {config.format_type} (is_short={config.is_short})")
 
-    # Ingest raw Wikipedia source text for source grounding
-    source_data = fetch_wikipedia_source_text(category, past_topics)
+    # Ingest rich source text using Playwright headless Chromium (with Wikipedia fallback)
+    source_data = fetch_playwright_scraped_source_text(category, past_topics)
 
-    # 1. Content generation with Wikipedia ingestion, Pass 1 Story Generator & Pass 2 Auto-QA
+    # 1. Multi-Variant Tournament Content Generation & Pass 2 Auto-QA
     title, description, segments = generate_content(client, category, past_topics, source_data, config)
 
     # Resolve related long-form video link for Shorts-to-Long funneling

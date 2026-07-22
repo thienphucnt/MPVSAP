@@ -5,3 +5,5 @@ moviepy==1.0.3
 edge-tts
 requests
 numpy<2
+playwright
+
