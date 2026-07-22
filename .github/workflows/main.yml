@@ -51,6 +51,12 @@ jobs:
           pip install -r requirements.txt
           python -m playwright install chromium --with-deps
 
+      - name: Cache Kokoro TTS Model Weights
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/kokoro
+          key: kokoro-onnx-v1.0
+
       - name: Run Video Pipeline & Publish
         env:
           # Core API Keys

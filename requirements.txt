@@ -6,4 +6,7 @@ edge-tts
 requests
 numpy<2
 playwright
+kokoro-onnx
+soundfile
+
 

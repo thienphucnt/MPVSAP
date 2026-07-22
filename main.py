@@ -807,6 +807,71 @@ def generate_content(
 # ---------------------------------------------------------------------------
 # 2 & 3. TTS & SUBTITLE GENERATION (EDGE TTS ONLINE)
 # ---------------------------------------------------------------------------
+def ensure_kokoro_model_files() -> Tuple[Path, Path]:
+    """Ensure Kokoro-v1.0 ONNX model weights and voices files exist in ~/.cache/kokoro."""
+    cache_dir = Path.home() / ".cache" / "kokoro"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+
+    model_path = cache_dir / "kokoro-v1.0.onnx"
+    voices_path = cache_dir / "voices-v1.0.bin"
+
+    model_url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx"
+    voices_url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
+
+    def download_if_missing(url: str, dest: Path):
+        if not dest.exists() or dest.stat().st_size < 1000:
+            print(f"Downloading Kokoro TTS model asset '{dest.name}' from {url}...")
+            r = HTTP_SESSION.get(url, stream=True, timeout=120)
+            r.raise_for_status()
+            with open(dest, "wb") as f:
+                for chunk in r.iter_content(chunk_size=1024*1024):
+                    if chunk:
+                        f.write(chunk)
+            print(f"Downloaded '{dest.name}' ({dest.stat().st_size / 1024 / 1024:.2f} MB)")
+
+    download_if_missing(model_url, model_path)
+    download_if_missing(voices_url, voices_path)
+    return model_path, voices_path
+
+
+def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path: str) -> List[Tuple[float, float, str]]:
+    """Synthesize high-quality local CPU neural audio using Kokoro-82M ONNX engine with automatic clause pacing."""
+    from kokoro_onnx import Kokoro
+    import soundfile as sf
+
+    model_path, voices_path = ensure_kokoro_model_files()
+    kokoro = Kokoro(str(model_path), str(voices_path))
+
+    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
+    voice_map = {
+        "space": "am_michael",
+        "history": "af_sarah",
+        "tech": "am_adam"
+    }
+    voice_name = voice_map.get(db_key, "af_sarah")
+
+    print(f"Synthesizing Local Kokoro-82M Neural Speech (voice='{voice_name}', category='{db_key}')...")
+    samples, sample_rate = kokoro.create(text, voice=voice_name, speed=1.0, lang="en-us")
+    sf.write(audio_path, samples, sample_rate)
+
+    total_duration = len(samples) / float(sample_rate)
+    
+    words = re.findall(r"\w+[\-\']?\w*", text)
+    cleaned_words = [w.strip() for w in words if w.strip()]
+    
+    if not cleaned_words:
+        return []
+
+    word_duration = total_duration / len(cleaned_words)
+    timestamps = []
+    for idx, w in enumerate(cleaned_words):
+        start_sec = round(idx * word_duration, 2)
+        end_sec = round((idx + 1) * word_duration, 2)
+        timestamps.append((start_sec, end_sec, w.upper()))
+        
+    return timestamps
+
+
 async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path: str, rate: str = "+12%") -> List[Tuple[float, float, str]]:
     import edge_tts
     communicate = edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary")
@@ -817,13 +882,10 @@ async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path
             if chunk["type"] == "audio":
                 audio_file.write(chunk["data"])
             elif chunk["type"] == "WordBoundary":
-                # offset and duration are in 100ns units (ticks)
-                # 1 tick = 1e-7 seconds
                 start_sec = chunk["offset"] / 10000000.0
                 duration_sec = chunk["duration"] / 10000000.0
                 end_sec = start_sec + duration_sec
                 word_text = chunk["text"].strip()
-                # Clean punctuation from words for display
                 clean_word = re.sub(r'[^\w\s\-\'\—]', '', word_text)
                 if clean_word:
                     words.append((start_sec, end_sec, clean_word))
@@ -832,36 +894,26 @@ async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path
 
 
 def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "") -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
-    print("Generating TTS voiceover via Edge TTS...")
     clean_topic = re.sub(r"[^\w]", "_", topic) if topic else "voice"
     audio_path = f"{clean_topic}.wav"
-    
-    primary_voice = "en-US-BrianNeural"
-    fallback_voice = "en-US-AndrewNeural"
-    
+
     words = []
     try:
-        words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, primary_voice, audio_path))
+        print("Generating Local Neural TTS voiceover via Kokoro-82M ONNX...")
+        words = synthesize_kokoro_audio_and_timestamps(script_text, category, audio_path)
     except Exception as e:
-        print(f"Primary voice {primary_voice} failed: {e}. Trying fallback voice {fallback_voice}...")
+        print(f"Kokoro-82M TTS fallback due to: {e}. Falling back to Edge-TTS...")
+        primary_voice = "en-US-BrianNeural"
+        fallback_voice = "en-US-AndrewNeural"
         try:
-            words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, fallback_voice, audio_path))
+            words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, primary_voice, audio_path))
         except Exception as fallback_err:
-            print("Fallback voice also failed:", fallback_err)
-            raise
-            
-    # Parse word timestamps into 1-word subtitle chunks (hyper-kinetic layout)
+            words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, fallback_voice, audio_path))
+
     subs_list = []
-    max_words = 1
-    for i in range(0, len(words), max_words):
-        chunk_words = words[i:i + max_words]
-        if not chunk_words:
-            continue
-        start = chunk_words[0][0]
-        end = chunk_words[-1][1]
-        text = " ".join([cw[2] for cw in chunk_words]).upper()
+    for start_sec, end_sec, text in words:
         if text:
-            subs_list.append(((start, end), text))
+            subs_list.append(((start_sec, end_sec), text.upper()))
             
     print(f"Generated {len(subs_list)} short-burst subtitle cues.")
     return audio_path, subs_list
