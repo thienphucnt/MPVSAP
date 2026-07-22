@@ -375,30 +375,43 @@ def evaluate_script_quality(
     title: str,
     source_title: str,
     config: VideoFormatConfig
-) -> Tuple[int, str]:
+) -> Tuple[float, str]:
     """
-    Pass 2 (Evaluator): Auto-QA rubric scoring out of 10.
-    Evaluates:
-    1. Hook Strength (0-10)
-    2. Narrative/Conflict Flow (0-10)
-    3. Absence of Generic AI Clichés/Listicles (0-10)
-    4. Source Fact Grounding (0-10)
+    Pass 2 Multi-Dimensional Auto-QA Evaluator (0.00 to 10.00 precision):
+    Evaluates 10 weighted judging criteria to compute exact decimal scores (e.g., 9.76 vs 9.52).
     """
     eval_prompt = (
-        "You are an expert YouTube Content Director evaluating a video script for maximum audience retention and virality.\n"
+        "You are a master YouTube Content Analytics Judge. Evaluate the following video script using a fine-grained, decimal-precision rubric (0.00 to 10.00 for each criterion).\n\n"
         f"Target Format: {'YouTube Short (60s)' if config.is_short else 'Long-Form Compilation'}\n"
         f"Source Article Subject: '{source_title}'\n"
         f"Script Title: '{title}'\n"
         f"Script Text:\n\"\"\"{script}\"\"\"\n\n"
-        "Evaluate the script on a 1-to-10 scale according to the following strict criteria:\n"
-        "1. Hook Strength: Does line 1 grab immediate attention with high mystery or conflict without filler greetings?\n"
-        "2. Narrative Arc: Is there a clear 'Hook -> Tension/Conflict -> Payoff' structure? (STRICTLY BAN listicles or 'Top 3' formats).\n"
-        "3. Absence of AI Clichés: Is it 100% free of generic AI tropes like 'In a world where...', 'Did you know?', 'Mind-blowing fact #1', or fake excitement?\n"
-        "4. Fact Specificity: Are facts grounded, detailed, and specific?\n\n"
-        "Return ONLY a JSON object in exactly this format:\n"
+        "EVALUATION CRITERIA (SCORE EACH FROM 0.00 TO 10.00 WITH 2 DECIMAL PLACES):\n"
+        "1. hook_open_loop (Weight 15%): Immediate 0-3s curiosity gap, dramatic impact, zero greetings/fluff.\n"
+        "2. fact_specificity (Weight 15%): Presence of real dates, proper names, quantities, avoiding vague generalities.\n"
+        "3. narrative_pacing (Weight 15%): Escalating tension or mystery arc (STRICTLY BAN listicles or 'Top 3' formats).\n"
+        "4. absence_of_cliches (Weight 10%): Total absence of generic AI tropes ('in a world where', 'have you ever wondered', 'delve into', 'testament to').\n"
+        "5. payoff_satisfaction (Weight 10%): High-impact resolution or mind-bending revelation.\n"
+        "6. seamless_loop_cta (Weight 10%): Final phrase connects smoothly back to opening hook word for endless loops.\n"
+        "7. title_synergy (Weight 10%): Title front-loads curiosity without clickbait deception.\n"
+        "8. rhythmic_flow (Weight 5%): Rhythmic speech pacing with strategic ellipses (...) and em-dashes (—).\n"
+        "9. visual_opportunity (Weight 5%): Rich presence of specific entities for B-roll image & video retrieval.\n"
+        "10. emotional_resonance (Weight 5%): Sparks awe, mystery, shock, or intense curiosity.\n\n"
+        "Return ONLY a JSON object in exactly this format (use float numbers with 2 decimal places):\n"
         "{\n"
-        '  "overall_score": <integer from 1 to 10>,\n'
-        '  "critique": "<2-sentence constructive breakdown of strengths or flaws>"\n'
+        '  "scores": {\n'
+        '    "hook_open_loop": 9.85,\n'
+        '    "fact_specificity": 9.60,\n'
+        '    "narrative_pacing": 9.70,\n'
+        '    "absence_of_cliches": 9.90,\n'
+        '    "payoff_satisfaction": 9.50,\n'
+        '    "seamless_loop_cta": 9.80,\n'
+        '    "title_synergy": 9.80,\n'
+        '    "rhythmic_flow": 9.40,\n'
+        '    "visual_opportunity": 9.75,\n'
+        '    "emotional_resonance": 9.65\n'
+        '  },\n'
+        '  "critique": "<2-sentence detailed breakdown justifying top strengths and decimal deductions>"\n'
         "}"
     )
 
@@ -412,12 +425,32 @@ def evaluate_script_quality(
         text = text.strip()
         
         data = json.loads(text)
-        score = int(data.get("overall_score", 7))
-        critique = data.get("critique", "No critique provided.").strip()
-        return score, critique
+        scores = data.get("scores", {})
+        
+        weights = {
+            "hook_open_loop": 0.15,
+            "fact_specificity": 0.15,
+            "narrative_pacing": 0.15,
+            "absence_of_cliches": 0.10,
+            "payoff_satisfaction": 0.10,
+            "seamless_loop_cta": 0.10,
+            "title_synergy": 0.10,
+            "rhythmic_flow": 0.05,
+            "visual_opportunity": 0.05,
+            "emotional_resonance": 0.05
+        }
+        
+        if isinstance(scores, dict) and scores:
+            weighted_total = sum(float(scores.get(key, 8.0)) * weight for key, weight in weights.items())
+            final_score = round(weighted_total, 2)
+        else:
+            final_score = round(float(data.get("overall_score", 8.5)), 2)
+
+        critique = data.get("critique", "Script evaluated across 10 judging criteria.").strip()
+        return final_score, critique
     except Exception as e:
         print("Auto-QA Evaluator parsing fallback:", e)
-        return 8, "Script accepted by default evaluator fallback."
+        return 8.50, "Script accepted by default evaluator fallback."
 
 
 def is_duplicate_topic(
