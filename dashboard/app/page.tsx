@@ -61,6 +61,7 @@ interface RunEntry {
 export default function TelemetryDashboard() {
   const [runs, setRuns] = useState<RunEntry[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>("");
+  const [selectedRunId, setSelectedRunId] = useState<string>("");
   const [showErrorTrace, setShowErrorTrace] = useState<boolean>(false);
 
   useEffect(() => {
@@ -70,8 +71,9 @@ export default function TelemetryDashboard() {
         const loadedRuns = data.default as RunEntry[];
         setRuns(loadedRuns);
         if (loadedRuns.length > 0) {
-          const dates = Array.from(new Set(loadedRuns.map((r) => r.timestamp.split("T")[0]))).sort().reverse();
-          setSelectedDate(dates[0]);
+          const lastRun = loadedRuns[loadedRuns.length - 1];
+          setSelectedRunId(lastRun.id);
+          setSelectedDate(lastRun.timestamp.split("T")[0]);
         }
       })
       .catch((err) => {
@@ -102,8 +104,9 @@ export default function TelemetryDashboard() {
     ? Math.max(...selectedDayRuns[0].script_variants.map((v) => v.score)).toFixed(2)
     : "9.71";
 
-  // Recharts formatted data
-  const chartData = availableDates.slice().reverse().map((date) => {
+  // Recharts formatted data (sorted chronologically from oldest to newest)
+  const chronologicalDates = Object.keys(runsByDate).sort();
+  const chartData = chronologicalDates.map((date) => {
     const dayRuns = runsByDate[date];
     const topScore = Math.max(...dayRuns.flatMap((r) => r.script_variants ? r.script_variants.map((v) => v.score) : [5.0]));
     const avgRender = dayRuns.reduce((a, b) => a + b.render_time_seconds, 0) / dayRuns.length;
@@ -211,15 +214,18 @@ export default function TelemetryDashboard() {
           {runs.map((r, idx) => (
             <div
               key={r.id}
-              onClick={() => setSelectedDate(r.timestamp.split("T")[0])}
+              onClick={() => {
+                setSelectedRunId(r.id);
+                setSelectedDate(r.timestamp.split("T")[0]);
+              }}
               className={`h-10 rounded-lg border flex items-center justify-center cursor-pointer transition-all hover:scale-105 ${
-                selectedDate === r.timestamp.split("T")[0] ? "ring-2 ring-white" : ""
+                selectedRunId === r.id ? "ring-2 ring-white scale-105" : ""
               } ${
                 r.status === "SUCCESS"
                   ? "bg-[#00FF66]/20 border-[#00FF66]/50 text-[#00FF66]"
                   : "bg-red-500/20 border-red-500/50 text-red-400"
               }`}
-              title={`Date: ${r.timestamp.split("T")[0]} (${r.category}) - ${r.status}`}
+              title={`Run ${idx + 1} (${r.category}) - ${r.status}`}
             >
               <span className="text-xs font-mono font-bold">{idx + 1}</span>
             </div>
@@ -385,8 +391,9 @@ export default function TelemetryDashboard() {
             </div>
           ) : (
             /* MODERN TOURNAMENT ERA (1 VIDEO/DAY WITH 5-VARIANT BREAKDOWN) */
-            <div className="space-y-6">
-              {selectedDayRuns.map((run) => (
+            {selectedDayRuns.length > 0 && (() => {
+              const run = selectedDayRuns.find((r) => r.id === selectedRunId) || selectedDayRuns[0];
+              return (
                 <div key={run.id} className="space-y-6">
                   {/* WINNING SCRIPT BANNER */}
                   <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
@@ -490,8 +497,8 @@ export default function TelemetryDashboard() {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+            })()}
           )}
         </div>
       )}
