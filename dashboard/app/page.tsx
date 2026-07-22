@@ -287,14 +287,14 @@ export default function TelemetryDashboard() {
               <select
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
-                className="bg-[#0b0f19] text-white border border-[#1f2d4d] px-4 py-2 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]"
+                className="bg-[#0b0f19] text-white border-2 border-[#00E5FF] px-4 py-2 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#00E5FF]"
               >
                 {availableDates.map((date) => {
                   const count = runsByDate[date].length;
                   const isTourn = runsByDate[date].some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
                   return (
                     <option key={date} value={date}>
-                      {date} — {count} {count === 1 ? "Video" : "Videos"} {isTourn ? "(🏆 Tournament)" : "(⚡ 6/Day)"}
+                      📅 {date} — {count} {count === 1 ? "Video Uploaded" : "Videos Uploaded"} {isTourn ? "(🏆 Tournament Era)" : "(⚡ 6-Video Daily Output)"}
                     </option>
                   );
                 })}
