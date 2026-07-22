@@ -5,7 +5,17 @@
     "category": "Space",
     "status": "SUCCESS",
     "render_time_seconds": 42.5,
-    "lufs_target": "-14.0 LUFS",
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "dark_cosmic_synth_ambient.mp3",
+    "search_keywords": [
+      "cosmic radiation void",
+      "black hole event horizon",
+      "radio astrophysics"
+    ],
+    "voice_actor": "am_michael (Kokoro-82M Neural CPU)",
+    "visual_asset_types": "3 Pexels 4K Clips + 1 Salience-Zoomed Edge Focal Image",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular Bold, Cyan Theme #00E5FF)",
     "script_variants": [
       {
         "variant_id": 1,
@@ -72,7 +82,17 @@
     "category": "History",
     "status": "SUCCESS",
     "render_time_seconds": 38.1,
-    "lufs_target": "-14.0 LUFS",
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "dramatic_historical_strings.mp3",
+    "search_keywords": [
+      "great emu war 1932",
+      "australian military history",
+      "outback battlefield"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural CPU)",
+    "visual_asset_types": "4 Pexels Historical Clips + 1 Salience-Zoomed Archive Photo",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular Bold, Amber Gold Theme #FFBF00)",
     "script_variants": [
       {
         "variant_id": 1,
@@ -139,7 +159,17 @@
     "category": "Tech",
     "status": "SUCCESS",
     "render_time_seconds": 44.8,
-    "lufs_target": "-14.0 LUFS",
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "futuristic_cyber_pulse.mp3",
+    "search_keywords": [
+      "reversible computing",
+      "quantum zero heat chip",
+      "superconducting microprocessor"
+    ],
+    "voice_actor": "am_adam (Kokoro-82M Neural CPU)",
+    "visual_asset_types": "3 Pexels Tech Clips + 1 Salience-Zoomed Circuitry Image",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular Bold, Electric Green Theme #00FF66)",
     "script_variants": [
       {
         "variant_id": 1,

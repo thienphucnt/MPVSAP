@@ -48,6 +48,12 @@ interface RunEntry {
   winning_script: WinningScript;
   youtube_url: string | null;
   error_traceback: string | null;
+  source_url?: string;
+  music_track?: string;
+  search_keywords?: string[];
+  voice_actor?: string;
+  visual_asset_types?: string;
+  ass_subtitle_engine?: string;
 }
 
 export default function TelemetryDashboard() {
@@ -301,7 +307,58 @@ export default function TelemetryDashboard() {
             </div>
           </div>
 
-          {/* 5-VARIANT COMPARISON GRID */}
+          {/* DEEP METADATA VAULT (EXCLUSIVE ATTRIBUTES OUTSIDE YOUTUBE STUDIO) */}
+          <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#00E5FF] flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[#00E5FF]" />
+              Deep Metadata Vault (Exclusive Attributes Outside YouTube Studio)
+            </h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                <span className="font-bold text-gray-400 block uppercase text-[10px]">🌐 Scraped Source Knowledge Origin</span>
+                <a 
+                  href={selectedRun.source_url || "https://en.wikipedia.org/wiki/Portal:Space"} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="text-[#00E5FF] hover:underline font-mono truncate block"
+                >
+                  {selectedRun.source_url || "https://en.wikipedia.org/wiki/Portal:Space"}
+                </a>
+              </div>
+
+              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                <span className="font-bold text-gray-400 block uppercase text-[10px]">🎵 Background Audio Track</span>
+                <span className="font-mono text-white block">{selectedRun.music_track || "space_ambient_cinematic.mp3"}</span>
+              </div>
+
+              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                <span className="font-bold text-gray-400 block uppercase text-[10px]">🎙️ Kokoro Neural Voice Actor</span>
+                <span className="font-mono text-[#00FF66] block">{selectedRun.voice_actor || "af_sarah (Kokoro-82M Neural CPU)"}</span>
+              </div>
+
+              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                <span className="font-bold text-gray-400 block uppercase text-[10px]">🔍 Scraped Search Keywords</span>
+                <div className="flex flex-wrap gap-1 mt-1">
+                  {(selectedRun.search_keywords || ["cosmic void", "astrophysics", "deep space"]).map((kw, i) => (
+                    <span key={i} className="bg-blue-950/60 text-blue-300 border border-blue-800/40 px-2 py-0.5 rounded text-[10px]">
+                      {kw}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                <span className="font-bold text-gray-400 block uppercase text-[10px]">🖼️ Visual Asset Mix & Salience Zoom</span>
+                <span className="font-mono text-yellow-300 block">{selectedRun.visual_asset_types || "3 Pexels 4K Clips + 1 Salience-Zoomed Focal Image"}</span>
+              </div>
+
+              <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+                <span className="font-bold text-gray-400 block uppercase text-[10px]">🔤 FFmpeg Subtitle & ASS Engine</span>
+                <span className="font-mono text-gray-200 block">{selectedRun.ass_subtitle_engine || "FFmpeg ASS Engine (Anton-Regular Bold)"}</span>
+              </div>
+            </div>
+          </div>
           <div className="space-y-3">
             <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
               5-Variant Auto-QA Tournament Breakdown
