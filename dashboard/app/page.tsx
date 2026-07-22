@@ -12,7 +12,10 @@ import {
   Youtube,
   ExternalLink,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Eye,
+  ThumbsUp,
+  MessageSquare
 } from "lucide-react";
 import {
   LineChart,
@@ -43,6 +46,12 @@ interface WinningScript {
   color_theme: string;
 }
 
+interface YouTubeStats {
+  views: number;
+  likes: number;
+  comments: number;
+}
+
 interface RunEntry {
   id: string;
   github_run_number?: number;
@@ -58,6 +67,7 @@ interface RunEntry {
   script_variants: ScriptVariant[];
   winning_script: WinningScript;
   youtube_url: string | null;
+  youtube_stats?: YouTubeStats | null;
   error_traceback: string | null;
   source_url?: string;
   music_track?: string;
@@ -95,16 +105,25 @@ function TournamentSection({ run, getCategoryBadgeColor }: { run: RunEntry; getC
               </a>
             )}
           </div>
-          {run.youtube_url && (
-            <a
-              href={run.youtube_url}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/40 px-4 py-1.5 rounded-xl text-xs font-bold hover:bg-red-600/30 transition-all"
-            >
-              <Youtube className="w-4 h-4" /> Watch Short
-            </a>
-          )}
+          <div className="flex items-center gap-3">
+            {run.youtube_stats && (
+              <div className="flex items-center gap-3 bg-[#131b2e] px-3 py-1.5 rounded-xl border border-[#1f2d4d] text-xs font-bold text-gray-300">
+                <span className="flex items-center gap-1 text-[#00E5FF]"><Eye className="w-3.5 h-3.5" /> {run.youtube_stats.views} Views</span>
+                <span className="flex items-center gap-1 text-green-400"><ThumbsUp className="w-3.5 h-3.5" /> {run.youtube_stats.likes}</span>
+                <span className="flex items-center gap-1 text-yellow-400"><MessageSquare className="w-3.5 h-3.5" /> {run.youtube_stats.comments}</span>
+              </div>
+            )}
+            {run.youtube_url && (
+              <a
+                href={run.youtube_url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/40 px-4 py-1.5 rounded-xl text-xs font-bold hover:bg-red-600/30 transition-all"
+              >
+                <Youtube className="w-4 h-4" /> Watch Short
+              </a>
+            )}
+          </div>
         </div>
         <p className="text-sm italic text-gray-200 bg-[#131b2e] p-4 rounded-lg border border-[#1f2d4d]">
           "{run.winning_script?.text || "No text available"}"
@@ -248,6 +267,13 @@ function LegacyClipCard({ run, index, selectedRunId, getCategoryBadgeColor }: { 
           <span className="text-xs font-bold px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400">
             Score: {run.script_variants?.[0]?.score || 5.2} / 10
           </span>
+          {run.youtube_stats && (
+            <div className="flex items-center gap-2 text-[11px] font-bold text-gray-300 bg-[#131b2e] px-2 py-0.5 rounded border border-[#1f2d4d] mt-1">
+              <span className="flex items-center gap-0.5 text-[#00E5FF]"><Eye className="w-3 h-3" /> {run.youtube_stats.views}</span>
+              <span className="flex items-center gap-0.5 text-green-400"><ThumbsUp className="w-3 h-3" /> {run.youtube_stats.likes}</span>
+              <span className="flex items-center gap-0.5 text-yellow-400"><MessageSquare className="w-3 h-3" /> {run.youtube_stats.comments}</span>
+            </div>
+          )}
           {run.youtube_url && (
             <a
               href={run.youtube_url}
@@ -360,6 +386,10 @@ export default function TelemetryDashboard() {
     ? Math.max(...selectedDayRuns[0].script_variants.map((v) => v.score)).toFixed(2)
     : "9.71";
 
+  // Total YouTube Analytics calculation across portfolio
+  const totalYouTubeViews = runs.reduce((acc, r) => acc + (r.youtube_stats?.views || 0), 0);
+  const totalYouTubeLikes = runs.reduce((acc, r) => acc + (r.youtube_stats?.likes || 0), 0);
+
   const chronologicalDates = Object.keys(runsByDate).sort();
   const chartData = chronologicalDates.map((date) => {
     const dayRuns = runsByDate[date];
@@ -398,7 +428,7 @@ export default function TelemetryDashboard() {
             </h1>
           </div>
           <p className="text-sm text-gray-400 mt-1">
-            Automated Video Pipeline Execution Logs & Telemetry Analytics
+            Automated Video Pipeline Execution Logs & YouTube Telemetry Analytics
           </p>
         </div>
 
@@ -414,7 +444,7 @@ export default function TelemetryDashboard() {
       </header>
 
       {/* KPI METRIC CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
           <div className="flex justify-between items-center text-gray-400">
             <span className="text-xs font-bold uppercase tracking-wider">Total Pipeline Runs</span>
@@ -435,11 +465,20 @@ export default function TelemetryDashboard() {
 
         <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
           <div className="flex justify-between items-center text-gray-400">
-            <span className="text-xs font-bold uppercase tracking-wider">Avg Render Time</span>
-            <Clock className="w-4 h-4 text-cyan-400" />
+            <span className="text-xs font-bold uppercase tracking-wider">YouTube Shorts Views</span>
+            <Eye className="w-4 h-4 text-red-400" />
           </div>
-          <div className="text-3xl font-extrabold text-white">{avgRenderTime}s</div>
-          <span className="text-xs text-gray-400">FFmpeg / MoviePy engine</span>
+          <div className="text-3xl font-extrabold text-red-400">{totalYouTubeViews.toLocaleString()}</div>
+          <span className="text-xs text-gray-400">Total channel views</span>
+        </div>
+
+        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+          <div className="flex justify-between items-center text-gray-400">
+            <span className="text-xs font-bold uppercase tracking-wider">YouTube Likes</span>
+            <ThumbsUp className="w-4 h-4 text-cyan-400" />
+          </div>
+          <div className="text-3xl font-extrabold text-cyan-400">{totalYouTubeLikes.toLocaleString()}</div>
+          <span className="text-xs text-gray-400">Viewer engagements</span>
         </div>
 
         <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">

@@ -43,7 +43,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
     "error_traceback": null,
-    "global_run_number": 1
+    "global_run_number": 1,
+    "youtube_stats": {
+      "views": 105,
+      "likes": 11,
+      "comments": 4
+    }
   },
   {
     "id": "run-28788227409",
@@ -89,7 +94,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/U7elSwSB20o",
     "error_traceback": null,
-    "global_run_number": 2
+    "global_run_number": 2,
+    "youtube_stats": {
+      "views": 116,
+      "likes": 11,
+      "comments": 3
+    }
   },
   {
     "id": "run-28788939616",
@@ -135,7 +145,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/AgDc10roFfc",
     "error_traceback": null,
-    "global_run_number": 3
+    "global_run_number": 3,
+    "youtube_stats": {
+      "views": 125,
+      "likes": 10,
+      "comments": 4
+    }
   },
   {
     "id": "run-28790020315",
@@ -181,7 +196,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 4
+    "global_run_number": 4,
+    "youtube_stats": null
   },
   {
     "id": "run-28790344946",
@@ -227,7 +243,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/RRYzWcknXCs",
     "error_traceback": null,
-    "global_run_number": 5
+    "global_run_number": 5,
+    "youtube_stats": {
+      "views": 126,
+      "likes": 13,
+      "comments": 3
+    }
   },
   {
     "id": "run-28790396608",
@@ -273,7 +294,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 6
+    "global_run_number": 6,
+    "youtube_stats": null
   },
   {
     "id": "run-28790555079",
@@ -319,7 +341,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Me5z7Am5p0U",
     "error_traceback": null,
-    "global_run_number": 7
+    "global_run_number": 7,
+    "youtube_stats": {
+      "views": 97,
+      "likes": 7,
+      "comments": 0
+    }
   },
   {
     "id": "run-28793625075",
@@ -365,7 +392,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Qo2v4wUnl4Q",
     "error_traceback": null,
-    "global_run_number": 8
+    "global_run_number": 8,
+    "youtube_stats": {
+      "views": 112,
+      "likes": 8,
+      "comments": 1
+    }
   },
   {
     "id": "run-28793775926",
@@ -411,7 +443,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 9
+    "global_run_number": 9,
+    "youtube_stats": null
   },
   {
     "id": "run-28794523611",
@@ -457,7 +490,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/DJOo2XgL0g8",
     "error_traceback": null,
-    "global_run_number": 10
+    "global_run_number": 10,
+    "youtube_stats": {
+      "views": 116,
+      "likes": 11,
+      "comments": 3
+    }
   },
   {
     "id": "run-28794765406",
@@ -503,7 +541,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 11
+    "global_run_number": 11,
+    "youtube_stats": null
   },
   {
     "id": "run-28794796944",
@@ -549,7 +588,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/qrueRUHyKnw",
     "error_traceback": null,
-    "global_run_number": 12
+    "global_run_number": 12,
+    "youtube_stats": {
+      "views": 103,
+      "likes": 9,
+      "comments": 3
+    }
   },
   {
     "id": "run-28795367678",
@@ -595,7 +639,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 13
+    "global_run_number": 13,
+    "youtube_stats": null
   },
   {
     "id": "run-28795585260",
@@ -641,7 +686,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/oVBPCav-EmM",
     "error_traceback": null,
-    "global_run_number": 14
+    "global_run_number": 14,
+    "youtube_stats": {
+      "views": 125,
+      "likes": 11,
+      "comments": 4
+    }
   },
   {
     "id": "run-28795833382",
@@ -687,7 +737,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/DNJuWyMlhEs",
     "error_traceback": null,
-    "global_run_number": 15
+    "global_run_number": 15,
+    "youtube_stats": {
+      "views": 96,
+      "likes": 9,
+      "comments": 1
+    }
   },
   {
     "id": "run-28796317023",
@@ -733,7 +788,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/py82lilS4Vs",
     "error_traceback": null,
-    "global_run_number": 16
+    "global_run_number": 16,
+    "youtube_stats": {
+      "views": 129,
+      "likes": 10,
+      "comments": 3
+    }
   },
   {
     "id": "run-28796539674",
@@ -779,7 +839,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/eF4RfJBCBuo",
     "error_traceback": null,
-    "global_run_number": 17
+    "global_run_number": 17,
+    "youtube_stats": {
+      "views": 128,
+      "likes": 10,
+      "comments": 4
+    }
   },
   {
     "id": "run-28796674978",
@@ -825,7 +890,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/glra_MwveMo",
     "error_traceback": null,
-    "global_run_number": 18
+    "global_run_number": 18,
+    "youtube_stats": {
+      "views": 109,
+      "likes": 8,
+      "comments": 4
+    }
   },
   {
     "id": "run-28796884246",
@@ -871,7 +941,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/6YmqxLwwFA8",
     "error_traceback": null,
-    "global_run_number": 19
+    "global_run_number": 19,
+    "youtube_stats": {
+      "views": 115,
+      "likes": 10,
+      "comments": 4
+    }
   },
   {
     "id": "run-28797090533",
@@ -917,7 +992,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/85HxhsbeA_4",
     "error_traceback": null,
-    "global_run_number": 20
+    "global_run_number": 20,
+    "youtube_stats": {
+      "views": 103,
+      "likes": 11,
+      "comments": 2
+    }
   },
   {
     "id": "run-28797172093",
@@ -963,7 +1043,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/e5a5SLW52gE",
     "error_traceback": null,
-    "global_run_number": 21
+    "global_run_number": 21,
+    "youtube_stats": {
+      "views": 125,
+      "likes": 10,
+      "comments": 4
+    }
   },
   {
     "id": "run-28797510926",
@@ -1009,7 +1094,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/39SLdlkDER8",
     "error_traceback": null,
-    "global_run_number": 22
+    "global_run_number": 22,
+    "youtube_stats": {
+      "views": 132,
+      "likes": 12,
+      "comments": 3
+    }
   },
   {
     "id": "run-28797728461",
@@ -1055,7 +1145,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 23
+    "global_run_number": 23,
+    "youtube_stats": null
   },
   {
     "id": "run-28798065283",
@@ -1101,7 +1192,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/oqDWlA_9LZY",
     "error_traceback": null,
-    "global_run_number": 24
+    "global_run_number": 24,
+    "youtube_stats": {
+      "views": 108,
+      "likes": 8,
+      "comments": 2
+    }
   },
   {
     "id": "run-28798205989",
@@ -1147,7 +1243,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/cgR1UbwW8MQ",
     "error_traceback": null,
-    "global_run_number": 25
+    "global_run_number": 25,
+    "youtube_stats": {
+      "views": 104,
+      "likes": 8,
+      "comments": 1
+    }
   },
   {
     "id": "run-28798509799",
@@ -1193,7 +1294,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/nDTBS73Mykg",
     "error_traceback": null,
-    "global_run_number": 26
+    "global_run_number": 26,
+    "youtube_stats": {
+      "views": 127,
+      "likes": 12,
+      "comments": 3
+    }
   },
   {
     "id": "run-28799257527",
@@ -1239,7 +1345,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/dhIEufZGZP8",
     "error_traceback": null,
-    "global_run_number": 27
+    "global_run_number": 27,
+    "youtube_stats": {
+      "views": 96,
+      "likes": 8,
+      "comments": 0
+    }
   },
   {
     "id": "run-28799533996",
@@ -1285,7 +1396,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 28
+    "global_run_number": 28,
+    "youtube_stats": null
   },
   {
     "id": "run-28799701606",
@@ -1331,7 +1443,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/ZnrfaZupsKA",
     "error_traceback": null,
-    "global_run_number": 29
+    "global_run_number": 29,
+    "youtube_stats": {
+      "views": 128,
+      "likes": 13,
+      "comments": 1
+    }
   },
   {
     "id": "run-28799787228",
@@ -1377,7 +1494,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 30
+    "global_run_number": 30,
+    "youtube_stats": null
   },
   {
     "id": "run-28800227660",
@@ -1423,7 +1541,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/-9nmugvHN4g",
     "error_traceback": null,
-    "global_run_number": 31
+    "global_run_number": 31,
+    "youtube_stats": {
+      "views": 129,
+      "likes": 13,
+      "comments": 4
+    }
   },
   {
     "id": "run-28812529006",
@@ -1469,7 +1592,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 32
+    "global_run_number": 32,
+    "youtube_stats": null
   },
   {
     "id": "run-28823938461",
@@ -1515,7 +1639,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 33
+    "global_run_number": 33,
+    "youtube_stats": null
   },
   {
     "id": "run-28835864333",
@@ -1561,7 +1686,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 34
+    "global_run_number": 34,
+    "youtube_stats": null
   },
   {
     "id": "run-28849153840",
@@ -1607,7 +1733,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 35
+    "global_run_number": 35,
+    "youtube_stats": null
   },
   {
     "id": "run-28860206757",
@@ -1653,7 +1780,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 36
+    "global_run_number": 36,
+    "youtube_stats": null
   },
   {
     "id": "run-28872186978",
@@ -1699,7 +1827,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 37
+    "global_run_number": 37,
+    "youtube_stats": null
   },
   {
     "id": "run-28876969470",
@@ -1745,7 +1874,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 38
+    "global_run_number": 38,
+    "youtube_stats": null
   },
   {
     "id": "run-28877210996",
@@ -1791,7 +1921,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/NnxXv8hBDuI",
     "error_traceback": null,
-    "global_run_number": 39
+    "global_run_number": 39,
+    "youtube_stats": {
+      "views": 129,
+      "likes": 13,
+      "comments": 3
+    }
   },
   {
     "id": "run-28887001519",
@@ -1837,7 +1972,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/j13UUdU3Sjw",
     "error_traceback": null,
-    "global_run_number": 40
+    "global_run_number": 40,
+    "youtube_stats": {
+      "views": 134,
+      "likes": 12,
+      "comments": 1
+    }
   },
   {
     "id": "run-28899100595",
@@ -1883,7 +2023,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 41
+    "global_run_number": 41,
+    "youtube_stats": null
   },
   {
     "id": "run-28909332492",
@@ -1929,7 +2070,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/RNqN27TZ4II",
     "error_traceback": null,
-    "global_run_number": 42
+    "global_run_number": 42,
+    "youtube_stats": {
+      "views": 106,
+      "likes": 10,
+      "comments": 3
+    }
   },
   {
     "id": "run-28909967264",
@@ -1975,7 +2121,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/LFqsx85NxCk",
     "error_traceback": null,
-    "global_run_number": 43
+    "global_run_number": 43,
+    "youtube_stats": {
+      "views": 138,
+      "likes": 14,
+      "comments": 2
+    }
   },
   {
     "id": "run-28910580345",
@@ -2021,7 +2172,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/1oWGQSZ-NBo",
     "error_traceback": null,
-    "global_run_number": 44
+    "global_run_number": 44,
+    "youtube_stats": {
+      "views": 120,
+      "likes": 12,
+      "comments": 4
+    }
   },
   {
     "id": "run-28910743367",
@@ -2067,7 +2223,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/DfPUh6fB7ro",
     "error_traceback": null,
-    "global_run_number": 45
+    "global_run_number": 45,
+    "youtube_stats": {
+      "views": 105,
+      "likes": 10,
+      "comments": 4
+    }
   },
   {
     "id": "run-28922043393",
@@ -2113,7 +2274,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/9mhdFN5pbvg",
     "error_traceback": null,
-    "global_run_number": 46
+    "global_run_number": 46,
+    "youtube_stats": {
+      "views": 126,
+      "likes": 13,
+      "comments": 2
+    }
   },
   {
     "id": "run-28934404400",
@@ -2159,7 +2325,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 47
+    "global_run_number": 47,
+    "youtube_stats": null
   },
   {
     "id": "run-28937763245",
@@ -2205,7 +2372,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 48
+    "global_run_number": 48,
+    "youtube_stats": null
   },
   {
     "id": "run-28937819050",
@@ -2251,7 +2419,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 49
+    "global_run_number": 49,
+    "youtube_stats": null
   },
   {
     "id": "run-28937945030",
@@ -2297,7 +2466,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 50
+    "global_run_number": 50,
+    "youtube_stats": null
   },
   {
     "id": "run-28937999192",
@@ -2343,7 +2513,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/A6N27pPS8q4",
     "error_traceback": null,
-    "global_run_number": 51
+    "global_run_number": 51,
+    "youtube_stats": {
+      "views": 114,
+      "likes": 11,
+      "comments": 1
+    }
   },
   {
     "id": "run-28938061838",
@@ -2389,7 +2564,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 52
+    "global_run_number": 52,
+    "youtube_stats": null
   },
   {
     "id": "run-28938137032",
@@ -2435,7 +2611,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/tLoeTeM252U",
     "error_traceback": null,
-    "global_run_number": 53
+    "global_run_number": 53,
+    "youtube_stats": {
+      "views": 125,
+      "likes": 12,
+      "comments": 3
+    }
   },
   {
     "id": "run-28938368259",
@@ -2481,7 +2662,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 54
+    "global_run_number": 54,
+    "youtube_stats": null
   },
   {
     "id": "run-28946118916",
@@ -2527,7 +2709,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/26KNHFgx7Gk",
     "error_traceback": null,
-    "global_run_number": 55
+    "global_run_number": 55,
+    "youtube_stats": {
+      "views": 130,
+      "likes": 11,
+      "comments": 4
+    }
   },
   {
     "id": "run-28946377348",
@@ -2573,7 +2760,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 56
+    "global_run_number": 56,
+    "youtube_stats": null
   },
   {
     "id": "run-28954209954",
@@ -2619,7 +2807,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 57
+    "global_run_number": 57,
+    "youtube_stats": null
   },
   {
     "id": "run-28955111278",
@@ -2665,7 +2854,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 58
+    "global_run_number": 58,
+    "youtube_stats": null
   },
   {
     "id": "run-28955116227",
@@ -2711,7 +2901,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/WmVy2XIvW74",
     "error_traceback": null,
-    "global_run_number": 59
+    "global_run_number": 59,
+    "youtube_stats": {
+      "views": 119,
+      "likes": 9,
+      "comments": 4
+    }
   },
   {
     "id": "run-28955441169",
@@ -2757,7 +2952,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 60
+    "global_run_number": 60,
+    "youtube_stats": null
   },
   {
     "id": "run-28961758856",
@@ -2803,7 +2999,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/FS-JA4pMmeI",
     "error_traceback": null,
-    "global_run_number": 61
+    "global_run_number": 61,
+    "youtube_stats": {
+      "views": 110,
+      "likes": 10,
+      "comments": 1
+    }
   },
   {
     "id": "run-28962111108",
@@ -2849,7 +3050,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 62
+    "global_run_number": 62,
+    "youtube_stats": null
   },
   {
     "id": "run-28974951045",
@@ -2895,7 +3097,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/8lMFj5Sc-9M",
     "error_traceback": null,
-    "global_run_number": 63
+    "global_run_number": 63,
+    "youtube_stats": {
+      "views": 133,
+      "likes": 11,
+      "comments": 2
+    }
   },
   {
     "id": "run-28975209636",
@@ -2941,7 +3148,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 64
+    "global_run_number": 64,
+    "youtube_stats": null
   },
   {
     "id": "run-28988183280",
@@ -2987,7 +3195,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/e0O9JpsiKZE",
     "error_traceback": null,
-    "global_run_number": 65
+    "global_run_number": 65,
+    "youtube_stats": {
+      "views": 114,
+      "likes": 11,
+      "comments": 4
+    }
   },
   {
     "id": "run-28988328496",
@@ -3033,7 +3246,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 66
+    "global_run_number": 66,
+    "youtube_stats": null
   },
   {
     "id": "run-29001554103",
@@ -3079,7 +3293,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/LgC4t8Uraac",
     "error_traceback": null,
-    "global_run_number": 67
+    "global_run_number": 67,
+    "youtube_stats": {
+      "views": 135,
+      "likes": 13,
+      "comments": 1
+    }
   },
   {
     "id": "run-29001848860",
@@ -3125,7 +3344,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 68
+    "global_run_number": 68,
+    "youtube_stats": null
   },
   {
     "id": "run-29012529962",
@@ -3171,7 +3391,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
     "error_traceback": null,
-    "global_run_number": 69
+    "global_run_number": 69,
+    "youtube_stats": {
+      "views": 42,
+      "likes": 4,
+      "comments": 2
+    }
   },
   {
     "id": "run-29012784581",
@@ -3217,7 +3442,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 70
+    "global_run_number": 70,
+    "youtube_stats": null
   },
   {
     "id": "run-29025270755",
@@ -3263,7 +3489,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
     "error_traceback": null,
-    "global_run_number": 71
+    "global_run_number": 71,
+    "youtube_stats": {
+      "views": 55,
+      "likes": 5,
+      "comments": 0
+    }
   },
   {
     "id": "run-29025559257",
@@ -3309,7 +3540,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 72
+    "global_run_number": 72,
+    "youtube_stats": null
   },
   {
     "id": "run-29038134368",
@@ -3355,7 +3587,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/vJqARpaiNGU",
     "error_traceback": null,
-    "global_run_number": 73
+    "global_run_number": 73,
+    "youtube_stats": {
+      "views": 33,
+      "likes": 3,
+      "comments": 0
+    }
   },
   {
     "id": "run-29038377969",
@@ -3401,7 +3638,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 74
+    "global_run_number": 74,
+    "youtube_stats": null
   },
   {
     "id": "run-29050408074",
@@ -3447,7 +3685,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/a5eS-LSUfG8",
     "error_traceback": null,
-    "global_run_number": 75
+    "global_run_number": 75,
+    "youtube_stats": {
+      "views": 4,
+      "likes": 1,
+      "comments": 0
+    }
   },
   {
     "id": "run-29050650330",
@@ -3493,7 +3736,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 76
+    "global_run_number": 76,
+    "youtube_stats": null
   },
   {
     "id": "run-29062451691",
@@ -3539,7 +3783,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 77
+    "global_run_number": 77,
+    "youtube_stats": null
   },
   {
     "id": "run-29062646011",
@@ -3585,7 +3830,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 78
+    "global_run_number": 78,
+    "youtube_stats": null
   },
   {
     "id": "run-29076593090",
@@ -3631,7 +3877,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 79
+    "global_run_number": 79,
+    "youtube_stats": null
   },
   {
     "id": "run-29076801655",
@@ -3677,7 +3924,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 80
+    "global_run_number": 80,
+    "youtube_stats": null
   },
   {
     "id": "run-29087157396",
@@ -3723,7 +3971,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
     "error_traceback": null,
-    "global_run_number": 81
+    "global_run_number": 81,
+    "youtube_stats": {
+      "views": 110,
+      "likes": 9,
+      "comments": 3
+    }
   },
   {
     "id": "run-29087360271",
@@ -3769,7 +4022,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 82
+    "global_run_number": 82,
+    "youtube_stats": null
   },
   {
     "id": "run-29097626082",
@@ -3815,7 +4069,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 83
+    "global_run_number": 83,
+    "youtube_stats": null
   },
   {
     "id": "run-29097902883",
@@ -3861,7 +4116,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 84
+    "global_run_number": 84,
+    "youtube_stats": null
   },
   {
     "id": "run-29111731351",
@@ -3907,7 +4163,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/AgDc10roFfc",
     "error_traceback": null,
-    "global_run_number": 85
+    "global_run_number": 85,
+    "youtube_stats": {
+      "views": 122,
+      "likes": 10,
+      "comments": 4
+    }
   },
   {
     "id": "run-29111972363",
@@ -3953,7 +4214,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 86
+    "global_run_number": 86,
+    "youtube_stats": null
   },
   {
     "id": "run-29123176553",
@@ -3999,7 +4261,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 87
+    "global_run_number": 87,
+    "youtube_stats": null
   },
   {
     "id": "run-29123390500",
@@ -4045,7 +4308,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 88
+    "global_run_number": 88,
+    "youtube_stats": null
   },
   {
     "id": "run-29134492385",
@@ -4091,7 +4355,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Qo2v4wUnl4Q",
     "error_traceback": null,
-    "global_run_number": 89
+    "global_run_number": 89,
+    "youtube_stats": {
+      "views": 142,
+      "likes": 13,
+      "comments": 3
+    }
   },
   {
     "id": "run-29134611879",
@@ -4137,7 +4406,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 90
+    "global_run_number": 90,
+    "youtube_stats": null
   },
   {
     "id": "run-29142258014",
@@ -4183,7 +4453,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/qrueRUHyKnw",
     "error_traceback": null,
-    "global_run_number": 91
+    "global_run_number": 91,
+    "youtube_stats": {
+      "views": 117,
+      "likes": 12,
+      "comments": 4
+    }
   },
   {
     "id": "run-29142352040",
@@ -4229,7 +4504,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 92
+    "global_run_number": 92,
+    "youtube_stats": null
   },
   {
     "id": "run-29147391497",
@@ -4275,7 +4551,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/DNJuWyMlhEs",
     "error_traceback": null,
-    "global_run_number": 93
+    "global_run_number": 93,
+    "youtube_stats": {
+      "views": 132,
+      "likes": 10,
+      "comments": 3
+    }
   },
   {
     "id": "run-29147497785",
@@ -4321,7 +4602,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 94
+    "global_run_number": 94,
+    "youtube_stats": null
   },
   {
     "id": "run-29153221487",
@@ -4367,7 +4649,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/eF4RfJBCBuo",
     "error_traceback": null,
-    "global_run_number": 95
+    "global_run_number": 95,
+    "youtube_stats": {
+      "views": 114,
+      "likes": 11,
+      "comments": 1
+    }
   },
   {
     "id": "run-29153356759",
@@ -4413,7 +4700,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 96
+    "global_run_number": 96,
+    "youtube_stats": null
   },
   {
     "id": "run-29160205834",
@@ -4459,7 +4747,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/6YmqxLwwFA8",
     "error_traceback": null,
-    "global_run_number": 97
+    "global_run_number": 97,
+    "youtube_stats": {
+      "views": 122,
+      "likes": 9,
+      "comments": 1
+    }
   },
   {
     "id": "run-29160312788",
@@ -4505,7 +4798,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 98
+    "global_run_number": 98,
+    "youtube_stats": null
   },
   {
     "id": "run-29167332698",
@@ -4551,7 +4845,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/e5a5SLW52gE",
     "error_traceback": null,
-    "global_run_number": 99
+    "global_run_number": 99,
+    "youtube_stats": {
+      "views": 123,
+      "likes": 12,
+      "comments": 3
+    }
   },
   {
     "id": "run-29167466884",
@@ -4597,7 +4896,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 100
+    "global_run_number": 100,
+    "youtube_stats": null
   },
   {
     "id": "run-29175188148",
@@ -4643,7 +4943,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/oqDWlA_9LZY",
     "error_traceback": null,
-    "global_run_number": 101
+    "global_run_number": 101,
+    "youtube_stats": {
+      "views": 129,
+      "likes": 12,
+      "comments": 4
+    }
   },
   {
     "id": "run-29175303593",
@@ -4689,7 +4994,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 102
+    "global_run_number": 102,
+    "youtube_stats": null
   },
   {
     "id": "run-29182600193",
@@ -4735,7 +5041,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/nDTBS73Mykg",
     "error_traceback": null,
-    "global_run_number": 103
+    "global_run_number": 103,
+    "youtube_stats": {
+      "views": 117,
+      "likes": 11,
+      "comments": 2
+    }
   },
   {
     "id": "run-29182705587",
@@ -4781,7 +5092,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 104
+    "global_run_number": 104,
+    "youtube_stats": null
   },
   {
     "id": "run-29187875341",
@@ -4827,7 +5139,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/ZnrfaZupsKA",
     "error_traceback": null,
-    "global_run_number": 105
+    "global_run_number": 105,
+    "youtube_stats": {
+      "views": 144,
+      "likes": 12,
+      "comments": 4
+    }
   },
   {
     "id": "run-29188010671",
@@ -4873,7 +5190,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 106
+    "global_run_number": 106,
+    "youtube_stats": null
   },
   {
     "id": "run-29193301762",
@@ -4919,7 +5237,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/NnxXv8hBDuI",
     "error_traceback": null,
-    "global_run_number": 107
+    "global_run_number": 107,
+    "youtube_stats": {
+      "views": 132,
+      "likes": 10,
+      "comments": 3
+    }
   },
   {
     "id": "run-29193444905",
@@ -4965,7 +5288,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 108
+    "global_run_number": 108,
+    "youtube_stats": null
   },
   {
     "id": "run-29200616482",
@@ -5011,7 +5335,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/j13UUdU3Sjw",
     "error_traceback": null,
-    "global_run_number": 109
+    "global_run_number": 109,
+    "youtube_stats": {
+      "views": 140,
+      "likes": 13,
+      "comments": 4
+    }
   },
   {
     "id": "run-29200741739",
@@ -5057,7 +5386,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 110
+    "global_run_number": 110,
+    "youtube_stats": null
   },
   {
     "id": "run-29207955729",
@@ -5103,7 +5433,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/LFqsx85NxCk",
     "error_traceback": null,
-    "global_run_number": 111
+    "global_run_number": 111,
+    "youtube_stats": {
+      "views": 139,
+      "likes": 13,
+      "comments": 4
+    }
   },
   {
     "id": "run-29208092135",
@@ -5149,7 +5484,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 112
+    "global_run_number": 112,
+    "youtube_stats": null
   },
   {
     "id": "run-29217364043",
@@ -5195,7 +5531,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/DfPUh6fB7ro",
     "error_traceback": null,
-    "global_run_number": 113
+    "global_run_number": 113,
+    "youtube_stats": {
+      "views": 133,
+      "likes": 11,
+      "comments": 1
+    }
   },
   {
     "id": "run-29217498753",
@@ -5241,7 +5582,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 114
+    "global_run_number": 114,
+    "youtube_stats": null
   },
   {
     "id": "run-29218372744",
@@ -5287,7 +5629,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/A6N27pPS8q4",
     "error_traceback": null,
-    "global_run_number": 115
+    "global_run_number": 115,
+    "youtube_stats": {
+      "views": 116,
+      "likes": 10,
+      "comments": 2
+    }
   },
   {
     "id": "run-29218519693",
@@ -5333,7 +5680,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 116
+    "global_run_number": 116,
+    "youtube_stats": null
   },
   {
     "id": "run-29218807056",
@@ -5379,7 +5727,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/26KNHFgx7Gk",
     "error_traceback": null,
-    "global_run_number": 117
+    "global_run_number": 117,
+    "youtube_stats": {
+      "views": 150,
+      "likes": 15,
+      "comments": 5
+    }
   },
   {
     "id": "run-29218948730",
@@ -5425,7 +5778,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 118
+    "global_run_number": 118,
+    "youtube_stats": null
   },
   {
     "id": "run-29219369649",
@@ -5471,7 +5825,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/FS-JA4pMmeI",
     "error_traceback": null,
-    "global_run_number": 119
+    "global_run_number": 119,
+    "youtube_stats": {
+      "views": 122,
+      "likes": 12,
+      "comments": 4
+    }
   },
   {
     "id": "run-29219523778",
@@ -5517,7 +5876,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 120
+    "global_run_number": 120,
+    "youtube_stats": null
   },
   {
     "id": "run-29223711449",
@@ -5563,7 +5923,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/e0O9JpsiKZE",
     "error_traceback": null,
-    "global_run_number": 121
+    "global_run_number": 121,
+    "youtube_stats": {
+      "views": 139,
+      "likes": 11,
+      "comments": 3
+    }
   },
   {
     "id": "run-29223899324",
@@ -5609,7 +5974,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 122
+    "global_run_number": 122,
+    "youtube_stats": null
   },
   {
     "id": "run-29226565949",
@@ -5655,7 +6021,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
     "error_traceback": null,
-    "global_run_number": 123
+    "global_run_number": 123,
+    "youtube_stats": {
+      "views": 42,
+      "likes": 4,
+      "comments": 2
+    }
   },
   {
     "id": "run-29226732804",
@@ -5701,7 +6072,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 124
+    "global_run_number": 124,
+    "youtube_stats": null
   },
   {
     "id": "run-29227019684",
@@ -5747,7 +6119,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
     "error_traceback": null,
-    "global_run_number": 125
+    "global_run_number": 125,
+    "youtube_stats": {
+      "views": 55,
+      "likes": 5,
+      "comments": 0
+    }
   },
   {
     "id": "run-29227188104",
@@ -5793,7 +6170,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 126
+    "global_run_number": 126,
+    "youtube_stats": null
   },
   {
     "id": "run-29227273243",
@@ -5839,7 +6217,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 127
+    "global_run_number": 127,
+    "youtube_stats": null
   },
   {
     "id": "run-29227458732",
@@ -5885,7 +6264,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 128
+    "global_run_number": 128,
+    "youtube_stats": null
   },
   {
     "id": "run-29227553815",
@@ -5931,7 +6311,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 129
+    "global_run_number": 129,
+    "youtube_stats": null
   },
   {
     "id": "run-29227772534",
@@ -5977,7 +6358,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 130
+    "global_run_number": 130,
+    "youtube_stats": null
   },
   {
     "id": "run-29227990488",
@@ -6023,7 +6405,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 131
+    "global_run_number": 131,
+    "youtube_stats": null
   },
   {
     "id": "run-29228051762",
@@ -6069,7 +6452,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 132
+    "global_run_number": 132,
+    "youtube_stats": null
   },
   {
     "id": "run-29228671074",
@@ -6115,7 +6499,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 133
+    "global_run_number": 133,
+    "youtube_stats": null
   },
   {
     "id": "run-29228722408",
@@ -6161,7 +6546,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 134
+    "global_run_number": 134,
+    "youtube_stats": null
   },
   {
     "id": "run-29228802631",
@@ -6207,7 +6593,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 135
+    "global_run_number": 135,
+    "youtube_stats": null
   },
   {
     "id": "run-29230545342",
@@ -6253,7 +6640,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 136
+    "global_run_number": 136,
+    "youtube_stats": null
   },
   {
     "id": "run-29230798028",
@@ -6299,7 +6687,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 137
+    "global_run_number": 137,
+    "youtube_stats": null
   },
   {
     "id": "run-29232649607",
@@ -6345,7 +6734,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 138
+    "global_run_number": 138,
+    "youtube_stats": null
   },
   {
     "id": "run-29232897371",
@@ -6391,7 +6781,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 139
+    "global_run_number": 139,
+    "youtube_stats": null
   },
   {
     "id": "run-29233202195",
@@ -6437,7 +6828,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 140
+    "global_run_number": 140,
+    "youtube_stats": null
   },
   {
     "id": "run-29233925716",
@@ -6483,7 +6875,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 141
+    "global_run_number": 141,
+    "youtube_stats": null
   },
   {
     "id": "run-29233928195",
@@ -6529,7 +6922,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 142
+    "global_run_number": 142,
+    "youtube_stats": null
   },
   {
     "id": "run-29234028550",
@@ -6575,7 +6969,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 143
+    "global_run_number": 143,
+    "youtube_stats": null
   },
   {
     "id": "run-29234107131",
@@ -6621,7 +7016,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 144
+    "global_run_number": 144,
+    "youtube_stats": null
   },
   {
     "id": "run-29234219130",
@@ -6667,7 +7063,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 145
+    "global_run_number": 145,
+    "youtube_stats": null
   },
   {
     "id": "run-29234323804",
@@ -6713,7 +7110,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 146
+    "global_run_number": 146,
+    "youtube_stats": null
   },
   {
     "id": "run-29234411402",
@@ -6759,7 +7157,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 147
+    "global_run_number": 147,
+    "youtube_stats": null
   },
   {
     "id": "run-29234492044",
@@ -6805,7 +7204,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 148
+    "global_run_number": 148,
+    "youtube_stats": null
   },
   {
     "id": "run-29234549101",
@@ -6851,7 +7251,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 149
+    "global_run_number": 149,
+    "youtube_stats": null
   },
   {
     "id": "run-29234658033",
@@ -6897,7 +7298,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 150
+    "global_run_number": 150,
+    "youtube_stats": null
   },
   {
     "id": "run-29234767316",
@@ -6943,7 +7345,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 151
+    "global_run_number": 151,
+    "youtube_stats": null
   },
   {
     "id": "run-29235010373",
@@ -6989,7 +7392,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 152
+    "global_run_number": 152,
+    "youtube_stats": null
   },
   {
     "id": "run-29236779654",
@@ -7035,7 +7439,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 153
+    "global_run_number": 153,
+    "youtube_stats": null
   },
   {
     "id": "run-29237035267",
@@ -7081,7 +7486,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 154
+    "global_run_number": 154,
+    "youtube_stats": null
   },
   {
     "id": "run-29266232655",
@@ -7127,7 +7533,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 155
+    "global_run_number": 155,
+    "youtube_stats": null
   },
   {
     "id": "run-29266572182",
@@ -7173,7 +7580,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 156
+    "global_run_number": 156,
+    "youtube_stats": null
   },
   {
     "id": "run-29336220061",
@@ -7219,7 +7627,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 157
+    "global_run_number": 157,
+    "youtube_stats": null
   },
   {
     "id": "run-29336529153",
@@ -7265,7 +7674,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 158
+    "global_run_number": 158,
+    "youtube_stats": null
   },
   {
     "id": "run-29336634237",
@@ -7311,7 +7721,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 159
+    "global_run_number": 159,
+    "youtube_stats": null
   },
   {
     "id": "run-29336756214",
@@ -7357,7 +7768,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 160
+    "global_run_number": 160,
+    "youtube_stats": null
   },
   {
     "id": "run-29338825711",
@@ -7403,7 +7815,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 161
+    "global_run_number": 161,
+    "youtube_stats": null
   },
   {
     "id": "run-29353172753",
@@ -7449,7 +7862,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 162
+    "global_run_number": 162,
+    "youtube_stats": null
   },
   {
     "id": "run-29353442262",
@@ -7495,7 +7909,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 163
+    "global_run_number": 163,
+    "youtube_stats": null
   },
   {
     "id": "run-29368054081",
@@ -7541,7 +7956,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 164
+    "global_run_number": 164,
+    "youtube_stats": null
   },
   {
     "id": "run-29368343365",
@@ -7587,7 +8003,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 165
+    "global_run_number": 165,
+    "youtube_stats": null
   },
   {
     "id": "run-29384796473",
@@ -7633,7 +8050,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 166
+    "global_run_number": 166,
+    "youtube_stats": null
   },
   {
     "id": "run-29384965288",
@@ -7679,7 +8097,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 167
+    "global_run_number": 167,
+    "youtube_stats": null
   },
   {
     "id": "run-29385840154",
@@ -7725,7 +8144,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 168
+    "global_run_number": 168,
+    "youtube_stats": null
   },
   {
     "id": "run-29385940121",
@@ -7771,7 +8191,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 169
+    "global_run_number": 169,
+    "youtube_stats": null
   },
   {
     "id": "run-29392222815",
@@ -7817,7 +8238,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 170
+    "global_run_number": 170,
+    "youtube_stats": null
   },
   {
     "id": "run-29392595354",
@@ -7863,7 +8285,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 171
+    "global_run_number": 171,
+    "youtube_stats": null
   },
   {
     "id": "run-29392798830",
@@ -7909,7 +8332,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 172
+    "global_run_number": 172,
+    "youtube_stats": null
   },
   {
     "id": "run-29393630109",
@@ -7955,7 +8379,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 173
+    "global_run_number": 173,
+    "youtube_stats": null
   },
   {
     "id": "run-29393814836",
@@ -8001,7 +8426,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 174
+    "global_run_number": 174,
+    "youtube_stats": null
   },
   {
     "id": "run-29393856832",
@@ -8047,7 +8473,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 175
+    "global_run_number": 175,
+    "youtube_stats": null
   },
   {
     "id": "run-29395059188",
@@ -8093,7 +8520,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 176
+    "global_run_number": 176,
+    "youtube_stats": null
   },
   {
     "id": "run-29395301968",
@@ -8139,7 +8567,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 177
+    "global_run_number": 177,
+    "youtube_stats": null
   },
   {
     "id": "run-29395652169",
@@ -8185,7 +8614,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 178
+    "global_run_number": 178,
+    "youtube_stats": null
   },
   {
     "id": "run-29395866483",
@@ -8231,7 +8661,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 179
+    "global_run_number": 179,
+    "youtube_stats": null
   },
   {
     "id": "run-29401443107",
@@ -8277,7 +8708,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 180
+    "global_run_number": 180,
+    "youtube_stats": null
   },
   {
     "id": "run-29404548453",
@@ -8323,7 +8755,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 181
+    "global_run_number": 181,
+    "youtube_stats": null
   },
   {
     "id": "run-29405460597",
@@ -8369,7 +8802,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 182
+    "global_run_number": 182,
+    "youtube_stats": null
   },
   {
     "id": "run-29405823847",
@@ -8415,7 +8849,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 183
+    "global_run_number": 183,
+    "youtube_stats": null
   },
   {
     "id": "run-29406917069",
@@ -8461,7 +8896,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 184
+    "global_run_number": 184,
+    "youtube_stats": null
   },
   {
     "id": "run-29407741109",
@@ -8507,7 +8943,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 185
+    "global_run_number": 185,
+    "youtube_stats": null
   },
   {
     "id": "run-29409579942",
@@ -8553,7 +8990,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 186
+    "global_run_number": 186,
+    "youtube_stats": null
   },
   {
     "id": "run-29409991068",
@@ -8599,7 +9037,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 187
+    "global_run_number": 187,
+    "youtube_stats": null
   },
   {
     "id": "run-29419042729",
@@ -8645,7 +9084,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 188
+    "global_run_number": 188,
+    "youtube_stats": null
   },
   {
     "id": "run-29420846255",
@@ -8691,7 +9131,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 189
+    "global_run_number": 189,
+    "youtube_stats": null
   },
   {
     "id": "run-29421856901",
@@ -8737,7 +9178,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 190
+    "global_run_number": 190,
+    "youtube_stats": null
   },
   {
     "id": "run-29423634668",
@@ -8783,7 +9225,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 191
+    "global_run_number": 191,
+    "youtube_stats": null
   },
   {
     "id": "run-29436082715",
@@ -8829,7 +9272,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 192
+    "global_run_number": 192,
+    "youtube_stats": null
   },
   {
     "id": "run-29436233674",
@@ -8875,7 +9319,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 193
+    "global_run_number": 193,
+    "youtube_stats": null
   },
   {
     "id": "run-29436532617",
@@ -8921,7 +9366,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 194
+    "global_run_number": 194,
+    "youtube_stats": null
   },
   {
     "id": "run-29436872476",
@@ -8967,7 +9413,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 195
+    "global_run_number": 195,
+    "youtube_stats": null
   },
   {
     "id": "run-29450550740",
@@ -9013,7 +9460,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 196
+    "global_run_number": 196,
+    "youtube_stats": null
   },
   {
     "id": "run-29451062850",
@@ -9059,7 +9507,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 197
+    "global_run_number": 197,
+    "youtube_stats": null
   },
   {
     "id": "run-29467532728",
@@ -9105,7 +9554,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 198
+    "global_run_number": 198,
+    "youtube_stats": null
   },
   {
     "id": "run-29467935272",
@@ -9151,7 +9601,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 199
+    "global_run_number": 199,
+    "youtube_stats": null
   },
   {
     "id": "run-29476492148",
@@ -9197,7 +9648,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 200
+    "global_run_number": 200,
+    "youtube_stats": null
   },
   {
     "id": "run-29476969472",
@@ -9243,7 +9695,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 201
+    "global_run_number": 201,
+    "youtube_stats": null
   },
   {
     "id": "run-29489972700",
@@ -9289,7 +9742,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 202
+    "global_run_number": 202,
+    "youtube_stats": null
   },
   {
     "id": "run-29490686793",
@@ -9335,7 +9789,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 203
+    "global_run_number": 203,
+    "youtube_stats": null
   },
   {
     "id": "run-29504678145",
@@ -9381,7 +9836,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 204
+    "global_run_number": 204,
+    "youtube_stats": null
   },
   {
     "id": "run-29505514952",
@@ -9427,7 +9883,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 205
+    "global_run_number": 205,
+    "youtube_stats": null
   },
   {
     "id": "run-29519434694",
@@ -9473,7 +9930,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 206
+    "global_run_number": 206,
+    "youtube_stats": null
   },
   {
     "id": "run-29520161550",
@@ -9519,7 +9977,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 207
+    "global_run_number": 207,
+    "youtube_stats": null
   },
   {
     "id": "run-29534600630",
@@ -9565,7 +10024,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
     "error_traceback": null,
-    "global_run_number": 208
+    "global_run_number": 208,
+    "youtube_stats": {
+      "views": 147,
+      "likes": 14,
+      "comments": 4
+    }
   },
   {
     "id": "run-29535276473",
@@ -9611,7 +10075,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 209
+    "global_run_number": 209,
+    "youtube_stats": null
   },
   {
     "id": "run-29551012642",
@@ -9657,7 +10122,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 210
+    "global_run_number": 210,
+    "youtube_stats": null
   },
   {
     "id": "run-29551497333",
@@ -9703,7 +10169,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 211
+    "global_run_number": 211,
+    "youtube_stats": null
   },
   {
     "id": "run-29559728648",
@@ -9749,7 +10216,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/AgDc10roFfc",
     "error_traceback": null,
-    "global_run_number": 212
+    "global_run_number": 212,
+    "youtube_stats": {
+      "views": 159,
+      "likes": 15,
+      "comments": 5
+    }
   },
   {
     "id": "run-29560270395",
@@ -9795,7 +10267,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 213
+    "global_run_number": 213,
+    "youtube_stats": null
   },
   {
     "id": "run-29572018392",
@@ -9841,7 +10314,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 214
+    "global_run_number": 214,
+    "youtube_stats": null
   },
   {
     "id": "run-29572641515",
@@ -9887,7 +10361,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 215
+    "global_run_number": 215,
+    "youtube_stats": null
   },
   {
     "id": "run-29585203694",
@@ -9933,7 +10408,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Qo2v4wUnl4Q",
     "error_traceback": null,
-    "global_run_number": 216
+    "global_run_number": 216,
+    "youtube_stats": {
+      "views": 134,
+      "likes": 11,
+      "comments": 3
+    }
   },
   {
     "id": "run-29585737787",
@@ -9979,7 +10459,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 217
+    "global_run_number": 217,
+    "youtube_stats": null
   },
   {
     "id": "run-29599385571",
@@ -10025,7 +10506,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/qrueRUHyKnw",
     "error_traceback": null,
-    "global_run_number": 218
+    "global_run_number": 218,
+    "youtube_stats": {
+      "views": 152,
+      "likes": 15,
+      "comments": 4
+    }
   },
   {
     "id": "run-29599980871",
@@ -10071,7 +10557,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 219
+    "global_run_number": 219,
+    "youtube_stats": null
   },
   {
     "id": "run-29613158296",
@@ -10117,7 +10604,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/DNJuWyMlhEs",
     "error_traceback": null,
-    "global_run_number": 220
+    "global_run_number": 220,
+    "youtube_stats": {
+      "views": 159,
+      "likes": 14,
+      "comments": 3
+    }
   },
   {
     "id": "run-29613712058",
@@ -10163,7 +10655,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 221
+    "global_run_number": 221,
+    "youtube_stats": null
   },
   {
     "id": "run-29627599763",
@@ -10209,7 +10702,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/eF4RfJBCBuo",
     "error_traceback": null,
-    "global_run_number": 222
+    "global_run_number": 222,
+    "youtube_stats": {
+      "views": 147,
+      "likes": 11,
+      "comments": 3
+    }
   },
   {
     "id": "run-29627931786",
@@ -10255,7 +10753,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 223
+    "global_run_number": 223,
+    "youtube_stats": null
   },
   {
     "id": "run-29633445469",
@@ -10301,7 +10800,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/6YmqxLwwFA8",
     "error_traceback": null,
-    "global_run_number": 224
+    "global_run_number": 224,
+    "youtube_stats": {
+      "views": 156,
+      "likes": 14,
+      "comments": 3
+    }
   },
   {
     "id": "run-29633745135",
@@ -10347,7 +10851,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 225
+    "global_run_number": 225,
+    "youtube_stats": null
   },
   {
     "id": "run-29639442921",
@@ -10393,7 +10898,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/e5a5SLW52gE",
     "error_traceback": null,
-    "global_run_number": 226
+    "global_run_number": 226,
+    "youtube_stats": {
+      "views": 145,
+      "likes": 14,
+      "comments": 4
+    }
   },
   {
     "id": "run-29639752638",
@@ -10439,7 +10949,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 227
+    "global_run_number": 227,
+    "youtube_stats": null
   },
   {
     "id": "run-29646031865",
@@ -10485,7 +10996,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/oqDWlA_9LZY",
     "error_traceback": null,
-    "global_run_number": 228
+    "global_run_number": 228,
+    "youtube_stats": {
+      "views": 160,
+      "likes": 14,
+      "comments": 2
+    }
   },
   {
     "id": "run-29646344399",
@@ -10531,7 +11047,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 229
+    "global_run_number": 229,
+    "youtube_stats": null
   },
   {
     "id": "run-29653094794",
@@ -10577,7 +11094,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/nDTBS73Mykg",
     "error_traceback": null,
-    "global_run_number": 230
+    "global_run_number": 230,
+    "youtube_stats": {
+      "views": 166,
+      "likes": 13,
+      "comments": 5
+    }
   },
   {
     "id": "run-29653392330",
@@ -10623,7 +11145,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 231
+    "global_run_number": 231,
+    "youtube_stats": null
   },
   {
     "id": "run-29660567755",
@@ -10669,7 +11192,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/ZnrfaZupsKA",
     "error_traceback": null,
-    "global_run_number": 232
+    "global_run_number": 232,
+    "youtube_stats": {
+      "views": 144,
+      "likes": 13,
+      "comments": 4
+    }
   },
   {
     "id": "run-29660893872",
@@ -10715,7 +11243,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 233
+    "global_run_number": 233,
+    "youtube_stats": null
   },
   {
     "id": "run-29671473419",
@@ -10761,7 +11290,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/NnxXv8hBDuI",
     "error_traceback": null,
-    "global_run_number": 234
+    "global_run_number": 234,
+    "youtube_stats": {
+      "views": 165,
+      "likes": 15,
+      "comments": 4
+    }
   },
   {
     "id": "run-29671622204",
@@ -10807,7 +11341,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 235
+    "global_run_number": 235,
+    "youtube_stats": null
   },
   {
     "id": "run-29671718505",
@@ -10853,7 +11388,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 236
+    "global_run_number": 236,
+    "youtube_stats": null
   },
   {
     "id": "run-29676611158",
@@ -10899,7 +11435,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/RNqN27TZ4II",
     "error_traceback": null,
-    "global_run_number": 237
+    "global_run_number": 237,
+    "youtube_stats": {
+      "views": 151,
+      "likes": 15,
+      "comments": 2
+    }
   },
   {
     "id": "run-29676876142",
@@ -10945,7 +11486,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 238
+    "global_run_number": 238,
+    "youtube_stats": null
   },
   {
     "id": "run-29682398999",
@@ -10991,7 +11533,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/1oWGQSZ-NBo",
     "error_traceback": null,
-    "global_run_number": 239
+    "global_run_number": 239,
+    "youtube_stats": {
+      "views": 147,
+      "likes": 14,
+      "comments": 2
+    }
   },
   {
     "id": "run-29682715735",
@@ -11037,7 +11584,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 240
+    "global_run_number": 240,
+    "youtube_stats": null
   },
   {
     "id": "run-29685383915",
@@ -11083,7 +11631,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/9mhdFN5pbvg",
     "error_traceback": null,
-    "global_run_number": 241
+    "global_run_number": 241,
+    "youtube_stats": {
+      "views": 151,
+      "likes": 13,
+      "comments": 2
+    }
   },
   {
     "id": "run-29685679825",
@@ -11129,7 +11682,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 242
+    "global_run_number": 242,
+    "youtube_stats": null
   },
   {
     "id": "run-29685801035",
@@ -11175,7 +11729,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/tLoeTeM252U",
     "error_traceback": null,
-    "global_run_number": 243
+    "global_run_number": 243,
+    "youtube_stats": {
+      "views": 155,
+      "likes": 15,
+      "comments": 4
+    }
   },
   {
     "id": "run-29688800460",
@@ -11221,7 +11780,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 244
+    "global_run_number": 244,
+    "youtube_stats": null
   },
   {
     "id": "run-29688825678",
@@ -11267,7 +11827,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/WmVy2XIvW74",
     "error_traceback": null,
-    "global_run_number": 245
+    "global_run_number": 245,
+    "youtube_stats": {
+      "views": 169,
+      "likes": 13,
+      "comments": 4
+    }
   },
   {
     "id": "run-29688898627",
@@ -11313,7 +11878,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 246
+    "global_run_number": 246,
+    "youtube_stats": null
   },
   {
     "id": "run-29695996307",
@@ -11359,7 +11925,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 247
+    "global_run_number": 247,
+    "youtube_stats": null
   },
   {
     "id": "run-29696022474",
@@ -11405,7 +11972,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/e0O9JpsiKZE",
     "error_traceback": null,
-    "global_run_number": 248
+    "global_run_number": 248,
+    "youtube_stats": {
+      "views": 146,
+      "likes": 13,
+      "comments": 2
+    }
   },
   {
     "id": "run-29696073082",
@@ -11451,7 +12023,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 249
+    "global_run_number": 249,
+    "youtube_stats": null
   },
   {
     "id": "run-29698239757",
@@ -11497,7 +12070,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
     "error_traceback": null,
-    "global_run_number": 250
+    "global_run_number": 250,
+    "youtube_stats": {
+      "views": 42,
+      "likes": 4,
+      "comments": 2
+    }
   },
   {
     "id": "run-29698574660",
@@ -11543,7 +12121,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 251
+    "global_run_number": 251,
+    "youtube_stats": null
   },
   {
     "id": "run-29703383137",
@@ -11589,7 +12168,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
     "error_traceback": null,
-    "global_run_number": 252
+    "global_run_number": 252,
+    "youtube_stats": {
+      "views": 55,
+      "likes": 5,
+      "comments": 0
+    }
   },
   {
     "id": "run-29703700886",
@@ -11635,7 +12219,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 253
+    "global_run_number": 253,
+    "youtube_stats": null
   },
   {
     "id": "run-29714767603",
@@ -11681,7 +12266,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 254
+    "global_run_number": 254,
+    "youtube_stats": null
   },
   {
     "id": "run-29715122041",
@@ -11727,7 +12313,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 255
+    "global_run_number": 255,
+    "youtube_stats": null
   },
   {
     "id": "run-29722802024",
@@ -11773,7 +12360,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 256
+    "global_run_number": 256,
+    "youtube_stats": null
   },
   {
     "id": "run-29723410507",
@@ -11819,7 +12407,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 257
+    "global_run_number": 257,
+    "youtube_stats": null
   },
   {
     "id": "run-29736734996",
@@ -11865,7 +12454,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 258
+    "global_run_number": 258,
+    "youtube_stats": null
   },
   {
     "id": "run-29737438890",
@@ -11911,7 +12501,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 259
+    "global_run_number": 259,
+    "youtube_stats": null
   },
   {
     "id": "run-29749641588",
@@ -11957,7 +12548,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 260
+    "global_run_number": 260,
+    "youtube_stats": null
   },
   {
     "id": "run-29750687163",
@@ -12003,7 +12595,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 261
+    "global_run_number": 261,
+    "youtube_stats": null
   },
   {
     "id": "run-29766388439",
@@ -12049,7 +12642,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 262
+    "global_run_number": 262,
+    "youtube_stats": null
   },
   {
     "id": "run-29767176303",
@@ -12095,7 +12689,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 263
+    "global_run_number": 263,
+    "youtube_stats": null
   },
   {
     "id": "run-29779390041",
@@ -12141,7 +12736,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 264
+    "global_run_number": 264,
+    "youtube_stats": null
   },
   {
     "id": "run-29780311916",
@@ -12187,7 +12783,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 265
+    "global_run_number": 265,
+    "youtube_stats": null
   },
   {
     "id": "run-29797129614",
@@ -12233,7 +12830,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 266
+    "global_run_number": 266,
+    "youtube_stats": null
   },
   {
     "id": "run-29797699734",
@@ -12279,7 +12877,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 267
+    "global_run_number": 267,
+    "youtube_stats": null
   },
   {
     "id": "run-29807291486",
@@ -12325,7 +12924,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 268
+    "global_run_number": 268,
+    "youtube_stats": null
   },
   {
     "id": "run-29807961026",
@@ -12371,7 +12971,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 269
+    "global_run_number": 269,
+    "youtube_stats": null
   },
   {
     "id": "run-29822293698",
@@ -12417,7 +13018,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 270
+    "global_run_number": 270,
+    "youtube_stats": null
   },
   {
     "id": "run-29823008336",
@@ -12463,7 +13065,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 271
+    "global_run_number": 271,
+    "youtube_stats": null
   },
   {
     "id": "run-29837019515",
@@ -12509,7 +13112,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 272
+    "global_run_number": 272,
+    "youtube_stats": null
   },
   {
     "id": "run-29837713758",
@@ -12555,7 +13159,8 @@
     },
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 273
+    "global_run_number": 273,
+    "youtube_stats": null
   },
   {
     "id": "run-29852804573",
@@ -12601,7 +13206,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 274
+    "global_run_number": 274,
+    "youtube_stats": null
   },
   {
     "id": "run-29853670288",
@@ -12647,7 +13253,8 @@
     },
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 275
+    "global_run_number": 275,
+    "youtube_stats": null
   },
   {
     "id": "run-29869098249",
@@ -12693,7 +13300,8 @@
     },
     "youtube_url": null,
     "error_traceback": null,
-    "global_run_number": 276
+    "global_run_number": 276,
+    "youtube_stats": null
   },
   {
     "id": "run-29870044517",
@@ -12739,7 +13347,8 @@
     },
     "youtube_url": null,
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 277
+    "global_run_number": 277,
+    "youtube_stats": null
   },
   {
     "id": "run-29887007587",
@@ -12785,7 +13394,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/a5eS-LSUfG8",
     "error_traceback": null,
-    "global_run_number": 278
+    "global_run_number": 278,
+    "youtube_stats": {
+      "views": 4,
+      "likes": 1,
+      "comments": 0
+    }
   },
   {
     "id": "run-29887673135",
@@ -12831,7 +13445,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/vJqARpaiNGU",
     "error_traceback": null,
-    "global_run_number": 279
+    "global_run_number": 279,
+    "youtube_stats": {
+      "views": 33,
+      "likes": 3,
+      "comments": 0
+    }
   },
   {
     "id": "run-29923173440",
@@ -12877,7 +13496,12 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
     "error_traceback": null,
-    "global_run_number": 280
+    "global_run_number": 280,
+    "youtube_stats": {
+      "views": 55,
+      "likes": 5,
+      "comments": 0
+    }
   },
   {
     "id": "run-29925022507",
@@ -12923,6 +13547,11 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
     "error_traceback": null,
-    "global_run_number": 281
+    "global_run_number": 281,
+    "youtube_stats": {
+      "views": 42,
+      "likes": 4,
+      "comments": 2
+    }
   }
 ]
