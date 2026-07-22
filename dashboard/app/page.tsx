@@ -211,15 +211,15 @@ export default function TelemetryDashboard() {
           {runs.map((r, idx) => (
             <div
               key={r.id}
-              onClick={() => setSelectedRunId(r.id)}
+              onClick={() => setSelectedDate(r.timestamp.split("T")[0])}
               className={`h-10 rounded-lg border flex items-center justify-center cursor-pointer transition-all hover:scale-105 ${
-                selectedRunId === r.id ? "ring-2 ring-white" : ""
+                selectedDate === r.timestamp.split("T")[0] ? "ring-2 ring-white" : ""
               } ${
                 r.status === "SUCCESS"
                   ? "bg-[#00FF66]/20 border-[#00FF66]/50 text-[#00FF66]"
                   : "bg-red-500/20 border-red-500/50 text-red-400"
               }`}
-              title={`Run ${idx + 1} (${r.category}) - ${r.status}`}
+              title={`Date: ${r.timestamp.split("T")[0]} (${r.category}) - ${r.status}`}
             >
               <span className="text-xs font-mono font-bold">{idx + 1}</span>
             </div>
