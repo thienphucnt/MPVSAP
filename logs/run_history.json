@@ -42,7 +42,8 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 1
   },
   {
     "id": "run-28788227409",
@@ -87,7 +88,8 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/U7elSwSB20o",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 2
   },
   {
     "id": "run-28788939616",
@@ -132,11 +134,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/AgDc10roFfc",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 3
   },
   {
     "id": "run-28790020315",
-    "github_run_number": 1,
+    "github_run_number": 4,
     "github_run_id": 28790020315,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28790020315",
     "timestamp": "2026-07-06T12:01:55Z",
@@ -177,11 +180,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 4
   },
   {
     "id": "run-28790344946",
-    "github_run_number": 4,
+    "github_run_number": 5,
     "github_run_id": 28790344946,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28790344946",
     "timestamp": "2026-07-06T12:07:43Z",
@@ -222,11 +226,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/RRYzWcknXCs",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 5
   },
   {
     "id": "run-28790396608",
-    "github_run_number": 2,
+    "github_run_number": 6,
     "github_run_id": 28790396608,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28790396608",
     "timestamp": "2026-07-06T12:08:37Z",
@@ -267,11 +272,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 6
   },
   {
     "id": "run-28790555079",
-    "github_run_number": 5,
+    "github_run_number": 7,
     "github_run_id": 28790555079,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28790555079",
     "timestamp": "2026-07-06T12:11:24Z",
@@ -312,11 +318,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/Me5z7Am5p0U",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 7
   },
   {
     "id": "run-28793625075",
-    "github_run_number": 3,
+    "github_run_number": 8,
     "github_run_id": 28793625075,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28793625075",
     "timestamp": "2026-07-06T13:04:43Z",
@@ -357,11 +364,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/Qo2v4wUnl4Q",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 8
   },
   {
     "id": "run-28793775926",
-    "github_run_number": 6,
+    "github_run_number": 9,
     "github_run_id": 28793775926,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28793775926",
     "timestamp": "2026-07-06T13:07:17Z",
@@ -402,11 +410,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 9
   },
   {
     "id": "run-28794523611",
-    "github_run_number": 4,
+    "github_run_number": 10,
     "github_run_id": 28794523611,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28794523611",
     "timestamp": "2026-07-06T13:19:05Z",
@@ -447,11 +456,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/DJOo2XgL0g8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 10
   },
   {
     "id": "run-28794765406",
-    "github_run_number": 7,
+    "github_run_number": 11,
     "github_run_id": 28794765406,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28794765406",
     "timestamp": "2026-07-06T13:22:44Z",
@@ -492,11 +502,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 11
   },
   {
     "id": "run-28794796944",
-    "github_run_number": 8,
+    "github_run_number": 12,
     "github_run_id": 28794796944,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28794796944",
     "timestamp": "2026-07-06T13:23:14Z",
@@ -537,11 +548,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/qrueRUHyKnw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 12
   },
   {
     "id": "run-28795367678",
-    "github_run_number": 9,
+    "github_run_number": 13,
     "github_run_id": 28795367678,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28795367678",
     "timestamp": "2026-07-06T13:32:10Z",
@@ -582,11 +594,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 13
   },
   {
     "id": "run-28795585260",
-    "github_run_number": 5,
+    "github_run_number": 14,
     "github_run_id": 28795585260,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28795585260",
     "timestamp": "2026-07-06T13:35:27Z",
@@ -627,11 +640,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/oVBPCav-EmM",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 14
   },
   {
     "id": "run-28795833382",
-    "github_run_number": 10,
+    "github_run_number": 15,
     "github_run_id": 28795833382,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28795833382",
     "timestamp": "2026-07-06T13:39:25Z",
@@ -672,11 +686,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/DNJuWyMlhEs",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 15
   },
   {
     "id": "run-28796317023",
-    "github_run_number": 11,
+    "github_run_number": 16,
     "github_run_id": 28796317023,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28796317023",
     "timestamp": "2026-07-06T13:46:54Z",
@@ -717,11 +732,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/py82lilS4Vs",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 16
   },
   {
     "id": "run-28796539674",
-    "github_run_number": 12,
+    "github_run_number": 17,
     "github_run_id": 28796539674,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28796539674",
     "timestamp": "2026-07-06T13:50:25Z",
@@ -762,11 +778,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/eF4RfJBCBuo",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 17
   },
   {
     "id": "run-28796674978",
-    "github_run_number": 6,
+    "github_run_number": 18,
     "github_run_id": 28796674978,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28796674978",
     "timestamp": "2026-07-06T13:52:30Z",
@@ -807,11 +824,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/glra_MwveMo",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 18
   },
   {
     "id": "run-28796884246",
-    "github_run_number": 13,
+    "github_run_number": 19,
     "github_run_id": 28796884246,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28796884246",
     "timestamp": "2026-07-06T13:55:38Z",
@@ -852,11 +870,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/6YmqxLwwFA8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 19
   },
   {
     "id": "run-28797090533",
-    "github_run_number": 14,
+    "github_run_number": 20,
     "github_run_id": 28797090533,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28797090533",
     "timestamp": "2026-07-06T13:58:50Z",
@@ -897,11 +916,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/85HxhsbeA_4",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 20
   },
   {
     "id": "run-28797172093",
-    "github_run_number": 7,
+    "github_run_number": 21,
     "github_run_id": 28797172093,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28797172093",
     "timestamp": "2026-07-06T14:00:08Z",
@@ -942,11 +962,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/e5a5SLW52gE",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 21
   },
   {
     "id": "run-28797510926",
-    "github_run_number": 15,
+    "github_run_number": 22,
     "github_run_id": 28797510926,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28797510926",
     "timestamp": "2026-07-06T14:05:13Z",
@@ -987,11 +1008,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/39SLdlkDER8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 22
   },
   {
     "id": "run-28797728461",
-    "github_run_number": 16,
+    "github_run_number": 23,
     "github_run_id": 28797728461,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28797728461",
     "timestamp": "2026-07-06T14:08:35Z",
@@ -1032,11 +1054,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 23
   },
   {
     "id": "run-28798065283",
-    "github_run_number": 17,
+    "github_run_number": 24,
     "github_run_id": 28798065283,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28798065283",
     "timestamp": "2026-07-06T14:13:30Z",
@@ -1077,11 +1100,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/oqDWlA_9LZY",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 24
   },
   {
     "id": "run-28798205989",
-    "github_run_number": 8,
+    "github_run_number": 25,
     "github_run_id": 28798205989,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28798205989",
     "timestamp": "2026-07-06T14:15:33Z",
@@ -1122,11 +1146,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/cgR1UbwW8MQ",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 25
   },
   {
     "id": "run-28798509799",
-    "github_run_number": 18,
+    "github_run_number": 26,
     "github_run_id": 28798509799,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28798509799",
     "timestamp": "2026-07-06T14:20:20Z",
@@ -1167,11 +1192,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/nDTBS73Mykg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 26
   },
   {
     "id": "run-28799257527",
-    "github_run_number": 19,
+    "github_run_number": 27,
     "github_run_id": 28799257527,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28799257527",
     "timestamp": "2026-07-06T14:31:15Z",
@@ -1212,11 +1238,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/dhIEufZGZP8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 27
   },
   {
     "id": "run-28799533996",
-    "github_run_number": 20,
+    "github_run_number": 28,
     "github_run_id": 28799533996,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28799533996",
     "timestamp": "2026-07-06T14:35:19Z",
@@ -1257,11 +1284,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 28
   },
   {
     "id": "run-28799701606",
-    "github_run_number": 21,
+    "github_run_number": 29,
     "github_run_id": 28799701606,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28799701606",
     "timestamp": "2026-07-06T14:37:59Z",
@@ -1302,11 +1330,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/ZnrfaZupsKA",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 29
   },
   {
     "id": "run-28799787228",
-    "github_run_number": 22,
+    "github_run_number": 30,
     "github_run_id": 28799787228,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28799787228",
     "timestamp": "2026-07-06T14:39:19Z",
@@ -1347,11 +1376,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 30
   },
   {
     "id": "run-28800227660",
-    "github_run_number": 9,
+    "github_run_number": 31,
     "github_run_id": 28800227660,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28800227660",
     "timestamp": "2026-07-06T14:45:53Z",
@@ -1392,11 +1422,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/-9nmugvHN4g",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 31
   },
   {
     "id": "run-28812529006",
-    "github_run_number": 10,
+    "github_run_number": 32,
     "github_run_id": 28812529006,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28812529006",
     "timestamp": "2026-07-06T18:02:34Z",
@@ -1437,11 +1468,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 32
   },
   {
     "id": "run-28823938461",
-    "github_run_number": 11,
+    "github_run_number": 33,
     "github_run_id": 28823938461,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28823938461",
     "timestamp": "2026-07-06T21:18:09Z",
@@ -1482,11 +1514,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 33
   },
   {
     "id": "run-28835864333",
-    "github_run_number": 12,
+    "github_run_number": 34,
     "github_run_id": 28835864333,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28835864333",
     "timestamp": "2026-07-07T01:51:38Z",
@@ -1527,11 +1560,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 34
   },
   {
     "id": "run-28849153840",
-    "github_run_number": 13,
+    "github_run_number": 35,
     "github_run_id": 28849153840,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28849153840",
     "timestamp": "2026-07-07T07:26:19Z",
@@ -1572,11 +1606,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 35
   },
   {
     "id": "run-28860206757",
-    "github_run_number": 14,
+    "github_run_number": 36,
     "github_run_id": 28860206757,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28860206757",
     "timestamp": "2026-07-07T10:42:58Z",
@@ -1617,11 +1652,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 36
   },
   {
     "id": "run-28872186978",
-    "github_run_number": 15,
+    "github_run_number": 37,
     "github_run_id": 28872186978,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28872186978",
     "timestamp": "2026-07-07T14:01:58Z",
@@ -1662,11 +1698,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 37
   },
   {
     "id": "run-28876969470",
-    "github_run_number": 16,
+    "github_run_number": 38,
     "github_run_id": 28876969470,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28876969470",
     "timestamp": "2026-07-07T15:10:43Z",
@@ -1707,11 +1744,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 38
   },
   {
     "id": "run-28877210996",
-    "github_run_number": 17,
+    "github_run_number": 39,
     "github_run_id": 28877210996,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28877210996",
     "timestamp": "2026-07-07T15:14:13Z",
@@ -1752,11 +1790,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/NnxXv8hBDuI",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 39
   },
   {
     "id": "run-28887001519",
-    "github_run_number": 18,
+    "github_run_number": 40,
     "github_run_id": 28887001519,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28887001519",
     "timestamp": "2026-07-07T17:49:21Z",
@@ -1797,11 +1836,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/j13UUdU3Sjw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 40
   },
   {
     "id": "run-28899100595",
-    "github_run_number": 19,
+    "github_run_number": 41,
     "github_run_id": 28899100595,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28899100595",
     "timestamp": "2026-07-07T21:13:00Z",
@@ -1842,11 +1882,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 41
   },
   {
     "id": "run-28909332492",
-    "github_run_number": 20,
+    "github_run_number": 42,
     "github_run_id": 28909332492,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28909332492",
     "timestamp": "2026-07-08T00:51:22Z",
@@ -1887,11 +1928,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/RNqN27TZ4II",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 42
   },
   {
     "id": "run-28909967264",
-    "github_run_number": 21,
+    "github_run_number": 43,
     "github_run_id": 28909967264,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28909967264",
     "timestamp": "2026-07-08T01:06:55Z",
@@ -1932,11 +1974,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/LFqsx85NxCk",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 43
   },
   {
     "id": "run-28910580345",
-    "github_run_number": 22,
+    "github_run_number": 44,
     "github_run_id": 28910580345,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28910580345",
     "timestamp": "2026-07-08T01:22:50Z",
@@ -1977,11 +2020,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/1oWGQSZ-NBo",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 44
   },
   {
     "id": "run-28910743367",
-    "github_run_number": 23,
+    "github_run_number": 45,
     "github_run_id": 28910743367,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28910743367",
     "timestamp": "2026-07-08T01:27:08Z",
@@ -2022,11 +2066,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/DfPUh6fB7ro",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 45
   },
   {
     "id": "run-28922043393",
-    "github_run_number": 24,
+    "github_run_number": 46,
     "github_run_id": 28922043393,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28922043393",
     "timestamp": "2026-07-08T06:20:14Z",
@@ -2067,11 +2112,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/9mhdFN5pbvg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 46
   },
   {
     "id": "run-28934404400",
-    "github_run_number": 25,
+    "github_run_number": 47,
     "github_run_id": 28934404400,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28934404400",
     "timestamp": "2026-07-08T10:04:08Z",
@@ -2112,11 +2158,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 47
   },
   {
     "id": "run-28937763245",
-    "github_run_number": 26,
+    "github_run_number": 48,
     "github_run_id": 28937763245,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937763245",
     "timestamp": "2026-07-08T11:04:11Z",
@@ -2157,11 +2204,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 48
   },
   {
     "id": "run-28937819050",
-    "github_run_number": 1,
+    "github_run_number": 49,
     "github_run_id": 28937819050,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937819050",
     "timestamp": "2026-07-08T11:05:09Z",
@@ -2202,11 +2250,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 49
   },
   {
     "id": "run-28937945030",
-    "github_run_number": 27,
+    "github_run_number": 50,
     "github_run_id": 28937945030,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937945030",
     "timestamp": "2026-07-08T11:07:25Z",
@@ -2247,11 +2296,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 50
   },
   {
     "id": "run-28937999192",
-    "github_run_number": 2,
+    "github_run_number": 51,
     "github_run_id": 28937999192,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937999192",
     "timestamp": "2026-07-08T11:08:24Z",
@@ -2292,11 +2342,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/A6N27pPS8q4",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 51
   },
   {
     "id": "run-28938061838",
-    "github_run_number": 28,
+    "github_run_number": 52,
     "github_run_id": 28938061838,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28938061838",
     "timestamp": "2026-07-08T11:09:33Z",
@@ -2337,11 +2388,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 52
   },
   {
     "id": "run-28938137032",
-    "github_run_number": 29,
+    "github_run_number": 53,
     "github_run_id": 28938137032,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28938137032",
     "timestamp": "2026-07-08T11:10:54Z",
@@ -2382,11 +2434,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/tLoeTeM252U",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 53
   },
   {
     "id": "run-28938368259",
-    "github_run_number": 3,
+    "github_run_number": 54,
     "github_run_id": 28938368259,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28938368259",
     "timestamp": "2026-07-08T11:15:02Z",
@@ -2427,11 +2480,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 54
   },
   {
     "id": "run-28946118916",
-    "github_run_number": 30,
+    "github_run_number": 55,
     "github_run_id": 28946118916,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28946118916",
     "timestamp": "2026-07-08T13:24:50Z",
@@ -2472,11 +2526,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/26KNHFgx7Gk",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 55
   },
   {
     "id": "run-28946377348",
-    "github_run_number": 4,
+    "github_run_number": 56,
     "github_run_id": 28946377348,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28946377348",
     "timestamp": "2026-07-08T13:28:50Z",
@@ -2517,11 +2572,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 56
   },
   {
     "id": "run-28954209954",
-    "github_run_number": 31,
+    "github_run_number": 57,
     "github_run_id": 28954209954,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28954209954",
     "timestamp": "2026-07-08T15:21:38Z",
@@ -2562,11 +2618,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 57
   },
   {
     "id": "run-28955111278",
-    "github_run_number": 5,
+    "github_run_number": 58,
     "github_run_id": 28955111278,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28955111278",
     "timestamp": "2026-07-08T15:34:34Z",
@@ -2607,11 +2664,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 58
   },
   {
     "id": "run-28955116227",
-    "github_run_number": 32,
+    "github_run_number": 59,
     "github_run_id": 28955116227,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28955116227",
     "timestamp": "2026-07-08T15:34:39Z",
@@ -2652,11 +2710,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/WmVy2XIvW74",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 59
   },
   {
     "id": "run-28955441169",
-    "github_run_number": 6,
+    "github_run_number": 60,
     "github_run_id": 28955441169,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28955441169",
     "timestamp": "2026-07-08T15:39:23Z",
@@ -2697,11 +2756,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 60
   },
   {
     "id": "run-28961758856",
-    "github_run_number": 33,
+    "github_run_number": 61,
     "github_run_id": 28961758856,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28961758856",
     "timestamp": "2026-07-08T17:16:10Z",
@@ -2742,11 +2802,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/FS-JA4pMmeI",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 61
   },
   {
     "id": "run-28962111108",
-    "github_run_number": 7,
+    "github_run_number": 62,
     "github_run_id": 28962111108,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28962111108",
     "timestamp": "2026-07-08T17:21:50Z",
@@ -2787,11 +2848,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 62
   },
   {
     "id": "run-28974951045",
-    "github_run_number": 34,
+    "github_run_number": 63,
     "github_run_id": 28974951045,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28974951045",
     "timestamp": "2026-07-08T20:53:18Z",
@@ -2832,11 +2894,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/8lMFj5Sc-9M",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 63
   },
   {
     "id": "run-28975209636",
-    "github_run_number": 8,
+    "github_run_number": 64,
     "github_run_id": 28975209636,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28975209636",
     "timestamp": "2026-07-08T20:57:38Z",
@@ -2877,11 +2940,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 64
   },
   {
     "id": "run-28988183280",
-    "github_run_number": 35,
+    "github_run_number": 65,
     "github_run_id": 28988183280,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28988183280",
     "timestamp": "2026-07-09T01:44:13Z",
@@ -2922,11 +2986,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/e0O9JpsiKZE",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 65
   },
   {
     "id": "run-28988328496",
-    "github_run_number": 9,
+    "github_run_number": 66,
     "github_run_id": 28988328496,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28988328496",
     "timestamp": "2026-07-09T01:48:14Z",
@@ -2967,11 +3032,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 66
   },
   {
     "id": "run-29001554103",
-    "github_run_number": 36,
+    "github_run_number": 67,
     "github_run_id": 29001554103,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29001554103",
     "timestamp": "2026-07-09T07:26:45Z",
@@ -3012,11 +3078,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/LgC4t8Uraac",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 67
   },
   {
     "id": "run-29001848860",
-    "github_run_number": 10,
+    "github_run_number": 68,
     "github_run_id": 29001848860,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29001848860",
     "timestamp": "2026-07-09T07:32:25Z",
@@ -3057,11 +3124,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 68
   },
   {
     "id": "run-29012529962",
-    "github_run_number": 37,
+    "github_run_number": 69,
     "github_run_id": 29012529962,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29012529962",
     "timestamp": "2026-07-09T10:43:25Z",
@@ -3102,11 +3170,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 69
   },
   {
     "id": "run-29012784581",
-    "github_run_number": 11,
+    "github_run_number": 70,
     "github_run_id": 29012784581,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29012784581",
     "timestamp": "2026-07-09T10:48:13Z",
@@ -3147,11 +3216,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 70
   },
   {
     "id": "run-29025270755",
-    "github_run_number": 38,
+    "github_run_number": 71,
     "github_run_id": 29025270755,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29025270755",
     "timestamp": "2026-07-09T14:24:56Z",
@@ -3192,11 +3262,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 71
   },
   {
     "id": "run-29025559257",
-    "github_run_number": 12,
+    "github_run_number": 72,
     "github_run_id": 29025559257,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29025559257",
     "timestamp": "2026-07-09T14:29:09Z",
@@ -3237,11 +3308,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 72
   },
   {
     "id": "run-29038134368",
-    "github_run_number": 39,
+    "github_run_number": 73,
     "github_run_id": 29038134368,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29038134368",
     "timestamp": "2026-07-09T17:44:47Z",
@@ -3282,11 +3354,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/vJqARpaiNGU",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 73
   },
   {
     "id": "run-29038377969",
-    "github_run_number": 13,
+    "github_run_number": 74,
     "github_run_id": 29038377969,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29038377969",
     "timestamp": "2026-07-09T17:48:52Z",
@@ -3327,11 +3400,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 74
   },
   {
     "id": "run-29050408074",
-    "github_run_number": 40,
+    "github_run_number": 75,
     "github_run_id": 29050408074,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29050408074",
     "timestamp": "2026-07-09T21:09:14Z",
@@ -3372,11 +3446,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/a5eS-LSUfG8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 75
   },
   {
     "id": "run-29050650330",
-    "github_run_number": 14,
+    "github_run_number": 76,
     "github_run_id": 29050650330,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29050650330",
     "timestamp": "2026-07-09T21:13:27Z",
@@ -3417,11 +3492,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 76
   },
   {
     "id": "run-29062451691",
-    "github_run_number": 41,
+    "github_run_number": 77,
     "github_run_id": 29062451691,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29062451691",
     "timestamp": "2026-07-10T01:28:37Z",
@@ -3462,11 +3538,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 77
   },
   {
     "id": "run-29062646011",
-    "github_run_number": 15,
+    "github_run_number": 78,
     "github_run_id": 29062646011,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29062646011",
     "timestamp": "2026-07-10T01:33:34Z",
@@ -3507,11 +3584,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 78
   },
   {
     "id": "run-29076593090",
-    "github_run_number": 42,
+    "github_run_number": 79,
     "github_run_id": 29076593090,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29076593090",
     "timestamp": "2026-07-10T07:24:41Z",
@@ -3552,11 +3630,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 79
   },
   {
     "id": "run-29076801655",
-    "github_run_number": 16,
+    "github_run_number": 80,
     "github_run_id": 29076801655,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29076801655",
     "timestamp": "2026-07-10T07:28:49Z",
@@ -3597,11 +3676,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 80
   },
   {
     "id": "run-29087157396",
-    "github_run_number": 43,
+    "github_run_number": 81,
     "github_run_id": 29087157396,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29087157396",
     "timestamp": "2026-07-10T10:42:14Z",
@@ -3642,11 +3722,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 81
   },
   {
     "id": "run-29087360271",
-    "github_run_number": 17,
+    "github_run_number": 82,
     "github_run_id": 29087360271,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29087360271",
     "timestamp": "2026-07-10T10:46:13Z",
@@ -3687,11 +3768,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 82
   },
   {
     "id": "run-29097626082",
-    "github_run_number": 44,
+    "github_run_number": 83,
     "github_run_id": 29097626082,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29097626082",
     "timestamp": "2026-07-10T13:51:40Z",
@@ -3732,11 +3814,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 83
   },
   {
     "id": "run-29097902883",
-    "github_run_number": 18,
+    "github_run_number": 84,
     "github_run_id": 29097902883,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29097902883",
     "timestamp": "2026-07-10T13:56:08Z",
@@ -3777,11 +3860,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 84
   },
   {
     "id": "run-29111731351",
-    "github_run_number": 45,
+    "github_run_number": 85,
     "github_run_id": 29111731351,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29111731351",
     "timestamp": "2026-07-10T17:39:06Z",
@@ -3822,11 +3906,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/AgDc10roFfc",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 85
   },
   {
     "id": "run-29111972363",
-    "github_run_number": 19,
+    "github_run_number": 86,
     "github_run_id": 29111972363,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29111972363",
     "timestamp": "2026-07-10T17:43:11Z",
@@ -3867,11 +3952,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 86
   },
   {
     "id": "run-29123176553",
-    "github_run_number": 46,
+    "github_run_number": 87,
     "github_run_id": 29123176553,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29123176553",
     "timestamp": "2026-07-10T20:57:39Z",
@@ -3912,11 +3998,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 87
   },
   {
     "id": "run-29123390500",
-    "github_run_number": 20,
+    "github_run_number": 88,
     "github_run_id": 29123390500,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29123390500",
     "timestamp": "2026-07-10T21:01:34Z",
@@ -3957,11 +4044,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 88
   },
   {
     "id": "run-29134492385",
-    "github_run_number": 47,
+    "github_run_number": 89,
     "github_run_id": 29134492385,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29134492385",
     "timestamp": "2026-07-11T01:21:56Z",
@@ -4002,11 +4090,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/Qo2v4wUnl4Q",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 89
   },
   {
     "id": "run-29134611879",
-    "github_run_number": 21,
+    "github_run_number": 90,
     "github_run_id": 29134611879,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29134611879",
     "timestamp": "2026-07-11T01:26:03Z",
@@ -4047,11 +4136,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 90
   },
   {
     "id": "run-29142258014",
-    "github_run_number": 48,
+    "github_run_number": 91,
     "github_run_id": 29142258014,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29142258014",
     "timestamp": "2026-07-11T06:05:21Z",
@@ -4092,11 +4182,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/qrueRUHyKnw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 91
   },
   {
     "id": "run-29142352040",
-    "github_run_number": 22,
+    "github_run_number": 92,
     "github_run_id": 29142352040,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29142352040",
     "timestamp": "2026-07-11T06:09:04Z",
@@ -4137,11 +4228,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 92
   },
   {
     "id": "run-29147391497",
-    "github_run_number": 49,
+    "github_run_number": 93,
     "github_run_id": 29147391497,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29147391497",
     "timestamp": "2026-07-11T09:13:53Z",
@@ -4182,11 +4274,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/DNJuWyMlhEs",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 93
   },
   {
     "id": "run-29147497785",
-    "github_run_number": 23,
+    "github_run_number": 94,
     "github_run_id": 29147497785,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29147497785",
     "timestamp": "2026-07-11T09:17:56Z",
@@ -4227,11 +4320,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 94
   },
   {
     "id": "run-29153221487",
-    "github_run_number": 50,
+    "github_run_number": 95,
     "github_run_id": 29153221487,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29153221487",
     "timestamp": "2026-07-11T12:47:21Z",
@@ -4272,11 +4366,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/eF4RfJBCBuo",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 95
   },
   {
     "id": "run-29153356759",
-    "github_run_number": 24,
+    "github_run_number": 96,
     "github_run_id": 29153356759,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29153356759",
     "timestamp": "2026-07-11T12:52:09Z",
@@ -4317,11 +4412,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 96
   },
   {
     "id": "run-29160205834",
-    "github_run_number": 51,
+    "github_run_number": 97,
     "github_run_id": 29160205834,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29160205834",
     "timestamp": "2026-07-11T16:40:03Z",
@@ -4362,11 +4458,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/6YmqxLwwFA8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 97
   },
   {
     "id": "run-29160312788",
-    "github_run_number": 25,
+    "github_run_number": 98,
     "github_run_id": 29160312788,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29160312788",
     "timestamp": "2026-07-11T16:43:39Z",
@@ -4407,11 +4504,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 98
   },
   {
     "id": "run-29167332698",
-    "github_run_number": 52,
+    "github_run_number": 99,
     "github_run_id": 29167332698,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29167332698",
     "timestamp": "2026-07-11T20:36:17Z",
@@ -4452,11 +4550,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/e5a5SLW52gE",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 99
   },
   {
     "id": "run-29167466884",
-    "github_run_number": 26,
+    "github_run_number": 100,
     "github_run_id": 29167466884,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29167466884",
     "timestamp": "2026-07-11T20:40:59Z",
@@ -4497,11 +4596,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 100
   },
   {
     "id": "run-29175188148",
-    "github_run_number": 53,
+    "github_run_number": 101,
     "github_run_id": 29175188148,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29175188148",
     "timestamp": "2026-07-12T01:23:37Z",
@@ -4542,11 +4642,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/oqDWlA_9LZY",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 101
   },
   {
     "id": "run-29175303593",
-    "github_run_number": 27,
+    "github_run_number": 102,
     "github_run_id": 29175303593,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29175303593",
     "timestamp": "2026-07-12T01:28:30Z",
@@ -4587,11 +4688,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 102
   },
   {
     "id": "run-29182600193",
-    "github_run_number": 54,
+    "github_run_number": 103,
     "github_run_id": 29182600193,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29182600193",
     "timestamp": "2026-07-12T06:24:07Z",
@@ -4632,11 +4734,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/nDTBS73Mykg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 103
   },
   {
     "id": "run-29182705587",
-    "github_run_number": 28,
+    "github_run_number": 104,
     "github_run_id": 29182705587,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29182705587",
     "timestamp": "2026-07-12T06:28:29Z",
@@ -4677,11 +4780,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 104
   },
   {
     "id": "run-29187875341",
-    "github_run_number": 55,
+    "github_run_number": 105,
     "github_run_id": 29187875341,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29187875341",
     "timestamp": "2026-07-12T09:40:44Z",
@@ -4722,11 +4826,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/ZnrfaZupsKA",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 105
   },
   {
     "id": "run-29188010671",
-    "github_run_number": 29,
+    "github_run_number": 106,
     "github_run_id": 29188010671,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29188010671",
     "timestamp": "2026-07-12T09:45:33Z",
@@ -4767,11 +4872,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 106
   },
   {
     "id": "run-29193301762",
-    "github_run_number": 56,
+    "github_run_number": 107,
     "github_run_id": 29193301762,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29193301762",
     "timestamp": "2026-07-12T12:49:19Z",
@@ -4812,11 +4918,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/NnxXv8hBDuI",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 107
   },
   {
     "id": "run-29193444905",
-    "github_run_number": 30,
+    "github_run_number": 108,
     "github_run_id": 29193444905,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29193444905",
     "timestamp": "2026-07-12T12:54:14Z",
@@ -4857,11 +4964,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 108
   },
   {
     "id": "run-29200616482",
-    "github_run_number": 57,
+    "github_run_number": 109,
     "github_run_id": 29200616482,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29200616482",
     "timestamp": "2026-07-12T16:42:12Z",
@@ -4902,11 +5010,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/j13UUdU3Sjw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 109
   },
   {
     "id": "run-29200741739",
-    "github_run_number": 31,
+    "github_run_number": 110,
     "github_run_id": 29200741739,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29200741739",
     "timestamp": "2026-07-12T16:46:16Z",
@@ -4947,11 +5056,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 110
   },
   {
     "id": "run-29207955729",
-    "github_run_number": 58,
+    "github_run_number": 111,
     "github_run_id": 29207955729,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29207955729",
     "timestamp": "2026-07-12T20:33:27Z",
@@ -4992,11 +5102,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/LFqsx85NxCk",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 111
   },
   {
     "id": "run-29208092135",
-    "github_run_number": 32,
+    "github_run_number": 112,
     "github_run_id": 29208092135,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29208092135",
     "timestamp": "2026-07-12T20:37:46Z",
@@ -5037,11 +5148,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 112
   },
   {
     "id": "run-29217364043",
-    "github_run_number": 59,
+    "github_run_number": 113,
     "github_run_id": 29217364043,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29217364043",
     "timestamp": "2026-07-13T01:24:58Z",
@@ -5082,11 +5194,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/DfPUh6fB7ro",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 113
   },
   {
     "id": "run-29217498753",
-    "github_run_number": 33,
+    "github_run_number": 114,
     "github_run_id": 29217498753,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29217498753",
     "timestamp": "2026-07-13T01:29:09Z",
@@ -5127,11 +5240,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 114
   },
   {
     "id": "run-29218372744",
-    "github_run_number": 60,
+    "github_run_number": 115,
     "github_run_id": 29218372744,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218372744",
     "timestamp": "2026-07-13T01:54:24Z",
@@ -5172,11 +5286,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/A6N27pPS8q4",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 115
   },
   {
     "id": "run-29218519693",
-    "github_run_number": 34,
+    "github_run_number": 116,
     "github_run_id": 29218519693,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218519693",
     "timestamp": "2026-07-13T01:58:40Z",
@@ -5217,11 +5332,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 116
   },
   {
     "id": "run-29218807056",
-    "github_run_number": 61,
+    "github_run_number": 117,
     "github_run_id": 29218807056,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218807056",
     "timestamp": "2026-07-13T02:06:32Z",
@@ -5262,11 +5378,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/26KNHFgx7Gk",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 117
   },
   {
     "id": "run-29218948730",
-    "github_run_number": 35,
+    "github_run_number": 118,
     "github_run_id": 29218948730,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218948730",
     "timestamp": "2026-07-13T02:10:17Z",
@@ -5307,11 +5424,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 118
   },
   {
     "id": "run-29219369649",
-    "github_run_number": 62,
+    "github_run_number": 119,
     "github_run_id": 29219369649,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29219369649",
     "timestamp": "2026-07-13T02:22:14Z",
@@ -5352,11 +5470,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/FS-JA4pMmeI",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 119
   },
   {
     "id": "run-29219523778",
-    "github_run_number": 36,
+    "github_run_number": 120,
     "github_run_id": 29219523778,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29219523778",
     "timestamp": "2026-07-13T02:26:32Z",
@@ -5397,11 +5516,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 120
   },
   {
     "id": "run-29223711449",
-    "github_run_number": 63,
+    "github_run_number": 121,
     "github_run_id": 29223711449,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29223711449",
     "timestamp": "2026-07-13T04:20:44Z",
@@ -5442,11 +5562,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/e0O9JpsiKZE",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 121
   },
   {
     "id": "run-29223899324",
-    "github_run_number": 37,
+    "github_run_number": 122,
     "github_run_id": 29223899324,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29223899324",
     "timestamp": "2026-07-13T04:25:06Z",
@@ -5487,11 +5608,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 122
   },
   {
     "id": "run-29226565949",
-    "github_run_number": 64,
+    "github_run_number": 123,
     "github_run_id": 29226565949,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29226565949",
     "timestamp": "2026-07-13T05:32:39Z",
@@ -5532,11 +5654,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 123
   },
   {
     "id": "run-29226732804",
-    "github_run_number": 38,
+    "github_run_number": 124,
     "github_run_id": 29226732804,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29226732804",
     "timestamp": "2026-07-13T05:36:38Z",
@@ -5577,11 +5700,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 124
   },
   {
     "id": "run-29227019684",
-    "github_run_number": 65,
+    "github_run_number": 125,
     "github_run_id": 29227019684,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227019684",
     "timestamp": "2026-07-13T05:43:35Z",
@@ -5622,11 +5746,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 125
   },
   {
     "id": "run-29227188104",
-    "github_run_number": 39,
+    "github_run_number": 126,
     "github_run_id": 29227188104,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227188104",
     "timestamp": "2026-07-13T05:47:38Z",
@@ -5667,11 +5792,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 126
   },
   {
     "id": "run-29227273243",
-    "github_run_number": 66,
+    "github_run_number": 127,
     "github_run_id": 29227273243,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227273243",
     "timestamp": "2026-07-13T05:49:47Z",
@@ -5712,11 +5838,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 127
   },
   {
     "id": "run-29227458732",
-    "github_run_number": 40,
+    "github_run_number": 128,
     "github_run_id": 29227458732,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227458732",
     "timestamp": "2026-07-13T05:54:07Z",
@@ -5757,11 +5884,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 128
   },
   {
     "id": "run-29227553815",
-    "github_run_number": 67,
+    "github_run_number": 129,
     "github_run_id": 29227553815,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227553815",
     "timestamp": "2026-07-13T05:56:18Z",
@@ -5802,11 +5930,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 129
   },
   {
     "id": "run-29227772534",
-    "github_run_number": 41,
+    "github_run_number": 130,
     "github_run_id": 29227772534,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227772534",
     "timestamp": "2026-07-13T06:01:25Z",
@@ -5847,11 +5976,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 130
   },
   {
     "id": "run-29227990488",
-    "github_run_number": 68,
+    "github_run_number": 131,
     "github_run_id": 29227990488,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227990488",
     "timestamp": "2026-07-13T06:06:05Z",
@@ -5892,11 +6022,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 131
   },
   {
     "id": "run-29228051762",
-    "github_run_number": 42,
+    "github_run_number": 132,
     "github_run_id": 29228051762,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228051762",
     "timestamp": "2026-07-13T06:07:24Z",
@@ -5937,11 +6068,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 132
   },
   {
     "id": "run-29228671074",
-    "github_run_number": 69,
+    "github_run_number": 133,
     "github_run_id": 29228671074,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228671074",
     "timestamp": "2026-07-13T06:19:51Z",
@@ -5982,11 +6114,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 133
   },
   {
     "id": "run-29228722408",
-    "github_run_number": 43,
+    "github_run_number": 134,
     "github_run_id": 29228722408,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228722408",
     "timestamp": "2026-07-13T06:20:48Z",
@@ -6027,11 +6160,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 134
   },
   {
     "id": "run-29228802631",
-    "github_run_number": 70,
+    "github_run_number": 135,
     "github_run_id": 29228802631,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228802631",
     "timestamp": "2026-07-13T06:22:21Z",
@@ -6072,11 +6206,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 135
   },
   {
     "id": "run-29230545342",
-    "github_run_number": 71,
+    "github_run_number": 136,
     "github_run_id": 29230545342,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29230545342",
     "timestamp": "2026-07-13T06:58:16Z",
@@ -6117,11 +6252,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 136
   },
   {
     "id": "run-29230798028",
-    "github_run_number": 44,
+    "github_run_number": 137,
     "github_run_id": 29230798028,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29230798028",
     "timestamp": "2026-07-13T07:03:12Z",
@@ -6162,11 +6298,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 137
   },
   {
     "id": "run-29232649607",
-    "github_run_number": 72,
+    "github_run_number": 138,
     "github_run_id": 29232649607,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29232649607",
     "timestamp": "2026-07-13T07:37:03Z",
@@ -6207,11 +6344,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 138
   },
   {
     "id": "run-29232897371",
-    "github_run_number": 45,
+    "github_run_number": 139,
     "github_run_id": 29232897371,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29232897371",
     "timestamp": "2026-07-13T07:41:40Z",
@@ -6252,11 +6390,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 139
   },
   {
     "id": "run-29233202195",
-    "github_run_number": 73,
+    "github_run_number": 140,
     "github_run_id": 29233202195,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29233202195",
     "timestamp": "2026-07-13T07:47:11Z",
@@ -6297,11 +6436,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 140
   },
   {
     "id": "run-29233925716",
-    "github_run_number": 46,
+    "github_run_number": 141,
     "github_run_id": 29233925716,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29233925716",
     "timestamp": "2026-07-13T08:00:38Z",
@@ -6342,11 +6482,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 141
   },
   {
     "id": "run-29233928195",
-    "github_run_number": 74,
+    "github_run_number": 142,
     "github_run_id": 29233928195,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29233928195",
     "timestamp": "2026-07-13T08:00:40Z",
@@ -6387,11 +6528,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 142
   },
   {
     "id": "run-29234028550",
-    "github_run_number": 47,
+    "github_run_number": 143,
     "github_run_id": 29234028550,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234028550",
     "timestamp": "2026-07-13T08:02:27Z",
@@ -6432,11 +6574,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 143
   },
   {
     "id": "run-29234107131",
-    "github_run_number": 75,
+    "github_run_number": 144,
     "github_run_id": 29234107131,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234107131",
     "timestamp": "2026-07-13T08:03:51Z",
@@ -6477,11 +6620,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 144
   },
   {
     "id": "run-29234219130",
-    "github_run_number": 48,
+    "github_run_number": 145,
     "github_run_id": 29234219130,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234219130",
     "timestamp": "2026-07-13T08:05:47Z",
@@ -6522,11 +6666,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 145
   },
   {
     "id": "run-29234323804",
-    "github_run_number": 76,
+    "github_run_number": 146,
     "github_run_id": 29234323804,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234323804",
     "timestamp": "2026-07-13T08:07:34Z",
@@ -6567,11 +6712,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 146
   },
   {
     "id": "run-29234411402",
-    "github_run_number": 77,
+    "github_run_number": 147,
     "github_run_id": 29234411402,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234411402",
     "timestamp": "2026-07-13T08:09:06Z",
@@ -6612,11 +6758,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 147
   },
   {
     "id": "run-29234492044",
-    "github_run_number": 49,
+    "github_run_number": 148,
     "github_run_id": 29234492044,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234492044",
     "timestamp": "2026-07-13T08:10:29Z",
@@ -6657,11 +6804,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 148
   },
   {
     "id": "run-29234549101",
-    "github_run_number": 78,
+    "github_run_number": 149,
     "github_run_id": 29234549101,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234549101",
     "timestamp": "2026-07-13T08:11:25Z",
@@ -6702,11 +6850,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 149
   },
   {
     "id": "run-29234658033",
-    "github_run_number": 50,
+    "github_run_number": 150,
     "github_run_id": 29234658033,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234658033",
     "timestamp": "2026-07-13T08:13:12Z",
@@ -6747,11 +6896,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 150
   },
   {
     "id": "run-29234767316",
-    "github_run_number": 79,
+    "github_run_number": 151,
     "github_run_id": 29234767316,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234767316",
     "timestamp": "2026-07-13T08:15:00Z",
@@ -6792,11 +6942,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 151
   },
   {
     "id": "run-29235010373",
-    "github_run_number": 51,
+    "github_run_number": 152,
     "github_run_id": 29235010373,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29235010373",
     "timestamp": "2026-07-13T08:18:59Z",
@@ -6837,11 +6988,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 152
   },
   {
     "id": "run-29236779654",
-    "github_run_number": 80,
+    "github_run_number": 153,
     "github_run_id": 29236779654,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29236779654",
     "timestamp": "2026-07-13T08:49:19Z",
@@ -6882,11 +7034,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 153
   },
   {
     "id": "run-29237035267",
-    "github_run_number": 52,
+    "github_run_number": 154,
     "github_run_id": 29237035267,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29237035267",
     "timestamp": "2026-07-13T08:53:34Z",
@@ -6927,11 +7080,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 154
   },
   {
     "id": "run-29266232655",
-    "github_run_number": 81,
+    "github_run_number": 155,
     "github_run_id": 29266232655,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29266232655",
     "timestamp": "2026-07-13T16:23:47Z",
@@ -6972,11 +7126,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 155
   },
   {
     "id": "run-29266572182",
-    "github_run_number": 53,
+    "github_run_number": 156,
     "github_run_id": 29266572182,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29266572182",
     "timestamp": "2026-07-13T16:28:41Z",
@@ -7017,11 +7172,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 156
   },
   {
     "id": "run-29336220061",
-    "github_run_number": 82,
+    "github_run_number": 157,
     "github_run_id": 29336220061,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29336220061",
     "timestamp": "2026-07-14T13:22:36Z",
@@ -7062,11 +7218,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 157
   },
   {
     "id": "run-29336529153",
-    "github_run_number": 54,
+    "github_run_number": 158,
     "github_run_id": 29336529153,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29336529153",
     "timestamp": "2026-07-14T13:27:07Z",
@@ -7107,11 +7264,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 158
   },
   {
     "id": "run-29336634237",
-    "github_run_number": 1,
+    "github_run_number": 159,
     "github_run_id": 29336634237,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29336634237",
     "timestamp": "2026-07-14T13:28:38Z",
@@ -7152,11 +7310,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 159
   },
   {
     "id": "run-29336756214",
-    "github_run_number": 2,
+    "github_run_number": 160,
     "github_run_id": 29336756214,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29336756214",
     "timestamp": "2026-07-14T13:30:24Z",
@@ -7197,11 +7356,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 160
   },
   {
     "id": "run-29338825711",
-    "github_run_number": 3,
+    "github_run_number": 161,
     "github_run_id": 29338825711,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29338825711",
     "timestamp": "2026-07-14T13:59:10Z",
@@ -7242,11 +7402,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 161
   },
   {
     "id": "run-29353172753",
-    "github_run_number": 83,
+    "github_run_number": 162,
     "github_run_id": 29353172753,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29353172753",
     "timestamp": "2026-07-14T17:17:51Z",
@@ -7287,11 +7448,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 162
   },
   {
     "id": "run-29353442262",
-    "github_run_number": 55,
+    "github_run_number": 163,
     "github_run_id": 29353442262,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29353442262",
     "timestamp": "2026-07-14T17:21:48Z",
@@ -7332,11 +7494,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 163
   },
   {
     "id": "run-29368054081",
-    "github_run_number": 84,
+    "github_run_number": 164,
     "github_run_id": 29368054081,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29368054081",
     "timestamp": "2026-07-14T21:02:44Z",
@@ -7377,11 +7540,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 164
   },
   {
     "id": "run-29368343365",
-    "github_run_number": 56,
+    "github_run_number": 165,
     "github_run_id": 29368343365,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29368343365",
     "timestamp": "2026-07-14T21:07:12Z",
@@ -7422,11 +7586,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 165
   },
   {
     "id": "run-29384796473",
-    "github_run_number": 85,
+    "github_run_number": 166,
     "github_run_id": 29384796473,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29384796473",
     "timestamp": "2026-07-15T02:43:50Z",
@@ -7467,11 +7632,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 166
   },
   {
     "id": "run-29384965288",
-    "github_run_number": 57,
+    "github_run_number": 167,
     "github_run_id": 29384965288,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29384965288",
     "timestamp": "2026-07-15T02:48:02Z",
@@ -7512,11 +7678,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 167
   },
   {
     "id": "run-29385840154",
-    "github_run_number": 1,
+    "github_run_number": 168,
     "github_run_id": 29385840154,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29385840154",
     "timestamp": "2026-07-15T03:09:27Z",
@@ -7557,11 +7724,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 168
   },
   {
     "id": "run-29385940121",
-    "github_run_number": 2,
+    "github_run_number": 169,
     "github_run_id": 29385940121,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29385940121",
     "timestamp": "2026-07-15T03:11:50Z",
@@ -7602,11 +7770,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 169
   },
   {
     "id": "run-29392222815",
-    "github_run_number": 3,
+    "github_run_number": 170,
     "github_run_id": 29392222815,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392222815",
     "timestamp": "2026-07-15T05:44:08Z",
@@ -7647,11 +7816,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 170
   },
   {
     "id": "run-29392595354",
-    "github_run_number": 4,
+    "github_run_number": 171,
     "github_run_id": 29392595354,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392595354",
     "timestamp": "2026-07-15T05:52:26Z",
@@ -7692,11 +7862,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 171
   },
   {
     "id": "run-29392798830",
-    "github_run_number": 5,
+    "github_run_number": 172,
     "github_run_id": 29392798830,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392798830",
     "timestamp": "2026-07-15T05:56:54Z",
@@ -7737,11 +7908,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 172
   },
   {
     "id": "run-29393630109",
-    "github_run_number": 6,
+    "github_run_number": 173,
     "github_run_id": 29393630109,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29393630109",
     "timestamp": "2026-07-15T06:14:26Z",
@@ -7782,11 +7954,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 173
   },
   {
     "id": "run-29393814836",
-    "github_run_number": 86,
+    "github_run_number": 174,
     "github_run_id": 29393814836,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29393814836",
     "timestamp": "2026-07-15T06:18:14Z",
@@ -7827,11 +8000,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 174
   },
   {
     "id": "run-29393856832",
-    "github_run_number": 58,
+    "github_run_number": 175,
     "github_run_id": 29393856832,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29393856832",
     "timestamp": "2026-07-15T06:19:11Z",
@@ -7872,11 +8046,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 175
   },
   {
     "id": "run-29395059188",
-    "github_run_number": 87,
+    "github_run_number": 176,
     "github_run_id": 29395059188,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395059188",
     "timestamp": "2026-07-15T06:43:39Z",
@@ -7917,11 +8092,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 176
   },
   {
     "id": "run-29395301968",
-    "github_run_number": 59,
+    "github_run_number": 177,
     "github_run_id": 29395301968,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395301968",
     "timestamp": "2026-07-15T06:48:37Z",
@@ -7962,11 +8138,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 177
   },
   {
     "id": "run-29395652169",
-    "github_run_number": 1,
+    "github_run_number": 178,
     "github_run_id": 29395652169,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395652169",
     "timestamp": "2026-07-15T06:55:18Z",
@@ -8007,11 +8184,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 178
   },
   {
     "id": "run-29395866483",
-    "github_run_number": 2,
+    "github_run_number": 179,
     "github_run_id": 29395866483,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395866483",
     "timestamp": "2026-07-15T06:59:22Z",
@@ -8052,11 +8230,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 179
   },
   {
     "id": "run-29401443107",
-    "github_run_number": 3,
+    "github_run_number": 180,
     "github_run_id": 29401443107,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29401443107",
     "timestamp": "2026-07-15T08:37:14Z",
@@ -8097,11 +8276,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 180
   },
   {
     "id": "run-29404548453",
-    "github_run_number": 4,
+    "github_run_number": 181,
     "github_run_id": 29404548453,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29404548453",
     "timestamp": "2026-07-15T09:27:10Z",
@@ -8142,11 +8322,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 181
   },
   {
     "id": "run-29405460597",
-    "github_run_number": 5,
+    "github_run_number": 182,
     "github_run_id": 29405460597,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29405460597",
     "timestamp": "2026-07-15T09:41:57Z",
@@ -8187,11 +8368,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 182
   },
   {
     "id": "run-29405823847",
-    "github_run_number": 7,
+    "github_run_number": 183,
     "github_run_id": 29405823847,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29405823847",
     "timestamp": "2026-07-15T09:47:51Z",
@@ -8232,11 +8414,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 183
   },
   {
     "id": "run-29406917069",
-    "github_run_number": 88,
+    "github_run_number": 184,
     "github_run_id": 29406917069,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29406917069",
     "timestamp": "2026-07-15T10:05:54Z",
@@ -8277,11 +8460,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 184
   },
   {
     "id": "run-29407741109",
-    "github_run_number": 60,
+    "github_run_number": 185,
     "github_run_id": 29407741109,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29407741109",
     "timestamp": "2026-07-15T10:19:53Z",
@@ -8322,11 +8506,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 185
   },
   {
     "id": "run-29409579942",
-    "github_run_number": 6,
+    "github_run_number": 186,
     "github_run_id": 29409579942,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29409579942",
     "timestamp": "2026-07-15T10:51:26Z",
@@ -8367,11 +8552,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 186
   },
   {
     "id": "run-29409991068",
-    "github_run_number": 7,
+    "github_run_number": 187,
     "github_run_id": 29409991068,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29409991068",
     "timestamp": "2026-07-15T10:58:28Z",
@@ -8412,11 +8598,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 187
   },
   {
     "id": "run-29419042729",
-    "github_run_number": 8,
+    "github_run_number": 188,
     "github_run_id": 29419042729,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29419042729",
     "timestamp": "2026-07-15T13:24:26Z",
@@ -8457,11 +8644,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 188
   },
   {
     "id": "run-29420846255",
-    "github_run_number": 89,
+    "github_run_number": 189,
     "github_run_id": 29420846255,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29420846255",
     "timestamp": "2026-07-15T13:49:37Z",
@@ -8502,11 +8690,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 189
   },
   {
     "id": "run-29421856901",
-    "github_run_number": 61,
+    "github_run_number": 190,
     "github_run_id": 29421856901,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29421856901",
     "timestamp": "2026-07-15T14:03:16Z",
@@ -8547,11 +8736,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 190
   },
   {
     "id": "run-29423634668",
-    "github_run_number": 9,
+    "github_run_number": 191,
     "github_run_id": 29423634668,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29423634668",
     "timestamp": "2026-07-15T14:27:35Z",
@@ -8592,11 +8782,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 191
   },
   {
     "id": "run-29436082715",
-    "github_run_number": 90,
+    "github_run_number": 192,
     "github_run_id": 29436082715,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436082715",
     "timestamp": "2026-07-15T17:20:27Z",
@@ -8637,11 +8828,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 192
   },
   {
     "id": "run-29436233674",
-    "github_run_number": 10,
+    "github_run_number": 193,
     "github_run_id": 29436233674,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436233674",
     "timestamp": "2026-07-15T17:22:40Z",
@@ -8682,11 +8874,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 193
   },
   {
     "id": "run-29436532617",
-    "github_run_number": 11,
+    "github_run_number": 194,
     "github_run_id": 29436532617,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436532617",
     "timestamp": "2026-07-15T17:27:02Z",
@@ -8727,11 +8920,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 194
   },
   {
     "id": "run-29436872476",
-    "github_run_number": 62,
+    "github_run_number": 195,
     "github_run_id": 29436872476,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436872476",
     "timestamp": "2026-07-15T17:31:49Z",
@@ -8772,11 +8966,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 195
   },
   {
     "id": "run-29450550740",
-    "github_run_number": 91,
+    "github_run_number": 196,
     "github_run_id": 29450550740,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29450550740",
     "timestamp": "2026-07-15T21:03:15Z",
@@ -8817,11 +9012,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 196
   },
   {
     "id": "run-29451062850",
-    "github_run_number": 63,
+    "github_run_number": 197,
     "github_run_id": 29451062850,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29451062850",
     "timestamp": "2026-07-15T21:11:51Z",
@@ -8862,11 +9058,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 197
   },
   {
     "id": "run-29467532728",
-    "github_run_number": 92,
+    "github_run_number": 198,
     "github_run_id": 29467532728,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29467532728",
     "timestamp": "2026-07-16T02:50:21Z",
@@ -8907,11 +9104,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 198
   },
   {
     "id": "run-29467935272",
-    "github_run_number": 64,
+    "github_run_number": 199,
     "github_run_id": 29467935272,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29467935272",
     "timestamp": "2026-07-16T03:00:40Z",
@@ -8952,11 +9150,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 199
   },
   {
     "id": "run-29476492148",
-    "github_run_number": 93,
+    "github_run_number": 200,
     "github_run_id": 29476492148,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29476492148",
     "timestamp": "2026-07-16T06:21:58Z",
@@ -8997,11 +9196,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 200
   },
   {
     "id": "run-29476969472",
-    "github_run_number": 65,
+    "github_run_number": 201,
     "github_run_id": 29476969472,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29476969472",
     "timestamp": "2026-07-16T06:31:42Z",
@@ -9042,11 +9242,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 201
   },
   {
     "id": "run-29489972700",
-    "github_run_number": 94,
+    "github_run_number": 202,
     "github_run_id": 29489972700,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29489972700",
     "timestamp": "2026-07-16T10:12:07Z",
@@ -9087,11 +9288,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 202
   },
   {
     "id": "run-29490686793",
-    "github_run_number": 66,
+    "github_run_number": 203,
     "github_run_id": 29490686793,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29490686793",
     "timestamp": "2026-07-16T10:24:04Z",
@@ -9132,11 +9334,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 203
   },
   {
     "id": "run-29504678145",
-    "github_run_number": 95,
+    "github_run_number": 204,
     "github_run_id": 29504678145,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29504678145",
     "timestamp": "2026-07-16T14:00:48Z",
@@ -9177,11 +9380,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 204
   },
   {
     "id": "run-29505514952",
-    "github_run_number": 67,
+    "github_run_number": 205,
     "github_run_id": 29505514952,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29505514952",
     "timestamp": "2026-07-16T14:12:06Z",
@@ -9222,11 +9426,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 205
   },
   {
     "id": "run-29519434694",
-    "github_run_number": 96,
+    "github_run_number": 206,
     "github_run_id": 29519434694,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29519434694",
     "timestamp": "2026-07-16T17:21:33Z",
@@ -9267,11 +9472,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 206
   },
   {
     "id": "run-29520161550",
-    "github_run_number": 68,
+    "github_run_number": 207,
     "github_run_id": 29520161550,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29520161550",
     "timestamp": "2026-07-16T17:32:06Z",
@@ -9312,11 +9518,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 207
   },
   {
     "id": "run-29534600630",
-    "github_run_number": 97,
+    "github_run_number": 208,
     "github_run_id": 29534600630,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29534600630",
     "timestamp": "2026-07-16T21:04:05Z",
@@ -9357,11 +9564,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 208
   },
   {
     "id": "run-29535276473",
-    "github_run_number": 69,
+    "github_run_number": 209,
     "github_run_id": 29535276473,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29535276473",
     "timestamp": "2026-07-16T21:14:23Z",
@@ -9402,11 +9610,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 209
   },
   {
     "id": "run-29551012642",
-    "github_run_number": 98,
+    "github_run_number": 210,
     "github_run_id": 29551012642,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29551012642",
     "timestamp": "2026-07-17T02:52:54Z",
@@ -9447,11 +9656,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 210
   },
   {
     "id": "run-29551497333",
-    "github_run_number": 70,
+    "github_run_number": 211,
     "github_run_id": 29551497333,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29551497333",
     "timestamp": "2026-07-17T03:04:39Z",
@@ -9492,11 +9702,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 211
   },
   {
     "id": "run-29559728648",
-    "github_run_number": 99,
+    "github_run_number": 212,
     "github_run_id": 29559728648,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29559728648",
     "timestamp": "2026-07-17T06:19:55Z",
@@ -9537,11 +9748,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/AgDc10roFfc",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 212
   },
   {
     "id": "run-29560270395",
-    "github_run_number": 71,
+    "github_run_number": 213,
     "github_run_id": 29560270395,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29560270395",
     "timestamp": "2026-07-17T06:31:18Z",
@@ -9582,11 +9794,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 213
   },
   {
     "id": "run-29572018392",
-    "github_run_number": 100,
+    "github_run_number": 214,
     "github_run_id": 29572018392,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29572018392",
     "timestamp": "2026-07-17T10:01:13Z",
@@ -9627,11 +9840,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 214
   },
   {
     "id": "run-29572641515",
-    "github_run_number": 72,
+    "github_run_number": 215,
     "github_run_id": 29572641515,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29572641515",
     "timestamp": "2026-07-17T10:11:49Z",
@@ -9672,11 +9886,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 215
   },
   {
     "id": "run-29585203694",
-    "github_run_number": 101,
+    "github_run_number": 216,
     "github_run_id": 29585203694,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29585203694",
     "timestamp": "2026-07-17T13:45:31Z",
@@ -9717,11 +9932,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/Qo2v4wUnl4Q",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 216
   },
   {
     "id": "run-29585737787",
-    "github_run_number": 73,
+    "github_run_number": 217,
     "github_run_id": 29585737787,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29585737787",
     "timestamp": "2026-07-17T13:53:43Z",
@@ -9762,11 +9978,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 217
   },
   {
     "id": "run-29599385571",
-    "github_run_number": 102,
+    "github_run_number": 218,
     "github_run_id": 29599385571,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29599385571",
     "timestamp": "2026-07-17T17:16:11Z",
@@ -9807,11 +10024,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/qrueRUHyKnw",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 218
   },
   {
     "id": "run-29599980871",
-    "github_run_number": 74,
+    "github_run_number": 219,
     "github_run_id": 29599980871,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29599980871",
     "timestamp": "2026-07-17T17:25:24Z",
@@ -9852,11 +10070,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 219
   },
   {
     "id": "run-29613158296",
-    "github_run_number": 103,
+    "github_run_number": 220,
     "github_run_id": 29613158296,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29613158296",
     "timestamp": "2026-07-17T20:59:23Z",
@@ -9897,11 +10116,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/DNJuWyMlhEs",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 220
   },
   {
     "id": "run-29613712058",
-    "github_run_number": 75,
+    "github_run_number": 221,
     "github_run_id": 29613712058,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29613712058",
     "timestamp": "2026-07-17T21:08:47Z",
@@ -9942,11 +10162,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 221
   },
   {
     "id": "run-29627599763",
-    "github_run_number": 104,
+    "github_run_number": 222,
     "github_run_id": 29627599763,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29627599763",
     "timestamp": "2026-07-18T02:45:22Z",
@@ -9987,11 +10208,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/eF4RfJBCBuo",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 222
   },
   {
     "id": "run-29627931786",
-    "github_run_number": 76,
+    "github_run_number": 223,
     "github_run_id": 29627931786,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29627931786",
     "timestamp": "2026-07-18T02:56:39Z",
@@ -10032,11 +10254,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 223
   },
   {
     "id": "run-29633445469",
-    "github_run_number": 105,
+    "github_run_number": 224,
     "github_run_id": 29633445469,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29633445469",
     "timestamp": "2026-07-18T06:07:25Z",
@@ -10077,11 +10300,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/6YmqxLwwFA8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 224
   },
   {
     "id": "run-29633745135",
-    "github_run_number": 77,
+    "github_run_number": 225,
     "github_run_id": 29633745135,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29633745135",
     "timestamp": "2026-07-18T06:17:49Z",
@@ -10122,11 +10346,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 225
   },
   {
     "id": "run-29639442921",
-    "github_run_number": 106,
+    "github_run_number": 226,
     "github_run_id": 29639442921,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29639442921",
     "timestamp": "2026-07-18T09:36:29Z",
@@ -10167,11 +10392,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/e5a5SLW52gE",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 226
   },
   {
     "id": "run-29639752638",
-    "github_run_number": 78,
+    "github_run_number": 227,
     "github_run_id": 29639752638,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29639752638",
     "timestamp": "2026-07-18T09:47:28Z",
@@ -10212,11 +10438,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 227
   },
   {
     "id": "run-29646031865",
-    "github_run_number": 107,
+    "github_run_number": 228,
     "github_run_id": 29646031865,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29646031865",
     "timestamp": "2026-07-18T13:22:41Z",
@@ -10257,11 +10484,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/oqDWlA_9LZY",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 228
   },
   {
     "id": "run-29646344399",
-    "github_run_number": 79,
+    "github_run_number": 229,
     "github_run_id": 29646344399,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29646344399",
     "timestamp": "2026-07-18T13:32:42Z",
@@ -10302,11 +10530,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 229
   },
   {
     "id": "run-29653094794",
-    "github_run_number": 108,
+    "github_run_number": 230,
     "github_run_id": 29653094794,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29653094794",
     "timestamp": "2026-07-18T17:00:59Z",
@@ -10347,11 +10576,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/nDTBS73Mykg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 230
   },
   {
     "id": "run-29653392330",
-    "github_run_number": 80,
+    "github_run_number": 231,
     "github_run_id": 29653392330,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29653392330",
     "timestamp": "2026-07-18T17:10:09Z",
@@ -10392,11 +10622,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 231
   },
   {
     "id": "run-29660567755",
-    "github_run_number": 109,
+    "github_run_number": 232,
     "github_run_id": 29660567755,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29660567755",
     "timestamp": "2026-07-18T20:53:32Z",
@@ -10437,11 +10668,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/ZnrfaZupsKA",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 232
   },
   {
     "id": "run-29660893872",
-    "github_run_number": 81,
+    "github_run_number": 233,
     "github_run_id": 29660893872,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29660893872",
     "timestamp": "2026-07-18T21:03:34Z",
@@ -10482,11 +10714,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 233
   },
   {
     "id": "run-29671473419",
-    "github_run_number": 110,
+    "github_run_number": 234,
     "github_run_id": 29671473419,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29671473419",
     "timestamp": "2026-07-19T03:15:06Z",
@@ -10527,11 +10760,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/NnxXv8hBDuI",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 234
   },
   {
     "id": "run-29671622204",
-    "github_run_number": 12,
+    "github_run_number": 235,
     "github_run_id": 29671622204,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29671622204",
     "timestamp": "2026-07-19T03:20:48Z",
@@ -10572,11 +10806,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 235
   },
   {
     "id": "run-29671718505",
-    "github_run_number": 82,
+    "github_run_number": 236,
     "github_run_id": 29671718505,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29671718505",
     "timestamp": "2026-07-19T03:24:40Z",
@@ -10617,11 +10852,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 236
   },
   {
     "id": "run-29676611158",
-    "github_run_number": 111,
+    "github_run_number": 237,
     "github_run_id": 29676611158,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29676611158",
     "timestamp": "2026-07-19T06:32:42Z",
@@ -10662,11 +10898,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/RNqN27TZ4II",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 237
   },
   {
     "id": "run-29676876142",
-    "github_run_number": 83,
+    "github_run_number": 238,
     "github_run_id": 29676876142,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29676876142",
     "timestamp": "2026-07-19T06:42:27Z",
@@ -10707,11 +10944,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 238
   },
   {
     "id": "run-29682398999",
-    "github_run_number": 112,
+    "github_run_number": 239,
     "github_run_id": 29682398999,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29682398999",
     "timestamp": "2026-07-19T09:54:31Z",
@@ -10752,11 +10990,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/1oWGQSZ-NBo",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 239
   },
   {
     "id": "run-29682715735",
-    "github_run_number": 84,
+    "github_run_number": 240,
     "github_run_id": 29682715735,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29682715735",
     "timestamp": "2026-07-19T10:05:02Z",
@@ -10797,11 +11036,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 240
   },
   {
     "id": "run-29685383915",
-    "github_run_number": 8,
+    "github_run_number": 241,
     "github_run_id": 29685383915,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685383915",
     "timestamp": "2026-07-19T11:34:39Z",
@@ -10842,11 +11082,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/9mhdFN5pbvg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 241
   },
   {
     "id": "run-29685679825",
-    "github_run_number": 9,
+    "github_run_number": 242,
     "github_run_id": 29685679825,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685679825",
     "timestamp": "2026-07-19T11:44:18Z",
@@ -10887,11 +11128,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 242
   },
   {
     "id": "run-29685801035",
-    "github_run_number": 10,
+    "github_run_number": 243,
     "github_run_id": 29685801035,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685801035",
     "timestamp": "2026-07-19T11:48:12Z",
@@ -10932,11 +11174,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/tLoeTeM252U",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 243
   },
   {
     "id": "run-29688800460",
-    "github_run_number": 113,
+    "github_run_number": 244,
     "github_run_id": 29688800460,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29688800460",
     "timestamp": "2026-07-19T13:24:05Z",
@@ -10977,11 +11220,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 244
   },
   {
     "id": "run-29688825678",
-    "github_run_number": 85,
+    "github_run_number": 245,
     "github_run_id": 29688825678,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29688825678",
     "timestamp": "2026-07-19T13:24:54Z",
@@ -11022,11 +11266,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/WmVy2XIvW74",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 245
   },
   {
     "id": "run-29688898627",
-    "github_run_number": 114,
+    "github_run_number": 246,
     "github_run_id": 29688898627,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29688898627",
     "timestamp": "2026-07-19T13:27:11Z",
@@ -11067,11 +11312,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 246
   },
   {
     "id": "run-29695996307",
-    "github_run_number": 115,
+    "github_run_number": 247,
     "github_run_id": 29695996307,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29695996307",
     "timestamp": "2026-07-19T17:01:05Z",
@@ -11112,11 +11358,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 247
   },
   {
     "id": "run-29696022474",
-    "github_run_number": 86,
+    "github_run_number": 248,
     "github_run_id": 29696022474,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29696022474",
     "timestamp": "2026-07-19T17:01:54Z",
@@ -11157,11 +11404,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": "https://www.youtube.com/shorts/e0O9JpsiKZE",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 248
   },
   {
     "id": "run-29696073082",
-    "github_run_number": 116,
+    "github_run_number": 249,
     "github_run_id": 29696073082,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29696073082",
     "timestamp": "2026-07-19T17:03:24Z",
@@ -11202,11 +11450,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 249
   },
   {
     "id": "run-29698239757",
-    "github_run_number": 117,
+    "github_run_number": 250,
     "github_run_id": 29698239757,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29698239757",
     "timestamp": "2026-07-19T18:10:10Z",
@@ -11247,11 +11496,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 250
   },
   {
     "id": "run-29698574660",
-    "github_run_number": 87,
+    "github_run_number": 251,
     "github_run_id": 29698574660,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29698574660",
     "timestamp": "2026-07-19T18:21:36Z",
@@ -11292,11 +11542,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 251
   },
   {
     "id": "run-29703383137",
-    "github_run_number": 118,
+    "github_run_number": 252,
     "github_run_id": 29703383137,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29703383137",
     "timestamp": "2026-07-19T20:54:23Z",
@@ -11337,11 +11588,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 252
   },
   {
     "id": "run-29703700886",
-    "github_run_number": 88,
+    "github_run_number": 253,
     "github_run_id": 29703700886,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29703700886",
     "timestamp": "2026-07-19T21:04:31Z",
@@ -11382,11 +11634,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 253
   },
   {
     "id": "run-29714767603",
-    "github_run_number": 119,
+    "github_run_number": 254,
     "github_run_id": 29714767603,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29714767603",
     "timestamp": "2026-07-20T03:29:33Z",
@@ -11427,11 +11680,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 254
   },
   {
     "id": "run-29715122041",
-    "github_run_number": 89,
+    "github_run_number": 255,
     "github_run_id": 29715122041,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29715122041",
     "timestamp": "2026-07-20T03:39:13Z",
@@ -11472,11 +11726,12 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 255
   },
   {
     "id": "run-29722802024",
-    "github_run_number": 120,
+    "github_run_number": 256,
     "github_run_id": 29722802024,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29722802024",
     "timestamp": "2026-07-20T06:50:33Z",
@@ -11517,11 +11772,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 256
   },
   {
     "id": "run-29723410507",
-    "github_run_number": 90,
+    "github_run_number": 257,
     "github_run_id": 29723410507,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29723410507",
     "timestamp": "2026-07-20T07:03:29Z",
@@ -11562,11 +11818,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 257
   },
   {
     "id": "run-29736734996",
-    "github_run_number": 121,
+    "github_run_number": 258,
     "github_run_id": 29736734996,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29736734996",
     "timestamp": "2026-07-20T10:55:44Z",
@@ -11607,11 +11864,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 258
   },
   {
     "id": "run-29737438890",
-    "github_run_number": 91,
+    "github_run_number": 259,
     "github_run_id": 29737438890,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29737438890",
     "timestamp": "2026-07-20T11:07:42Z",
@@ -11652,11 +11910,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 259
   },
   {
     "id": "run-29749641588",
-    "github_run_number": 122,
+    "github_run_number": 260,
     "github_run_id": 29749641588,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29749641588",
     "timestamp": "2026-07-20T14:12:50Z",
@@ -11697,11 +11956,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 260
   },
   {
     "id": "run-29750687163",
-    "github_run_number": 92,
+    "github_run_number": 261,
     "github_run_id": 29750687163,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29750687163",
     "timestamp": "2026-07-20T14:27:04Z",
@@ -11742,11 +12002,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 261
   },
   {
     "id": "run-29766388439",
-    "github_run_number": 123,
+    "github_run_number": 262,
     "github_run_id": 29766388439,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29766388439",
     "timestamp": "2026-07-20T18:07:08Z",
@@ -11787,11 +12048,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 262
   },
   {
     "id": "run-29767176303",
-    "github_run_number": 93,
+    "github_run_number": 263,
     "github_run_id": 29767176303,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29767176303",
     "timestamp": "2026-07-20T18:18:11Z",
@@ -11832,11 +12094,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 263
   },
   {
     "id": "run-29779390041",
-    "github_run_number": 124,
+    "github_run_number": 264,
     "github_run_id": 29779390041,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29779390041",
     "timestamp": "2026-07-20T21:14:23Z",
@@ -11877,11 +12140,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 264
   },
   {
     "id": "run-29780311916",
-    "github_run_number": 94,
+    "github_run_number": 265,
     "github_run_id": 29780311916,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29780311916",
     "timestamp": "2026-07-20T21:28:27Z",
@@ -11922,11 +12186,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 265
   },
   {
     "id": "run-29797129614",
-    "github_run_number": 125,
+    "github_run_number": 266,
     "github_run_id": 29797129614,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29797129614",
     "timestamp": "2026-07-21T02:55:49Z",
@@ -11967,11 +12232,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 266
   },
   {
     "id": "run-29797699734",
-    "github_run_number": 95,
+    "github_run_number": 267,
     "github_run_id": 29797699734,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29797699734",
     "timestamp": "2026-07-21T03:08:00Z",
@@ -12012,11 +12278,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 267
   },
   {
     "id": "run-29807291486",
-    "github_run_number": 126,
+    "github_run_number": 268,
     "github_run_id": 29807291486,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29807291486",
     "timestamp": "2026-07-21T06:31:37Z",
@@ -12057,11 +12324,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 268
   },
   {
     "id": "run-29807961026",
-    "github_run_number": 96,
+    "github_run_number": 269,
     "github_run_id": 29807961026,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29807961026",
     "timestamp": "2026-07-21T06:44:08Z",
@@ -12102,11 +12370,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 269
   },
   {
     "id": "run-29822293698",
-    "github_run_number": 127,
+    "github_run_number": 270,
     "github_run_id": 29822293698,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29822293698",
     "timestamp": "2026-07-21T10:27:33Z",
@@ -12147,11 +12416,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 270
   },
   {
     "id": "run-29823008336",
-    "github_run_number": 97,
+    "github_run_number": 271,
     "github_run_id": 29823008336,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29823008336",
     "timestamp": "2026-07-21T10:38:42Z",
@@ -12192,11 +12462,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 271
   },
   {
     "id": "run-29837019515",
-    "github_run_number": 128,
+    "github_run_number": 272,
     "github_run_id": 29837019515,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29837019515",
     "timestamp": "2026-07-21T13:59:51Z",
@@ -12237,11 +12508,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 272
   },
   {
     "id": "run-29837713758",
-    "github_run_number": 98,
+    "github_run_number": 273,
     "github_run_id": 29837713758,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29837713758",
     "timestamp": "2026-07-21T14:08:34Z",
@@ -12282,11 +12554,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
+    "global_run_number": 273
   },
   {
     "id": "run-29852804573",
-    "github_run_number": 129,
+    "github_run_number": 274,
     "github_run_id": 29852804573,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29852804573",
     "timestamp": "2026-07-21T17:24:30Z",
@@ -12327,11 +12600,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 274
   },
   {
     "id": "run-29853670288",
-    "github_run_number": 99,
+    "github_run_number": 275,
     "github_run_id": 29853670288,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29853670288",
     "timestamp": "2026-07-21T17:36:33Z",
@@ -12372,11 +12646,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
+    "global_run_number": 275
   },
   {
     "id": "run-29869098249",
-    "github_run_number": 130,
+    "github_run_number": 276,
     "github_run_id": 29869098249,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29869098249",
     "timestamp": "2026-07-21T21:13:34Z",
@@ -12417,11 +12692,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 276
   },
   {
     "id": "run-29870044517",
-    "github_run_number": 100,
+    "github_run_number": 277,
     "github_run_id": 29870044517,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29870044517",
     "timestamp": "2026-07-21T21:27:38Z",
@@ -12462,11 +12738,12 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation"
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
+    "global_run_number": 277
   },
   {
     "id": "run-29887007587",
-    "github_run_number": 131,
+    "github_run_number": 278,
     "github_run_id": 29887007587,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29887007587",
     "timestamp": "2026-07-22T02:53:41Z",
@@ -12507,11 +12784,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/a5eS-LSUfG8",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 278
   },
   {
     "id": "run-29887673135",
-    "github_run_number": 101,
+    "github_run_number": 279,
     "github_run_id": 29887673135,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29887673135",
     "timestamp": "2026-07-22T03:08:37Z",
@@ -12552,11 +12830,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/vJqARpaiNGU",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 279
   },
   {
     "id": "run-29923173440",
-    "github_run_number": 132,
+    "github_run_number": 280,
     "github_run_id": 29923173440,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29923173440",
     "timestamp": "2026-07-22T13:16:33Z",
@@ -12597,11 +12876,12 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 280
   },
   {
     "id": "run-29925022507",
-    "github_run_number": 102,
+    "github_run_number": 281,
     "github_run_id": 29925022507,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29925022507",
     "timestamp": "2026-07-22T13:41:18Z",
@@ -12642,6 +12922,7 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
-    "error_traceback": null
+    "error_traceback": null,
+    "global_run_number": 281
   }
 ]
