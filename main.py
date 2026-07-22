@@ -154,21 +154,26 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 # 1. CATEGORY ROTATION, SOURCE INGESTION & TWO-PASS AUTO-QA GENERATION
 # ---------------------------------------------------------------------------
 def get_rotating_category(target_date: Optional[datetime.date] = None) -> str:
-    """Calculate 7-consecutive-day locked category rotation (Week 1: space, Week 2: history, Week 3: tech)."""
+    """Calculate 7-consecutive-day locked category rotation (Week 1: Space, Week 2: History, Week 3: Tech)."""
     if target_date is None:
         target_date = datetime.datetime.utcnow().date()
     anchor_date = datetime.date(2026, 1, 1)
     days_elapsed = max(0, (target_date - anchor_date).days)
     week_index = (days_elapsed // 7) % 3
-    rotation = ["space", "history", "tech"]
+    rotation = [
+        "Scary Space Mysteries",
+        "Morbid or Silly History Facts",
+        "Exciting Tech Facts"
+    ]
     selected = rotation[week_index]
-    print(f"7-Day Category Lock: Day {(days_elapsed % 7) + 1}/7 of Week {week_index + 1} -> Locked Category: '{selected.upper()}'")
+    print(f"7-Day Category Lock: Day {(days_elapsed % 7) + 1}/7 of Week {week_index + 1} -> Locked Category: '{selected}'")
     return selected
 
 
 def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict]) -> dict:
     """Ingest rich source text using headless Playwright Chromium, with fail-safe Wikipedia fallback."""
     print(f"Launching Playwright Headless Scraping for category '{category}'...")
+    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
     
     category_sources = {
         "space": [
@@ -188,7 +193,7 @@ def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict])
         ]
     }
     
-    urls = category_sources.get(category, category_sources["space"])
+    urls = category_sources.get(db_key, category_sources["space"])
     random.shuffle(urls)
     
     try:
@@ -230,6 +235,7 @@ def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict])
 def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
     """Fetch raw, high-quality article text from Wikipedia REST/Action APIs for source grounding."""
     print(f"Fetching raw Wikipedia source text for category '{category}'...")
+    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
     category_queries = {
         "space": [
             "Category:Featured_articles_about_astronomy",
@@ -255,7 +261,7 @@ def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
     existing_titles = {item.get("title", "").lower().strip() for item in past_topics}
     existing_topics = {item.get("topic", "").lower().strip() for item in past_topics if item.get("topic")}
 
-    query_list = category_queries.get(category, category_queries["space"])
+    query_list = category_queries.get(db_key, category_queries["space"])
     random.shuffle(query_list)
 
     cm_url = "https://en.wikipedia.org/w/api.php"
@@ -503,7 +509,7 @@ def generate_content(
     Pass 1: Generate 5 distinct script variants exploring different narrative angles.
     Pass 2: Score & rank all 5 variants with Pass 2 Auto-QA Evaluator. Select #1 highest scorer (>= 8/10).
     """
-    model_name = "gemini-2.5-pro"
+    model_name = "gemini-2.5-flash"
     cat_info = CATEGORIES[category]
     db_category = cat_info["db_key"]
 
@@ -653,12 +659,12 @@ def generate_content(
                 # 1. Check duplicate guardrail
                 is_dup, reason = is_duplicate_topic(v_title, v_topic, v_script, past_topics)
                 if is_dup:
-                    print(f"  ❌ Variant {idx+1} ('{v_angle}'): REJECTED by Duplicate Guardrail -> {reason}")
+                    print(f"  [REJECTED DUP] Variant {idx+1} ('{v_angle}'): {reason}")
                     continue
 
                 # 2. Evaluate Auto-QA Score
                 score, critique = evaluate_script_quality(client, model_name, v_script, v_title, source_data.get("title", ""), config)
-                print(f"  🏆 Variant {idx+1} ('{v_angle}') -> Score: {score}/10 | Title: '{v_title}' | Critique: {critique}")
+                print(f"  [TOURNAMENT EVAL] Variant {idx+1} ('{v_angle}') -> Score: {score}/10 | Title: '{v_title}' | Critique: {critique}")
                 evaluated_variants.append({
                     "candidate": candidate,
                     "score": score,
@@ -671,7 +677,7 @@ def generate_content(
             if evaluated_variants and evaluated_variants[0]["score"] >= 8:
                 winner = evaluated_variants[0]["candidate"]
                 w_score = evaluated_variants[0]["score"]
-                print(f"\n✅ TOURNAMENT WINNER SELECTED: Variant ('{winner['angle']}') with Score {w_score}/10!")
+                print(f"\n[TOURNAMENT WINNER] Selected Variant ('{winner['angle']}') with Score {w_score}/10!")
                 print("Winning Title:", winner["title"])
                 print("Winning Topic:", winner["topic"])
                 
@@ -683,7 +689,7 @@ def generate_content(
                 return winner["title"], winner["description"], win_segments
             else:
                 top_score = evaluated_variants[0]['score'] if evaluated_variants else 0
-                print(f"\n❌ Tournament failed: Top variant scored {top_score}/10 (< 8 threshold). Re-prompting for fresh tournament...")
+                print(f"\n[TOURNAMENT RE-TRY] Top variant scored {top_score}/10 (< 8 threshold). Re-prompting for fresh tournament...")
                 session_rejections.append(f"Tournament Top Score: {top_score}/10 (< 8 threshold).")
                 time.sleep(1)
                 continue
