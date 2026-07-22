@@ -1,24 +1,29 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { 
-  Activity, 
-  CheckCircle2, 
-  XCircle, 
-  Clock, 
-  Award, 
-  Youtube, 
-  Zap, 
-  TrendingUp, 
-  ShieldCheck, 
-  AlertTriangle, 
-  ChevronDown, 
-  ChevronUp, 
-  Sparkles, 
+import {
+  Activity,
+  CheckCircle,
+  Clock,
+  Sparkles,
   FileText,
-  Volume2
+  AlertTriangle,
+  TrendingUp,
+  Youtube,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, CartesianGrid } from "recharts";
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer
+} from "recharts";
 
 interface ScriptVariant {
   variant_id: number;
@@ -58,6 +63,116 @@ interface RunEntry {
   ass_subtitle_engine?: string;
 }
 
+// Clean separate component for Tournament Era
+function TournamentSection({ run, getCategoryBadgeColor }: { run: RunEntry; getCategoryBadgeColor: (cat: string) => string }) {
+  if (!run) return null;
+  return (
+    <div className="space-y-6">
+      {/* WINNING SCRIPT BANNER */}
+      <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
+        <div className="flex items-center justify-between">
+          <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(run.category)}`}>
+            [TOURNAMENT] WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
+          </span>
+          {run.youtube_url && (
+            <a
+              href={run.youtube_url}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/40 px-4 py-1.5 rounded-xl text-xs font-bold hover:bg-red-600/30 transition-all"
+            >
+              <Youtube className="w-4 h-4" /> Watch Short
+            </a>
+          )}
+        </div>
+        <p className="text-sm italic text-gray-200 bg-[#131b2e] p-4 rounded-lg border border-[#1f2d4d]">
+          "{run.winning_script?.text || "No text available"}"
+        </p>
+      </div>
+
+      {/* DEEP METADATA VAULT */}
+      <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
+        <h4 className="text-sm font-bold uppercase tracking-wider text-[#00E5FF] flex items-center gap-2">
+          <Sparkles className="w-4 h-4 text-[#00E5FF]" />
+          Deep Metadata Vault (Exclusive Attributes Outside YouTube Studio)
+        </h4>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+            <span className="font-bold text-gray-400 block uppercase text-[10px]">Scraped Source Knowledge Origin</span>
+            <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
+              {run.source_url || "https://en.wikipedia.org/wiki/Portal:Space"}
+            </a>
+          </div>
+          <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+            <span className="font-bold text-gray-400 block uppercase text-[10px]">Background Audio Track</span>
+            <span className="font-mono text-white block">{run.music_track || "space_track_1.mp3"}</span>
+          </div>
+          <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+            <span className="font-bold text-gray-400 block uppercase text-[10px]">Kokoro Neural Voice Actor</span>
+            <span className="font-mono text-[#00FF66] block">{run.voice_actor || "af_sarah (Kokoro-82M)"}</span>
+          </div>
+          <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+            <span className="font-bold text-gray-400 block uppercase text-[10px]">Scraped Search Keywords</span>
+            <div className="flex flex-wrap gap-1 mt-1">
+              {(run.search_keywords || ["facts"]).map((kw, i) => (
+                <span key={i} className="bg-blue-950/60 text-blue-300 border border-blue-800/40 px-2 py-0.5 rounded text-[10px]">
+                  {kw}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+            <span className="font-bold text-gray-400 block uppercase text-[10px]">Visual Asset Mix & Salience Zoom</span>
+            <span className="font-mono text-yellow-300 block">{run.visual_asset_types || "Salience-Zoomed 4K Clips"}</span>
+          </div>
+          <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
+            <span className="font-bold text-gray-400 block uppercase text-[10px]">FFmpeg Subtitle & ASS Engine</span>
+            <span className="font-mono text-gray-200 block">{run.ass_subtitle_engine || "FFmpeg ASS Engine"}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 5-VARIANT COMPARISON GRID */}
+      <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
+        <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
+          [TOURNAMENT] 5-Variant Auto-QA Tournament Breakdown
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          {run.script_variants?.map((v) => {
+            const isWinner = v.title === run.winning_script?.title;
+            return (
+              <div
+                key={v.variant_id}
+                className={`p-4 rounded-xl border flex flex-col justify-between space-y-3 ${
+                  isWinner
+                    ? "bg-[#00FF66]/10 border-[#00FF66]/50 ring-1 ring-[#00FF66]/30"
+                    : "bg-[#0b0f19] border-[#1f2d4d]"
+                }`}
+              >
+                <div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs font-bold text-gray-400">Variant {v.variant_id}</span>
+                    <span className={`text-xs font-bold px-2 py-0.5 rounded ${v.score >= 9 ? "bg-[#00FF66]/20 text-[#00FF66]" : "bg-yellow-500/20 text-yellow-400"}`}>
+                      {v.score} / 10
+                    </span>
+                  </div>
+                  <h5 className="text-xs font-bold text-white mt-2 line-clamp-2">{v.title}</h5>
+                  <span className="text-[10px] uppercase font-mono text-gray-400 block mt-1">{v.angle}</span>
+                  <p className="text-xs text-gray-300 mt-2 line-clamp-3 italic">"{v.hook}"</p>
+                </div>
+                <div className="pt-2 border-t border-[#1f2d4d]">
+                  <p className="text-[11px] text-gray-400 line-clamp-3">{v.critique}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function TelemetryDashboard() {
   const [runs, setRuns] = useState<RunEntry[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>("");
@@ -65,7 +180,6 @@ export default function TelemetryDashboard() {
   const [showErrorTrace, setShowErrorTrace] = useState<boolean>(false);
 
   useEffect(() => {
-    // Import telemetry history
     import("../../logs/run_history.json")
       .then((data) => {
         const loadedRuns = data.default as RunEntry[];
@@ -81,7 +195,6 @@ export default function TelemetryDashboard() {
       });
   }, []);
 
-  // Group runs by Calendar Date YYYY-MM-DD
   const runsByDate = runs.reduce((acc, run) => {
     const dateKey = run.timestamp.split("T")[0];
     if (!acc[dateKey]) {
@@ -95,7 +208,6 @@ export default function TelemetryDashboard() {
   const selectedDayRuns = runsByDate[selectedDate] || [];
   const isTournamentDay = selectedDayRuns.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
 
-  // Calculated KPI Stats
   const totalRuns = runs.length;
   const successfulRuns = runs.filter((r) => r.status === "SUCCESS").length;
   const successRate = totalRuns > 0 ? ((successfulRuns / totalRuns) * 100).toFixed(1) : "100.0";
@@ -104,7 +216,6 @@ export default function TelemetryDashboard() {
     ? Math.max(...selectedDayRuns[0].script_variants.map((v) => v.score)).toFixed(2)
     : "9.71";
 
-  // Recharts formatted data (sorted chronologically from oldest to newest)
   const chronologicalDates = Object.keys(runsByDate).sort();
   const chartData = chronologicalDates.map((date) => {
     const dayRuns = runsByDate[date];
@@ -113,14 +224,10 @@ export default function TelemetryDashboard() {
     return {
       date,
       topScore,
-      renderTime: roundNum(avgRender, 1),
+      renderTime: Number(avgRender.toFixed(1)),
       count: dayRuns.length
     };
   });
-
-  function roundNum(num: number, dec: number) {
-    return Number(Math.round(Number(num + "e" + dec)) + "e-" + dec);
-  }
 
   const getCategoryBadgeColor = (cat: string) => {
     switch (cat?.toLowerCase()) {
@@ -130,6 +237,8 @@ export default function TelemetryDashboard() {
       default: return "bg-blue-500/20 text-blue-400 border-blue-500/40";
     }
   };
+
+  const selectedRun = runs.find((r) => r.id === selectedRunId) || selectedDayRuns[0];
 
   return (
     <div className="min-h-screen bg-[#0b0f19] text-gray-100 p-4 md:p-8 space-y-8">
@@ -145,64 +254,66 @@ export default function TelemetryDashboard() {
             </h1>
           </div>
           <p className="text-sm text-gray-400 mt-1">
-            Real-time pipeline analytics, Auto-QA tournament inspector, and render health monitoring.
+            Automated Video Pipeline Execution Logs & Telemetry Analytics
           </p>
         </div>
-        <div className="flex items-center gap-3 bg-[#0b0f19] px-4 py-2 rounded-xl border border-[#1f2d4d]">
-          <Volume2 className="w-4 h-4 text-[#00FF66]" />
-          <span className="text-xs font-mono text-gray-300">Audio Compliance: <strong className="text-[#00FF66]">-14.0 LUFS</strong></span>
+
+        <div className="flex items-center gap-3">
+          <span className="flex h-3 w-3 relative">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF66] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00FF66]"></span>
+          </span>
+          <span className="text-xs font-mono font-bold text-[#00FF66] bg-[#00FF66]/10 px-3 py-1.5 rounded-full border border-[#00FF66]/30">
+            SYSTEM ONLINE
+          </span>
         </div>
       </header>
 
-      {/* OVERVIEW KPI STAT CARDS */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] flex items-center justify-between">
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Total Pipeline Runs</p>
-            <h3 className="text-3xl font-black text-white mt-1">{totalRuns}</h3>
+      {/* KPI METRIC CARDS */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+          <div className="flex justify-between items-center text-gray-400">
+            <span className="text-xs font-bold uppercase tracking-wider">Total Pipeline Runs</span>
+            <FileText className="w-4 h-4 text-[#00E5FF]" />
           </div>
-          <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl">
-            <Zap className="w-6 h-6" />
-          </div>
+          <div className="text-3xl font-extrabold text-white">{totalRuns}</div>
+          <span className="text-xs text-gray-400">Recorded across 90 days</span>
         </div>
 
-        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] flex items-center justify-between">
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Success Rate</p>
-            <h3 className="text-3xl font-black text-[#00FF66] mt-1">{successRate}%</h3>
+        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+          <div className="flex justify-between items-center text-gray-400">
+            <span className="text-xs font-bold uppercase tracking-wider">Pipeline Success Rate</span>
+            <CheckCircle className="w-4 h-4 text-[#00FF66]" />
           </div>
-          <div className="p-3 bg-[#00FF66]/10 text-[#00FF66] rounded-xl">
-            <ShieldCheck className="w-6 h-6" />
-          </div>
+          <div className="text-3xl font-extrabold text-[#00FF66]">{successRate}%</div>
+          <span className="text-xs text-gray-400">Execution completion rate</span>
         </div>
 
-        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] flex items-center justify-between">
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Avg Render Time</p>
-            <h3 className="text-3xl font-black text-[#00E5FF] mt-1">{avgRenderTime}s</h3>
+        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+          <div className="flex justify-between items-center text-gray-400">
+            <span className="text-xs font-bold uppercase tracking-wider">Avg Render Time</span>
+            <Clock className="w-4 h-4 text-cyan-400" />
           </div>
-          <div className="p-3 bg-[#00E5FF]/10 text-[#00E5FF] rounded-xl">
-            <Clock className="w-6 h-6" />
-          </div>
+          <div className="text-3xl font-extrabold text-white">{avgRenderTime}s</div>
+          <span className="text-xs text-gray-400">FFmpeg / MoviePy engine</span>
         </div>
 
-        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] flex items-center justify-between">
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Top Auto-QA Score</p>
-            <h3 className="text-3xl font-black text-[#FFBF00] mt-1">{latestQAScore} / 10</h3>
+        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+          <div className="flex justify-between items-center text-gray-400">
+            <span className="text-xs font-bold uppercase tracking-wider">Top Auto-QA Score</span>
+            <Sparkles className="w-4 h-4 text-[#FFBF00]" />
           </div>
-          <div className="p-3 bg-[#FFBF00]/10 text-[#FFBF00] rounded-xl">
-            <Award className="w-6 h-6" />
-          </div>
+          <div className="text-3xl font-extrabold text-[#FFBF00]">{latestQAScore} / 10</div>
+          <span className="text-xs text-gray-400">5-Variant Auto-QA winner</span>
         </div>
       </div>
 
-      {/* PIPELINE HEALTH HEATMAP GRID */}
+      {/* PIPELINE HEALTH HEATMAP */}
       <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-[#00E5FF]" />
-            Pipeline Health Heatmap (Past 30 Days Activity)
+            Pipeline Health Heatmap (Past 90 Days Activity)
           </h2>
           <div className="flex items-center gap-4 text-xs text-gray-400">
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-[#00FF66] inline-block"></span> Success</span>
@@ -235,7 +346,6 @@ export default function TelemetryDashboard() {
 
       {/* ANALYTICS RECHARTS GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Auto-QA Score Trends */}
         <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
           <h3 className="text-md font-bold text-white flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-[#FFBF00]" />
@@ -246,7 +356,7 @@ export default function TelemetryDashboard() {
               <LineChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
                 <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} />
-                <YAxis domain={[6, 10]} stroke="#9ca3af" fontSize={12} />
+                <YAxis domain={[4, 10]} stroke="#9ca3af" fontSize={12} />
                 <Tooltip contentStyle={{ backgroundColor: "#131b2e", borderColor: "#1f2d4d", borderRadius: "12px" }} />
                 <Line type="monotone" dataKey="topScore" stroke="#FFBF00" strokeWidth={3} dot={{ r: 5 }} />
               </LineChart>
@@ -254,7 +364,6 @@ export default function TelemetryDashboard() {
           </div>
         </div>
 
-        {/* FFmpeg Render Durations */}
         <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
           <h3 className="text-md font-bold text-white flex items-center gap-2">
             <Clock className="w-5 h-5 text-[#00E5FF]" />
@@ -308,7 +417,6 @@ export default function TelemetryDashboard() {
             </div>
           </div>
 
-          {/* ERA ARCHITECTURE BADGE BANNER */}
           <div className="flex items-center justify-between bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d]">
             <div className="flex items-center gap-3">
               <span className={`px-3 py-1 rounded-full text-xs font-bold border ${isTournamentDay ? "bg-purple-950/60 text-purple-300 border-purple-800/40" : "bg-cyan-950/60 text-cyan-300 border-cyan-800/40"}`}>
@@ -322,7 +430,6 @@ export default function TelemetryDashboard() {
             </div>
           </div>
 
-          {/* PRE-TOURNAMENT ERA: LIST OF ALL VIDEOS GENERATED ON SELECTED DATE */}
           {!isTournamentDay ? (
             <div className="space-y-6">
               <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">
@@ -364,7 +471,6 @@ export default function TelemetryDashboard() {
                       "{run.winning_script?.text || "No script text available"}"
                     </p>
 
-                    {/* ATTRIBUTES FOR THIS INDIVIDUAL CLIP */}
                     <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-[#1f2d4d]">
                       <div>
                         <span className="text-gray-400 font-bold block">Knowledge Source:</span>
@@ -387,118 +493,31 @@ export default function TelemetryDashboard() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
           ) : (
-            /* MODERN TOURNAMENT ERA (1 VIDEO/DAY WITH 5-VARIANT BREAKDOWN) */
-            <div className="space-y-6">
-              {selectedDayRuns.length > 0 && (() => {
-                const run = selectedDayRuns.find((r) => r.id === selectedRunId) || selectedDayRuns[0];
-                if (!run) return null;
-                return (
-                  <div key={run.id} className="space-y-6">
-                  {/* WINNING SCRIPT BANNER */}
-                  <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(run.category)}`}>
-                        [TOURNAMENT] WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
-                      </span>
-                      {run.youtube_url && (
-                        <a
-                          href={run.youtube_url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/40 px-4 py-1.5 rounded-xl text-xs font-bold hover:bg-red-600/30 transition-all"
-                        >
-                          <Youtube className="w-4 h-4" /> Watch Short
-                        </a>
-                      )}
-                    </div>
-                    <p className="text-sm italic text-gray-200 bg-[#131b2e] p-4 rounded-lg border border-[#1f2d4d]">
-                      "{run.winning_script?.text || "No text available"}"
-                    </p>
-                  </div>
+            <TournamentSection run={selectedRun || selectedDayRuns[0]} getCategoryBadgeColor={getCategoryBadgeColor} />
+          )}
 
-                  {/* DEEP METADATA VAULT */}
-                  <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
-                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#00E5FF] flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-[#00E5FF]" />
-                      Deep Metadata Vault (Exclusive Attributes Outside YouTube Studio)
-                    </h4>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Scraped Source Knowledge Origin</span>
-                        <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
-                          {run.source_url}
-                        </a>
-                      </div>
-                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Background Audio Track</span>
-                        <span className="font-mono text-white block">{run.music_track}</span>
-                      </div>
-                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Kokoro Neural Voice Actor</span>
-                        <span className="font-mono text-[#00FF66] block">{run.voice_actor}</span>
-                      </div>
-                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Scraped Search Keywords</span>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {(run.search_keywords || []).map((kw, i) => (
-                            <span key={i} className="bg-blue-950/60 text-blue-300 border border-blue-800/40 px-2 py-0.5 rounded text-[10px]">
-                              {kw}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Visual Asset Mix & Salience Zoom</span>
-                        <span className="font-mono text-yellow-300 block">{run.visual_asset_types}</span>
-                      </div>
-                      <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">FFmpeg Subtitle & ASS Engine</span>
-                        <span className="font-mono text-gray-200 block">{run.ass_subtitle_engine}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 5-VARIANT COMPARISON GRID */}
-                  <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
-                    <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
-                      [TOURNAMENT] 5-Variant Auto-QA Tournament Breakdown
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                      {run.script_variants?.map((v) => {
-                        const isWinner = v.title === run.winning_script?.title;
-                        return (
-                          <div
-                            key={v.variant_id}
-                            className={`p-4 rounded-xl border flex flex-col justify-between space-y-3 ${
-                              isWinner
-                                ? "bg-[#00FF66]/10 border-[#00FF66]/50 ring-1 ring-[#00FF66]/30"
-                                : "bg-[#0b0f19] border-[#1f2d4d]"
-                            }`}
-                          >
-                            <div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-xs font-bold text-gray-400">Variant {v.variant_id}</span>
-                                <span className={`text-xs font-bold px-2 py-0.5 rounded ${v.score >= 9 ? "bg-[#00FF66]/20 text-[#00FF66]" : "bg-yellow-500/20 text-yellow-400"}`}>
-                                  {v.score} / 10
-                                </span>
-                              </div>
-                              <h5 className="text-xs font-bold text-white mt-2 line-clamp-2">{v.title}</h5>
-                              <span className="text-[10px] uppercase font-mono text-gray-400 block mt-1">{v.angle}</span>
-                              <p className="text-xs text-gray-300 mt-2 line-clamp-3 italic">"{v.hook}"</p>
-                            </div>
-                            <div className="pt-2 border-t border-[#1f2d4d]">
-                              <p className="text-[11px] text-gray-400 line-clamp-3">{v.critique}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+          {/* FAILURE & ERROR LOG CONTAINERS */}
+          {selectedRun?.status === "FAILED" && (
+            <div className="bg-red-950/30 border border-red-500/40 p-4 rounded-xl space-y-2">
+              <div 
+                onClick={() => setShowErrorTrace(!showErrorTrace)}
+                className="flex items-center justify-between cursor-pointer text-red-400 text-sm font-bold"
+              >
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5" />
+                  <span>Pipeline Execution Traceback (Click to Toggle)</span>
                 </div>
-              );
-            })()}
+                {showErrorTrace ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+              </div>
+
+              {showErrorTrace && (
+                <pre className="text-xs font-mono bg-black/60 p-4 rounded-lg text-red-300 overflow-x-auto border border-red-900/50 mt-2">
+                  {selectedRun.error_traceback || "No explicit traceback recorded."}
+                </pre>
+              )}
             </div>
           )}
         </div>
