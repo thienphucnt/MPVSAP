@@ -121,11 +121,23 @@ def get_or_create_cta_asset() -> str:
     return str(cta_path.resolve())
 
 
-def create_progress_bar_clip(duration: float, resolution: Tuple[int, int], color: Tuple[int, int, int] = (0, 229, 255)) -> VideoClip:
+def get_theme_colors(category: str) -> Tuple[Tuple[int, int, int], str, str]:
+    """Return (RGB tuple for progress bar, ASS color tag, Hex string) for category."""
+    cat_lower = category.lower()
+    if "history" in cat_lower:
+        return (255, 191, 0), "&H0000BFFF", "#FFBF00"  # Amber Gold
+    elif "tech" in cat_lower:
+        return (0, 255, 102), "&H0066FF00", "#00FF66"  # Electric Green
+    else:
+        return (0, 229, 255), "&H00FFFF00", "#00E5FF"  # Neon Cyan (Space)
+
+
+def create_progress_bar_clip(duration: float, resolution: Tuple[int, int], category: str = "space") -> VideoClip:
     """Generate a 5-pixel high solid accent progress bar at the bottom scaling 0% -> 100% over video duration."""
     w, h = resolution
     bar_height = 5
     y_pos = h - bar_height
+    color, _, _ = get_theme_colors(category)
 
     def make_frame(t):
         frame = np.zeros((bar_height, w, 3), dtype=np.uint8)
@@ -136,9 +148,112 @@ def create_progress_bar_clip(duration: float, resolution: Tuple[int, int], color
     return (
         VideoClip(make_frame, duration=duration)
         .set_position((0, y_pos))
-        .set_start(0)
     )
 
+
+def find_image_salience_center(img_path: str) -> Tuple[float, float]:
+    """Identify the primary visual focal center (cx, cy) normalized between 0.0 and 1.0 using Pillow edge density."""
+    try:
+        from PIL import ImageFilter
+        with PIL.Image.open(img_path) as im:
+            gray = im.convert("L").resize((300, 300))
+            edges = gray.filter(ImageFilter.FIND_EDGES)
+            arr = np.array(edges, dtype=np.float32)
+            total = np.sum(arr)
+            if total <= 0:
+                return (0.5, 0.5)
+
+            y_indices, x_indices = np.indices(arr.shape)
+            cx = float(np.sum(x_indices * arr) / total) / 300.0
+            cy = float(np.sum(y_indices * arr) / total) / 300.0
+            return (max(0.2, min(0.8, cx)), max(0.2, min(0.8, cy)))
+    except Exception as e:
+        print("Salience calculation fallback to center:", e)
+        return (0.5, 0.5)
+
+
+def is_power_word(word: str) -> bool:
+    """Return True if word is a metric, number, or high-impact NLP trigger word."""
+    clean = re.sub(r"[^\w]", "", word.lower())
+    if not clean:
+        return False
+    if clean.isdigit():
+        return True
+    power_words = {
+        "secret", "banned", "exploded", "classified", "hidden", "shocking", 
+        "deadly", "mystery", "discovered", "unknown", "stolen", "impossible", 
+        "unseen", "ancient", "forbidden", "fatal", "insane", "monster", "warning"
+    }
+    return clean in power_words
+
+
+def master_tts_audio(input_wav: str, output_wav: str) -> str:
+    """Master TTS audio with Studio Audio Chain (80Hz Highpass filter, 2500Hz EQ boost, dynamic compand compressor)."""
+    try:
+        cmd = [
+            "ffmpeg", "-y",
+            "-i", input_wav,
+            "-af", "highpass=f=80,equalizer=f=2500:width_type=o:width=1:g=2,compand=attacks=0.02:decays=0.2:points=-60/-60|-24/-12|-12/-6|0/-3:gain=2",
+            "-c:a", "pcm_s16le",
+            output_wav
+        ]
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print("Studio audio mastering chain applied successfully.")
+        return output_wav
+    except Exception as e:
+        print("Studio audio mastering chain fallback to raw audio:", e)
+        return input_wav
+
+
+def generate_srt_file(subs_list: List[Tuple[Tuple[float, float], str]], output_srt_path: str) -> str:
+    """Generate standard .srt caption file for native YouTube Closed Captions API upload."""
+    def format_srt_time(seconds: float) -> str:
+        seconds = max(0.0, seconds)
+        hours = int(seconds // 3600)
+        minutes = int((seconds % 3600) // 60)
+        secs = int(seconds % 60)
+        millis = int(round((seconds - int(seconds)) * 1000))
+        if millis >= 1000:
+            secs += millis // 1000
+            millis = millis % 1000
+        return f"{hours:02d}:{minutes:02d}:{secs:02d},{millis:03d}"
+
+    lines = []
+    for idx, ((start, end), text) in enumerate(subs_list):
+        lines.append(str(idx + 1))
+        lines.append(f"{format_srt_time(start)} --> {format_srt_time(end)}")
+        lines.append(text.strip())
+        lines.append("")
+
+    with open(output_srt_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+    print(f"Generated SRT file: {output_srt_path}")
+    return output_srt_path
+
+
+def fetch_trending_category_keywords(category: str) -> List[str]:
+    """Fetch top rising search queries for category via pytrends / Google Trends."""
+    cat_lower = category.lower()
+    kw_search = "space"
+    if "history" in cat_lower:
+        kw_search = "history"
+    elif "tech" in cat_lower:
+        kw_search = "technology"
+
+    try:
+        from pytrends.request import TrendReq
+        pytrend = TrendReq(hl="en-US", tz=360, timeout=(5, 10))
+        pytrend.build_payload([kw_search], cat=0, timeframe="now 7-d", geo="", gprop="")
+        related = pytrend.related_queries()
+        rising_df = related.get(kw_search, {}).get("rising")
+        if rising_df is not None and not rising_df.empty:
+            trends = rising_df["query"].head(5).tolist()
+            print(f"Fetched 7-day rising trends for '{kw_search}': {trends}")
+            return trends
+    except Exception as e:
+        print(f"pytrends search fallback for '{kw_search}':", e)
+
+    return []
 
 
 def send_webhook_notification(title: str, message: str, status: str = "success", video_url: Optional[str] = None):
@@ -1018,6 +1133,10 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
         except Exception as fallback_err:
             words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, fallback_voice, audio_path))
 
+    # Apply Studio Audio Mastering Chain (80Hz Highpass filter, 2.5kHz EQ Boost, Compand Compressor)
+    mastered_audio_path = f"{clean_topic}_mastered.wav"
+    audio_path = master_tts_audio(audio_path, mastered_audio_path)
+
     subs_list = []
     for start_sec, end_sec, text in words:
         if text:
@@ -1100,37 +1219,43 @@ def download_wikimedia_image(url: str, index: int) -> Optional[str]:
     return None
 
 def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[int, int], output_path: str) -> None:
-    """Animate a static image into a dynamic video clip with randomized 4-way Ken Burns motion."""
+    """Animate a static image into a dynamic video clip with salience-based focal point zoom."""
     from moviepy.editor import ImageClip
     w, h = target_res
     
+    cx, cy = find_image_salience_center(image_path)
     clip = ImageClip(image_path).set_duration(duration)
     img_w, img_h = clip.size
-    scale = max(w / img_w, h / img_h) * 1.12
+    scale = max(w / img_w, h / img_h) * 1.15
     
     clip = clip.resize(scale)
-    motion_type = random.choice([0, 1, 2, 3])
     
-    def zoom_in(t):
-        return 1.0 + 0.12 * (t / duration)
+    def zoom_filter(get_frame, t):
+        frame = get_frame(t)
+        progress = t / float(duration)
+        cur_scale = 1.0 + 0.15 * progress
+        target_w, target_h = target_res
         
-    def zoom_out(t):
-        return 1.12 - 0.12 * (t / duration)
+        nw = int(target_w * cur_scale)
+        nh = int(target_h * cur_scale)
         
+        img = PIL.Image.fromarray(frame)
+        img_resized = img.resize((nw, nh), PIL.Image.ANTIALIAS)
+        
+        center_x = int(cx * nw)
+        center_y = int(cy * nh)
+        
+        left = max(0, min(nw - target_w, center_x - target_w // 2))
+        top = max(0, min(nh - target_h, center_y - target_h // 2))
+        
+        img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
+        return np.array(img_cropped)
+
     try:
-        if motion_type == 0:
-            clip = clip.resize(zoom_in)
-        elif motion_type == 1:
-            clip = clip.resize(zoom_out)
-        elif motion_type == 2:
-            clip = clip.resize(zoom_in)
-        else:
-            clip = clip.resize(zoom_out)
-        clip = clip.crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
+        clip = clip.fl(zoom_filter)
     except Exception as e:
-        print("Fallback to standard resize:", e)
-        clip = clip.resize(target_res)
-        clip = clip.crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
+        print("Salience zoom filter fallback:", e)
+        clip = clip.resize(target_res).crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
         
     clip.write_videofile(output_path, fps=30, logger=None)
     clip.close()
@@ -1348,6 +1473,8 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
         total_end = format_ass_time(subs_list[-1][0][1] + 3.0)
         lines.append(f"Dialogue: 0,{total_start},{total_end},Watermark,,0,0,0,,{watermark_handle}")
     
+    _, theme_ass_color, _ = get_theme_colors(category)
+
     def get_ass_color_tag(word: str) -> str:
         clean = re.sub(r"[^\w]", "", word.upper())
         fillers = {
@@ -1357,8 +1484,9 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
         }
         if clean in fillers:
             return ""
-        highlight = random.choice(["&H0000FFFF", "&H0000FF00", "&H00FFFF00"])
-        return f"{{\\1c{highlight}}}"
+        if is_power_word(word):
+            return f"{{\\fscx120\\fscy120\\1c&H0000FFFF}}"
+        return f"{{\\1c{theme_ass_color}}}"
         
     if not config.is_short:
         # Group single-word cues into phrases of 3-5 words (targeting 4)
@@ -1498,8 +1626,8 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     retention_overlays = []
     if config.is_short:
         try:
-            # 1. Dynamic 5px Visual Progress Bar at bottom
-            pbar_clip = create_progress_bar_clip(audio_duration, config.resolution)
+            # 1. Dynamic 5px Visual Progress Bar at bottom (category theme-colored)
+            pbar_clip = create_progress_bar_clip(audio_duration, config.resolution, category)
             retention_overlays.append(pbar_clip)
         except Exception as pbar_err:
             print("Failed to add progress bar clip:", pbar_err)
@@ -1524,7 +1652,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     if retention_overlays:
         bg_clip = CompositeVideoClip([bg_clip] + retention_overlays)
 
-    # --- Background music mixing (FFMPEG amix for mono/stereo standard) ---
+    # --- Background music mixing & Broadcast-Standard LUFS Normalization (-14 LUFS / -1.0 dBTP) ---
     final_audio_clip = audio_clip
     if mix_music:
         music_dir = Path("music")
@@ -1554,12 +1682,12 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     music_clip = m.volumex(0.08)
                     music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
 
-                    # Mix using ffmpeg
+                    # Mix using ffmpeg with broadcast-standard LUFS normalization (-14.0 LUFS, -1.0 dBTP)
                     cmd = [
                         "ffmpeg", "-y",
                         "-i", audio_path,
                         "-i", music_temp_path,
-                        "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0",
+                        "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0,loudnorm=I=-14:TP=-1.0:LRA=11",
                         "-c:a", "pcm_s16le",
                         mixed_audio_path
                     ]
@@ -1909,7 +2037,7 @@ def generate_thumbnail(title: str, category: str, pexels_key: str, output_path: 
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER WITH PINNED COMMENT
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None) -> Optional[str]:
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None, subs_list: Optional[List] = None) -> Optional[str]:
     print("Uploading to YouTube...")
     creds = Credentials(
         token=None,
@@ -1962,6 +2090,32 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
             print("Successfully uploaded custom thumbnail.")
         except Exception as e:
             print("Failed to upload custom thumbnail:", e)
+
+    # Upload native Closed Captions (.SRT)
+    if video_id and subs_list:
+        srt_path = f"captions_{video_id}.srt"
+        generate_srt_file(subs_list, srt_path)
+        if Path(srt_path).exists():
+            print(f"Uploading native Closed Captions (.SRT) for video {video_id}...")
+            try:
+                youtube.captions().insert(
+                    part="snippet",
+                    body={
+                        "snippet": {
+                            "videoId": video_id,
+                            "language": "en",
+                            "name": "English"
+                        }
+                    },
+                    media_body=MediaFileUpload(srt_path, mimetype="text/plain")
+                ).execute()
+                print("Successfully uploaded native Closed Captions.")
+            except Exception as srt_err:
+                print("Native Closed Captions API upload note:", srt_err)
+            finally:
+                if os.path.exists(srt_path):
+                    try: os.remove(srt_path)
+                    except Exception: pass
 
     if video_id and playlist_id:
         print(f"Adding video {video_id} to playlist {playlist_id}...")
@@ -2351,6 +2505,11 @@ def run_daily_upload_pipeline_once() -> None:
     # Ingest rich source text using Playwright headless Chromium (with Wikipedia fallback)
     source_data = fetch_playwright_scraped_source_text(category, past_topics)
 
+    # Ingest real-time 7-day rising search trends for search indexing
+    rising_trends = fetch_trending_category_keywords(category)
+    if rising_trends:
+        source_data["text"] += f"\n\nREAL-TIME 7-DAY RISING SEARCH TRENDS TO WEAVE IN:\n- " + "\n- ".join(rising_trends)
+
     # 1. Multi-Variant Tournament Content Generation & Pass 2 Auto-QA
     title, description, segments = generate_content(client, category, past_topics, source_data, config)
 
@@ -2505,12 +2664,14 @@ def run_daily_upload_pipeline_once() -> None:
 
         # 3. Upload to platforms (Only upload to TikTok/Meta for Shorts)
         uploaded_video_id = None
+        current_subs = subs_list if config.is_short else all_subs_list
         if youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
                 uploaded_video_id = upload_to_youtube(
                     output_path, title, description,
                     youtube_client_id, youtube_client_secret, youtube_refresh_token,
-                    playlist_id, category, thumbnail_path, related_long_video_id
+                    playlist_id, category, thumbnail_path, related_long_video_id,
+                    subs_list=current_subs
                 )
                 
                 # Update past_topics with uploaded video metadata

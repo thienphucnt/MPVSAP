@@ -8,5 +8,7 @@ numpy<2
 playwright
 kokoro-onnx
 soundfile
+pytrends
+
 
 
