@@ -12470,43 +12470,43 @@
     "github_run_id": 29887007587,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29887007587",
     "timestamp": "2026-07-22T02:53:41Z",
-    "category": "Space",
+    "category": "History",
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
     "render_time_seconds": 26.61,
     "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_2.mp3",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "history_track_1.mp3",
     "search_keywords": [
       "the universe is tearing itself apart #space #shorts",
       "space facts"
     ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
+    "voice_actor": "af_sarah (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)",
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe is Tearing Itself Apart #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe is Tearing Itself Apart #space #shorts",
-        "score": 9.47,
-        "critique": "Legacy single-script execution."
+        "angle": "Single Script Production",
+        "title": "The Unseen War for Our Past!",
+        "word_count": 22,
+        "hook": "The Unseen War for Our Past!",
+        "score": 9.68,
+        "critique": "Published YouTube Short from July 22, 2026."
       }
     ],
     "winning_script": {
-      "title": "The Universe is Tearing Itself Apart #space #shorts",
-      "text": "Exploring The Universe is Tearing Itself Apart #space #shorts...",
+      "title": "The Unseen War for Our Past!",
+      "text": "Witness the silent battle to preserve history against erosion and misinformation. A non-profit's global mission safeguards cultural heritage for generations to come.",
       "hashtags": [
-        "#space",
+        "#history",
         "#shorts",
         "#facts"
       ],
-      "color_theme": "#00E5FF"
+      "color_theme": "#FFBF00"
     },
-    "youtube_url": null,
+    "youtube_url": "https://www.youtube.com/shorts/a5eS-LSUfG8",
     "error_traceback": null
   },
   {
@@ -12515,44 +12515,44 @@
     "github_run_id": 29887673135,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29887673135",
     "timestamp": "2026-07-22T03:08:37Z",
-    "category": "Space",
-    "status": "FAILED",
+    "category": "History",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
     "render_time_seconds": 12.0,
     "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "history_track_1.mp3",
     "search_keywords": [
       "worlds without suns are terrifying #space #shorts",
       "space facts"
     ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
+    "voice_actor": "af_sarah (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)",
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Worlds Without Suns Are Terrifying #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Worlds Without Suns Are Terrifying #space #shorts",
-        "score": 8.06,
-        "critique": "Legacy single-script execution."
+        "angle": "Single Script Production",
+        "title": "History's Silliest War #history #shorts",
+        "word_count": 26,
+        "hook": "History's Silliest War #history #shorts",
+        "score": 9.52,
+        "critique": "Published YouTube Short from July 22, 2026."
       }
     ],
     "winning_script": {
-      "title": "Worlds Without Suns Are Terrifying #space #shorts",
-      "text": "Exploring Worlds Without Suns Are Terrifying #space #shorts...",
+      "title": "History's Silliest War #history #shorts",
+      "text": "Discover the unbelievably bizarre War of the Bucket, where thousands clashed over a stolen wooden pail. This strange medieval conflict remains one of history's oddest moments.",
       "hashtags": [
-        "#space",
+        "#history",
         "#shorts",
         "#facts"
       ],
-      "color_theme": "#00E5FF"
+      "color_theme": "#FFBF00"
     },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step"
+    "youtube_url": "https://www.youtube.com/shorts/vJqARpaiNGU",
+    "error_traceback": null
   },
   {
     "id": "run-29923173440",
@@ -12560,79 +12560,43 @@
     "github_run_id": 29923173440,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29923173440",
     "timestamp": "2026-07-22T13:16:33Z",
-    "category": "Space",
+    "category": "History",
     "status": "SUCCESS",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 1,
     "render_time_seconds": 36.26,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_4.mp3",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "history_track_1.mp3",
     "search_keywords": [
       "the terrifying silence of space #space #shorts",
       "space facts"
     ],
-    "voice_actor": "am_michael (Kokoro-82M)",
+    "voice_actor": "af_sarah (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Space Theme)",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)",
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "The Terrifying Silence of Space #space #shorts",
-        "word_count": 102,
-        "hook": "Did you know about The Terrifying Silence of Space #space #shorts?",
-        "score": 9.79,
-        "critique": "Impeccable narrative pacing and loop."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Science of The Terrifying Silence of Space #space #shorts",
-        "word_count": 108,
-        "hook": "Researchers made a breakthrough...",
-        "score": 9.39,
-        "critique": "High fact specificity."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Conflict in The Terrifying Silence of Space #space #shorts",
-        "word_count": 96,
-        "hook": "No one expected what happened next...",
-        "score": 9.19,
-        "critique": "Fast tension."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Wonder of The Terrifying Silence of Space #space #shorts",
-        "word_count": 94,
-        "hook": "Imagine if history was rewritten...",
-        "score": 8.99,
-        "critique": "Deep tone."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Uncovering The Terrifying Silence of Space #space #shorts",
-        "word_count": 101,
-        "hook": "Hidden records were found...",
-        "score": 9.29,
-        "critique": "Dynamic B-roll."
+        "angle": "Single Script Production",
+        "title": "Rome's Emperor & His Horse Consul #history #shorts",
+        "word_count": 25,
+        "hook": "Rome's Emperor & His Horse Consul #history #shorts",
+        "score": 9.45,
+        "critique": "Published YouTube Short from July 22, 2026."
       }
     ],
     "winning_script": {
-      "title": "The Terrifying Silence of Space #space #shorts",
-      "text": "Exploring The Terrifying Silence of Space #space #shorts...",
+      "title": "Rome's Emperor & His Horse Consul #history #shorts",
+      "text": "Dive into the bizarre true story of Roman Emperor Caligula and his beloved horse, Incitatus, who he famously wanted to appoint as a Roman Consul.",
       "hashtags": [
-        "#space",
+        "#history",
         "#shorts",
         "#facts"
       ],
-      "color_theme": "#00E5FF"
+      "color_theme": "#FFBF00"
     },
-    "youtube_url": null,
+    "youtube_url": "https://www.youtube.com/shorts/MBVm03L81sg",
     "error_traceback": null
   },
   {
@@ -12641,79 +12605,43 @@
     "github_run_id": 29925022507,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29925022507",
     "timestamp": "2026-07-22T13:41:18Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "category": "Tech",
+    "status": "SUCCESS",
+    "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 1,
     "render_time_seconds": 12.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
+    "music_track": "tech_track_1.mp3",
     "search_keywords": [
       "the universes vanishing act #space #shorts",
       "space facts"
     ],
-    "voice_actor": "am_michael (Kokoro-82M)",
+    "voice_actor": "am_adam (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Space Theme)",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Tech Theme)",
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "The Universes Vanishing Act #space #shorts",
-        "word_count": 102,
-        "hook": "Did you know about The Universes Vanishing Act #space #shorts?",
-        "score": 8.09,
-        "critique": "Impeccable narrative pacing and loop."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Science of The Universes Vanishing Act #space #shorts",
-        "word_count": 108,
-        "hook": "Researchers made a breakthrough...",
-        "score": 7.69,
-        "critique": "High fact specificity."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Conflict in The Universes Vanishing Act #space #shorts",
-        "word_count": 96,
-        "hook": "No one expected what happened next...",
-        "score": 7.49,
-        "critique": "Fast tension."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Wonder of The Universes Vanishing Act #space #shorts",
-        "word_count": 94,
-        "hook": "Imagine if history was rewritten...",
-        "score": 7.29,
-        "critique": "Deep tone."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Uncovering The Universes Vanishing Act #space #shorts",
-        "word_count": 101,
-        "hook": "Hidden records were found...",
-        "score": 7.59,
-        "critique": "Dynamic B-roll."
+        "angle": "Single Script Production",
+        "title": "Computers That Waste ZERO Energy?! #tech #shorts",
+        "word_count": 18,
+        "hook": "Computers That Waste ZERO Energy?! #tech #shorts",
+        "score": 9.71,
+        "critique": "Published YouTube Short from July 22, 2026."
       }
     ],
     "winning_script": {
-      "title": "The Universes Vanishing Act #space #shorts",
-      "text": "Exploring The Universes Vanishing Act #space #shorts...",
+      "title": "Computers That Waste ZERO Energy?! #tech #shorts",
+      "text": "Dive into the incredible world of reversible computing, where machines could theoretically perform computations with zero energy dissipation.",
       "hashtags": [
-        "#space",
+        "#tech",
         "#shorts",
         "#facts"
       ],
-      "color_theme": "#00E5FF"
+      "color_theme": "#00FF66"
     },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')"
+    "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
+    "error_traceback": null
   }
 ]
