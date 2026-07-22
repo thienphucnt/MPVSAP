@@ -65,15 +65,22 @@ interface RunEntry {
 
 // Clean separate component for Tournament Era
 function TournamentSection({ run, getCategoryBadgeColor }: { run: RunEntry; getCategoryBadgeColor: (cat: string) => string }) {
+  const [showErrorTrace, setShowErrorTrace] = useState<boolean>(false);
   if (!run) return null;
+
   return (
     <div className="space-y-6">
       {/* WINNING SCRIPT BANNER */}
       <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
         <div className="flex items-center justify-between">
-          <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(run.category)}`}>
-            [TOURNAMENT] WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(run.category)}`}>
+              [TOURNAMENT] WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
+            </span>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${run.status === "SUCCESS" ? "bg-[#00FF66]/20 text-[#00FF66] border-[#00FF66]/40" : "bg-red-500/20 text-red-400 border-red-500/40"}`}>
+              {run.status === "SUCCESS" ? "STATUS: SUCCESS" : "STATUS: FAILED"}
+            </span>
+          </div>
           {run.youtube_url && (
             <a
               href={run.youtube_url}
@@ -169,6 +176,116 @@ function TournamentSection({ run, getCategoryBadgeColor }: { run: RunEntry; getC
           })}
         </div>
       </div>
+
+      {/* INLINE FAILURE TRACEBACK FOR THIS RUN */}
+      {run.status === "FAILED" && (
+        <div className="bg-red-950/30 border border-red-500/40 p-4 rounded-xl space-y-2">
+          <div 
+            onClick={() => setShowErrorTrace(!showErrorTrace)}
+            className="flex items-center justify-between cursor-pointer text-red-400 text-sm font-bold"
+          >
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5" />
+              <span>Execution Traceback for this Run (Click to Toggle)</span>
+            </div>
+            {showErrorTrace ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </div>
+
+          {showErrorTrace && (
+            <pre className="text-xs font-mono bg-black/60 p-4 rounded-lg text-red-300 overflow-x-auto border border-red-900/50 mt-2">
+              {run.error_traceback || "No explicit traceback recorded."}
+            </pre>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Sub-component for individual Pre-Tournament Clip Cards
+function LegacyClipCard({ run, index, selectedRunId, getCategoryBadgeColor }: { run: RunEntry; index: number; selectedRunId: string; getCategoryBadgeColor: (cat: string) => string }) {
+  const [showErrorTrace, setShowErrorTrace] = useState<boolean>(false);
+  const isSelected = selectedRunId === run.id;
+
+  return (
+    <div className={`p-5 rounded-xl border space-y-4 transition-all ${isSelected ? "bg-[#131b2e] border-white ring-2 ring-white" : "bg-[#0b0f19] border-[#1f2d4d]"}`}>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-gray-400 font-mono">Run #{index + 1} ({run.timestamp.split("T")[1].substring(0, 5)} UTC)</span>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${getCategoryBadgeColor(run.category)}`}>
+              {run.category}
+            </span>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${run.status === "SUCCESS" ? "bg-[#00FF66]/20 text-[#00FF66] border-[#00FF66]/40" : "bg-red-500/20 text-red-400 border-red-500/40"}`}>
+              {run.status === "SUCCESS" ? "SUCCESS" : "FAILED"}
+            </span>
+          </div>
+          <h4 className="text-md font-bold text-white mt-1">{run.winning_script?.title || "Video Clip"}</h4>
+        </div>
+
+        <div className="flex flex-col items-end gap-1">
+          <span className="text-xs font-bold px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400">
+            Score: {run.script_variants?.[0]?.score || 5.2} / 10
+          </span>
+          {run.youtube_url && (
+            <a
+              href={run.youtube_url}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1 text-[11px] font-bold text-red-400 hover:underline mt-1"
+            >
+              <Youtube className="w-3.5 h-3.5" /> Watch Short
+            </a>
+          )}
+        </div>
+      </div>
+
+      <p className="text-xs italic text-gray-300 bg-[#131b2e] p-3 rounded-lg border border-[#1f2d4d]">
+        "{run.winning_script?.text || "No script text available"}"
+      </p>
+
+      <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-[#1f2d4d]">
+        <div>
+          <span className="text-gray-400 font-bold block">Knowledge Source:</span>
+          <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
+            {run.source_url}
+          </a>
+        </div>
+        <div>
+          <span className="text-gray-400 font-bold block">Audio Track:</span>
+          <span className="font-mono text-gray-200">{run.music_track}</span>
+        </div>
+        <div>
+          <span className="text-gray-400 font-bold block">Voice Engine:</span>
+          <span className="font-mono text-[#00FF66]">{run.voice_actor}</span>
+        </div>
+        <div>
+          <span className="text-gray-400 font-bold block">Visual Asset Mix:</span>
+          <span className="font-mono text-yellow-300">{run.visual_asset_types}</span>
+        </div>
+      </div>
+
+      {/* EMBEDDED FAILURE TRACEBACK FOR THIS EXACT CLIP */}
+      {run.status === "FAILED" && (
+        <div className="bg-red-950/40 border border-red-500/40 p-3 rounded-lg space-y-1.5 mt-2">
+          <div 
+            onClick={() => setShowErrorTrace(!showErrorTrace)}
+            className="flex items-center justify-between cursor-pointer text-red-400 text-xs font-bold"
+          >
+            <div className="flex items-center gap-1.5">
+              <AlertTriangle className="w-4 h-4 text-red-400" />
+              <span>Traceback for this Failed Run (Click to Toggle)</span>
+            </div>
+            {showErrorTrace ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+          </div>
+
+          {showErrorTrace && (
+            <pre className="text-[11px] font-mono bg-black/70 p-3 rounded text-red-300 overflow-x-auto border border-red-900/50 mt-1">
+              {run.error_traceback || "No explicit traceback recorded."}
+            </pre>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -177,7 +294,7 @@ export default function TelemetryDashboard() {
   const [runs, setRuns] = useState<RunEntry[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedRunId, setSelectedRunId] = useState<string>("");
-  const [showErrorTrace, setShowErrorTrace] = useState<boolean>(false);
+  const [statusFilter, setStatusFilter] = useState<"ALL" | "SUCCESS" | "FAILED">("ALL");
 
   useEffect(() => {
     import("../../logs/run_history.json")
@@ -207,6 +324,12 @@ export default function TelemetryDashboard() {
   const availableDates = Object.keys(runsByDate).sort().reverse();
   const selectedDayRuns = runsByDate[selectedDate] || [];
   const isTournamentDay = selectedDayRuns.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
+
+  const filteredDayRuns = selectedDayRuns.filter((r) => {
+    if (statusFilter === "SUCCESS") return r.status === "SUCCESS";
+    if (statusFilter === "FAILED") return r.status === "FAILED";
+    return true;
+  });
 
   const totalRuns = runs.length;
   const successfulRuns = runs.filter((r) => r.status === "SUCCESS").length;
@@ -393,7 +516,7 @@ export default function TelemetryDashboard() {
                 Daily Inspector Matrix & Run History
               </h2>
               <p className="text-xs text-gray-400 mt-0.5">
-                Date: <span className="font-bold text-white font-mono">{selectedDate}</span> | Total Videos Generated: <span className="font-bold text-[#00E5FF]">{selectedDayRuns.length} Videos</span>
+                Date: <span className="font-bold text-white font-mono">{selectedDate}</span> | Total Workflow Runs: <span className="font-bold text-[#00E5FF]">{selectedDayRuns.length} Runs</span> ({selectedDayRuns.filter(r => r.status === "SUCCESS").length} Succeeded, {selectedDayRuns.filter(r => r.status === "FAILED").length} Failed)
               </p>
             </div>
 
@@ -406,10 +529,12 @@ export default function TelemetryDashboard() {
               >
                 {availableDates.map((date) => {
                   const count = runsByDate[date].length;
+                  const succCount = runsByDate[date].filter(r => r.status === "SUCCESS").length;
+                  const failCount = runsByDate[date].filter(r => r.status === "FAILED").length;
                   const isTourn = runsByDate[date].some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
                   return (
                     <option key={date} value={date}>
-                      DATE: {date} — {count} {count === 1 ? "Video Uploaded" : "Videos Uploaded"} {isTourn ? "([TOURNAMENT] Tournament Era)" : "([LEGACY] 6-Video Daily Output)"}
+                      DATE: {date} — {count} Runs ({succCount} Pass, {failCount} Fail) {isTourn ? "([TOURNAMENT])" : "([LEGACY])"}
                     </option>
                   );
                 })}
@@ -417,108 +542,63 @@ export default function TelemetryDashboard() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d]">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] gap-4">
             <div className="flex items-center gap-3">
               <span className={`px-3 py-1 rounded-full text-xs font-bold border ${isTournamentDay ? "bg-purple-950/60 text-purple-300 border-purple-800/40" : "bg-cyan-950/60 text-cyan-300 border-cyan-800/40"}`}>
-                {isTournamentDay ? "[TOURNAMENT] Modern 5-Variant Tournament Era" : "[LEGACY] Pre-Tournament Legacy Era (6 Videos/Day)"}
+                {isTournamentDay ? "[TOURNAMENT] Modern 5-Variant Tournament Era" : "[LEGACY] Pre-Tournament Legacy Era"}
               </span>
               <span className="text-xs text-gray-400">
                 {isTournamentDay 
                   ? "1 high-input video/day produced with surplus compute time & Auto-QA tournament." 
-                  : "6 videos generated & uploaded per day across Space, History, and Tech categories."}
+                  : "Daily multi-run execution output with individual pass/fail tracking."}
               </span>
             </div>
+
+            {/* STATUS FILTER TABS FOR PRE-TOURNAMENT DATES */}
+            {!isTournamentDay && (
+              <div className="flex items-center gap-1 bg-[#131b2e] p-1 rounded-lg border border-[#1f2d4d]">
+                <button
+                  onClick={() => setStatusFilter("ALL")}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-all ${statusFilter === "ALL" ? "bg-[#00E5FF] text-black" : "text-gray-400 hover:text-white"}`}
+                >
+                  All ({selectedDayRuns.length})
+                </button>
+                <button
+                  onClick={() => setStatusFilter("SUCCESS")}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-all ${statusFilter === "SUCCESS" ? "bg-[#00FF66] text-black" : "text-gray-400 hover:text-white"}`}
+                >
+                  Succeeded ({selectedDayRuns.filter(r => r.status === "SUCCESS").length})
+                </button>
+                <button
+                  onClick={() => setStatusFilter("FAILED")}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-all ${statusFilter === "FAILED" ? "bg-red-500 text-white" : "text-gray-400 hover:text-white"}`}
+                >
+                  Failed ({selectedDayRuns.filter(r => r.status === "FAILED").length})
+                </button>
+              </div>
+            )}
           </div>
 
           {!isTournamentDay ? (
             <div className="space-y-6">
               <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">
-                Daily Video Output ({selectedDayRuns.length} Generated & Uploaded Clips)
+                Execution Runs & Video Clips ({filteredDayRuns.length} Shown)
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {selectedDayRuns.map((run, i) => (
-                  <div key={run.id} className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-gray-400 font-mono">Clip #{i + 1}</span>
-                          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${getCategoryBadgeColor(run.category)}`}>
-                            {run.category}
-                          </span>
-                        </div>
-                        <h4 className="text-md font-bold text-white mt-1">{run.winning_script?.title || "Video Clip"}</h4>
-                      </div>
-
-                      <div className="flex flex-col items-end gap-1">
-                        <span className="text-xs font-bold px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400">
-                          Score: {run.script_variants?.[0]?.score || 5.2} / 10
-                        </span>
-                        {run.youtube_url && (
-                          <a
-                            href={run.youtube_url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center gap-1 text-[11px] font-bold text-red-400 hover:underline mt-1"
-                          >
-                            <Youtube className="w-3.5 h-3.5" /> Watch Short
-                          </a>
-                        )}
-                      </div>
-                    </div>
-
-                    <p className="text-xs italic text-gray-300 bg-[#131b2e] p-3 rounded-lg border border-[#1f2d4d]">
-                      "{run.winning_script?.text || "No script text available"}"
-                    </p>
-
-                    <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-[#1f2d4d]">
-                      <div>
-                        <span className="text-gray-400 font-bold block">Knowledge Source:</span>
-                        <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
-                          {run.source_url}
-                        </a>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 font-bold block">Audio Track:</span>
-                        <span className="font-mono text-gray-200">{run.music_track}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 font-bold block">Voice Engine:</span>
-                        <span className="font-mono text-[#00FF66]">{run.voice_actor}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 font-bold block">Visual Asset Mix:</span>
-                        <span className="font-mono text-yellow-300">{run.visual_asset_types}</span>
-                      </div>
-                    </div>
-                  </div>
+                {filteredDayRuns.map((run, i) => (
+                  <LegacyClipCard
+                    key={run.id}
+                    run={run}
+                    index={i}
+                    selectedRunId={selectedRunId}
+                    getCategoryBadgeColor={getCategoryBadgeColor}
+                  />
                 ))}
               </div>
             </div>
           ) : (
             <TournamentSection run={selectedRun || selectedDayRuns[0]} getCategoryBadgeColor={getCategoryBadgeColor} />
-          )}
-
-          {/* FAILURE & ERROR LOG CONTAINERS */}
-          {selectedRun?.status === "FAILED" && (
-            <div className="bg-red-950/30 border border-red-500/40 p-4 rounded-xl space-y-2">
-              <div 
-                onClick={() => setShowErrorTrace(!showErrorTrace)}
-                className="flex items-center justify-between cursor-pointer text-red-400 text-sm font-bold"
-              >
-                <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5" />
-                  <span>Pipeline Execution Traceback (Click to Toggle)</span>
-                </div>
-                {showErrorTrace ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-              </div>
-
-              {showErrorTrace && (
-                <pre className="text-xs font-mono bg-black/60 p-4 rounded-lg text-red-300 overflow-x-auto border border-red-900/50 mt-2">
-                  {selectedRun.error_traceback || "No explicit traceback recorded."}
-                </pre>
-              )}
-            </div>
           )}
         </div>
       )}
