@@ -1,0 +1,203 @@
+[
+  {
+    "id": "run-1784652000",
+    "timestamp": "2026-07-20T00:00:00Z",
+    "category": "Space",
+    "status": "SUCCESS",
+    "render_time_seconds": 42.5,
+    "lufs_target": "-14.0 LUFS",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "The Void That Swallowed Light",
+        "word_count": 98,
+        "hook": "Something in deep space is absorbing entire radio signals...",
+        "score": 9.42,
+        "critique": "Impeccable narrative pacing and vivid astrophysical hook."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "JWST Discovers Impossible Galaxy",
+        "word_count": 105,
+        "hook": "Astronomers just spotted a galaxy that shouldn't exist...",
+        "score": 9.15,
+        "critique": "Strong empirical facts with clean infinite loop."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "NASA vs The Solar Flare Emergency",
+        "word_count": 110,
+        "hook": "A massive coronal mass ejection is heading directly for Earth...",
+        "score": 8.75,
+        "critique": "Exciting high-stakes tension."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "What If Time Stopped at Black Holes?",
+        "word_count": 92,
+        "hook": "At the event horizon, relative time collapses into eternity...",
+        "score": 8.88,
+        "critique": "Deep philosophical resonance."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "The Signal From Proxima Centauri",
+        "word_count": 101,
+        "hook": "Breakthrough Listen intercepted a candidate SETI transmission...",
+        "score": 9.01,
+        "critique": "High narrative momentum."
+      }
+    ],
+    "winning_script": {
+      "title": "The Void That Swallowed Light #space #shorts",
+      "text": "Something in deep space is absorbing entire radio signals. In 2024, radio telescopes detected a giant dark zone where radiation simply disappears...",
+      "hashtags": [
+        "#space",
+        "#shorts",
+        "#astronomy"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": "https://www.youtube.com/shorts/a5eS-LSUfG8",
+    "error_traceback": null
+  },
+  {
+    "id": "run-1784738400",
+    "timestamp": "2026-07-21T00:00:00Z",
+    "category": "History",
+    "status": "SUCCESS",
+    "render_time_seconds": 38.1,
+    "lufs_target": "-14.0 LUFS",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "History's Silliest War",
+        "word_count": 102,
+        "hook": "In 1932, Australia declared war on 20,000 emus and lost...",
+        "score": 9.71,
+        "critique": "Hilarious historical accuracy with seamless loop transition."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "How Science Rewrote Human History",
+        "word_count": 114,
+        "hook": "LIDAR technology just revealed hidden Mayan megacities...",
+        "score": 8.28,
+        "critique": "High technical accuracy."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "The Emperor Who Knighted His Horse",
+        "word_count": 96,
+        "hook": "Caligula appointed his favorite horse Incitatus to the Roman Senate...",
+        "score": 9.35,
+        "critique": "Slick comedic delivery."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "The Lost Library of Alexandria",
+        "word_count": 108,
+        "hook": "Imagine losing all human knowledge in a single fire...",
+        "score": 8.65,
+        "critique": "Evocative B-roll framing."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "The Tri-Nation History Heist",
+        "word_count": 112,
+        "hook": "Three countries secretly fought over an ancient royal crown...",
+        "score": 9.08,
+        "critique": "Fast-paced heist narrative."
+      }
+    ],
+    "winning_script": {
+      "title": "History's Silliest War #history #shorts",
+      "text": "In 1932, Australia declared war on 20,000 emus and lost. Armed with machine guns, soldiers were outmaneuvered by giant flightless birds...",
+      "hashtags": [
+        "#history",
+        "#shorts",
+        "#funfacts"
+      ],
+      "color_theme": "#FFBF00"
+    },
+    "youtube_url": "https://www.youtube.com/shorts/vJqARpaiNGU",
+    "error_traceback": null
+  },
+  {
+    "id": "run-1784824800",
+    "timestamp": "2026-07-22T00:00:00Z",
+    "category": "Tech",
+    "status": "SUCCESS",
+    "render_time_seconds": 44.8,
+    "lufs_target": "-14.0 LUFS",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Computers That Waste ZERO Energy?!",
+        "word_count": 115,
+        "hook": "Reversible computing chips operate without generating heat...",
+        "score": 9.58,
+        "critique": "Cutting-edge physics concept explained clearly."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Terminator 2 Robots Are ALMOST Here!",
+        "word_count": 109,
+        "hook": "Scientists built a liquid metal robot that can melt through bars...",
+        "score": 9.4,
+        "critique": "High visual engagement."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "The Quantum Encryption War",
+        "word_count": 104,
+        "hook": "Quantum computers will crack all modern internet passwords in seconds...",
+        "score": 8.92,
+        "critique": "Urgent security message."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Will AI Become Conscious by 2030?",
+        "word_count": 99,
+        "hook": "Neural networks are displaying emergent reasoning capabilities...",
+        "score": 9.12,
+        "critique": "Thought-provoking discussion."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "The Stuxnet Cyber Weapon",
+        "word_count": 118,
+        "hook": "The world's first physical cyber weapon destroyed 1,000 centrifuges...",
+        "score": 9.25,
+        "critique": "Thrilling tech thriller."
+      }
+    ],
+    "winning_script": {
+      "title": "Computers That Waste ZERO Energy?! #tech #shorts",
+      "text": "Reversible computing chips operate without generating heat. Traditional processors waste energy as heat whenever a bit is erased...",
+      "hashtags": [
+        "#tech",
+        "#shorts",
+        "#innovation"
+      ],
+      "color_theme": "#00FF66"
+    },
+    "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
+    "error_traceback": null
+  }
+]

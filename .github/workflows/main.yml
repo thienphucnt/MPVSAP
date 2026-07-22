@@ -85,16 +85,15 @@ jobs:
         run: |
           python main.py
 
-      - name: Reset Self-Healing Counter
+      - name: Persist Telemetry Logs & Reset Self-Healing Counter
         run: |
-          if [ -f heal_attempts.txt ]; then
-            echo "0" > heal_attempts.txt
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add heal_attempts.txt
-            if [ -n "$(git status --porcelain heal_attempts.txt)" ]; then
-              git commit -m "Reset heal counter after successful run [skip ci]"
-              git pull --rebase origin main
-              git push origin main
-            fi
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f heal_attempts.txt ]; then echo "0" > heal_attempts.txt; git add heal_attempts.txt; fi
+          if [ -f logs/run_history.json ]; then git add logs/run_history.json; fi
+          if [ -f past_topics.json ]; then git add past_topics.json; fi
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Persist telemetry logs and pipeline state [skip ci]"
+            git pull --rebase origin main
+            git push origin main
           fi
