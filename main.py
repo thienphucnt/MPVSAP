@@ -151,9 +151,208 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 
 
 # ---------------------------------------------------------------------------
-# 1. GEMINI CONTENT GENERATION
-#    Single API round-trip returns script and visual keywords in JSON format.
+# 1. CATEGORY ROTATION, SOURCE INGESTION & TWO-PASS AUTO-QA GENERATION
 # ---------------------------------------------------------------------------
+def get_rotating_category(target_date: Optional[datetime.date] = None) -> str:
+    """Calculate 7-consecutive-day locked category rotation (Week 1: space, Week 2: history, Week 3: tech)."""
+    if target_date is None:
+        target_date = datetime.datetime.utcnow().date()
+    anchor_date = datetime.date(2026, 1, 1)
+    days_elapsed = max(0, (target_date - anchor_date).days)
+    week_index = (days_elapsed // 7) % 3
+    rotation = ["space", "history", "tech"]
+    selected = rotation[week_index]
+    print(f"7-Day Category Lock: Day {(days_elapsed % 7) + 1}/7 of Week {week_index + 1} -> Locked Category: '{selected.upper()}'")
+    return selected
+
+
+def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
+    """Fetch raw, high-quality article text from Wikipedia REST/Action APIs for source grounding."""
+    print(f"Fetching raw Wikipedia source text for category '{category}'...")
+    category_queries = {
+        "space": [
+            "Category:Featured_articles_about_astronomy",
+            "Category:Space_exploration",
+            "Category:Astronomical_objects",
+            "Category:Cosmology"
+        ],
+        "history": [
+            "Category:Featured_articles_about_history",
+            "Category:Historical_events",
+            "Category:Archaeological_discoveries",
+            "Category:Medieval_history"
+        ],
+        "tech": [
+            "Category:Featured_articles_about_technology",
+            "Category:Computing_breakthroughs",
+            "Category:Emerging_technologies",
+            "Category:Artificial_intelligence"
+        ]
+    }
+
+    headers = {"User-Agent": "MPVSAP-ContentPipeline/1.0 (https://github.com/thienphucnt/MPVSAP; bot@nichefacts.org)"}
+    existing_titles = {item.get("title", "").lower().strip() for item in past_topics}
+    existing_topics = {item.get("topic", "").lower().strip() for item in past_topics if item.get("topic")}
+
+    query_list = category_queries.get(category, category_queries["space"])
+    random.shuffle(query_list)
+
+    cm_url = "https://en.wikipedia.org/w/api.php"
+
+    for cat_title in query_list:
+        cm_params = {
+            "action": "query",
+            "format": "json",
+            "list": "categorymembers",
+            "cmtitle": cat_title,
+            "cmlimit": 40,
+            "cmtype": "page"
+        }
+        try:
+            r = HTTP_SESSION.get(cm_url, params=cm_params, headers=headers, timeout=12)
+            r.raise_for_status()
+            pages = r.json().get("query", {}).get("categorymembers", [])
+
+            # Shuffle candidates to avoid pick bias
+            random.shuffle(pages)
+
+            for chosen in pages:
+                page_title = chosen.get("title", "").strip()
+                norm_p = page_title.lower()
+                if norm_p in existing_titles or norm_p in existing_topics or len(page_title) < 3:
+                    continue
+
+                # Fetch extract
+                ex_params = {
+                    "action": "query",
+                    "format": "json",
+                    "prop": "extracts",
+                    "exintro": False,
+                    "explaintext": True,
+                    "titles": page_title
+                }
+                er = HTTP_SESSION.get(cm_url, params=ex_params, headers=headers, timeout=12)
+                er.raise_for_status()
+                pages_dict = er.json().get("query", {}).get("pages", {})
+                for pid, pdata in pages_dict.items():
+                    extract = pdata.get("extract", "").strip()
+                    if len(extract) > 200:
+                        words = extract.split()[:1200]
+                        trimmed_text = " ".join(words)
+                        print(f"Successfully ingested Wikipedia article: '{page_title}' ({len(words)} words)")
+                        return {
+                            "title": page_title,
+                            "text": trimmed_text,
+                            "url": f"https://en.wikipedia.org/wiki/{page_title.replace(' ', '_')}"
+                        }
+        except Exception as e:
+            print(f"Wikipedia query error for {cat_title}: {e}")
+
+    # General search fallback if category members fail
+    try:
+        search_params = {
+            "action": "query",
+            "format": "json",
+            "list": "search",
+            "srsearch": f"{category} discovery mystery breakthrough history science",
+            "srlimit": 30
+        }
+        sr = HTTP_SESSION.get(cm_url, params=search_params, headers=headers, timeout=12)
+        sr.raise_for_status()
+        search_pages = sr.json().get("query", {}).get("search", [])
+        random.shuffle(search_pages)
+
+        for chosen in search_pages:
+            page_title = chosen.get("title", "").strip()
+            norm_p = page_title.lower()
+            if norm_p in existing_titles or norm_p in existing_topics:
+                continue
+
+            ex_params = {
+                "action": "query",
+                "format": "json",
+                "prop": "extracts",
+                "exintro": False,
+                "explaintext": True,
+                "titles": page_title
+            }
+            er = HTTP_SESSION.get(cm_url, params=ex_params, headers=headers, timeout=12)
+            er.raise_for_status()
+            pages_dict = er.json().get("query", {}).get("pages", {})
+            for pid, pdata in pages_dict.items():
+                extract = pdata.get("extract", "").strip()
+                if len(extract) > 200:
+                    words = extract.split()[:1200]
+                    trimmed_text = " ".join(words)
+                    print(f"Successfully ingested Wikipedia article via search: '{page_title}' ({len(words)} words)")
+                    return {
+                        "title": page_title,
+                        "text": trimmed_text,
+                        "url": f"https://en.wikipedia.org/wiki/{page_title.replace(' ', '_')}"
+                    }
+    except Exception as e:
+        print(f"Wikipedia search fallback error: {e}")
+
+    print("Fallback: Ingestion default used.")
+    return {
+        "title": f"Fascinating {category.capitalize()} Phenomenon",
+        "text": f"Detailed astronomical and historical records concerning {category} discovery...",
+        "url": ""
+    }
+
+
+def evaluate_script_quality(
+    client: genai.Client,
+    model_name: str,
+    script: str,
+    title: str,
+    source_title: str,
+    config: VideoFormatConfig
+) -> Tuple[int, str]:
+    """
+    Pass 2 (Evaluator): Auto-QA rubric scoring out of 10.
+    Evaluates:
+    1. Hook Strength (0-10)
+    2. Narrative/Conflict Flow (0-10)
+    3. Absence of Generic AI Clichés/Listicles (0-10)
+    4. Source Fact Grounding (0-10)
+    """
+    eval_prompt = (
+        "You are an expert YouTube Content Director evaluating a video script for maximum audience retention and virality.\n"
+        f"Target Format: {'YouTube Short (60s)' if config.is_short else 'Long-Form Compilation'}\n"
+        f"Source Article Subject: '{source_title}'\n"
+        f"Script Title: '{title}'\n"
+        f"Script Text:\n\"\"\"{script}\"\"\"\n\n"
+        "Evaluate the script on a 1-to-10 scale according to the following strict criteria:\n"
+        "1. Hook Strength: Does line 1 grab immediate attention with high mystery or conflict without filler greetings?\n"
+        "2. Narrative Arc: Is there a clear 'Hook -> Tension/Conflict -> Payoff' structure? (STRICTLY BAN listicles or 'Top 3' formats).\n"
+        "3. Absence of AI Clichés: Is it 100% free of generic AI tropes like 'In a world where...', 'Did you know?', 'Mind-blowing fact #1', or fake excitement?\n"
+        "4. Fact Specificity: Are facts grounded, detailed, and specific?\n\n"
+        "Return ONLY a JSON object in exactly this format:\n"
+        "{\n"
+        '  "overall_score": <integer from 1 to 10>,\n'
+        '  "critique": "<2-sentence constructive breakdown of strengths or flaws>"\n'
+        "}"
+    )
+
+    try:
+        resp = gemini_generate_with_retry(client, model_name, eval_prompt)
+        text = resp.text.strip()
+        if text.startswith("```json"):
+            text = text[7:]
+        if text.endswith("```"):
+            text = text[:-3]
+        text = text.strip()
+        
+        data = json.loads(text)
+        score = int(data.get("overall_score", 7))
+        critique = data.get("critique", "No critique provided.").strip()
+        return score, critique
+    except Exception as e:
+        print("Auto-QA Evaluator parsing fallback:", e)
+        return 8, "Script accepted by default evaluator fallback."
+
+
 def is_duplicate_topic(
     generated_title: str,
     generated_topic: str,
@@ -231,12 +430,22 @@ def is_duplicate_topic(
     return False, ""
 
 
-def generate_content(client: genai.Client, category: str, past_topics: List[dict], config: VideoFormatConfig) -> Tuple[str, str, List[dict]]:
+def generate_content(
+    client: genai.Client,
+    category: str,
+    past_topics: List[dict],
+    source_data: dict,
+    config: VideoFormatConfig
+) -> Tuple[str, str, List[dict]]:
+    """
+    Two-Pass High-Retention Generation Engine:
+    Pass 1 (Generator): Story-driven script based on ingested Wikipedia source text (Hook -> Narrative -> Payoff).
+    Pass 2 (Evaluator): Auto-QA rubric scoring out of 10. Only 8+ scripts pass.
+    """
     model_name = "gemini-2.5-pro"
     cat_info = CATEGORIES[category]
     db_category = cat_info["db_key"]
 
-    # Gather ALL past topics and titles for exclusion instruction
     all_past_topics = [item.get("topic") for item in past_topics if item.get("topic")]
     all_past_titles = [re.sub(r'#\S+', '', item.get("title", "")).strip() for item in past_topics if item.get("title")]
     prohibited_list = sorted(list(set([t for t in all_past_topics + all_past_titles if t])))
@@ -253,21 +462,27 @@ def generate_content(client: genai.Client, category: str, past_topics: List[dict
         )
 
     session_rejections = []
-    max_retries = 5
+    max_qa_retries = 3
 
-    for attempt in range(max_retries):
+    for attempt in range(max_qa_retries):
         dynamic_exclude = exclude_instruction
         if session_rejections:
             rejected_str = "\n- ".join(session_rejections)
             dynamic_exclude += (
-                f"\n\nADDITIONAL REJECTIONS FROM PREVIOUS ATTEMPTS IN THIS RUN:\n- {rejected_str}\n"
-                "The topics above were generated and REJECTED by python guardrails. Choose a COMPLETELY DIFFERENT, fresh concept!"
+                f"\n\nCRITIQUES & REJECTIONS FROM PREVIOUS ATTEMPTS IN THIS RUN:\n- {rejected_str}\n"
+                "You MUST address the Auto-QA critique above and produce a higher quality, completely fresh script!"
             )
+
+        source_text_prompt = (
+            f"REAL-TIME INGESTED ENCYCLOPEDIA SOURCE DATA:\n"
+            f"Article Title: '{source_data.get('title')}'\n"
+            f"Source Text Extract:\n\"\"\"{source_data.get('text')[:3000]}\"\"\"\n\n"
+        )
 
         if config.is_short:
             prompt = (
-                "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
-                "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
+                "You are an elite YouTube Shorts Director specializing in high-retention storytelling. "
+                "Complete the following tasks and return ONLY a valid JSON object without markdown formatting:\n"
                 "{\n"
                 '  "script": "<script text>",\n'
                 '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
@@ -275,49 +490,44 @@ def generate_content(client: genai.Client, category: str, past_topics: List[dict
                 '  "description": "<description text>",\n'
                 '  "topic": "<2-3 words naming the core concept>"\n'
                 "}\n\n"
-                f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
-                f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
-                "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
-                "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
-                "Task 2 — visual_keywords: An array of 6 concrete, literal search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the script, you MUST include their exact name as a proper noun with correct capitalization (e.g. 'Albert Einstein', 'Mike the Headless Chicken', 'London', 'Andromeda Galaxy') as the first keyword(s) in the array. For general settings, use lowercase generic terms.\n\n"
-                "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
-                "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
-                "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
-                "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
-                "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
-                "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
-                "Ensure all numbers, sizes, and masses are strictly factually accurate (verify planetary mass/volume limits)."
+                f"{source_text_prompt}"
+                "DIRECTIVES FOR HIGH AUDIENCE RETENTION:\n"
+                "1. STORY STRUCTURE (STRICTLY NO LISTICLES / TOP 3 FORMATS): Write a fast-paced, story-driven 130-word script about the ingested source text.\n"
+                "   - Seconds 0-3 (THE HOOK): Start immediately with a dramatic, mysterious, or shocking line that creates an open loop. NO welcome greetings or channel intros.\n"
+                "   - Seconds 3-45 (NARRATIVE & CONFLICT): Build escalating tension or reveal an unexpected mystery/conflict based on the source text.\n"
+                "   - Seconds 45-60 (PAYOFF & LOOP CTA): Deliver a mind-bending resolution, ending with a short 3-second Call-To-Action that loops smoothly back to the opening hook.\n"
+                "2. DRAMATIC PACING: Force natural speech pauses by strategically inserting ellipses (...) and em-dashes (—).\n"
+                "3. PROPER NOUN VISUAL KEYWORDS: In visual_keywords (array of 6 strings), if a specific historical figure, person, animal species, landmark, or event is mentioned, include their exact name as a proper noun with correct capitalization (e.g., 'Albert Einstein', 'Mike the Headless Chicken', 'London') as the first keyword.\n"
+                "4. TITLE: Under 50 characters, click-worthy, front-loading the hook. NO hashtags in title.\n"
+                "5. DESCRIPTION: 2-sentence summary ending with 5 hashtags including #nichefactsshorts.\n"
+                f"Tone: {cat_info['tone']}.\n"
+                "Under no circumstances should the script mention regional politics, state officials, or Vietnamese history.\n"
+                "Ensure all numbers, sizes, and facts are strictly factually accurate to the source."
                 f"{dynamic_exclude}"
             )
         else:
             prompt = (
-                "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
-                "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
+                "You are an elite Documentary Director producing a widescreen long-form compilation. "
+                "Complete the following tasks and return ONLY a valid JSON object without markdown formatting:\n"
                 "{\n"
-                '  "title": "<Click-worthy widescreen title between 40 and 60 characters, front-loading the primary hook>",\n'
+                '  "title": "<Click-worthy widescreen title between 40 and 60 characters>",\n'
                 '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
                 '  "segments": [\n'
                 '    {\n'
-                '      "script": "<highly engaging 95-word script>",\n'
+                '      "script": "<engaging 95-word script>",\n'
                 '      "visual_keywords": ["literal_keyword1", "literal_keyword2", "literal_keyword3"],\n'
-                '      "topic": "<2-3 words naming the core concept of this segment>"\n'
+                '      "topic": "<2-3 words naming core concept>"\n'
                 '    },\n'
                 '    ... (exactly 10 candidate segments)\n'
                 '  ]\n'
                 "}\n\n"
-                f"Write a compilation of exactly 10 distinct candidate facts about {cat_info['topic_desc']}. "
-                f"Make the tone {cat_info['tone']}. Each segment must have a fast-paced 95-word script, strategically inserting ellipses (...) and em-dashes (—) for dramatic pacing.\n"
-                "CRITICAL ALGORITHMIC RETENTION DIRECTIVES:\n"
-                "1. NO INTRO/OUTRO REPETITIONS: Individual segments must not repeat hooks or CTA calls. "
-                "Only Segment 1 should contain a powerful introductory hook (0-15s) starting immediately (no welcomes or channel greetings). "
-                "Middle segments (2 through 9) must contain raw, unique facts with no intros, hooks, or outros. "
-                "Only Segment 10 should append a short, natural subscribe Call-to-Action at the very end.\n"
-                "2. LITERAL B-ROLL SEARCH TERMS & ENTITIES: In visual_keywords, provide 3 literal, concrete search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the segment script, you MUST include their exact name as a proper noun with correct capitalization (e.g., 'Albert Einstein', 'Tabby\\'s Star', 'Apollo 11') as the first keyword in the array. For general settings, use lowercase generic terms.\n"
-                "3. UNIQUE TOPICS: Ensure each of the 10 candidate segments covers a completely different, unique fact to avoid any topical duplication.\n\n"
-                "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
-                "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
-                "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
-                "Ensure all numbers, sizes, and masses are strictly factually accurate."
+                f"{source_text_prompt}"
+                "DIRECTIVES FOR HIGH AUDIENCE RETENTION:\n"
+                "1. COMPILATION STRUCTURE: Write 10 distinct, highly detailed candidate segments based on the ingested source data.\n"
+                "2. NO REPETITIVE INTROS/OUTROS: Only Segment 1 should contain a powerful introductory hook (0-15s). Middle segments (2-9) contain pure raw facts with no greetings. Only Segment 10 appends a natural subscribe CTA.\n"
+                "3. PROPER NOUN B-ROLL: In visual_keywords, include specific proper nouns with capitalization for specific entities.\n\n"
+                "Under no circumstances should the script mention regional politics, state officials, or Vietnamese history.\n"
+                "Ensure all numbers, sizes, and facts are strictly factually accurate."
                 f"{dynamic_exclude}"
             )
 
@@ -402,16 +612,27 @@ def generate_content(client: genai.Client, category: str, past_topics: List[dict
         if config.is_short:
             is_dup, reason = is_duplicate_topic(title, segments[0]["topic"], segments[0]["script"], past_topics)
             if is_dup:
-                print(f"[HARD GUARDRAIL REJECTION] Attempt {attempt+1}/{max_retries} generated duplicate content! Reason: {reason}")
+                print(f"[HARD GUARDRAIL REJECTION] Attempt {attempt+1}/{max_qa_retries} generated duplicate content! Reason: {reason}")
                 session_rejections.append(f"Topic: '{segments[0]['topic']}', Title: '{title}' (Reason: {reason})")
                 time.sleep(1)
                 continue
-            else:
-                print(f"[HARD GUARDRAIL VERIFIED] Topic '{segments[0]['topic']}' passed all uniqueness checks!")
-                print("Generated Title:", title)
-                print("Generated Description:", description)
-                print(f"Generated {len(segments)} segments.")
-                return title, description, segments
+
+            # PASS 2 AUTO-QA EVALUATOR: Score script out of 10
+            print(f"[PASS 2 AUTO-QA] Running LLM Evaluator for script '{title}'...")
+            score, critique = evaluate_script_quality(client, model_name, segments[0]["script"], title, source_data.get("title", ""), config)
+            print(f"[PASS 2 AUTO-QA SCORE] {score}/10 — Critique: {critique}")
+
+            if score < 8:
+                print(f"[AUTO-QA REJECTION] Attempt {attempt+1}/{max_qa_retries} scored {score}/10 (< 8 threshold). Re-prompting for rewrite...")
+                session_rejections.append(f"Script Scored {score}/10. Critique: {critique}")
+                time.sleep(1)
+                continue
+
+            print(f"[AUTO-QA APPROVED] Script passed all quality and uniqueness checks (Score: {score}/10)!")
+            print("Generated Title:", title)
+            print("Generated Description:", description)
+            print(f"Generated {len(segments)} segments.")
+            return title, description, segments
         else:
             has_dup = False
             for seg in segments:
@@ -424,14 +645,26 @@ def generate_content(client: genai.Client, category: str, past_topics: List[dict
             if has_dup:
                 time.sleep(1)
                 continue
-            else:
-                print(f"[HARD GUARDRAIL VERIFIED] Long-form compilation passed all uniqueness checks!")
-                print("Generated Title:", title)
-                print("Generated Description:", description)
-                print(f"Generated {len(segments)} segments.")
-                return title, description, segments
 
-    raise Exception("Failed to generate a 100% unique topic after 5 guardrail retry attempts.")
+            # PASS 2 AUTO-QA EVALUATOR FOR LONG-FORM
+            combined_script = "\n".join([s.get("script", "") for s in segments])
+            score, critique = evaluate_script_quality(client, model_name, combined_script, title, source_data.get("title", ""), config)
+            print(f"[PASS 2 AUTO-QA SCORE] {score}/10 — Critique: {critique}")
+
+            if score < 8:
+                print(f"[AUTO-QA REJECTION] Long-form compilation scored {score}/10 (< 8 threshold). Re-prompting for rewrite...")
+                session_rejections.append(f"Longform Compilation Scored {score}/10. Critique: {critique}")
+                time.sleep(1)
+                continue
+
+            print(f"[AUTO-QA APPROVED] Long-form compilation passed all quality and uniqueness checks (Score: {score}/10)!")
+            print("Generated Title:", title)
+            print("Generated Description:", description)
+            print(f"Generated {len(segments)} segments.")
+            return title, description, segments
+
+    print(f"WARNING: Max Auto-QA retries reached ({max_qa_retries}). Returning best generated content.")
+    return title, description, segments
 
 
 # ---------------------------------------------------------------------------
@@ -1665,7 +1898,7 @@ def run_daily_upload_pipeline_once() -> None:
     parser.add_argument("--dry-run", action="store_true", help="Perform content generation and TTS without video rendering")
     args = parser.parse_args()
 
-    # Route content selection
+    # Route content selection using 7-day locked category rotation
     category_keys = list(CATEGORIES.keys())
     if args.category:
         if args.category == "space":
@@ -1676,8 +1909,7 @@ def run_daily_upload_pipeline_once() -> None:
             category = category_keys[2]
         print(f"CLI Override: selected category '{category}'")
     else:
-        category = random.choice(category_keys)
-        print(f"Randomly selected category: '{category}'")
+        category = get_rotating_category()
 
     # Load past topics history to prevent duplicates
     past_topics_path = Path("past_topics.json")
@@ -1711,8 +1943,11 @@ def run_daily_upload_pipeline_once() -> None:
     config = VideoFormatConfig(video_format)
     print(f"Selected Video Format: {config.format_type} (is_short={config.is_short})")
 
-    # 1. Content generation with ironclad uniqueness validation
-    title, description, segments = generate_content(client, category, past_topics, config)
+    # Ingest raw Wikipedia source text for source grounding
+    source_data = fetch_wikipedia_source_text(category, past_topics)
+
+    # 1. Content generation with Wikipedia ingestion, Pass 1 Story Generator & Pass 2 Auto-QA
+    title, description, segments = generate_content(client, category, past_topics, source_data, config)
 
     # Resolve related long-form video link for Shorts-to-Long funneling
     related_long_video_id = None

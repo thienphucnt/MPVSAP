@@ -2,8 +2,8 @@ name: Daily Shorts Generator & Uploader
 
 on:
   schedule:
-    # Runs every 4 hours (6 times a day)
-    - cron: '0 */4 * * *'
+    # Runs once a day at 12:00 UTC (1 Short per day)
+    - cron: '0 12 * * *'
 
   workflow_dispatch: # Allows manual run for testing
 
