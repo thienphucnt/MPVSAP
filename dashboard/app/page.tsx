@@ -294,7 +294,7 @@ export default function TelemetryDashboard() {
                   const isTourn = runsByDate[date].some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
                   return (
                     <option key={date} value={date}>
-                      📅 {date} — {count} {count === 1 ? "Video Uploaded" : "Videos Uploaded"} {isTourn ? "(🏆 Tournament Era)" : "(⚡ 6-Video Daily Output)"}
+                      DATE: {date} — {count} {count === 1 ? "Video Uploaded" : "Videos Uploaded"} {isTourn ? "([TOURNAMENT] Tournament Era)" : "([LEGACY] 6-Video Daily Output)"}
                     </option>
                   );
                 })}
@@ -306,7 +306,7 @@ export default function TelemetryDashboard() {
           <div className="flex items-center justify-between bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d]">
             <div className="flex items-center gap-3">
               <span className={`px-3 py-1 rounded-full text-xs font-bold border ${isTournamentDay ? "bg-purple-950/60 text-purple-300 border-purple-800/40" : "bg-cyan-950/60 text-cyan-300 border-cyan-800/40"}`}>
-                {isTournamentDay ? "🏆 Modern 5-Variant Tournament Era" : "⚡ Pre-Tournament Legacy Era (6 Videos/Day)"}
+                {isTournamentDay ? "[TOURNAMENT] Modern 5-Variant Tournament Era" : "[LEGACY] Pre-Tournament Legacy Era (6 Videos/Day)"}
               </span>
               <span className="text-xs text-gray-400">
                 {isTournamentDay 
@@ -361,21 +361,21 @@ export default function TelemetryDashboard() {
                     {/* ATTRIBUTES FOR THIS INDIVIDUAL CLIP */}
                     <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-[#1f2d4d]">
                       <div>
-                        <span className="text-gray-400 font-bold block">🌐 Knowledge Source:</span>
+                        <span className="text-gray-400 font-bold block">Knowledge Source:</span>
                         <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
                           {run.source_url}
                         </a>
                       </div>
                       <div>
-                        <span className="text-gray-400 font-bold block">🎵 Audio Track:</span>
+                        <span className="text-gray-400 font-bold block">Audio Track:</span>
                         <span className="font-mono text-gray-200">{run.music_track}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400 font-bold block">🎙️ Voice Engine:</span>
+                        <span className="text-gray-400 font-bold block">Voice Engine:</span>
                         <span className="font-mono text-[#00FF66]">{run.voice_actor}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400 font-bold block">🖼️ Visual Asset Mix:</span>
+                        <span className="text-gray-400 font-bold block">Visual Asset Mix:</span>
                         <span className="font-mono text-yellow-300">{run.visual_asset_types}</span>
                       </div>
                     </div>
@@ -392,7 +392,7 @@ export default function TelemetryDashboard() {
                   <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
                     <div className="flex items-center justify-between">
                       <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(run.category)}`}>
-                        🏆 WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
+                        [TOURNAMENT] WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
                       </span>
                       {run.youtube_url && (
                         <a
@@ -419,21 +419,21 @@ export default function TelemetryDashboard() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                       <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🌐 Scraped Source Knowledge Origin</span>
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Scraped Source Knowledge Origin</span>
                         <a href={run.source_url} target="_blank" rel="noreferrer" className="text-[#00E5FF] hover:underline font-mono truncate block">
                           {run.source_url}
                         </a>
                       </div>
                       <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🎵 Background Audio Track</span>
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Background Audio Track</span>
                         <span className="font-mono text-white block">{run.music_track}</span>
                       </div>
                       <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🎙️ Kokoro Neural Voice Actor</span>
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Kokoro Neural Voice Actor</span>
                         <span className="font-mono text-[#00FF66] block">{run.voice_actor}</span>
                       </div>
                       <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🔍 Scraped Search Keywords</span>
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Scraped Search Keywords</span>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {(run.search_keywords || []).map((kw, i) => (
                             <span key={i} className="bg-blue-950/60 text-blue-300 border border-blue-800/40 px-2 py-0.5 rounded text-[10px]">
@@ -443,11 +443,11 @@ export default function TelemetryDashboard() {
                         </div>
                       </div>
                       <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🖼️ Visual Asset Mix & Salience Zoom</span>
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">Visual Asset Mix & Salience Zoom</span>
                         <span className="font-mono text-yellow-300 block">{run.visual_asset_types}</span>
                       </div>
                       <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1.5">
-                        <span className="font-bold text-gray-400 block uppercase text-[10px]">🔤 FFmpeg Subtitle & ASS Engine</span>
+                        <span className="font-bold text-gray-400 block uppercase text-[10px]">FFmpeg Subtitle & ASS Engine</span>
                         <span className="font-mono text-gray-200 block">{run.ass_subtitle_engine}</span>
                       </div>
                     </div>
@@ -456,7 +456,7 @@ export default function TelemetryDashboard() {
                   {/* 5-VARIANT COMPARISON GRID */}
                   <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
                     <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
-                      🏆 5-Variant Auto-QA Tournament Breakdown
+                      [TOURNAMENT] 5-Variant Auto-QA Tournament Breakdown
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                       {run.script_variants?.map((v) => {
