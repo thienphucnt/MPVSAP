@@ -10,6 +10,7 @@ import {
   AlertTriangle,
   TrendingUp,
   Youtube,
+  ExternalLink,
   ChevronDown,
   ChevronUp
 } from "lucide-react";
@@ -44,6 +45,9 @@ interface WinningScript {
 
 interface RunEntry {
   id: string;
+  github_run_number?: number;
+  github_run_id?: number;
+  github_run_url?: string;
   timestamp: string;
   category: string;
   status: "SUCCESS" | "FAILED";
@@ -72,14 +76,24 @@ function TournamentSection({ run, getCategoryBadgeColor }: { run: RunEntry; getC
     <div className="space-y-6">
       {/* WINNING SCRIPT BANNER */}
       <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
             <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor(run.category)}`}>
               [TOURNAMENT] WINNING SCRIPT: {run.winning_script?.title || "Selected Variant"}
             </span>
             <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${run.status === "SUCCESS" ? "bg-[#00FF66]/20 text-[#00FF66] border-[#00FF66]/40" : "bg-red-500/20 text-red-400 border-red-500/40"}`}>
               {run.status === "SUCCESS" ? "STATUS: SUCCESS" : "STATUS: FAILED"}
             </span>
+            {run.github_run_url && (
+              <a
+                href={run.github_run_url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1 text-[11px] font-bold text-[#00E5FF] hover:underline bg-blue-950/60 border border-blue-800/40 px-2.5 py-0.5 rounded-full"
+              >
+                GitHub Run #{run.github_run_number} <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
           </div>
           {run.youtube_url && (
             <a
@@ -186,7 +200,7 @@ function TournamentSection({ run, getCategoryBadgeColor }: { run: RunEntry; getC
           >
             <div className="flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" />
-              <span>Execution Traceback for this Run (Click to Toggle)</span>
+              <span>Execution Traceback for GitHub Run #{run.github_run_number} (Click to Toggle)</span>
             </div>
             {showErrorTrace ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </div>
@@ -211,8 +225,15 @@ function LegacyClipCard({ run, index, selectedRunId, getCategoryBadgeColor }: { 
     <div className={`p-5 rounded-xl border space-y-4 transition-all ${isSelected ? "bg-[#131b2e] border-white ring-2 ring-white" : "bg-[#0b0f19] border-[#1f2d4d]"}`}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-gray-400 font-mono">Run #{index + 1} ({run.timestamp.split("T")[1].substring(0, 5)} UTC)</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <a 
+              href={run.github_run_url || `https://github.com/thienphucnt/MPVSAP/actions`} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="text-xs font-bold text-[#00E5FF] hover:underline font-mono flex items-center gap-1 bg-blue-950/60 border border-blue-800/40 px-2.5 py-0.5 rounded-full"
+            >
+              GitHub Run #{run.github_run_number || index + 1} ({run.timestamp.split("T")[1].substring(0, 5)} UTC) <ExternalLink className="w-3 h-3" />
+            </a>
             <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${getCategoryBadgeColor(run.category)}`}>
               {run.category}
             </span>
@@ -220,7 +241,7 @@ function LegacyClipCard({ run, index, selectedRunId, getCategoryBadgeColor }: { 
               {run.status === "SUCCESS" ? "SUCCESS" : "FAILED"}
             </span>
           </div>
-          <h4 className="text-md font-bold text-white mt-1">{run.winning_script?.title || "Video Clip"}</h4>
+          <h4 className="text-md font-bold text-white mt-2">{run.winning_script?.title || "Video Clip"}</h4>
         </div>
 
         <div className="flex flex-col items-end gap-1">
@@ -274,7 +295,7 @@ function LegacyClipCard({ run, index, selectedRunId, getCategoryBadgeColor }: { 
           >
             <div className="flex items-center gap-1.5">
               <AlertTriangle className="w-4 h-4 text-red-400" />
-              <span>Traceback for this Failed Run (Click to Toggle)</span>
+              <span>Traceback for GitHub Run #{run.github_run_number} (Click to Toggle)</span>
             </div>
             {showErrorTrace ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           </div>
@@ -445,7 +466,7 @@ export default function TelemetryDashboard() {
         </div>
 
         <div className="grid grid-cols-10 md:grid-cols-15 gap-2">
-          {runs.map((r, idx) => (
+          {runs.map((r) => (
             <div
               key={r.id}
               onClick={() => {
@@ -459,9 +480,9 @@ export default function TelemetryDashboard() {
                   ? "bg-[#00FF66]/20 border-[#00FF66]/50 text-[#00FF66]"
                   : "bg-red-500/20 border-red-500/50 text-red-400"
               }`}
-              title={`Run ${idx + 1} (${r.category}) - ${r.status}`}
+              title={`GitHub Run #${r.github_run_number} (${r.category}) - ${r.status}`}
             >
-              <span className="text-xs font-mono font-bold">{idx + 1}</span>
+              <span className="text-xs font-mono font-bold">#{r.github_run_number}</span>
             </div>
           ))}
         </div>
