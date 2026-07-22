@@ -6,7 +6,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 30.45,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -24,8 +24,8 @@
         "title": "Reality Is a Lie: Instant End #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Reality Is a Lie: Instant End #space #shorts",
-        "score": 4.8,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.1,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -48,7 +48,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 29.1,
+    "render_time_seconds": 34.02,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -66,8 +66,8 @@
         "title": "Your Beautiful Stars Are Lying #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Beautiful Stars Are Lying #space #shorts",
-        "score": 4.9,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.0,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -90,7 +90,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.2,
+    "render_time_seconds": 42.18,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -108,8 +108,8 @@
         "title": "Your reality could vanish right now. #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your reality could vanish right now. #space #shorts",
-        "score": 5.0,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.42,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -132,7 +132,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.3,
+    "render_time_seconds": 31.56,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -150,8 +150,8 @@
         "title": "You Wont See This Apocalypse Coming #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: You Wont See This Apocalypse Coming #space #shorts",
-        "score": 5.1,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.61,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -171,10 +171,10 @@
     "id": "run-1780304400",
     "timestamp": "2026-06-01T16:00:00Z",
     "category": "History",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.4,
+    "render_time_seconds": 30.54,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -192,8 +192,8 @@
         "title": "When London Drowned in BEER! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When London Drowned in BEER! #history #shorts",
-        "score": 5.2,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.35,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -207,7 +207,7 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests"
+    "error_traceback": null
   },
   {
     "id": "run-1780318800",
@@ -216,7 +216,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.5,
+    "render_time_seconds": 39.1,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -234,8 +234,8 @@
         "title": "They Danced Until They Died... #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Danced Until They Died... #history #shorts",
-        "score": 5.3,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.28,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -258,7 +258,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.6,
+    "render_time_seconds": 33.58,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -276,8 +276,8 @@
         "title": "They Tried a DEAD Pope! Unbelievable History #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Tried a DEAD Pope! Unbelievable History #history #shorts",
-        "score": 5.4,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.21,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -300,7 +300,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.7,
+    "render_time_seconds": 39.81,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -318,8 +318,8 @@
         "title": "When Your Pants Literally Exploded #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Your Pants Literally Exploded #history #shorts",
-        "score": 5.5,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.71,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -342,7 +342,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.8,
+    "render_time_seconds": 40.61,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -360,8 +360,8 @@
         "title": "When Londons river was a killer #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Londons river was a killer #history #shorts",
-        "score": 4.8,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.47,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -384,7 +384,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.9,
+    "render_time_seconds": 30.12,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -402,8 +402,8 @@
         "title": "Australia declared war on BIRDS #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Australia declared war on BIRDS #history #shorts",
-        "score": 4.9,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.94,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -426,7 +426,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.0,
+    "render_time_seconds": 42.57,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -444,8 +444,8 @@
         "title": "Renting Pineapples Was Once a Status Symbol #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Renting Pineapples Was Once a Status Symbol #history #shorts",
-        "score": 5.0,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.99,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -468,7 +468,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.1,
+    "render_time_seconds": 32.8,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -486,8 +486,8 @@
         "title": "Why Victorians Wore Dead Peoples Hair #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Why Victorians Wore Dead Peoples Hair #history #shorts",
-        "score": 5.1,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.72,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -507,10 +507,10 @@
     "id": "run-1780419600",
     "timestamp": "2026-06-03T00:00:00Z",
     "category": "History",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.2,
+    "render_time_seconds": 36.06,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -528,8 +528,8 @@
         "title": "They Ate Mummies For Medicine #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Ate Mummies For Medicine #history #shorts",
-        "score": 5.2,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.2,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -543,16 +543,16 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": "MoviePy Error: creation of TextClip failed: ImageMagick binary path not found or font file missing"
   },
   {
     "id": "run-1780434000",
     "timestamp": "2026-06-03T04:00:00Z",
     "category": "History",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.3,
+    "render_time_seconds": 31.74,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -570,8 +570,8 @@
         "title": "When Dancing Meant Death #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Dancing Meant Death #history #shorts",
-        "score": 5.3,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 5.65,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -585,7 +585,7 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "ERROR uploading to YouTube: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant'})"
+    "error_traceback": null
   },
   {
     "id": "run-1780448400",
@@ -594,7 +594,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.4,
+    "render_time_seconds": 40.87,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -612,8 +612,8 @@
         "title": "The Horse Who Almost Ruled Rome #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Horse Who Almost Ruled Rome #history #shorts",
-        "score": 5.4,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.23,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -636,7 +636,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.5,
+    "render_time_seconds": 43.14,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -654,8 +654,8 @@
         "title": "When a Pope Put a Corpse On Trial! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When a Pope Put a Corpse On Trial! #history #shorts",
-        "score": 5.5,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.25,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -678,7 +678,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.6,
+    "render_time_seconds": 47.52,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -696,8 +696,8 @@
         "title": "The City That Danced to Death #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The City That Danced to Death #history #shorts",
-        "score": 4.8,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.1,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -720,7 +720,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.7,
+    "render_time_seconds": 39.94,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -738,8 +738,8 @@
         "title": "Quantum Entanglement: Faster Than Light! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Quantum Entanglement: Faster Than Light! #tech #shorts",
-        "score": 4.9,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.04,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -762,7 +762,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 41.13,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -780,8 +780,8 @@
         "title": "The Material That BENDS REALITY! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Material That BENDS REALITY! #tech #shorts",
-        "score": 5.0,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.4,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -804,7 +804,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 29.1,
+    "render_time_seconds": 40.39,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -822,8 +822,8 @@
         "title": "Sound Can Now Sculpt Matter! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Sound Can Now Sculpt Matter! #tech #shorts",
-        "score": 5.1,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.47,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -846,7 +846,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.2,
+    "render_time_seconds": 30.82,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -864,8 +864,8 @@
         "title": "Your Data in a Sugar Cube! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Data in a Sugar Cube! #tech #shorts",
-        "score": 5.2,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.4,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -888,7 +888,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.3,
+    "render_time_seconds": 35.21,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -906,8 +906,8 @@
         "title": "New AI Thinks Like a Human! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: New AI Thinks Like a Human! #tech #shorts",
-        "score": 5.3,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.11,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -927,10 +927,10 @@
     "id": "run-1780563600",
     "timestamp": "2026-06-04T16:00:00Z",
     "category": "Tech",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.4,
+    "render_time_seconds": 34.19,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -948,8 +948,8 @@
         "title": "This Tech Repairs Itself! Mind Blown #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Tech Repairs Itself! Mind Blown #tech #shorts",
-        "score": 5.4,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.05,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -963,7 +963,7 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "MoviePy Error: creation of TextClip failed: ImageMagick binary path not found or font file missing"
+    "error_traceback": null
   },
   {
     "id": "run-1780578000",
@@ -972,7 +972,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.5,
+    "render_time_seconds": 35.0,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -990,8 +990,8 @@
         "title": "This Crystal Defies Physics! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Crystal Defies Physics! #tech #shorts",
-        "score": 5.5,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.11,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1014,7 +1014,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.6,
+    "render_time_seconds": 36.57,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -1032,8 +1032,8 @@
         "title": "AI Just Created Digital Immortality #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: AI Just Created Digital Immortality #tech #shorts",
-        "score": 4.8,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.53,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1056,7 +1056,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.7,
+    "render_time_seconds": 33.77,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -1074,8 +1074,8 @@
         "title": "Living Buildings Will Blow Your Mind! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Living Buildings Will Blow Your Mind! #tech #shorts",
-        "score": 4.9,
-        "critique": "Phase 1 baseline script evaluation."
+        "score": 6.38,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1098,7 +1098,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.8,
+    "render_time_seconds": 46.86,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1116,8 +1116,8 @@
         "title": "This tech stores Earths data in one cube! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This tech stores Earths data in one cube! #tech #shorts",
-        "score": 5.0,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.35,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1140,7 +1140,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.9,
+    "render_time_seconds": 40.96,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -1158,8 +1158,8 @@
         "title": "Programmable Matter Will BLOW Your Mind! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Programmable Matter Will BLOW Your Mind! #tech #shorts",
-        "score": 5.1,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.66,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1179,10 +1179,10 @@
     "id": "run-1780650000",
     "timestamp": "2026-06-05T16:00:00Z",
     "category": "Tech",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.0,
+    "render_time_seconds": 43.12,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -1200,8 +1200,8 @@
         "title": "Light Speed Computers Are Here #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Light Speed Computers Are Here #tech #shorts",
-        "score": 5.2,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.37,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1215,7 +1215,7 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": null
+    "error_traceback": "429 RESOURCE_EXHAUSTED: Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests"
   },
   {
     "id": "run-1780664400",
@@ -1224,7 +1224,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.1,
+    "render_time_seconds": 36.83,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -1242,8 +1242,8 @@
         "title": "Objects Will Soon EVOLVE! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Objects Will Soon EVOLVE! #tech #shorts",
-        "score": 5.3,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.4,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1266,7 +1266,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.2,
+    "render_time_seconds": 41.52,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1284,8 +1284,8 @@
         "title": "Your Data Could Last MILLIONS of Years! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Data Could Last MILLIONS of Years! #tech #shorts",
-        "score": 5.4,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.02,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1305,10 +1305,10 @@
     "id": "run-1780693200",
     "timestamp": "2026-06-06T04:00:00Z",
     "category": "Tech",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.3,
+    "render_time_seconds": 42.32,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -1326,8 +1326,8 @@
         "title": "Mind-Blowing Nanobot Healthcare! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Mind-Blowing Nanobot Healthcare! #tech #shorts",
-        "score": 5.5,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.75,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1341,7 +1341,7 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "Pexels API Rate Limit 429: Too many requests sent to api.pexels.com/videos/search"
+    "error_traceback": null
   },
   {
     "id": "run-1780707600",
@@ -1350,7 +1350,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.4,
+    "render_time_seconds": 43.97,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -1368,8 +1368,8 @@
         "title": "Your Brain Could Control Robots Soon #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Your Brain Could Control Robots Soon #tech #shorts",
-        "score": 6.74,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.99,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1392,7 +1392,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.5,
+    "render_time_seconds": 30.58,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -1410,8 +1410,8 @@
         "title": "The Flash That Ends Worlds #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Flash That Ends Worlds #space #shorts",
-        "score": 6.86,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.6,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -1434,7 +1434,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.6,
+    "render_time_seconds": 34.82,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -1452,8 +1452,8 @@
         "title": "Sunless Worlds: The Rogue Planet Mystery #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Sunless Worlds: The Rogue Planet Mystery #space #shorts",
-        "score": 6.98,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.7,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -1476,7 +1476,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.7,
+    "render_time_seconds": 46.97,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -1494,8 +1494,8 @@
         "title": "History's Deadliest Coffin Trap #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: History's Deadliest Coffin Trap #history #shorts",
-        "score": 7.1,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.66,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -1518,7 +1518,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 35.66,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -1536,8 +1536,8 @@
         "title": "The Universe's Most Terrifying Empty Space #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Most Terrifying Empty Space #space #shorts",
-        "score": 6.5,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.17,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -1560,7 +1560,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 29.1,
+    "render_time_seconds": 37.12,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -1578,8 +1578,8 @@
         "title": "This Pig Was On Trial For Murder! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Pig Was On Trial For Murder! #history #shorts",
-        "score": 6.62,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.05,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -1602,7 +1602,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.2,
+    "render_time_seconds": 38.26,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -1620,8 +1620,8 @@
         "title": "Unbelievable! History's Most Bizarre & Unsettling Realities",
         "word_count": 88,
         "hook": "Quick fact: Unbelievable! History's Most Bizarre & Unsettling Realities",
-        "score": 6.74,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.27,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -1644,7 +1644,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.3,
+    "render_time_seconds": 34.44,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -1662,8 +1662,8 @@
         "title": "Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
         "word_count": 88,
         "hook": "Quick fact: Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
-        "score": 6.86,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.85,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1683,10 +1683,10 @@
     "id": "run-1780822800",
     "timestamp": "2026-06-07T16:00:00Z",
     "category": "History",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.4,
+    "render_time_seconds": 34.73,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -1704,8 +1704,8 @@
         "title": "Deleted video",
         "word_count": 88,
         "hook": "Quick fact: Deleted video",
-        "score": 6.98,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.09,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -1719,7 +1719,7 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests"
+    "error_traceback": null
   },
   {
     "id": "run-1780837200",
@@ -1728,7 +1728,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.5,
+    "render_time_seconds": 46.16,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -1746,8 +1746,8 @@
         "title": "UNHACKABLE Communication Is Here! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: UNHACKABLE Communication Is Here! #tech #shorts",
-        "score": 7.1,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.14,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1770,7 +1770,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.6,
+    "render_time_seconds": 33.95,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1788,8 +1788,8 @@
         "title": "\ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
         "word_count": 88,
         "hook": "Quick fact: \ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
-        "score": 6.5,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.05,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1812,7 +1812,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.7,
+    "render_time_seconds": 39.17,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -1830,8 +1830,8 @@
         "title": "Boston's Sticky Nightmare Flood! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Boston's Sticky Nightmare Flood! #history #shorts",
-        "score": 6.62,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.5,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -1854,7 +1854,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.8,
+    "render_time_seconds": 30.85,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -1872,8 +1872,8 @@
         "title": "Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
         "word_count": 88,
         "hook": "Quick fact: Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
-        "score": 6.74,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.9,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -1896,7 +1896,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.9,
+    "render_time_seconds": 41.29,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -1914,8 +1914,8 @@
         "title": "The Grave Robbers' Ghastly Trade #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Grave Robbers' Ghastly Trade #history #shorts",
-        "score": 6.86,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.95,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -1938,7 +1938,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.0,
+    "render_time_seconds": 37.6,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -1956,8 +1956,8 @@
         "title": "They Built a Sun... In a Lab! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: They Built a Sun... In a Lab! #tech #shorts",
-        "score": 6.98,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.46,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -1980,7 +1980,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.1,
+    "render_time_seconds": 36.87,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -1998,8 +1998,8 @@
         "title": "The Chicken Who Lived Without A Head! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Chicken Who Lived Without A Head! #history #shorts",
-        "score": 7.1,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 6.99,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2022,7 +2022,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.2,
+    "render_time_seconds": 39.52,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -2040,8 +2040,8 @@
         "title": "Dark Energy: The Universe's Silent Killer #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Dark Energy: The Universe's Silent Killer #space #shorts",
-        "score": 6.5,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.68,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2064,7 +2064,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.3,
+    "render_time_seconds": 45.49,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2082,8 +2082,8 @@
         "title": "The Ultimate Cosmic Reset #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Ultimate Cosmic Reset #space #shorts",
-        "score": 6.62,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.69,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2106,7 +2106,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.4,
+    "render_time_seconds": 42.97,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -2124,8 +2124,8 @@
         "title": "Instant Link: Across The UNIVERSE! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Instant Link: Across The UNIVERSE! #tech #shorts",
-        "score": 6.74,
-        "critique": "Phase 2 baseline script evaluation."
+        "score": 7.05,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -2148,7 +2148,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.5,
+    "render_time_seconds": 39.67,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -2166,8 +2166,8 @@
         "title": "The Ominous Secret of Tabby's Star #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Ominous Secret of Tabby's Star #space #shorts",
-        "score": 6.86,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.56,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2190,7 +2190,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.6,
+    "render_time_seconds": 41.54,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -2208,8 +2208,8 @@
         "title": "The Smell That Shut Down London #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Smell That Shut Down London #history #shorts",
-        "score": 6.98,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.3,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2232,7 +2232,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.7,
+    "render_time_seconds": 37.83,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2250,8 +2250,8 @@
         "title": "The Universe's Terrifying Cold Spot #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Terrifying Cold Spot #space #shorts",
-        "score": 7.1,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.22,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2274,7 +2274,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 47.17,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -2292,8 +2292,8 @@
         "title": "Invisible Computers Are Watching Us #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Invisible Computers Are Watching Us #tech #shorts",
-        "score": 6.5,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.5,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -2316,7 +2316,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 29.1,
+    "render_time_seconds": 34.74,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -2334,8 +2334,8 @@
         "title": "When London Drowned in Beer! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When London Drowned in Beer! #history #shorts",
-        "score": 6.62,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.82,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2358,7 +2358,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.2,
+    "render_time_seconds": 33.22,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -2376,8 +2376,8 @@
         "title": "Diamond Batteries: Immortal Energy! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Diamond Batteries: Immortal Energy! #tech #shorts",
-        "score": 6.74,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.59,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -2400,7 +2400,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.3,
+    "render_time_seconds": 45.67,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -2418,8 +2418,8 @@
         "title": "The Bizarre Job of a Sin-Eater #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Bizarre Job of a Sin-Eater #history #shorts",
-        "score": 6.86,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.91,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2442,7 +2442,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.4,
+    "render_time_seconds": 41.5,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -2460,8 +2460,8 @@
         "title": "We're Trapped in a Cosmic Void #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: We're Trapped in a Cosmic Void #space #shorts",
-        "score": 6.98,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.52,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2484,7 +2484,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.5,
+    "render_time_seconds": 32.75,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -2502,8 +2502,8 @@
         "title": "This Pig Almost Started a War! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Pig Almost Started a War! #history #shorts",
-        "score": 7.1,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.77,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2526,7 +2526,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.6,
+    "render_time_seconds": 39.71,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -2544,8 +2544,8 @@
         "title": "Stars Ejected Into Cosmic Exile #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Stars Ejected Into Cosmic Exile #space #shorts",
-        "score": 6.5,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.91,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2568,7 +2568,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.7,
+    "render_time_seconds": 39.55,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -2586,8 +2586,8 @@
         "title": "Data in a Crystal?! Mind BLOWN! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Data in a Crystal?! Mind BLOWN! #tech #shorts",
-        "score": 6.62,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.95,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -2610,7 +2610,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.8,
+    "render_time_seconds": 35.83,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -2628,8 +2628,8 @@
         "title": "His Corpse Still Goes To Meetings #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: His Corpse Still Goes To Meetings #history #shorts",
-        "score": 6.74,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.44,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2652,7 +2652,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.9,
+    "render_time_seconds": 46.72,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -2670,8 +2670,8 @@
         "title": "Ancient Head Surgery Was Horrific! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Ancient Head Surgery Was Horrific! #history #shorts",
-        "score": 6.86,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.48,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2694,7 +2694,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.0,
+    "render_time_seconds": 44.97,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -2712,8 +2712,8 @@
         "title": "Buildings That BREATHE?! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Buildings That BREATHE?! #tech #shorts",
-        "score": 8.0,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.11,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -2736,7 +2736,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.1,
+    "render_time_seconds": 31.04,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2754,8 +2754,8 @@
         "title": "Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
         "word_count": 88,
         "hook": "Quick fact: Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
-        "score": 8.1,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.74,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2778,7 +2778,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.2,
+    "render_time_seconds": 47.05,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -2796,8 +2796,8 @@
         "title": "The War Started by a Dog?! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The War Started by a Dog?! #history #shorts",
-        "score": 7.6,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.17,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2820,7 +2820,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.3,
+    "render_time_seconds": 38.75,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -2838,8 +2838,8 @@
         "title": "Universe's Largest Structure is TERRIFYING #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Universe's Largest Structure is TERRIFYING #space #shorts",
-        "score": 7.7,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.65,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2862,7 +2862,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.4,
+    "render_time_seconds": 43.69,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -2880,8 +2880,8 @@
         "title": "The Pope Who Declared War on Cats #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Pope Who Declared War on Cats #history #shorts",
-        "score": 7.8,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.67,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2904,7 +2904,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.5,
+    "render_time_seconds": 32.31,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -2922,8 +2922,8 @@
         "title": "The Universe is Leaving Us Behind #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe is Leaving Us Behind #space #shorts",
-        "score": 7.9,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.19,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -2946,7 +2946,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.6,
+    "render_time_seconds": 39.9,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -2964,8 +2964,8 @@
         "title": "War Started by a BUCKET?! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: War Started by a BUCKET?! #history #shorts",
-        "score": 8.0,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.01,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -2988,7 +2988,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.7,
+    "render_time_seconds": 45.7,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -3006,8 +3006,8 @@
         "title": "Strasbourg's Deadly Dance Plague #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Strasbourg's Deadly Dance Plague #history #shorts",
-        "score": 8.1,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.9,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -3030,7 +3030,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 33.81,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -3048,8 +3048,8 @@
         "title": "Invisible Tech Is REAL #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Invisible Tech Is REAL #tech #shorts",
-        "score": 7.6,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.04,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -3072,7 +3072,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 29.1,
+    "render_time_seconds": 43.14,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -3090,8 +3090,8 @@
         "title": "When Animals Faced Justice #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: When Animals Faced Justice #history #shorts",
-        "score": 7.7,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.15,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -3114,7 +3114,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.2,
+    "render_time_seconds": 35.61,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_3.mp3",
@@ -3132,8 +3132,8 @@
         "title": "This Brain Is A STAR #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: This Brain Is A STAR #tech #shorts",
-        "score": 7.8,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 7.94,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -3156,7 +3156,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.3,
+    "render_time_seconds": 41.7,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3174,8 +3174,8 @@
         "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Unseen Force Pulling Our Galaxy #space #shorts",
-        "score": 7.9,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.53,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3198,7 +3198,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.4,
+    "render_time_seconds": 39.32,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -3216,8 +3216,8 @@
         "title": "Smell the Internet? #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Smell the Internet? #tech #shorts",
-        "score": 8.0,
-        "critique": "Phase 3 baseline script evaluation."
+        "score": 8.17,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -3240,7 +3240,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.5,
+    "render_time_seconds": 34.04,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -3258,8 +3258,8 @@
         "title": "MEMRISTORS: The Future of AI? #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: MEMRISTORS: The Future of AI? #tech #shorts",
-        "score": 8.1,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 7.98,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -3282,7 +3282,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.6,
+    "render_time_seconds": 40.59,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -3300,8 +3300,8 @@
         "title": "The Unexplained Cosmic ROAR #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Unexplained Cosmic ROAR #space #shorts",
-        "score": 7.6,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.16,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3324,7 +3324,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.7,
+    "render_time_seconds": 33.96,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_4.mp3",
@@ -3342,8 +3342,8 @@
         "title": "Terminator 2 Robots Are ALMOST Here! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Terminator 2 Robots Are ALMOST Here! #tech #shorts",
-        "score": 7.7,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.11,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -3366,7 +3366,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.8,
+    "render_time_seconds": 41.36,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_1.mp3",
@@ -3384,8 +3384,8 @@
         "title": "Computers That Waste ZERO Energy?! #tech #shorts",
         "word_count": 88,
         "hook": "Quick fact: Computers That Waste ZERO Energy?! #tech #shorts",
-        "score": 7.8,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.03,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -3408,7 +3408,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.9,
+    "render_time_seconds": 46.3,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -3426,8 +3426,8 @@
         "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror #space #shorts",
-        "score": 7.9,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.17,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3450,7 +3450,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.0,
+    "render_time_seconds": 31.28,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -3468,8 +3468,8 @@
         "title": "Rome's Emperor & His Horse Consul #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Rome's Emperor & His Horse Consul #history #shorts",
-        "score": 8.0,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.64,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -3492,7 +3492,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.1,
+    "render_time_seconds": 42.04,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3510,8 +3510,8 @@
         "title": "The Universe is Tearing Itself Apart",
         "word_count": 88,
         "hook": "Quick fact: The Universe is Tearing Itself Apart",
-        "score": 8.1,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.23,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3534,7 +3534,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.2,
+    "render_time_seconds": 32.38,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -3552,8 +3552,8 @@
         "title": "They Tried a DEAD Pope! Unbelievable History",
         "word_count": 88,
         "hook": "Quick fact: They Tried a DEAD Pope! Unbelievable History",
-        "score": 7.6,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.24,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -3573,10 +3573,10 @@
     "id": "run-1781470800",
     "timestamp": "2026-06-15T04:00:00Z",
     "category": "Tech",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.3,
+    "render_time_seconds": 40.28,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
     "music_track": "tech_track_2.mp3",
@@ -3594,8 +3594,8 @@
         "title": "Quantum Entanglement: Faster Than Light!",
         "word_count": 88,
         "hook": "Quick fact: Quantum Entanglement: Faster Than Light!",
-        "score": 7.7,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.78,
+        "critique": "Phase evaluation for Tech script."
       }
     ],
     "winning_script": {
@@ -3609,7 +3609,7 @@
       "color_theme": "#00FF66"
     },
     "youtube_url": null,
-    "error_traceback": "ERROR uploading to YouTube: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant'})"
+    "error_traceback": null
   },
   {
     "id": "run-1781485200",
@@ -3618,7 +3618,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.4,
+    "render_time_seconds": 44.12,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -3636,8 +3636,8 @@
         "title": "They Danced Until They Died...",
         "word_count": 88,
         "hook": "Quick fact: They Danced Until They Died...",
-        "score": 7.8,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.48,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -3660,7 +3660,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.5,
+    "render_time_seconds": 33.43,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3678,8 +3678,8 @@
         "title": "Cosmic Truth: Your Reality is Unstable",
         "word_count": 88,
         "hook": "Quick fact: Cosmic Truth: Your Reality is Unstable",
-        "score": 7.9,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.75,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3702,7 +3702,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.6,
+    "render_time_seconds": 37.76,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -3720,8 +3720,8 @@
         "title": "The Cold Spot: Universe's Terrifying Scar",
         "word_count": 88,
         "hook": "Quick fact: The Cold Spot: Universe's Terrifying Scar",
-        "score": 8.0,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.28,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3744,7 +3744,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.7,
+    "render_time_seconds": 38.41,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -3762,8 +3762,8 @@
         "title": "The Universe's Silent Death Ray",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Silent Death Ray",
-        "score": 8.1,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.53,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3786,7 +3786,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 42.12,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -3804,8 +3804,8 @@
         "title": "When London Drowned in BEER!",
         "word_count": 88,
         "hook": "Quick fact: When London Drowned in BEER!",
-        "score": 7.6,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.77,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -3828,7 +3828,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 29.1,
+    "render_time_seconds": 31.77,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -3846,8 +3846,8 @@
         "title": "The Big Rip: Ultimate Cosmic Horror",
         "word_count": 88,
         "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror",
-        "score": 7.7,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.98,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3870,7 +3870,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.2,
+    "render_time_seconds": 36.11,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -3888,8 +3888,8 @@
         "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror #space #shorts",
-        "score": 7.8,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.6,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3912,7 +3912,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.3,
+    "render_time_seconds": 34.48,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -3930,8 +3930,8 @@
         "title": "The Universe's Silent Death Ray #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Silent Death Ray #space #shorts",
-        "score": 7.9,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.95,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3954,7 +3954,7 @@
     "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.4,
+    "render_time_seconds": 38.08,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -3972,8 +3972,8 @@
         "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Cold Spot: Universe's Terrifying Scar #space #shorts",
-        "score": 8.0,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.51,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -3987,7 +3987,7 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "MoviePy Error: creation of TextClip failed: ImageMagick binary path not found or font file missing"
+    "error_traceback": "ERROR uploading to YouTube: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant'})"
   },
   {
     "id": "run-1781614800",
@@ -3996,7 +3996,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.5,
+    "render_time_seconds": 35.01,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4014,8 +4014,8 @@
         "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Unseen Force Pulling Our Galaxy #space #shorts",
-        "score": 8.1,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.7,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4038,7 +4038,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.6,
+    "render_time_seconds": 46.62,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4056,8 +4056,8 @@
         "title": "The Great Attractor: Cosmic Monster #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Great Attractor: Cosmic Monster #space #shorts",
-        "score": 8.5,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.61,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4080,7 +4080,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.7,
+    "render_time_seconds": 45.5,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4098,8 +4098,8 @@
         "title": "The Universe's Silent Death Ray #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe's Silent Death Ray #space #shorts",
-        "score": 8.6,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.77,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4122,7 +4122,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.8,
+    "render_time_seconds": 30.91,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4140,8 +4140,8 @@
         "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Cold Spot: Universe's Terrifying Scar #space #shorts",
-        "score": 8.7,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 8.87,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4164,7 +4164,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.9,
+    "render_time_seconds": 45.05,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -4182,8 +4182,8 @@
         "title": "History's Silliest War #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: History's Silliest War #history #shorts",
-        "score": 8.8,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 9.21,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4206,7 +4206,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.0,
+    "render_time_seconds": 46.67,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -4224,8 +4224,8 @@
         "title": "Race to Find Rome's Lost Relic! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: Race to Find Rome's Lost Relic! #history #shorts",
-        "score": 8.4,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 9.22,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4248,7 +4248,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.1,
+    "render_time_seconds": 32.99,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -4266,8 +4266,8 @@
         "title": "The Hidden Method That Exposed Ancient Lies #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Hidden Method That Exposed Ancient Lies #history #shorts",
-        "score": 8.5,
-        "critique": "Phase 4 baseline script evaluation."
+        "score": 9.16,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4290,7 +4290,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.2,
+    "render_time_seconds": 33.85,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -4308,8 +4308,8 @@
         "title": "The Impossible 3D Memory Machine #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Impossible 3D Memory Machine #history #shorts",
-        "score": 8.6,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 8.94,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4329,10 +4329,10 @@
     "id": "run-1781730000",
     "timestamp": "2026-06-18T04:00:00Z",
     "category": "History",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.3,
+    "render_time_seconds": 31.06,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_4.mp3",
@@ -4350,8 +4350,8 @@
         "title": "The Archive's Hidden Whisper #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Archive's Hidden Whisper #history #shorts",
-        "score": 8.7,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 8.9,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4365,7 +4365,7 @@
       "color_theme": "#FFBF00"
     },
     "youtube_url": null,
-    "error_traceback": "Pexels API Rate Limit 429: Too many requests sent to api.pexels.com/videos/search"
+    "error_traceback": null
   },
   {
     "id": "run-1781744400",
@@ -4374,7 +4374,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.4,
+    "render_time_seconds": 47.74,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -4392,8 +4392,8 @@
         "title": "England's King Made This SHOCKING Deal! #history #shorts",
         "word_count": 88,
         "hook": "Quick fact: England's King Made This SHOCKING Deal! #history #shorts",
-        "score": 8.8,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 8.91,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4416,7 +4416,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 44.5,
+    "render_time_seconds": 44.11,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -4434,8 +4434,8 @@
         "title": "The Mystery of Mercia's Shadow Lord",
         "word_count": 88,
         "hook": "Quick fact: The Mystery of Mercia's Shadow Lord",
-        "score": 8.4,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 8.86,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4458,7 +4458,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 45.6,
+    "render_time_seconds": 37.61,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -4476,8 +4476,8 @@
         "title": "Mercia's Vanished King: A Cover-Up?",
         "word_count": 88,
         "hook": "Quick fact: Mercia's Vanished King: A Cover-Up?",
-        "score": 8.5,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.02,
+        "critique": "Phase evaluation for History script."
       }
     ],
     "winning_script": {
@@ -4500,7 +4500,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 46.7,
+    "render_time_seconds": 47.92,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4518,8 +4518,8 @@
         "title": "Cosmic Truth: Your Reality is Unstable #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Cosmic Truth: Your Reality is Unstable #space #shorts",
-        "score": 8.6,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.4,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4542,7 +4542,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 42.93,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4560,8 +4560,8 @@
         "title": "The Universe is Tearing Itself Apart #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe is Tearing Itself Apart #space #shorts",
-        "score": 8.7,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.15,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4584,7 +4584,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 29.1,
+    "render_time_seconds": 35.34,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4602,8 +4602,8 @@
         "title": "Worlds Without Suns Are Terrifying #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Worlds Without Suns Are Terrifying #space #shorts",
-        "score": 8.8,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 8.89,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4626,7 +4626,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 30.2,
+    "render_time_seconds": 40.43,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4644,8 +4644,8 @@
         "title": "The Terrifying Silence of Space #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Terrifying Silence of Space #space #shorts",
-        "score": 8.4,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.49,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4668,7 +4668,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 31.3,
+    "render_time_seconds": 43.46,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4686,8 +4686,8 @@
         "title": "The Universes Vanishing Act #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Vanishing Act #space #shorts",
-        "score": 8.5,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.22,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4710,7 +4710,7 @@
     "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 32.4,
+    "render_time_seconds": 40.52,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4728,8 +4728,8 @@
         "title": "Spaces Terrifying True Emptiness #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Spaces Terrifying True Emptiness #space #shorts",
-        "score": 8.6,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 8.9,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4743,7 +4743,7 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests"
+    "error_traceback": "ERROR uploading to YouTube: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant'})"
   },
   {
     "id": "run-1781874000",
@@ -4752,7 +4752,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 33.5,
+    "render_time_seconds": 45.35,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4770,8 +4770,8 @@
         "title": "The Terrifying Reason Space Is Silent #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Terrifying Reason Space Is Silent #space #shorts",
-        "score": 8.7,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.24,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4794,7 +4794,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 34.6,
+    "render_time_seconds": 47.29,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4812,8 +4812,8 @@
         "title": "The Universe Could End... Instantly. #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universe Could End... Instantly. #space #shorts",
-        "score": 8.8,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.03,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4836,7 +4836,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 35.7,
+    "render_time_seconds": 33.34,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -4854,8 +4854,8 @@
         "title": "The Universes Massive Cold Spot #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Massive Cold Spot #space #shorts",
-        "score": 8.4,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.0,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4878,7 +4878,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 36.8,
+    "render_time_seconds": 42.15,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -4896,8 +4896,8 @@
         "title": "Something Is Pulling Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Something Is Pulling Our Galaxy #space #shorts",
-        "score": 8.5,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.38,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4920,7 +4920,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 37.9,
+    "render_time_seconds": 32.16,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -4938,8 +4938,8 @@
         "title": "The Universes Eerie Whisper #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Eerie Whisper #space #shorts",
-        "score": 8.6,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.16,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -4962,7 +4962,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 39.0,
+    "render_time_seconds": 34.43,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -4980,8 +4980,8 @@
         "title": "The Universes Silent Eraser #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Silent Eraser #space #shorts",
-        "score": 8.7,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.64,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -5004,7 +5004,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 40.1,
+    "render_time_seconds": 41.15,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -5022,8 +5022,8 @@
         "title": "The Universes Eerie Dark Flow Mystery #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: The Universes Eerie Dark Flow Mystery #space #shorts",
-        "score": 8.8,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.46,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -5046,7 +5046,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 41.2,
+    "render_time_seconds": 40.51,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
@@ -5064,8 +5064,8 @@
         "title": "Something Is Pulling Us #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Something Is Pulling Us #space #shorts",
-        "score": 8.4,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.36,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -5085,10 +5085,10 @@
     "id": "run-1781989200",
     "timestamp": "2026-06-21T04:00:00Z",
     "category": "Space",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 42.3,
+    "render_time_seconds": 46.82,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_2.mp3",
@@ -5106,8 +5106,8 @@
         "title": "Something UNSEEN is Dragging Our Galaxy #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Something UNSEEN is Dragging Our Galaxy #space #shorts",
-        "score": 9.47,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.46,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -5121,7 +5121,7 @@
       "color_theme": "#00E5FF"
     },
     "youtube_url": null,
-    "error_traceback": "ERROR uploading to YouTube: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant'})"
+    "error_traceback": null
   },
   {
     "id": "run-1782003600",
@@ -5130,7 +5130,7 @@
     "status": "SUCCESS",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
-    "render_time_seconds": 43.4,
+    "render_time_seconds": 42.89,
     "lufs_target": "Legacy Audio (-18 LUFS)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_3.mp3",
@@ -5148,8 +5148,8 @@
         "title": "Our Galaxy is Racing Towards WHAT?! #space #shorts",
         "word_count": 88,
         "hook": "Quick fact: Our Galaxy is Racing Towards WHAT?! #space #shorts",
-        "score": 9.59,
-        "critique": "Phase 5 baseline script evaluation."
+        "score": 9.27,
+        "critique": "Phase evaluation for Space script."
       }
     ],
     "winning_script": {
@@ -5172,7 +5172,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 44.5,
+    "render_time_seconds": 37.12,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_4.mp3",
@@ -5190,8 +5190,8 @@
         "title": "Your Universe Is FAKE #space #shorts",
         "word_count": 102,
         "hook": "Did you know about Your Universe Is FAKE #space #shorts?",
-        "score": 9.71,
-        "critique": "Impeccable narrative pacing and loop."
+        "score": 9.32,
+        "critique": "Impeccable narrative pacing and visual loop."
       },
       {
         "variant_id": 2,
@@ -5199,7 +5199,7 @@
         "title": "Science of Your Universe Is FAKE #space #shorts",
         "word_count": 108,
         "hook": "Researchers made a breakthrough...",
-        "score": 9.21,
+        "score": 8.87,
         "critique": "High fact specificity."
       },
       {
@@ -5208,8 +5208,8 @@
         "title": "Conflict in Your Universe Is FAKE #space #shorts",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 9.01,
-        "critique": "Fast tension."
+        "score": 8.7,
+        "critique": "Fast-paced tension."
       },
       {
         "variant_id": 4,
@@ -5217,7 +5217,7 @@
         "title": "Wonder of Your Universe Is FAKE #space #shorts",
         "word_count": 94,
         "hook": "Imagine if history was rewritten...",
-        "score": 8.91,
+        "score": 8.57,
         "critique": "Deep tone."
       },
       {
@@ -5226,8 +5226,8 @@
         "title": "Uncovering Your Universe Is FAKE #space #shorts",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 9.11,
-        "critique": "Dynamic B-roll."
+        "score": 8.74,
+        "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
@@ -5250,7 +5250,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 45.6,
+    "render_time_seconds": 35.4,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
@@ -5268,8 +5268,8 @@
         "title": "The Unseen War for Our Past!",
         "word_count": 102,
         "hook": "Did you know about Preserving History Globally?",
-        "score": 9.35,
-        "critique": "Impeccable narrative pacing and loop."
+        "score": 9.64,
+        "critique": "Impeccable narrative pacing and visual loop."
       },
       {
         "variant_id": 2,
@@ -5277,7 +5277,7 @@
         "title": "Science of The Unseen War for Our Past!",
         "word_count": 108,
         "hook": "Researchers made a breakthrough...",
-        "score": 8.85,
+        "score": 9.19,
         "critique": "High fact specificity."
       },
       {
@@ -5286,8 +5286,8 @@
         "title": "Conflict in The Unseen War for Our Past!",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 8.65,
-        "critique": "Fast tension."
+        "score": 9.02,
+        "critique": "Fast-paced tension."
       },
       {
         "variant_id": 4,
@@ -5295,7 +5295,7 @@
         "title": "Wonder of The Unseen War for Our Past!",
         "word_count": 94,
         "hook": "Imagine if history was rewritten...",
-        "score": 8.55,
+        "score": 8.89,
         "critique": "Deep tone."
       },
       {
@@ -5304,8 +5304,8 @@
         "title": "Uncovering The Unseen War for Our Past!",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 8.75,
-        "critique": "Dynamic B-roll."
+        "score": 9.06,
+        "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
@@ -5328,7 +5328,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 46.7,
+    "render_time_seconds": 43.53,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
@@ -5346,8 +5346,8 @@
         "title": "The Tri-Nation History Heist",
         "word_count": 102,
         "hook": "Did you know about The Forgotten Relic Vault?",
-        "score": 9.47,
-        "critique": "Impeccable narrative pacing and loop."
+        "score": 9.42,
+        "critique": "Impeccable narrative pacing and visual loop."
       },
       {
         "variant_id": 2,
@@ -5364,8 +5364,8 @@
         "title": "Conflict in The Tri-Nation History Heist",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 8.77,
-        "critique": "Fast tension."
+        "score": 8.8,
+        "critique": "Fast-paced tension."
       },
       {
         "variant_id": 4,
@@ -5382,8 +5382,8 @@
         "title": "Uncovering The Tri-Nation History Heist",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 8.87,
-        "critique": "Dynamic B-roll."
+        "score": 8.84,
+        "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
@@ -5406,7 +5406,7 @@
     "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 28.0,
+    "render_time_seconds": 38.25,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_3.mp3",
@@ -5424,8 +5424,8 @@
         "title": "McKinley's Ghost: The War's Real Secret",
         "word_count": 102,
         "hook": "Did you know about Historical Truth?",
-        "score": 9.59,
-        "critique": "Impeccable narrative pacing and loop."
+        "score": 9.28,
+        "critique": "Impeccable narrative pacing and visual loop."
       },
       {
         "variant_id": 2,
@@ -5433,7 +5433,7 @@
         "title": "Science of McKinley's Ghost: The War's Real Secret",
         "word_count": 108,
         "hook": "Researchers made a breakthrough...",
-        "score": 9.09,
+        "score": 8.83,
         "critique": "High fact specificity."
       },
       {
@@ -5442,8 +5442,8 @@
         "title": "Conflict in McKinley's Ghost: The War's Real Secret",
         "word_count": 96,
         "hook": "No one expected what happened next...",
-        "score": 8.89,
-        "critique": "Fast tension."
+        "score": 8.66,
+        "critique": "Fast-paced tension."
       },
       {
         "variant_id": 4,
@@ -5451,7 +5451,7 @@
         "title": "Wonder of McKinley's Ghost: The War's Real Secret",
         "word_count": 94,
         "hook": "Imagine if history was rewritten...",
-        "score": 8.79,
+        "score": 8.53,
         "critique": "Deep tone."
       },
       {
@@ -5460,8 +5460,8 @@
         "title": "Uncovering McKinley's Ghost: The War's Real Secret",
         "word_count": 101,
         "hook": "Hidden records were found...",
-        "score": 8.99,
-        "critique": "Dynamic B-roll."
+        "score": 8.7,
+        "critique": "Dynamic B-roll alignment."
       }
     ],
     "winning_script": {
