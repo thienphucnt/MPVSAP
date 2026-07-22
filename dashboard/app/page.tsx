@@ -387,14 +387,14 @@ export default function TelemetryDashboard() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
           ) : (
             /* MODERN TOURNAMENT ERA (1 VIDEO/DAY WITH 5-VARIANT BREAKDOWN) */
-            {selectedDayRuns.length > 0 && (() => {
-              const run = selectedDayRuns.find((r) => r.id === selectedRunId) || selectedDayRuns[0];
-              return (
-                <div key={run.id} className="space-y-6">
+            <div className="space-y-6">
+              {selectedDayRuns.length > 0 && (() => {
+                const run = selectedDayRuns.find((r) => r.id === selectedRunId) || selectedDayRuns[0];
+                if (!run) return null;
+                return (
+                  <div key={run.id} className="space-y-6">
                   {/* WINNING SCRIPT BANNER */}
                   <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
                     <div className="flex items-center justify-between">
@@ -499,6 +499,7 @@ export default function TelemetryDashboard() {
                 </div>
               );
             })()}
+            </div>
           )}
         </div>
       )}
