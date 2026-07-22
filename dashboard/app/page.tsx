@@ -42,6 +42,8 @@ interface RunEntry {
   timestamp: string;
   category: string;
   status: "SUCCESS" | "FAILED";
+  generation_mode?: "5_VARIANT_TOURNAMENT" | "SINGLE_SCRIPT_LEGACY";
+  daily_volume?: number;
   render_time_seconds: number;
   lufs_target: string;
   script_variants: ScriptVariant[];
@@ -359,13 +361,24 @@ export default function TelemetryDashboard() {
               </div>
             </div>
           </div>
+          {/* 5-VARIANT COMPARISON GRID & ERA NOTICE */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
-              5-Variant Auto-QA Tournament Breakdown
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="flex justify-between items-center">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400">
+                {selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY" 
+                  ? "⚡ Pre-Tournament Era Breakdown (Legacy Single-Script Mode)" 
+                  : "🏆 5-Variant Auto-QA Tournament Breakdown"}
+              </h4>
+              <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#131b2e] border border-[#1f2d4d] text-cyan-300">
+                {selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY"
+                  ? "Legacy High-Volume (6 Videos/Day)"
+                  : "Modern Era (1 High-Quality Video/Day)"}
+              </span>
+            </div>
+
+            <div className={`grid gap-4 ${selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY" ? "grid-cols-1" : "grid-cols-1 md:grid-cols-5"}`}>
               {selectedRun.script_variants?.map((v) => {
-                const isWinner = v.title === selectedRun.winning_script?.title;
+                const isWinner = v.title === selectedRun.winning_script?.title || selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY";
                 return (
                   <div
                     key={v.variant_id}
@@ -377,7 +390,9 @@ export default function TelemetryDashboard() {
                   >
                     <div>
                       <div className="flex justify-between items-center">
-                        <span className="text-xs font-bold text-gray-400">Variant {v.variant_id}</span>
+                        <span className="text-xs font-bold text-gray-400">
+                          {selectedRun.generation_mode === "SINGLE_SCRIPT_LEGACY" ? "Legacy Script Mode" : `Variant ${v.variant_id}`}
+                        </span>
                         <span className={`text-xs font-bold px-2 py-0.5 rounded ${v.score >= 9 ? "bg-[#00FF66]/20 text-[#00FF66]" : "bg-yellow-500/20 text-yellow-400"}`}>
                           {v.score} / 10
                         </span>
