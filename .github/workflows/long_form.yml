@@ -59,9 +59,11 @@ jobs:
 
       - name: Run Widescreen Pipeline & Publish
         env:
-          # Core API Keys
+          # Core API Keys & Webhook Monitoring
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          WATERMARK_HANDLE: ${{ secrets.WATERMARK_HANDLE }}
 
           # YouTube Data API Credentials
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}

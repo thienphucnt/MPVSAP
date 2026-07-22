@@ -103,6 +103,72 @@ class VideoFormatConfig:
 
 
 WATERMARK_HANDLE = os.getenv("WATERMARK_HANDLE", "@NicheFactsShorts")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+
+
+def send_webhook_notification(title: str, message: str, status: str = "success", video_url: Optional[str] = None):
+    """Send HTTP POST payload alert to Webhook URL (Discord/Telegram/Custom) for fail-safe monitoring."""
+    if not WEBHOOK_URL:
+        print("WEBHOOK_URL not configured. Skipping webhook notification.")
+        return
+
+    color = 0x00FF00 if status == "success" else 0xFF0000
+    embed = {
+        "title": f"🎬 Pipeline Alert: {status.upper()}",
+        "description": message,
+        "color": color,
+        "fields": [
+            {"name": "Video Title", "value": title or "Unknown", "inline": True},
+            {"name": "Status", "value": status.capitalize(), "inline": True}
+        ],
+        "timestamp": datetime.datetime.utcnow().isoformat()
+    }
+
+    if video_url:
+        embed["fields"].append({"name": "Live YouTube URL", "value": f"[Watch Video]({video_url})", "inline": False})
+        embed["url"] = video_url
+
+    payload = {"embeds": [embed]}
+
+    try:
+        resp = HTTP_SESSION.post(WEBHOOK_URL, json=payload, timeout=10)
+        resp.raise_for_status()
+        print(f"Webhook notification ({status}) sent successfully.")
+    except Exception as e:
+        print(f"Failed to send webhook notification: {e}")
+
+
+def sanitize_metadata(title: str, description: str, is_short: bool, category: str) -> Tuple[str, str]:
+    """Enforce strict title limit (< 50 chars) and max 3 relevant hashtags to avoid spam penalties."""
+    clean_title = re.sub(r'#\S+', '', title)
+    clean_title = re.sub(r'\s+', ' ', clean_title).strip()
+
+    # Enforce strict 50-character limit
+    if len(clean_title) > 50:
+        clean_title = clean_title[:47].rstrip() + "..."
+
+    # Parse and format description hashtags
+    hashtags = re.findall(r'#\w+', description)
+    clean_desc = re.sub(r'#\w+', '', description)
+    clean_desc = re.sub(r'\s+', ' ', clean_desc).strip()
+
+    cat_tag = f"#{re.sub(r'[^a-zA-Z0-9]', '', category.title())}"
+    default_tags = ["#Shorts" if is_short else "#Documentary", cat_tag, "#NicheFacts"]
+
+    valid_tags = []
+    for tag in hashtags:
+        if tag.lower() not in [t.lower() for t in valid_tags]:
+            valid_tags.append(tag)
+
+    for def_tag in default_tags:
+        if len(valid_tags) < 3 and def_tag.lower() not in [t.lower() for t in valid_tags]:
+            valid_tags.append(def_tag)
+
+    final_hashtags = valid_tags[:3]
+    final_description = f"{clean_desc}\n\n" + " ".join(final_hashtags)
+
+    return clean_title, final_description
+
 
 
 # ---------------------------------------------------------------------------
@@ -2202,13 +2268,11 @@ def run_daily_upload_pipeline_once() -> None:
             related_long_video_id = item["youtube_video_id"]
             break
 
-    # Strip any generated hashtags from the title and trim extra spaces
-    title = re.sub(r'#\S+', '', title)
-    title = re.sub(r'\s+', ' ', title).strip()
+    # Enforce strict metadata formatting (< 50 chars title, max 3 hashtags)
+    title, description = sanitize_metadata(title, description, config.is_short, category)
 
     # Append standard title hashtags only for Shorts
     if config.is_short:
-        title = f"{title} {CATEGORIES[category]['title_hashtags']}"
         if related_long_video_id:
             link_str = f"🎥 Watch full documentary: https://youtu.be/{related_long_video_id}"
             description = f"{link_str}\n\n{description}"
@@ -2366,6 +2430,15 @@ def run_daily_upload_pipeline_once() -> None:
                         print(f"Successfully recorded uploaded video ID {uploaded_video_id} in history database.")
                     except Exception as hist_err:
                         print("Failed to update history database with video ID:", hist_err)
+
+                    # Trigger Webhook Success Notification
+                    yt_url = f"https://www.youtube.com/shorts/{uploaded_video_id}" if config.is_short else f"https://www.youtube.com/watch?v={uploaded_video_id}"
+                    send_webhook_notification(
+                        title=title,
+                        message=f"Successfully published new video for category **{category}**!",
+                        status="success",
+                        video_url=yt_url
+                    )
             except Exception as e:
                 if "quotaExceeded" in str(e):
                     print("WARNING: YouTube quota exceeded — upload skipped.")
@@ -2421,4 +2494,15 @@ def run_daily_upload_pipeline_once() -> None:
 
 
 if __name__ == "__main__":
-    run_daily_upload_pipeline_once()
+    import traceback
+    try:
+        run_daily_upload_pipeline_once()
+    except Exception as exc:
+        error_trace = traceback.format_exc()
+        print(f"\nCRITICAL PIPELINE FAILURE:\n{error_trace}")
+        send_webhook_notification(
+            title="Pipeline Execution Error",
+            message=f"```\n{str(exc)[:1500]}\n```",
+            status="failure"
+        )
+        sys.exit(1)
