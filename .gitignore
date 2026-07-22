@@ -1,4 +1,42 @@
+# Credentials & Sensitive Tokens
 .env
+*.env
 client_secrets.json
+token.json
+youtube_credentials.json
+tiktok_credentials.json
+*.pem
+*.key
+*.p12
+
+# Media & Rendering Cache
 *.mp4
-app_logo.png
+*.wav
+*.mp3
+temp/
+scratch/
+output/
+downloads/
+
+# Python Bytecode & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Logs & Diagnostics
+*.log
+failed_logs.txt
+heal_attempts.txt
+issue_context.json
+bot_comment.md
+final_comment.md
+match_block.txt
+
+# OS & IDE Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

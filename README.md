@@ -1,58 +1,96 @@
-# 🎬 Automated Hybrid Video Generator & Uploader (Shorts + Widescreen Long-Form)
+# 🎬 MPVSAP — Automated High-Retention Hybrid Video Engine & Uploader
 
-An enterprise-grade, fully automated video generation and publishing pipeline. It automatically generates and publishes both vertical video shorts (YouTube Shorts, Instagram Reels, TikTok, Facebook Reels) 6x daily and widescreen long-form compilations (16:9, 8+ minutes) weekly using Python, Pillow, GitHub Actions, Gemini, Edge-TTS, Pexels, and MoviePy.
+[![Daily Shorts Schedule](https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml/badge.svg)](https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml)
+[![Weekly Longform Schedule](https://github.com/thienphucnt/MPVSAP/actions/workflows/long_form.yml/badge.svg)](https://github.com/thienphucnt/MPVSAP/actions/workflows/long_form.yml)
+[![Security Policy](https://img.shields.io/badge/Security-Hardened-blue.svg)](SECURITY.md)
 
----
-
-## ✨ Features
-
-*   **🚦 Multi-Category Content Router:** Intelligently selects and generates content across distinct niches (Scary Space Mysteries, Morbid/Silly History, Future Tech & AI).
-*   **📐 Hybrid Aspect Ratios:** 
-    *   **Short-Form (9:16):** Renders at `1080x1920` with subtitles positioned at `Y=1350` to avoid player overlays.
-    *   **Widescreen Long-Form (16:9):** Renders at `1920x1080` by stitching exactly **10 distinct facts** (speaking time ~8.3 minutes) to cross the YouTube mid-roll ad monetization threshold.
-*   **🎨 PIL Widescreen Custom Thumbnails:** Automatically creates thematic widescreen (1280x720) custom thumbnails using PIL. Downloads a relevant Pexels backdrop, applies Gaussian blur, overlay vignetting, draws bold drop-shadow text with key concepts highlighted in yellow, and overlays a niche-themed badge.
-*   **📈 Shorts-to-Long Funnel Workaround:** The uploader saves the `videoId` of completed long-form compilations. Daily Shorts automatically scan the history database and prepend a prominent watch link (`🎥 Watch full documentary: https://youtu.be/VIDEO_ID`) to the first line of the Short's description and its pinned comment.
-*   **📝 Dynamic MM:SS Chapters:** Spoken TTS durations are dynamically measured during long-form segment assembly. The orchestrator computes exact timeline offsets for each fact and appends a clean `Chapters:` block to the YouTube description.
-*   **🗣️ Human-like Voice & Subtitles:** Synthesizes voiceovers with **Edge-TTS** (`en-US-AndrewNeural`) and extracts precise word-level boundaries to overlay hyper-kinetic subtitles.
-*   **🎬 Automated Visual Sourcing:** Searches and downloads stock videos from **Pexels** matching LLM-generated keywords, applying dynamic **Ken Burns slow-zoom** motion.
-*   **🎵 Resilient Audio Mixing:** Mixes voices and background music using a native **FFMPEG subprocess** to prevent mono/stereo composite layout failures.
-*   **💓 Self-Healing Heartbeat:** Implements Git-level persistence and auto-commits to keep the GitHub Actions schedule running indefinitely.
+An enterprise-grade, fully automated video generation and publishing pipeline. Built with Python, GitHub Actions, Gemini 2.5 Pro, Edge-TTS, Wikimedia Commons, Pexels API, and MoviePy, MPVSAP automatically produces high-retention vertical Shorts and 8+ minute widescreen documentaries.
 
 ---
 
-## 🛠️ Architecture
+## ✨ Features & Architecture Highlights
+
+### 🧠 High-Retention Two-Pass Generation Engine (LLM-as-a-Judge)
+* **Real-Time Wikipedia Source Text Ingestion**: Automatically fetches rich, un-biased article extracts from Wikipedia REST APIs for Space, History, and Tech. Facts are grounded in real encyclopedia data rather than generic LLM training data.
+* **Pass 1 (Story-Driven Generator)**: Formats script narrative using an algorithmic retention structure (**Hook (0-3s) → Conflict/Tension (3-45s) → Payoff & Loop CTA**). Listicles and "Top 3" formats are strictly banned.
+* **Pass 2 (Evaluator / Auto-QA Scoring)**: Evaluates generated scripts out of 10 on Hook Strength, Narrative Arc, Absence of AI Clichés, and Fact Grounding. Scripts scoring **< 8/10** trigger automatic rewrite loops.
+
+### 📅 Thematic Block Scheduling & 7-Day Category Lock
+* **Automated Rotation**: Locks video output into a single category for 7 consecutive days before rotating to the next:
+  * **Week 1 (Days 1–7)**: `Space` (Cosmology, Dark Nebula, Astrophysical Mysteries)
+  * **Week 2 (Days 8–14)**: `History` (Bizarre Historical Events, Ancient Artifacts, Unsolved Riddles)
+  * **Week 3 (Days 15–21)**: `Tech` (Computing Breakthroughs, AI Revolution, Emerging Science)
+* **Execution Cadence**: 1 Short per day (12:00 UTC) & 1 Longform compilation weekly on Sundays (00:00 UTC).
+
+### 🛡️ Ironclad Zero-Duplicate Topic Guardrail (`is_duplicate_topic`)
+* **Full History Retention**: Preserves a permanent, uncapped database of every topic and title ever posted ([past_topics.json](past_topics.json)).
+* **Multi-Pass Python Validator**: Validates generated content using normalized substring matching, key entity/phrase overlap (e.g. blocking repeated subjects like *"Great Attractor"*, *"False Vacuum"*, *"Cadaver Synod"*, *"Exploding Pants"*), and token Jaccard similarity (> 0.35 threshold).
+* **Self-Correction Retry Loop**: Rejects duplicates automatically before video rendering begins.
+
+### 🖼️ Proper Noun Wikimedia B-Roll & Ken Burns Animation Engine
+* **Entity Detection**: Instructs Gemini to output proper nouns for specific historical figures, animals, landmarks, or space missions (e.g., `'Albert Einstein'`, `'Apollo 11'`, `'Andromeda Galaxy'`).
+* **Wikimedia Commons Integration**: Queries the Wikimedia Action API (`srnamespace=6`) for authentic historical or educational media.
+* **Ken Burns Motion**: Converts static Wikimedia images into dynamic portrait/widescreen video clips with smooth zoom-in motion (1.0x to 1.10x zoom over duration).
+* **Pexels Fallback**: Seamlessly falls back to Pexels stock video search for generic lowercase keywords.
+
+### 🎵 Curated DMCA-Free Music Library & Audio Balance
+* **17 Handpicked Tracks**: Contains thematic, royalty-free Creative Commons (CC-BY) tracks by Kevin MacLeod categorized under `music/space/`, `music/history/`, and `music/tech/`.
+* **Precision Audio Balance**: Background music is mixed at a subtle **8% volume multiplier** via FFMPEG subprocesses, ensuring narrations are crystal-clear and never overwhelmed.
+
+### 🗣️ Kinetic Phrase Karaoke Subtitles & Funneling
+* **Phrase-Level Subtitles**: Groups Edge-TTS word boundaries into natural 3-to-5 word phrases positioned at `Y=1350` to avoid player UI overlays.
+* **Flicker-Free Active Highlight**: Highlights each spoken word in bold yellow (`{\1c&H0000FFFF}`) in real time over standard white dialogue.
+* **Shorts-to-Long Funneling**: Daily Shorts automatically inspect channel history and append direct documentary links (`🎥 Watch full documentary: https://youtu.be/VIDEO_ID`) to descriptions.
+
+---
+
+## 📐 Hybrid Format Specifications
+
+| Feature | YouTube Shorts (9:16) | Widescreen Long-Form (16:9) |
+| :--- | :--- | :--- |
+| **Resolution** | `1080x1920` (Vertical) | `1920x1080` (Widescreen) |
+| **Duration** | 60 seconds (~130 words) | 8+ minutes (10 compiled facts) |
+| **Pacing** | Fast-paced, seamless loop CTA | Chaptered documentary |
+| **Thumbnail** | Auto-extracted | PIL Widescreen Custom Thumbnail (1280x720) |
+| **Publish Schedule** | Daily at 12:00 UTC | Sundays at 00:00 UTC |
+
+---
+
+## 🛠️ System Architecture
 
 ```mermaid
-graph TD
-    subgraph Trigger & Router
-        A[GitHub Actions Cron / Trigger] -->|Resolve format --format| B[Content Router]
-        B -->|Gemini 2.5| C[JSON Script & Visual Keywords]
+flowchart TD
+    subgraph Trigger & Schedule
+        A["GHA Scheduler (1 Short/day, 1 Long/week)"] --> B["7-Day Category Lock Router"]
     end
 
-    subgraph Assembly Engine
-        C --> D[Edge-TTS Voiceover & Word Timestamps]
-        C --> E[Pexels Stock Video Search]
-        D -->|Record durations| F[Assemble Segment Video]
-        E --> F
-        F -->|Short: Single Segment| G1[Short Render 9:16]
-        F -->|Long: Concatenate 10 Segments| G2[Long Render 16:9]
+    subgraph Data Ingestion & Auto-QA
+        B --> C["Real-Time Wikipedia Source Ingestion"]
+        C --> D["Pass 1: Story-Driven Generator (Hook -> Tension -> Payoff)"]
+        D --> E["Pass 2: LLM Evaluator (Score >= 8/10 Required)"]
+        E -- "Score < 8 (Max 3 Retries)" --> D
+        E -- "Score >= 8" --> F["Ironclad Duplicate Topic Guardrail"]
+    end
+
+    subgraph Assembly & Rendering
+        F --> G["Edge-TTS Voiceover & Word Timestamps"]
+        F --> H["Proper Noun Wikimedia + Pexels B-Roll Engine"]
+        H --> I["Ken Burns Slow-Zoom Animation"]
+        G & I --> J["MoviePy Composition & FFMPEG 8% Music Mix"]
     end
 
     subgraph Publishing & Funneling
-        G2 --> H2[Generate PIL Widescreen Thumbnail]
-        H2 --> I2[Upload Long-Form to YouTube with Chapters]
-        I2 -->|Save videoId to past_topics.json| DB[(past_topics.json)]
-        DB -->|Retrieve latest long-form videoId| J1[Link related video in Short description & pinned comment]
-        G1 --> J1
-        J1 --> I1[Upload Short to YouTube/TikTok/Meta]
+        J -->|Shorts| K1["YouTube Shorts Auto-Upload + Funnel Link"]
+        J -->|Longform| K2["PIL Widescreen Thumbnail + YouTube Upload with Chapters"]
+        K1 & K2 --> L[("past_topics.json Database")]
     end
 ```
 
 ---
 
-## 🚀 Setup & Installation
+## 🚀 Setup & Usage
 
-### 1. Local Installation
+### 1. Installation
 Clone the repository and install the dependencies:
 ```bash
 git clone https://github.com/thienphucnt/MPVSAP.git
@@ -60,37 +98,46 @@ cd MPVSAP
 pip install -r requirements.txt
 ```
 
-### 2. CLI Options
-You can run the generator manually with custom options:
+### 2. Manual CLI Execution
+Run the pipeline locally with custom arguments:
 ```bash
-# Generate and upload a standard Short
+# Generate and upload daily Short for current 7-day locked category
 python main.py
 
-# Generate and compile an 8+ minute widescreen documentary about history
-python main.py --format long --category history
+# Force specific category override
+python main.py --category history
 
-# Perform content generation and TTS speech synthesis dry-run without rendering
-python main.py --format long --dry-run
+# Generate widescreen long-form documentary
+python main.py --format long --category space
+
+# Dry-run mode (tests ingestion, script generation, and Auto-QA without rendering)
+python main.py --dry-run
 ```
 
-### 3. Environment Variables & Secrets
-Ensure the following keys are set up in your local shell or as **GitHub Actions Secrets**:
+### 3. Required Environment Variables & Secrets
+
+Configure these in your local environment or **GitHub Repository Secrets**:
 
 | Secret Key | Description |
 | :--- | :--- |
-| `GEMINI_API_KEY` | Google AI Studio Gemini API Key |
-| `PEXELS_API_KEY` | Pexels Video Search API Authorization Token |
+| `GEMINI_API_KEY` | Google AI Studio API Key (Gemini 2.5 Pro) |
+| `PEXELS_API_KEY` | Pexels Video Search Authorization Token |
 | `YOUTUBE_CLIENT_ID` | OAuth2 Client ID from Google Cloud Console |
 | `YOUTUBE_CLIENT_SECRET` | OAuth2 Client Secret from Google Cloud Console |
-| `YOUTUBE_REFRESH_TOKEN` | OAuth2 Refresh Token (must include YouTube write scopes) |
-| `YT_PLAYLIST_SPACE` | Target Playlist ID for Space content |
-| `YT_PLAYLIST_HISTORY` | Target Playlist ID for History content |
-| `YT_PLAYLIST_TECH` | Target Playlist ID for Tech content |
+| `YOUTUBE_REFRESH_TOKEN` | OAuth2 Refresh Token (with YouTube upload scopes) |
+| `YT_PLAYLIST_SPACE` | YouTube Playlist ID for Space content |
+| `YT_PLAYLIST_HISTORY` | YouTube Playlist ID for History content |
+| `YT_PLAYLIST_TECH` | YouTube Playlist ID for Tech content |
 
 ---
 
-## ⚙️ CI/CD Schedules
+## 🔒 Security & Guardrails
 
-The pipeline uses two separate workflows to isolate resources:
-1. **Daily Shorts Workflow (`main.yml`):** Runs 6x daily (`cron: '0 */4 * * *'`) with a 30-minute timeout.
-2. **Weekly Long-Form Workflow (`long_form.yml`):** Runs once a week on Sundays at 00:00 UTC with a 60-minute timeout for heavy compiling.
+- **GHA Bot Authorization**: Issue bot execution (`.github/workflows/antigravity_bot.yml`) is restricted to repository owners (`author_association == 'OWNER'`), preventing external users from exploiting secrets or triggering workflows.
+- **Sanitized Search Queries**: Keywords passed to external APIs are cleaned to strip special characters.
+- **Credential Isolation**: All tokens and keys are excluded via [.gitignore](.gitignore) and managed through encrypted GHA Secrets. For security details, see [SECURITY.md](SECURITY.md).
+
+---
+
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for details.

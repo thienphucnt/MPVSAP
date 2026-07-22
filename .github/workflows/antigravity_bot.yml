@@ -8,10 +8,11 @@ on:
 
 jobs:
   antigravity-bot:
-    # Triggers on the word 'antigravity' (case-insensitive) or '/bot' command
+    # SECURITY GUARDRAIL: Only execute for repo owners/collaborators to prevent unauthorized public issue/comment exploitation
     if: |
-      (github.event.issue && (contains(github.event.issue.body, 'antigravity') || contains(github.event.issue.body, '/bot'))) ||
-      (github.event.comment && (contains(github.event.comment.body, 'antigravity') || contains(github.event.comment.body, '/bot')))
+      (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'MEMBER' || github.event.issue.author_association == 'OWNER' || github.actor == github.repository_owner) &&
+      ((github.event.issue && (contains(github.event.issue.body, 'antigravity') || contains(github.event.issue.body, '/bot'))) ||
+       (github.event.comment && (contains(github.event.comment.body, 'antigravity') || contains(github.event.comment.body, '/bot'))))
     runs-on: ubuntu-latest
     timeout-minutes: 30
 

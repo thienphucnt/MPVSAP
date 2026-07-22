@@ -733,14 +733,25 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 # ---------------------------------------------------------------------------
 # 4. PEXELS VIDEO DOWNLOADER
 # ---------------------------------------------------------------------------
+def sanitize_search_query(query: str) -> str:
+    """Sanitize keyword query string to remove special characters and control parameters."""
+    if not query:
+        return ""
+    clean = re.sub(r"[^\w\s\-\']", " ", query)
+    return re.sub(r"\s+", " ", clean).strip()
+
+
 def search_wikimedia_image(query: str) -> Optional[str]:
     """Query Wikimedia Commons for a specific entity and return its direct image URL if found."""
+    clean_query = sanitize_search_query(query)
+    if not clean_query:
+        return None
     search_url = "https://commons.wikimedia.org/w/api.php"
     params = {
         "action": "query",
         "format": "json",
         "list": "search",
-        "srsearch": query,
+        "srsearch": clean_query,
         "srnamespace": 6,  # Namespace 6 is strictly for File: namespace in Wikimedia
         "srlimit": 5
     }
@@ -823,7 +834,8 @@ def download_single_pexels_video(api_key: str, kw: str, index: int, orientation:
     cat_info = CATEGORIES[category]
     headers = {"Authorization": api_key}
     search_url = "https://api.pexels.com/videos/search"
-    params = {"query": kw, "orientation": orientation, "size": "medium", "per_page": 5}
+    clean_kw = sanitize_search_query(kw)
+    params = {"query": clean_kw if clean_kw else "space", "orientation": orientation, "size": "medium", "per_page": 5}
     
     try:
         resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
