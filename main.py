@@ -154,155 +154,284 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 # 1. GEMINI CONTENT GENERATION
 #    Single API round-trip returns script and visual keywords in JSON format.
 # ---------------------------------------------------------------------------
-def generate_content(client: genai.Client, category: str, recent_topics: List[str], config: VideoFormatConfig) -> Tuple[str, str, List[dict]]:
+def is_duplicate_topic(
+    generated_title: str,
+    generated_topic: str,
+    generated_script: str,
+    past_topics: List[dict]
+) -> Tuple[bool, str]:
+    """
+    Ironclad post-generation validator.
+    Returns (is_duplicate, reason) by checking:
+    1. Direct & normalized substring overlap against all past topics and titles.
+    2. Key entity / proper noun matches.
+    3. Token Jaccard overlap (> 0.35 threshold).
+    """
+    if not past_topics:
+        return False, ""
+
+    def normalize(text: str) -> str:
+        text = re.sub(r'#\S+', '', text.lower())
+        text = re.sub(r'[^\w\s]', '', text)
+        return re.sub(r'\s+', ' ', text).strip()
+
+    norm_title = normalize(generated_title)
+    norm_topic = normalize(generated_topic)
+    norm_script = normalize(generated_script)
+
+    title_words = set(norm_title.split())
+    topic_words = set(norm_topic.split())
+    combined_words = title_words.union(topic_words)
+
+    stopwords = {'the', 'a', 'an', 'is', 'in', 'of', 'and', 'to', 'for', 'with', 'on', 'at', 'by', 'from', 'this', 'that', 'you', 'your', 'are', 'will', 'shorts', 'space', 'history', 'tech', 'mysteries', 'facts'}
+
+    for item in past_topics:
+        past_title = item.get("title", "")
+        past_topic = item.get("topic", "")
+        
+        norm_past_title = normalize(past_title)
+        norm_past_topic = normalize(past_topic)
+
+        # 1. Direct Topic Overlap Check
+        if norm_topic and norm_past_topic:
+            if norm_topic == norm_past_topic:
+                return True, f"Exact topic match with past item '{past_topic}'"
+            if len(norm_topic) > 3 and (norm_topic in norm_past_title or norm_topic in norm_past_topic):
+                return True, f"Topic '{generated_topic}' matches past entry '{past_title}' / '{past_topic}'"
+
+        # 2. Check if past topic appears anywhere in generated title or script
+        if norm_past_topic and len(norm_past_topic) > 3:
+            if norm_past_topic in norm_title:
+                return True, f"Past topic '{past_topic}' matches generated title '{generated_title}'"
+            if norm_past_topic in norm_script:
+                return True, f"Past topic '{past_topic}' appears inside generated script text"
+
+        # 3. Check 2-word phrase matches from past topic/title in generated text
+        past_phrase = norm_past_topic or norm_past_title
+        if past_phrase:
+            past_words = [w for w in past_phrase.split() if w not in stopwords]
+            if len(past_words) >= 2:
+                for i in range(len(past_words) - 1):
+                    two_word = f"{past_words[i]} {past_words[i+1]}"
+                    if len(two_word) > 5 and (two_word in norm_title or two_word in norm_topic or two_word in norm_script):
+                        return True, f"Key phrase '{two_word}' from past item '{past_title}' / '{past_topic}' found in generated content"
+
+        # 4. Token Jaccard Overlap Check on Titles
+        past_title_words = set(norm_past_title.split())
+        filtered_gen = {w for w in combined_words if w not in stopwords and len(w) > 2}
+        filtered_past = {w for w in past_title_words if w not in stopwords and len(w) > 2}
+
+        if filtered_gen and filtered_past:
+            intersection = filtered_gen.intersection(filtered_past)
+            union = filtered_gen.union(filtered_past)
+            jaccard = len(intersection) / len(union) if union else 0.0
+            if jaccard > 0.35:
+                return True, f"High title similarity ({jaccard:.2f}) with past title '{past_title}' (matching words: {intersection})"
+
+    return False, ""
+
+
+def generate_content(client: genai.Client, category: str, past_topics: List[dict], config: VideoFormatConfig) -> Tuple[str, str, List[dict]]:
     model_name = "gemini-2.5-pro"
     cat_info = CATEGORIES[category]
+    db_category = cat_info["db_key"]
+
+    # Gather ALL past topics and titles for exclusion instruction
+    all_past_topics = [item.get("topic") for item in past_topics if item.get("topic")]
+    all_past_titles = [re.sub(r'#\S+', '', item.get("title", "")).strip() for item in past_topics if item.get("title")]
+    prohibited_list = sorted(list(set([t for t in all_past_topics + all_past_titles if t])))
 
     exclude_instruction = ""
-    if recent_topics:
-        exclude_instruction = f"\n- Do NOT write about, reference, or base the script on the same core concepts, subjects, or historical events as any of these recent videos: {', '.join(recent_topics)}. You must choose a completely different concept."
-
-    if config.is_short:
-        prompt = (
-            "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
-            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
-            "{\n"
-            '  "script": "<script text>",\n'
-            '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
-            '  "title": "<title text>",\n'
-            '  "description": "<description text>",\n'
-            '  "topic": "<2-3 words naming the core concept>"\n'
-            "}\n\n"
-            f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
-            f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
-            "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
-            "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
-            "Task 2 — visual_keywords: An array of 6 concrete, literal search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the script, you MUST include their exact name as a proper noun with correct capitalization (e.g. 'Albert Einstein', 'Mike the Headless Chicken', 'London', 'Andromeda Galaxy') as the first keyword(s) in the array. For general settings, use lowercase generic terms.\n\n"
-            "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
-            "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
-            "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
-            "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
-            "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
-            "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
-            "Ensure all numbers, sizes, and masses are strictly factually accurate (verify planetary mass/volume limits)."
-            f"{exclude_instruction}"
-        )
-    else:
-        prompt = (
-            "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
-            "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
-            "{\n"
-            '  "title": "<Click-worthy widescreen title between 40 and 60 characters, front-loading the primary hook>",\n'
-            '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
-            '  "segments": [\n'
-            '    {\n'
-            '      "script": "<highly engaging 95-word script>",\n'
-            '      "visual_keywords": ["literal_keyword1", "literal_keyword2", "literal_keyword3"],\n'
-            '      "topic": "<2-3 words naming the core concept of this segment>"\n'
-            '    },\n'
-            '    ... (exactly 10 candidate segments)\n'
-            '  ]\n'
-            "}\n\n"
-            f"Write a compilation of exactly 10 distinct candidate facts about {cat_info['topic_desc']}. "
-            f"Make the tone {cat_info['tone']}. Each segment must have a fast-paced 95-word script, strategically inserting ellipses (...) and em-dashes (—) for dramatic pacing.\n"
-            "CRITICAL ALGORITHMIC RETENTION DIRECTIVES:\n"
-            "1. NO INTRO/OUTRO REPETITIONS: Individual segments must not repeat hooks or CTA calls. "
-            "Only Segment 1 should contain a powerful introductory hook (0-15s) starting immediately (no welcomes or channel greetings). "
-            "Middle segments (2 through 9) must contain raw, unique facts with no intros, hooks, or outros. "
-            "Only Segment 10 should append a short, natural subscribe Call-to-Action at the very end.\n"
-            "2. LITERAL B-ROLL SEARCH TERMS & ENTITIES: In visual_keywords, provide 3 literal, concrete search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the segment script, you MUST include their exact name as a proper noun with correct capitalization (e.g., 'Albert Einstein', 'Tabby\\'s Star', 'Apollo 11') as the first keyword in the array. For general settings, use lowercase generic terms.\n"
-            "3. UNIQUE TOPICS: Ensure each of the 10 candidate segments covers a completely different, unique fact to avoid any topical duplication.\n\n"
-            "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
-            "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
-            "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
-            "Ensure all numbers, sizes, and masses are strictly factually accurate."
-            f"{exclude_instruction}"
+    if prohibited_list:
+        formatted_prohibited = "\n- ".join(prohibited_list)
+        exclude_instruction = (
+            "\n\nCRITICAL DUP-PREVENTION DIRECTIVE:\n"
+            "You MUST select a 100% UNUSED and NOVEL topic. Under NO circumstances should you write about, reference, "
+            "or base the script on any of the following subjects, titles, or concepts (or ANY of their variations, synonyms, or related angles):\n"
+            f"- {formatted_prohibited}\n"
+            "If a concept is listed above or closely related to a listed concept, it is STRICTLY PROHIBITED."
         )
 
-    print(f"Generating script data for category '{category}' in a single call using {model_name}...")
-    response = gemini_generate_with_retry(client, model_name, prompt)
-    text = response.text.strip()
-    
-    # Strip markdown block formatting if present
-    if text.startswith("```json"):
-        text = text[7:]
-    if text.endswith("```"):
-        text = text[:-3]
-    text = text.strip()
+    session_rejections = []
+    max_retries = 5
 
-    title = ""
-    description = ""
-    segments = []
+    for attempt in range(max_retries):
+        dynamic_exclude = exclude_instruction
+        if session_rejections:
+            rejected_str = "\n- ".join(session_rejections)
+            dynamic_exclude += (
+                f"\n\nADDITIONAL REJECTIONS FROM PREVIOUS ATTEMPTS IN THIS RUN:\n- {rejected_str}\n"
+                "The topics above were generated and REJECTED by python guardrails. Choose a COMPLETELY DIFFERENT, fresh concept!"
+            )
 
-    try:
-        data = json.loads(text)
         if config.is_short:
-            title = data.get("title", "").strip()
-            description = data.get("description", "").strip()
-            segments = [{
-                "script": data.get("script", "").strip(),
-                "visual_keywords": data.get("visual_keywords", []),
-                "topic": data.get("topic", "").strip()
-            }]
+            prompt = (
+                "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
+                "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
+                "{\n"
+                '  "script": "<script text>",\n'
+                '  "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
+                '  "title": "<title text>",\n'
+                '  "description": "<description text>",\n'
+                '  "topic": "<2-3 words naming the core concept>"\n'
+                "}\n\n"
+                f"Task 1 — script: Write a highly engaging, fast-paced 130-word script about {cat_info['topic_desc']}. "
+                f"Make it sound {cat_info['tone']}. End the script with a short, 3-second Call-To-Action (e.g., 'Hit subscribe for more dark space mysteries') "
+                "that naturally loops back to the start. Force dramatic pacing by strategically inserting ellipses (...) and em-dashes (—) before revealing facts so the TTS pauses. "
+                "Do not include stage directions, titles, or emojis. Output only the spoken text.\n\n"
+                "Task 2 — visual_keywords: An array of 6 concrete, literal search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the script, you MUST include their exact name as a proper noun with correct capitalization (e.g. 'Albert Einstein', 'Mike the Headless Chicken', 'London', 'Andromeda Galaxy') as the first keyword(s) in the array. For general settings, use lowercase generic terms.\n\n"
+                "Task 3 — title: A single highly engaging, click-worthy YouTube Shorts title under 50 characters. Do NOT include any hashtags (#) in the title.\n\n"
+                "Task 4 — description: A punchy, 2-sentence summary of the video with 5 relevant hashtags at the end, including #nichefactsshorts.\n\n"
+                "Task 5 — topic: A 2-3 word name of the core subject or event (e.g. Great Attractor, Cadaver Synod, Emu War).\n\n"
+                "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
+                "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
+                "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
+                "Ensure all numbers, sizes, and masses are strictly factually accurate (verify planetary mass/volume limits)."
+                f"{dynamic_exclude}"
+            )
         else:
-            title = data.get("title", "").strip()
-            description = data.get("description", "").strip()
-            raw_segments = data.get("segments", [])
-            
-            seen_topics = set()
-            unique_segments = []
-            for seg in raw_segments:
-                topic = seg.get("topic", "").strip().lower()
-                topic_norm = re.sub(r"[^\w]", "", topic)
-                if not topic_norm:
-                    continue
+            prompt = (
+                "You are a professional content creator. Complete the following tasks and return ONLY a valid JSON object. "
+                "Do not include markdown tags (like ```json), quotes, or extra text. Output exactly this JSON structure:\n"
+                "{\n"
+                '  "title": "<Click-worthy widescreen title between 40 and 60 characters, front-loading the primary hook>",\n'
+                '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
+                '  "segments": [\n'
+                '    {\n'
+                '      "script": "<highly engaging 95-word script>",\n'
+                '      "visual_keywords": ["literal_keyword1", "literal_keyword2", "literal_keyword3"],\n'
+                '      "topic": "<2-3 words naming the core concept of this segment>"\n'
+                '    },\n'
+                '    ... (exactly 10 candidate segments)\n'
+                '  ]\n'
+                "}\n\n"
+                f"Write a compilation of exactly 10 distinct candidate facts about {cat_info['topic_desc']}. "
+                f"Make the tone {cat_info['tone']}. Each segment must have a fast-paced 95-word script, strategically inserting ellipses (...) and em-dashes (—) for dramatic pacing.\n"
+                "CRITICAL ALGORITHMIC RETENTION DIRECTIVES:\n"
+                "1. NO INTRO/OUTRO REPETITIONS: Individual segments must not repeat hooks or CTA calls. "
+                "Only Segment 1 should contain a powerful introductory hook (0-15s) starting immediately (no welcomes or channel greetings). "
+                "Middle segments (2 through 9) must contain raw, unique facts with no intros, hooks, or outros. "
+                "Only Segment 10 should append a short, natural subscribe Call-to-Action at the very end.\n"
+                "2. LITERAL B-ROLL SEARCH TERMS & ENTITIES: In visual_keywords, provide 3 literal, concrete search terms. Crucially, if a specific person, historical figure, animal species, landmark, or event is mentioned in the segment script, you MUST include their exact name as a proper noun with correct capitalization (e.g., 'Albert Einstein', 'Tabby\\'s Star', 'Apollo 11') as the first keyword in the array. For general settings, use lowercase generic terms.\n"
+                "3. UNIQUE TOPICS: Ensure each of the 10 candidate segments covers a completely different, unique fact to avoid any topical duplication.\n\n"
+                "Under no circumstances should the script mention regional politics, state officials, or global geopolitical conflicts. "
+                "Under no circumstances should the script mention, reference, or allude to Vietnamese history, regional politics, or Vietnamese state officials. "
+                "Under no circumstances should the script contain scientific, mathematical, or historical exaggerations or false claims. "
+                "Ensure all numbers, sizes, and masses are strictly factually accurate."
+                f"{dynamic_exclude}"
+            )
+
+        print(f"Generating script data for category '{category}' (attempt {attempt+1}/{max_retries}) using {model_name}...")
+        response = gemini_generate_with_retry(client, model_name, prompt)
+        text = response.text.strip()
+        
+        if text.startswith("```json"):
+            text = text[7:]
+        if text.endswith("```"):
+            text = text[:-3]
+        text = text.strip()
+
+        title = ""
+        description = ""
+        segments = []
+
+        try:
+            data = json.loads(text)
+            if config.is_short:
+                title = data.get("title", "").strip()
+                description = data.get("description", "").strip()
+                segments = [{
+                    "script": data.get("script", "").strip(),
+                    "visual_keywords": data.get("visual_keywords", []),
+                    "topic": data.get("topic", "").strip()
+                }]
+            else:
+                title = data.get("title", "").strip()
+                description = data.get("description", "").strip()
+                raw_segments = data.get("segments", [])
                 
-                # Check Jaccard overlap on word sets and substring matching
-                words_set = set(topic.split())
-                is_duplicate = False
-                for seen in seen_topics:
-                    seen_set = set(seen.split())
-                    if words_set and seen_set:
-                        intersection = words_set.intersection(seen_set)
-                        union = words_set.union(seen_set)
-                        jaccard = len(intersection) / len(union) if len(union) > 0 else 0
-                        if jaccard > 0.4:
+                seen_topics = set()
+                unique_segments = []
+                for seg in raw_segments:
+                    topic = seg.get("topic", "").strip().lower()
+                    topic_norm = re.sub(r"[^\w]", "", topic)
+                    if not topic_norm:
+                        continue
+                    
+                    words_set = set(topic.split())
+                    is_duplicate = False
+                    for seen in seen_topics:
+                        seen_set = set(seen.split())
+                        if words_set and seen_set:
+                            intersection = words_set.intersection(seen_set)
+                            union = words_set.union(seen_set)
+                            jaccard = len(intersection) / len(union) if len(union) > 0 else 0
+                            if jaccard > 0.4:
+                                is_duplicate = True
+                                break
+                        seen_norm = re.sub(r"[^\w]", "", seen)
+                        if topic_norm in seen_norm or seen_norm in topic_norm:
                             is_duplicate = True
                             break
-                    seen_norm = re.sub(r"[^\w]", "", seen)
-                    if topic_norm in seen_norm or seen_norm in topic_norm:
-                        is_duplicate = True
-                        break
+                    
+                    if not is_duplicate:
+                        seen_topics.add(topic)
+                        unique_segments.append(seg)
                 
-                if not is_duplicate:
-                    seen_topics.add(topic)
-                    unique_segments.append(seg)
-            
-            segments = unique_segments[:config.segment_count]
-    except Exception as e:
-        print("WARNING: Could not parse JSON response — falling back to manual parsing.", e)
-        title = f"Mind-Blowing {category} Facts"
-        description = f"Discover some of the most interesting niche facts in the universe! #nichefacts"
-        segments = [{
-            "script": "Space is full of mysterious phenomena that science is only beginning to understand...",
-            "visual_keywords": cat_info["kw_defaults"][:3],
-            "topic": "Space Mysteries"
-        }]
+                segments = unique_segments[:config.segment_count]
+        except Exception as e:
+            print("WARNING: Could not parse JSON response — falling back to manual parsing.", e)
+            title = f"Mind-Blowing {category} Facts"
+            description = f"Discover some of the most interesting niche facts in the universe! #nichefacts"
+            segments = [{
+                "script": "Space is full of mysterious phenomena that science is only beginning to understand...",
+                "visual_keywords": cat_info["kw_defaults"][:3],
+                "topic": "Space Mysteries"
+            }]
 
-    # Clean up scripts in segments
-    for seg in segments:
-        script = seg.get("script", "").strip()
-        script = re.sub(r'[\*_`]', '', script)
-        script = re.sub(r'\[.*?\]', '', script)
-        script = re.sub(r'\(.*?\)', '', script)
-        script = re.sub(r'\s+', ' ', script).strip()
-        seg["script"] = script
+        # Clean up scripts in segments
+        for seg in segments:
+            script = seg.get("script", "").strip()
+            script = re.sub(r'[\*_`]', '', script)
+            script = re.sub(r'\[.*?\]', '', script)
+            script = re.sub(r'\(.*?\)', '', script)
+            script = re.sub(r'\s+', ' ', script).strip()
+            seg["script"] = script
 
-    print("Generated Title:", title)
-    print("Generated Description:", description)
-    print(f"Generated {len(segments)} segments.")
-    
-    return title, description, segments
+        # HARD GUARDRAIL VALIDATION: Check for duplicates against full past topics database
+        if config.is_short:
+            is_dup, reason = is_duplicate_topic(title, segments[0]["topic"], segments[0]["script"], past_topics)
+            if is_dup:
+                print(f"[HARD GUARDRAIL REJECTION] Attempt {attempt+1}/{max_retries} generated duplicate content! Reason: {reason}")
+                session_rejections.append(f"Topic: '{segments[0]['topic']}', Title: '{title}' (Reason: {reason})")
+                time.sleep(1)
+                continue
+            else:
+                print(f"[HARD GUARDRAIL VERIFIED] Topic '{segments[0]['topic']}' passed all uniqueness checks!")
+                print("Generated Title:", title)
+                print("Generated Description:", description)
+                print(f"Generated {len(segments)} segments.")
+                return title, description, segments
+        else:
+            has_dup = False
+            for seg in segments:
+                is_dup, reason = is_duplicate_topic(title, seg["topic"], seg["script"], past_topics)
+                if is_dup:
+                    print(f"[HARD GUARDRAIL REJECTION] Long-form segment topic '{seg['topic']}' rejected: {reason}")
+                    session_rejections.append(f"Segment Topic: '{seg['topic']}' (Reason: {reason})")
+                    has_dup = True
+                    break
+            if has_dup:
+                time.sleep(1)
+                continue
+            else:
+                print(f"[HARD GUARDRAIL VERIFIED] Long-form compilation passed all uniqueness checks!")
+                print("Generated Title:", title)
+                print("Generated Description:", description)
+                print(f"Generated {len(segments)} segments.")
+                return title, description, segments
+
+    raise Exception("Failed to generate a 100% unique topic after 5 guardrail retry attempts.")
 
 
 # ---------------------------------------------------------------------------
@@ -1395,8 +1524,7 @@ def update_heartbeat_and_push() -> None:
                 merged_topics.append(item)
                 seen_keys.add(key)
                 
-        # Limit history size to prevent file bloat
-        merged_topics = merged_topics[-100:]
+        # Preserve full history database without truncation
         
         # Save merged topics locally
         with open("past_topics.json", "w", encoding="utf-8") as f:
@@ -1576,17 +1704,15 @@ def run_daily_upload_pipeline_once() -> None:
     # Resolve database key for history lookup/storage
     db_category = CATEGORIES[category]["db_key"]
 
-    # Extract recent topics for this category to pass as exclusions (fallback to title if topic missing)
-    recent_topics = [item.get("topic") or item["title"] for item in past_topics if item.get("category") == db_category][-15:]
-    print("Recent topics to exclude:", recent_topics)
+    print(f"Loaded {len(past_topics)} past topic entries for exclusion checks.")
 
     # Initialize video format config
     video_format = args.format
     config = VideoFormatConfig(video_format)
     print(f"Selected Video Format: {config.format_type} (is_short={config.is_short})")
 
-    # 1. Content generation
-    title, description, segments = generate_content(client, category, recent_topics, config)
+    # 1. Content generation with ironclad uniqueness validation
+    title, description, segments = generate_content(client, category, past_topics, config)
 
     # Resolve related long-form video link for Shorts-to-Long funneling
     related_long_video_id = None
@@ -1614,7 +1740,7 @@ def run_daily_upload_pipeline_once() -> None:
         "topic": segments[0]["topic"],
         "timestamp": datetime.datetime.utcnow().isoformat()
     })
-    past_topics = past_topics[-100:]  # Cap history size to prevent file bloat
+    # Preserve full past_topics history without truncation cap
     try:
         with open(past_topics_path, "w", encoding="utf-8") as f:
             json.dump(past_topics, f, indent=2)
