@@ -1231,31 +1231,48 @@ def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[in
     clip = clip.resize(scale)
     
     def zoom_filter(get_frame, t):
-        frame = get_frame(t)
-        progress = t / float(duration)
-        cur_scale = 1.0 + 0.15 * progress
-        target_w, target_h = target_res
-        
-        nw = int(target_w * cur_scale)
-        nh = int(target_h * cur_scale)
-        
-        img = PIL.Image.fromarray(frame)
-        img_resized = img.resize((nw, nh), PIL.Image.ANTIALIAS)
-        
-        center_x = int(cx * nw)
-        center_y = int(cy * nh)
-        
-        left = max(0, min(nw - target_w, center_x - target_w // 2))
-        top = max(0, min(nh - target_h, center_y - target_h // 2))
-        
-        img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
-        return np.array(img_cropped)
+        try:
+            frame = get_frame(t)
+            if frame is None:
+                return np.zeros((h, w, 3), dtype=np.uint8)
+            if not isinstance(frame, np.ndarray):
+                frame = np.array(frame)
+            if frame.dtype != np.uint8:
+                frame = np.clip(frame, 0, 255).astype(np.uint8)
+            frame = np.ascontiguousarray(frame)
+
+            progress = min(1.0, max(0.0, float(t) / max(0.01, float(duration))))
+            cur_scale = 1.0 + 0.15 * progress
+            
+            nw = max(w, int(w * cur_scale))
+            nh = max(h, int(h * cur_scale))
+            
+            img = PIL.Image.fromarray(frame)
+            resample_filter = getattr(PIL.Image, 'Resampling', PIL.Image).LANCZOS if hasattr(PIL.Image, 'Resampling') else PIL.Image.BICUBIC
+            img_resized = img.resize((nw, nh), resample_filter)
+            
+            center_x = int(cx * nw)
+            center_y = int(cy * nh)
+            
+            left = max(0, min(nw - w, center_x - w // 2))
+            top = max(0, min(nh - h, center_y - h // 2))
+            
+            img_cropped = img_resized.crop((left, top, left + w, top + h))
+            return np.array(img_cropped)
+        except Exception as e:
+            print("Salience zoom filter error fallback:", e)
+            try:
+                frame = get_frame(t)
+                img = PIL.Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8))
+                return np.array(img.resize((w, h)))
+            except Exception:
+                return np.zeros((h, w, 3), dtype=np.uint8)
 
     try:
         clip = clip.fl(zoom_filter)
     except Exception as e:
-        print("Salience zoom filter fallback:", e)
-        clip = clip.resize(target_res).crop(x_center=clip.w / 2, y_center=clip.h / 2, width=w, height=h)
+        print("Salience zoom filter setup fallback:", e)
+        clip = clip.resize((w, h))
         
     clip.write_videofile(output_path, fps=30, logger=None)
     clip.close()
@@ -1600,24 +1617,45 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 print("Crossfade fallback:", cf_err)
         
         # Apply Ken Burns zoom effect using a frame filter to keep resolution constant
-        def zoom_filter(get_frame, t, dur=segment_duration):
-            frame = get_frame(t)
-            scale = 1.0 + 0.15 * (t / max(0.01, dur))
-            target_w, target_h = config.resolution
-            
-            new_w = int(target_w * scale)
-            new_h = int(target_h * scale)
-            
-            img = PIL.Image.fromarray(frame)
-            img_resized = img.resize((new_w, new_h), PIL.Image.ANTIALIAS)
-            
-            left = (new_w - target_w) // 2
-            top = (new_h - target_h) // 2
-            
-            img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
-            return np.array(img_cropped)
-            
-        c = c.fl(zoom_filter)
+        def create_zoom_filter(dur_val):
+            def zoom_filter(get_frame, t):
+                try:
+                    frame = get_frame(t)
+                    if frame is None:
+                        return np.zeros((config.resolution[1], config.resolution[0], 3), dtype=np.uint8)
+                    if not isinstance(frame, np.ndarray):
+                        frame = np.array(frame)
+                    if frame.dtype != np.uint8:
+                        frame = np.clip(frame, 0, 255).astype(np.uint8)
+                    frame = np.ascontiguousarray(frame)
+
+                    target_w, target_h = config.resolution
+                    progress = min(1.0, max(0.0, float(t) / max(0.01, float(dur_val))))
+                    scale = 1.0 + 0.15 * progress
+
+                    new_w = max(target_w, int(target_w * scale))
+                    new_h = max(target_h, int(target_h * scale))
+
+                    img = PIL.Image.fromarray(frame)
+                    resample_filter = getattr(PIL.Image, 'Resampling', PIL.Image).LANCZOS if hasattr(PIL.Image, 'Resampling') else PIL.Image.BICUBIC
+                    img_resized = img.resize((new_w, new_h), resample_filter)
+
+                    left = max(0, (new_w - target_w) // 2)
+                    top = max(0, (new_h - target_h) // 2)
+
+                    img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
+                    return np.array(img_cropped)
+                except Exception as z_err:
+                    print("Zoom filter execution error fallback:", z_err)
+                    try:
+                        frame = get_frame(t)
+                        img = PIL.Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8))
+                        return np.array(img.resize(config.resolution))
+                    except Exception:
+                        return np.zeros((config.resolution[1], config.resolution[0], 3), dtype=np.uint8)
+            return zoom_filter
+
+        c = c.fl(create_zoom_filter(segment_duration))
         clips.append(c)
 
     bg_clip = concatenate_videoclips(clips)
