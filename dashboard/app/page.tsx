@@ -1033,7 +1033,7 @@ export default function TelemetryDashboard() {
                 Daily Inspector Matrix & Run History ({workflowTab})
               </h2>
               <p className="text-xs text-gray-400 mt-0.5">
-                Date: <span className="font-bold text-white font-mono">{selectedDate}</span> | Runs in Category: <span className="font-bold text-[#00E5FF]">{selectedDayRuns.length} Runs</span> ({selectedDayRuns.filter(r => r.status === "SUCCESS").length} Succeeded, {selectedDayRuns.filter(r => r.status === "FAILED").length} Failed)
+                Date: <span className="font-bold text-white font-mono">{selectedDate}</span> | Runs in Category: <span className="font-bold text-[#00E5FF]">{selectedDayRuns.length} Runs</span> ({selectedDayRuns.filter(r => r.status === "SUCCESS").length} Pass, {selectedDayRuns.filter(r => r.status === "FAILED").length} Fail, {selectedDayRuns.filter(r => r.status === "CANCELLED").length} Cancel, {selectedDayRuns.filter(r => r.status === "SKIPPED").length} Skip)
               </p>
             </div>
 
@@ -1051,13 +1051,24 @@ export default function TelemetryDashboard() {
                 className="bg-[#0b0f19] text-white border-2 border-[#00E5FF] px-4 py-2 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#00E5FF]"
               >
                 {availableDates.map((date) => {
-                  const count = runsByDate[date].length;
-                  const succCount = runsByDate[date].filter(r => r.status === "SUCCESS").length;
-                  const failCount = runsByDate[date].filter(r => r.status === "FAILED").length;
-                  const isTourn = date >= "2026-07-22" || runsByDate[date].some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
+                  const dayList = runsByDate[date];
+                  const count = dayList.length;
+                  const succCount = dayList.filter(r => r.status === "SUCCESS").length;
+                  const failCount = dayList.filter(r => r.status === "FAILED").length;
+                  const cancelCount = dayList.filter(r => r.status === "CANCELLED").length;
+                  const skipCount = dayList.filter(r => r.status === "SKIPPED").length;
+                  
+                  const parts = [];
+                  if (succCount > 0) parts.push(`${succCount} Pass`);
+                  if (failCount > 0) parts.push(`${failCount} Fail`);
+                  if (cancelCount > 0) parts.push(`${cancelCount} Cancel`);
+                  if (skipCount > 0) parts.push(`${skipCount} Skip`);
+                  const summaryStr = parts.length > 0 ? parts.join(", ") : "0 Runs";
+
+                  const isTourn = date >= "2026-07-22" || dayList.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
                   return (
                     <option key={date} value={date}>
-                      DATE: {date} — {count} Runs ({succCount} Pass, {failCount} Fail) {isTourn ? "([TOURNAMENT])" : "([LEGACY])"}
+                      DATE: {date} — {count} Runs ({summaryStr}) {isTourn ? "([TOURNAMENT])" : "([LEGACY])"}
                     </option>
                   );
                 })}
