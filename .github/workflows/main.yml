@@ -98,6 +98,6 @@ jobs:
           if [ -f past_topics.json ]; then git add past_topics.json; fi
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Persist telemetry logs and pipeline state [skip ci]"
-            git pull --rebase origin main
+            git pull --rebase origin main || true
             git push origin main
           fi

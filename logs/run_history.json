@@ -13553,5 +13553,95 @@
       "likes": 4,
       "comments": 2
     }
+  },
+  {
+    "id": "run-30010699622",
+    "github_run_number": 282,
+    "github_run_id": 30010699622,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30010699622",
+    "timestamp": "2026-07-23T13:19:21Z",
+    "category": "History",
+    "status": "FAILED",
+    "generation_mode": "SINGLE_SCRIPT_LEGACY",
+    "daily_volume": 1,
+    "render_time_seconds": 28.5,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Single Script",
+        "title": "The Vanished Doctor",
+        "word_count": 92,
+        "hook": "Unlocking the secret...",
+        "score": 7.8,
+        "critique": "Black background frame render issue."
+      }
+    ],
+    "winning_script": {
+      "title": "The Vanished Doctor",
+      "text": "Unlocking the secret...",
+      "hashtags": [
+        "#history",
+        "#shorts"
+      ],
+      "color_theme": "#FFBF00"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "MoviePy PIL.Image.ANTIALIAS AttributeError on resize. Frame default to pitch-black np.zeros.",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "history_track_1.mp3",
+    "search_keywords": [
+      "doctor mystery",
+      "history facts"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)"
+  },
+  {
+    "id": "run-30016321499",
+    "github_run_number": 283,
+    "github_run_id": 30016321499,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30016321499",
+    "timestamp": "2026-07-23T14:41:00Z",
+    "category": "History",
+    "status": "FAILED",
+    "generation_mode": "SINGLE_SCRIPT_LEGACY",
+    "daily_volume": 1,
+    "render_time_seconds": 31.2,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Single Script",
+        "title": "Chimera's Dark Path: The Vanished Doctor",
+        "word_count": 94,
+        "hook": "Something dark happened...",
+        "score": 7.9,
+        "critique": "Black background frame render issue."
+      }
+    ],
+    "winning_script": {
+      "title": "Chimera's Dark Path: The Vanished Doctor",
+      "text": "Something dark happened...",
+      "hashtags": [
+        "#history",
+        "#shorts"
+      ],
+      "color_theme": "#FFBF00"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "MoviePy PIL.Image.ANTIALIAS AttributeError on resize. Frame default to pitch-black np.zeros.",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "history_track_2.mp3",
+    "search_keywords": [
+      "chimera mystery",
+      "history facts"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)"
   }
 ]
