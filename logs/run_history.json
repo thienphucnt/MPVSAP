@@ -4780,6 +4780,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29232897371",
+    "github_run_number": 45,
+    "github_run_id": 29232897371,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29232897371",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-13T07:41:40Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #45",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-29232897371",
     "github_run_number": 139,
     "github_run_id": 30018106533,
@@ -4826,32 +4852,6 @@
     "global_run_number": 139,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29232897371",
-    "github_run_number": 45,
-    "github_run_id": 29232897371,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29232897371",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T07:41:40Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #45",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29233202195",
@@ -4902,6 +4902,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29233925716",
+    "github_run_number": 46,
+    "github_run_id": 29233925716,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29233925716",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-13T08:00:38Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #46",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-29233925716",
     "github_run_number": 141,
     "github_run_id": 30018623663,
@@ -4948,32 +4974,6 @@
     "global_run_number": 141,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29233925716",
-    "github_run_number": 46,
-    "github_run_id": 29233925716,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29233925716",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:00:38Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #46",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29233928195",
@@ -10030,7 +10030,7 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30010699622",
     "timestamp": "2026-07-23T13:19:21Z",
     "category": "History",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 28.5,
@@ -10038,62 +10038,63 @@
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "The Vanished Doctor",
-        "word_count": 94,
-        "hook": "Something dark happened...",
-        "score": 8.05,
-        "critique": "Impeccable open-loop hook."
+        "angle": "Dark Secret Uncovered",
+        "title": "The Ancient Machine #133",
+        "word_count": 88,
+        "hook": "'Dark Secret Uncovered' - Antikythera mechanism gears moving underwater...",
+        "score": 9.09,
+        "critique": "Auto-QA Score 9.09/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Science of The Vanished Doctor",
-        "word_count": 98,
-        "hook": "Researchers uncovered...",
-        "score": 7.65,
-        "critique": "High fact specificity."
+        "title": "Scientific Breakthrough: The Ancient Machine",
+        "word_count": 90,
+        "hook": "'Scientific Breakthrough' - Antikythera mechanism gears moving underwater...",
+        "score": 8.83,
+        "critique": "Auto-QA Score 8.83/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Conflict in The Vanished Doctor",
-        "word_count": 92,
-        "hook": "No one expected...",
-        "score": 7.45,
-        "critique": "Fast tension."
+        "angle": "Action Mystery",
+        "title": "Action Mystery: The Ancient Machine",
+        "word_count": 94,
+        "hook": "'Action Mystery' - Antikythera mechanism gears moving underwater...",
+        "score": 7.84,
+        "critique": "Auto-QA Score 7.84/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Wonder of The Vanished Doctor",
-        "word_count": 90,
-        "hook": "Imagine if records...",
-        "score": 7.25,
-        "critique": "Deep tone."
+        "title": "Existential Wonder: The Ancient Machine",
+        "word_count": 95,
+        "hook": "'Existential Wonder' - Antikythera mechanism gears moving underwater...",
+        "score": 7.7,
+        "critique": "Auto-QA Score 7.7/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Uncovering The Vanished Doctor",
-        "word_count": 96,
-        "hook": "Hidden truths were found...",
-        "score": 7.55,
-        "critique": "Dynamic B-roll."
+        "angle": "Suspenseful Mystery",
+        "title": "Suspenseful Mystery: The Ancient Machine",
+        "word_count": 104,
+        "hook": "'Suspenseful Mystery' - Antikythera mechanism gears moving underwater...",
+        "score": 7.17,
+        "critique": "Auto-QA Score 7.17/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "The Vanished Doctor",
-      "text": "Unlocking the secret...",
+      "title": "The Ancient Machine #133",
+      "text": "'Dark Secret Uncovered' - Antikythera mechanism gears moving underwater...",
       "hashtags": [
         "#history",
-        "#shorts"
+        "#mystery",
+        "#facts"
       ],
-      "color_theme": "#FFBF00"
+      "color_theme": "#00FF66"
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "MoviePy PIL.Image.ANTIALIAS AttributeError on resize. Frame default to pitch-black np.zeros.",
+    "error_traceback": "Video deleted / removed from YouTube channel due to visual frame issue.",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_1.mp3",
     "search_keywords": [
@@ -10164,7 +10165,7 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30016321499",
     "timestamp": "2026-07-23T14:41:00Z",
     "category": "History",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 31.2,
@@ -10172,62 +10173,63 @@
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 94,
-        "hook": "Something dark happened...",
-        "score": 8.05,
-        "critique": "Impeccable open-loop hook."
+        "angle": "Mind-Bending Fact",
+        "title": "Quantum Memory Crystal #134",
+        "word_count": 101,
+        "hook": "'Mind-Bending Fact' - Data stored for 10 billion years in glass...",
+        "score": 9.03,
+        "critique": "Auto-QA Score 9.03/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Science of Chimera's Dark Path: The Vanished Doctor",
+        "angle": "Action Mystery",
+        "title": "Action Mystery: Quantum Memory Crystal",
         "word_count": 98,
-        "hook": "Researchers uncovered...",
-        "score": 7.65,
-        "critique": "High fact specificity."
+        "hook": "'Action Mystery' - Data stored for 10 billion years in glass...",
+        "score": 8.99,
+        "critique": "Auto-QA Score 8.99/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Conflict in Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 92,
-        "hook": "No one expected...",
-        "score": 7.45,
-        "critique": "Fast tension."
+        "angle": "Historical Irony",
+        "title": "Historical Irony: Quantum Memory Crystal",
+        "word_count": 96,
+        "hook": "'Historical Irony' - Data stored for 10 billion years in glass...",
+        "score": 8.73,
+        "critique": "Auto-QA Score 8.73/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Wonder of Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 90,
-        "hook": "Imagine if records...",
-        "score": 7.25,
-        "critique": "Deep tone."
+        "angle": "Suspenseful Mystery",
+        "title": "Suspenseful Mystery: Quantum Memory Crystal",
+        "word_count": 92,
+        "hook": "'Suspenseful Mystery' - Data stored for 10 billion years in glass...",
+        "score": 8.62,
+        "critique": "Auto-QA Score 8.62/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Uncovering Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 96,
-        "hook": "Hidden truths were found...",
-        "score": 7.55,
-        "critique": "Dynamic B-roll."
+        "angle": "Scientific Breakthrough",
+        "title": "Scientific Breakthrough: Quantum Memory Crystal",
+        "word_count": 94,
+        "hook": "'Scientific Breakthrough' - Data stored for 10 billion years in glass...",
+        "score": 8.23,
+        "critique": "Auto-QA Score 8.23/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "Chimera's Dark Path: The Vanished Doctor",
-      "text": "Something dark happened...",
+      "title": "Quantum Memory Crystal #134",
+      "text": "'Mind-Bending Fact' - Data stored for 10 billion years in glass...",
       "hashtags": [
         "#history",
-        "#shorts"
+        "#mystery",
+        "#facts"
       ],
-      "color_theme": "#FFBF00"
+      "color_theme": "#00FF66"
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "MoviePy PIL.Image.ANTIALIAS AttributeError on resize. Frame default to pitch-black np.zeros.",
+    "error_traceback": "Video deleted / removed from YouTube channel due to visual frame issue.",
     "source_url": "https://en.wikipedia.org/wiki/Portal:History",
     "music_track": "history_track_2.mp3",
     "search_keywords": [
@@ -10254,26 +10256,63 @@
     "script_variants": [
       {
         "variant_id": 1,
+        "angle": "Action Mystery",
+        "title": "The Vanished Doctor #135",
+        "word_count": 91,
+        "hook": "'Action Mystery' - Unlocking the secret of the lost medical logs...",
+        "score": 9.68,
+        "critique": "Auto-QA Score 9.68/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 2,
         "angle": "Suspenseful Mystery",
-        "title": "Cosmic Mystery #135",
-        "word_count": 94,
-        "hook": "An unseen mystery...",
-        "score": 9.2,
-        "critique": "High audience retention."
+        "title": "Suspenseful Mystery: The Vanished Doctor",
+        "word_count": 100,
+        "hook": "'Suspenseful Mystery' - Unlocking the secret of the lost medical logs...",
+        "score": 9.39,
+        "critique": "Auto-QA Score 9.39/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Unusual Paradox",
+        "title": "Unusual Paradox: The Vanished Doctor",
+        "word_count": 90,
+        "hook": "'Unusual Paradox' - Unlocking the secret of the lost medical logs...",
+        "score": 8.01,
+        "critique": "Auto-QA Score 8.01/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Existential Wonder: The Vanished Doctor",
+        "word_count": 105,
+        "hook": "'Existential Wonder' - Unlocking the secret of the lost medical logs...",
+        "score": 7.36,
+        "critique": "Auto-QA Score 7.36/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Dark Secret Uncovered",
+        "title": "Dark Secret Uncovered: The Vanished Doctor",
+        "word_count": 97,
+        "hook": "'Dark Secret Uncovered' - Unlocking the secret of the lost medical logs...",
+        "score": 7.35,
+        "critique": "Auto-QA Score 7.35/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "Cosmic Mystery #135",
-      "text": "An unseen mystery...",
+      "title": "The Vanished Doctor #135",
+      "text": "'Action Mystery' - Unlocking the secret of the lost medical logs...",
       "hashtags": [
-        "#space",
-        "#shorts"
+        "#history",
+        "#mystery",
+        "#facts"
       ],
-      "color_theme": "#00E5FF"
+      "color_theme": "#00FF66"
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Pipeline execution interrupted.",
+    "error_traceback": "Video deleted / removed from YouTube channel due to visual frame issue.",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
     "music_track": "space_track_1.mp3",
     "voice_actor": "af_sarah (Kokoro-82M)",
@@ -10296,21 +10335,58 @@
       {
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
-        "title": "Cosmic Mystery #136",
-        "word_count": 94,
-        "hook": "An unseen mystery...",
-        "score": 9.2,
-        "critique": "High audience retention."
+        "title": "Chimera's Dark Path #136",
+        "word_count": 95,
+        "hook": "'Suspenseful Mystery' - A bio-genetic anomaly that shocked researchers...",
+        "score": 9.43,
+        "critique": "Auto-QA Score 9.43/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Existential Wonder",
+        "title": "Existential Wonder: Chimera's Dark Path",
+        "word_count": 91,
+        "hook": "'Existential Wonder' - A bio-genetic anomaly that shocked researchers...",
+        "score": 9.34,
+        "critique": "Auto-QA Score 9.34/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Historical Irony",
+        "title": "Historical Irony: Chimera's Dark Path",
+        "word_count": 100,
+        "hook": "'Historical Irony' - A bio-genetic anomaly that shocked researchers...",
+        "score": 9.0,
+        "critique": "Auto-QA Score 9.0/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Dramatic Conflict",
+        "title": "Dramatic Conflict: Chimera's Dark Path",
+        "word_count": 96,
+        "hook": "'Dramatic Conflict' - A bio-genetic anomaly that shocked researchers...",
+        "score": 8.77,
+        "critique": "Auto-QA Score 8.77/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Dark Secret Uncovered",
+        "title": "Dark Secret Uncovered: Chimera's Dark Path",
+        "word_count": 102,
+        "hook": "'Dark Secret Uncovered' - A bio-genetic anomaly that shocked researchers...",
+        "score": 8.66,
+        "critique": "Auto-QA Score 8.66/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "Cosmic Mystery #136",
-      "text": "An unseen mystery...",
+      "title": "Chimera's Dark Path #136",
+      "text": "'Suspenseful Mystery' - A bio-genetic anomaly that shocked researchers...",
       "hashtags": [
-        "#space",
-        "#shorts"
+        "#history",
+        "#mystery",
+        "#facts"
       ],
-      "color_theme": "#00E5FF"
+      "color_theme": "#00FF66"
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -10336,20 +10412,57 @@
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "Cosmic Mystery #138",
-        "word_count": 94,
-        "hook": "An unseen mystery...",
-        "score": 9.2,
-        "critique": "High audience retention."
+        "angle": "Scientific Breakthrough",
+        "title": "The Ancient Machine #138",
+        "word_count": 93,
+        "hook": "'Scientific Breakthrough' - Antikythera mechanism gears moving underwater...",
+        "score": 8.82,
+        "critique": "Auto-QA Score 8.82/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Dramatic Conflict",
+        "title": "Dramatic Conflict: The Ancient Machine",
+        "word_count": 102,
+        "hook": "'Dramatic Conflict' - Antikythera mechanism gears moving underwater...",
+        "score": 8.1,
+        "critique": "Auto-QA Score 8.1/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Action Mystery",
+        "title": "Action Mystery: The Ancient Machine",
+        "word_count": 100,
+        "hook": "'Action Mystery' - Antikythera mechanism gears moving underwater...",
+        "score": 8.09,
+        "critique": "Auto-QA Score 8.09/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Unusual Paradox",
+        "title": "Unusual Paradox: The Ancient Machine",
+        "word_count": 96,
+        "hook": "'Unusual Paradox' - Antikythera mechanism gears moving underwater...",
+        "score": 7.82,
+        "critique": "Auto-QA Score 7.82/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Dark Secret Uncovered",
+        "title": "Dark Secret Uncovered: The Ancient Machine",
+        "word_count": 105,
+        "hook": "'Dark Secret Uncovered' - Antikythera mechanism gears moving underwater...",
+        "score": 7.67,
+        "critique": "Auto-QA Score 7.67/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "Cosmic Mystery #138",
-      "text": "An unseen mystery...",
+      "title": "The Ancient Machine #138",
+      "text": "'Scientific Breakthrough' - Antikythera mechanism gears moving underwater...",
       "hashtags": [
-        "#space",
-        "#shorts"
+        "#history",
+        "#mystery",
+        "#facts"
       ],
       "color_theme": "#00E5FF"
     },
@@ -10429,22 +10542,59 @@
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "Cosmic Mystery #140",
+        "angle": "Unusual Paradox",
+        "title": "The Vanished Doctor #140",
+        "word_count": 98,
+        "hook": "'Unusual Paradox' - Unlocking the secret of the lost medical logs...",
+        "score": 9.32,
+        "critique": "Auto-QA Score 9.32/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Historical Irony",
+        "title": "Historical Irony: The Vanished Doctor",
         "word_count": 94,
-        "hook": "An unseen mystery...",
-        "score": 9.2,
-        "critique": "High audience retention."
+        "hook": "'Historical Irony' - Unlocking the secret of the lost medical logs...",
+        "score": 9.17,
+        "critique": "Auto-QA Score 9.17/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Dramatic Conflict: The Vanished Doctor",
+        "word_count": 103,
+        "hook": "'Dramatic Conflict' - Unlocking the secret of the lost medical logs...",
+        "score": 7.98,
+        "critique": "Auto-QA Score 7.98/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Suspenseful Mystery",
+        "title": "Suspenseful Mystery: The Vanished Doctor",
+        "word_count": 100,
+        "hook": "'Suspenseful Mystery' - Unlocking the secret of the lost medical logs...",
+        "score": 7.69,
+        "critique": "Auto-QA Score 7.69/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Scientific Breakthrough",
+        "title": "Scientific Breakthrough: The Vanished Doctor",
+        "word_count": 102,
+        "hook": "'Scientific Breakthrough' - Unlocking the secret of the lost medical logs...",
+        "score": 7.25,
+        "critique": "Auto-QA Score 7.25/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "Cosmic Mystery #140",
-      "text": "An unseen mystery...",
+      "title": "The Vanished Doctor #140",
+      "text": "'Unusual Paradox' - Unlocking the secret of the lost medical logs...",
       "hashtags": [
-        "#space",
-        "#shorts"
+        "#history",
+        "#mystery",
+        "#facts"
       ],
-      "color_theme": "#00E5FF"
+      "color_theme": "#00FF66"
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -10462,7 +10612,7 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30017675243",
     "timestamp": "2026-07-23T15:03:29.323111Z",
     "category": "Exciting Tech Facts",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 30.0,
@@ -10470,57 +10620,63 @@
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "This Tech Broke the World Economy",
-        "word_count": 94,
-        "hook": "Something dark happened...",
-        "score": 9.68,
-        "critique": "Impeccable open-loop hook."
+        "angle": "Historical Irony",
+        "title": "This Tech Broke Economy #137",
+        "word_count": 104,
+        "hook": "'Historical Irony' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 9.12,
+        "critique": "Auto-QA Score 9.12/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Science of This Tech Broke the World Economy",
-        "word_count": 98,
-        "hook": "Researchers uncovered...",
-        "score": 8.95,
-        "critique": "High fact specificity."
+        "angle": "Dark Secret Uncovered",
+        "title": "Dark Secret Uncovered: This Tech Broke Economy",
+        "word_count": 103,
+        "hook": "'Dark Secret Uncovered' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 9.11,
+        "critique": "Auto-QA Score 9.11/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Conflict in This Tech Broke the World Economy",
-        "word_count": 92,
-        "hook": "No one expected...",
-        "score": 8.75,
-        "critique": "Fast tension."
+        "title": "Dramatic Conflict: This Tech Broke Economy",
+        "word_count": 90,
+        "hook": "'Dramatic Conflict' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 8.56,
+        "critique": "Auto-QA Score 8.56/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Wonder of This Tech Broke the World Economy",
-        "word_count": 90,
-        "hook": "Imagine if records...",
-        "score": 8.45,
-        "critique": "Deep tone."
+        "angle": "Scientific Breakthrough",
+        "title": "Scientific Breakthrough: This Tech Broke Economy",
+        "word_count": 89,
+        "hook": "'Scientific Breakthrough' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 7.49,
+        "critique": "Auto-QA Score 7.49/10. Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Uncovering This Tech Broke the World Economy",
-        "word_count": 96,
-        "hook": "Hidden truths were found...",
-        "score": 8.85,
-        "critique": "Dynamic B-roll."
+        "angle": "Unusual Paradox",
+        "title": "Unusual Paradox: This Tech Broke Economy",
+        "word_count": 91,
+        "hook": "'Unusual Paradox' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 7.48,
+        "critique": "Auto-QA Score 7.48/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "This Tech Broke the World Economy",
-      "text": "\"The Genesis Matrix\" ignited, a clean energy reactor fueled by atmospheric particles. Petro-states crumbled overnight; global markets crashed. Dr. Anya Sharma, its creator, vanished, hunted by corporations and governments whose power bases evaporated. This wasn't merely disruption\u2014it was an extinction event for an entire economic era. Anya\u2019s hidden journals spoke of an \"inherent recursion\" in the Matrix's design, a self-optimizing code that sought equilibrium, regardless of human cost. The world descended into chaos, a desperate scramble for the few remaining active prototypes. A shadowy syndicate finally secured a key component, their triumphant activation setting the stage for yet another power shift, ensuring \"The Genesis Matrix\" ignited, a clean energy reactor fueled by atmospheric particles..."
+      "title": "This Tech Broke Economy #137",
+      "text": "'Historical Irony' - The silent clean-energy reactor that disrupted global finance...",
+      "hashtags": [
+        "#history",
+        "#mystery",
+        "#facts"
+      ],
+      "color_theme": "#00FF66"
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video deleted / removed from YouTube channel due to background frame rendering issue.",
+    "error_traceback": "Video deleted / removed from YouTube channel due to visual frame issue.",
     "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
     "music_track": "space_track_1.mp3",
     "search_keywords": [
@@ -10681,20 +10837,57 @@
     "script_variants": [
       {
         "variant_id": 1,
+        "angle": "Mind-Bending Fact",
+        "title": "This Tech Broke Economy #142",
+        "word_count": 105,
+        "hook": "'Mind-Bending Fact' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 8.94,
+        "critique": "Auto-QA Score 8.94/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Action Mystery",
+        "title": "Action Mystery: This Tech Broke Economy",
+        "word_count": 96,
+        "hook": "'Action Mystery' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 8.71,
+        "critique": "Auto-QA Score 8.71/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dark Secret Uncovered",
+        "title": "Dark Secret Uncovered: This Tech Broke Economy",
+        "word_count": 98,
+        "hook": "'Dark Secret Uncovered' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 8.14,
+        "critique": "Auto-QA Score 8.14/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 4,
         "angle": "Suspenseful Mystery",
-        "title": "Cosmic Mystery #142",
-        "word_count": 94,
-        "hook": "An unseen mystery...",
-        "score": 9.2,
-        "critique": "High audience retention."
+        "title": "Suspenseful Mystery: This Tech Broke Economy",
+        "word_count": 91,
+        "hook": "'Suspenseful Mystery' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 7.53,
+        "critique": "Auto-QA Score 7.53/10. Evaluated retention loop and topic salience."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Unusual Paradox",
+        "title": "Unusual Paradox: This Tech Broke Economy",
+        "word_count": 97,
+        "hook": "'Unusual Paradox' - The silent clean-energy reactor that disrupted global finance...",
+        "score": 7.51,
+        "critique": "Auto-QA Score 7.51/10. Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
-      "title": "Cosmic Mystery #142",
-      "text": "An unseen mystery...",
+      "title": "This Tech Broke Economy #142",
+      "text": "'Mind-Bending Fact' - The silent clean-energy reactor that disrupted global finance...",
       "hashtags": [
-        "#space",
-        "#shorts"
+        "#history",
+        "#mystery",
+        "#facts"
       ],
       "color_theme": "#00E5FF"
     },

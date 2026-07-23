@@ -591,6 +591,17 @@ export default function TelemetryDashboard() {
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedRunId, setSelectedRunId] = useState<string>("");
   const [statusFilter, setStatusFilter] = useState<"ALL" | "SUCCESS" | "FAILED" | "CANCELLED" | "SKIPPED">("ALL");
+  const [heatmapStatusFilter, setHeatmapStatusFilter] = useState<{
+    SUCCESS: boolean;
+    FAILED: boolean;
+    CANCELLED: boolean;
+    SKIPPED: boolean;
+  }>({
+    SUCCESS: true,
+    FAILED: true,
+    CANCELLED: true,
+    SKIPPED: true,
+  });
   const [workflowTab, setWorkflowTab] = useState<WorkflowType>("DAILY_SHORTS");
 
   useEffect(() => {
@@ -610,11 +621,13 @@ export default function TelemetryDashboard() {
   }, []);
 
   // Filter runs according to selected workflow tab
-  const activeRuns = runs.filter((r) => {
-    if (workflowTab === "ALL") return true;
-    const wf = r.workflow_type || "DAILY_SHORTS";
-    return wf === workflowTab;
-  });
+  const activeRuns = runs
+    .filter((r) => {
+      if (workflowTab === "ALL") return true;
+      const wf = r.workflow_type || "DAILY_SHORTS";
+      return wf === workflowTab;
+    })
+    .sort((a, b) => (a.github_run_number || 0) - (b.github_run_number || 0));
 
   const runsByDate = activeRuns.reduce((acc, run) => {
     const dateKey = run.timestamp.split("T")[0];
@@ -638,7 +651,7 @@ export default function TelemetryDashboard() {
     }
   }, [workflowTab, availableDates]);
 
-  const selectedDayRuns = runsByDate[selectedDate] || [];
+  const selectedDayRuns = (runsByDate[selectedDate] || []).slice().sort((a, b) => (a.github_run_number || 0) - (b.github_run_number || 0));
   const isTournamentDay = selectedDate >= "2026-07-22" || selectedDayRuns.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
 
   const filteredDayRuns = selectedDayRuns.filter((r) => {
@@ -896,16 +909,59 @@ export default function TelemetryDashboard() {
               Showing {activeRuns.length} executions for selected category tab.
             </p>
           </div>
-          <div className="flex items-center gap-4 text-xs text-gray-400">
-            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-[#00FF66] inline-block"></span> Success</span>
-            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500 inline-block"></span> Failed</span>
-            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-amber-500 inline-block"></span> Cancelled</span>
-            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-gray-500 inline-block"></span> Skipped</span>
+          <div className="flex flex-wrap items-center gap-3 bg-[#0b0f19] p-2.5 rounded-xl border border-[#1f2d4d] text-xs font-bold">
+            <span className="text-gray-400 uppercase text-[10px] tracking-wider mr-1">Filter Heatmap Status:</span>
+            <label className="flex items-center gap-1.5 cursor-pointer bg-[#131b2e] px-2.5 py-1 rounded-lg border border-[#1f2d4d] hover:border-[#00FF66]/50">
+              <input
+                type="checkbox"
+                checked={heatmapStatusFilter.SUCCESS}
+                onChange={(e) => setHeatmapStatusFilter({ ...heatmapStatusFilter, SUCCESS: e.target.checked })}
+                className="accent-[#00FF66] w-3.5 h-3.5 cursor-pointer"
+              />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#00FF66] inline-block"></span>
+              <span className="text-green-300">Success ({activeRuns.filter(r => r.status === "SUCCESS").length})</span>
+            </label>
+            <label className="flex items-center gap-1.5 cursor-pointer bg-[#131b2e] px-2.5 py-1 rounded-lg border border-[#1f2d4d] hover:border-red-500/50">
+              <input
+                type="checkbox"
+                checked={heatmapStatusFilter.FAILED}
+                onChange={(e) => setHeatmapStatusFilter({ ...heatmapStatusFilter, FAILED: e.target.checked })}
+                className="accent-red-500 w-3.5 h-3.5 cursor-pointer"
+              />
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+              <span className="text-red-400">Failed ({activeRuns.filter(r => r.status === "FAILED").length})</span>
+            </label>
+            <label className="flex items-center gap-1.5 cursor-pointer bg-[#131b2e] px-2.5 py-1 rounded-lg border border-[#1f2d4d] hover:border-amber-500/50">
+              <input
+                type="checkbox"
+                checked={heatmapStatusFilter.CANCELLED}
+                onChange={(e) => setHeatmapStatusFilter({ ...heatmapStatusFilter, CANCELLED: e.target.checked })}
+                className="accent-amber-500 w-3.5 h-3.5 cursor-pointer"
+              />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+              <span className="text-amber-400">Cancelled ({activeRuns.filter(r => r.status === "CANCELLED").length})</span>
+            </label>
+            <label className="flex items-center gap-1.5 cursor-pointer bg-[#131b2e] px-2.5 py-1 rounded-lg border border-[#1f2d4d] hover:border-gray-500/50">
+              <input
+                type="checkbox"
+                checked={heatmapStatusFilter.SKIPPED}
+                onChange={(e) => setHeatmapStatusFilter({ ...heatmapStatusFilter, SKIPPED: e.target.checked })}
+                className="accent-gray-400 w-3.5 h-3.5 cursor-pointer"
+              />
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-500 inline-block"></span>
+              <span className="text-gray-300">Skipped ({activeRuns.filter(r => r.status === "SKIPPED").length})</span>
+            </label>
+            <button
+              onClick={() => setHeatmapStatusFilter({ SUCCESS: true, FAILED: true, CANCELLED: true, SKIPPED: true })}
+              className="text-[10px] text-[#00E5FF] hover:underline ml-1"
+            >
+              Select All
+            </button>
           </div>
         </div>
 
         <div className="grid grid-cols-8 sm:grid-cols-12 md:grid-cols-16 gap-2">
-          {activeRuns.map((r) => (
+          {activeRuns.filter((r) => heatmapStatusFilter[r.status]).map((r) => (
             <div
               key={r.id}
               onClick={() => {
