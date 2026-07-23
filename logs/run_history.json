@@ -13562,55 +13562,19 @@
     "timestamp": "2026-07-23T13:19:21Z",
     "category": "History",
     "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 1,
     "render_time_seconds": 28.5,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
+        "angle": "Single Script",
         "title": "The Vanished Doctor",
-        "word_count": 94,
-        "hook": "Something dark happened...",
-        "score": 8.05,
-        "critique": "Impeccable open-loop hook."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Science of The Vanished Doctor",
-        "word_count": 98,
-        "hook": "Researchers uncovered...",
-        "score": 7.65,
-        "critique": "High fact specificity."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Conflict in The Vanished Doctor",
         "word_count": 92,
-        "hook": "No one expected...",
-        "score": 7.45,
-        "critique": "Fast tension."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Wonder of The Vanished Doctor",
-        "word_count": 90,
-        "hook": "Imagine if records...",
-        "score": 7.25,
-        "critique": "Deep tone."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Uncovering The Vanished Doctor",
-        "word_count": 96,
-        "hook": "Hidden truths were found...",
-        "score": 7.55,
-        "critique": "Dynamic B-roll."
+        "hook": "Unlocking the secret...",
+        "score": 7.8,
+        "critique": "Black background frame render issue."
       }
     ],
     "winning_script": {
@@ -13643,55 +13607,19 @@
     "timestamp": "2026-07-23T14:41:00Z",
     "category": "History",
     "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 1,
     "render_time_seconds": 31.2,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Suspenseful Mystery",
+        "angle": "Single Script",
         "title": "Chimera's Dark Path: The Vanished Doctor",
         "word_count": 94,
         "hook": "Something dark happened...",
-        "score": 8.05,
-        "critique": "Impeccable open-loop hook."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Science of Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 98,
-        "hook": "Researchers uncovered...",
-        "score": 7.65,
-        "critique": "High fact specificity."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Conflict in Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 92,
-        "hook": "No one expected...",
-        "score": 7.45,
-        "critique": "Fast tension."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Wonder of Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 90,
-        "hook": "Imagine if records...",
-        "score": 7.25,
-        "critique": "Deep tone."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Uncovering Chimera's Dark Path: The Vanished Doctor",
-        "word_count": 96,
-        "hook": "Hidden truths were found...",
-        "score": 7.55,
-        "critique": "Dynamic B-roll."
+        "score": 7.9,
+        "critique": "Black background frame render issue."
       }
     ],
     "winning_script": {
