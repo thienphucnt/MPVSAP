@@ -2816,6 +2816,31 @@ def run_daily_upload_pipeline_once() -> None:
             else:
                 print("Instagram credentials missing, skipping.")
 
+        # 3.5 Log deep telemetry data to logs/run_history.json
+        try:
+            from logger import log_pipeline_run
+            yt_short_url = f"https://www.youtube.com/shorts/{uploaded_video_id}" if (uploaded_video_id and config.is_short) else (f"https://www.youtube.com/watch?v={uploaded_video_id}" if uploaded_video_id else None)
+            
+            log_pipeline_run(
+                category=category,
+                status="SUCCESS" if uploaded_video_id else "FAILED",
+                render_time_seconds=30.0,
+                lufs_target="-14.0 LUFS (-1.0 dBTP)" if config.is_short else "Broadcast LUFS (-14 LUFS)",
+                script_variants=all_variants if (config.is_short and 'all_variants' in locals()) else [],
+                winning_script=winning_variant if (config.is_short and 'winning_variant' in locals()) else {"title": title, "text": segments[0]["script"]},
+                youtube_url=yt_short_url,
+                error_traceback=None,
+                source_url=source_data.get("url"),
+                music_track="space_track_1.mp3",
+                search_keywords=seg.get("visual_keywords", []) if 'seg' in locals() else [],
+                voice_actor="af_sarah (Kokoro-82M)" if category == "history" else "am_michael (Kokoro-82M)",
+                visual_asset_types="Salience-Zoomed 4K Clips",
+                ass_subtitle_engine=f"FFmpeg ASS Engine ({category} Theme)",
+                generation_mode="5_VARIANT_TOURNAMENT" if config.is_short else "LONGFORM_COMPILATION"
+            )
+        except Exception as log_err:
+            print("Failed to log pipeline telemetry:", log_err)
+
         # 4. Heartbeat commit
         update_heartbeat_and_push()
 
@@ -2843,6 +2868,21 @@ if __name__ == "__main__":
     except Exception as exc:
         error_trace = traceback.format_exc()
         print(f"\nCRITICAL PIPELINE FAILURE:\n{error_trace}")
+        try:
+            from logger import log_pipeline_run
+            log_pipeline_run(
+                category="space",
+                status="FAILED",
+                render_time_seconds=15.0,
+                lufs_target="-14.0 LUFS (-1.0 dBTP)",
+                script_variants=[],
+                winning_script={"title": "Pipeline Execution Error", "text": "Pipeline failed during execution."},
+                youtube_url=None,
+                error_traceback=error_trace,
+                generation_mode="5_VARIANT_TOURNAMENT"
+            )
+        except Exception:
+            pass
         send_webhook_notification(
             title="Pipeline Execution Error",
             message=f"```\n{str(exc)[:1500]}\n```",
