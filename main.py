@@ -30,11 +30,62 @@ from moviepy.audio.fx.all import audio_loop
 # Fix AttributeError: module 'PIL.Image' has no attribute 'ANTIALIAS' for MoviePy
 import PIL.Image
 import numpy as np
+import moviepy.video.fx.resize as mp_resize_mod
+import moviepy.video.fx.all as vfx_all
+import moviepy.editor as mp_editor
+
 if not hasattr(PIL.Image, 'ANTIALIAS'):
     if hasattr(PIL.Image, 'Resampling'):
         PIL.Image.ANTIALIAS = PIL.Image.Resampling.LANCZOS
     else:
         PIL.Image.ANTIALIAS = PIL.Image.BICUBIC
+
+def safe_moviepy_resizer(pic, newsize):
+    try:
+        if pic is None:
+            return np.zeros((newsize[1], newsize[0], 3), dtype=np.uint8)
+        if not isinstance(pic, np.ndarray):
+            pic = np.array(pic)
+        if pic.dtype != np.uint8:
+            pic = np.clip(pic, 0, 255).astype(np.uint8)
+        pic = np.ascontiguousarray(pic)
+
+        img = PIL.Image.fromarray(pic)
+        resample_filter = getattr(PIL.Image, 'Resampling', PIL.Image).LANCZOS if hasattr(PIL.Image, 'Resampling') else PIL.Image.BICUBIC
+        img_resized = img.resize((newsize[0], newsize[1]), resample_filter)
+        return np.array(img_resized)
+    except Exception as e:
+        print("Safe resizer error fallback:", e)
+        return np.zeros((newsize[1], newsize[0], 3), dtype=np.uint8)
+
+def safe_moviepy_resize(clip, newsize=None, height=None, width=None, apply_to_mask=True):
+    if newsize is not None:
+        if isinstance(newsize, (int, float)):
+            w = int(clip.w * newsize)
+            h = int(clip.h * newsize)
+        else:
+            w, h = newsize
+    elif height is not None and width is not None:
+        w, h = width, height
+    elif height is not None:
+        h = height
+        w = int(clip.w * (height / clip.h))
+    elif width is not None:
+        w = width
+        h = int(clip.h * (width / clip.w))
+    else:
+        return clip
+
+    def fl(pic):
+        return safe_moviepy_resizer(pic, (w, h))
+
+    return clip.fl_image(fl)
+
+mp_resize_mod.resizer = safe_moviepy_resizer
+mp_resize_mod.resize = safe_moviepy_resize
+vfx_all.resize = safe_moviepy_resize
+mp_editor.vfx.resize = safe_moviepy_resize
+mp_editor.VideoClip.resize = safe_moviepy_resize
 
 # Global shared HTTP session for connection pooling
 HTTP_SESSION = requests.Session()
