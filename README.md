@@ -1,53 +1,51 @@
-# 🎬 MPVSAP — Automated High-Retention Hybrid Video Engine & Uploader
+# 🎬 MPVSAP — Multi-Platform Autonomous Video Automation & Telemetry Platform
 
 [![Daily Shorts Schedule](https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml/badge.svg)](https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml)
-[![Weekly Longform Schedule](https://github.com/thienphucnt/MPVSAP/actions/workflows/long_form.yml/badge.svg)](https://github.com/thienphucnt/MPVSAP/actions/workflows/long_form.yml)
-[![Security Policy](https://img.shields.io/badge/Security-Hardened-blue.svg)](SECURITY.md)
+[![AI Self-Healing](https://github.com/thienphucnt/MPVSAP/actions/workflows/self_healing.yml/badge.svg)](https://github.com/thienphucnt/MPVSAP/actions/workflows/self_healing.yml)
+[![Security Policy](https://img.shields.io/badge/Security-Hardened-brightgreen.svg)](SECURITY.md)
 
-An enterprise-grade, fully automated video generation and publishing pipeline. Built with Python, GitHub Actions, Gemini 2.5 Pro, Edge-TTS, Wikimedia Commons, Pexels API, and MoviePy, MPVSAP automatically produces high-retention vertical Shorts and 8+ minute widescreen documentaries.
+An enterprise-grade, fully automated AI video production, rendering, multi-platform social publishing, and real-time telemetry analytics platform. Built with Python, GitHub Actions, Next.js 14, Gemini 2.5 Flash, Kokoro TTS, Pexels API, Wikimedia Commons, and MoviePy.
 
 ---
 
 ## ✨ Features & Architecture Highlights
 
-### 🧠 High-Retention Two-Pass Generation Engine (LLM-as-a-Judge)
-* **Real-Time Wikipedia Source Text Ingestion**: Automatically fetches rich, un-biased article extracts from Wikipedia REST APIs for Space, History, and Tech. Facts are grounded in real encyclopedia data rather than generic LLM training data.
-* **Pass 1 (Story-Driven Generator)**: Formats script narrative using an algorithmic retention structure (**Hook (0-3s) → Conflict/Tension (3-45s) → Payoff & Loop CTA**). Listicles and "Top 3" formats are strictly banned.
-* **Pass 2 (Evaluator / Auto-QA Scoring)**: Evaluates generated scripts out of 10 on Hook Strength, Narrative Arc, Absence of AI Clichés, and Fact Grounding. Scripts scoring **< 8/10** trigger automatic rewrite loops.
+### 🏆 1. 5-Variant Auto-QA Tournament Engine
+* **Real-Time Wikipedia Source Knowledge Ingestion**: Automatically fetches rich article extracts from Wikipedia REST APIs for Space, History, and Tech in **<0.2 seconds**.
+* **5-Variant Parallel Generation**: Generates **5 distinct candidate video scripts** per topic across diverse narrative angles (Suspenseful Mystery, Scientific Breakthrough, Dramatic Conflict, Existential Wonder, Action Mystery).
+* **Auto-QA Tournament Evaluator**: Automatically scores all 5 candidate variants out of 10 for audience retention loops, hook strength, and topic accuracy, selecting the top-scoring script for production.
 
-### 📅 Thematic Block Scheduling & 7-Day Category Lock
-* **Automated Rotation**: Locks video output into a single category for 7 consecutive days before rotating to the next:
-  * **Week 1 (Days 1–7)**: `Space` (Cosmology, Dark Nebula, Astrophysical Mysteries)
-  * **Week 2 (Days 8–14)**: `History` (Bizarre Historical Events, Ancient Artifacts, Unsolved Riddles)
-  * **Week 3 (Days 15–21)**: `Tech` (Computing Breakthroughs, AI Revolution, Emerging Science)
-* **Execution Cadence**: 1 Short per day (12:00 UTC) & 1 Longform compilation weekly on Sundays (00:00 UTC).
+### 📊 2. Real-Time Telemetry Control Center (`dashboard/`)
+* **Categorized Workflow Tabs**: Filter telemetry across `DAILY SHORTS`, `WEEKLY LONGFORM`, `AI SELF-HEALING`, `BOT MAINTENANCE`, and `ALL PIPELINES`.
+* **Pipeline Health Heatmap**: Color-coded execution tracking (`SUCCESS`, `FAILED`, `CANCELLED`, `SKIPPED`) with an **Interactive Checkbox Status Filter Bar**.
+* **Dedicated Workflow Inspector Sections**:
+  * **Video Upload Inspector**: Winning Script, YouTube Views/Likes/Comments, Source Knowledge, Background Audio Track, Neural Voice Actor, and 5-Variant Auto-QA Tournament Breakdown.
+  * **AI Self-Healing Inspector**: Target Pipeline Log, Diagnostic Model Engine, Heal Attempt Counter, Repository Action, and Expandable Log Trace.
+  * **Bot Maintenance Inspector**: Repository State, Dependency Cache Status, and Heartbeat Signals.
+* **Automated YouTube Deletion Auto-Sync**: Automatically verifies recorded video links against YouTube Data API v3 and marks deleted videos as `FAILED`.
 
-### 🛡️ Ironclad Zero-Duplicate Topic Guardrail (`is_duplicate_topic`)
-* **Full History Retention**: Preserves a permanent, uncapped database of every topic and title ever posted ([past_topics.json](past_topics.json)).
-* **Multi-Pass Python Validator**: Validates generated content using normalized substring matching, key entity/phrase overlap (e.g. blocking repeated subjects like *"Great Attractor"*, *"False Vacuum"*, *"Cadaver Synod"*, *"Exploding Pants"*), and token Jaccard similarity (> 0.35 threshold).
-* **Self-Correction Retry Loop**: Rejects duplicates automatically before video rendering begins.
-
-### 🖼️ Proper Noun Wikimedia B-Roll & Ken Burns Animation Engine
-* **Entity Detection**: Instructs Gemini to output proper nouns for specific historical figures, animals, landmarks, or space missions (e.g., `'Albert Einstein'`, `'Apollo 11'`, `'Andromeda Galaxy'`).
-* **Wikimedia Commons Integration**: Queries the Wikimedia Action API (`srnamespace=6`) for authentic historical or educational media.
-* **Ken Burns Motion**: Converts static Wikimedia images into dynamic portrait/widescreen video clips with smooth zoom-in motion (1.0x to 1.10x zoom over duration).
-* **Pexels Fallback**: Seamlessly falls back to Pexels stock video search for generic lowercase keywords.
-
-### 🎵 Curated DMCA-Free Music Library & Audio Balance
-* **17 Handpicked Tracks**: Contains thematic, royalty-free Creative Commons (CC-BY) tracks by Kevin MacLeod categorized under `music/space/`, `music/history/`, and `music/tech/`.
-* **Precision Audio Balance**: Background music is mixed at a subtle **8% volume multiplier** via FFMPEG subprocesses, ensuring narrations are crystal-clear and never overwhelmed.
-
-### 🗣️ Kinetic Phrase Karaoke Subtitles & Funneling
-* **Phrase-Level Subtitles**: Groups Edge-TTS word boundaries into natural 3-to-5 word phrases positioned at `Y=1350` to avoid player UI overlays.
-* **Flicker-Free Active Highlight**: Highlights each spoken word in bold yellow (`{\1c&H0000FFFF}`) in real time over standard white dialogue.
-* **Shorts-to-Long Funneling**: Daily Shorts automatically inspect channel history and append direct documentary links (`🎥 Watch full documentary: https://youtu.be/VIDEO_ID`) to descriptions.
+### 🩺 3. AI Self-Healing & Diagnostics (`self_healing.yml` & `self_heal.py`)
+* Automatically triggers upon any video pipeline failure.
+* Parses failed GitHub Actions log output using Gemini AI.
+* Diagnoses root causes, applies automated code patches, increments a strict 3-attempt safety guard, and re-triggers execution.
 
 ---
 
-## 📐 Hybrid Format Specifications
+## 🔒 Security & Exploit Mitigation
 
-| Feature | YouTube Shorts (9:16) | Widescreen Long-Form (16:9) |
-| :--- | :--- | :--- |
+MPVSAP enforces strict security standards to ensure no sensitive credentials or vulnerability vectors exist:
+
+1. **Zero Secret Leaks**:
+   * All API keys (`GEMINI_API_KEY`, `PEXELS_API_KEY`, `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET`, `YOUTUBE_REFRESH_TOKEN`, `META_PAGE_ACCESS_TOKEN`, `TIKTOK_REFRESH_TOKEN`) are stored strictly in GitHub Secrets or local `.env` files.
+   * `.env`, `client_secrets.json`, and credentials are listed in `.gitignore` and enforced via **GitHub Push Protection**.
+
+2. **Input Sanitization & Execution Safety**:
+   * Command parameters use list-based argument arrays with `subprocess.run(..., shell=False)` to prevent command injection vulnerabilities.
+   * Path arguments are validated using standard `pathlib.Path` boundaries to prevent directory traversal.
+
+3. **Isolated GitHub Actions Triggers**:
+   * Video upload pipelines (`main.yml`) run exclusively on scheduled cron (`0 12 * * *`) or manual `workflow_dispatch`.
+   * Code and dashboard commits deploy directly to Vercel without triggering compute-heavy video rendering jobs.
 | **Resolution** | `1080x1920` (Vertical) | `1920x1080` (Widescreen) |
 | **Duration** | 60 seconds (~130 words) | 8+ minutes (10 compiled facts) |
 | **Pacing** | Fast-paced, seamless loop CTA | Chaptered documentary |
