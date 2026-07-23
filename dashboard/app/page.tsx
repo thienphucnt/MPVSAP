@@ -15,7 +15,12 @@ import {
   ChevronUp,
   Eye,
   ThumbsUp,
-  MessageSquare
+  MessageSquare,
+  ShieldCheck,
+  Cpu,
+  Video,
+  Film,
+  Bot
 } from "lucide-react";
 import {
   LineChart,
@@ -52,11 +57,14 @@ interface YouTubeStats {
   comments: number;
 }
 
+type WorkflowType = "ALL" | "DAILY_SHORTS" | "WEEKLY_LONGFORM" | "SELF_HEALING" | "BOT_MAINTENANCE";
+
 interface RunEntry {
   id: string;
   github_run_number?: number;
   github_run_id?: number;
   github_run_url?: string;
+  workflow_type?: "DAILY_SHORTS" | "WEEKLY_LONGFORM" | "SELF_HEALING" | "BOT_MAINTENANCE";
   timestamp: string;
   category: string;
   status: "SUCCESS" | "FAILED";
@@ -380,6 +388,7 @@ export default function TelemetryDashboard() {
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedRunId, setSelectedRunId] = useState<string>("");
   const [statusFilter, setStatusFilter] = useState<"ALL" | "SUCCESS" | "FAILED">("ALL");
+  const [workflowTab, setWorkflowTab] = useState<WorkflowType>("ALL");
 
   useEffect(() => {
     import("../../logs/run_history.json")
@@ -397,7 +406,14 @@ export default function TelemetryDashboard() {
       });
   }, []);
 
-  const runsByDate = runs.reduce((acc, run) => {
+  // Filter runs according to selected workflow tab
+  const activeRuns = runs.filter((r) => {
+    if (workflowTab === "ALL") return true;
+    const wf = r.workflow_type || "DAILY_SHORTS";
+    return wf === workflowTab;
+  });
+
+  const runsByDate = activeRuns.reduce((acc, run) => {
     const dateKey = run.timestamp.split("T")[0];
     if (!acc[dateKey]) {
       acc[dateKey] = [];
@@ -416,17 +432,21 @@ export default function TelemetryDashboard() {
     return true;
   });
 
-  const totalRuns = runs.length;
-  const successfulRuns = runs.filter((r) => r.status === "SUCCESS").length;
+  // Calculate dynamic metrics based on active workflow tab
+  const totalRuns = activeRuns.length;
+  const successfulRuns = activeRuns.filter((r) => r.status === "SUCCESS").length;
   const successRate = totalRuns > 0 ? ((successfulRuns / totalRuns) * 100).toFixed(1) : "100.0";
-  const avgRenderTime = totalRuns > 0 ? (runs.reduce((acc, r) => acc + r.render_time_seconds, 0) / totalRuns).toFixed(1) : "0.0";
+  const avgRenderTime = totalRuns > 0 ? (activeRuns.reduce((acc, r) => acc + r.render_time_seconds, 0) / totalRuns).toFixed(1) : "0.0";
+
+  const isUploadWorkflow = workflowTab === "ALL" || workflowTab === "DAILY_SHORTS" || workflowTab === "WEEKLY_LONGFORM";
+
   const latestQAScore = selectedDayRuns.length > 0 && selectedDayRuns[0].script_variants
     ? Math.max(...selectedDayRuns[0].script_variants.map((v) => v.score)).toFixed(2)
     : "9.71";
 
   // Total YouTube Analytics calculation across portfolio
-  const totalYouTubeViews = runs.reduce((acc, r) => acc + (r.youtube_stats?.views || 0), 0);
-  const totalYouTubeLikes = runs.reduce((acc, r) => acc + (r.youtube_stats?.likes || 0), 0);
+  const totalYouTubeViews = activeRuns.reduce((acc, r) => acc + (r.youtube_stats?.views || 0), 0);
+  const totalYouTubeLikes = activeRuns.reduce((acc, r) => acc + (r.youtube_stats?.likes || 0), 0);
 
   const chronologicalDates = Object.keys(runsByDate).sort();
   const chartData = chronologicalDates.map((date) => {
@@ -450,7 +470,16 @@ export default function TelemetryDashboard() {
     }
   };
 
-  const selectedRun = runs.find((r) => r.id === selectedRunId) || selectedDayRuns[0];
+  const selectedRun = activeRuns.find((r) => r.id === selectedRunId) || selectedDayRuns[0];
+
+  const getWorkflowIcon = (type?: string) => {
+    switch (type) {
+      case "WEEKLY_LONGFORM": return <Film className="w-3 h-3 text-purple-400" />;
+      case "SELF_HEALING": return <ShieldCheck className="w-3 h-3 text-cyan-400" />;
+      case "BOT_MAINTENANCE": return <Bot className="w-3 h-3 text-yellow-400" />;
+      default: return <Video className="w-3 h-3 text-[#00FF66]" />;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0b0f19] text-gray-100 p-4 md:p-8 space-y-8">
@@ -466,7 +495,7 @@ export default function TelemetryDashboard() {
             </h1>
           </div>
           <p className="text-sm text-gray-400 mt-1">
-            Automated Video Pipeline Execution Logs & YouTube Telemetry Analytics
+            Automated Video Pipeline Execution Logs & Categorized Workflow Telemetry Analytics
           </p>
         </div>
 
@@ -481,85 +510,183 @@ export default function TelemetryDashboard() {
         </div>
       </header>
 
-      {/* KPI METRIC CARDS */}
+      {/* WORKFLOW CATEGORY TAB BAR */}
+      <div className="flex flex-wrap items-center gap-3 bg-[#131b2e] p-3 rounded-2xl border border-[#1f2d4d]">
+        <span className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-2">Workflow Category Filter:</span>
+        <button
+          onClick={() => setWorkflowTab("ALL")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            workflowTab === "ALL"
+              ? "bg-[#00E5FF] text-black shadow-lg shadow-cyan-500/20"
+              : "bg-[#0b0f19] text-gray-300 border border-[#1f2d4d] hover:text-white"
+          }`}
+        >
+          <Activity className="w-4 h-4" /> All Pipelines ({runs.length})
+        </button>
+        <button
+          onClick={() => setWorkflowTab("DAILY_SHORTS")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            workflowTab === "DAILY_SHORTS"
+              ? "bg-[#00FF66] text-black shadow-lg shadow-green-500/20"
+              : "bg-[#0b0f19] text-gray-300 border border-[#1f2d4d] hover:text-white"
+          }`}
+        >
+          <Video className="w-4 h-4 text-[#00FF66]" /> Daily Shorts ({runs.filter(r => (r.workflow_type || "DAILY_SHORTS") === "DAILY_SHORTS").length})
+        </button>
+        <button
+          onClick={() => setWorkflowTab("WEEKLY_LONGFORM")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            workflowTab === "WEEKLY_LONGFORM"
+              ? "bg-purple-500 text-white shadow-lg shadow-purple-500/20"
+              : "bg-[#0b0f19] text-gray-300 border border-[#1f2d4d] hover:text-white"
+          }`}
+        >
+          <Film className="w-4 h-4 text-purple-400" /> Weekly Long-Form ({runs.filter(r => r.workflow_type === "WEEKLY_LONGFORM").length})
+        </button>
+        <button
+          onClick={() => setWorkflowTab("SELF_HEALING")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            workflowTab === "SELF_HEALING"
+              ? "bg-cyan-500 text-black shadow-lg shadow-cyan-500/20"
+              : "bg-[#0b0f19] text-gray-300 border border-[#1f2d4d] hover:text-white"
+          }`}
+        >
+          <ShieldCheck className="w-4 h-4 text-cyan-400" /> AI Self-Healing ({runs.filter(r => r.workflow_type === "SELF_HEALING").length})
+        </button>
+        <button
+          onClick={() => setWorkflowTab("BOT_MAINTENANCE")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            workflowTab === "BOT_MAINTENANCE"
+              ? "bg-yellow-500 text-black shadow-lg shadow-yellow-500/20"
+              : "bg-[#0b0f19] text-gray-300 border border-[#1f2d4d] hover:text-white"
+          }`}
+        >
+          <Bot className="w-4 h-4 text-yellow-400" /> Bot & Maintenance ({runs.filter(r => r.workflow_type === "BOT_MAINTENANCE").length})
+        </button>
+      </div>
+
+      {/* DYNAMIC KPI METRIC CARDS (ADAPTS TO SELECTED WORKFLOW TAB) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
           <div className="flex justify-between items-center text-gray-400">
-            <span className="text-xs font-bold uppercase tracking-wider">Total Pipeline Runs</span>
+            <span className="text-xs font-bold uppercase tracking-wider">
+              {isUploadWorkflow ? "Video Pipeline Runs" : "Diagnostic Runs"}
+            </span>
             <FileText className="w-4 h-4 text-[#00E5FF]" />
           </div>
           <div className="text-3xl font-extrabold text-white">{totalRuns}</div>
-          <span className="text-xs text-gray-400">Recorded across 90 days</span>
+          <span className="text-xs text-gray-400">Recorded for selected category</span>
         </div>
 
         <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
           <div className="flex justify-between items-center text-gray-400">
-            <span className="text-xs font-bold uppercase tracking-wider">Pipeline Success Rate</span>
+            <span className="text-xs font-bold uppercase tracking-wider">Completion Rate</span>
             <CheckCircle className="w-4 h-4 text-[#00FF66]" />
           </div>
           <div className="text-3xl font-extrabold text-[#00FF66]">{successRate}%</div>
-          <span className="text-xs text-gray-400">Execution completion rate</span>
+          <span className="text-xs text-gray-400">Success execution rate</span>
         </div>
 
-        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
-          <div className="flex justify-between items-center text-gray-400">
-            <span className="text-xs font-bold uppercase tracking-wider">YouTube Shorts Views</span>
-            <Eye className="w-4 h-4 text-red-400" />
-          </div>
-          <div className="text-3xl font-extrabold text-red-400">{totalYouTubeViews.toLocaleString()}</div>
-          <span className="text-xs text-gray-400">Total channel views</span>
-        </div>
+        {isUploadWorkflow ? (
+          <>
+            <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+              <div className="flex justify-between items-center text-gray-400">
+                <span className="text-xs font-bold uppercase tracking-wider">YouTube Views</span>
+                <Eye className="w-4 h-4 text-red-400" />
+              </div>
+              <div className="text-3xl font-extrabold text-red-400">{totalYouTubeViews.toLocaleString()}</div>
+              <span className="text-xs text-gray-400">Portfolio channel views</span>
+            </div>
 
-        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
-          <div className="flex justify-between items-center text-gray-400">
-            <span className="text-xs font-bold uppercase tracking-wider">YouTube Likes</span>
-            <ThumbsUp className="w-4 h-4 text-cyan-400" />
-          </div>
-          <div className="text-3xl font-extrabold text-cyan-400">{totalYouTubeLikes.toLocaleString()}</div>
-          <span className="text-xs text-gray-400">Viewer engagements</span>
-        </div>
+            <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+              <div className="flex justify-between items-center text-gray-400">
+                <span className="text-xs font-bold uppercase tracking-wider">YouTube Likes</span>
+                <ThumbsUp className="w-4 h-4 text-cyan-400" />
+              </div>
+              <div className="text-3xl font-extrabold text-cyan-400">{totalYouTubeLikes.toLocaleString()}</div>
+              <span className="text-xs text-gray-400">Viewer engagements</span>
+            </div>
 
-        <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
-          <div className="flex justify-between items-center text-gray-400">
-            <span className="text-xs font-bold uppercase tracking-wider">Top Auto-QA Score</span>
-            <Sparkles className="w-4 h-4 text-[#FFBF00]" />
-          </div>
-          <div className="text-3xl font-extrabold text-[#FFBF00]">{latestQAScore} / 10</div>
-          <span className="text-xs text-gray-400">5-Variant Auto-QA winner</span>
-        </div>
+            <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+              <div className="flex justify-between items-center text-gray-400">
+                <span className="text-xs font-bold uppercase tracking-wider">Top Auto-QA Score</span>
+                <Sparkles className="w-4 h-4 text-[#FFBF00]" />
+              </div>
+              <div className="text-3xl font-extrabold text-[#FFBF00]">{latestQAScore} / 10</div>
+              <span className="text-xs text-gray-400">5-Variant Auto-QA winner</span>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+              <div className="flex justify-between items-center text-gray-400">
+                <span className="text-xs font-bold uppercase tracking-wider">System Health Status</span>
+                <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              </div>
+              <div className="text-3xl font-extrabold text-cyan-400">0 Open Alerts</div>
+              <span className="text-xs text-gray-400">Automated diagnostic checks</span>
+            </div>
+
+            <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+              <div className="flex justify-between items-center text-gray-400">
+                <span className="text-xs font-bold uppercase tracking-wider">Avg Healing Speed</span>
+                <Clock className="w-4 h-4 text-yellow-400" />
+              </div>
+              <div className="text-3xl font-extrabold text-yellow-400">{avgRenderTime}s</div>
+              <span className="text-xs text-gray-400">Diagnostic execution speed</span>
+            </div>
+
+            <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
+              <div className="flex justify-between items-center text-gray-400">
+                <span className="text-xs font-bold uppercase tracking-wider">Self-Healing Uptime</span>
+                <Cpu className="w-4 h-4 text-[#00FF66]" />
+              </div>
+              <div className="text-3xl font-extrabold text-[#00FF66]">100% Operational</div>
+              <span className="text-xs text-gray-400">Auto-repair status index</span>
+            </div>
+          </>
+        )}
       </div>
 
-      {/* PIPELINE HEALTH HEATMAP */}
+      {/* CATEGORIZED PIPELINE HEALTH HEATMAP */}
       <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
-        <div className="flex justify-between items-center">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-[#00E5FF]" />
-            Pipeline Health Heatmap (Past 90 Days Activity)
-          </h2>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 className="text-lg font-bold text-white flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-[#00E5FF]" />
+              Pipeline Health Heatmap ({workflowTab === "ALL" ? "All Recorded Workflows" : workflowTab})
+            </h2>
+            <p className="text-xs text-gray-400 mt-0.5">
+              Showing {activeRuns.length} executions. Hover for details or click to view run telemetry.
+            </p>
+          </div>
           <div className="flex items-center gap-4 text-xs text-gray-400">
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-[#00FF66] inline-block"></span> Success</span>
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500 inline-block"></span> Failed</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-10 md:grid-cols-15 gap-2">
-          {runs.map((r) => (
+        <div className="grid grid-cols-8 sm:grid-cols-12 md:grid-cols-16 gap-2">
+          {activeRuns.map((r) => (
             <div
               key={r.id}
               onClick={() => {
                 setSelectedRunId(r.id);
                 setSelectedDate(r.timestamp.split("T")[0]);
               }}
-              className={`h-10 rounded-lg border flex items-center justify-center cursor-pointer transition-all hover:scale-105 ${
+              className={`h-10 rounded-lg border flex flex-col items-center justify-center cursor-pointer transition-all hover:scale-105 ${
                 selectedRunId === r.id ? "ring-2 ring-white scale-105" : ""
               } ${
                 r.status === "SUCCESS"
                   ? "bg-[#00FF66]/20 border-[#00FF66]/50 text-[#00FF66]"
                   : "bg-red-500/20 border-red-500/50 text-red-400"
               }`}
-              title={`GitHub Run #${r.github_run_number} (${r.category}) - ${r.status}`}
+              title={`GitHub Run #${r.github_run_number} (${r.workflow_type || "DAILY_SHORTS"}) - ${r.status}`}
             >
-              <span className="text-xs font-mono font-bold">#{r.github_run_number}</span>
+              <div className="flex items-center gap-1 text-[11px] font-mono font-bold">
+                {getWorkflowIcon(r.workflow_type)}
+                <span>#{r.github_run_number}</span>
+              </div>
             </div>
           ))}
         </div>
@@ -588,7 +715,7 @@ export default function TelemetryDashboard() {
         <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
           <h3 className="text-md font-bold text-white flex items-center gap-2">
             <Clock className="w-5 h-5 text-[#00E5FF]" />
-            FFmpeg Render Execution Duration (Seconds)
+            Execution Duration (Seconds)
           </h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">

@@ -67,6 +67,7 @@ def log_pipeline_run(
         "github_run_number": run_num,
         "github_run_id": int(gh_run_id) if gh_run_id and gh_run_id.isdigit() else run_num,
         "github_run_url": gh_url,
+        "workflow_type": "DAILY_SHORTS" if generation_mode != "LONGFORM_COMPILATION" else "WEEKLY_LONGFORM",
         "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
         "category": category,
         "status": status.upper(),
