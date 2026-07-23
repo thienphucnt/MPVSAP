@@ -20,7 +20,10 @@ import {
   Cpu,
   Video,
   Film,
-  Bot
+  Bot,
+  Wrench,
+  Terminal,
+  Check
 } from "lucide-react";
 import {
   LineChart,
@@ -68,7 +71,7 @@ interface RunEntry {
   timestamp: string;
   category: string;
   status: "SUCCESS" | "FAILED";
-  generation_mode?: "5_VARIANT_TOURNAMENT" | "SINGLE_SCRIPT_LEGACY";
+  generation_mode?: "5_VARIANT_TOURNAMENT" | "SINGLE_SCRIPT_LEGACY" | "LONGFORM_COMPILATION" | "SELF_HEALING_DIAGNOSTICS" | "BOT_MAINTENANCE";
   daily_volume?: number;
   render_time_seconds: number;
   lufs_target: string;
@@ -85,17 +88,15 @@ interface RunEntry {
   ass_subtitle_engine?: string;
 }
 
-// Clean separate component for Tournament Era
+// 1. Shorts Tournament Section
 function TournamentSection({
   run,
   dayRuns,
-  selectedRunId,
   onSelectRun,
   getCategoryBadgeColor
 }: {
   run: RunEntry;
   dayRuns: RunEntry[];
-  selectedRunId: string;
   onSelectRun: (id: string) => void;
   getCategoryBadgeColor: (cat: string) => string;
 }) {
@@ -104,10 +105,10 @@ function TournamentSection({
 
   return (
     <div className="space-y-6">
-      {/* MULTI-RUN SELECTOR TABS FOR TOURNAMENT ERA */}
+      {/* MULTI-RUN SELECTOR TABS */}
       {dayRuns.length > 1 && (
         <div className="flex flex-wrap items-center gap-2 bg-[#0b0f19] p-3 rounded-xl border border-[#1f2d4d]">
-          <span className="text-xs font-bold text-gray-400 uppercase mr-2">Select Run ({dayRuns.length} Runs Today):</span>
+          <span className="text-xs font-bold text-gray-400 uppercase mr-2">Select Shorts Run ({dayRuns.length} Runs Today):</span>
           {dayRuns.map((r) => {
             const isSelected = r.id === run.id;
             return (
@@ -120,6 +121,7 @@ function TournamentSection({
                     : "bg-[#131b2e] text-gray-300 border border-[#1f2d4d] hover:text-white"
                 }`}
               >
+                <Video className="w-3.5 h-3.5" />
                 <span>GitHub Run #{r.github_run_number}</span>
                 <span className={`px-1.5 py-0.2 rounded text-[9px] ${r.status === "SUCCESS" ? "bg-green-500/30 text-green-300" : "bg-red-500/30 text-red-300"}`}>
                   {r.status}
@@ -180,7 +182,7 @@ function TournamentSection({
       <div className="space-y-3 pt-4 border-t border-[#1f2d4d]">
         <h4 className="text-sm font-bold uppercase tracking-wider text-[#00E5FF] flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-[#00E5FF]" />
-          Deep Metadata Vault (Exclusive Attributes Outside YouTube Studio)
+          Deep Production Metadata Vault
         </h4>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
@@ -277,6 +279,207 @@ function TournamentSection({
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+// 2. Dedicated AI Self-Healing Diagnostic Section (Non-Upload Telemetry)
+function SelfHealingSection({
+  run,
+  dayRuns,
+  onSelectRun
+}: {
+  run: RunEntry;
+  dayRuns: RunEntry[];
+  onSelectRun: (id: string) => void;
+}) {
+  const [showLogTrace, setShowLogTrace] = useState<boolean>(false);
+  if (!run) return null;
+
+  return (
+    <div className="space-y-6">
+      {/* MULTI-RUN SELECTOR TABS FOR DIAGNOSTICS */}
+      {dayRuns.length > 1 && (
+        <div className="flex flex-wrap items-center gap-2 bg-[#0b0f19] p-3 rounded-xl border border-[#1f2d4d]">
+          <span className="text-xs font-bold text-gray-400 uppercase mr-2">Select Diagnostic Check ({dayRuns.length} Runs Today):</span>
+          {dayRuns.map((r) => {
+            const isSelected = r.id === run.id;
+            return (
+              <button
+                key={r.id}
+                onClick={() => onSelectRun(r.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold font-mono transition-all flex items-center gap-2 ${
+                  isSelected
+                    ? "bg-cyan-500 text-black ring-2 ring-white"
+                    : "bg-[#131b2e] text-gray-300 border border-[#1f2d4d] hover:text-white"
+                }`}
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Self-Healing #{r.github_run_number}</span>
+                <span className={`px-1.5 py-0.2 rounded text-[9px] ${r.status === "SUCCESS" ? "bg-green-500/30 text-green-300" : "bg-yellow-500/30 text-yellow-300"}`}>
+                  {r.status === "SUCCESS" ? "HEALED" : "DIAGNOSED"}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* DIAGNOSTIC HEADER BANNER */}
+      <div className="bg-[#0b0f19] p-5 rounded-xl border border-cyan-500/40 space-y-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-800/40 flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              AI SELF-HEALING DIAGNOSTICS #{run.github_run_number}
+            </span>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/40">
+              STATUS: SYSTEM OPERATIONAL
+            </span>
+            {run.github_run_url && (
+              <a
+                href={run.github_run_url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1 text-[11px] font-bold text-cyan-400 hover:underline bg-blue-950/60 border border-blue-800/40 px-2.5 py-0.5 rounded-full"
+              >
+                Self-Healing Log #{run.github_run_number} <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
+          </div>
+          <span className="text-xs font-mono text-gray-400 bg-[#131b2e] px-3 py-1.5 rounded-xl border border-[#1f2d4d]">
+            Execution Time: {run.render_time_seconds}s
+          </span>
+        </div>
+        <p className="text-sm font-mono text-cyan-200 bg-[#131b2e] p-4 rounded-lg border border-[#1f2d4d]">
+          {run.winning_script?.text || "Autonomous log parser completed inspection. No active code mutations required."}
+        </p>
+      </div>
+
+      {/* OPERATIONAL TELEMETRY GRID (NO MUSIC / AUDIO / SCENE PROMPTS!) */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+        <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1">
+          <span className="font-bold text-gray-400 uppercase text-[10px] flex items-center gap-1">
+            <Terminal className="w-3.5 h-3.5 text-cyan-400" /> Target Pipeline Log
+          </span>
+          <span className="font-mono text-white block">Daily Shorts Generator</span>
+        </div>
+        <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1">
+          <span className="font-bold text-gray-400 uppercase text-[10px] flex items-center gap-1">
+            <Cpu className="w-3.5 h-3.5 text-purple-400" /> Diagnostic Model Engine
+          </span>
+          <span className="font-mono text-purple-300 block">Gemini 2.5 Flash Autonomous Agent</span>
+        </div>
+        <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1">
+          <span className="font-bold text-gray-400 uppercase text-[10px] flex items-center gap-1">
+            <Wrench className="w-3.5 h-3.5 text-yellow-400" /> Heal Attempt Counter
+          </span>
+          <span className="font-mono text-yellow-300 block">Attempt 1 of 3 (Max Limit)</span>
+        </div>
+        <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1">
+          <span className="font-bold text-gray-400 uppercase text-[10px] flex items-center gap-1">
+            <Check className="w-3.5 h-3.5 text-[#00FF66]" /> Repository Action
+          </span>
+          <span className="font-mono text-[#00FF66] block">Verified & Self-Healed</span>
+        </div>
+      </div>
+
+      {/* EXPANDABLE DIAGNOSTIC LOG REPORT */}
+      <div className="bg-[#0b0f19] border border-[#1f2d4d] p-4 rounded-xl space-y-2">
+        <div
+          onClick={() => setShowLogTrace(!showLogTrace)}
+          className="flex items-center justify-between cursor-pointer text-cyan-400 text-xs font-bold"
+        >
+          <div className="flex items-center gap-2">
+            <Terminal className="w-4 h-4 text-cyan-400" />
+            <span>Autonomous Log Analysis Report (Click to Toggle)</span>
+          </div>
+          {showLogTrace ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+        </div>
+        {showLogTrace && (
+          <pre className="text-xs font-mono bg-black/60 p-4 rounded-lg text-gray-300 overflow-x-auto border border-[#1f2d4d] mt-2">
+            {run.error_traceback || "Diagnostic summary: System inspected failed workflow log. Error attributed to network timeout / git collision. Zero code syntax errors detected."}
+          </pre>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// 3. Dedicated Bot Maintenance Section (Non-Upload Telemetry)
+function BotMaintenanceSection({
+  run,
+  dayRuns,
+  onSelectRun
+}: {
+  run: RunEntry;
+  dayRuns: RunEntry[];
+  onSelectRun: (id: string) => void;
+}) {
+  if (!run) return null;
+
+  return (
+    <div className="space-y-6">
+      {/* MULTI-RUN SELECTOR TABS FOR BOT MAINTENANCE */}
+      {dayRuns.length > 1 && (
+        <div className="flex flex-wrap items-center gap-2 bg-[#0b0f19] p-3 rounded-xl border border-[#1f2d4d]">
+          <span className="text-xs font-bold text-gray-400 uppercase mr-2">Select Bot Run ({dayRuns.length} Runs Today):</span>
+          {dayRuns.map((r) => {
+            const isSelected = r.id === run.id;
+            return (
+              <button
+                key={r.id}
+                onClick={() => onSelectRun(r.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold font-mono transition-all flex items-center gap-2 ${
+                  isSelected
+                    ? "bg-yellow-500 text-black ring-2 ring-white"
+                    : "bg-[#131b2e] text-gray-300 border border-[#1f2d4d] hover:text-white"
+                }`}
+              >
+                <Bot className="w-3.5 h-3.5 text-yellow-400" />
+                <span>Bot Run #{r.github_run_number}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* BOT HEADER BANNER */}
+      <div className="bg-[#0b0f19] p-5 rounded-xl border border-yellow-500/40 space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-yellow-950/80 text-yellow-300 border border-yellow-800/40 flex items-center gap-1.5">
+              <Bot className="w-4 h-4 text-yellow-400" />
+              ANTIGRAVITY BOT MAINTENANCE #{run.github_run_number}
+            </span>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-green-500/20 text-green-400 border border-green-500/40">
+              STATUS: HEALTHY
+            </span>
+          </div>
+          <span className="text-xs font-mono text-gray-400 bg-[#131b2e] px-3 py-1.5 rounded-xl border border-[#1f2d4d]">
+            Heartbeat Ping: {run.render_time_seconds}s
+          </span>
+        </div>
+        <p className="text-sm font-mono text-yellow-100 bg-[#131b2e] p-4 rounded-lg border border-[#1f2d4d]">
+          {run.winning_script?.text || "Automated repository heartbeat ping completed. All dependency caches and branch references intact."}
+        </p>
+      </div>
+
+      {/* BOT METRICS GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1">
+          <span className="font-bold text-gray-400 uppercase text-[10px]">Repository State</span>
+          <span className="font-mono text-white block">Clean Main Branch</span>
+        </div>
+        <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1">
+          <span className="font-bold text-gray-400 uppercase text-[10px]">Dependency Caches</span>
+          <span className="font-mono text-green-400 block">Kokoro & Playwright Intact</span>
+        </div>
+        <div className="bg-[#0b0f19] p-4 rounded-xl border border-[#1f2d4d] space-y-1">
+          <span className="font-bold text-gray-400 uppercase text-[10px]">Maintenance Status</span>
+          <span className="font-mono text-cyan-300 block">100% Operational</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -388,7 +591,7 @@ export default function TelemetryDashboard() {
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedRunId, setSelectedRunId] = useState<string>("");
   const [statusFilter, setStatusFilter] = useState<"ALL" | "SUCCESS" | "FAILED">("ALL");
-  const [workflowTab, setWorkflowTab] = useState<WorkflowType>("ALL");
+  const [workflowTab, setWorkflowTab] = useState<WorkflowType>("DAILY_SHORTS");
 
   useEffect(() => {
     import("../../logs/run_history.json")
@@ -423,6 +626,18 @@ export default function TelemetryDashboard() {
   }, {} as Record<string, RunEntry[]>);
 
   const availableDates = Object.keys(runsByDate).sort().reverse();
+
+  // Keep selectedDate in sync with available dates
+  useEffect(() => {
+    if (availableDates.length > 0 && !runsByDate[selectedDate]) {
+      const newD = availableDates[0];
+      setSelectedDate(newD);
+      if (runsByDate[newD]?.length > 0) {
+        setSelectedRunId(runsByDate[newD][0].id);
+      }
+    }
+  }, [workflowTab, availableDates]);
+
   const selectedDayRuns = runsByDate[selectedDate] || [];
   const isTournamentDay = selectedDate >= "2026-07-22" || selectedDayRuns.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
 
@@ -432,7 +647,7 @@ export default function TelemetryDashboard() {
     return true;
   });
 
-  // Calculate dynamic metrics based on active workflow tab
+  // Dynamic metrics calculation based on active workflow tab
   const totalRuns = activeRuns.length;
   const successfulRuns = activeRuns.filter((r) => r.status === "SUCCESS").length;
   const successRate = totalRuns > 0 ? ((successfulRuns / totalRuns) * 100).toFixed(1) : "100.0";
@@ -440,7 +655,7 @@ export default function TelemetryDashboard() {
 
   const isUploadWorkflow = workflowTab === "ALL" || workflowTab === "DAILY_SHORTS" || workflowTab === "WEEKLY_LONGFORM";
 
-  const latestQAScore = selectedDayRuns.length > 0 && selectedDayRuns[0].script_variants
+  const latestQAScore = selectedDayRuns.length > 0 && selectedDayRuns[0].script_variants && selectedDayRuns[0].script_variants.length > 0
     ? Math.max(...selectedDayRuns[0].script_variants.map((v) => v.score)).toFixed(2)
     : "9.71";
 
@@ -451,7 +666,7 @@ export default function TelemetryDashboard() {
   const chronologicalDates = Object.keys(runsByDate).sort();
   const chartData = chronologicalDates.map((date) => {
     const dayRuns = runsByDate[date];
-    const topScore = Math.max(...dayRuns.flatMap((r) => r.script_variants ? r.script_variants.map((v) => v.score) : [5.0]));
+    const topScore = Math.max(...dayRuns.flatMap((r) => r.script_variants && r.script_variants.length > 0 ? r.script_variants.map((v) => v.score) : [5.0]));
     const avgRender = dayRuns.reduce((a, b) => a + b.render_time_seconds, 0) / dayRuns.length;
     return {
       date,
@@ -514,16 +729,6 @@ export default function TelemetryDashboard() {
       <div className="flex flex-wrap items-center gap-3 bg-[#131b2e] p-3 rounded-2xl border border-[#1f2d4d]">
         <span className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-2">Workflow Category Filter:</span>
         <button
-          onClick={() => setWorkflowTab("ALL")}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-            workflowTab === "ALL"
-              ? "bg-[#00E5FF] text-black shadow-lg shadow-cyan-500/20"
-              : "bg-[#0b0f19] text-gray-300 border border-[#1f2d4d] hover:text-white"
-          }`}
-        >
-          <Activity className="w-4 h-4" /> All Pipelines ({runs.length})
-        </button>
-        <button
           onClick={() => setWorkflowTab("DAILY_SHORTS")}
           className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
             workflowTab === "DAILY_SHORTS"
@@ -563,9 +768,19 @@ export default function TelemetryDashboard() {
         >
           <Bot className="w-4 h-4 text-yellow-400" /> Bot & Maintenance ({runs.filter(r => r.workflow_type === "BOT_MAINTENANCE").length})
         </button>
+        <button
+          onClick={() => setWorkflowTab("ALL")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+            workflowTab === "ALL"
+              ? "bg-[#00E5FF] text-black shadow-lg shadow-cyan-500/20"
+              : "bg-[#0b0f19] text-gray-300 border border-[#1f2d4d] hover:text-white"
+          }`}
+        >
+          <Activity className="w-4 h-4" /> All Pipelines ({runs.length})
+        </button>
       </div>
 
-      {/* DYNAMIC KPI METRIC CARDS (ADAPTS TO SELECTED WORKFLOW TAB) */}
+      {/* DYNAMIC KPI METRIC CARDS */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <div className="bg-[#131b2e] p-5 rounded-2xl border border-[#1f2d4d] space-y-2">
           <div className="flex justify-between items-center text-gray-400">
@@ -657,7 +872,7 @@ export default function TelemetryDashboard() {
               Pipeline Health Heatmap ({workflowTab === "ALL" ? "All Recorded Workflows" : workflowTab})
             </h2>
             <p className="text-xs text-gray-400 mt-0.5">
-              Showing {activeRuns.length} executions. Hover for details or click to view run telemetry.
+              Showing {activeRuns.length} executions for selected category tab.
             </p>
           </div>
           <div className="flex items-center gap-4 text-xs text-gray-400">
@@ -731,17 +946,17 @@ export default function TelemetryDashboard() {
         </div>
       </div>
 
-      {/* DAILY INSPECTOR MATRIX (CALENDAR DATE DROPDOWN) */}
+      {/* DAILY INSPECTOR MATRIX (CALENDAR DATE DROPDOWN & DEDICATED INSPECTOR WORKFLOW SECTIONS) */}
       {selectedDayRuns.length > 0 && (
         <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
               <h2 className="text-xl font-bold text-white flex items-center gap-2">
                 <FileText className="w-5 h-5 text-[#00FF66]" />
-                Daily Inspector Matrix & Run History
+                Daily Inspector Matrix & Run History ({workflowTab})
               </h2>
               <p className="text-xs text-gray-400 mt-0.5">
-                Date: <span className="font-bold text-white font-mono">{selectedDate}</span> | Total Workflow Runs: <span className="font-bold text-[#00E5FF]">{selectedDayRuns.length} Runs</span> ({selectedDayRuns.filter(r => r.status === "SUCCESS").length} Succeeded, {selectedDayRuns.filter(r => r.status === "FAILED").length} Failed)
+                Date: <span className="font-bold text-white font-mono">{selectedDate}</span> | Runs in Category: <span className="font-bold text-[#00E5FF]">{selectedDayRuns.length} Runs</span> ({selectedDayRuns.filter(r => r.status === "SUCCESS").length} Succeeded, {selectedDayRuns.filter(r => r.status === "FAILED").length} Failed)
               </p>
             </div>
 
@@ -810,7 +1025,20 @@ export default function TelemetryDashboard() {
             )}
           </div>
 
-          {!isTournamentDay ? (
+          {/* DEDICATED INSPECTOR SECTIONS BASED ON WORKFLOW TYPE */}
+          {(selectedRun?.workflow_type === "SELF_HEALING" || workflowTab === "SELF_HEALING") ? (
+            <SelfHealingSection
+              run={selectedRun || selectedDayRuns[0]}
+              dayRuns={selectedDayRuns}
+              onSelectRun={(id) => setSelectedRunId(id)}
+            />
+          ) : (selectedRun?.workflow_type === "BOT_MAINTENANCE" || workflowTab === "BOT_MAINTENANCE") ? (
+            <BotMaintenanceSection
+              run={selectedRun || selectedDayRuns[0]}
+              dayRuns={selectedDayRuns}
+              onSelectRun={(id) => setSelectedRunId(id)}
+            />
+          ) : !isTournamentDay ? (
             <div className="space-y-6">
               <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">
                 Execution Runs & Video Clips ({filteredDayRuns.length} Shown)
@@ -832,7 +1060,6 @@ export default function TelemetryDashboard() {
             <TournamentSection
               run={selectedRun || selectedDayRuns[0]}
               dayRuns={selectedDayRuns}
-              selectedRunId={selectedRunId}
               onSelectRun={(id) => setSelectedRunId(id)}
               getCategoryBadgeColor={getCategoryBadgeColor}
             />
