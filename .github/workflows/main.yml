@@ -97,7 +97,12 @@ jobs:
           python main.py
 
       - name: Persist Telemetry Logs & Reset Self-Healing Counter
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
+          python sync_youtube_deletions.py || true
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           if [ -f heal_attempts.txt ]; then echo "0" > heal_attempts.txt; git add heal_attempts.txt; fi
