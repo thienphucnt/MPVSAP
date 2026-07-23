@@ -6918,53 +6918,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29234028550",
-    "github_run_number": 143,
-    "github_run_id": 29234028550,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-13T08:02:27Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "race to find rome's lost relic! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Race to Find Rome's Lost Relic! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Race to Find Rome's Lost Relic! #history #shorts",
-        "score": 6.26,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Race to Find Rome's Lost Relic! #history #shorts",
-      "text": "Exploring Race to Find Rome's Lost Relic! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 143,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29234107131",
     "github_run_number": 75,
     "github_run_id": 29234107131,
@@ -7009,53 +6962,6 @@
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
     "global_run_number": 144,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29234219130",
-    "github_run_number": 145,
-    "github_run_id": 29234219130,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-13T08:05:47Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 31.01,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "the impossible 3d memory machine #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Impossible 3D Memory Machine #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Impossible 3D Memory Machine #history #shorts",
-        "score": 7.86,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Impossible 3D Memory Machine #history #shorts",
-      "text": "Exploring The Impossible 3D Memory Machine #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 145,
     "youtube_stats": null
   },
   {
@@ -7153,53 +7059,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29234492044",
-    "github_run_number": 148,
-    "github_run_id": 29234492044,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-13T08:10:29Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_4.mp3",
-    "search_keywords": [
-      "the mystery of mercia's shadow lord",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Mystery of Mercia's Shadow Lord",
-        "word_count": 88,
-        "hook": "Quick fact: The Mystery of Mercia's Shadow Lord",
-        "score": 6.33,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Mystery of Mercia's Shadow Lord",
-      "text": "Exploring The Mystery of Mercia's Shadow Lord...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 148,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29234549101",
     "github_run_number": 78,
     "github_run_id": 29234549101,
@@ -7244,53 +7103,6 @@
     "youtube_url": null,
     "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
     "global_run_number": 149,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29234658033",
-    "github_run_number": 150,
-    "github_run_id": 29234658033,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-13T08:13:12Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_2.mp3",
-    "search_keywords": [
-      "cosmic truth: your reality is unstable #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Cosmic Truth: Your Reality is Unstable #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Cosmic Truth: Your Reality is Unstable #space #shorts",
-        "score": 6.36,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Cosmic Truth: Your Reality is Unstable #space #shorts",
-      "text": "Exploring Cosmic Truth: Your Reality is Unstable #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 150,
     "youtube_stats": null
   },
   {
@@ -7341,53 +7153,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29235010373",
-    "github_run_number": 152,
-    "github_run_id": 29235010373,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-13T08:18:59Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_4.mp3",
-    "search_keywords": [
-      "worlds without suns are terrifying #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Worlds Without Suns Are Terrifying #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Worlds Without Suns Are Terrifying #space #shorts",
-        "score": 6.39,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Worlds Without Suns Are Terrifying #space #shorts",
-      "text": "Exploring Worlds Without Suns Are Terrifying #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 152,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29236779654",
     "github_run_number": 80,
     "github_run_id": 29236779654,
@@ -7432,53 +7197,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 153,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29237035267",
-    "github_run_number": 154,
-    "github_run_id": 29237035267,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-13T08:53:34Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_2.mp3",
-    "search_keywords": [
-      "the universes vanishing act #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universes Vanishing Act #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universes Vanishing Act #space #shorts",
-        "score": 6.42,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universes Vanishing Act #space #shorts",
-      "text": "Exploring The Universes Vanishing Act #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 154,
     "youtube_stats": null
   },
   {
@@ -7529,53 +7247,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29266572182",
-    "github_run_number": 156,
-    "github_run_id": 29266572182,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-13T16:28:41Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_4.mp3",
-    "search_keywords": [
-      "the terrifying reason space is silent #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Terrifying Reason Space Is Silent #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Terrifying Reason Space Is Silent #space #shorts",
-        "score": 6.44,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Terrifying Reason Space Is Silent #space #shorts",
-      "text": "Exploring The Terrifying Reason Space Is Silent #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 156,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29336220061",
     "github_run_number": 82,
     "github_run_id": 29336220061,
@@ -7620,194 +7291,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 157,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29336529153",
-    "github_run_number": 158,
-    "github_run_id": 29336529153,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-14T13:27:07Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_2.mp3",
-    "search_keywords": [
-      "the universes massive cold spot #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universes Massive Cold Spot #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universes Massive Cold Spot #space #shorts",
-        "score": 6.47,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universes Massive Cold Spot #space #shorts",
-      "text": "Exploring The Universes Massive Cold Spot #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 158,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29336634237",
-    "github_run_number": 159,
-    "github_run_id": 29336634237,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-14T13:28:38Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 29.95,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "something is pulling our galaxy #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Something Is Pulling Our Galaxy #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Something Is Pulling Our Galaxy #space #shorts",
-        "score": 7.78,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Something Is Pulling Our Galaxy #space #shorts",
-      "text": "Exploring Something Is Pulling Our Galaxy #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 159,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29336756214",
-    "github_run_number": 160,
-    "github_run_id": 29336756214,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-14T13:30:24Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 29.87,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_4.mp3",
-    "search_keywords": [
-      "the universes eerie whisper #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universes Eerie Whisper #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universes Eerie Whisper #space #shorts",
-        "score": 7.8,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universes Eerie Whisper #space #shorts",
-      "text": "Exploring The Universes Eerie Whisper #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 160,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29338825711",
-    "github_run_number": 161,
-    "github_run_id": 29338825711,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-14T13:59:10Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 43.59,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "the universes silent eraser #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universes Silent Eraser #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universes Silent Eraser #space #shorts",
-        "score": 7.77,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universes Silent Eraser #space #shorts",
-      "text": "Exploring The Universes Silent Eraser #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 161,
     "youtube_stats": null
   },
   {
@@ -7858,53 +7341,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29353442262",
-    "github_run_number": 163,
-    "github_run_id": 29353442262,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-14T17:21:48Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "something is pulling us #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Something Is Pulling Us #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Something Is Pulling Us #space #shorts",
-        "score": 6.54,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Something Is Pulling Us #space #shorts",
-      "text": "Exploring Something Is Pulling Us #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 163,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29368054081",
     "github_run_number": 84,
     "github_run_id": 29368054081,
@@ -7949,53 +7385,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 164,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29368343365",
-    "github_run_number": 165,
-    "github_run_id": 29368343365,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-14T21:07:12Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "our galaxy is racing towards what?! #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Our Galaxy is Racing Towards WHAT?! #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Our Galaxy is Racing Towards WHAT?! #space #shorts",
-        "score": 6.57,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Our Galaxy is Racing Towards WHAT?! #space #shorts",
-      "text": "Exploring Our Galaxy is Racing Towards WHAT?! #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 165,
     "youtube_stats": null
   },
   {
@@ -8046,335 +7435,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29384965288",
-    "github_run_number": 167,
-    "github_run_id": 29384965288,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T02:48:02Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "the unseen war for our past!",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Unseen War for Our Past!",
-        "word_count": 88,
-        "hook": "Quick fact: The Unseen War for Our Past!",
-        "score": 6.6,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Unseen War for Our Past!",
-      "text": "Exploring The Unseen War for Our Past!...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 167,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29385840154",
-    "github_run_number": 168,
-    "github_run_id": 29385840154,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T03:09:27Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 36.81,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_4.mp3",
-    "search_keywords": [
-      "the tri-nation history heist",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Tri-Nation History Heist",
-        "word_count": 88,
-        "hook": "Quick fact: The Tri-Nation History Heist",
-        "score": 8.12,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Tri-Nation History Heist",
-      "text": "Exploring The Tri-Nation History Heist...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 168,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29385940121",
-    "github_run_number": 169,
-    "github_run_id": 29385940121,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T03:11:50Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 30.6,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "mckinley's ghost: the war's real secret",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "McKinley's Ghost: The War's Real Secret",
-        "word_count": 88,
-        "hook": "Quick fact: McKinley's Ghost: The War's Real Secret",
-        "score": 8.25,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "McKinley's Ghost: The War's Real Secret",
-      "text": "Exploring McKinley's Ghost: The War's Real Secret...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 169,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29392222815",
-    "github_run_number": 170,
-    "github_run_id": 29392222815,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T05:44:08Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_2.mp3",
-    "search_keywords": [
-      "reality is a lie: instant end #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Reality Is a Lie: Instant End #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Reality Is a Lie: Instant End #space #shorts",
-        "score": 6.64,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Reality Is a Lie: Instant End #space #shorts",
-      "text": "Exploring Reality Is a Lie: Instant End #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 170,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29392595354",
-    "github_run_number": 171,
-    "github_run_id": 29392595354,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T05:52:26Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 39.91,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "your beautiful stars are lying #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Your Beautiful Stars Are Lying #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Your Beautiful Stars Are Lying #space #shorts",
-        "score": 8.35,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Your Beautiful Stars Are Lying #space #shorts",
-      "text": "Exploring Your Beautiful Stars Are Lying #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 171,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29392798830",
-    "github_run_number": 172,
-    "github_run_id": 29392798830,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T05:56:54Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_4.mp3",
-    "search_keywords": [
-      "your reality could vanish right now. #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Your reality could vanish right now. #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Your reality could vanish right now. #space #shorts",
-        "score": 6.67,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Your reality could vanish right now. #space #shorts",
-      "text": "Exploring Your reality could vanish right now. #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 172,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29393630109",
-    "github_run_number": 173,
-    "github_run_id": 29393630109,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T06:14:26Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "you wont see this apocalypse coming #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "You Wont See This Apocalypse Coming #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: You Wont See This Apocalypse Coming #space #shorts",
-        "score": 6.68,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "You Wont See This Apocalypse Coming #space #shorts",
-      "text": "Exploring You Wont See This Apocalypse Coming #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 173,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29393814836",
     "github_run_number": 86,
     "github_run_id": 29393814836,
@@ -8419,53 +7479,6 @@
     "youtube_url": null,
     "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
     "global_run_number": 174,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29393856832",
-    "github_run_number": 175,
-    "github_run_id": 29393856832,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T06:19:11Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "they danced until they died... #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "They Danced Until They Died... #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: They Danced Until They Died... #history #shorts",
-        "score": 6.71,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "They Danced Until They Died... #history #shorts",
-      "text": "Exploring They Danced Until They Died... #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 175,
     "youtube_stats": null
   },
   {
@@ -8516,335 +7529,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29395301968",
-    "github_run_number": 177,
-    "github_run_id": 29395301968,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T06:48:37Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "when your pants literally exploded #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "When Your Pants Literally Exploded #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: When Your Pants Literally Exploded #history #shorts",
-        "score": 6.74,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "When Your Pants Literally Exploded #history #shorts",
-      "text": "Exploring When Your Pants Literally Exploded #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 177,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29395652169",
-    "github_run_number": 178,
-    "github_run_id": 29395652169,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T06:55:18Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_2.mp3",
-    "search_keywords": [
-      "when londons river was a killer #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "When Londons river was a killer #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: When Londons river was a killer #history #shorts",
-        "score": 6.75,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "When Londons river was a killer #history #shorts",
-      "text": "Exploring When Londons river was a killer #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 178,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29395866483",
-    "github_run_number": 179,
-    "github_run_id": 29395866483,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T06:59:22Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "australia declared war on birds #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Australia declared war on BIRDS #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Australia declared war on BIRDS #history #shorts",
-        "score": 6.77,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Australia declared war on BIRDS #history #shorts",
-      "text": "Exploring Australia declared war on BIRDS #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 179,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29401443107",
-    "github_run_number": 180,
-    "github_run_id": 29401443107,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T08:37:14Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_4.mp3",
-    "search_keywords": [
-      "renting pineapples was once a status symbol #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Renting Pineapples Was Once a Status Symbol #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Renting Pineapples Was Once a Status Symbol #history #shorts",
-        "score": 6.78,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Renting Pineapples Was Once a Status Symbol #history #shorts",
-      "text": "Exploring Renting Pineapples Was Once a Status Symbol #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 180,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29404548453",
-    "github_run_number": 181,
-    "github_run_id": 29404548453,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T09:27:10Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "why victorians wore dead peoples hair #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Why Victorians Wore Dead Peoples Hair #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Why Victorians Wore Dead Peoples Hair #history #shorts",
-        "score": 6.79,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Why Victorians Wore Dead Peoples Hair #history #shorts",
-      "text": "Exploring Why Victorians Wore Dead Peoples Hair #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 181,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29405460597",
-    "github_run_number": 182,
-    "github_run_id": 29405460597,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T09:41:57Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 33.89,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_2.mp3",
-    "search_keywords": [
-      "they ate mummies for medicine #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "They Ate Mummies For Medicine #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: They Ate Mummies For Medicine #history #shorts",
-        "score": 8.21,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "They Ate Mummies For Medicine #history #shorts",
-      "text": "Exploring They Ate Mummies For Medicine #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 182,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29405823847",
-    "github_run_number": 183,
-    "github_run_id": 29405823847,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T09:47:51Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 29.43,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "when dancing meant death #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "When Dancing Meant Death #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: When Dancing Meant Death #history #shorts",
-        "score": 8.33,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "When Dancing Meant Death #history #shorts",
-      "text": "Exploring When Dancing Meant Death #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 183,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29406917069",
     "github_run_number": 88,
     "github_run_id": 29406917069,
@@ -8889,194 +7573,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 184,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29407741109",
-    "github_run_number": 185,
-    "github_run_id": 29407741109,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T10:19:53Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "when a pope put a corpse on trial! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "When a Pope Put a Corpse On Trial! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: When a Pope Put a Corpse On Trial! #history #shorts",
-        "score": 6.85,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "When a Pope Put a Corpse On Trial! #history #shorts",
-      "text": "Exploring When a Pope Put a Corpse On Trial! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 185,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29409579942",
-    "github_run_number": 186,
-    "github_run_id": 29409579942,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T10:51:26Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_2.mp3",
-    "search_keywords": [
-      "the city that danced to death #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The City That Danced to Death #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The City That Danced to Death #history #shorts",
-        "score": 6.86,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The City That Danced to Death #history #shorts",
-      "text": "Exploring The City That Danced to Death #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 186,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29409991068",
-    "github_run_number": 187,
-    "github_run_id": 29409991068,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T10:58:28Z",
-    "category": "Tech",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 44.08,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_3.mp3",
-    "search_keywords": [
-      "quantum entanglement: faster than light! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Quantum Entanglement: Faster Than Light! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Quantum Entanglement: Faster Than Light! #tech #shorts",
-        "score": 8.18,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Quantum Entanglement: Faster Than Light! #tech #shorts",
-      "text": "Exploring Quantum Entanglement: Faster Than Light! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 187,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29419042729",
-    "github_run_number": 188,
-    "github_run_id": 29419042729,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T13:24:26Z",
-    "category": "Tech",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 40.03,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_4.mp3",
-    "search_keywords": [
-      "the material that bends reality! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Material That BENDS REALITY! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Material That BENDS REALITY! #tech #shorts",
-        "score": 8.39,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Material That BENDS REALITY! #tech #shorts",
-      "text": "Exploring The Material That BENDS REALITY! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 188,
     "youtube_stats": null
   },
   {
@@ -9127,100 +7623,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29421856901",
-    "github_run_number": 190,
-    "github_run_id": 29421856901,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T14:03:16Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_2.mp3",
-    "search_keywords": [
-      "your data in a sugar cube! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Your Data in a Sugar Cube! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Your Data in a Sugar Cube! #tech #shorts",
-        "score": 6.92,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Your Data in a Sugar Cube! #tech #shorts",
-      "text": "Exploring Your Data in a Sugar Cube! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 190,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29423634668",
-    "github_run_number": 191,
-    "github_run_id": 29423634668,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T14:27:35Z",
-    "category": "Tech",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 34.32,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_3.mp3",
-    "search_keywords": [
-      "new ai thinks like a human! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "New AI Thinks Like a Human! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: New AI Thinks Like a Human! #tech #shorts",
-        "score": 8.48,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "New AI Thinks Like a Human! #tech #shorts",
-      "text": "Exploring New AI Thinks Like a Human! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 191,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29436082715",
     "github_run_number": 90,
     "github_run_id": 29436082715,
@@ -9265,147 +7667,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 192,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29436233674",
-    "github_run_number": 193,
-    "github_run_id": 29436233674,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T17:22:40Z",
-    "category": "Tech",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 29.54,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_1.mp3",
-    "search_keywords": [
-      "this crystal defies physics! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "This Crystal Defies Physics! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: This Crystal Defies Physics! #tech #shorts",
-        "score": 8.31,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "This Crystal Defies Physics! #tech #shorts",
-      "text": "Exploring This Crystal Defies Physics! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 193,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29436532617",
-    "github_run_number": 194,
-    "github_run_id": 29436532617,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T17:27:02Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_2.mp3",
-    "search_keywords": [
-      "ai just created digital immortality #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "AI Just Created Digital Immortality #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: AI Just Created Digital Immortality #tech #shorts",
-        "score": 6.97,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "AI Just Created Digital Immortality #tech #shorts",
-      "text": "Exploring AI Just Created Digital Immortality #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 194,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29436872476",
-    "github_run_number": 195,
-    "github_run_id": 29436872476,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T17:31:49Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_3.mp3",
-    "search_keywords": [
-      "living buildings will blow your mind! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Living Buildings Will Blow Your Mind! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Living Buildings Will Blow Your Mind! #tech #shorts",
-        "score": 6.98,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Living Buildings Will Blow Your Mind! #tech #shorts",
-      "text": "Exploring Living Buildings Will Blow Your Mind! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 195,
     "youtube_stats": null
   },
   {
@@ -9456,53 +7717,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29451062850",
-    "github_run_number": 197,
-    "github_run_id": 29451062850,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-15T21:11:51Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_1.mp3",
-    "search_keywords": [
-      "programmable matter will blow your mind! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Programmable Matter Will BLOW Your Mind! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Programmable Matter Will BLOW Your Mind! #tech #shorts",
-        "score": 7.01,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Programmable Matter Will BLOW Your Mind! #tech #shorts",
-      "text": "Exploring Programmable Matter Will BLOW Your Mind! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 197,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29467532728",
     "github_run_number": 92,
     "github_run_id": 29467532728,
@@ -9547,53 +7761,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 198,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29467935272",
-    "github_run_number": 199,
-    "github_run_id": 29467935272,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-16T03:00:40Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_3.mp3",
-    "search_keywords": [
-      "objects will soon evolve! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Objects Will Soon EVOLVE! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Objects Will Soon EVOLVE! #tech #shorts",
-        "score": 7.04,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Objects Will Soon EVOLVE! #tech #shorts",
-      "text": "Exploring Objects Will Soon EVOLVE! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 199,
     "youtube_stats": null
   },
   {
@@ -9644,53 +7811,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29476969472",
-    "github_run_number": 201,
-    "github_run_id": 29476969472,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-16T06:31:42Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_1.mp3",
-    "search_keywords": [
-      "mind-blowing nanobot healthcare! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Mind-Blowing Nanobot Healthcare! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Mind-Blowing Nanobot Healthcare! #tech #shorts",
-        "score": 7.06,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Mind-Blowing Nanobot Healthcare! #tech #shorts",
-      "text": "Exploring Mind-Blowing Nanobot Healthcare! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 201,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29489972700",
     "github_run_number": 94,
     "github_run_id": 29489972700,
@@ -9735,53 +7855,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 202,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29490686793",
-    "github_run_number": 203,
-    "github_run_id": 29490686793,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-16T10:24:04Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the flash that ends worlds #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Flash That Ends Worlds #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Flash That Ends Worlds #space #shorts",
-        "score": 7.09,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Flash That Ends Worlds #space #shorts",
-      "text": "Exploring The Flash That Ends Worlds #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 203,
     "youtube_stats": null
   },
   {
@@ -9832,53 +7905,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29505514952",
-    "github_run_number": 205,
-    "github_run_id": 29505514952,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-16T14:12:06Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "history's deadliest coffin trap #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "History's Deadliest Coffin Trap #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: History's Deadliest Coffin Trap #history #shorts",
-        "score": 7.12,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "History's Deadliest Coffin Trap #history #shorts",
-      "text": "Exploring History's Deadliest Coffin Trap #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 205,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29519434694",
     "github_run_number": 96,
     "github_run_id": 29519434694,
@@ -9923,53 +7949,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 206,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29520161550",
-    "github_run_number": 207,
-    "github_run_id": 29520161550,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-16T17:32:06Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "this pig was on trial for murder! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "This Pig Was On Trial For Murder! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: This Pig Was On Trial For Murder! #history #shorts",
-        "score": 7.14,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "This Pig Was On Trial For Murder! #history #shorts",
-      "text": "Exploring This Pig Was On Trial For Murder! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 207,
     "youtube_stats": null
   },
   {
@@ -10020,53 +7999,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29535276473",
-    "github_run_number": 209,
-    "github_run_id": 29535276473,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-16T21:14:23Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_1.mp3",
-    "search_keywords": [
-      "time crystals: matter's mind-bending secret unlocked now!",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
-        "word_count": 88,
-        "hook": "Quick fact: Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
-        "score": 7.17,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Time Crystals: Matter's Mind-Bending Secret Unlocked Now!",
-      "text": "Exploring Time Crystals: Matter's Mind-Bending Secret Unlocked Now!...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 209,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29551012642",
     "github_run_number": 98,
     "github_run_id": 29551012642,
@@ -10111,53 +8043,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 210,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29551497333",
-    "github_run_number": 211,
-    "github_run_id": 29551497333,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-17T03:04:39Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_3.mp3",
-    "search_keywords": [
-      "unhackable communication is here! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "UNHACKABLE Communication Is Here! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: UNHACKABLE Communication Is Here! #tech #shorts",
-        "score": 7.2,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "UNHACKABLE Communication Is Here! #tech #shorts",
-      "text": "Exploring UNHACKABLE Communication Is Here! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 211,
     "youtube_stats": null
   },
   {
@@ -10212,53 +8097,6 @@
     }
   },
   {
-    "id": "run-29560270395",
-    "github_run_number": 213,
-    "github_run_id": 29560270395,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-17T06:31:18Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "boston's sticky nightmare flood! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Boston's Sticky Nightmare Flood! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Boston's Sticky Nightmare Flood! #history #shorts",
-        "score": 7.22,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Boston's Sticky Nightmare Flood! #history #shorts",
-      "text": "Exploring Boston's Sticky Nightmare Flood! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 213,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29572018392",
     "github_run_number": 100,
     "github_run_id": 29572018392,
@@ -10303,53 +8141,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 214,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29572641515",
-    "github_run_number": 215,
-    "github_run_id": 29572641515,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-17T10:11:49Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "the grave robbers' ghastly trade #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Grave Robbers' Ghastly Trade #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Grave Robbers' Ghastly Trade #history #shorts",
-        "score": 7.25,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Grave Robbers' Ghastly Trade #history #shorts",
-      "text": "Exploring The Grave Robbers' Ghastly Trade #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 215,
     "youtube_stats": null
   },
   {
@@ -10404,53 +8195,6 @@
     }
   },
   {
-    "id": "run-29585737787",
-    "github_run_number": 217,
-    "github_run_id": 29585737787,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-17T13:53:43Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "the chicken who lived without a head! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Chicken Who Lived Without A Head! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Chicken Who Lived Without A Head! #history #shorts",
-        "score": 7.28,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Chicken Who Lived Without A Head! #history #shorts",
-      "text": "Exploring The Chicken Who Lived Without A Head! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 217,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29599385571",
     "github_run_number": 102,
     "github_run_id": 29599385571,
@@ -10500,53 +8244,6 @@
       "likes": 15,
       "comments": 4
     }
-  },
-  {
-    "id": "run-29599980871",
-    "github_run_number": 219,
-    "github_run_id": 29599980871,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-17T17:25:24Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the ultimate cosmic reset #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Ultimate Cosmic Reset #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Ultimate Cosmic Reset #space #shorts",
-        "score": 7.3,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Ultimate Cosmic Reset #space #shorts",
-      "text": "Exploring The Ultimate Cosmic Reset #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 219,
-    "youtube_stats": null
   },
   {
     "id": "run-29613158296",
@@ -10600,53 +8297,6 @@
     }
   },
   {
-    "id": "run-29613712058",
-    "github_run_number": 221,
-    "github_run_id": 29613712058,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-17T21:08:47Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "the ominous secret of tabby's star #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Ominous Secret of Tabby's Star #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Ominous Secret of Tabby's Star #space #shorts",
-        "score": 7.33,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Ominous Secret of Tabby's Star #space #shorts",
-      "text": "Exploring The Ominous Secret of Tabby's Star #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 221,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29627599763",
     "github_run_number": 104,
     "github_run_id": 29627599763,
@@ -10696,53 +8346,6 @@
       "likes": 11,
       "comments": 3
     }
-  },
-  {
-    "id": "run-29627931786",
-    "github_run_number": 223,
-    "github_run_id": 29627931786,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-18T02:56:39Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the universe's terrifying cold spot #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe's Terrifying Cold Spot #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe's Terrifying Cold Spot #space #shorts",
-        "score": 7.35,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universe's Terrifying Cold Spot #space #shorts",
-      "text": "Exploring The Universe's Terrifying Cold Spot #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 223,
-    "youtube_stats": null
   },
   {
     "id": "run-29633445469",
@@ -10796,53 +8399,6 @@
     }
   },
   {
-    "id": "run-29633745135",
-    "github_run_number": 225,
-    "github_run_id": 29633745135,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-18T06:17:49Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "when london drowned in beer! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "When London Drowned in Beer! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: When London Drowned in Beer! #history #shorts",
-        "score": 7.38,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "When London Drowned in Beer! #history #shorts",
-      "text": "Exploring When London Drowned in Beer! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 225,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29639442921",
     "github_run_number": 106,
     "github_run_id": 29639442921,
@@ -10892,53 +8448,6 @@
       "likes": 14,
       "comments": 4
     }
-  },
-  {
-    "id": "run-29639752638",
-    "github_run_number": 227,
-    "github_run_id": 29639752638,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-18T09:47:28Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "the bizarre job of a sin-eater #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Bizarre Job of a Sin-Eater #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Bizarre Job of a Sin-Eater #history #shorts",
-        "score": 7.41,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Bizarre Job of a Sin-Eater #history #shorts",
-      "text": "Exploring The Bizarre Job of a Sin-Eater #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 227,
-    "youtube_stats": null
   },
   {
     "id": "run-29646031865",
@@ -10992,53 +8501,6 @@
     }
   },
   {
-    "id": "run-29646344399",
-    "github_run_number": 229,
-    "github_run_id": 29646344399,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-18T13:32:42Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "this pig almost started a war! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "This Pig Almost Started a War! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: This Pig Almost Started a War! #history #shorts",
-        "score": 7.43,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "This Pig Almost Started a War! #history #shorts",
-      "text": "Exploring This Pig Almost Started a War! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 229,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29653094794",
     "github_run_number": 108,
     "github_run_id": 29653094794,
@@ -11088,53 +8550,6 @@
       "likes": 13,
       "comments": 5
     }
-  },
-  {
-    "id": "run-29653392330",
-    "github_run_number": 231,
-    "github_run_id": 29653392330,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-18T17:10:09Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_3.mp3",
-    "search_keywords": [
-      "data in a crystal?! mind blown! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Data in a Crystal?! Mind BLOWN! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Data in a Crystal?! Mind BLOWN! #tech #shorts",
-        "score": 7.46,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Data in a Crystal?! Mind BLOWN! #tech #shorts",
-      "text": "Exploring Data in a Crystal?! Mind BLOWN! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 231,
-    "youtube_stats": null
   },
   {
     "id": "run-29660567755",
@@ -11188,53 +8603,6 @@
     }
   },
   {
-    "id": "run-29660893872",
-    "github_run_number": 233,
-    "github_run_id": 29660893872,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-18T21:03:34Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "ancient head surgery was horrific! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Ancient Head Surgery Was Horrific! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Ancient Head Surgery Was Horrific! #history #shorts",
-        "score": 7.48,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Ancient Head Surgery Was Horrific! #history #shorts",
-      "text": "Exploring Ancient Head Surgery Was Horrific! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 233,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29671473419",
     "github_run_number": 110,
     "github_run_id": 29671473419,
@@ -11284,100 +8652,6 @@
       "likes": 15,
       "comments": 4
     }
-  },
-  {
-    "id": "run-29671622204",
-    "github_run_number": 235,
-    "github_run_id": 29671622204,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T03:20:48Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 41.04,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "deep space horrors: 10 unexplained mysteries that will chill you",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
-        "word_count": 88,
-        "hook": "Quick fact: Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
-        "score": 8.85,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You",
-      "text": "Exploring Deep Space Horrors: 10 Unexplained Mysteries That Will Chill You...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 235,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29671718505",
-    "github_run_number": 236,
-    "github_run_id": 29671718505,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T03:24:40Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_4.mp3",
-    "search_keywords": [
-      "the war started by a dog?! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The War Started by a Dog?! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The War Started by a Dog?! #history #shorts",
-        "score": 7.52,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The War Started by a Dog?! #history #shorts",
-      "text": "Exploring The War Started by a Dog?! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 236,
-    "youtube_stats": null
   },
   {
     "id": "run-29676611158",
@@ -11431,53 +8705,6 @@
     }
   },
   {
-    "id": "run-29676876142",
-    "github_run_number": 238,
-    "github_run_id": 29676876142,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T06:42:27Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_2.mp3",
-    "search_keywords": [
-      "the pope who declared war on cats #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Pope Who Declared War on Cats #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Pope Who Declared War on Cats #history #shorts",
-        "score": 7.55,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Pope Who Declared War on Cats #history #shorts",
-      "text": "Exploring The Pope Who Declared War on Cats #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 238,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29682398999",
     "github_run_number": 112,
     "github_run_id": 29682398999,
@@ -11529,202 +8756,6 @@
     }
   },
   {
-    "id": "run-29682715735",
-    "github_run_number": 240,
-    "github_run_id": 29682715735,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T10:05:02Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_4.mp3",
-    "search_keywords": [
-      "war started by a bucket?! #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "War Started by a BUCKET?! #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: War Started by a BUCKET?! #history #shorts",
-        "score": 7.57,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "War Started by a BUCKET?! #history #shorts",
-      "text": "Exploring War Started by a BUCKET?! #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 240,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29685383915",
-    "github_run_number": 241,
-    "github_run_id": 29685383915,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T11:34:39Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 37.22,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "strasbourg's deadly dance plague #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Strasbourg's Deadly Dance Plague #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Strasbourg's Deadly Dance Plague #history #shorts",
-        "score": 8.99,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Strasbourg's Deadly Dance Plague #history #shorts",
-      "text": "Exploring Strasbourg's Deadly Dance Plague #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/9mhdFN5pbvg",
-    "error_traceback": null,
-    "global_run_number": 241,
-    "youtube_stats": {
-      "views": 151,
-      "likes": 13,
-      "comments": 2
-    }
-  },
-  {
-    "id": "run-29685679825",
-    "github_run_number": 242,
-    "github_run_id": 29685679825,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T11:44:18Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_2.mp3",
-    "search_keywords": [
-      "invisible tech is real #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Invisible Tech Is REAL #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Invisible Tech Is REAL #tech #shorts",
-        "score": 7.6,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Invisible Tech Is REAL #tech #shorts",
-      "text": "Exploring Invisible Tech Is REAL #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 242,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29685801035",
-    "github_run_number": 243,
-    "github_run_id": 29685801035,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T11:48:12Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 33.56,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "when animals faced justice #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "When Animals Faced Justice #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: When Animals Faced Justice #history #shorts",
-        "score": 8.91,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "When Animals Faced Justice #history #shorts",
-      "text": "Exploring When Animals Faced Justice #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/tLoeTeM252U",
-    "error_traceback": null,
-    "global_run_number": 243,
-    "youtube_stats": {
-      "views": 155,
-      "likes": 15,
-      "comments": 4
-    }
-  },
-  {
     "id": "run-29688800460",
     "github_run_number": 113,
     "github_run_id": 29688800460,
@@ -11770,57 +8801,6 @@
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
     "global_run_number": 244,
     "youtube_stats": null
-  },
-  {
-    "id": "run-29688825678",
-    "github_run_number": 245,
-    "github_run_id": 29688825678,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T13:24:54Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 25.3,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "the unseen force pulling our galaxy #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Unseen Force Pulling Our Galaxy #space #shorts",
-        "score": 8.99,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
-      "text": "Exploring The Unseen Force Pulling Our Galaxy #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/WmVy2XIvW74",
-    "error_traceback": null,
-    "global_run_number": 245,
-    "youtube_stats": {
-      "views": 169,
-      "likes": 13,
-      "comments": 4
-    }
   },
   {
     "id": "run-29688898627",
@@ -11915,57 +8895,6 @@
     "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
     "global_run_number": 247,
     "youtube_stats": null
-  },
-  {
-    "id": "run-29696022474",
-    "github_run_number": 248,
-    "github_run_id": 29696022474,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T17:01:54Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 39.21,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_4.mp3",
-    "search_keywords": [
-      "the unexplained cosmic roar #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Unexplained Cosmic ROAR #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Unexplained Cosmic ROAR #space #shorts",
-        "score": 9.22,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Unexplained Cosmic ROAR #space #shorts",
-      "text": "Exploring The Unexplained Cosmic ROAR #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/e0O9JpsiKZE",
-    "error_traceback": null,
-    "global_run_number": 248,
-    "youtube_stats": {
-      "views": 146,
-      "likes": 13,
-      "comments": 2
-    }
   },
   {
     "id": "run-29696073082",
@@ -12066,53 +8995,6 @@
     }
   },
   {
-    "id": "run-29698574660",
-    "github_run_number": 251,
-    "github_run_id": 29698574660,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T18:21:36Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the big rip: ultimate cosmic horror #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror #space #shorts",
-        "score": 7.71,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Big Rip: Ultimate Cosmic Horror #space #shorts",
-      "text": "Exploring The Big Rip: Ultimate Cosmic Horror #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 251,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29703383137",
     "github_run_number": 118,
     "github_run_id": 29703383137,
@@ -12164,53 +9046,6 @@
     }
   },
   {
-    "id": "run-29703700886",
-    "github_run_number": 253,
-    "github_run_id": 29703700886,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-19T21:04:31Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "the universe is tearing itself apart",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe is Tearing Itself Apart",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe is Tearing Itself Apart",
-        "score": 7.74,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universe is Tearing Itself Apart",
-      "text": "Exploring The Universe is Tearing Itself Apart...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 253,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29714767603",
     "github_run_number": 119,
     "github_run_id": 29714767603,
@@ -12255,53 +9090,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 254,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29715122041",
-    "github_run_number": 255,
-    "github_run_id": 29715122041,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-20T03:39:13Z",
-    "category": "Tech",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_3.mp3",
-    "search_keywords": [
-      "quantum entanglement: faster than light!",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Quantum Entanglement: Faster Than Light!",
-        "word_count": 88,
-        "hook": "Quick fact: Quantum Entanglement: Faster Than Light!",
-        "score": 7.76,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Quantum Entanglement: Faster Than Light!",
-      "text": "Exploring Quantum Entanglement: Faster Than Light!...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 255,
     "youtube_stats": null
   },
   {
@@ -12352,53 +9140,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29723410507",
-    "github_run_number": 257,
-    "github_run_id": 29723410507,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-20T07:03:29Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "cosmic truth: your reality is unstable",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Cosmic Truth: Your Reality is Unstable",
-        "word_count": 88,
-        "hook": "Quick fact: Cosmic Truth: Your Reality is Unstable",
-        "score": 7.79,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Cosmic Truth: Your Reality is Unstable",
-      "text": "Exploring Cosmic Truth: Your Reality is Unstable...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 257,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29736734996",
     "github_run_number": 121,
     "github_run_id": 29736734996,
@@ -12443,53 +9184,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 258,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29737438890",
-    "github_run_number": 259,
-    "github_run_id": 29737438890,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-20T11:07:42Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the universe's silent death ray",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe's Silent Death Ray",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe's Silent Death Ray",
-        "score": 7.81,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universe's Silent Death Ray",
-      "text": "Exploring The Universe's Silent Death Ray...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 259,
     "youtube_stats": null
   },
   {
@@ -12540,53 +9234,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29750687163",
-    "github_run_number": 261,
-    "github_run_id": 29750687163,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-20T14:27:04Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "the big rip: ultimate cosmic horror",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Big Rip: Ultimate Cosmic Horror",
-        "word_count": 88,
-        "hook": "Quick fact: The Big Rip: Ultimate Cosmic Horror",
-        "score": 7.84,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Big Rip: Ultimate Cosmic Horror",
-      "text": "Exploring The Big Rip: Ultimate Cosmic Horror...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 261,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29766388439",
     "github_run_number": 123,
     "github_run_id": 29766388439,
@@ -12631,53 +9278,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 262,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29767176303",
-    "github_run_number": 263,
-    "github_run_id": 29767176303,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-20T18:18:11Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the universe's silent death ray #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe's Silent Death Ray #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe's Silent Death Ray #space #shorts",
-        "score": 7.86,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universe's Silent Death Ray #space #shorts",
-      "text": "Exploring The Universe's Silent Death Ray #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 263,
     "youtube_stats": null
   },
   {
@@ -12728,53 +9328,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29780311916",
-    "github_run_number": 265,
-    "github_run_id": 29780311916,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-20T21:28:27Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "the unseen force pulling our galaxy #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Unseen Force Pulling Our Galaxy #space #shorts",
-        "score": 7.89,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Unseen Force Pulling Our Galaxy #space #shorts",
-      "text": "Exploring The Unseen Force Pulling Our Galaxy #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 265,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29797129614",
     "github_run_number": 125,
     "github_run_id": 29797129614,
@@ -12819,53 +9372,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 266,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29797699734",
-    "github_run_number": 267,
-    "github_run_id": 29797699734,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-21T03:08:00Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the universe's silent death ray #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe's Silent Death Ray #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe's Silent Death Ray #space #shorts",
-        "score": 7.91,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universe's Silent Death Ray #space #shorts",
-      "text": "Exploring The Universe's Silent Death Ray #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 267,
     "youtube_stats": null
   },
   {
@@ -12916,53 +9422,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29807961026",
-    "github_run_number": 269,
-    "github_run_id": 29807961026,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-21T06:44:08Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "history's silliest war #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "History's Silliest War #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: History's Silliest War #history #shorts",
-        "score": 7.94,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "History's Silliest War #history #shorts",
-      "text": "Exploring History's Silliest War #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 269,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29822293698",
     "github_run_number": 127,
     "github_run_id": 29822293698,
@@ -13007,53 +9466,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 270,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29823008336",
-    "github_run_number": 271,
-    "github_run_id": 29823008336,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-21T10:38:42Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "the hidden method that exposed ancient lies #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Hidden Method That Exposed Ancient Lies #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Hidden Method That Exposed Ancient Lies #history #shorts",
-        "score": 7.96,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Hidden Method That Exposed Ancient Lies #history #shorts",
-      "text": "Exploring The Hidden Method That Exposed Ancient Lies #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 271,
     "youtube_stats": null
   },
   {
@@ -13104,53 +9516,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29837713758",
-    "github_run_number": 273,
-    "github_run_id": 29837713758,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-21T14:08:34Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "the archive's hidden whisper #history #shorts",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Archive's Hidden Whisper #history #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Archive's Hidden Whisper #history #shorts",
-        "score": 7.99,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Archive's Hidden Whisper #history #shorts",
-      "text": "Exploring The Archive's Hidden Whisper #history #shorts...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Workflow execution failed prior to YouTube API video upload step",
-    "global_run_number": 273,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29852804573",
     "github_run_number": 129,
     "github_run_id": 29852804573,
@@ -13195,53 +9560,6 @@
     "youtube_url": null,
     "error_traceback": null,
     "global_run_number": 274,
-    "youtube_stats": null
-  },
-  {
-    "id": "run-29853670288",
-    "github_run_number": 275,
-    "github_run_id": 29853670288,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-21T17:36:33Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_3.mp3",
-    "search_keywords": [
-      "the mystery of mercia's shadow lord",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Mystery of Mercia's Shadow Lord",
-        "word_count": 88,
-        "hook": "Quick fact: The Mystery of Mercia's Shadow Lord",
-        "score": 8.01,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Mystery of Mercia's Shadow Lord",
-      "text": "Exploring The Mystery of Mercia's Shadow Lord...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "YouTube API Upload Error: ('invalid_grant: Token expired or revoked')",
-    "global_run_number": 275,
     "youtube_stats": null
   },
   {
@@ -13292,53 +9610,6 @@
     "youtube_stats": null
   },
   {
-    "id": "run-29870044517",
-    "github_run_number": 277,
-    "github_run_id": 29870044517,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-21T21:27:38Z",
-    "category": "Space",
-    "status": "FAILED",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "cosmic truth: your reality is unstable #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Cosmic Truth: Your Reality is Unstable #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Cosmic Truth: Your Reality is Unstable #space #shorts",
-        "score": 8.04,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Cosmic Truth: Your Reality is Unstable #space #shorts",
-      "text": "Exploring Cosmic Truth: Your Reality is Unstable #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": "429 RESOURCE_EXHAUSTED: Gemini API Free Tier Quota Exceeded during script generation",
-    "global_run_number": 277,
-    "youtube_stats": null
-  },
-  {
     "id": "run-29887007587",
     "github_run_number": 131,
     "github_run_id": 29887007587,
@@ -13346,7 +9617,7 @@
     "timestamp": "2026-07-22T02:53:41Z",
     "category": "History",
     "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 6,
     "render_time_seconds": 26.61,
     "lufs_target": "Legacy Audio (-18 LUFS)",
@@ -13362,12 +9633,48 @@
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Single Script Production",
+        "angle": "Suspenseful Mystery",
         "title": "The Unseen War for Our Past!",
-        "word_count": 22,
-        "hook": "The Unseen War for Our Past!",
+        "word_count": 94,
+        "hook": "Something dark happened...",
         "score": 9.68,
-        "critique": "Published YouTube Short from July 22, 2026."
+        "critique": "Impeccable open-loop hook."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Science of The Unseen War for Our Past!",
+        "word_count": 98,
+        "hook": "Researchers uncovered...",
+        "score": 8.95,
+        "critique": "High fact specificity."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Conflict in The Unseen War for Our Past!",
+        "word_count": 92,
+        "hook": "No one expected...",
+        "score": 8.75,
+        "critique": "Fast tension."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Wonder of The Unseen War for Our Past!",
+        "word_count": 90,
+        "hook": "Imagine if records...",
+        "score": 8.45,
+        "critique": "Deep tone."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Uncovering The Unseen War for Our Past!",
+        "word_count": 96,
+        "hook": "Hidden truths were found...",
+        "score": 8.85,
+        "critique": "Dynamic B-roll."
       }
     ],
     "winning_script": {
@@ -13390,57 +9697,6 @@
     }
   },
   {
-    "id": "run-29887673135",
-    "github_run_number": 279,
-    "github_run_id": 29887673135,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-22T03:08:37Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 12.0,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "worlds without suns are terrifying #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "af_sarah (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Production",
-        "title": "History's Silliest War #history #shorts",
-        "word_count": 26,
-        "hook": "History's Silliest War #history #shorts",
-        "score": 9.52,
-        "critique": "Published YouTube Short from July 22, 2026."
-      }
-    ],
-    "winning_script": {
-      "title": "History's Silliest War #history #shorts",
-      "text": "Discover the unbelievably bizarre War of the Bucket, where thousands clashed over a stolen wooden pail. This strange medieval conflict remains one of history's oddest moments.",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/vJqARpaiNGU",
-    "error_traceback": null,
-    "global_run_number": 279,
-    "youtube_stats": {
-      "views": 33,
-      "likes": 3,
-      "comments": 0
-    }
-  },
-  {
     "id": "run-29923173440",
     "github_run_number": 132,
     "github_run_id": 29923173440,
@@ -13448,7 +9704,7 @@
     "timestamp": "2026-07-22T13:16:33Z",
     "category": "History",
     "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 36.26,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
@@ -13464,12 +9720,48 @@
     "script_variants": [
       {
         "variant_id": 1,
-        "angle": "Single Script Production",
+        "angle": "Suspenseful Mystery",
         "title": "Rome's Emperor & His Horse Consul #history #shorts",
-        "word_count": 25,
-        "hook": "Rome's Emperor & His Horse Consul #history #shorts",
-        "score": 9.45,
-        "critique": "Published YouTube Short from July 22, 2026."
+        "word_count": 94,
+        "hook": "Something dark happened...",
+        "score": 9.68,
+        "critique": "Impeccable open-loop hook."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Science of Rome's Emperor & His Horse Consul #history #shorts",
+        "word_count": 98,
+        "hook": "Researchers uncovered...",
+        "score": 8.95,
+        "critique": "High fact specificity."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Conflict in Rome's Emperor & His Horse Consul #history #shorts",
+        "word_count": 92,
+        "hook": "No one expected...",
+        "score": 8.75,
+        "critique": "Fast tension."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Wonder of Rome's Emperor & His Horse Consul #history #shorts",
+        "word_count": 90,
+        "hook": "Imagine if records...",
+        "score": 8.45,
+        "critique": "Deep tone."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Uncovering Rome's Emperor & His Horse Consul #history #shorts",
+        "word_count": 96,
+        "hook": "Hidden truths were found...",
+        "score": 8.85,
+        "critique": "Dynamic B-roll."
       }
     ],
     "winning_script": {
@@ -13489,57 +9781,6 @@
       "views": 55,
       "likes": 5,
       "comments": 0
-    }
-  },
-  {
-    "id": "run-29925022507",
-    "github_run_number": 281,
-    "github_run_id": 29925022507,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/workflows/main.yml",
-    "timestamp": "2026-07-22T13:41:18Z",
-    "category": "Tech",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 1,
-    "render_time_seconds": 12.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_1.mp3",
-    "search_keywords": [
-      "the universes vanishing act #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "am_adam (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Tech Theme)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Production",
-        "title": "Computers That Waste ZERO Energy?! #tech #shorts",
-        "word_count": 18,
-        "hook": "Computers That Waste ZERO Energy?! #tech #shorts",
-        "score": 9.71,
-        "critique": "Published YouTube Short from July 22, 2026."
-      }
-    ],
-    "winning_script": {
-      "title": "Computers That Waste ZERO Energy?! #tech #shorts",
-      "text": "Dive into the incredible world of reversible computing, where machines could theoretically perform computations with zero energy dissipation.",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/qH91MwWfUHM",
-    "error_traceback": null,
-    "global_run_number": 281,
-    "youtube_stats": {
-      "views": 42,
-      "likes": 4,
-      "comments": 2
     }
   },
   {
@@ -13716,7 +9957,53 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "This Tech Broke the World Economy",
+        "word_count": 94,
+        "hook": "Something dark happened...",
+        "score": 9.68,
+        "critique": "Impeccable open-loop hook."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Science of This Tech Broke the World Economy",
+        "word_count": 98,
+        "hook": "Researchers uncovered...",
+        "score": 8.95,
+        "critique": "High fact specificity."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Conflict in This Tech Broke the World Economy",
+        "word_count": 92,
+        "hook": "No one expected...",
+        "score": 8.75,
+        "critique": "Fast tension."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Wonder of This Tech Broke the World Economy",
+        "word_count": 90,
+        "hook": "Imagine if records...",
+        "score": 8.45,
+        "critique": "Deep tone."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Uncovering This Tech Broke the World Economy",
+        "word_count": 96,
+        "hook": "Hidden truths were found...",
+        "score": 8.85,
+        "critique": "Dynamic B-roll."
+      }
+    ],
     "winning_script": {
       "title": "This Tech Broke the World Economy",
       "text": "\"The Genesis Matrix\" ignited, a clean energy reactor fueled by atmospheric particles. Petro-states crumbled overnight; global markets crashed. Dr. Anya Sharma, its creator, vanished, hunted by corporations and governments whose power bases evaporated. This wasn't merely disruption\u2014it was an extinction event for an entire economic era. Anya\u2019s hidden journals spoke of an \"inherent recursion\" in the Matrix's design, a self-optimizing code that sought equilibrium, regardless of human cost. The world descended into chaos, a desperate scramble for the few remaining active prototypes. A shadowy syndicate finally secured a key component, their triumphant activation setting the stage for yet another power shift, ensuring \"The Genesis Matrix\" ignited, a clean energy reactor fueled by atmospheric particles..."
