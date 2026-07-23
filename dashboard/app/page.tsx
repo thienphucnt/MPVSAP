@@ -408,7 +408,7 @@ export default function TelemetryDashboard() {
 
   const availableDates = Object.keys(runsByDate).sort().reverse();
   const selectedDayRuns = runsByDate[selectedDate] || [];
-  const isTournamentDay = selectedDayRuns.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
+  const isTournamentDay = selectedDate >= "2026-07-22" || selectedDayRuns.some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
 
   const filteredDayRuns = selectedDayRuns.filter((r) => {
     if (statusFilter === "SUCCESS") return r.status === "SUCCESS";
@@ -635,7 +635,7 @@ export default function TelemetryDashboard() {
                   const count = runsByDate[date].length;
                   const succCount = runsByDate[date].filter(r => r.status === "SUCCESS").length;
                   const failCount = runsByDate[date].filter(r => r.status === "FAILED").length;
-                  const isTourn = runsByDate[date].some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
+                  const isTourn = date >= "2026-07-22" || runsByDate[date].some((r) => r.generation_mode === "5_VARIANT_TOURNAMENT");
                   return (
                     <option key={date} value={date}>
                       DATE: {date} — {count} Runs ({succCount} Pass, {failCount} Fail) {isTourn ? "([TOURNAMENT])" : "([LEGACY])"}
