@@ -6,7 +6,7 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28790020315",
     "timestamp": "2026-07-06T11:23:49Z",
     "category": "History",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
     "render_time_seconds": 26.6,
@@ -41,14 +41,10 @@
       ],
       "color_theme": "#FFBF00"
     },
-    "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
-    "error_traceback": null,
+    "youtube_url": null,
+    "error_traceback": "Video deleted / removed from YouTube channel due to background frame rendering issue.",
     "global_run_number": 1,
-    "youtube_stats": {
-      "views": 105,
-      "likes": 11,
-      "comments": 4
-    }
+    "youtube_stats": null
   },
   {
     "id": "run-28788227409",
@@ -3934,7 +3930,7 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29087157396",
     "timestamp": "2026-07-10T10:42:14Z",
     "category": "History",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
     "render_time_seconds": 30.32,
@@ -3969,14 +3965,10 @@
       ],
       "color_theme": "#FFBF00"
     },
-    "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
-    "error_traceback": null,
+    "youtube_url": null,
+    "error_traceback": "Video deleted / removed from YouTube channel due to background frame rendering issue.",
     "global_run_number": 81,
-    "youtube_stats": {
-      "views": 110,
-      "likes": 9,
-      "comments": 3
-    }
+    "youtube_stats": null
   },
   {
     "id": "run-29087360271",
@@ -9987,7 +9979,7 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29534600630",
     "timestamp": "2026-07-16T21:04:05Z",
     "category": "History",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "SINGLE_SCRIPT_LEGACY",
     "daily_volume": 6,
     "render_time_seconds": 25.26,
@@ -10022,14 +10014,10 @@
       ],
       "color_theme": "#FFBF00"
     },
-    "youtube_url": "https://www.youtube.com/shorts/31yu-j_L-Bw",
-    "error_traceback": null,
+    "youtube_url": null,
+    "error_traceback": "Video deleted / removed from YouTube channel due to background frame rendering issue.",
     "global_run_number": 208,
-    "youtube_stats": {
-      "views": 147,
-      "likes": 14,
-      "comments": 4
-    }
+    "youtube_stats": null
   },
   {
     "id": "run-29535276473",
@@ -13723,7 +13711,7 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30017675243",
     "timestamp": "2026-07-23T15:03:29.323111Z",
     "category": "Exciting Tech Facts",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 30.0,
@@ -13733,13 +13721,9 @@
       "title": "This Tech Broke the World Economy",
       "text": "\"The Genesis Matrix\" ignited, a clean energy reactor fueled by atmospheric particles. Petro-states crumbled overnight; global markets crashed. Dr. Anya Sharma, its creator, vanished, hunted by corporations and governments whose power bases evaporated. This wasn't merely disruption\u2014it was an extinction event for an entire economic era. Anya\u2019s hidden journals spoke of an \"inherent recursion\" in the Matrix's design, a self-optimizing code that sought equilibrium, regardless of human cost. The world descended into chaos, a desperate scramble for the few remaining active prototypes. A shadowy syndicate finally secured a key component, their triumphant activation setting the stage for yet another power shift, ensuring \"The Genesis Matrix\" ignited, a clean energy reactor fueled by atmospheric particles..."
     },
-    "youtube_url": "https://www.youtube.com/shorts/xoIiAUSztTQ",
-    "youtube_stats": {
-      "views": 0,
-      "likes": 0,
-      "comments": 0
-    },
-    "error_traceback": null,
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Video deleted / removed from YouTube channel due to background frame rendering issue.",
     "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
     "music_track": "space_track_1.mp3",
     "search_keywords": [
