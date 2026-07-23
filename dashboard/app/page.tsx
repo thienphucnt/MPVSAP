@@ -70,7 +70,7 @@ interface RunEntry {
   workflow_type?: "DAILY_SHORTS" | "WEEKLY_LONGFORM" | "SELF_HEALING" | "BOT_MAINTENANCE";
   timestamp: string;
   category: string;
-  status: "SUCCESS" | "FAILED";
+  status: "SUCCESS" | "FAILED" | "CANCELLED" | "SKIPPED";
   generation_mode?: "5_VARIANT_TOURNAMENT" | "SINGLE_SCRIPT_LEGACY" | "LONGFORM_COMPILATION" | "SELF_HEALING_DIAGNOSTICS" | "BOT_MAINTENANCE";
   daily_volume?: number;
   render_time_seconds: number;
@@ -590,7 +590,7 @@ export default function TelemetryDashboard() {
   const [runs, setRuns] = useState<RunEntry[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedRunId, setSelectedRunId] = useState<string>("");
-  const [statusFilter, setStatusFilter] = useState<"ALL" | "SUCCESS" | "FAILED">("ALL");
+  const [statusFilter, setStatusFilter] = useState<"ALL" | "SUCCESS" | "FAILED" | "CANCELLED" | "SKIPPED">("ALL");
   const [workflowTab, setWorkflowTab] = useState<WorkflowType>("DAILY_SHORTS");
 
   useEffect(() => {
@@ -682,6 +682,27 @@ export default function TelemetryDashboard() {
       case "history": return "bg-[#FFBF00]/20 text-[#FFBF00] border-[#FFBF00]/40";
       case "tech": return "bg-[#00FF66]/20 text-[#00FF66] border-[#00FF66]/40";
       default: return "bg-blue-500/20 text-blue-400 border-blue-500/40";
+    }
+  };
+
+  
+  const getStatusBadgeStyle = (st: string) => {
+    switch (st) {
+      case "SUCCESS": return "bg-[#00FF66]/20 text-[#00FF66] border-[#00FF66]/40";
+      case "FAILED": return "bg-red-500/20 text-red-400 border-red-500/40";
+      case "CANCELLED": return "bg-amber-500/20 text-amber-400 border-amber-500/40";
+      case "SKIPPED": return "bg-gray-500/20 text-gray-400 border-gray-500/40";
+      default: return "bg-gray-500/20 text-gray-300 border-gray-500/40";
+    }
+  };
+
+  const getHeatmapTileStyle = (st: string) => {
+    switch (st) {
+      case "SUCCESS": return "bg-[#00FF66]/20 border-[#00FF66]/50 text-[#00FF66]";
+      case "FAILED": return "bg-red-500/20 border-red-500/50 text-red-400";
+      case "CANCELLED": return "bg-amber-500/20 border-amber-500/50 text-amber-400";
+      case "SKIPPED": return "bg-gray-500/20 border-gray-500/50 text-gray-400";
+      default: return "bg-gray-500/20 border-gray-500/50 text-gray-400";
     }
   };
 
@@ -878,6 +899,8 @@ export default function TelemetryDashboard() {
           <div className="flex items-center gap-4 text-xs text-gray-400">
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-[#00FF66] inline-block"></span> Success</span>
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500 inline-block"></span> Failed</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-amber-500 inline-block"></span> Cancelled</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-gray-500 inline-block"></span> Skipped</span>
           </div>
         </div>
 
@@ -892,9 +915,7 @@ export default function TelemetryDashboard() {
               className={`h-10 rounded-lg border flex flex-col items-center justify-center cursor-pointer transition-all hover:scale-105 ${
                 selectedRunId === r.id ? "ring-2 ring-white scale-105" : ""
               } ${
-                r.status === "SUCCESS"
-                  ? "bg-[#00FF66]/20 border-[#00FF66]/50 text-[#00FF66]"
-                  : "bg-red-500/20 border-red-500/50 text-red-400"
+                getHeatmapTileStyle(r.status)
               }`}
               title={`GitHub Run #${r.github_run_number} (${r.workflow_type || "DAILY_SHORTS"}) - ${r.status}`}
             >
@@ -1020,6 +1041,18 @@ export default function TelemetryDashboard() {
                   className={`px-3 py-1 rounded text-xs font-bold transition-all ${statusFilter === "FAILED" ? "bg-red-500 text-white" : "text-gray-400 hover:text-white"}`}
                 >
                   Failed ({selectedDayRuns.filter(r => r.status === "FAILED").length})
+                </button>
+                <button
+                  onClick={() => setStatusFilter("CANCELLED")}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-all ${statusFilter === "CANCELLED" ? "bg-amber-500 text-black" : "text-gray-400 hover:text-white"}`}
+                >
+                  Cancelled ({selectedDayRuns.filter(r => r.status === "CANCELLED").length})
+                </button>
+                <button
+                  onClick={() => setStatusFilter("SKIPPED")}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-all ${statusFilter === "SKIPPED" ? "bg-gray-500 text-white" : "text-gray-400 hover:text-white"}`}
+                >
+                  Skipped ({selectedDayRuns.filter(r => r.status === "SKIPPED").length})
                 </button>
               </div>
             )}
