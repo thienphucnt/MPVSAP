@@ -78,12 +78,50 @@ interface RunEntry {
 }
 
 // Clean separate component for Tournament Era
-function TournamentSection({ run, getCategoryBadgeColor }: { run: RunEntry; getCategoryBadgeColor: (cat: string) => string }) {
+function TournamentSection({
+  run,
+  dayRuns,
+  selectedRunId,
+  onSelectRun,
+  getCategoryBadgeColor
+}: {
+  run: RunEntry;
+  dayRuns: RunEntry[];
+  selectedRunId: string;
+  onSelectRun: (id: string) => void;
+  getCategoryBadgeColor: (cat: string) => string;
+}) {
   const [showErrorTrace, setShowErrorTrace] = useState<boolean>(false);
   if (!run) return null;
 
   return (
     <div className="space-y-6">
+      {/* MULTI-RUN SELECTOR TABS FOR TOURNAMENT ERA */}
+      {dayRuns.length > 1 && (
+        <div className="flex flex-wrap items-center gap-2 bg-[#0b0f19] p-3 rounded-xl border border-[#1f2d4d]">
+          <span className="text-xs font-bold text-gray-400 uppercase mr-2">Select Run ({dayRuns.length} Runs Today):</span>
+          {dayRuns.map((r) => {
+            const isSelected = r.id === run.id;
+            return (
+              <button
+                key={r.id}
+                onClick={() => onSelectRun(r.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold font-mono transition-all flex items-center gap-2 ${
+                  isSelected
+                    ? "bg-[#00E5FF] text-black ring-2 ring-white"
+                    : "bg-[#131b2e] text-gray-300 border border-[#1f2d4d] hover:text-white"
+                }`}
+              >
+                <span>GitHub Run #{r.github_run_number}</span>
+                <span className={`px-1.5 py-0.2 rounded text-[9px] ${r.status === "SUCCESS" ? "bg-green-500/30 text-green-300" : "bg-red-500/30 text-red-300"}`}>
+                  {r.status}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       {/* WINNING SCRIPT BANNER */}
       <div className="bg-[#0b0f19] p-5 rounded-xl border border-[#1f2d4d] space-y-3">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
@@ -584,7 +622,13 @@ export default function TelemetryDashboard() {
               <span className="text-xs text-gray-400 font-bold uppercase">Select Date:</span>
               <select
                 value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                onChange={(e) => {
+                  const newDate = e.target.value;
+                  setSelectedDate(newDate);
+                  if (runsByDate[newDate]?.length > 0) {
+                    setSelectedRunId(runsByDate[newDate][0].id);
+                  }
+                }}
                 className="bg-[#0b0f19] text-white border-2 border-[#00E5FF] px-4 py-2 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#00E5FF]"
               >
                 {availableDates.map((date) => {
@@ -658,7 +702,13 @@ export default function TelemetryDashboard() {
               </div>
             </div>
           ) : (
-            <TournamentSection run={selectedRun || selectedDayRuns[0]} getCategoryBadgeColor={getCategoryBadgeColor} />
+            <TournamentSection
+              run={selectedRun || selectedDayRuns[0]}
+              dayRuns={selectedDayRuns}
+              selectedRunId={selectedRunId}
+              onSelectRun={(id) => setSelectedRunId(id)}
+              getCategoryBadgeColor={getCategoryBadgeColor}
+            />
           )}
         </div>
       )}
