@@ -1,4 +1,4 @@
-# Save as get_tiktok_token.py
+# Auth Provider A - OAuth Refresh Token Helper
 import urllib.parse
 import hashlib
 import secrets

@@ -1,4 +1,4 @@
-# Save as get_youtube_token.py
+# Auth Provider B - OAuth Refresh Token Helper
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 # Load client secrets file
