@@ -11437,5 +11437,44 @@
     "voice_actor": "am_michael (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30167341803",
+    "github_run_number": 160,
+    "github_run_id": 30167341803,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30167341803",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T17:22:18.849057Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Buildings That Heal Themselves?! #tech #shorts",
+      "text": "For centuries, buildings stood static, rigid monuments to human ingenuity... until Project Proteus. This wasn't about new materials, but a radical re-imagining of old ones \u2013 applying principles of biological self-organization to infrastructure. We unlocked a way for structures to dynamically adapt, constantly optimizing for energy efficiency, security, and even environmental changes. Imagine cityscapes that subtly shift, roads that heal themselves, bridges that redistribute stress in real-time based on traffic flow. This 'living architecture' wasn't just a concept; it was a physical manifestation of coherence and fast growth, enhancing the human experience in ways previously thought impossible. It redefined what it meant to build, turning passive construction into an active, responsive entity... and that's how dynamic infrastructure began rewriting the rules of our physical world, constantly adapting."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/iD4XGw5-pAs",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Project Proteus",
+      "Self-Healing Roads",
+      "Adaptive Architecture",
+      "Dynamic Infrastructure",
+      "Biomimicry Structures",
+      "Resilient Cities"
+    ],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
