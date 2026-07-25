@@ -205,14 +205,14 @@ def run_maintenance_sync():
             entry["error_traceback"] = "Video automatically detected as removed via oEmbed audit."
             updated_count += 1
 
-    if updated_count > 0:
+    if added_runs_count > 0 or updated_count > 0:
         with open(LOGS_FILE, "w", encoding="utf-8") as f:
             json.dump(history, f, indent=2)
         dash_data = Path("dashboard/app/data/run_history.json")
         dash_data.parent.mkdir(parents=True, exist_ok=True)
         with open(dash_data, "w", encoding="utf-8") as f:
             json.dump(history, f, indent=2)
-        print(f"SUCCESS: Auto-synced {updated_count} removed video entries in {LOGS_FILE} and {dash_data}!")
+        print(f"SUCCESS: Persisted {added_runs_count} missing runs & {updated_count} video status updates to {LOGS_FILE} and {dash_data}!")
 
     # Synchronize past_topics.json by removing topics of deleted videos (unless another live video shares the topic)
     past_topics_file = Path("past_topics.json")
