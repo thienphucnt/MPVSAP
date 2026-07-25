@@ -3,8 +3,45 @@ import re
 import sys
 import time
 import random
+import difflib
 from pathlib import Path
 from google import genai
+
+
+def apply_unified_diff(original_lines, diff_text):
+    """Apply a unified diff to a list of lines, returning the patched lines."""
+    patched = list(original_lines)
+    hunk_pattern = re.compile(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@', re.MULTILINE)
+    diff_lines = diff_text.splitlines()
+
+    if not list(hunk_pattern.finditer(diff_text)):
+        return None  # Not a valid diff
+
+    changes = []
+    i = 0
+    while i < len(diff_lines):
+        line = diff_lines[i]
+        m = hunk_pattern.match(line)
+        if m:
+            src_start = int(m.group(1)) - 1
+            src_len = int(m.group(2) if m.group(2) else "1")
+            added = []
+            i += 1
+            while i < len(diff_lines) and not diff_lines[i].startswith('@@'):
+                dl = diff_lines[i]
+                if dl.startswith('+'):
+                    added.append(dl[1:] + '\n')
+                i += 1
+            changes.append((src_start, src_len, added))
+        else:
+            i += 1
+
+    # Apply changes in reverse order to preserve line numbers
+    for src_start, src_len, added in reversed(changes):
+        patched[src_start:src_start + src_len] = added
+
+    return patched
+
 
 def main():
     print("Starting AI Self-Healing Diagnostic script...")
@@ -27,8 +64,12 @@ def main():
     # Read log and code content
     log_content = log_path.read_text(encoding="utf-8", errors="ignore")
     code_content = code_path.read_text(encoding="utf-8", errors="ignore")
+    original_line_count = len(code_content.splitlines())
+    # Safety guard: never accept a file with fewer than 90% of original lines or fewer than 2800
+    MIN_ACCEPTABLE_LINES = max(2800, int(original_line_count * 0.90))
+    print(f"Original main.py: {original_line_count} lines. Min acceptable after fix: {MIN_ACCEPTABLE_LINES} lines.")
 
-    # Clean log output slightly to keep it compact (take last 200 lines if too long)
+    # Trim log to last 200 lines to keep prompts compact
     log_lines = log_content.splitlines()
     if len(log_lines) > 200:
         log_content = "\n".join(log_lines[-200:])
@@ -37,33 +78,37 @@ def main():
     client = genai.Client(api_key=api_key)
 
     prompt = (
-        "You are an expert self-healing software engineer in charge of fixing an automated short-form video generation pipeline.\n\n"
-        "Here is the source code of the pipeline ('main.py'):\n"
-        "==================================================\n"
-        f"{code_content}\n"
-        "==================================================\n\n"
-        "Here is the console output/logs of the failed workflow run ('failed_logs.txt'):\n"
+        "You are an expert self-healing software engineer fixing a failing automated video pipeline.\n\n"
+        "Here is the FAILED run log (last 200 lines):\n"
         "==================================================\n"
         f"{log_content}\n"
         "==================================================\n\n"
         "Instructions:\n"
-        "1. Analyze the logs to determine the cause of the failure.\n"
+        "1. Analyze the logs to determine the EXACT cause of the failure.\n"
         "2. Classify the error into one of two statuses:\n"
-        "   - 'STATUS: TRANSIENT' - The failure was caused by a temporary network timeout, a 503 Service Unavailable, a 429 Rate Limit, a temporary third-party API outage, or any issue that does not require code changes to fix. In this case, do NOT provide any code.\n"
-        "   - 'STATUS: FIXED' - The failure was caused by a syntax error, logic bug, type error, import error, or something that CAN and SHOULD be fixed by modifying the Python source code. You must provide the entire, fully corrected 'main.py' file inside a single python markdown block (```python ... ```).\n"
-        "3. Keep all comments, existing robust functions, API timeouts, retry loops, and typewriter styles intact unless they are the direct cause of the bug.\n"
-        "4. Your output must follow this format:\n\n"
+        "   - 'STATUS: TRANSIENT' - The failure was caused by a temporary network timeout, a 503 "
+        "Service Unavailable, a 429 Rate Limit, a temporary third-party API outage, or any issue "
+        "that does not require code changes to fix. In this case, do NOT provide any code.\n"
+        "   - 'STATUS: FIXED' - The failure was caused by a code bug. You MUST output ONLY a "
+        "minimal unified diff patch targeting the specific lines that need changing. Do NOT output "
+        "the entire file. Outputting the full file causes catastrophic truncation.\n"
+        "3. The diff must be in standard unified diff format:\n"
+        "   --- a/main.py\n"
+        "   +++ b/main.py\n"
+        "   @@ -LINE,COUNT +LINE,COUNT @@\n"
+        "   -removed lines\n"
+        "   +added lines\n"
+        "4. Output format:\n\n"
         "STATUS: <TRANSIENT or FIXED>\n"
-        "EXPLANATION: <Short explanation of what went wrong and how you solved it (or if it's transient)>\n"
-        "CODE:\n"
-        "```python\n"
-        "# (Include the entire corrected main.py code here, only if STATUS is FIXED)\n"
+        "EXPLANATION: <Short explanation of what went wrong and how you solved it>\n"
+        "DIFF:\n"
+        "```diff\n"
+        "# Include ONLY if STATUS is FIXED. Minimal targeted diff only.\n"
         "```"
     )
 
     print("Sending diagnosis request to Gemini...")
-    
-    # Robust fallback model chain for diagnostic run
+
     model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
     max_retries = 3
     response = None
@@ -119,21 +164,54 @@ def main():
     print(f"Explanation: {explanation}")
 
     if status == "FIXED":
-        # Extract code block
-        code_block_match = re.search(r'```python\s*(.*?)\s*```', analysis, re.DOTALL | re.IGNORECASE)
-        if not code_block_match:
-            print("Error: STATUS was FIXED but no python code block (```python ... ```) was found in Gemini's response.")
-            sys.exit(1)
+        diff_block_match = re.search(r'```diff\s*(.*?)\s*```', analysis, re.DOTALL | re.IGNORECASE)
+        python_block_match = re.search(r'```python\s*(.*?)\s*```', analysis, re.DOTALL | re.IGNORECASE)
 
-        fixed_code = code_block_match.group(1).strip()
-        if len(fixed_code) < 100:
-            print("Error: The generated code block is too short to be the full main.py. Aborting safety overwrite.")
-            sys.exit(1)
+        if diff_block_match:
+            # Preferred path: apply minimal diff patch
+            diff_text = diff_block_match.group(1).strip()
+            original_lines = code_content.splitlines(keepends=True)
+            patched = apply_unified_diff(original_lines, diff_text)
 
-        # Overwrite main.py
-        code_path.write_text(fixed_code, encoding="utf-8")
-        print("Successfully overwrote 'main.py' with the code fix.")
-        sys.exit(0) # Exit code 0 to indicate a successful fix/transient handle
+            if patched is None:
+                print("SAFETY ABORT: Diff parsing failed (no valid @@ hunks found). No changes applied.")
+                sys.exit(0)
+
+            patched_line_count = len(patched)
+            if patched_line_count < MIN_ACCEPTABLE_LINES:
+                print(
+                    f"SAFETY ABORT: Diff application resulted in only {patched_line_count} lines "
+                    f"(minimum required: {MIN_ACCEPTABLE_LINES}). Refusing to apply patch."
+                )
+                sys.exit(0)
+
+            code_path.write_text("".join(patched), encoding="utf-8")
+            print(f"Applied diff patch to main.py. New line count: {patched_line_count}")
+            sys.exit(0)
+
+        elif python_block_match:
+            # Legacy full-file mode — strict safety guard
+            fixed_code = python_block_match.group(1).strip()
+            fixed_line_count = len(fixed_code.splitlines())
+            print(f"WARNING: Gemini returned a full python code block ({fixed_line_count} lines).")
+
+            if fixed_line_count < MIN_ACCEPTABLE_LINES:
+                print(
+                    f"SAFETY ABORT: Generated code has only {fixed_line_count} lines "
+                    f"(minimum required: {MIN_ACCEPTABLE_LINES}). "
+                    "This is almost certainly a truncated/incomplete file. Refusing to overwrite main.py. "
+                    "Manual investigation required."
+                )
+                # Exit 0 so self-healer does not endlessly re-trigger
+                sys.exit(0)
+
+            code_path.write_text(fixed_code, encoding="utf-8")
+            print(f"Overwrote main.py with Gemini-provided full code ({fixed_line_count} lines).")
+            sys.exit(0)
+
+        else:
+            print("Error: STATUS was FIXED but no ```diff or ```python code block found in Gemini response.")
+            sys.exit(1)
 
     elif status == "TRANSIENT":
         print("No code changes needed. Transient error handled successfully.")
@@ -142,6 +220,7 @@ def main():
     else:
         print(f"Error: Unknown status '{status}' returned by Gemini.")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
