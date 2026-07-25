@@ -38,10 +38,15 @@ def run_maintenance_sync():
 
     print(f"Auditing {len(video_entries)} videos from telemetry logs via public oEmbed API...")
     updated_count = 0
+    live_vids = set()
+    removed_vids = set()
 
     for vid, entry in video_entries:
         is_live = check_video_live_oembed(vid)
-        if not is_live:
+        if is_live:
+            live_vids.add(vid)
+        else:
+            removed_vids.add(vid)
             r_num = entry.get("github_run_number")
             print(f"--> [MAINTENANCE SYNC] Video ID '{vid}' (Run #{r_num}) was removed! Auto-updating status to FAILED...")
             entry["status"] = "FAILED"
@@ -58,7 +63,39 @@ def run_maintenance_sync():
         with open(dash_data, "w", encoding="utf-8") as f:
             json.dump(history, f, indent=2)
         print(f"SUCCESS: Auto-synced {updated_count} removed video entries in {LOGS_FILE} and {dash_data}!")
-    else:
+
+    # Synchronize past_topics.json by removing topics of deleted videos (unless another live video shares the topic)
+    past_topics_file = Path("past_topics.json")
+    if past_topics_file.exists():
+        with open(past_topics_file, "r", encoding="utf-8") as f:
+            past_topics = json.load(f)
+
+        new_past_topics = []
+        removed_topics_count = 0
+        for pt in past_topics:
+            pt_vid = pt.get("youtube_video_id")
+            if pt_vid in removed_vids:
+                pt_topic = (pt.get("topic") or "").lower().strip()
+                pt_title = (pt.get("title") or "").lower().strip()
+
+                has_live_duplicate = any(
+                    (other.get("youtube_video_id") in live_vids) and
+                    ((other.get("topic") or "").lower().strip() == pt_topic or (other.get("title") or "").lower().strip() == pt_title)
+                    for other in past_topics if other != pt
+                )
+
+                if not has_live_duplicate:
+                    print(f"--> [MAINTENANCE SYNC] Removing topic '{pt.get('topic')}' (Video ID: {pt_vid}) from past_topics.json")
+                    removed_topics_count += 1
+                    continue
+            new_past_topics.append(pt)
+
+        if removed_topics_count > 0:
+            with open(past_topics_file, "w", encoding="utf-8") as f:
+                json.dump(new_past_topics, f, indent=2)
+            print(f"SUCCESS: Auto-purged {removed_topics_count} topics of deleted videos from past_topics.json!")
+
+    if updated_count == 0 and removed_topics_count == 0 if 'removed_topics_count' in locals() else True:
         print("All recorded videos are live and verified!")
 
 if __name__ == "__main__":
