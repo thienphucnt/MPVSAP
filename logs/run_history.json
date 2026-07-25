@@ -11476,5 +11476,44 @@
     "voice_actor": "am_michael (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30168453002",
+    "github_run_number": 161,
+    "github_run_id": 30168453002,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30168453002",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T17:55:56.938198Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Shadow Track Beneath New York #tech #shorts",
+      "text": "a ghostly third track lies completely abandoned beneath Manhattan. When the 103rd Street subway station opened in October 1904, engineers built two active platforms\u2014and a mysterious center line. For over a century, trains filled with passengers pass right by it... yet no public train ever stops there. Rumors swirled about secret military transports and hidden escape routes for elite officials\u2014but the truth is even stranger. Built during the rapid transit boom of 1900, this center track was designed for express bypasses that were suddenly canceled... leaving a dark, empty void frozen in time. The ornate mosaic tiles and shadowy tunnels remain intact... guarded by complete silence while the city above roars on. Millions ride the subway, yet... deep beneath 103rd Street, commuters never notice that..."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/S0nAD66H-5M",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "103rd Street Station",
+      "New York City Subway",
+      "underground transit tunnel",
+      "vintage subway tiles",
+      "dark empty railway track",
+      "Interborough Rapid Transit"
+    ],
+    "voice_actor": "en-US-BrianNeural (Edge-TTS Fallback)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
