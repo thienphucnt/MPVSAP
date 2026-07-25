@@ -172,19 +172,44 @@ WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
 
 def get_or_create_cta_asset() -> str:
-    """Ensure a transparent CTA subscribe prompt asset exists in assets/cta_subscribe.png."""
+    """Ensure a high-resolution transparent CTA subscribe prompt asset exists in assets/cta_subscribe.png."""
     assets_dir = Path("assets")
     assets_dir.mkdir(exist_ok=True)
     cta_path = assets_dir / "cta_subscribe.png"
-    if not cta_path.exists():
+
+    # Re-generate if missing or if file size is small / corrupted
+    if not cta_path.exists() or cta_path.stat().st_size < 3000:
         try:
             from PIL import Image, ImageDraw, ImageFont
-            img = Image.new("RGBA", (450, 110), (0, 0, 0, 0))
+            w, h = 700, 140
+            img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
             draw = ImageDraw.Draw(img)
-            draw.rounded_rectangle([5, 5, 445, 105], radius=20, fill=(220, 20, 60, 225), outline=(255, 255, 255, 255), width=3)
-            font = ImageFont.load_default()
-            draw.text((225, 55), "???? SUBSCRIBE FOR MORE", fill=(255, 255, 255, 255), anchor="mm", font=font)
+
+            # Draw a sleek crimson red rounded pill with crisp white border
+            draw.rounded_rectangle([6, 6, w - 6, h - 6], radius=35, fill=(230, 0, 35, 235), outline=(255, 255, 255, 255), width=5)
+
+            # Try loading bold system fonts for ultra-crisp text rendering
+            font = None
+            font_candidates = [
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+                "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+                "C:\\Windows\\Fonts\\arialbd.ttf",
+                "C:\\Windows\\Fonts\\arial.ttf",
+                "C:\\Windows\\Fonts\\seguiemj.ttf"
+            ]
+            for font_file in font_candidates:
+                if os.path.exists(font_file):
+                    try:
+                        font = ImageFont.truetype(font_file, 40)
+                        break
+                    except Exception:
+                        pass
+            if font is None:
+                font = ImageFont.load_default()
+
+            draw.text((w // 2, h // 2), "SUBSCRIBE FOR MORE", fill=(255, 255, 255, 255), anchor="mm", font=font)
             img.save(cta_path)
+            print(f"Generated high-resolution CTA asset: {cta_path}")
         except Exception as e:
             print("Failed to generate PIL CTA asset:", e)
     return str(cta_path.resolve())
@@ -358,21 +383,41 @@ def send_webhook_notification(title: str, message: str, status: str = "success",
 
 
 def sanitize_metadata(title: str, description: str, is_short: bool, category: str) -> Tuple[str, str]:
-    """Enforce strict title limit (< 50 chars) and max 3 relevant hashtags to avoid spam penalties."""
+    """Enforce strict title limit (< 70 chars with hashtags) and 5 relevant description hashtags."""
     clean_title = re.sub(r'#\S+', '', title)
     clean_title = re.sub(r'\s+', ' ', clean_title).strip()
 
-    # Enforce strict 50-character limit
-    if len(clean_title) > 50:
-        clean_title = clean_title[:47].rstrip() + "..."
+    cat_info = CATEGORIES.get(category, {})
+    db_key = cat_info.get("db_key", "space")
+
+    title_hashtags_map = {
+        "space": "#space #shorts",
+        "history": "#history #shorts",
+        "tech": "#tech #shorts"
+    }
+    title_tag = title_hashtags_map.get(db_key, "#shorts")
+
+    if is_short and title_tag not in clean_title:
+        max_base_len = 70 - len(title_tag) - 1
+        if len(clean_title) > max_base_len:
+            clean_title = clean_title[:max_base_len - 3].rstrip() + "..."
+        final_title = f"{clean_title} {title_tag}"
+    else:
+        if len(clean_title) > 65:
+            clean_title = clean_title[:62].rstrip() + "..."
+        final_title = clean_title
 
     # Parse and format description hashtags
     hashtags = re.findall(r'#\w+', description)
     clean_desc = re.sub(r'#\w+', '', description)
     clean_desc = re.sub(r'\s+', ' ', clean_desc).strip()
 
-    cat_tag = f"#{re.sub(r'[^a-zA-Z0-9]', '', category.title())}"
-    default_tags = ["#Shorts" if is_short else "#Documentary", cat_tag, "#NicheFacts"]
+    desc_hashtags_map = {
+        "space": ["#shorts", "#nichefacts", "#space", "#astrophysics", "#facts"],
+        "history": ["#shorts", "#nichefacts", "#history", "#historyfacts", "#untoldstories"],
+        "tech": ["#shorts", "#nichefacts", "#tech", "#technology", "#science"]
+    }
+    default_tags = desc_hashtags_map.get(db_key, ["#shorts", "#nichefacts", "#facts"])
 
     valid_tags = []
     for tag in hashtags:
@@ -380,13 +425,13 @@ def sanitize_metadata(title: str, description: str, is_short: bool, category: st
             valid_tags.append(tag)
 
     for def_tag in default_tags:
-        if len(valid_tags) < 3 and def_tag.lower() not in [t.lower() for t in valid_tags]:
+        if len(valid_tags) < 5 and def_tag.lower() not in [t.lower() for t in valid_tags]:
             valid_tags.append(def_tag)
 
-    final_hashtags = valid_tags[:3]
+    final_hashtags = valid_tags[:5]
     final_description = f"{clean_desc}\n\n" + " ".join(final_hashtags)
 
-    return clean_title, final_description
+    return final_title, final_description
 
 
 
@@ -1799,31 +1844,39 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     audio_clip = AudioFileClip(audio_path)
     audio_duration = audio_clip.duration
 
-    # --- Build multi-clip background with Ken Burns zoom effect & Visual Loop Synchronization ---
-    num_clips = len(video_paths)
-    if config.is_short and num_clips >= 3:
-        # Append opening visual asset (video_paths[0]) at the end for 100% seamless visual loop
-        video_paths_to_use = list(video_paths) + [video_paths[0]]
-    else:
-        video_paths_to_use = list(video_paths)
-
-    num_assets = len(video_paths_to_use)
-    per_clip_duration = audio_duration / float(num_assets)
-    durations = [per_clip_duration] * num_assets
-
+    # --- Build multi-clip background with Ken Burns zoom effect & Seamless Visual Loop Split ---
     clips = []
-    for i, v_path in enumerate(video_paths_to_use):
-        segment_duration = durations[i]
-        c = VideoFileClip(v_path).resize(newsize=config.resolution)
-        pad = 0.5
-        if c.duration < segment_duration:
-            c = loop(c, duration=segment_duration + pad)
-        else:
-            subclip_end = min(c.duration, segment_duration + pad)
-            c = c.subclip(0, subclip_end)
-        c = c.set_duration(segment_duration)
-        
-        # Apply Ken Burns zoom effect using a frame filter to keep resolution constant
+    num_clips = len(video_paths)
+
+    if config.is_short and num_clips >= 2:
+        # Seamless Visual Split Loop:
+        # Primary clip (video_paths[0]) is split into two contiguous subclips:
+        # - c_end: plays video_paths[0] from t=0 to t=split_dur at the END of the video.
+        # - c_start: plays video_paths[0] from t=split_dur onwards at the BEGINNING of the video.
+        # When YouTube Shorts loops back from the end to the start, the video frame transitions from
+        # video_paths[0](t=split_dur) to video_paths[0](t=split_dur) with ZERO jump cut!
+        c0_full = VideoFileClip(video_paths[0]).resize(newsize=config.resolution)
+        c0_dur = c0_full.duration
+
+        split_dur = min(1.5, max(0.4, c0_dur / 4.0))
+
+        # End clip: primary asset from 0 to split_dur
+        c_end_clip = c0_full.subclip(0, min(c0_dur, split_dur)).set_duration(split_dur)
+
+        # Remaining time to allocate for [c_start] + [mid_clips]
+        mid_paths = video_paths[1:]
+        rem_dur = max(1.0, audio_duration - split_dur)
+        num_seq = 1 + len(mid_paths)
+        per_seq_dur = rem_dur / float(num_seq)
+
+        # Start clip: primary asset from split_dur to split_dur + per_seq_dur
+        c_start_end_time = min(c0_dur, split_dur + per_seq_dur)
+        c_start_clip = c0_full.subclip(min(c0_dur, split_dur), c_start_end_time)
+        if c_start_clip.duration < per_seq_dur:
+            c_start_clip = loop(c_start_clip, duration=per_seq_dur + 0.5)
+        c_start_clip = c_start_clip.set_duration(per_seq_dur)
+
+        # Process start clip
         def create_zoom_filter(dur_val):
             last_valid_frame = [None]
             def zoom_filter(get_frame, t):
@@ -1860,22 +1913,35 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
                     img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
                     return np.array(img_cropped)
-                except Exception as z_err:
-                    # On zoom filter error, return the raw frame unmodified rather than black zeros
-                    try:
-                        frame = get_frame(t)
-                        if frame is not None and isinstance(frame, np.ndarray):
-                            frame = np.clip(frame, 0, 255).astype(np.uint8)
-                            img = PIL.Image.fromarray(frame)
-                            return np.array(img.resize(config.resolution, PIL.Image.BILINEAR))
-                    except Exception:
-                        pass
-                    # Absolute last resort: mid-gray (never black zeros)
+                except Exception:
                     return np.full((config.resolution[1], config.resolution[0], 3), 128, dtype=np.uint8)
             return zoom_filter
 
-        c = c.fl(create_zoom_filter(segment_duration))
-        clips.append(c)
+        clips.append(c_start_clip.fl(create_zoom_filter(per_seq_dur)))
+
+        # Process mid clips
+        for mid_path in mid_paths:
+            mc = VideoFileClip(mid_path).resize(newsize=config.resolution)
+            if mc.duration < per_seq_dur:
+                mc = loop(mc, duration=per_seq_dur + 0.5)
+            else:
+                mc = mc.subclip(0, min(mc.duration, per_seq_dur + 0.5))
+            mc = mc.set_duration(per_seq_dur)
+            clips.append(mc.fl(create_zoom_filter(per_seq_dur)))
+
+        # Process end clip
+        clips.append(c_end_clip.fl(create_zoom_filter(split_dur)))
+
+    else:
+        per_clip_duration = audio_duration / float(num_clips)
+        for i, v_path in enumerate(video_paths):
+            c = VideoFileClip(v_path).resize(newsize=config.resolution)
+            if c.duration < per_clip_duration:
+                c = loop(c, duration=per_clip_duration + 0.5)
+            else:
+                c = c.subclip(0, min(c.duration, per_clip_duration + 0.5))
+            c = c.set_duration(per_clip_duration)
+            clips.append(c)
 
     bg_clip = concatenate_videoclips(clips)
 
@@ -1929,14 +1995,14 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 print(f"Selected background music: {music_path.name}")
                 try:
                     m = AudioFileClip(str(music_path))
-                    if m.duration < audio_duration:
-                        m = audio_loop(m, duration=audio_duration)
+                    if m.duration < audio_duration + 5.0:
+                        m = audio_loop(m, duration=audio_duration + 5.0)
                     else:
                         max_start = max(0, m.duration - audio_duration - 5)
                         start_time = random.uniform(0, max_start)
                         m = m.subclip(start_time, start_time + audio_duration)
-                    
-                    music_clip = m.volumex(0.08)
+
+                    music_clip = m.volumex(0.24)
                     music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
 
                     # Mix using ffmpeg with broadcast-standard LUFS normalization (-14.0 LUFS, -1.0 dBTP)
@@ -2805,7 +2871,7 @@ def run_daily_upload_pipeline_once() -> None:
     # Append standard title hashtags only for Shorts
     if config.is_short:
         if related_long_video_id:
-            link_str = f"???? Watch full documentary: https://youtu.be/{related_long_video_id}"
+            link_str = f"Explore more stories: https://youtu.be/{related_long_video_id}"
             description = f"{link_str}\n\n{description}"
             print(f"Funnel link added to description pointing to: {related_long_video_id}")
 
