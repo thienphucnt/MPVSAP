@@ -11105,7 +11105,7 @@
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-25T06:16:47.157567Z",
     "category": "Exciting Tech Facts",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 30.0,
@@ -11115,13 +11115,9 @@
       "title": "The Face Hunter's Secret Network",
       "text": "Your face\u2026 it\u2019s already in there. Clearview AI silently collected over 20 billion images from across the internet, building a database law enforcement now taps into. Imagine\u2014a photo you uploaded years ago, now a key to your identity, used without your consent. This controversial software, born from a low profile, exploded into public view as privacy activists battled its omnipresent gaze. Lawsuits emerged, international bans followed, yet the algorithms keep matching. It\u2019s an invisible net cast wide, capturing everyone, everywhere. The line between public image and private life blurs, and the question remains... who truly owns your face in this digital era? And that chilling realization is precisely how the silent collection continues, because your face... it\u2019s already in there."
     },
-    "youtube_url": "https://www.youtube.com/shorts/PwXZEnKphfw",
-    "youtube_stats": {
-      "views": 0,
-      "likes": 0,
-      "comments": 0
-    },
-    "error_traceback": null,
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
     "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
     "music_track": "space_track_1.mp3",
     "search_keywords": [
@@ -11135,5 +11131,37 @@
     "voice_actor": "am_michael (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30151200916",
+    "github_run_number": 150,
+    "github_run_id": 30151200916,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30151200916",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T08:40:53.830227Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3004, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 2791, in run_daily_upload_pipeline_once\n    assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 2042, in assemble_video\n    verify_rendered_video_visuals(output_path)\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1731, in verify_rendered_video_visuals\n    raise e\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1722, in verify_rendered_video_visuals\n    raise RuntimeError(\nRuntimeError: Pre-Upload Visual Sanity Check FAILED: Found 8 pitch-black frames in final_output.mp4! Aborting upload to prevent publishing broken video.\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
   }
 ]
