@@ -56,32 +56,72 @@ def check_video_live_oembed(video_id: str) -> bool:
 from typing import Tuple
 
 def sync_github_cancelled_or_failed_runs(history: list) -> Tuple[list, int]:
-    """Query GitHub API to detect any cancelled or failed workflow runs missing from run_history.json."""
+    """Query GitHub API with full pagination to detect and persist any missing or status-updated workflow runs in run_history.json."""
     gh_token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     repo = os.environ.get("GITHUB_REPOSITORY") or "thienphucnt/MPVSAP"
-    url = f"https://api.github.com/repos/{repo}/actions/runs?per_page=30"
-    headers = {"User-Agent": "Mozilla/5.0"}
+    headers = {"User-Agent": "Mozilla/5.0", "Accept": "application/vnd.github.v3+json"}
     if gh_token:
         headers["Authorization"] = f"token {gh_token}"
 
-    existing_run_ids = {entry.get("github_run_id") for entry in history if entry.get("github_run_id")}
-    added_count = 0
+    existing_entries_by_run_id = {
+        entry.get("github_run_id"): entry for entry in history if entry.get("github_run_id")
+    }
+    existing_entries_by_run_num = {
+        entry.get("github_run_number"): entry for entry in history if entry.get("github_run_number")
+    }
+
+    modified_count = 0
+    page = 1
 
     try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=8) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-            for run in data.get("workflow_runs", []):
-                run_id = run.get("id")
-                conclusion = (run.get("conclusion") or "").upper()
-                status = (run.get("status") or "").upper()
+        while page <= 10:
+            url = f"https://api.github.com/repos/{repo}/actions/runs?per_page=100&page={page}"
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                runs = data.get("workflow_runs", [])
+                if not runs:
+                    break
 
-                if run_id and run_id not in existing_run_ids:
-                    if conclusion in ["CANCELLED", "FAILURE", "TIMED_OUT"] or status == "CANCELLED":
-                        final_status = "CANCELLED" if (conclusion == "CANCELLED" or status == "CANCELLED") else "FAILED"
-                        history.append({
+                for run in runs:
+                    if run.get("name") != "Daily Shorts Generator & Uploader":
+                        continue
+
+                    run_id = run.get("id")
+                    run_num = run.get("run_number")
+                    conclusion = (run.get("conclusion") or "").upper()
+                    status = (run.get("status") or "").upper()
+
+                    if conclusion == "CANCELLED" or status == "CANCELLED":
+                        final_status = "CANCELLED"
+                    elif conclusion in ["FAILURE", "TIMED_OUT"]:
+                        final_status = "FAILED"
+                    elif conclusion == "SUCCESS":
+                        final_status = "SUCCESS"
+                    else:
+                        final_status = "IN_PROGRESS"
+
+                    existing = existing_entries_by_run_id.get(run_id) or existing_entries_by_run_num.get(run_num)
+
+                    if existing:
+                        # Update status if existing entry was IN_PROGRESS or placeholder and run has completed
+                        if existing.get("status") in ["IN_PROGRESS", "RUNNING"] and final_status != "IN_PROGRESS":
+                            existing["status"] = final_status
+                            if final_status in ["FAILED", "CANCELLED"] and not existing.get("error_traceback"):
+                                existing["error_traceback"] = f"Workflow run ended as {final_status}."
+                            modified_count += 1
+                            print(f"--> [MAINTENANCE SYNC] Updated Run #{run_num} ({run_id}) status to {final_status}")
+                    else:
+                        # Create missing run entry
+                        err_msg = None
+                        if final_status == "FAILED":
+                            err_msg = "Workflow run failed during execution."
+                        elif final_status == "CANCELLED":
+                            err_msg = "Workflow run was cancelled before completion."
+
+                        new_entry = {
                             "id": f"run-{run_id}",
-                            "github_run_number": run.get("run_number"),
+                            "github_run_number": run_num,
                             "github_run_id": run_id,
                             "github_run_url": run.get("html_url"),
                             "workflow_type": "DAILY_SHORTS",
@@ -96,25 +136,31 @@ def sync_github_cancelled_or_failed_runs(history: list) -> Tuple[list, int]:
                             "winning_script": None,
                             "youtube_url": None,
                             "youtube_stats": None,
-                            "error_traceback": f"Workflow run automatically recorded as {final_status} via GitHub Actions audit.",
+                            "error_traceback": err_msg,
                             "source_url": None,
                             "music_track": None,
                             "search_keywords": [],
                             "voice_actor": "am_michael (Kokoro-82M)",
                             "visual_asset_types": "Salience-Zoomed 4K Clips",
                             "ass_subtitle_engine": "FFmpeg ASS Engine"
-                        })
-                        existing_run_ids.add(run_id)
-                        added_count += 1
-                        print(f"--> [MAINTENANCE SYNC] Auto-recorded {final_status} GitHub Run #{run.get('run_number')} ({run_id}) into telemetry logs!")
+                        }
+                        history.append(new_entry)
+                        existing_entries_by_run_id[run_id] = new_entry
+                        existing_entries_by_run_num[run_num] = new_entry
+                        modified_count += 1
+                        print(f"--> [MAINTENANCE SYNC] Recorded missing GitHub Run #{run_num} ({run_id}) [{final_status}] into telemetry logs!")
 
-        if added_count > 0:
+                if len(runs) < 100:
+                    break
+                page += 1
+
+        if modified_count > 0:
             history.sort(key=lambda x: x.get("github_run_number", 0))
 
     except Exception as e:
         print("Notice: GitHub workflow run audit skipped:", e)
 
-    return history, added_count
+    return history, modified_count
 
 def run_maintenance_sync():
     if not LOGS_FILE.exists():
