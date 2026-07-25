@@ -11343,7 +11343,7 @@
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-25T14:28:52Z",
     "category": "Space & Cosmic Mysteries",
-    "status": "IN_PROGRESS",
+    "status": "CANCELLED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 0.0,
@@ -11352,12 +11352,51 @@
     "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": null,
+    "error_traceback": "Workflow run ended as CANCELLED.",
     "source_url": null,
     "music_track": null,
     "search_keywords": [],
     "voice_actor": "am_michael (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine"
+  },
+  {
+    "id": "run-30164164198",
+    "github_run_number": 158,
+    "github_run_id": 30164164198,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30164164198",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T15:47:05.458821Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Erased Jobs. Now What? #tech #shorts",
+      "text": "The automated factories hummed, producing everything faster, cheaper, flawlessly\u2026 and humanity watched. Economists warned for decades, but the speed of AI's disruptive technologies outpaced every prediction. Entire industries evaporated overnight. Millions found themselves \"superfluous,\" a chilling term from futurists like Bill Joy, echoing across abandoned office blocks. Governments scrambled, implementing universal basic income, but the psychological toll was immense. The promise of liberation morphed into an existential crisis. Who were we, without our work? A new social order, born from radical efficiency, began to solidify, questioning the very purpose of human endeavor. And that's why the automated factories continued to hum, producing everything faster, cheaper, flawlessly\u2026"
+    },
+    "youtube_url": "https://www.youtube.com/shorts/i1adZhnKFa8",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Bill Joy",
+      "Automated Factory",
+      "Empty Office",
+      "AI Robot",
+      "Crowds Protesting",
+      "Universal Basic Income"
+    ],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
