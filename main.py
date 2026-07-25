@@ -2560,8 +2560,8 @@ def update_heartbeat_and_push() -> None:
 # YOUTUBE PLAYLIST SYNC HELPER
 # ---------------------------------------------------------------------------
 def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: str, past_topics: list) -> list:
-    """Fetch video titles from YouTube playlists and sync them into past_topics if missing."""
-    print("Syncing past topics from YouTube playlists...")
+    """Fetch video titles directly from channel's uploads playlist and sync them into past_topics if missing."""
+    print("Syncing past topics directly from YouTube channel uploads...")
     try:
         creds = Credentials(
             token=None,
@@ -2573,50 +2573,62 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
         )
         youtube = build("youtube", "v3", credentials=creds)
 
-        playlist_mapping = {
-            "space": os.environ.get("YT_PLAYLIST_SPACE"),
-            "history": os.environ.get("YT_PLAYLIST_HISTORY"),
-            "tech": os.environ.get("YT_PLAYLIST_TECH")
-        }
+        channels_response = youtube.channels().list(mine=True, part="contentDetails").execute()
+        if not channels_response.get("items"):
+            return past_topics
 
-        existing_titles = {item["title"].lower().strip() for item in past_topics}
+        uploads_playlist_id = channels_response["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+        existing_vids = {item.get("youtube_video_id") for item in past_topics if item.get("youtube_video_id")}
+        existing_titles = {item.get("title", "").lower().strip() for item in past_topics}
         new_items = []
 
-        for category, playlist_id in playlist_mapping.items():
-            if not playlist_id:
-                continue
+        next_page_token = None
+        while True:
+            res = youtube.playlistItems().list(
+                playlistId=uploads_playlist_id,
+                part="snippet",
+                maxResults=50,
+                pageToken=next_page_token
+            ).execute()
 
-            print(f"Fetching titles from playlist {playlist_id} ({category})...")
-            next_page_token = None
-            while True:
-                res = youtube.playlistItems().list(
-                    playlistId=playlist_id,
-                    part="snippet",
-                    maxResults=50,
-                    pageToken=next_page_token
-                ).execute()
+            for item in res.get("items", []):
+                snippet = item.get("snippet", {})
+                vid = snippet.get("resourceId", {}).get("videoId")
+                title = snippet.get("title", "").strip()
 
-                for item in res.get("items", []):
-                    title = item.get("snippet", {}).get("title", "").strip()
-                    if title and title.lower().strip() not in existing_titles:
-                        print(f"Found missing title from YouTube: '{title}'")
-                        new_items.append({
-                            "category": category,
-                            "title": title,
-                            "timestamp": datetime.datetime.utcnow().isoformat()
-                        })
-                        existing_titles.add(title.lower().strip())
+                if not vid or title in ["Private video", "Deleted video"]:
+                    continue
 
-                next_page_token = res.get("nextPageToken")
-                if not next_page_token:
-                    break
+                if vid not in existing_vids and title.lower().strip() not in existing_titles:
+                    title_lower = title.lower()
+                    if "#space" in title_lower or "space" in title_lower or "cosmic" in title_lower:
+                        cat = "space"
+                    elif "#history" in title_lower or "war" in title_lower or "history" in title_lower:
+                        cat = "history"
+                    else:
+                        cat = "tech"
+
+                    new_items.append({
+                        "category": cat,
+                        "title": title,
+                        "topic": title,
+                        "timestamp": snippet.get("publishedAt", datetime.datetime.utcnow().isoformat()),
+                        "youtube_video_id": vid,
+                        "is_long": False
+                    })
+                    existing_vids.add(vid)
+                    existing_titles.add(title.lower().strip())
+
+            next_page_token = res.get("nextPageToken")
+            if not next_page_token:
+                break
 
         if new_items:
             past_topics.extend(new_items)
-            print(f"Synced {len(new_items)} new past titles from YouTube.")
+            print(f"Synced {len(new_items)} new past titles directly from YouTube channel uploads.")
 
     except Exception as e:
-        print("Warning: Failed to sync past topics from YouTube playlists:", e)
+        print("Warning: Failed to sync past topics from YouTube uploads:", e)
 
     return past_topics
 
