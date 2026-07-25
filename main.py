@@ -1110,7 +1110,7 @@ def generate_content(
 # 2 & 3. TTS & SUBTITLE GENERATION (EDGE TTS ONLINE)
 # ---------------------------------------------------------------------------
 def ensure_kokoro_model_files() -> Tuple[Path, Path]:
-    """Ensure Kokoro-v1.0 ONNX model weights and voices files exist in ~/.cache/kokoro."""
+    """Ensure Kokoro-v1.0 ONNX model weights and voices files exist and are uncorrupted in ~/.cache/kokoro."""
     cache_dir = Path.home() / ".cache" / "kokoro"
     cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -1120,19 +1120,32 @@ def ensure_kokoro_model_files() -> Tuple[Path, Path]:
     model_url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx"
     voices_url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
 
-    def download_if_missing(url: str, dest: Path):
-        if not dest.exists() or dest.stat().st_size < 1000:
+    # Minimum valid file size boundaries (300 MB for model, 25 MB for voices)
+    MIN_MODEL_SIZE = 300 * 1024 * 1024
+    MIN_VOICES_SIZE = 25 * 1024 * 1024
+
+    def download_if_missing_or_corrupt(url: str, dest: Path, min_size: int):
+        if dest.exists():
+            actual_size = dest.stat().st_size
+            if actual_size < min_size:
+                print(f"Warning: Kokoro asset '{dest.name}' is corrupted or incomplete ({actual_size} bytes < {min_size} bytes). Purging and re-downloading...")
+                try: dest.unlink()
+                except Exception: pass
+
+        if not dest.exists():
             print(f"Downloading Kokoro TTS model asset '{dest.name}' from {url}...")
-            r = HTTP_SESSION.get(url, stream=True, timeout=120)
+            r = HTTP_SESSION.get(url, stream=True, timeout=180)
             r.raise_for_status()
-            with open(dest, "wb") as f:
-                for chunk in r.iter_content(chunk_size=1024*1024):
+            temp_dest = dest.with_suffix(".tmp")
+            with open(temp_dest, "wb") as f:
+                for chunk in r.iter_content(chunk_size=2*1024*1024):
                     if chunk:
                         f.write(chunk)
+            temp_dest.replace(dest)
             print(f"Downloaded '{dest.name}' ({dest.stat().st_size / 1024 / 1024:.2f} MB)")
 
-    download_if_missing(model_url, model_path)
-    download_if_missing(voices_url, voices_path)
+    download_if_missing_or_corrupt(model_url, model_path, MIN_MODEL_SIZE)
+    download_if_missing_or_corrupt(voices_url, voices_path, MIN_VOICES_SIZE)
     return model_path, voices_path
 
 
