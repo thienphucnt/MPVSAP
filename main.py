@@ -1282,7 +1282,7 @@ def search_wikimedia_image(query: str) -> Optional[str]:
     return None
 
 def download_wikimedia_image(url: str, index: int) -> Optional[str]:
-    """Download a Wikimedia image with compliant User-Agent and retry logic."""
+    """Download a Wikimedia image with compliant User-Agent and convert to valid RGB JPEG."""
     temp_path = f"temp_wiki_{index}_{os.getpid()}.jpg"
     for attempt in range(2):
         try:
@@ -1292,12 +1292,17 @@ def download_wikimedia_image(url: str, index: int) -> Optional[str]:
                 time.sleep(2.0)
                 continue
             resp.raise_for_status()
-            with open(temp_path, "wb") as f:
-                f.write(resp.content)
+
+            # Convert downloaded image (SVG/WebP/PNG/GIF/JPG) to RGB JPEG using Pillow
+            from PIL import Image
+            import io
+            img = Image.open(io.BytesIO(resp.content))
+            img = img.convert("RGB")
+            img.save(temp_path, "JPEG", quality=95)
             return temp_path
         except Exception as e:
             if attempt == 1:
-                print(f"Failed to download Wikimedia image from {url}: {e}")
+                print(f"Failed to download/convert Wikimedia image from {url}: {e}")
             if os.path.exists(temp_path):
                 try: os.remove(temp_path)
                 except Exception: pass
@@ -1894,6 +1899,10 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             preset="ultrafast",
             logger=None
         )
+
+        # Stage 1: Verify raw background video visuals BEFORE burning subtitles
+        print("\n--- STAGE 1: RAW BACKGROUND VISUAL SANITY CHECK ---")
+        verify_rendered_video_visuals(temp_no_subs)
         
         print("Burning ASS subtitles using FFmpeg...")
         cmd = [
