@@ -65,9 +65,19 @@ jobs:
 
       - name: Cache Kokoro TTS Model Weights
         uses: actions/cache@v4
+        id: kokoro-cache
         with:
           path: ~/.cache/kokoro
-          key: kokoro-onnx-v1.0-v3
+          key: kokoro-onnx-v1.0-v4
+
+      - name: Pre-Download Kokoro TTS Model Assets (if not cached)
+        if: steps.kokoro-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.cache/kokoro
+          curl -L --retry 5 --retry-delay 2 --connect-timeout 20 -o ~/.cache/kokoro/kokoro-v1.0.onnx.tmp "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx"
+          mv ~/.cache/kokoro/kokoro-v1.0.onnx.tmp ~/.cache/kokoro/kokoro-v1.0.onnx
+          curl -L --retry 5 --retry-delay 2 --connect-timeout 20 -o ~/.cache/kokoro/voices-v1.0.bin.tmp "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
+          mv ~/.cache/kokoro/voices-v1.0.bin.tmp ~/.cache/kokoro/voices-v1.0.bin
 
       - name: Run Video Pipeline & Publish
         env:
