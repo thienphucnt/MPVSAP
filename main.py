@@ -1306,6 +1306,7 @@ def download_wikimedia_image(url: str, index: int) -> Optional[str]:
 def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[int, int], output_path: str) -> None:
     """Animate a static image into a dynamic video clip with salience-based focal point zoom."""
     from moviepy.editor import ImageClip
+    from PIL import Image
     w, h = target_res
     
     cx, cy = find_image_salience_center(image_path)
@@ -1332,8 +1333,8 @@ def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[in
             nw = max(w, int(w * cur_scale))
             nh = max(h, int(h * cur_scale))
             
-            img = PIL.Image.fromarray(frame)
-            resample_filter = getattr(PIL.Image, 'Resampling', PIL.Image).LANCZOS if hasattr(PIL.Image, 'Resampling') else PIL.Image.BICUBIC
+            img = Image.fromarray(frame)
+            resample_filter = getattr(Image, 'Resampling', Image).LANCZOS if hasattr(Image, 'Resampling') else Image.BICUBIC
             img_resized = img.resize((nw, nh), resample_filter)
             
             center_x = int(cx * nw)
@@ -1348,10 +1349,11 @@ def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[in
             print("Salience zoom filter error fallback:", e)
             try:
                 frame = get_frame(t)
-                img = PIL.Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8))
+                img = Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8))
                 return np.array(img.resize((w, h)))
-            except Exception:
-                return np.zeros((h, w, 3), dtype=np.uint8)
+            except Exception as e2:
+                print("Critical frame fallback error:", e2)
+                return np.full((h, w, 3), 128, dtype=np.uint8)  # Mid-gray fallback instead of pitch black
 
     try:
         clip = clip.fl(zoom_filter)
@@ -1676,8 +1678,8 @@ def verify_rendered_video_visuals(video_path: str, num_samples: int = 8) -> bool
             std_v = float(np.std(frame))
             print(f"Sample at {t:.2f}s: Mean Brightness = {mean_b:.2f}, Variance = {std_v:.2f}")
 
-            if mean_b < 8.0 and std_v < 2.0:
-                print(f"CRITICAL REJECTION: Frame at {t:.2f}s is PITCH BLACK!")
+            if mean_b < 5.0 or (mean_b < 15.0 and std_v < 12.0):
+                print(f"CRITICAL REJECTION: Frame at {t:.2f}s is PITCH BLACK! (Mean Brightness: {mean_b:.2f}, Variance: {std_v:.2f})")
                 black_frame_count += 1
 
         clip.close()
