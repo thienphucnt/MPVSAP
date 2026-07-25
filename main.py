@@ -844,8 +844,10 @@ def generate_content(
         exclude_instruction = (
             "\n\nCRITICAL DUP-PREVENTION DIRECTIVE:\n"
             "You MUST select 100% UNUSED and NOVEL concepts. Under NO circumstances should you write about, reference, "
-            "or base scripts on any of the following subjects, titles, or concepts (or ANY of their variations, synonyms, or related angles):\n"
+            "or base scripts or any compilation segment on any of the following subjects, titles, or concepts (or ANY of their variations, synonyms, or related angles):\n"
             f"- {formatted_prohibited}\n"
+            "FOR LONG-FORM COMPILATIONS: Every single segment MUST cover a BRAND-NEW, UNCOVERED fact or story. "
+            "No segment may repeat, re-hash, or overlap with any fact, story, or concept that has ever been covered in past Shorts or past Longform videos.\n"
             "If a concept is listed above or closely related to a listed concept, it is STRICTLY PROHIBITED."
         )
 
@@ -1034,10 +1036,18 @@ def generate_content(
                 unique_segments = []
                 for seg in raw_segments:
                     topic = seg.get("topic", "").strip().lower()
+                    script = seg.get("script", "").strip()
                     topic_norm = re.sub(r"[^\w]", "", topic)
                     if not topic_norm:
                         continue
                     
+                    # 1. Check against all past published topics (Shorts & Longform)
+                    is_past_dup, past_reason = is_duplicate_topic(title, topic, script, past_topics)
+                    if is_past_dup:
+                        print(f"  [REJECTED LONGFORM SEGMENT] '{topic}': {past_reason}")
+                        continue
+
+                    # 2. Check against other segments in the current compilation batch
                     words_set = set(topic.split())
                     is_duplicate = False
                     for seen in seen_topics:
