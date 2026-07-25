@@ -48,6 +48,88 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-28937819050",
+    "github_run_number": 1,
+    "github_run_id": 28937819050,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937819050",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T11:05:09Z",
+    "category": "System Diagnostics",
+    "status": "FAILED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #1",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-bot-29385840154",
+    "github_run_number": 1,
+    "github_run_id": 29385840154,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29385840154",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-15T03:09:27Z",
+    "category": "Autonomous Bot",
+    "status": "SUCCESS",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #1",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29395652169",
+    "github_run_number": 1,
+    "github_run_id": 29395652169,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395652169",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T06:55:18Z",
+    "category": "Space Compilation",
+    "status": "FAILED",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 1",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Rendering timeout during 10-part compilation.",
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
     "id": "run-28790396608",
     "github_run_number": 2,
     "github_run_id": 28790396608,
@@ -94,6 +176,88 @@
     "global_run_number": 6,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-28937999192",
+    "github_run_number": 2,
+    "github_run_id": 28937999192,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937999192",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T11:08:24Z",
+    "category": "System Diagnostics",
+    "status": "SUCCESS",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #2",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-bot-29385940121",
+    "github_run_number": 2,
+    "github_run_id": 29385940121,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29385940121",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-15T03:11:50Z",
+    "category": "Autonomous Bot",
+    "status": "SUCCESS",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #2",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29395866483",
+    "github_run_number": 2,
+    "github_run_id": 29395866483,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395866483",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T06:59:22Z",
+    "category": "Space Compilation",
+    "status": "FAILED",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 2",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Rendering timeout during 10-part compilation.",
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
   },
   {
     "id": "run-28793625075",
@@ -148,6 +312,88 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-28938368259",
+    "github_run_number": 3,
+    "github_run_id": 28938368259,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28938368259",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T11:15:02Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #3",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-bot-29392222815",
+    "github_run_number": 3,
+    "github_run_id": 29392222815,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392222815",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-15T05:44:08Z",
+    "category": "Autonomous Bot",
+    "status": "FAILED",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #3",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Bot maintenance check failed.",
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29401443107",
+    "github_run_number": 3,
+    "github_run_id": 29401443107,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29401443107",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T08:37:14Z",
+    "category": "Space Compilation",
+    "status": "CANCELLED",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 3",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Rendering timeout during 10-part compilation.",
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
     "id": "run-28794523611",
     "github_run_number": 4,
     "github_run_id": 28794523611,
@@ -198,6 +444,88 @@
       "comments": 3
     },
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-28946377348",
+    "github_run_number": 4,
+    "github_run_id": 28946377348,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28946377348",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T13:28:50Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #4",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-bot-29392595354",
+    "github_run_number": 4,
+    "github_run_id": 29392595354,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392595354",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-15T05:52:26Z",
+    "category": "Autonomous Bot",
+    "status": "SUCCESS",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #4",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29404548453",
+    "github_run_number": 4,
+    "github_run_id": 29404548453,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29404548453",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T09:27:10Z",
+    "category": "Space Compilation",
+    "status": "FAILED",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 4",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Rendering timeout during 10-part compilation.",
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
   },
   {
     "id": "run-28795585260",
@@ -252,6 +580,88 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-28955111278",
+    "github_run_number": 5,
+    "github_run_id": 28955111278,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28955111278",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T15:34:34Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #5",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-bot-29392798830",
+    "github_run_number": 5,
+    "github_run_id": 29392798830,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392798830",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-15T05:56:54Z",
+    "category": "Autonomous Bot",
+    "status": "FAILED",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #5",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Bot maintenance check failed.",
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29405460597",
+    "github_run_number": 5,
+    "github_run_id": 29405460597,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29405460597",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T09:41:57Z",
+    "category": "Space Compilation",
+    "status": "SUCCESS",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 5",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
     "id": "run-28796674978",
     "github_run_number": 6,
     "github_run_id": 28796674978,
@@ -302,6 +712,88 @@
       "comments": 4
     },
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-28955441169",
+    "github_run_number": 6,
+    "github_run_id": 28955441169,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28955441169",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T15:39:23Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #6",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-bot-29393630109",
+    "github_run_number": 6,
+    "github_run_id": 29393630109,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29393630109",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-15T06:14:26Z",
+    "category": "Autonomous Bot",
+    "status": "FAILED",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #6",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Bot maintenance check failed.",
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29409579942",
+    "github_run_number": 6,
+    "github_run_id": 29409579942,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29409579942",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T10:51:26Z",
+    "category": "Space Compilation",
+    "status": "CANCELLED",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 6",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Rendering timeout during 10-part compilation.",
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
   },
   {
     "id": "run-28797172093",
@@ -356,6 +848,88 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-28962111108",
+    "github_run_number": 7,
+    "github_run_id": 28962111108,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28962111108",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T17:21:50Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #7",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-bot-29405823847",
+    "github_run_number": 7,
+    "github_run_id": 29405823847,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29405823847",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-15T09:47:51Z",
+    "category": "Autonomous Bot",
+    "status": "SUCCESS",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #7",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29409991068",
+    "github_run_number": 7,
+    "github_run_id": 29409991068,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29409991068",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T10:58:28Z",
+    "category": "Space Compilation",
+    "status": "SUCCESS",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 7",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
     "id": "run-28798205989",
     "github_run_number": 8,
     "github_run_id": 28798205989,
@@ -406,6 +980,88 @@
       "comments": 1
     },
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-28975209636",
+    "github_run_number": 8,
+    "github_run_id": 28975209636,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28975209636",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-08T20:57:38Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #8",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29419042729",
+    "github_run_number": 8,
+    "github_run_id": 29419042729,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29419042729",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T13:24:26Z",
+    "category": "Space Compilation",
+    "status": "SUCCESS",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 8",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
+    "id": "run-bot-29685383915",
+    "github_run_number": 8,
+    "github_run_id": 29685383915,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685383915",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-19T11:34:39Z",
+    "category": "Autonomous Bot",
+    "status": "SUCCESS",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #8",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28800227660",
@@ -460,6 +1116,88 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-28988328496",
+    "github_run_number": 9,
+    "github_run_id": 28988328496,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28988328496",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-09T01:48:14Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #9",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29423634668",
+    "github_run_number": 9,
+    "github_run_id": 29423634668,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29423634668",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T14:27:35Z",
+    "category": "Space Compilation",
+    "status": "SUCCESS",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 9",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
+    "id": "run-bot-29685679825",
+    "github_run_number": 9,
+    "github_run_id": 29685679825,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685679825",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-19T11:44:18Z",
+    "category": "Autonomous Bot",
+    "status": "FAILED",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #9",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Bot maintenance check failed.",
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28812529006",
     "github_run_number": 10,
     "github_run_id": 28812529006,
@@ -506,6 +1244,88 @@
     "global_run_number": 32,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29001848860",
+    "github_run_number": 10,
+    "github_run_id": 29001848860,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29001848860",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-09T07:32:25Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #10",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29436233674",
+    "github_run_number": 10,
+    "github_run_id": 29436233674,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436233674",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T17:22:40Z",
+    "category": "Space Compilation",
+    "status": "SUCCESS",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 10",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
+    "id": "run-bot-29685801035",
+    "github_run_number": 10,
+    "github_run_id": 29685801035,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685801035",
+    "workflow_type": "BOT_MAINTENANCE",
+    "timestamp": "2026-07-19T11:48:12Z",
+    "category": "Autonomous Bot",
+    "status": "SUCCESS",
+    "generation_mode": "BOT_MAINTENANCE",
+    "render_time_seconds": 0.8,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Autonomous Bot Check #10",
+      "text": "Verified repository heartbeat and automated dependencies."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Heartbeat Logger",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28823938461",
@@ -556,6 +1376,62 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29012784581",
+    "github_run_number": 11,
+    "github_run_id": 29012784581,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29012784581",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-09T10:48:13Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #11",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29436532617",
+    "github_run_number": 11,
+    "github_run_id": 29436532617,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436532617",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-15T17:27:02Z",
+    "category": "Space Compilation",
+    "status": "FAILED",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 11",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Rendering timeout during 10-part compilation.",
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
+  },
+  {
     "id": "run-28835864333",
     "github_run_number": 12,
     "github_run_id": 28835864333,
@@ -602,6 +1478,62 @@
     "global_run_number": 34,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29025559257",
+    "github_run_number": 12,
+    "github_run_id": 29025559257,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29025559257",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-09T14:29:09Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #12",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
+    "id": "run-longform-29671622204",
+    "github_run_number": 12,
+    "github_run_id": 29671622204,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29671622204",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-07-19T03:20:48Z",
+    "category": "Space Compilation",
+    "status": "SUCCESS",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "render_time_seconds": 185.0,
+    "lufs_target": "Broadcast LUFS (-14 LUFS)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "The Widescreen Universe: Episode 12",
+      "text": "A 10-part deep dive documentary into space physics...",
+      "hashtags": [
+        "#documentary"
+      ],
+      "color_theme": "#00E5FF"
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
+    "music_track": "documentary_ambient.mp3",
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
   },
   {
     "id": "run-28849153840",
@@ -652,6 +1584,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29038377969",
+    "github_run_number": 13,
+    "github_run_id": 29038377969,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29038377969",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-09T17:48:52Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #13",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28860206757",
     "github_run_number": 14,
     "github_run_id": 28860206757,
@@ -698,6 +1656,32 @@
     "global_run_number": 36,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29050650330",
+    "github_run_number": 14,
+    "github_run_id": 29050650330,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29050650330",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-09T21:13:27Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #14",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28872186978",
@@ -748,6 +1732,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29062646011",
+    "github_run_number": 15,
+    "github_run_id": 29062646011,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29062646011",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-10T01:33:34Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #15",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28876969470",
     "github_run_number": 16,
     "github_run_id": 28876969470,
@@ -794,6 +1804,32 @@
     "global_run_number": 38,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29076801655",
+    "github_run_number": 16,
+    "github_run_id": 29076801655,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29076801655",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-10T07:28:49Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #16",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28877210996",
@@ -848,6 +1884,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29087360271",
+    "github_run_number": 17,
+    "github_run_id": 29087360271,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29087360271",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-10T10:46:13Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #17",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28887001519",
     "github_run_number": 18,
     "github_run_id": 28887001519,
@@ -900,6 +1962,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29097902883",
+    "github_run_number": 18,
+    "github_run_id": 29097902883,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29097902883",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-10T13:56:08Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #18",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28899100595",
     "github_run_number": 19,
     "github_run_id": 28899100595,
@@ -946,6 +2034,32 @@
     "global_run_number": 41,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29111972363",
+    "github_run_number": 19,
+    "github_run_id": 29111972363,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29111972363",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-10T17:43:11Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #19",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28909332492",
@@ -1000,6 +2114,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29123390500",
+    "github_run_number": 20,
+    "github_run_id": 29123390500,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29123390500",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-10T21:01:34Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #20",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28909967264",
     "github_run_number": 21,
     "github_run_id": 28909967264,
@@ -1050,6 +2190,32 @@
       "comments": 2
     },
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29134611879",
+    "github_run_number": 21,
+    "github_run_id": 29134611879,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29134611879",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-11T01:26:03Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #21",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28910580345",
@@ -1104,6 +2270,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29142352040",
+    "github_run_number": 22,
+    "github_run_id": 29142352040,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29142352040",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-11T06:09:04Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #22",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28910743367",
     "github_run_number": 23,
     "github_run_id": 28910743367,
@@ -1154,6 +2346,32 @@
       "comments": 4
     },
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29147497785",
+    "github_run_number": 23,
+    "github_run_id": 29147497785,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29147497785",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-11T09:17:56Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #23",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28922043393",
@@ -1208,6 +2426,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29153356759",
+    "github_run_number": 24,
+    "github_run_id": 29153356759,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29153356759",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-11T12:52:09Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #24",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28934404400",
     "github_run_number": 25,
     "github_run_id": 28934404400,
@@ -1254,6 +2498,32 @@
     "global_run_number": 47,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
+  },
+  {
+    "id": "run-heal-29160312788",
+    "github_run_number": 25,
+    "github_run_id": 29160312788,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29160312788",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-11T16:43:39Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #25",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-28937763245",
@@ -1304,25 +2574,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28937819050",
-    "github_run_number": 1,
-    "github_run_id": 28937819050,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937819050",
+    "id": "run-heal-29167466884",
+    "github_run_number": 26,
+    "github_run_id": 29167466884,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29167466884",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T11:05:09Z",
+    "timestamp": "2026-07-11T20:40:59Z",
     "category": "System Diagnostics",
-    "status": "FAILED",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #1",
+      "title": "AI Self-Healing Check #26",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
+    "error_traceback": null,
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -1378,20 +2648,20 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28937999192",
-    "github_run_number": 2,
-    "github_run_id": 28937999192,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28937999192",
+    "id": "run-heal-29175303593",
+    "github_run_number": 27,
+    "github_run_id": 29175303593,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29175303593",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T11:08:24Z",
+    "timestamp": "2026-07-12T01:28:30Z",
     "category": "System Diagnostics",
-    "status": "SUCCESS",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #2",
+      "title": "AI Self-Healing Check #27",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -1452,6 +2722,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29182705587",
+    "github_run_number": 28,
+    "github_run_id": 29182705587,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29182705587",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-12T06:28:29Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #28",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-28938137032",
     "github_run_number": 29,
     "github_run_id": 28938137032,
@@ -1504,12 +2800,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28938368259",
-    "github_run_number": 3,
-    "github_run_id": 28938368259,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28938368259",
+    "id": "run-heal-29188010671",
+    "github_run_number": 29,
+    "github_run_id": 29188010671,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29188010671",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T11:15:02Z",
+    "timestamp": "2026-07-12T09:45:33Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -1517,7 +2813,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #3",
+      "title": "AI Self-Healing Check #29",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -1582,12 +2878,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28946377348",
-    "github_run_number": 4,
-    "github_run_id": 28946377348,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28946377348",
+    "id": "run-heal-29193444905",
+    "github_run_number": 30,
+    "github_run_id": 29193444905,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29193444905",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T13:28:50Z",
+    "timestamp": "2026-07-12T12:54:14Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -1595,7 +2891,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #4",
+      "title": "AI Self-Healing Check #30",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -1656,12 +2952,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28955111278",
-    "github_run_number": 5,
-    "github_run_id": 28955111278,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28955111278",
+    "id": "run-heal-29200741739",
+    "github_run_number": 31,
+    "github_run_id": 29200741739,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29200741739",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T15:34:34Z",
+    "timestamp": "2026-07-12T16:46:16Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -1669,7 +2965,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #5",
+      "title": "AI Self-Healing Check #31",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -1734,12 +3030,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28955441169",
-    "github_run_number": 6,
-    "github_run_id": 28955441169,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28955441169",
+    "id": "run-heal-29208092135",
+    "github_run_number": 32,
+    "github_run_id": 29208092135,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29208092135",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T15:39:23Z",
+    "timestamp": "2026-07-12T20:37:46Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -1747,7 +3043,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #6",
+      "title": "AI Self-Healing Check #32",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -1812,12 +3108,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28962111108",
-    "github_run_number": 7,
-    "github_run_id": 28962111108,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28962111108",
+    "id": "run-heal-29217498753",
+    "github_run_number": 33,
+    "github_run_id": 29217498753,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29217498753",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T17:21:50Z",
+    "timestamp": "2026-07-13T01:29:09Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -1825,7 +3121,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #7",
+      "title": "AI Self-Healing Check #33",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -1890,12 +3186,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28975209636",
-    "github_run_number": 8,
-    "github_run_id": 28975209636,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28975209636",
+    "id": "run-heal-29218519693",
+    "github_run_number": 34,
+    "github_run_id": 29218519693,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218519693",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-08T20:57:38Z",
+    "timestamp": "2026-07-13T01:58:40Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -1903,7 +3199,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #8",
+      "title": "AI Self-Healing Check #34",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -1968,12 +3264,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-28988328496",
-    "github_run_number": 9,
-    "github_run_id": 28988328496,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28988328496",
+    "id": "run-heal-29218948730",
+    "github_run_number": 35,
+    "github_run_id": 29218948730,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218948730",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-09T01:48:14Z",
+    "timestamp": "2026-07-13T02:10:17Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -1981,7 +3277,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #9",
+      "title": "AI Self-Healing Check #35",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2046,12 +3342,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29001848860",
-    "github_run_number": 10,
-    "github_run_id": 29001848860,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29001848860",
+    "id": "run-heal-29219523778",
+    "github_run_number": 36,
+    "github_run_id": 29219523778,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29219523778",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-09T07:32:25Z",
+    "timestamp": "2026-07-13T02:26:32Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2059,7 +3355,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #10",
+      "title": "AI Self-Healing Check #36",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2124,12 +3420,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29012784581",
-    "github_run_number": 11,
-    "github_run_id": 29012784581,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29012784581",
+    "id": "run-heal-29223899324",
+    "github_run_number": 37,
+    "github_run_id": 29223899324,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29223899324",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-09T10:48:13Z",
+    "timestamp": "2026-07-13T04:25:06Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2137,7 +3433,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #11",
+      "title": "AI Self-Healing Check #37",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2202,12 +3498,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29025559257",
-    "github_run_number": 12,
-    "github_run_id": 29025559257,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29025559257",
+    "id": "run-heal-29226732804",
+    "github_run_number": 38,
+    "github_run_id": 29226732804,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29226732804",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-09T14:29:09Z",
+    "timestamp": "2026-07-13T05:36:38Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2215,7 +3511,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #12",
+      "title": "AI Self-Healing Check #38",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2280,12 +3576,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29038377969",
-    "github_run_number": 13,
-    "github_run_id": 29038377969,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29038377969",
+    "id": "run-heal-29227188104",
+    "github_run_number": 39,
+    "github_run_id": 29227188104,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227188104",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-09T17:48:52Z",
+    "timestamp": "2026-07-13T05:47:38Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2293,7 +3589,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #13",
+      "title": "AI Self-Healing Check #39",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2358,12 +3654,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29050650330",
-    "github_run_number": 14,
-    "github_run_id": 29050650330,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29050650330",
+    "id": "run-heal-29227458732",
+    "github_run_number": 40,
+    "github_run_id": 29227458732,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227458732",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-09T21:13:27Z",
+    "timestamp": "2026-07-13T05:54:07Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2371,7 +3667,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #14",
+      "title": "AI Self-Healing Check #40",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2432,12 +3728,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29062646011",
-    "github_run_number": 15,
-    "github_run_id": 29062646011,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29062646011",
+    "id": "run-heal-29227772534",
+    "github_run_number": 41,
+    "github_run_id": 29227772534,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227772534",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-10T01:33:34Z",
+    "timestamp": "2026-07-13T06:01:25Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2445,7 +3741,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #15",
+      "title": "AI Self-Healing Check #41",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2506,25 +3802,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29076801655",
-    "github_run_number": 16,
-    "github_run_id": 29076801655,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29076801655",
+    "id": "run-heal-29228051762",
+    "github_run_number": 42,
+    "github_run_id": 29228051762,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228051762",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-10T07:28:49Z",
+    "timestamp": "2026-07-13T06:07:24Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "FAILED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #16",
+      "title": "AI Self-Healing Check #42",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": null,
+    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -2580,20 +3876,20 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29087360271",
-    "github_run_number": 17,
-    "github_run_id": 29087360271,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29087360271",
+    "id": "run-heal-29228722408",
+    "github_run_number": 43,
+    "github_run_id": 29228722408,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228722408",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-10T10:46:13Z",
+    "timestamp": "2026-07-13T06:20:48Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "SUCCESS",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #17",
+      "title": "AI Self-Healing Check #43",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2654,12 +3950,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29097902883",
-    "github_run_number": 18,
-    "github_run_id": 29097902883,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29097902883",
+    "id": "run-heal-29230798028",
+    "github_run_number": 44,
+    "github_run_id": 29230798028,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29230798028",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-10T13:56:08Z",
+    "timestamp": "2026-07-13T07:03:12Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2667,7 +3963,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #18",
+      "title": "AI Self-Healing Check #44",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2732,12 +4028,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29111972363",
-    "github_run_number": 19,
-    "github_run_id": 29111972363,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29111972363",
+    "id": "run-heal-29232897371",
+    "github_run_number": 45,
+    "github_run_id": 29232897371,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29232897371",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-10T17:43:11Z",
+    "timestamp": "2026-07-13T07:41:40Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2745,7 +4041,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #19",
+      "title": "AI Self-Healing Check #45",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2806,12 +4102,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29123390500",
-    "github_run_number": 20,
-    "github_run_id": 29123390500,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29123390500",
+    "id": "run-heal-29233925716",
+    "github_run_number": 46,
+    "github_run_id": 29233925716,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29233925716",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-10T21:01:34Z",
+    "timestamp": "2026-07-13T08:00:38Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -2819,7 +4115,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #20",
+      "title": "AI Self-Healing Check #46",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -2884,25 +4180,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29134611879",
-    "github_run_number": 21,
-    "github_run_id": 29134611879,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29134611879",
+    "id": "run-heal-29234028550",
+    "github_run_number": 47,
+    "github_run_id": 29234028550,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234028550",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-11T01:26:03Z",
+    "timestamp": "2026-07-13T08:02:27Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "FAILED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #21",
+      "title": "AI Self-Healing Check #47",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": null,
+    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -2962,20 +4258,20 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29142352040",
-    "github_run_number": 22,
-    "github_run_id": 29142352040,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29142352040",
+    "id": "run-heal-29234219130",
+    "github_run_number": 48,
+    "github_run_id": 29234219130,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234219130",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-11T06:09:04Z",
+    "timestamp": "2026-07-13T08:05:47Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "SUCCESS",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #22",
+      "title": "AI Self-Healing Check #48",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3040,25 +4336,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29147497785",
-    "github_run_number": 23,
-    "github_run_id": 29147497785,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29147497785",
+    "id": "run-heal-29234492044",
+    "github_run_number": 49,
+    "github_run_id": 29234492044,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234492044",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-11T09:17:56Z",
+    "timestamp": "2026-07-13T08:10:29Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "FAILED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #23",
+      "title": "AI Self-Healing Check #49",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": null,
+    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -3118,25 +4414,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29153356759",
-    "github_run_number": 24,
-    "github_run_id": 29153356759,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29153356759",
+    "id": "run-heal-29234658033",
+    "github_run_number": 50,
+    "github_run_id": 29234658033,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234658033",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-11T12:52:09Z",
+    "timestamp": "2026-07-13T08:13:12Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "FAILED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #24",
+      "title": "AI Self-Healing Check #50",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": null,
+    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -3196,12 +4492,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29160312788",
-    "github_run_number": 25,
-    "github_run_id": 29160312788,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29160312788",
+    "id": "run-heal-29235010373",
+    "github_run_number": 51,
+    "github_run_id": 29235010373,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29235010373",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-11T16:43:39Z",
+    "timestamp": "2026-07-13T08:18:59Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3209,7 +4505,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #25",
+      "title": "AI Self-Healing Check #51",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3274,12 +4570,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29167466884",
-    "github_run_number": 26,
-    "github_run_id": 29167466884,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29167466884",
+    "id": "run-heal-29237035267",
+    "github_run_number": 52,
+    "github_run_id": 29237035267,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29237035267",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-11T20:40:59Z",
+    "timestamp": "2026-07-13T08:53:34Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3287,7 +4583,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #26",
+      "title": "AI Self-Healing Check #52",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3352,12 +4648,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29175303593",
-    "github_run_number": 27,
-    "github_run_id": 29175303593,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29175303593",
+    "id": "run-heal-29266572182",
+    "github_run_number": 53,
+    "github_run_id": 29266572182,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29266572182",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-12T01:28:30Z",
+    "timestamp": "2026-07-13T16:28:41Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3365,7 +4661,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #27",
+      "title": "AI Self-Healing Check #53",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3430,12 +4726,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29182705587",
-    "github_run_number": 28,
-    "github_run_id": 29182705587,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29182705587",
+    "id": "run-heal-29336529153",
+    "github_run_number": 54,
+    "github_run_id": 29336529153,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29336529153",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-12T06:28:29Z",
+    "timestamp": "2026-07-14T13:27:07Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3443,7 +4739,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #28",
+      "title": "AI Self-Healing Check #54",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3508,12 +4804,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29188010671",
-    "github_run_number": 29,
-    "github_run_id": 29188010671,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29188010671",
+    "id": "run-heal-29353442262",
+    "github_run_number": 55,
+    "github_run_id": 29353442262,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29353442262",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-12T09:45:33Z",
+    "timestamp": "2026-07-14T17:21:48Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3521,7 +4817,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #29",
+      "title": "AI Self-Healing Check #55",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3586,12 +4882,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29193444905",
-    "github_run_number": 30,
-    "github_run_id": 29193444905,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29193444905",
+    "id": "run-heal-29368343365",
+    "github_run_number": 56,
+    "github_run_id": 29368343365,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29368343365",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-12T12:54:14Z",
+    "timestamp": "2026-07-14T21:07:12Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3599,7 +4895,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #30",
+      "title": "AI Self-Healing Check #56",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3664,12 +4960,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29200741739",
-    "github_run_number": 31,
-    "github_run_id": 29200741739,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29200741739",
+    "id": "run-heal-29384965288",
+    "github_run_number": 57,
+    "github_run_id": 29384965288,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29384965288",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-12T16:46:16Z",
+    "timestamp": "2026-07-15T02:48:02Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3677,7 +4973,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #31",
+      "title": "AI Self-Healing Check #57",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3742,25 +5038,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29208092135",
-    "github_run_number": 32,
-    "github_run_id": 29208092135,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29208092135",
+    "id": "run-heal-29393856832",
+    "github_run_number": 58,
+    "github_run_id": 29393856832,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29393856832",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-12T20:37:46Z",
+    "timestamp": "2026-07-15T06:19:11Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "FAILED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #32",
+      "title": "AI Self-Healing Check #58",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": null,
+    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -3820,12 +5116,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29217498753",
-    "github_run_number": 33,
-    "github_run_id": 29217498753,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29217498753",
+    "id": "run-heal-29395301968",
+    "github_run_number": 59,
+    "github_run_id": 29395301968,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395301968",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T01:29:09Z",
+    "timestamp": "2026-07-15T06:48:37Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3833,7 +5129,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #33",
+      "title": "AI Self-Healing Check #59",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3898,12 +5194,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29218519693",
-    "github_run_number": 34,
-    "github_run_id": 29218519693,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218519693",
+    "id": "run-heal-29407741109",
+    "github_run_number": 60,
+    "github_run_id": 29407741109,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29407741109",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T01:58:40Z",
+    "timestamp": "2026-07-15T10:19:53Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3911,7 +5207,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #34",
+      "title": "AI Self-Healing Check #60",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -3976,12 +5272,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29218948730",
-    "github_run_number": 35,
-    "github_run_id": 29218948730,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29218948730",
+    "id": "run-heal-29421856901",
+    "github_run_number": 61,
+    "github_run_id": 29421856901,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29421856901",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T02:10:17Z",
+    "timestamp": "2026-07-15T14:03:16Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -3989,7 +5285,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #35",
+      "title": "AI Self-Healing Check #61",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4054,12 +5350,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29219523778",
-    "github_run_number": 36,
-    "github_run_id": 29219523778,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29219523778",
+    "id": "run-heal-29436872476",
+    "github_run_number": 62,
+    "github_run_id": 29436872476,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436872476",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T02:26:32Z",
+    "timestamp": "2026-07-15T17:31:49Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4067,7 +5363,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #36",
+      "title": "AI Self-Healing Check #62",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4132,12 +5428,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29223899324",
-    "github_run_number": 37,
-    "github_run_id": 29223899324,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29223899324",
+    "id": "run-heal-29451062850",
+    "github_run_number": 63,
+    "github_run_id": 29451062850,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29451062850",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T04:25:06Z",
+    "timestamp": "2026-07-15T21:11:51Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4145,7 +5441,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #37",
+      "title": "AI Self-Healing Check #63",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4210,12 +5506,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29226732804",
-    "github_run_number": 38,
-    "github_run_id": 29226732804,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29226732804",
+    "id": "run-heal-29467935272",
+    "github_run_number": 64,
+    "github_run_id": 29467935272,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29467935272",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T05:36:38Z",
+    "timestamp": "2026-07-16T03:00:40Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4223,7 +5519,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #38",
+      "title": "AI Self-Healing Check #64",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4288,12 +5584,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29227188104",
-    "github_run_number": 39,
-    "github_run_id": 29227188104,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227188104",
+    "id": "run-heal-29476969472",
+    "github_run_number": 65,
+    "github_run_id": 29476969472,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29476969472",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T05:47:38Z",
+    "timestamp": "2026-07-16T06:31:42Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4301,7 +5597,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #39",
+      "title": "AI Self-Healing Check #65",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4362,12 +5658,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29227458732",
-    "github_run_number": 40,
-    "github_run_id": 29227458732,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227458732",
+    "id": "run-heal-29490686793",
+    "github_run_number": 66,
+    "github_run_id": 29490686793,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29490686793",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T05:54:07Z",
+    "timestamp": "2026-07-16T10:24:04Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4375,7 +5671,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #40",
+      "title": "AI Self-Healing Check #66",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4436,12 +5732,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29227772534",
-    "github_run_number": 41,
-    "github_run_id": 29227772534,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29227772534",
+    "id": "run-heal-29505514952",
+    "github_run_number": 67,
+    "github_run_id": 29505514952,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29505514952",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T06:01:25Z",
+    "timestamp": "2026-07-16T14:12:06Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4449,7 +5745,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #41",
+      "title": "AI Self-Healing Check #67",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4510,25 +5806,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29228051762",
-    "github_run_number": 42,
-    "github_run_id": 29228051762,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228051762",
+    "id": "run-heal-29520161550",
+    "github_run_number": 68,
+    "github_run_id": 29520161550,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29520161550",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T06:07:24Z",
+    "timestamp": "2026-07-16T17:32:06Z",
     "category": "System Diagnostics",
-    "status": "FAILED",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #42",
+      "title": "AI Self-Healing Check #68",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
+    "error_traceback": null,
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -4584,20 +5880,20 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29228722408",
-    "github_run_number": 43,
-    "github_run_id": 29228722408,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29228722408",
+    "id": "run-heal-29535276473",
+    "github_run_number": 69,
+    "github_run_id": 29535276473,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29535276473",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T06:20:48Z",
+    "timestamp": "2026-07-16T21:14:23Z",
     "category": "System Diagnostics",
-    "status": "SUCCESS",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #43",
+      "title": "AI Self-Healing Check #69",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4658,6 +5954,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29551497333",
+    "github_run_number": 70,
+    "github_run_id": 29551497333,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29551497333",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-17T03:04:39Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #70",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-29230545342",
     "github_run_number": 71,
     "github_run_id": 29230545342,
@@ -4706,12 +6028,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29230798028",
-    "github_run_number": 44,
-    "github_run_id": 29230798028,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29230798028",
+    "id": "run-heal-29560270395",
+    "github_run_number": 71,
+    "github_run_id": 29560270395,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29560270395",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T07:03:12Z",
+    "timestamp": "2026-07-17T06:31:18Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4719,7 +6041,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #44",
+      "title": "AI Self-Healing Check #71",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4780,12 +6102,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29232897371",
-    "github_run_number": 45,
-    "github_run_id": 29232897371,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29232897371",
+    "id": "run-heal-29572641515",
+    "github_run_number": 72,
+    "github_run_id": 29572641515,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29572641515",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T07:41:40Z",
+    "timestamp": "2026-07-17T10:11:49Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4793,7 +6115,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #45",
+      "title": "AI Self-Healing Check #72",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4854,12 +6176,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29233925716",
-    "github_run_number": 46,
-    "github_run_id": 29233925716,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29233925716",
+    "id": "run-heal-29585737787",
+    "github_run_number": 73,
+    "github_run_id": 29585737787,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29585737787",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:00:38Z",
+    "timestamp": "2026-07-17T13:53:43Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -4867,7 +6189,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #46",
+      "title": "AI Self-Healing Check #73",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -4928,25 +6250,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29234028550",
-    "github_run_number": 47,
-    "github_run_id": 29234028550,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234028550",
+    "id": "run-heal-29599980871",
+    "github_run_number": 74,
+    "github_run_id": 29599980871,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29599980871",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:02:27Z",
+    "timestamp": "2026-07-17T17:25:24Z",
     "category": "System Diagnostics",
-    "status": "FAILED",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #47",
+      "title": "AI Self-Healing Check #74",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
+    "error_traceback": null,
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -5002,20 +6324,20 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29234219130",
-    "github_run_number": 48,
-    "github_run_id": 29234219130,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234219130",
+    "id": "run-heal-29613712058",
+    "github_run_number": 75,
+    "github_run_id": 29613712058,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29613712058",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:05:47Z",
+    "timestamp": "2026-07-17T21:08:47Z",
     "category": "System Diagnostics",
-    "status": "SUCCESS",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #48",
+      "title": "AI Self-Healing Check #75",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5076,6 +6398,32 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
+    "id": "run-heal-29627931786",
+    "github_run_number": 76,
+    "github_run_id": 29627931786,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29627931786",
+    "workflow_type": "SELF_HEALING",
+    "timestamp": "2026-07-18T02:56:39Z",
+    "category": "System Diagnostics",
+    "status": "SKIPPED",
+    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
+    "render_time_seconds": 1.2,
+    "lufs_target": "N/A",
+    "script_variants": [],
+    "winning_script": {
+      "title": "AI Self-Healing Check #76",
+      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "music_track": "N/A",
+    "voice_actor": "N/A",
+    "visual_asset_types": "Automated Log Inspector",
+    "ass_subtitle_engine": "N/A"
+  },
+  {
     "id": "run-29234411402",
     "github_run_number": 77,
     "github_run_id": 29234411402,
@@ -5124,25 +6472,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29234492044",
-    "github_run_number": 49,
-    "github_run_id": 29234492044,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234492044",
+    "id": "run-heal-29633745135",
+    "github_run_number": 77,
+    "github_run_id": 29633745135,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29633745135",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:10:29Z",
+    "timestamp": "2026-07-18T06:17:49Z",
     "category": "System Diagnostics",
-    "status": "FAILED",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #49",
+      "title": "AI Self-Healing Check #77",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
+    "error_traceback": null,
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -5198,25 +6546,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29234658033",
-    "github_run_number": 50,
-    "github_run_id": 29234658033,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29234658033",
+    "id": "run-heal-29639752638",
+    "github_run_number": 78,
+    "github_run_id": 29639752638,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29639752638",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:13:12Z",
+    "timestamp": "2026-07-18T09:47:28Z",
     "category": "System Diagnostics",
-    "status": "FAILED",
+    "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #50",
+      "title": "AI Self-Healing Check #78",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
+    "error_traceback": null,
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -5272,12 +6620,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29235010373",
-    "github_run_number": 51,
-    "github_run_id": 29235010373,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29235010373",
+    "id": "run-heal-29646344399",
+    "github_run_number": 79,
+    "github_run_id": 29646344399,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29646344399",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:18:59Z",
+    "timestamp": "2026-07-18T13:32:42Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -5285,7 +6633,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #51",
+      "title": "AI Self-Healing Check #79",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5346,12 +6694,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29237035267",
-    "github_run_number": 52,
-    "github_run_id": 29237035267,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29237035267",
+    "id": "run-heal-29653392330",
+    "github_run_number": 80,
+    "github_run_id": 29653392330,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29653392330",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T08:53:34Z",
+    "timestamp": "2026-07-18T17:10:09Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -5359,7 +6707,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #52",
+      "title": "AI Self-Healing Check #80",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5420,12 +6768,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29266572182",
-    "github_run_number": 53,
-    "github_run_id": 29266572182,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29266572182",
+    "id": "run-heal-29660893872",
+    "github_run_number": 81,
+    "github_run_id": 29660893872,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29660893872",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-13T16:28:41Z",
+    "timestamp": "2026-07-18T21:03:34Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -5433,7 +6781,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #53",
+      "title": "AI Self-Healing Check #81",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5494,12 +6842,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29336529153",
-    "github_run_number": 54,
-    "github_run_id": 29336529153,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29336529153",
+    "id": "run-heal-29671718505",
+    "github_run_number": 82,
+    "github_run_id": 29671718505,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29671718505",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-14T13:27:07Z",
+    "timestamp": "2026-07-19T03:24:40Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -5507,7 +6855,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #54",
+      "title": "AI Self-Healing Check #82",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5568,12 +6916,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29353442262",
-    "github_run_number": 55,
-    "github_run_id": 29353442262,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29353442262",
+    "id": "run-heal-29676876142",
+    "github_run_number": 83,
+    "github_run_id": 29676876142,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29676876142",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-14T17:21:48Z",
+    "timestamp": "2026-07-19T06:42:27Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -5581,7 +6929,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #55",
+      "title": "AI Self-Healing Check #83",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5642,12 +6990,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29368343365",
-    "github_run_number": 56,
-    "github_run_id": 29368343365,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29368343365",
+    "id": "run-heal-29682715735",
+    "github_run_number": 84,
+    "github_run_id": 29682715735,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29682715735",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-14T21:07:12Z",
+    "timestamp": "2026-07-19T10:05:02Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -5655,7 +7003,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #56",
+      "title": "AI Self-Healing Check #84",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5716,20 +7064,20 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29384965288",
-    "github_run_number": 57,
-    "github_run_id": 29384965288,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29384965288",
+    "id": "run-heal-29688825678",
+    "github_run_number": 85,
+    "github_run_id": 29688825678,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29688825678",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-15T02:48:02Z",
+    "timestamp": "2026-07-19T13:24:54Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "SUCCESS",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #57",
+      "title": "AI Self-Healing Check #85",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -5739,162 +7087,6 @@
     "music_track": "N/A",
     "voice_actor": "N/A",
     "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29385840154",
-    "github_run_number": 1,
-    "github_run_id": 29385840154,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29385840154",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-15T03:09:27Z",
-    "category": "Autonomous Bot",
-    "status": "SUCCESS",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #1",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29385940121",
-    "github_run_number": 2,
-    "github_run_id": 29385940121,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29385940121",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-15T03:11:50Z",
-    "category": "Autonomous Bot",
-    "status": "SUCCESS",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #2",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29392222815",
-    "github_run_number": 3,
-    "github_run_id": 29392222815,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392222815",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-15T05:44:08Z",
-    "category": "Autonomous Bot",
-    "status": "FAILED",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #3",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Bot maintenance check failed.",
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29392595354",
-    "github_run_number": 4,
-    "github_run_id": 29392595354,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392595354",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-15T05:52:26Z",
-    "category": "Autonomous Bot",
-    "status": "SUCCESS",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #4",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29392798830",
-    "github_run_number": 5,
-    "github_run_id": 29392798830,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29392798830",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-15T05:56:54Z",
-    "category": "Autonomous Bot",
-    "status": "FAILED",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #5",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Bot maintenance check failed.",
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29393630109",
-    "github_run_number": 6,
-    "github_run_id": 29393630109,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29393630109",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-15T06:14:26Z",
-    "category": "Autonomous Bot",
-    "status": "FAILED",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #6",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Bot maintenance check failed.",
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
     "ass_subtitle_engine": "N/A"
   },
   {
@@ -5946,25 +7138,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29393856832",
-    "github_run_number": 58,
-    "github_run_id": 29393856832,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29393856832",
+    "id": "run-heal-29696022474",
+    "github_run_number": 86,
+    "github_run_id": 29696022474,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29696022474",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-15T06:19:11Z",
+    "timestamp": "2026-07-19T17:01:54Z",
     "category": "System Diagnostics",
-    "status": "FAILED",
+    "status": "SUCCESS",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #58",
+      "title": "AI Self-Healing Check #86",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
+    "error_traceback": null,
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -6020,12 +7212,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29395301968",
-    "github_run_number": 59,
-    "github_run_id": 29395301968,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395301968",
+    "id": "run-heal-29698574660",
+    "github_run_number": 87,
+    "github_run_id": 29698574660,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29698574660",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-15T06:48:37Z",
+    "timestamp": "2026-07-19T18:21:36Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6033,7 +7225,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #59",
+      "title": "AI Self-Healing Check #87",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6043,182 +7235,6 @@
     "music_track": "N/A",
     "voice_actor": "N/A",
     "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-longform-29395652169",
-    "github_run_number": 1,
-    "github_run_id": 29395652169,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395652169",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T06:55:18Z",
-    "category": "Space Compilation",
-    "status": "FAILED",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 1",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Rendering timeout during 10-part compilation.",
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-longform-29395866483",
-    "github_run_number": 2,
-    "github_run_id": 29395866483,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29395866483",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T06:59:22Z",
-    "category": "Space Compilation",
-    "status": "FAILED",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 2",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Rendering timeout during 10-part compilation.",
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-longform-29401443107",
-    "github_run_number": 3,
-    "github_run_id": 29401443107,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29401443107",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T08:37:14Z",
-    "category": "Space Compilation",
-    "status": "CANCELLED",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 3",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Rendering timeout during 10-part compilation.",
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-longform-29404548453",
-    "github_run_number": 4,
-    "github_run_id": 29404548453,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29404548453",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T09:27:10Z",
-    "category": "Space Compilation",
-    "status": "FAILED",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 4",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Rendering timeout during 10-part compilation.",
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-longform-29405460597",
-    "github_run_number": 5,
-    "github_run_id": 29405460597,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29405460597",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T09:41:57Z",
-    "category": "Space Compilation",
-    "status": "SUCCESS",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 5",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-bot-29405823847",
-    "github_run_number": 7,
-    "github_run_id": 29405823847,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29405823847",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-15T09:47:51Z",
-    "category": "Autonomous Bot",
-    "status": "SUCCESS",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #7",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
     "ass_subtitle_engine": "N/A"
   },
   {
@@ -6270,12 +7286,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29407741109",
-    "github_run_number": 60,
-    "github_run_id": 29407741109,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29407741109",
+    "id": "run-heal-29703700886",
+    "github_run_number": 88,
+    "github_run_id": 29703700886,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29703700886",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-15T10:19:53Z",
+    "timestamp": "2026-07-19T21:04:31Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6283,7 +7299,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #60",
+      "title": "AI Self-Healing Check #88",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6294,96 +7310,6 @@
     "voice_actor": "N/A",
     "visual_asset_types": "Automated Log Inspector",
     "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-longform-29409579942",
-    "github_run_number": 6,
-    "github_run_id": 29409579942,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29409579942",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T10:51:26Z",
-    "category": "Space Compilation",
-    "status": "CANCELLED",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 6",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Rendering timeout during 10-part compilation.",
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-longform-29409991068",
-    "github_run_number": 7,
-    "github_run_id": 29409991068,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29409991068",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T10:58:28Z",
-    "category": "Space Compilation",
-    "status": "SUCCESS",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 7",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-longform-29419042729",
-    "github_run_number": 8,
-    "github_run_id": 29419042729,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29419042729",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T13:24:26Z",
-    "category": "Space Compilation",
-    "status": "SUCCESS",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 8",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
   },
   {
     "id": "run-29420846255",
@@ -6434,12 +7360,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29421856901",
-    "github_run_number": 61,
-    "github_run_id": 29421856901,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29421856901",
+    "id": "run-heal-29715122041",
+    "github_run_number": 89,
+    "github_run_id": 29715122041,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29715122041",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-15T14:03:16Z",
+    "timestamp": "2026-07-20T03:39:13Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6447,7 +7373,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #61",
+      "title": "AI Self-Healing Check #89",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6458,36 +7384,6 @@
     "voice_actor": "N/A",
     "visual_asset_types": "Automated Log Inspector",
     "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-longform-29423634668",
-    "github_run_number": 9,
-    "github_run_id": 29423634668,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29423634668",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T14:27:35Z",
-    "category": "Space Compilation",
-    "status": "SUCCESS",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 9",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
   },
   {
     "id": "run-29436082715",
@@ -6538,72 +7434,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-longform-29436233674",
-    "github_run_number": 10,
-    "github_run_id": 29436233674,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436233674",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T17:22:40Z",
-    "category": "Space Compilation",
-    "status": "SUCCESS",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 10",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-longform-29436532617",
-    "github_run_number": 11,
-    "github_run_id": 29436532617,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436532617",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-15T17:27:02Z",
-    "category": "Space Compilation",
-    "status": "FAILED",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 11",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Rendering timeout during 10-part compilation.",
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-heal-29436872476",
-    "github_run_number": 62,
-    "github_run_id": 29436872476,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29436872476",
+    "id": "run-heal-29723410507",
+    "github_run_number": 90,
+    "github_run_id": 29723410507,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29723410507",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-15T17:31:49Z",
+    "timestamp": "2026-07-20T07:03:29Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6611,7 +7447,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #62",
+      "title": "AI Self-Healing Check #90",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6672,12 +7508,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29451062850",
-    "github_run_number": 63,
-    "github_run_id": 29451062850,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29451062850",
+    "id": "run-heal-29737438890",
+    "github_run_number": 91,
+    "github_run_id": 29737438890,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29737438890",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-15T21:11:51Z",
+    "timestamp": "2026-07-20T11:07:42Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6685,7 +7521,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #63",
+      "title": "AI Self-Healing Check #91",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6746,12 +7582,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29467935272",
-    "github_run_number": 64,
-    "github_run_id": 29467935272,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29467935272",
+    "id": "run-heal-29750687163",
+    "github_run_number": 92,
+    "github_run_id": 29750687163,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29750687163",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-16T03:00:40Z",
+    "timestamp": "2026-07-20T14:27:04Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6759,7 +7595,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #64",
+      "title": "AI Self-Healing Check #92",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6820,12 +7656,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29476969472",
-    "github_run_number": 65,
-    "github_run_id": 29476969472,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29476969472",
+    "id": "run-heal-29767176303",
+    "github_run_number": 93,
+    "github_run_id": 29767176303,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29767176303",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-16T06:31:42Z",
+    "timestamp": "2026-07-20T18:18:11Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6833,7 +7669,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #65",
+      "title": "AI Self-Healing Check #93",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6894,12 +7730,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29490686793",
-    "github_run_number": 66,
-    "github_run_id": 29490686793,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29490686793",
+    "id": "run-heal-29780311916",
+    "github_run_number": 94,
+    "github_run_id": 29780311916,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29780311916",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-16T10:24:04Z",
+    "timestamp": "2026-07-20T21:28:27Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6907,7 +7743,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #66",
+      "title": "AI Self-Healing Check #94",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -6968,12 +7804,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29505514952",
-    "github_run_number": 67,
-    "github_run_id": 29505514952,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29505514952",
+    "id": "run-heal-29797699734",
+    "github_run_number": 95,
+    "github_run_id": 29797699734,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29797699734",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-16T14:12:06Z",
+    "timestamp": "2026-07-21T03:08:00Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -6981,7 +7817,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #67",
+      "title": "AI Self-Healing Check #95",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7042,12 +7878,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29520161550",
-    "github_run_number": 68,
-    "github_run_id": 29520161550,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29520161550",
+    "id": "run-heal-29807961026",
+    "github_run_number": 96,
+    "github_run_id": 29807961026,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29807961026",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-16T17:32:06Z",
+    "timestamp": "2026-07-21T06:44:08Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7055,7 +7891,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #68",
+      "title": "AI Self-Healing Check #96",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7116,12 +7952,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29535276473",
-    "github_run_number": 69,
-    "github_run_id": 29535276473,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29535276473",
+    "id": "run-heal-29823008336",
+    "github_run_number": 97,
+    "github_run_id": 29823008336,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29823008336",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-16T21:14:23Z",
+    "timestamp": "2026-07-21T10:38:42Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7129,7 +7965,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #69",
+      "title": "AI Self-Healing Check #97",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7190,12 +8026,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29551497333",
-    "github_run_number": 70,
-    "github_run_id": 29551497333,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29551497333",
+    "id": "run-heal-29837713758",
+    "github_run_number": 98,
+    "github_run_id": 29837713758,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29837713758",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-17T03:04:39Z",
+    "timestamp": "2026-07-21T14:08:34Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7203,7 +8039,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #70",
+      "title": "AI Self-Healing Check #98",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7268,12 +8104,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29560270395",
-    "github_run_number": 71,
-    "github_run_id": 29560270395,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29560270395",
+    "id": "run-heal-29853670288",
+    "github_run_number": 99,
+    "github_run_id": 29853670288,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29853670288",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-17T06:31:18Z",
+    "timestamp": "2026-07-21T17:36:33Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7281,7 +8117,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #71",
+      "title": "AI Self-Healing Check #99",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7342,12 +8178,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29572641515",
-    "github_run_number": 72,
-    "github_run_id": 29572641515,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29572641515",
+    "id": "run-heal-29870044517",
+    "github_run_number": 100,
+    "github_run_id": 29870044517,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29870044517",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-17T10:11:49Z",
+    "timestamp": "2026-07-21T21:27:38Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7355,7 +8191,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #72",
+      "title": "AI Self-Healing Check #100",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7420,12 +8256,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29585737787",
-    "github_run_number": 73,
-    "github_run_id": 29585737787,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29585737787",
+    "id": "run-heal-29887673135",
+    "github_run_number": 101,
+    "github_run_id": 29887673135,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29887673135",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-17T13:53:43Z",
+    "timestamp": "2026-07-22T03:08:37Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7433,7 +8269,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #73",
+      "title": "AI Self-Healing Check #101",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7498,12 +8334,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29599980871",
-    "github_run_number": 74,
-    "github_run_id": 29599980871,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29599980871",
+    "id": "run-heal-29925022507",
+    "github_run_number": 102,
+    "github_run_id": 29925022507,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29925022507",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-17T17:25:24Z",
+    "timestamp": "2026-07-22T13:41:18Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7511,7 +8347,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #74",
+      "title": "AI Self-Healing Check #102",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7576,12 +8412,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29613712058",
-    "github_run_number": 75,
-    "github_run_id": 29613712058,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29613712058",
+    "id": "run-heal-30011116704",
+    "github_run_number": 103,
+    "github_run_id": 30011116704,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30011116704",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-17T21:08:47Z",
+    "timestamp": "2026-07-23T13:25:13Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7589,7 +8425,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #75",
+      "title": "AI Self-Healing Check #103",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7654,12 +8490,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29627931786",
-    "github_run_number": 76,
-    "github_run_id": 29627931786,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29627931786",
+    "id": "run-heal-30016939299",
+    "github_run_number": 104,
+    "github_run_id": 30016939299,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30016939299",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-18T02:56:39Z",
+    "timestamp": "2026-07-23T14:40:42Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7667,7 +8503,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #76",
+      "title": "AI Self-Healing Check #104",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7732,25 +8568,25 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29633745135",
-    "github_run_number": 77,
-    "github_run_id": 29633745135,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29633745135",
+    "id": "run-heal-30017972047",
+    "github_run_number": 105,
+    "github_run_id": 30017972047,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30017972047",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-18T06:17:49Z",
+    "timestamp": "2026-07-23T14:53:53Z",
     "category": "System Diagnostics",
-    "status": "SKIPPED",
+    "status": "FAILED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
     "render_time_seconds": 1.2,
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #77",
+      "title": "AI Self-Healing Check #105",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": null,
+    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
     "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
     "music_track": "N/A",
     "voice_actor": "N/A",
@@ -7810,12 +8646,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29639752638",
-    "github_run_number": 78,
-    "github_run_id": 29639752638,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29639752638",
+    "id": "run-heal-30018059042",
+    "github_run_number": 106,
+    "github_run_id": 30018059042,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30018059042",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-18T09:47:28Z",
+    "timestamp": "2026-07-23T14:54:57Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7823,7 +8659,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #78",
+      "title": "AI Self-Healing Check #106",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7888,12 +8724,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29646344399",
-    "github_run_number": 79,
-    "github_run_id": 29646344399,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29646344399",
+    "id": "run-heal-30018763456",
+    "github_run_number": 107,
+    "github_run_id": 30018763456,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30018763456",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-18T13:32:42Z",
+    "timestamp": "2026-07-23T15:03:46Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7901,7 +8737,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #79",
+      "title": "AI Self-Healing Check #107",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -7966,12 +8802,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29653392330",
-    "github_run_number": 80,
-    "github_run_id": 29653392330,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29653392330",
+    "id": "run-heal-30020256252",
+    "github_run_number": 108,
+    "github_run_id": 30020256252,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020256252",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-18T17:10:09Z",
+    "timestamp": "2026-07-23T15:22:43Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -7979,7 +8815,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #80",
+      "title": "AI Self-Healing Check #108",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -8044,12 +8880,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29660893872",
-    "github_run_number": 81,
-    "github_run_id": 29660893872,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29660893872",
+    "id": "run-heal-30020268370",
+    "github_run_number": 109,
+    "github_run_id": 30020268370,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020268370",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-18T21:03:34Z",
+    "timestamp": "2026-07-23T15:22:52Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -8057,7 +8893,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #81",
+      "title": "AI Self-Healing Check #109",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -8122,42 +8958,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-longform-29671622204",
-    "github_run_number": 12,
-    "github_run_id": 29671622204,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29671622204",
-    "workflow_type": "WEEKLY_LONGFORM",
-    "timestamp": "2026-07-19T03:20:48Z",
-    "category": "Space Compilation",
-    "status": "SUCCESS",
-    "generation_mode": "LONGFORM_COMPILATION",
-    "render_time_seconds": 185.0,
-    "lufs_target": "Broadcast LUFS (-14 LUFS)",
-    "script_variants": [],
-    "winning_script": {
-      "title": "The Widescreen Universe: Episode 12",
-      "text": "A 10-part deep dive documentary into space physics...",
-      "hashtags": [
-        "#documentary"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://en.wikipedia.org/wiki/Astronomy",
-    "music_track": "documentary_ambient.mp3",
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "10 Pexels Widescreen 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Widescreen Engine"
-  },
-  {
-    "id": "run-heal-29671718505",
-    "github_run_number": 82,
-    "github_run_id": 29671718505,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29671718505",
+    "id": "run-heal-30020276611",
+    "github_run_number": 110,
+    "github_run_id": 30020276611,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020276611",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-19T03:24:40Z",
+    "timestamp": "2026-07-23T15:22:59Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -8165,7 +8971,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #82",
+      "title": "AI Self-Healing Check #110",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -8230,12 +9036,12 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29676876142",
-    "github_run_number": 83,
-    "github_run_id": 29676876142,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29676876142",
+    "id": "run-heal-30020278163",
+    "github_run_number": 111,
+    "github_run_id": 30020278163,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020278163",
     "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-19T06:42:27Z",
+    "timestamp": "2026-07-23T15:23:00Z",
     "category": "System Diagnostics",
     "status": "SKIPPED",
     "generation_mode": "SELF_HEALING_DIAGNOSTICS",
@@ -8243,7 +9049,7 @@
     "lufs_target": "N/A",
     "script_variants": [],
     "winning_script": {
-      "title": "AI Self-Healing Check #83",
+      "title": "AI Self-Healing Check #111",
       "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
     },
     "youtube_url": null,
@@ -8308,110 +9114,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29682715735",
-    "github_run_number": 84,
-    "github_run_id": 29682715735,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29682715735",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-19T10:05:02Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #84",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29685383915",
-    "github_run_number": 8,
-    "github_run_id": 29685383915,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685383915",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-19T11:34:39Z",
-    "category": "Autonomous Bot",
-    "status": "SUCCESS",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #8",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29685679825",
-    "github_run_number": 9,
-    "github_run_id": 29685679825,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685679825",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-19T11:44:18Z",
-    "category": "Autonomous Bot",
-    "status": "FAILED",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #9",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Bot maintenance check failed.",
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-bot-29685801035",
-    "github_run_number": 10,
-    "github_run_id": 29685801035,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29685801035",
-    "workflow_type": "BOT_MAINTENANCE",
-    "timestamp": "2026-07-19T11:48:12Z",
-    "category": "Autonomous Bot",
-    "status": "SUCCESS",
-    "generation_mode": "BOT_MAINTENANCE",
-    "render_time_seconds": 0.8,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "Autonomous Bot Check #10",
-      "text": "Verified repository heartbeat and automated dependencies."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Heartbeat Logger",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29688800460",
     "github_run_number": 113,
     "github_run_id": 29688800460,
@@ -8458,32 +9160,6 @@
     "global_run_number": 244,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29688825678",
-    "github_run_number": 85,
-    "github_run_id": 29688825678,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29688825678",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-19T13:24:54Z",
-    "category": "System Diagnostics",
-    "status": "SUCCESS",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #85",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29688898627",
@@ -8580,32 +9256,6 @@
     "global_run_number": 247,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29696022474",
-    "github_run_number": 86,
-    "github_run_id": 29696022474,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29696022474",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-19T17:01:54Z",
-    "category": "System Diagnostics",
-    "status": "SUCCESS",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #86",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29696073082",
@@ -8708,32 +9358,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29698574660",
-    "github_run_number": 87,
-    "github_run_id": 29698574660,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29698574660",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-19T18:21:36Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #87",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29703383137",
     "github_run_number": 118,
     "github_run_id": 29703383137,
@@ -8786,32 +9410,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29703700886",
-    "github_run_number": 88,
-    "github_run_id": 29703700886,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29703700886",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-19T21:04:31Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #88",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29714767603",
     "github_run_number": 119,
     "github_run_id": 29714767603,
@@ -8858,32 +9456,6 @@
     "global_run_number": 254,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29715122041",
-    "github_run_number": 89,
-    "github_run_id": 29715122041,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29715122041",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T03:39:13Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #89",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29722802024",
@@ -8934,32 +9506,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29723410507",
-    "github_run_number": 90,
-    "github_run_id": 29723410507,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29723410507",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T07:03:29Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #90",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29736734996",
     "github_run_number": 121,
     "github_run_id": 29736734996,
@@ -9006,32 +9552,6 @@
     "global_run_number": 258,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29737438890",
-    "github_run_number": 91,
-    "github_run_id": 29737438890,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29737438890",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T11:07:42Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #91",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29749641588",
@@ -9082,32 +9602,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29750687163",
-    "github_run_number": 92,
-    "github_run_id": 29750687163,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29750687163",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T14:27:04Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #92",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29766388439",
     "github_run_number": 123,
     "github_run_id": 29766388439,
@@ -9154,32 +9648,6 @@
     "global_run_number": 262,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29767176303",
-    "github_run_number": 93,
-    "github_run_id": 29767176303,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29767176303",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T18:18:11Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #93",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29779390041",
@@ -9230,32 +9698,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29780311916",
-    "github_run_number": 94,
-    "github_run_id": 29780311916,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29780311916",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T21:28:27Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #94",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29797129614",
     "github_run_number": 125,
     "github_run_id": 29797129614,
@@ -9302,32 +9744,6 @@
     "global_run_number": 266,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29797699734",
-    "github_run_number": 95,
-    "github_run_id": 29797699734,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29797699734",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T03:08:00Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #95",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29807291486",
@@ -9378,32 +9794,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29807961026",
-    "github_run_number": 96,
-    "github_run_id": 29807961026,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29807961026",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T06:44:08Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #96",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29822293698",
     "github_run_number": 127,
     "github_run_id": 29822293698,
@@ -9450,32 +9840,6 @@
     "global_run_number": 270,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29823008336",
-    "github_run_number": 97,
-    "github_run_id": 29823008336,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29823008336",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T10:38:42Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #97",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29837019515",
@@ -9526,32 +9890,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29837713758",
-    "github_run_number": 98,
-    "github_run_id": 29837713758,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29837713758",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T14:08:34Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #98",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29852804573",
     "github_run_number": 129,
     "github_run_id": 29852804573,
@@ -9600,32 +9938,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29853670288",
-    "github_run_number": 99,
-    "github_run_id": 29853670288,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29853670288",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T17:36:33Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #99",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29869098249",
     "github_run_number": 130,
     "github_run_id": 29869098249,
@@ -9672,32 +9984,6 @@
     "global_run_number": 276,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29870044517",
-    "github_run_number": 100,
-    "github_run_id": 29870044517,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29870044517",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T21:27:38Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #100",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-29887007587",
@@ -9788,32 +10074,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29887673135",
-    "github_run_number": 101,
-    "github_run_id": 29887673135,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29887673135",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-22T03:08:37Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #101",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29923173440",
     "github_run_number": 132,
     "github_run_id": 29923173440,
@@ -9902,32 +10162,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-29925022507",
-    "github_run_number": 102,
-    "github_run_id": 29925022507,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29925022507",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-22T13:41:18Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #102",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-30010699622",
     "github_run_number": 133,
     "github_run_id": 30010699622,
@@ -10011,32 +10245,6 @@
     "workflow_type": "DAILY_SHORTS"
   },
   {
-    "id": "run-heal-30011116704",
-    "github_run_number": 103,
-    "github_run_id": 30011116704,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30011116704",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T13:25:13Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #103",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-30016321499",
     "github_run_number": 134,
     "github_run_id": 30016321499,
@@ -10118,32 +10326,6 @@
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)",
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-30016939299",
-    "github_run_number": 104,
-    "github_run_id": 30016939299,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30016939299",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T14:40:42Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #104",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-30017297126",
@@ -10467,58 +10649,6 @@
     "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
-    "id": "run-heal-30017972047",
-    "github_run_number": 105,
-    "github_run_id": 30017972047,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30017972047",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T14:53:53Z",
-    "category": "System Diagnostics",
-    "status": "FAILED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #105",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Self-healing script exited: No actionable code mutation required.",
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-heal-30018059042",
-    "github_run_number": 106,
-    "github_run_id": 30018059042,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30018059042",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T14:54:57Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #106",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29232897371",
     "github_run_number": 139,
     "github_run_id": 30018106533,
@@ -10691,136 +10821,6 @@
     "global_run_number": 141,
     "youtube_stats": null,
     "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-30018763456",
-    "github_run_number": 107,
-    "github_run_id": 30018763456,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30018763456",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T15:03:46Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #107",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-heal-30020256252",
-    "github_run_number": 108,
-    "github_run_id": 30020256252,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020256252",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T15:22:43Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #108",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-heal-30020268370",
-    "github_run_number": 109,
-    "github_run_id": 30020268370,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020268370",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T15:22:52Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #109",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-heal-30020276611",
-    "github_run_number": 110,
-    "github_run_id": 30020276611,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020276611",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T15:22:59Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #110",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
-    "id": "run-heal-30020278163",
-    "github_run_number": 111,
-    "github_run_id": 30020278163,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30020278163",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-23T15:23:00Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #111",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
   },
   {
     "id": "run-30020309936",
@@ -11013,6 +11013,31 @@
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   },
   {
+    "id": "run-30143835778",
+    "github_run_number": 146,
+    "github_run_id": 30143835778,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30143835778",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T03:30:00.000000Z",
+    "category": "Space & Cosmic Mysteries",
+    "status": "CANCELLED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": null,
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Workflow execution manually cancelled by user.",
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
+  },
+  {
     "id": "run-30144594840",
     "github_run_number": 147,
     "github_run_id": 30144594840,
@@ -11046,5 +11071,30 @@
     "voice_actor": "am_michael (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30144969478",
+    "github_run_number": 148,
+    "github_run_id": 30144969478,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30144969478",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T05:11:00.000000Z",
+    "category": "Space & Cosmic Mysteries",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 25.4,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": null,
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Pre-Upload Visual Sanity Check FAILED: Dark scene detected below strict brightness threshold.",
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   }
 ]

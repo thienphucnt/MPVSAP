@@ -98,7 +98,9 @@ jobs:
           python main.py
 
       - name: Persist Telemetry Logs & Reset Self-Healing Counter
+        if: always()
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
