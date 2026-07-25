@@ -1393,7 +1393,14 @@ def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[in
         print("Salience zoom filter setup fallback:", e)
         clip = clip.resize((w, h))
         
-    clip.write_videofile(output_path, fps=30, logger=None)
+    clip.write_videofile(
+        output_path,
+        fps=30,
+        codec="libx264",
+        preset="ultrafast",
+        ffmpeg_params=["-pix_fmt", "yuv420p"],
+        logger=None
+    )
     clip.close()
 
 def download_single_pexels_video(api_key: str, kw: str, index: int, orientation: str, filename_prefix: str, category: str) -> Optional[str]:
@@ -1490,43 +1497,42 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
         if cand not in keywords:
             keywords.append(cand)
             
-    # Process each keyword. If it is a proper noun, we try Wikimedia first. Otherwise, we fetch from Pexels.
+    # Process each keyword. We fetch from Pexels video API first. If Pexels has no video, we try Wikimedia image search.
     def process_keyword(kw: str, index: int) -> str:
-        # Check if proper noun (contains uppercase letters)
-        is_proper_noun = any(char.isupper() for char in kw)
         clip_path = f"{filename_prefix}_clip_{index}.mp4"
         
-        if is_proper_noun:
-            print(f"Keyword '{kw}' is a proper noun. Searching Wikimedia Commons...")
-            wiki_url = search_wikimedia_image(kw)
-            if wiki_url:
-                image_path = download_wikimedia_image(wiki_url, index)
-                if image_path:
-                    try:
-                        target_res = (1080, 1920) if orientation == "portrait" else (1920, 1080)
-                        clip_dur = 17.0 if orientation == "portrait" else 8.0
-                        make_image_video_clip(image_path, clip_dur, target_res, clip_path)
-                        return clip_path
-                    except Exception as e:
-                        print(f"Failed to create image-to-video clip for proper noun '{kw}': {e}")
-                    finally:
-                        if image_path and os.path.exists(image_path):
-                            try:
-                                os.remove(image_path)
-                            except Exception:
-                                pass
-                                
-        # Fallback to Pexels
+        # 1. Try Pexels HD video search for keyword first
         p_path = download_single_pexels_video(api_key, kw, index, orientation, filename_prefix, category)
         if p_path:
             return p_path
-            
-        # Hard fallback to a category default video search
+
+        # 2. Secondary fallback: try Wikimedia Commons image search
+        print(f"No Pexels video for '{kw}'. Searching Wikimedia Commons for image fallback...")
+        wiki_url = search_wikimedia_image(kw)
+        if wiki_url:
+            image_path = download_wikimedia_image(wiki_url, index)
+            if image_path:
+                try:
+                    target_res = (1080, 1920) if orientation == "portrait" else (1920, 1080)
+                    clip_dur = 17.0 if orientation == "portrait" else 8.0
+                    make_image_video_clip(image_path, clip_dur, target_res, clip_path)
+                    return clip_path
+                except Exception as e:
+                    print(f"Failed to create image-to-video clip for '{kw}': {e}")
+                finally:
+                    if image_path and os.path.exists(image_path):
+                        try:
+                            os.remove(image_path)
+                        except Exception:
+                            pass
+
+        # 3. Hard fallback: try a category default video search on Pexels
         fallback_kw = random.choice(cat_info["kw_defaults"])
+        print(f"Wikimedia image fallback failed for '{kw}'. Trying category default '{fallback_kw}' on Pexels...")
         p_path = download_single_pexels_video(api_key, fallback_kw, index, orientation, filename_prefix, category)
         if p_path:
             return p_path
-            
+
         raise Exception(f"Failed to download B-roll for keyword '{kw}' and fallback '{fallback_kw}'")
 
     video_paths = [None] * limit
@@ -1945,14 +1951,21 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         try:
                             os.remove(music_temp_path)
                         except Exception:
-        # Resolve subtitle color and font from config, calling if they are functions
-        subtitle_color = config.SUBTITLE_COLOR() if callable(config.SUBTITLE_COLOR) else config.SUBTITLE_COLOR
-        subtitle_font = config.SUBTITLE_FONT() if callable(config.SUBTITLE_FONT) else config.SUBTITLE_FONT
-            text_clip_instance = TextClip(sub.text, fontsize=config.SUBTITLE_FONT_SIZE, color=subtitle_color, font=subtitle_font)
-        # Resolve watermark color and font from config, calling if they are functions
-        watermark_color = config.WATERMARK_COLOR() if callable(config.WATERMARK_COLOR) else config.WATERMARK_COLOR
-        watermark_font = config.WATERMARK_FONT() if callable(config.WATERMARK_FONT) else config.WATERMARK_FONT
-        watermark_clip = TextClip(watermark_text, fontsize=config.WATERMARK_FONT_SIZE, color=watermark_color, font=watermark_font)
+                            pass
+
+    bg_clip = bg_clip.set_audio(final_audio_clip)
+
+    # Try high-performance FFmpeg ASS subtitle burning first
+    ass_path = f"subtitles_{os.getpid()}.ass"
+    temp_no_subs = f"temp_no_subs_{os.getpid()}.mp4"
+    ffmpeg_success = False
+
+    try:
+        generate_ass_file(subs_list, ass_path, category, config)
+        print("Rendering background video (no subtitles)...")
+        bg_clip.write_videofile(
+            temp_no_subs,
+            fps=30,
             codec="libx264",
             audio_codec="aac",
             threads=2,
