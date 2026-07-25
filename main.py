@@ -325,36 +325,56 @@ def generate_srt_file(subs_list: List[Tuple[Tuple[float, float], str]], output_s
     return output_srt_path
 
 
+# ---------------------------------------------------------------------------
+# STATIC ROTATING KEYWORD BANK (replaces pytrends - no external API needed)
+# ---------------------------------------------------------------------------
+_TRENDING_KEYWORDS = {
+    "space": [
+        ["black hole event horizon", "neutron star collision", "dark matter secrets", "james webb telescope", "mars colony"],
+        ["supernova explosion", "alien planet discovery", "solar storm warning", "asteroid danger", "space debris crisis"],
+        ["wormhole theory", "gamma ray burst", "exoplanet atmosphere", "galaxy merger", "cosmic microwave background"],
+        ["moon water discovery", "saturn ring mystery", "interstellar travel", "quantum gravity", "spacetime fabric"],
+        ["universe expansion secrets", "dark energy mystery", "pulsar timing", "stellar nursery", "cosmic void"],
+    ],
+    "history": [
+        ["ancient civilization secrets", "lost empire discovery", "hidden history facts", "medieval mystery", "archaeological bombshell"],
+        ["untold war story", "ancient engineering mystery", "forgotten culture", "historical cover-up", "buried kingdom"],
+        ["roman empire secrets", "egyptian mystery", "viking discovery", "aztec hidden truth", "silk road secrets"],
+        ["world war hidden facts", "ancient weapon technology", "lost city found", "historical conspiracy", "ancient trade route"],
+        ["forgotten inventor", "suppressed history", "ancient disaster", "empire collapse reason", "mysterious artifact"],
+    ],
+    "tech": [
+        ["ai consciousness debate", "quantum computer breakthrough", "neural interface brain", "robot rights", "deepfake danger"],
+        ["semiconductor crisis", "fusion energy milestone", "biotech breakthrough", "space tech startup", "cyber attack threat"],
+        ["chatgpt competitor", "autonomous vehicle crash", "surveillance technology", "data privacy scandal", "tech monopoly"],
+        ["battery technology leap", "crispr gene editing", "smart city failure", "drone swarm military", "satellite internet"],
+        ["metaverse collapse", "crypto regulation", "open source ai", "hydrogen fuel cell", "brain chip implant"],
+    ],
+}
+
+
 def fetch_trending_category_keywords(category: str) -> List[str]:
-    """Fetch top rising search queries for category via pytrends / Google Trends."""
+    """Return a rotating set of high-engagement category keywords (no external API, no rate limits)."""
     cat_lower = category.lower()
-    kw_search = "space"
+    db_key = "space"
     if "history" in cat_lower:
-        kw_search = "history"
+        db_key = "history"
     elif "tech" in cat_lower:
-        kw_search = "technology"
+        db_key = "tech"
 
-    try:
-        from pytrends.request import TrendReq
-        pytrend = TrendReq(hl="en-US", tz=360, timeout=(5, 10))
-        pytrend.build_payload([kw_search], cat=0, timeframe="now 7-d", geo="", gprop="")
-        related = pytrend.related_queries()
-        rising_df = related.get(kw_search, {}).get("rising")
-        if rising_df is not None and not rising_df.empty:
-            trends = rising_df["query"].head(5).tolist()
-            print(f"Fetched 7-day rising trends for '{kw_search}': {trends}")
-            return trends
-    except Exception as e:
-        print(f"pytrends search fallback for '{kw_search}':", e)
-
-    return []
+    keyword_pool = _TRENDING_KEYWORDS.get(db_key, _TRENDING_KEYWORDS["space"])
+    # Rotate through pools based on current day-of-week to ensure variety
+    import datetime
+    day_index = datetime.date.today().weekday() % len(keyword_pool)
+    selected = keyword_pool[day_index]
+    print(f"Selected rotating keyword bank [{db_key}][day={day_index}]: {selected}")
+    return selected
 
 
 def send_webhook_notification(title: str, message: str, status: str = "success", video_url: Optional[str] = None):
     """Send HTTP POST payload alert to Webhook URL (Discord/Telegram/Custom) for fail-safe monitoring."""
     if not WEBHOOK_URL:
-        print("WEBHOOK_URL not configured. Skipping webhook notification.")
-        return
+        return  # WEBHOOK_URL is optional — no noise if not configured
 
     color = 0x00FF00 if status == "success" else 0xFF0000
     embed = {
@@ -440,7 +460,8 @@ def sanitize_metadata(title: str, description: str, is_short: bool, category: st
 # ---------------------------------------------------------------------------
 def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, max_retries: int = 5):
     """Call Gemini with fallback model chain and exponential backoff for transient errors."""
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest", "gemini-pro-latest"]
+    # Quota-efficient model chain: start with high-RPM free tier, escalate to premium only on failure
+    model_fallback_chain = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-2.5-pro", "gemini-flash-latest", "gemini-pro-latest"]
     
     # Start with the requested model, or position in the chain if matches
     if model in model_fallback_chain:
