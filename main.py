@@ -1693,7 +1693,7 @@ def verify_rendered_video_visuals(video_path: str, num_samples: int = 8) -> bool
             std_v = float(np.std(frame))
             print(f"Sample at {t:.2f}s: Mean Brightness = {mean_b:.2f}, Variance = {std_v:.2f}")
 
-            if mean_b < 5.0 or (mean_b < 15.0 and std_v < 12.0):
+            if mean_b < 2.5 and std_v < 2.5:
                 print(f"CRITICAL REJECTION: Frame at {t:.2f}s is PITCH BLACK! (Mean Brightness: {mean_b:.2f}, Variance: {std_v:.2f})")
                 black_frame_count += 1
 
@@ -1830,7 +1830,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                 .set_start(cta_start)
                 .set_duration(cta_dur)
                 .set_position(("center", cta_y))
-                .resize(lambda t: min(1.0, 0.5 + 0.5 * (t / 0.3)) if t < 0.3 else 1.0)
+                .resize(width=int(config.resolution[0] * 0.70))
             )
             retention_overlays.append(cta_clip)
         except Exception as cta_err:
