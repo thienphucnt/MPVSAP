@@ -1945,21 +1945,14 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         try:
                             os.remove(music_temp_path)
                         except Exception:
-                            pass
-
-    bg_clip = bg_clip.set_audio(final_audio_clip)
-
-    # Try high-performance FFmpeg ASS subtitle burning first
-    ass_path = f"subtitles_{os.getpid()}.ass"
-    temp_no_subs = f"temp_no_subs_{os.getpid()}.mp4"
-    ffmpeg_success = False
-
-    try:
-        generate_ass_file(subs_list, ass_path, category, config)
-        print("Rendering background video (no subtitles)...")
-        bg_clip.write_videofile(
-            temp_no_subs,
-            fps=30,
+        # Resolve subtitle color and font from config, calling if they are functions
+        subtitle_color = config.SUBTITLE_COLOR() if callable(config.SUBTITLE_COLOR) else config.SUBTITLE_COLOR
+        subtitle_font = config.SUBTITLE_FONT() if callable(config.SUBTITLE_FONT) else config.SUBTITLE_FONT
+            text_clip_instance = TextClip(sub.text, fontsize=config.SUBTITLE_FONT_SIZE, color=subtitle_color, font=subtitle_font)
+        # Resolve watermark color and font from config, calling if they are functions
+        watermark_color = config.WATERMARK_COLOR() if callable(config.WATERMARK_COLOR) else config.WATERMARK_COLOR
+        watermark_font = config.WATERMARK_FONT() if callable(config.WATERMARK_FONT) else config.WATERMARK_FONT
+        watermark_clip = TextClip(watermark_text, fontsize=config.WATERMARK_FONT_SIZE, color=watermark_color, font=watermark_font)
             codec="libx264",
             audio_codec="aac",
             threads=2,
