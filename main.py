@@ -1174,7 +1174,10 @@ def generate_content(
 # 2 & 3. TTS & SUBTITLE GENERATION (EDGE TTS ONLINE)
 # ---------------------------------------------------------------------------
 def ensure_kokoro_model_files() -> Tuple[Path, Path]:
-    """Ensure Kokoro-v1.0 ONNX model weights and voices files exist and are uncorrupted in ~/.cache/kokoro."""
+    """Ensure Kokoro-v1.0 ONNX model weights and voices files exist and pass integrity checks."""
+    import zipfile
+    import urllib.request
+
     cache_dir = Path.home() / ".cache" / "kokoro"
     cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -1184,33 +1187,64 @@ def ensure_kokoro_model_files() -> Tuple[Path, Path]:
     model_url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx"
     voices_url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
 
-    # Minimum valid file size boundaries (300 MB for model, 25 MB for voices)
-    MIN_MODEL_SIZE = 300 * 1024 * 1024
-    MIN_VOICES_SIZE = 25 * 1024 * 1024
+    MIN_MODEL_SIZE = 300 * 1024 * 1024   # 300 MB
+    MIN_VOICES_SIZE = 25 * 1024 * 1024   # 25 MB
 
-    def download_if_missing_or_corrupt(url: str, dest: Path, min_size: int):
-        if dest.exists():
-            actual_size = dest.stat().st_size
-            if actual_size < min_size:
-                print(f"Warning: Kokoro asset '{dest.name}' is corrupted or incomplete ({actual_size} bytes < {min_size} bytes). Purging and re-downloading...")
-                try: dest.unlink()
-                except Exception: pass
+    def is_voices_zip_valid(path: Path) -> bool:
+        """Return True only if voices-v1.0.bin is a structurally valid non-empty ZIP archive."""
+        if not path.exists() or path.stat().st_size < MIN_VOICES_SIZE:
+            return False
+        try:
+            with zipfile.ZipFile(str(path), 'r') as zf:
+                bad = zf.testzip()
+                return bad is None and len(zf.namelist()) > 0
+        except Exception as e:
+            print(f"Kokoro voices ZIP integrity check failed: {e}")
+            return False
 
-        if not dest.exists():
-            print(f"Downloading Kokoro TTS model asset '{dest.name}' from {url}...")
-            r = HTTP_SESSION.get(url, stream=True, timeout=180)
-            r.raise_for_status()
-            temp_dest = dest.with_suffix(".tmp")
-            with open(temp_dest, "wb") as f:
-                for chunk in r.iter_content(chunk_size=2*1024*1024):
-                    if chunk:
+    def is_model_valid(path: Path) -> bool:
+        """Return True if the ONNX model exists and meets minimum size threshold."""
+        return path.exists() and path.stat().st_size >= MIN_MODEL_SIZE
+
+    def robust_download(url: str, dest: Path):
+        """Download binary file via urllib (no encoding transforms, cross-platform safe)."""
+        temp = dest.with_suffix(".tmp")
+        print(f"Downloading Kokoro asset '{dest.name}'...")
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "MPVSAP/2.5 KokoroDownloader"})
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                with open(temp, "wb") as f:
+                    while True:
+                        chunk = resp.read(2 * 1024 * 1024)
+                        if not chunk:
+                            break
                         f.write(chunk)
-            temp_dest.replace(dest)
-            print(f"Downloaded '{dest.name}' ({dest.stat().st_size / 1024 / 1024:.2f} MB)")
+            temp.replace(dest)
+            print(f"Downloaded '{dest.name}' ({dest.stat().st_size / 1024 / 1024:.1f} MB)")
+        except Exception as e:
+            if temp.exists():
+                temp.unlink(missing_ok=True)
+            raise RuntimeError(f"Failed to download Kokoro asset '{dest.name}': {e}") from e
 
-    download_if_missing_or_corrupt(model_url, model_path, MIN_MODEL_SIZE)
-    download_if_missing_or_corrupt(voices_url, voices_path, MIN_VOICES_SIZE)
+    # --- Model (ONNX weights) ---
+    if not is_model_valid(model_path):
+        if model_path.exists():
+            print(f"Kokoro model invalid ({model_path.stat().st_size} bytes < {MIN_MODEL_SIZE}). Re-downloading...")
+            model_path.unlink(missing_ok=True)
+        robust_download(model_url, model_path)
+
+    # --- Voices (ZIP archive of .npy style vectors) ---
+    if not is_voices_zip_valid(voices_path):
+        if voices_path.exists():
+            print(f"Kokoro voices-v1.0.bin ZIP invalid or corrupt. Purging and re-downloading...")
+            voices_path.unlink(missing_ok=True)
+        robust_download(voices_url, voices_path)
+        # Post-download ZIP integrity gate — fail fast if still broken
+        if not is_voices_zip_valid(voices_path):
+            raise RuntimeError("voices-v1.0.bin failed ZIP integrity check after fresh download. Cannot continue.")
+
     return model_path, voices_path
+
 
 
 def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path: str) -> List[Tuple[float, float, str]]:
