@@ -2717,19 +2717,7 @@ def run_daily_upload_pipeline_once() -> None:
             description = f"{link_str}\n\n{description}"
             print(f"Funnel link added to description pointing to: {related_long_video_id}")
 
-    # Append new title, topic, and save history using the database category key
-    past_topics.append({
-        "category": db_category,
-        "title": title,
-        "topic": segments[0]["topic"],
-        "timestamp": datetime.datetime.utcnow().isoformat()
-    })
-    # Preserve full past_topics history without truncation cap
-    try:
-        with open(past_topics_path, "w", encoding="utf-8") as f:
-            json.dump(past_topics, f, indent=2)
-    except Exception as e:
-        print("Failed to save past topics:", e)
+    # Note: Topic is recorded to past_topics.json ONLY after successful upload to YouTube.
 
     # Dry run mode check
     if args.dry_run:
@@ -2861,16 +2849,22 @@ def run_daily_upload_pipeline_once() -> None:
                     subs_list=current_subs
                 )
                 
-                # Update past_topics with uploaded video metadata
-                if uploaded_video_id and past_topics:
-                    past_topics[-1]["youtube_video_id"] = uploaded_video_id
-                    past_topics[-1]["is_long"] = not config.is_short
+                # Append to past_topics ONLY upon successful upload to YouTube
+                if uploaded_video_id:
+                    past_topics.append({
+                        "category": db_category,
+                        "title": title,
+                        "topic": segments[0]["topic"],
+                        "timestamp": datetime.datetime.utcnow().isoformat(),
+                        "youtube_video_id": uploaded_video_id,
+                        "is_long": not config.is_short
+                    })
                     try:
                         with open(past_topics_path, "w", encoding="utf-8") as f:
                             json.dump(past_topics, f, indent=2)
-                        print(f"Successfully recorded uploaded video ID {uploaded_video_id} in history database.")
+                        print(f"Successfully recorded uploaded video ID {uploaded_video_id} and topic '{segments[0]['topic']}' in past_topics.json.")
                     except Exception as hist_err:
-                        print("Failed to update history database with video ID:", hist_err)
+                        print("Failed to update past_topics.json with video ID:", hist_err)
 
                     # Trigger Webhook Success Notification
                     yt_url = f"https://www.youtube.com/shorts/{uploaded_video_id}" if config.is_short else f"https://www.youtube.com/watch?v={uploaded_video_id}"
