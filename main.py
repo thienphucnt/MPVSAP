@@ -461,22 +461,20 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
                 is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
                 is_transient = any(err in str(e) or err in str(e).upper() for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "HIGH DEMAND"])
                 
-                if is_quota_or_rate_limit and attempt < max_retries - 1:
-                    # Parse dynamic retry delay from Gemini API response
+                if is_quota_or_rate_limit:
                     match = re.search(r"retry in ([0-9\.]+)s", str(e))
-                    if match:
-                        wait_time = float(match.group(1)) + random.uniform(1, 3)
-                        print(f"Gemini API requested wait. Sleeping for {wait_time:.2f}s before retry...")
+                    wait_time = float(match.group(1)) if match else 25.0
+                    if wait_time > 5.0:
+                        print(f"Model {current_model} rate limited ({wait_time:.1f}s delay). Fast-switching to next model in fallback chain...")
+                        break
                     else:
-                        wait_time = 25.0 + random.uniform(2, 5)
-                        print(f"Model {current_model} rate limited. Retrying in {wait_time:.2f}s...")
-                    time.sleep(wait_time)
+                        print(f"Gemini API short wait ({wait_time:.1f}s). Retrying...")
+                        time.sleep(wait_time + 0.5)
                 elif is_transient and attempt < max_retries - 1:
                     wait_time = (2 ** attempt) + random.uniform(0, 1)
                     print(f"Gemini API transient error on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
                     time.sleep(wait_time)
                 else:
-                    # Non-transient or exhausted retries, break to try next model in fallback chain
                     print(f"Model {current_model} failed or exhausted. Trying next fallback model...")
                     break
 
@@ -1904,15 +1902,20 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     new_w = max(target_w, int(target_w * scale))
                     new_h = max(target_h, int(target_h * scale))
 
-                    img = PIL.Image.fromarray(frame)
-                    resample_filter = getattr(PIL.Image, 'Resampling', PIL.Image).LANCZOS if hasattr(PIL.Image, 'Resampling') else PIL.Image.BICUBIC
-                    img_resized = img.resize((new_w, new_h), resample_filter)
-
-                    left = max(0, (new_w - target_w) // 2)
-                    top = max(0, (new_h - target_h) // 2)
-
-                    img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
-                    return np.array(img_cropped)
+                    try:
+                        import cv2
+                        img_resized = cv2.resize(frame, (new_w, new_h), interpolation=cv2.INTER_LINEAR)
+                        left = max(0, (new_w - target_w) // 2)
+                        top = max(0, (new_h - target_h) // 2)
+                        return img_resized[top:top + target_h, left:left + target_w]
+                    except ImportError:
+                        img = PIL.Image.fromarray(frame)
+                        resample_filter = getattr(PIL.Image, 'Resampling', PIL.Image).BILINEAR if hasattr(PIL.Image, 'Resampling') else PIL.Image.BILINEAR
+                        img_resized = img.resize((new_w, new_h), resample_filter)
+                        left = max(0, (new_w - target_w) // 2)
+                        top = max(0, (new_h - target_h) // 2)
+                        img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
+                        return np.array(img_cropped)
                 except Exception:
                     return np.full((config.resolution[1], config.resolution[0], 3), 128, dtype=np.uint8)
             return zoom_filter
