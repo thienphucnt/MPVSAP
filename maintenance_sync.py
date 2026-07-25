@@ -5,6 +5,44 @@ from pathlib import Path
 
 LOGS_FILE = Path("logs/run_history.json")
 
+import re
+
+def is_similar_entry(item1: dict, item2: dict) -> bool:
+    """Check if two topic/title entries have same or similar content."""
+    def normalize(text: str) -> str:
+        text = re.sub(r'#\S+', '', text.lower())
+        text = re.sub(r'[^\w\s]', '', text)
+        return re.sub(r'\s+', ' ', text).strip()
+
+    t1 = normalize(item1.get("title", ""))
+    top1 = normalize(item1.get("topic", ""))
+    t2 = normalize(item2.get("title", ""))
+    top2 = normalize(item2.get("topic", ""))
+
+    # 1. Exact or substring match of normalized topics/titles
+    if top1 and top2:
+        if top1 == top2 or top1 in top2 or top2 in top1:
+            return True
+
+    if t1 and t2:
+        if t1 == t2 or t1 in t2 or t2 in t1:
+            return True
+
+    # 2. Token Jaccard overlap check on meaningful words
+    stopwords = {'the', 'a', 'an', 'is', 'in', 'of', 'and', 'to', 'for', 'with', 'on', 'at', 'by', 'from', 'this', 'that', 'you', 'your', 'are', 'will', 'shorts', 'space', 'history', 'tech', 'mysteries', 'facts'}
+    
+    words1 = set(w for w in (t1 + " " + top1).split() if w not in stopwords and len(w) > 2)
+    words2 = set(w for w in (t2 + " " + top2).split() if w not in stopwords and len(w) > 2)
+
+    if words1 and words2:
+        intersection = words1.intersection(words2)
+        union = words1.union(words2)
+        jaccard = len(intersection) / float(len(union))
+        if jaccard >= 0.35:
+            return True
+
+    return False
+
 def check_video_live_oembed(video_id: str) -> bool:
     """Check if YouTube video is live using public oEmbed endpoint. Requires 0 API keys."""
     url = f"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={video_id}&format=json"
@@ -79,8 +117,7 @@ def run_maintenance_sync():
                 pt_title = (pt.get("title") or "").lower().strip()
 
                 has_live_duplicate = any(
-                    (other.get("youtube_video_id") in live_vids) and
-                    ((other.get("topic") or "").lower().strip() == pt_topic or (other.get("title") or "").lower().strip() == pt_title)
+                    (other.get("youtube_video_id") in live_vids) and is_similar_entry(pt, other)
                     for other in past_topics if other != pt
                 )
 
