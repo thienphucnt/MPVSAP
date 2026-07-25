@@ -1789,21 +1789,14 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     # --- Build multi-clip background with Ken Burns zoom effect & Visual Loop Synchronization ---
     num_clips = len(video_paths)
     if config.is_short and num_clips >= 3:
-        # Front-loaded visual overdrive (3 asset changes in 0-2s) + Final 1.5s Visual Loop Bridge
-        loop_end_dur = 1.5
-        rem_time = max(0.1, audio_duration - 2.0 - loop_end_dur)
-        rem_clips = max(1, num_clips - 3)
-        per_rem = rem_time / float(rem_clips)
-
-        durations = [0.6, 0.6, 0.8]
-        durations.extend([per_rem] * rem_clips)
-
         # Append opening visual asset (video_paths[0]) at the end for 100% seamless visual loop
         video_paths_to_use = list(video_paths) + [video_paths[0]]
-        durations.append(loop_end_dur)
     else:
         video_paths_to_use = list(video_paths)
-        durations = [audio_duration / float(len(video_paths_to_use))] * len(video_paths_to_use)
+
+    num_assets = len(video_paths_to_use)
+    per_clip_duration = audio_duration / float(num_assets)
+    durations = [per_clip_duration] * num_assets
 
     clips = []
     for i, v_path in enumerate(video_paths_to_use):
@@ -1816,26 +1809,27 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             subclip_end = min(c.duration, segment_duration + pad)
             c = c.subclip(0, subclip_end)
         c = c.set_duration(segment_duration)
-
-        # Apply smooth 0.4s crossfade transition to the final visual loop clip
-        if config.is_short and i == len(video_paths_to_use) - 1:
-            try:
-                c = c.crossfadein(0.4)
-            except Exception as cf_err:
-                print("Crossfade fallback:", cf_err)
         
         # Apply Ken Burns zoom effect using a frame filter to keep resolution constant
         def create_zoom_filter(dur_val):
+            last_valid_frame = [None]
             def zoom_filter(get_frame, t):
                 try:
                     frame = get_frame(t)
                     if frame is None:
-                        return np.zeros((config.resolution[1], config.resolution[0], 3), dtype=np.uint8)
+                        try: frame = get_frame(0.0)
+                        except Exception: pass
+                    if frame is None and last_valid_frame[0] is not None:
+                        frame = last_valid_frame[0]
+                    if frame is None:
+                        return np.full((config.resolution[1], config.resolution[0], 3), 128, dtype=np.uint8)
+
                     if not isinstance(frame, np.ndarray):
                         frame = np.array(frame)
                     if frame.dtype != np.uint8:
                         frame = np.clip(frame, 0, 255).astype(np.uint8)
                     frame = np.ascontiguousarray(frame)
+                    last_valid_frame[0] = frame
 
                     target_w, target_h = config.resolution
                     progress = min(1.0, max(0.0, float(t) / max(0.01, float(dur_val))))
@@ -1864,7 +1858,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     except Exception:
                         pass
                     # Absolute last resort: mid-gray (never black zeros)
-                    return np.full((config.resolution[1], config.resolution[0], 3), 64, dtype=np.uint8)
+                    return np.full((config.resolution[1], config.resolution[0], 3), 128, dtype=np.uint8)
             return zoom_filter
 
         c = c.fl(create_zoom_filter(segment_duration))
