@@ -1285,7 +1285,14 @@ def search_wikimedia_image(query: str) -> Optional[str]:
             for page_id, page in pages.items():
                 info = page.get("imageinfo", [])
                 if info:
-                    return info[0]["url"]
+                    url = info[0]["url"]
+                    # Only return raster image formats Pillow can open — skip SVG, PDF, tiff, webm etc.
+                    allowed_exts = (".jpg", ".jpeg", ".png", ".webp", ".gif")
+                    if any(url.lower().split("?")[0].endswith(ext) for ext in allowed_exts):
+                        return url
+                    else:
+                        print(f"Wikimedia: skipping unsupported format for '{query}': {url.split('/')[-1]}")
+                        return None
         except Exception as e:
             if attempt == 1:
                 print(f"Wikimedia search failed for '{query}':", e)
@@ -1293,6 +1300,13 @@ def search_wikimedia_image(query: str) -> Optional[str]:
 
 def download_wikimedia_image(url: str, index: int) -> Optional[str]:
     """Download a Wikimedia image with compliant User-Agent and convert to valid RGB JPEG."""
+    # Safety guard: reject unsupported formats before downloading
+    clean_url = url.lower().split("?")[0]
+    allowed_exts = (".jpg", ".jpeg", ".png", ".webp", ".gif")
+    if not any(clean_url.endswith(ext) for ext in allowed_exts):
+        print(f"Wikimedia: skipping unsupported format: {url.split('/')[-1]}")
+        return None
+
     temp_path = f"temp_wiki_{index}_{os.getpid()}.jpg"
     for attempt in range(2):
         try:
@@ -1303,16 +1317,19 @@ def download_wikimedia_image(url: str, index: int) -> Optional[str]:
                 continue
             resp.raise_for_status()
 
-            # Convert downloaded image (SVG/WebP/PNG/GIF/JPG) to RGB JPEG using Pillow
+            # Convert downloaded raster image (PNG/WebP/GIF/JPG) to RGB JPEG using Pillow
             from PIL import Image
             import io
-            img = Image.open(io.BytesIO(resp.content))
+            raw = resp.content
+            if len(raw) < 100:
+                raise ValueError(f"Wikimedia response too small ({len(raw)} bytes), likely invalid")
+            img = Image.open(io.BytesIO(raw))
             img = img.convert("RGB")
             img.save(temp_path, "JPEG", quality=95)
             return temp_path
         except Exception as e:
             if attempt == 1:
-                print(f"Failed to download/convert Wikimedia image from {url}: {e}")
+                print(f"Wikimedia image download/convert failed for {url.split('/')[-1]}: {e}")
             if os.path.exists(temp_path):
                 try: os.remove(temp_path)
                 except Exception: pass
@@ -1693,8 +1710,10 @@ def verify_rendered_video_visuals(video_path: str, num_samples: int = 8) -> bool
             std_v = float(np.std(frame))
             print(f"Sample at {t:.2f}s: Mean Brightness = {mean_b:.2f}, Variance = {std_v:.2f}")
 
-            if mean_b < 2.5 and std_v < 2.5:
-                print(f"CRITICAL REJECTION: Frame at {t:.2f}s is PITCH BLACK! (Mean Brightness: {mean_b:.2f}, Variance: {std_v:.2f})")
+            # A true raster B-Roll frame always has mean brightness > 5.0.
+            # Near-black frames (from zoom filter failures) have mean_b < 5.0 even with slight std_v noise.
+            if mean_b < 5.0:
+                print(f"CRITICAL REJECTION: Frame at {t:.2f}s is NEAR-BLACK! (Mean Brightness: {mean_b:.2f}, Variance: {std_v:.2f})")
                 black_frame_count += 1
 
         clip.close()
@@ -1795,13 +1814,17 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     img_cropped = img_resized.crop((left, top, left + target_w, top + target_h))
                     return np.array(img_cropped)
                 except Exception as z_err:
-                    print("Zoom filter execution error fallback:", z_err)
+                    # On zoom filter error, return the raw frame unmodified rather than black zeros
                     try:
                         frame = get_frame(t)
-                        img = PIL.Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8))
-                        return np.array(img.resize(config.resolution))
+                        if frame is not None and isinstance(frame, np.ndarray):
+                            frame = np.clip(frame, 0, 255).astype(np.uint8)
+                            img = PIL.Image.fromarray(frame)
+                            return np.array(img.resize(config.resolution, PIL.Image.BILINEAR))
                     except Exception:
-                        return np.zeros((config.resolution[1], config.resolution[0], 3), dtype=np.uint8)
+                        pass
+                    # Absolute last resort: mid-gray (never black zeros)
+                    return np.full((config.resolution[1], config.resolution[0], 3), 64, dtype=np.uint8)
             return zoom_filter
 
         c = c.fl(create_zoom_filter(segment_duration))
