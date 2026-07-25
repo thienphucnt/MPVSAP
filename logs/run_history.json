@@ -11163,5 +11163,37 @@
     "voice_actor": "af_sarah (Kokoro-82M Neural)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-30158183576",
+    "github_run_number": 152,
+    "github_run_id": 30158183576,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30158183576",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T12:47:10.162332Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3038, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 2825, in run_daily_upload_pipeline_once\n    assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 2076, in assemble_video\n    verify_rendered_video_visuals(output_path)\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1765, in verify_rendered_video_visuals\n    raise e\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1756, in verify_rendered_video_visuals\n    raise RuntimeError(\nRuntimeError: Pre-Upload Visual Sanity Check FAILED: Found 8 pitch-black frames in final_output.mp4! Aborting upload to prevent publishing broken video.\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
   }
 ]
