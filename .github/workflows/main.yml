@@ -1,0 +1,117 @@
+name: Daily Shorts Generator & Uploader
+
+on:
+  schedule:
+    # Runs once a day at 12:00 UTC (1 Short per day)
+    - cron: '0 12 * * *'
+
+  workflow_dispatch: # Allows manual run for testing
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30  # Prevent hung renders consuming the full 6-hour limit
+
+    # Required permissions to commit and push heartbeat.txt back to the repository
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install System Dependencies
+        run: |
+          if command -v ffmpeg &> /dev/null; then
+            echo "ffmpeg is pre-installed. Fast-skipping system package installation."
+          else
+            echo "Missing ffmpeg. Installing with fast acquisition timeout..."
+            sudo apt-get update -o Acquire::Http::Timeout="10" -q || true
+            sudo apt-get install -y -o Acquire::Http::Timeout="10" ffmpeg imagemagick
+          fi
+          
+          # Fix ImageMagick security policies that restrict TextClip operations
+          echo "Applying ImageMagick security policy patches..."
+          if [ -f /etc/ImageMagick-6/policy.xml ]; then
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml
+          fi
+          if [ -f /etc/ImageMagick-7/policy.xml ]; then
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-7/policy.xml
+          fi
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-v1
+
+      - name: Install Playwright Chromium Browser (if not cached)
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: |
+          python -m playwright install chromium --with-deps
+
+      - name: Cache Kokoro TTS Model Weights
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/kokoro
+          key: kokoro-onnx-v1.0
+
+      - name: Run Video Pipeline & Publish
+        env:
+          # Core API Keys & Webhook Monitoring
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          WATERMARK_HANDLE: ${{ secrets.WATERMARK_HANDLE }}
+
+          # YouTube Data API Credentials
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YT_PLAYLIST_SPACE: ${{ secrets.YT_PLAYLIST_SPACE }}
+          YT_PLAYLIST_HISTORY: ${{ secrets.YT_PLAYLIST_HISTORY }}
+          YT_PLAYLIST_TECH: ${{ secrets.YT_PLAYLIST_TECH }}
+
+          # TikTok Content Posting API Credentials
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+
+          # Meta Graph API Credentials (Instagram & Facebook Reels)
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: |
+          python main.py
+
+      - name: Persist Telemetry Logs & Reset Self-Healing Counter
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python maintenance_sync.py || true
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f heal_attempts.txt ]; then echo "0" > heal_attempts.txt; git add heal_attempts.txt; fi
+          if [ -f logs/run_history.json ]; then git add logs/run_history.json; fi
+          if [ -f dashboard/app/data/run_history.json ]; then git add dashboard/app/data/run_history.json; fi
+          if [ -f past_topics.json ]; then git add past_topics.json; fi
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Persist telemetry logs and pipeline state [skip ci]"
+            git pull --rebase origin main || true
+            git push origin main
+          fi

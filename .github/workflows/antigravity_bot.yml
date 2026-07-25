@@ -1,0 +1,153 @@
+name: Antigravity Autonomous Coder Bot
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
+
+jobs:
+  antigravity-bot:
+    # SECURITY GUARDRAIL: Only execute for repo owners/collaborators to prevent unauthorized public issue/comment exploitation
+    if: |
+      (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'MEMBER' || github.event.issue.author_association == 'OWNER' || github.actor == github.repository_owner) &&
+      ((github.event.issue && (contains(github.event.issue.body, 'antigravity') || contains(github.event.issue.body, '/bot'))) ||
+       (github.event.comment && (contains(github.event.comment.body, 'antigravity') || contains(github.event.comment.body, '/bot'))))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: write
+      issues: write
+      actions: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Issue Context
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue view ${{ github.event.issue.number }} --json title,body,comments > issue_context.json
+
+
+      - name: Extract Prompt
+        id: extract_prompt
+        run: |
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            RAW_PROMPT="${{ github.event.comment.body }}"
+          else
+            RAW_PROMPT="${{ github.event.issue.body }}"
+          fi
+          # Strip trigger keywords like @antigravity, antigravity, /bot, /antigravity case-insensitively
+          CLEANED_PROMPT=$(echo "$RAW_PROMPT" | sed -E 's/(@?antigravity|\/?bot)//gi' | xargs)
+          echo "BOT_PROMPT=$CLEANED_PROMPT" >> $GITHUB_ENV
+
+      - name: Acknowledge Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COMMENT_URL=$(gh issue comment ${{ github.event.issue.number }} --body "👋 Hi @${{ github.event.sender.login }}, I've received your request: '*$BOT_PROMPT*'. I am initializing the cloud environment and starting to process... ⚙️")
+          COMMENT_ID=$(echo "$COMMENT_URL" | grep -oE 'issuecomment-[0-9]+' | sed 's/issuecomment-//')
+          echo "COMMENT_ID=$COMMENT_ID" >> $GITHUB_ENV
+          echo "Created acknowledgment comment ID: $COMMENT_ID"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install System Dependencies
+        run: |
+          if command -v ffmpeg &> /dev/null && command -v convert &> /dev/null; then
+            echo "ffmpeg and imagemagick are pre-installed. Skipping installation."
+          else
+            echo "Missing pre-installed dependencies. Installing..."
+            sudo apt-get install -y ffmpeg imagemagick || (sudo apt-get update && sudo apt-get install -y ffmpeg imagemagick)
+          fi
+          
+          # Fix ImageMagick security policies that restrict TextClip operations
+          echo "Applying ImageMagick security policy patches..."
+          if [ -f /etc/ImageMagick-6/policy.xml ]; then
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml
+          fi
+          if [ -f /etc/ImageMagick-7/policy.xml ]; then
+            sudo sed -i 's/none/read,write/g' /etc/ImageMagick-7/policy.xml
+          fi
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Antigravity AI Bot
+        env:
+          # GitHub CLI Token (use default secrets.GITHUB_TOKEN)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Core API Keys
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+
+          # YouTube Data API Credentials
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YT_PLAYLIST_SPACE: ${{ secrets.YT_PLAYLIST_SPACE }}
+          YT_PLAYLIST_HISTORY: ${{ secrets.YT_PLAYLIST_HISTORY }}
+          YT_PLAYLIST_TECH: ${{ secrets.YT_PLAYLIST_TECH }}
+
+          # TikTok Content Posting API Credentials
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+
+          # Meta Graph API Credentials (Instagram & Facebook Reels)
+          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: |
+          python bot_agent.py
+
+      - name: Post Comment on Issue
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f bot_comment.md ]; then
+            TRIGGER_USER="${{ github.event.sender.login }}"
+            echo -e "Hi @${TRIGGER_USER},\n\n$(cat bot_comment.md)" > final_comment.md
+            
+            if [ -n "$COMMENT_ID" ]; then
+              echo "Updating acknowledgment comment ID: $COMMENT_ID..."
+              gh api -X PATCH repos/${{ github.repository }}/issues/comments/$COMMENT_ID -F body=@final_comment.md
+            else
+              echo "No acknowledgment comment ID found. Posting a new comment..."
+              gh issue comment ${{ github.event.issue.number }} --body-file final_comment.md
+            fi
+          else
+            echo "No comment file generated."
+          fi
+
+      - name: Verify Code Syntax
+        run: |
+          if [ -f main.py ]; then
+            python -m py_compile main.py
+          fi
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Antigravity Bot: Fulfill user request from issue #${{ github.event.issue.number }} [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+            echo "Changes pushed successfully!"
+          else
+            echo "No code changes generated."
+          fi

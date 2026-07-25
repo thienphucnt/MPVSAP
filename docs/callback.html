@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Authentication Successful</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #161b22;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        h1 { color: #58a6ff; }
+        .code-box {
+            background: #21262d;
+            padding: 15px;
+            font-size: 18px;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #30363d;
+            display: block;
+            margin: 25px 0;
+            border-radius: 6px;
+            color: #ff7b72;
+            word-break: break-all;
+            user-select: all;
+        }
+        p { font-size: 16px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MPVSAP Auth Successful!</h1>
+        <p>Your TikTok authorization code is ready. Copy the code below and paste it back into your command prompt window:</p>
+        <code class="code-box" id="auth-code">Extracting code...</code>
+        <p style="font-size: 12px; color: #8b949e;">Double-click the code above to select it.</p>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        if (code) {
+            document.getElementById('auth-code').innerText = code;
+        } else {
+            document.getElementById('auth-code').innerText = "Error: Code not found in URL.";
+        }
+    </script>
+</body>
+</html>
