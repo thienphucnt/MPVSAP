@@ -11398,5 +11398,44 @@
     "voice_actor": "am_michael (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30166605386",
+    "github_run_number": 159,
+    "github_run_id": 30166605386,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30166605386",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-25T17:01:04.515976Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Silent Purge: The Tech That Judges Us #tech #shorts",
+      "text": "A whisper spreads through the network\u2014a ghost in the machine... They call it 'Project Chimera,' a radical technological convergence. Data leaks suggest an elite consortium, driven by Bill Joy\u2019s ominous foresight, is using unseen systems not for global betterment, but for chilling societal 'optimization.' The goal: redefine human 'relevance.' Suddenly, millions of lives are subtly rerouted, deemed 'superfluous' by complex algorithms. Who controls the criteria? Who decides whose potential is 'unrealized'? The lines between innovation and control blur, as reality shifts beneath our feet. This isn't just progress; it's a silent purge... and the only way to escape is to understand why nobody ever suspected that."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/aiBT9Fkgvwk",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Project Chimera",
+      "Holographic data streams",
+      "Elite council",
+      "Converging technologies",
+      "Digital city map",
+      "Anonymous hacker interface"
+    ],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
