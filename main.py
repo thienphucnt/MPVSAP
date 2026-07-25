@@ -1306,22 +1306,32 @@ async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path
     return words
 
 
-def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "") -> Tuple[str, List[Tuple[Tuple[float, float], str]]]:
+def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "") -> Tuple[str, List[Tuple[Tuple[float, float], str]], str]:
     clean_topic = re.sub(r"[^\w]", "_", topic) if topic else "voice"
     audio_path = f"{clean_topic}.wav"
 
     words = []
+    voice_used = ""
+    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
+    voice_map = {"space": "am_michael", "history": "af_sarah", "tech": "am_adam"}
+    kokoro_voice = voice_map.get(db_key, "af_sarah")
+
     try:
-        print("Generating Local Neural TTS voiceover via Kokoro-82M ONNX...")
+        print(f"Generating Local Neural TTS voiceover via Kokoro-82M ONNX ({kokoro_voice})...")
         words = synthesize_kokoro_audio_and_timestamps(script_text, category, audio_path)
+        voice_used = f"{kokoro_voice} (Kokoro-82M ONNX)"
     except Exception as e:
-        print(f"Kokoro-82M TTS fallback due to: {e}. Falling back to Edge-TTS...")
+        import traceback
+        print(f"Kokoro-82M TTS fallback due to [{type(e).__name__}]: {e}")
+        traceback.print_exc()
         primary_voice = "en-US-BrianNeural"
         fallback_voice = "en-US-AndrewNeural"
         try:
             words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, primary_voice, audio_path))
+            voice_used = f"{primary_voice} (Edge-TTS Fallback)"
         except Exception as fallback_err:
             words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, fallback_voice, audio_path))
+            voice_used = f"{fallback_voice} (Edge-TTS Fallback)"
 
     # Apply Studio Audio Mastering Chain (80Hz Highpass filter, 2.5kHz EQ Boost, Compand Compressor)
     mastered_audio_path = f"{clean_topic}_mastered.wav"
@@ -1332,8 +1342,8 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
         if text:
             subs_list.append(((start_sec, end_sec), text.upper()))
             
-    print(f"Generated {len(subs_list)} short-burst subtitle cues.")
-    return audio_path, subs_list
+    print(f"Generated {len(subs_list)} short-burst subtitle cues. Voice: {voice_used}")
+    return audio_path, subs_list, voice_used
 
 
 # ---------------------------------------------------------------------------
@@ -2957,7 +2967,7 @@ def run_daily_upload_pipeline_once() -> None:
     if config.is_short:
         # Standard Shorts path (single segment)
         seg = segments[0]
-        audio_path, subs_list = generate_audio_and_subtitles(seg["script"], category, seg["topic"])
+        audio_path, subs_list, actual_voice_used = generate_audio_and_subtitles(seg["script"], category, seg["topic"])
         video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category, orientation="portrait")
         assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)
     else:
@@ -2970,7 +2980,7 @@ def run_daily_upload_pipeline_once() -> None:
 
         for idx, seg in enumerate(segments):
             print(f"\n--- Preparing Segment {idx + 1}/{len(segments)}: {seg['topic']} ---")
-            seg_audio_path, seg_subs_list = generate_audio_and_subtitles(seg["script"], category, f"longform_seg_{idx}")
+            seg_audio_path, seg_subs_list, actual_voice_used = generate_audio_and_subtitles(seg["script"], category, f"longform_seg_{idx}")
             
             # Record segment audio duration for automated description chapters
             try:
@@ -3141,7 +3151,7 @@ def run_daily_upload_pipeline_once() -> None:
                 source_url=source_data.get("url"),
                 music_track="space_track_1.mp3",
                 search_keywords=seg.get("visual_keywords", []) if 'seg' in locals() else [],
-                voice_actor="af_sarah (Kokoro-82M)" if category == "history" else "am_michael (Kokoro-82M)",
+                voice_actor=actual_voice_used if 'actual_voice_used' in locals() else ("af_sarah (Kokoro-82M)" if category == "history" else "am_michael (Kokoro-82M)"),
                 visual_asset_types="Salience-Zoomed 4K Clips",
                 ass_subtitle_engine=f"FFmpeg ASS Engine ({category} Theme)",
                 generation_mode="5_VARIANT_TOURNAMENT" if config.is_short else "LONGFORM_COMPILATION"

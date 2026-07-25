@@ -29,13 +29,9 @@ jobs:
 
       - name: Install System Dependencies
         run: |
-          if command -v ffmpeg &> /dev/null; then
-            echo "ffmpeg is pre-installed. Fast-skipping system package installation."
-          else
-            echo "Missing ffmpeg. Installing with fast acquisition timeout..."
-            sudo apt-get update -o Acquire::Http::Timeout="10" -q || true
-            sudo apt-get install -y -o Acquire::Http::Timeout="10" ffmpeg imagemagick
-          fi
+          echo "Installing system dependencies (espeak-ng, libespeak-ng1, imagemagick)..."
+          sudo apt-get update -o Acquire::Http::Timeout="10" -q || true
+          sudo apt-get install -y -o Acquire::Http::Timeout="10" ffmpeg imagemagick espeak-ng libespeak-ng1 espeak-ng-data
           
           # Fix ImageMagick security policies that restrict TextClip operations
           echo "Applying ImageMagick security policy patches..."
