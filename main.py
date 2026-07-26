@@ -459,7 +459,7 @@ def sanitize_metadata(title: str, description: str, is_short: bool, category: st
 # SHARED GEMINI RETRY HELPER
 # ---------------------------------------------------------------------------
 def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, max_retries: int = 5):
-    """Call Gemini with fallback model chain and exponential backoff for transient errors."""
+    """Call Gemini with fallback model chain, exponential backoff, and 60s RPM window auto-wait."""
     # Quota-efficient model chain: start with high-RPM free tier, escalate to premium only on failure
     model_fallback_chain = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-2.5-pro", "gemini-flash-latest", "gemini-pro-latest"]
     
@@ -471,35 +471,48 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
         candidates = [model] + model_fallback_chain
 
     last_error = None
-    for current_model in candidates:
-        for attempt in range(max_retries):
-            try:
-                print(f"Trying Gemini model: {current_model}...")
-                response = client.models.generate_content(model=current_model, contents=prompt)
-                return response
-            except Exception as e:
-                last_error = e
-                is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
-                is_transient = any(err in str(e) or err in str(e).upper() for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "HIGH DEMAND"])
-                
-                if is_quota_or_rate_limit:
-                    match = re.search(r"retry in ([0-9\.]+)s", str(e))
-                    wait_time = float(match.group(1)) if match else 25.0
-                    if wait_time > 5.0:
-                        print(f"Model {current_model} rate limited ({wait_time:.1f}s delay). Fast-switching to next model in fallback chain...")
-                        break
-                    else:
-                        print(f"Gemini API short wait ({wait_time:.1f}s). Retrying...")
-                        time.sleep(wait_time + 0.5)
-                elif is_transient and attempt < max_retries - 1:
-                    wait_time = (2 ** attempt) + random.uniform(0, 1)
-                    print(f"Gemini API transient error on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
-                    time.sleep(wait_time)
-                else:
-                    print(f"Model {current_model} failed or exhausted. Trying next fallback model...")
-                    break
+    max_rpm_wait = 60.0
 
-    raise Exception(f"Gemini API failed after exhausting all fallback models. Last error: {last_error}")
+    # Up to 3 full passes over the candidate list to handle 1-minute RPM rate limit resets
+    for outer_pass in range(3):
+        for current_model in candidates:
+            for attempt in range(max_retries):
+                try:
+                    print(f"Trying Gemini model: {current_model} (pass {outer_pass + 1}/3)...")
+                    response = client.models.generate_content(model=current_model, contents=prompt)
+                    return response
+                except Exception as e:
+                    last_error = e
+                    is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
+                    is_transient = any(err in str(e) or err in str(e).upper() for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "HIGH DEMAND"])
+                    
+                    if is_quota_or_rate_limit:
+                        match = re.search(r"retry in ([0-9\.]+)s", str(e))
+                        wait_time = float(match.group(1)) if match else 25.0
+                        if wait_time > max_rpm_wait:
+                            max_rpm_wait = wait_time
+
+                        if wait_time > 5.0:
+                            print(f"Model {current_model} rate limited ({wait_time:.1f}s delay requested by API). Fast-switching to next candidate...")
+                            break
+                        else:
+                            print(f"Gemini API short wait ({wait_time:.1f}s). Retrying...")
+                            time.sleep(wait_time + 0.5)
+                    elif is_transient and attempt < max_retries - 1:
+                        wait_time = (2 ** attempt) + random.uniform(0, 1)
+                        print(f"Gemini API transient error on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
+                        time.sleep(wait_time)
+                    else:
+                        print(f"Model {current_model} failed or exhausted. Trying next fallback model...")
+                        break
+
+        # If all candidates failed due to 1-minute RPM rate limits, sleep for the RPM window reset and try again
+        if outer_pass < 2:
+            sleep_duration = min(max(max_rpm_wait + 2.0, 60.0), 90.0)
+            print(f"⚠️ All Gemini models rate-limited (RPM cap reached). Waiting {sleep_duration:.1f}s for 1-minute rate-limit window reset (pass {outer_pass + 1}/3)...")
+            time.sleep(sleep_duration)
+
+    raise Exception(f"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}")
 
 
 # ---------------------------------------------------------------------------
