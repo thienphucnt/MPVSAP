@@ -818,18 +818,13 @@ def evaluate_script_quality(
         return 8.50, "Script accepted by default evaluator fallback."
 
 
-def is_duplicate_topic(
-    generated_title: str,
-    generated_topic: str,
-    generated_script: str,
-    past_topics: List[dict]
-) -> Tuple[bool, str]:
+def is_duplicate_topic(generated_title: str, generated_topic: str, generated_script: str, past_topics: List[dict]) -> Tuple[bool, str]:
     """
-    Ironclad post-generation validator.
-    Returns (is_duplicate, reason) by checking:
-    1. Direct & normalized substring overlap against all past topics and titles.
-    2. Key entity / proper noun matches.
-    3. Token Jaccard overlap (> 0.35 threshold).
+    Smart, Entity-Specific Duplicate Detection Guardrail:
+    1. Exact normalized topic match.
+    2. Multi-word proper noun / distinct concept matching (e.g. 'quantum entanglement', 'great stink of 1858').
+    3. Content noun Jaccard overlap (> 0.40) on titles & topics.
+    Prevents false positives on common English verb phrases (like 'shut down', 'built in', 'came from').
     """
     if not past_topics:
         return False, ""
@@ -841,13 +836,19 @@ def is_duplicate_topic(
 
     norm_title = normalize(generated_title)
     norm_topic = normalize(generated_topic)
-    norm_script = normalize(generated_script)
 
-    title_words = set(norm_title.split())
-    topic_words = set(norm_topic.split())
-    combined_words = title_words.union(topic_words)
+    stopwords = {
+        'the', 'a', 'an', 'is', 'in', 'of', 'and', 'to', 'for', 'with', 'on', 'at', 'by', 'from',
+        'this', 'that', 'you', 'your', 'are', 'will', 'shorts', 'space', 'history', 'tech', 'mysteries',
+        'facts', 'shut', 'down', 'out', 'up', 'off', 'over', 'under', 'into', 'than', 'more', 'most',
+        'make', 'made', 'take', 'took', 'see', 'saw', 'call', 'called', 'came', 'come', 'built', 'build',
+        'when', 'what', 'where', 'how', 'why', 'who', 'which', 'new', 'old', 'first', 'last', 'one', 'two',
+        'day', 'night', 'time', 'years', 'year', 'back', 'ever', 'even', 'been', 'have', 'has', 'had'
+    }
 
-    stopwords = {'the', 'a', 'an', 'is', 'in', 'of', 'and', 'to', 'for', 'with', 'on', 'at', 'by', 'from', 'this', 'that', 'you', 'your', 'are', 'will', 'shorts', 'space', 'history', 'tech', 'mysteries', 'facts'}
+    title_words = {w for w in norm_title.split() if w not in stopwords and len(w) > 2}
+    topic_words = {w for w in norm_topic.split() if w not in stopwords and len(w) > 2}
+    combined_gen_words = title_words.union(topic_words)
 
     for item in past_topics:
         past_title = item.get("title", "")
@@ -856,41 +857,33 @@ def is_duplicate_topic(
         norm_past_title = normalize(past_title)
         norm_past_topic = normalize(past_topic)
 
-        # 1. Direct Topic Overlap Check
+        # 1. Exact Topic Overlap Check
         if norm_topic and norm_past_topic:
             if norm_topic == norm_past_topic:
                 return True, f"Exact topic match with past item '{past_topic}'"
-            if len(norm_topic) > 3 and (norm_topic in norm_past_title or norm_topic in norm_past_topic):
-                return True, f"Topic '{generated_topic}' matches past entry '{past_title}' / '{past_topic}'"
 
-        # 2. Check if past topic appears anywhere in generated title or script
-        if norm_past_topic and len(norm_past_topic) > 3:
-            if norm_past_topic in norm_title:
-                return True, f"Past topic '{past_topic}' matches generated title '{generated_title}'"
-            if norm_past_topic in norm_script:
-                return True, f"Past topic '{past_topic}' appears inside generated script text"
+        # 2. Distinct Multi-Word Past Topic matching in generated title or topic
+        # (Only check meaningful past topics with >= 2 non-stopword tokens, e.g. "quantum entanglement")
+        past_topic_clean_words = [w for w in norm_past_topic.split() if w not in stopwords]
+        if len(past_topic_clean_words) >= 2:
+            meaningful_past_topic = " ".join(past_topic_clean_words)
+            if len(meaningful_past_topic) > 6:
+                if meaningful_past_topic in norm_title or meaningful_past_topic in norm_topic:
+                    return True, f"Specific topic '{past_topic}' matches generated title/topic"
 
-        # 3. Check 2-word phrase matches from past topic/title in generated text
-        past_phrase = norm_past_topic or norm_past_title
-        if past_phrase:
-            past_words = [w for w in past_phrase.split() if w not in stopwords]
-            if len(past_words) >= 2:
-                for i in range(len(past_words) - 1):
-                    two_word = f"{past_words[i]} {past_words[i+1]}"
-                    if len(two_word) > 5 and (two_word in norm_title or two_word in norm_topic or two_word in norm_script):
-                        return True, f"Key phrase '{two_word}' from past item '{past_title}' / '{past_topic}' found in generated content"
+        # 3. High Content Noun Jaccard Overlap Check on Titles & Topics
+        past_title_words = {w for w in norm_past_title.split() if w not in stopwords and len(w) > 2}
+        past_topic_words = {w for w in norm_past_topic.split() if w not in stopwords and len(w) > 2}
+        combined_past_words = past_title_words.union(past_topic_words)
 
-        # 4. Token Jaccard Overlap Check on Titles
-        past_title_words = set(norm_past_title.split())
-        filtered_gen = {w for w in combined_words if w not in stopwords and len(w) > 2}
-        filtered_past = {w for w in past_title_words if w not in stopwords and len(w) > 2}
-
-        if filtered_gen and filtered_past:
-            intersection = filtered_gen.intersection(filtered_past)
-            union = filtered_gen.union(filtered_past)
+        if combined_gen_words and combined_past_words:
+            intersection = combined_gen_words.intersection(combined_past_words)
+            union = combined_gen_words.union(combined_past_words)
             jaccard = len(intersection) / len(union) if union else 0.0
-            if jaccard > 0.35:
-                return True, f"High title similarity ({jaccard:.2f}) with past title '{past_title}' (matching words: {intersection})"
+            
+            # Require at least 2 distinct matching content words AND >= 0.40 Jaccard score
+            if len(intersection) >= 2 and jaccard >= 0.40:
+                return True, f"High topic/title overlap ({jaccard:.2f}) with past item '{past_title}' (matching key terms: {intersection})"
 
     return False, ""
 
@@ -972,8 +965,9 @@ def generate_content(
                 "   - Seconds 0-3 (THE HOOK): Immediate dramatic, mysterious, or shocking open loop line. NO channel greetings.\n"
                 "   - Seconds 3-45 (NARRATIVE & CONFLICT): Build escalating tension or reveal an unexpected mystery/conflict.\n"
                 "   - Seconds 45-60 (PAYOFF & LOOP CTA): Deliver a mind-bending resolution ending with a 3-second loop CTA.\n"
-                "3. DRAMATIC PACING: Force natural pauses using ellipses (...) and em-dashes (???).\n"
+                "3. DRAMATIC PACING: Force natural pauses using ellipses (...) and em-dashes (—).\n"
                 "4. PROPER NOUN VISUAL KEYWORDS: Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
+                "5. ENTITY-SPECIFIC TITLES & TOPICS: Every variant title and topic MUST be specific and entity-rich, naming exact locations, historical figures, years, or distinct scientific mechanisms (e.g. '1858 London Great Stink Sewage Crisis', 'Einstein Quantum Entanglement Paradox') rather than generic phrase titles.\n"
                 f"Tone: {cat_info['tone']}.\n"
                 "Under no circumstances mention regional politics or Vietnamese history."
                 f"{dynamic_exclude}"
