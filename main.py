@@ -2236,6 +2236,9 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         print("Successfully completed video generation via high-performance FFmpeg ASS engine!")
         ffmpeg_success = True
     except Exception as ass_err:
+        if "Pre-Upload Visual Sanity Check FAILED" in str(ass_err):
+            print(f"CRITICAL: Visual sanity check failed on raw background video. Aborting pipeline immediately without fallback.")
+            raise ass_err
         print(f"FFmpeg ASS engine failed ({ass_err}), falling back to MoviePy subtitle rendering...")
 
     # Fallback to MoviePy rendering if FFmpeg failed
@@ -2260,31 +2263,33 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         def create_text_clip(start, end, text):
             padded_text = f" {text.upper().strip()} "
             text_color = get_word_color(text)
-            return (
-                TextClip(
-                    padded_text,
-                    font=font_path,
-                    fontsize=config.sub_fontsize,
-                    color=text_color,
-                    bg_color="rgba(0,0,0,0.6)",
-                    transparent=True,
-                    stroke_color="black",
-                    stroke_width=3,
-                    method="label",
-                    align="center"
+            try:
+                return (
+                    TextClip(
+                        padded_text,
+                        font=font_path,
+                        fontsize=config.sub_fontsize,
+                        color=text_color,
+                        bg_color="rgba(0,0,0,0.6)",
+                        transparent=True,
+                        stroke_color="black",
+                        stroke_width=3,
+                        method="label",
+                        align="center"
+                    )
+                    .set_start(start)
+                    .set_duration(end - start)
+                    .set_position(config.sub_position)
                 )
-                .set_start(start)
-                .set_duration(end - start)
-                .set_position(config.sub_position)
-                .resize(lambda t: 1.2 - 2.0 * t if t < 0.1 else 1.0)
-            )
+            except Exception as e:
+                print(f"Failed to create TextClip for '{text}':", e)
+                return None
 
         sub_clips = []
         for (s, e), t in subs_list:
-            try:
-                sub_clips.append(create_text_clip(s, e, t))
-            except Exception as exc:
-                print(f"Failed to create TextClip for '{t}':", exc)
+            tc = create_text_clip(s, e, t)
+            if tc is not None:
+                sub_clips.append(tc)
 
         # Persistent Watermark Overlay Layer (33% Opacity, lower-center safe zone)
         if config.is_short:
