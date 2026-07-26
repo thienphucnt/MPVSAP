@@ -1264,6 +1264,10 @@ def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path:
     """Synthesize high-quality local CPU neural audio using Kokoro-82M ONNX engine with automatic clause pacing."""
     from kokoro_onnx import Kokoro
     import soundfile as sf
+    import importlib.metadata
+
+    kokoro_ver = importlib.metadata.version('kokoro-onnx')
+    print(f"Initializing Kokoro-82M ONNX engine (kokoro-onnx v{kokoro_ver})...")
 
     model_path, voices_path = ensure_kokoro_model_files()
     kokoro = Kokoro(str(model_path), str(voices_path))

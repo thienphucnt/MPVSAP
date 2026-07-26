@@ -6,7 +6,7 @@ edge-tts
 requests
 numpy<2
 playwright
-kokoro-onnx
+kokoro-onnx==0.5.0
 soundfile
 opencv-python-headless
 
