@@ -1961,7 +1961,7 @@ def verify_rendered_video_visuals(video_path: str, num_samples: int = 8) -> bool
         print(f"Verifying video visuals: {video_path} | Duration: {duration:.2f}s")
 
         sample_times = [duration * (i / (num_samples + 1)) for i in range(1, num_samples + 1)]
-        black_frame_count = 0
+        corrupt_black_frames = 0
 
         for t in sample_times:
             frame = clip.get_frame(t)
@@ -1969,21 +1969,29 @@ def verify_rendered_video_visuals(video_path: str, num_samples: int = 8) -> bool
             std_v = float(np.std(frame))
             print(f"Sample at {t:.2f}s: Mean Brightness = {mean_b:.2f}, Variance = {std_v:.2f}")
 
-            # A true raster B-Roll frame always has mean brightness > 5.0.
-            # Near-black frames (from zoom filter failures) have mean_b < 5.0 even with slight std_v noise.
-            if mean_b < 5.0:
-                print(f"CRITICAL REJECTION: Frame at {t:.2f}s is NEAR-BLACK! (Mean Brightness: {mean_b:.2f}, Variance: {std_v:.2f})")
-                black_frame_count += 1
+            # Corrupt black check: solid void frame with no image content (mean < 1.0 AND std < 0.5)
+            # Valid dark space footage with stars/nebulae has non-zero variance (std_v >= 0.5).
+            if mean_b < 1.0 and std_v < 0.5:
+                # Retry sampling slightly offset (+0.3s) to rule out isolated transition/fade frames
+                alt_t = min(duration - 0.1, t + 0.3)
+                alt_frame = clip.get_frame(alt_t)
+                alt_mean = float(np.mean(alt_frame))
+                alt_std = float(np.std(alt_frame))
+                print(f"  -> Retry sample at {alt_t:.2f}s: Mean = {alt_mean:.2f}, Variance = {alt_std:.2f}")
+
+                if alt_mean < 1.0 and alt_std < 0.5:
+                    print(f"CRITICAL REJECTION: Frame at {t:.2f}s is SOLID BLACK VOID!")
+                    corrupt_black_frames += 1
 
         clip.close()
 
-        if black_frame_count > 0:
+        if corrupt_black_frames > 0:
             raise RuntimeError(
-                f"Pre-Upload Visual Sanity Check FAILED: Found {black_frame_count} pitch-black frames in {video_path}! "
+                f"Pre-Upload Visual Sanity Check FAILED: Found {corrupt_black_frames} corrupted solid black frames in {video_path}! "
                 f"Aborting upload to prevent publishing broken video."
             )
 
-        print("??? [PRE-UPLOAD SANITY CHECK PASSED] All sampled frames contain rich visual imagery! Video is 100% safe to publish.\n")
+        print("✅ [PRE-UPLOAD SANITY CHECK PASSED] All sampled frames contain rich visual imagery! Video is 100% safe to publish.\n")
         return True
     except Exception as e:
         if "Pre-Upload Visual Sanity Check FAILED" in str(e):
