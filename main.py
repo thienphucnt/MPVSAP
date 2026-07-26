@@ -1260,11 +1260,31 @@ def ensure_kokoro_model_files() -> Tuple[Path, Path]:
 
 
 
+def sanitize_script_for_tts(text: str) -> str:
+    """Strip all markdown symbols (*, _, #, ~, [], {}, (), stage directions) so TTS never pronounces punctuation names."""
+    if not text:
+        return ""
+    # 1. Remove stage directions inside brackets/parentheses like [gasp], (pause), [laughter]
+    clean = re.sub(r'\[.*?\]', '', text)
+    clean = re.sub(r'\([^\)]*(?:pause|gasp|sigh|music|laughter|chuckle)[^\)]*\)', '', clean, flags=re.IGNORECASE)
+    
+    # 2. Strip markdown emphasis (*bold*, **bold**, _italic_, __italic__, ~strike~, #headers, `code`)
+    clean = re.sub(r'[*_~`#]+', '', clean)
+    
+    # 3. Clean up quotation marks & whitespace
+    clean = re.sub(r'["“”‘’]', '', clean)
+    clean = re.sub(r'\s+', ' ', clean).strip()
+    return clean
+
+
 def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path: str) -> List[Tuple[float, float, str]]:
     """Synthesize high-quality local CPU neural audio using Kokoro-82M ONNX engine with automatic clause pacing."""
     from kokoro_onnx import Kokoro
     import soundfile as sf
     import importlib.metadata
+
+    # Sanitize input script text to strip markdown formatting (*, _, #, stage directions)
+    clean_text = sanitize_script_for_tts(text)
 
     kokoro_ver = importlib.metadata.version('kokoro-onnx')
     print(f"Initializing Kokoro-82M ONNX engine (kokoro-onnx v{kokoro_ver})...")
@@ -1273,20 +1293,24 @@ def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path:
     kokoro = Kokoro(str(model_path), str(voices_path))
 
     db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
+    # Top 1-rated 5-star flagship voices for maximum realism and natural human pacing:
+    # af_heart: 5-star flagship female voice (History & Stories)
+    # am_fenrir: 5-star cinematic narrative male voice (Space & Cosmic Mysteries)
+    # am_puck: 5-star dynamic conversational male voice (Exciting Tech Facts)
     voice_map = {
-        "space": "am_michael",
-        "history": "af_sarah",
-        "tech": "am_adam"
+        "space": "am_fenrir",
+        "history": "af_heart",
+        "tech": "am_puck"
     }
-    voice_name = voice_map.get(db_key, "af_sarah")
+    voice_name = voice_map.get(db_key, "af_heart")
 
     print(f"Synthesizing Local Kokoro-82M Neural Speech (voice='{voice_name}', category='{db_key}')...")
-    samples, sample_rate = kokoro.create(text, voice=voice_name, speed=1.0, lang="en-us")
+    samples, sample_rate = kokoro.create(clean_text, voice=voice_name, speed=0.98, lang="en-us")
     sf.write(audio_path, samples, sample_rate)
 
     total_duration = len(samples) / float(sample_rate)
     
-    words = re.findall(r"\w+[\-\']?\w*", text)
+    words = re.findall(r"\w+[\-\']?\w*", clean_text)
     cleaned_words = [w.strip() for w in words if w.strip()]
     
     if not cleaned_words:
@@ -1327,15 +1351,17 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
     clean_topic = re.sub(r"[^\w]", "_", topic) if topic else "voice"
     audio_path = f"{clean_topic}.wav"
 
+    clean_script = sanitize_script_for_tts(script_text)
+
     words = []
     voice_used = ""
     db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
-    voice_map = {"space": "am_michael", "history": "af_sarah", "tech": "am_adam"}
-    kokoro_voice = voice_map.get(db_key, "af_sarah")
+    voice_map = {"space": "am_fenrir", "history": "af_heart", "tech": "am_puck"}
+    kokoro_voice = voice_map.get(db_key, "af_heart")
 
     try:
         print(f"Generating Local Neural TTS voiceover via Kokoro-82M ONNX ({kokoro_voice})...")
-        words = synthesize_kokoro_audio_and_timestamps(script_text, category, audio_path)
+        words = synthesize_kokoro_audio_and_timestamps(clean_script, category, audio_path)
         voice_used = f"{kokoro_voice} (Kokoro-82M ONNX)"
     except Exception as e:
         import traceback
@@ -1344,7 +1370,7 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
         primary_voice = "en-US-BrianNeural"
         fallback_voice = "en-US-AndrewNeural"
         try:
-            words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, primary_voice, audio_path))
+            words = asyncio.run(synthesize_speech_and_get_timestamps(clean_script, primary_voice, audio_path))
             voice_used = f"{primary_voice} (Edge-TTS Fallback)"
         except Exception as fallback_err:
             words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, fallback_voice, audio_path))

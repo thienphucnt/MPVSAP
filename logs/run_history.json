@@ -11549,7 +11549,7 @@
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-26T04:46:31.586596Z",
     "category": "Exciting Tech Facts",
-    "status": "SUCCESS",
+    "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
     "render_time_seconds": 30.0,
@@ -11559,13 +11559,13 @@
       "title": "FEEL Another's Mind? New Tech Does It! #tech #shorts",
       "text": "Imagine truly *feeling* another's consciousness, not just understanding it. A new convergence breakthrough promises exactly that... Dr. Lena Petrova\u2019s team at the Synergis Institute achieved the impossible: a symbiotic bio-digital interface. It wasn't about controlling minds or uploading consciousness\u2014it was about pure, unadulterated empathic resonance. By converging advanced neural networks with synthetic biology, they created a \u2018mirror neuron\u2019 field generator that could bridge two minds, allowing direct experience of emotions, memories, and even abstract thoughts. The first test subject, a veteran suffering from isolation, wept tears of joy, describing a profound connection to the researcher. But then, a terrifying side-effect emerged: prolonged exposure started subtly blurring personal identities. The boundaries of self began to dissolve, threatening a beautiful, yet terrifying, collective consciousness... and that is why imagining truly *feeling* another's consciousness, not just understanding it, became a new convergence breakthrough that promises exactly that."
     },
-    "youtube_url": "https://www.youtube.com/shorts/Js5gkKQvfsQ",
+    "youtube_url": null,
     "youtube_stats": {
       "views": 0,
       "likes": 0,
       "comments": 0
     },
-    "error_traceback": null,
+    "error_traceback": "Video deleted upon user request due to TTS pronunciation artifacts.",
     "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
     "music_track": "space_track_1.mp3",
     "search_keywords": [

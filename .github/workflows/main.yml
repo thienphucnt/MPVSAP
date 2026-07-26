@@ -130,9 +130,13 @@ jobs:
                   n = len(zf.namelist())
               print(f"Voices OK: {voices.stat().st_size/1e6:.1f} MB, {n} voice entries, ZIP valid")
 
-          print("Kokoro asset validation PASSED.")
-          EOF
-
+      - name: Delete Targeted Video (Run #163 Cleanup)
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python delete_video.py Js5gkKQvfsQ || true
 
       - name: Run Video Pipeline & Publish
         env:
