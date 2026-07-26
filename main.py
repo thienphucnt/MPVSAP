@@ -1271,6 +1271,76 @@ def sanitize_script_for_tts(text: str) -> str:
     return clean
 
 
+def get_syllable_count(word: str) -> int:
+    """Estimate syllable count of an English word for phonetic duration weighting."""
+    w = re.sub(r'[^\w]', '', word.lower())
+    if not w or len(w) <= 3:
+        return 1
+    vowels = "aeiouy"
+    count = 0
+    prev_is_vowels = False
+    for char in w:
+        is_v = char in vowels
+        if is_v and not prev_is_vowels:
+            count += 1
+        prev_is_vowels = is_v
+    if w.endswith('e') and not w.endswith('le') and count > 1:
+        count -= 1
+    return max(1, count)
+
+
+def calculate_proportional_word_timestamps(text: str, total_duration: float) -> List[Tuple[float, float, str]]:
+    """
+    Weighted Syllable, Word-Length & Punctuation Pause Pacing Engine:
+    Calculates word display timestamps proportional to syllable count, character length,
+    and punctuation pause weights (commas, periods, ellipses) to match natural speech rhythm.
+    """
+    tokens = re.findall(r'(\w+[\-\']?\w*)([.,!?;—–]*)\s*', text)
+    if not tokens:
+        return []
+
+    weighted_items = []
+    for word, punct in tokens:
+        clean_w = word.strip()
+        if not clean_w:
+            continue
+        
+        # Phonetic weight: character length + syllable count
+        syllables = get_syllable_count(clean_w)
+        w_weight = max(0.5, len(clean_w) * 0.12 + syllables * 0.28)
+        
+        # Punctuation pause weight allocation
+        p_weight = 0.0
+        if '...' in punct or '—' in punct or '–' in punct:
+            p_weight = 0.70
+        elif any(p in punct for p in ['.', '!', '?']):
+            p_weight = 0.55
+        elif any(p in punct for p in [',', ';', ':']):
+            p_weight = 0.30
+            
+        weighted_items.append((clean_w, w_weight, p_weight))
+
+    total_weight = sum(ww + pw for _, ww, pw in weighted_items)
+    if total_weight <= 0:
+        return []
+
+    seconds_per_weight = total_duration / total_weight
+    timestamps = []
+    current_sec = 0.0
+
+    for word, w_weight, p_weight in weighted_items:
+        word_dur = w_weight * seconds_per_weight
+        pause_dur = p_weight * seconds_per_weight
+        
+        start_sec = round(current_sec, 2)
+        end_sec = round(current_sec + word_dur, 2)
+        timestamps.append((start_sec, end_sec, word.upper()))
+        
+        current_sec += word_dur + pause_dur
+
+    return timestamps
+
+
 def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path: str) -> List[Tuple[float, float, str]]:
     """Synthesize high-quality local CPU neural audio using Kokoro-82M ONNX engine with automatic clause pacing."""
     from kokoro_onnx import Kokoro
@@ -1303,21 +1373,7 @@ def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path:
     sf.write(audio_path, samples, sample_rate)
 
     total_duration = len(samples) / float(sample_rate)
-    
-    words = re.findall(r"\w+[\-\']?\w*", clean_text)
-    cleaned_words = [w.strip() for w in words if w.strip()]
-    
-    if not cleaned_words:
-        return []
-
-    word_duration = total_duration / len(cleaned_words)
-    timestamps = []
-    for idx, w in enumerate(cleaned_words):
-        start_sec = round(idx * word_duration, 2)
-        end_sec = round((idx + 1) * word_duration, 2)
-        timestamps.append((start_sec, end_sec, w.upper()))
-        
-    return timestamps
+    return calculate_proportional_word_timestamps(clean_text, total_duration)
 
 
 async def synthesize_speech_and_get_timestamps(text: str, voice: str, audio_path: str, rate: str = "+12%") -> List[Tuple[float, float, str]]:
