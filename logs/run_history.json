@@ -11579,5 +11579,44 @@
     "voice_actor": "am_adam (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30188613244",
+    "github_run_number": 164,
+    "github_run_id": 30188613244,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30188613244",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-26T05:08:07.830221Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Bill Joy's 2000 Tech Disruption Conflict #tech #shorts",
+      "text": "In the year 2000, Sun Microsystems chief scientist Bill Joy issued a chilling warning that terrified the tech elite... Joy argued that emerging robotics and biotechnology wouldn't just improve human life\u2014they would create an unprecedented existential divide... For the first time in human history, elite ruling classes would no longer depend on human labor for survival or wealth creation... Joy predicted two distinct dystopian outcomes\u2014either powerful elites become 'good shepherds' preserving a dependent public... or they decide humanity is completely superfluous, triggering mass extinction by design... This furious debate sparked an intense philosophical war between Silicon Valley techno-optimists and ethicists... A conflict that grows more dangerous every single day... because..."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/FktFQjrQ8Oc",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Bill Joy",
+      "Sun Microsystems lab",
+      "futuristic server corridor",
+      "robotic assembly arm",
+      "silicon valley ethicist",
+      "futuristic tech warning"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
