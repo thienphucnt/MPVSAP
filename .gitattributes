@@ -1,0 +1,6 @@
+# Force git to use ours strategy for automatic merge conflict resolution on telemetry and state files
+heartbeat.txt merge=ours
+heal_attempts.txt merge=ours
+past_topics.json merge=ours
+logs/run_history.json merge=ours
+dashboard/app/data/run_history.json merge=ours

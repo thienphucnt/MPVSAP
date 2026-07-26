@@ -171,14 +171,5 @@ jobs:
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
           python maintenance_sync.py || true
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f heal_attempts.txt ]; then echo "0" > heal_attempts.txt; git add heal_attempts.txt; fi
-          if [ -f logs/run_history.json ]; then git add logs/run_history.json; fi
-          if [ -f dashboard/app/data/run_history.json ]; then git add dashboard/app/data/run_history.json; fi
-          if [ -f past_topics.json ]; then git add past_topics.json; fi
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Persist telemetry logs and pipeline state [skip ci]"
-            git pull --rebase origin main || true
-            git push origin main
-          fi
+          if [ -f heal_attempts.txt ]; then echo "0" > heal_attempts.txt; fi
+          python safe_git_push.py "Persist telemetry logs and pipeline state [skip ci]"

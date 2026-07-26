@@ -140,14 +140,4 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Antigravity Bot: Fulfill user request from issue #${{ github.event.issue.number }} [skip ci]"
-            git pull --rebase origin main
-            git push origin main
-            echo "Changes pushed successfully!"
-          else
-            echo "No code changes generated."
-          fi
+          python safe_git_push.py "Antigravity Bot: Fulfill user request from issue #${{ github.event.issue.number }} [skip ci]"

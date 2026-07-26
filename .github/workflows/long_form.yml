@@ -82,16 +82,8 @@ jobs:
         run: |
           python main.py --format long
 
-      - name: Reset Self-Healing Counter
+      - name: Reset Self-Healing Counter & Persist State
+        if: always()
         run: |
-          if [ -f heal_attempts.txt ]; then
-            echo "0" > heal_attempts.txt
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add heal_attempts.txt
-            if [ -n "$(git status --porcelain heal_attempts.txt)" ]; then
-              git commit -m "Reset heal counter after successful long-form run [skip ci]"
-              git pull --rebase origin main
-              git push origin main
-            fi
-          fi
+          if [ -f heal_attempts.txt ]; then echo "0" > heal_attempts.txt; fi
+          python safe_git_push.py "Reset heal counter after successful long-form run [skip ci]"
