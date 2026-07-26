@@ -11650,5 +11650,44 @@
     "voice_actor": "af_sarah (Kokoro-82M Neural)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-30211864757",
+    "github_run_number": 166,
+    "github_run_id": 30211864757,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30211864757",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-26T17:11:32.840842Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Wikimedia Foundation's Secret Cyber War? #tech #shorts",
+      "text": "The anomaly flickered, a phantom signature buried deep within Wikimedia's server logs. For 25 years, a human network\u2014not machines\u2014built this digital colossus, yet something *else* was probing its defenses. A tiny ingress, mimicking routine volunteer edits, slipped past automated scans\u2014a ghost in the machine. Their budget, half dedicated to tech, fought unseen wars. A recent cyber attack threat against global data infrastructures intensified the paranoia. Who was it? What were they searching for among billions of articles? The team knew Wikipedia\u2019s global reach made it a prime target, a single point of failure for free knowledge. This wasn't about profit; it was about control, about rewriting reality itself. The code flickered again, a silent warning... and that's why the 'Wikipedia Zero-Day Initiative' operates entirely off-grid, protecting the internet we were promised."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/HB9k8r7pul0",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Computer_science",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Wikimedia Foundation",
+      "server logs",
+      "ghost in machine",
+      "cyber attack threat",
+      "global data infrastructure",
+      "off-grid network"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
