@@ -11728,5 +11728,44 @@
     "voice_actor": "am_puck (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30363402901",
+    "github_run_number": 168,
+    "github_run_id": 30363402901,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30363402901",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-28T13:31:18.940040Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "JNR's Financial Abyss: J\u014dhoku Line's Fight #tech #shorts",
+      "text": "In 1962, Japan envisioned a vital railway link connecting Seto and Inazawa. The J\u014dhoku Line, planned by Japanese National Railways (JNR) in the 1960s, was to be a crucial freight corridor. But by 1976, construction ground to a halt. JNR faced a colossal deficit\u2014a financial abyss threatening to swallow the entire project. For years, tracks lay unfinished, concrete pillars stood like skeletal monuments to a dream deferred. It was JR-Central Transport Service Company (TKJ) who, against staggering odds, picked up the pieces. They completed the line in two arduous sections, opening in 1991 and 1993, proving that vision can overcome even the deepest financial shadows."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/BUbJ32n-tmM",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Japanese National Railways",
+      "J\u014dhoku Line",
+      "JNR deficit",
+      "TKJ railway",
+      "railway construction",
+      "Japanese trains"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
