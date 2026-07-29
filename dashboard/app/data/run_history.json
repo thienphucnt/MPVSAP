@@ -11767,5 +11767,44 @@
     "voice_actor": "am_puck (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30457103727",
+    "github_run_number": 169,
+    "github_run_id": 30457103727,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30457103727",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-29T13:47:04.099515Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Bridgwater Canal's Hidden Financial War #tech #shorts",
+      "text": "Deep beneath the tranquil waters, a financial conspiracy brewed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers. But its early years were a maelstrom of legal battles over navigation rights, forcing a corporate takeover of the River Tone. Hopes soared with an ambitious extension to Bridgwater Docks... then collapsed. Funded by a ruinous mortgage, it was a financial disaster, a desperate gamble against the inevitable march of railways. The canal teetered on the brink, saved only by a rival, the Bristol and Exeter Railway, in 1866. Its past, full of hidden agendas and desperate measures\u2014and its true purpose remained hidden until the very end."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/t7A7t-o2L1I",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Bridgwater and Taunton Canal",
+      "1827",
+      "River Tone",
+      "Bristol and Exeter Railway",
+      "Financial Disaster",
+      "Legal Disputes"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
