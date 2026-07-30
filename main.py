@@ -921,11 +921,54 @@ def generate_content(
             "If a concept is listed above or closely related to a listed concept, it is STRICTLY PROHIBITED."
         )
 
+    # Task 1: Historical Prompt Injection (Self-Improving Scripts)
+    few_shot_instruction = ""
+    run_history_path = Path("dashboard/app/data/run_history.json")
+    if run_history_path.exists():
+        try:
+            with open(run_history_path, "r", encoding="utf-8") as f:
+                history_entries = json.load(f)
+            
+            # Filter for successful runs
+            successful_runs = [
+                entry for entry in history_entries
+                if entry.get("status") == "SUCCESS" and entry.get("winning_script")
+            ]
+
+            def get_run_score(item: dict) -> float:
+                yt_stats = item.get("youtube_stats") or {}
+                views = yt_stats.get("views")
+                if views is not None and isinstance(views, (int, float)):
+                    return float(views)
+                score = item.get("score")
+                if score is not None and isinstance(score, (int, float)):
+                    return float(score)
+                return 0.0
+
+            sorted_runs = sorted(successful_runs, key=get_run_score, reverse=True)
+            top_3_runs = sorted_runs[:3]
+            top_scripts = []
+            for idx, item in enumerate(top_3_runs):
+                ws = item.get("winning_script") or {}
+                script_body = ws.get("text") or ws.get("script")
+                script_title = ws.get("title", f"Top Script #{idx+1}")
+                if script_body:
+                    top_scripts.append(f"• Script #{idx+1} ('{script_title}'):\n  \"{script_body.strip()}\"")
+
+            if top_scripts:
+                few_shot_instruction = (
+                    "\n\nHere are 3 highly successful past scripts to study for pacing and hook structure:\n"
+                    + "\n\n".join(top_scripts) + "\n"
+                )
+                print(f"Injected {len(top_scripts)} top-performing past scripts as few-shot study examples.")
+        except Exception as hist_err:
+            print("Notice: Failed to ingest run_history.json for few-shot prompt injection:", hist_err)
+
     session_rejections = []
     max_qa_retries = 3
 
     for attempt in range(max_qa_retries):
-        dynamic_exclude = exclude_instruction
+        dynamic_exclude = exclude_instruction + few_shot_instruction
         if session_rejections:
             rejected_str = "\n- ".join(session_rejections)
             dynamic_exclude += (
@@ -2690,10 +2733,48 @@ def render_long_form_segments_and_concat(
     return output_path, segment_durations
 
 
+def post_top_level_engagement_comment(youtube, video_id: str, winning_script_text: str, client: genai.Client) -> Optional[str]:
+    """
+    Generates a single engaging question via Gemini based on winning_script
+    and posts it as a top-level comment via YouTube Data API (youtube.commentThreads().insert).
+    """
+    print(f"\n--- Generating Top-Level Engagement Comment for YouTube Video ID {video_id} ---")
+    prompt = (
+        "You are a viral YouTube Creator. Based on the following video script, generate a single, engaging, "
+        "thought-provoking open-ended question to post in the comment section to prompt viewer discussion and replies.\n\n"
+        f"Video Script:\n\"\"\"{winning_script_text[:1500]}\"\"\"\n\n"
+        "Requirements:\n"
+        "- Output ONLY the 1-sentence question (under 120 characters).\n"
+        "- No hashtags, quotes, or markdown formatting."
+    )
+    try:
+        response = gemini_generate_with_retry(client, prompt, model_chain=["gemini-2.5-flash", "gemini-2.0-flash"])
+        question = response.text.strip().replace('"', '').replace('\n', ' ')
+        print(f"Generated Engagement Question: '{question}'")
+
+        body = {
+            "snippet": {
+                "videoId": video_id,
+                "topLevelComment": {
+                    "snippet": {
+                        "textOriginal": question
+                    }
+                }
+            }
+        }
+        res = youtube.commentThreads().insert(part="snippet", body=body).execute()
+        comment_id = res.get("id")
+        print(f"SUCCESS: Posted top-level engagement comment on video {video_id}! Comment ID: {comment_id}")
+        return comment_id
+    except Exception as e:
+        print(f"Notice: Failed to post top-level engagement comment on video {video_id}: {e}")
+        return None
+
+
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER WITH PINNED COMMENT
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None, subs_list: Optional[List] = None, pre_verified_creds: Optional[Credentials] = None) -> Optional[str]:
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None, subs_list: Optional[List] = None, pre_verified_creds: Optional[Credentials] = None, client: Optional[genai.Client] = None, winning_script_text: Optional[str] = None) -> Optional[str]:
     print("Uploading to YouTube...")
     if pre_verified_creds is not None:
         creds = pre_verified_creds
@@ -2796,7 +2877,12 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         except Exception as e:
             print("Failed to add video to playlist:", e)
 
-
+    # Post automated top-level engagement comment
+    if video_id and client and winning_script_text:
+        try:
+            post_top_level_engagement_comment(youtube, video_id, winning_script_text, client)
+        except Exception as comment_err:
+            print("Notice: Top-level engagement comment error:", comment_err)
 
     return video_id
 
@@ -3191,12 +3277,15 @@ def run_daily_upload_pipeline_once() -> None:
         current_subs = subs_list if config.is_short else []
         if youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
+                winning_script_text = winning_variant.get("script") or winning_variant.get("text") if (config.is_short and 'winning_variant' in locals()) else segments[0].get("script")
                 uploaded_video_id = upload_to_youtube(
                     output_path, title, description,
                     youtube_client_id, youtube_client_secret, youtube_refresh_token,
                     playlist_id, category, thumbnail_path, related_long_video_id,
                     subs_list=current_subs,
-                    pre_verified_creds=verified_youtube_creds
+                    pre_verified_creds=verified_youtube_creds,
+                    client=client,
+                    winning_script_text=winning_script_text
                 )
                 
                 # Append to past_topics ONLY upon successful upload to YouTube

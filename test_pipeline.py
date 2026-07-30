@@ -103,6 +103,37 @@ class TestPipeline(unittest.TestCase):
                         except Exception:
                             pass
 
+    def test_top_level_comment_posting(self):
+        """
+        Test 3: Verify post_top_level_engagement_comment generates a question via Gemini
+        and invokes youtube.commentThreads().insert with part='snippet' and body format.
+        """
+        from main import post_top_level_engagement_comment
+
+        mock_youtube = MagicMock()
+        mock_insert = MagicMock()
+        mock_youtube.commentThreads().insert.return_value = mock_insert
+        mock_insert.execute.return_value = {"id": "comment_12345"}
+
+        mock_client = MagicMock()
+
+        with patch("main.gemini_generate_with_retry", return_value=MagicMock(text="What is the most mysterious phenomenon in the universe?")):
+            comment_id = post_top_level_engagement_comment(
+                youtube=mock_youtube,
+                video_id="video_abc123",
+                winning_script_text="In the deep void of space...",
+                client=mock_client
+            )
+
+        self.assertEqual(comment_id, "comment_12345")
+        mock_youtube.commentThreads().insert.assert_called_once()
+        kwargs = mock_youtube.commentThreads().insert.call_args[1]
+        self.assertEqual(kwargs.get("part"), "snippet")
+        self.assertEqual(kwargs["body"]["snippet"]["videoId"], "video_abc123")
+        self.assertIn("snippet", kwargs["body"]["snippet"]["topLevelComment"])
+        self.assertEqual(kwargs["body"]["snippet"]["topLevelComment"]["snippet"]["textOriginal"], "What is the most mysterious phenomenon in the universe?")
+        print("SUCCESS: Test 3 Passed: test_top_level_comment_posting correctly inserted topLevelComment via YouTube Data API.")
+
 
 if __name__ == "__main__":
     unittest.main()
