@@ -63,6 +63,7 @@ def main():
         print("\n" + "="*60)
         print(" SUCCESS! YOUR NEW YOUTUBE REFRESH TOKEN:")
         print("="*60)
+        # codeql[py/clear-text-logging-sensitive-data]
         print(creds.refresh_token)
         print("="*60)
         print("\nNext step: Copy the token above and update your 'YOUTUBE_REFRESH_TOKEN' secret in GitHub Repository Settings -> Secrets & Variables -> Actions.\n")
