@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Check Heal Attempt Counter
         id: check_counter
@@ -74,4 +76,3 @@ jobs:
         if: steps.check_counter.outputs.should_continue == 'true'
         run: |
           echo "Self-healing diagnostic completed."
-

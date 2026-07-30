@@ -12,13 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60  # Allow up to 60 minutes for rendering heavy 10-fact widescreen compilations
 
-    # Required permissions to commit and push heartbeat.txt back to the repository
     permissions:
       contents: write
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -54,6 +55,10 @@ jobs:
           path: ~/.cache/kokoro
           key: kokoro-onnx-v1.0
 
+      - name: Validate Kokoro TTS Assets Integrity
+        run: |
+          python scripts/validate_kokoro.py
+
       - name: Run Widescreen Pipeline & Publish
         env:
           # Core API Keys & Webhook Monitoring
@@ -62,23 +67,13 @@ jobs:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           WATERMARK_HANDLE: ${{ secrets.WATERMARK_HANDLE }}
 
-          # YouTube Data API Credentials
+          # YouTube Data API Credentials (Exclusively YouTube for Long-Form)
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           YT_PLAYLIST_SPACE: ${{ secrets.YT_PLAYLIST_SPACE }}
           YT_PLAYLIST_HISTORY: ${{ secrets.YT_PLAYLIST_HISTORY }}
           YT_PLAYLIST_TECH: ${{ secrets.YT_PLAYLIST_TECH }}
-
-          # TikTok Content Posting API Credentials (Not used for long form but kept for compatibility)
-          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
-          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
-          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
-
-          # Meta Graph API Credentials (Instagram & Facebook Reels - Not used for long form)
-          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
-          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
-          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
         run: |
           python main.py --format long
 

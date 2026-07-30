@@ -1748,11 +1748,25 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
         # 3. Hard fallback: try a category default video search on Pexels
         fallback_kw = random.choice(cat_info["kw_defaults"])
         print(f"Wikimedia image fallback failed for '{kw}'. Trying category default '{fallback_kw}' on Pexels...")
-        p_path = download_single_pexels_video(api_key, fallback_kw, index, orientation, filename_prefix, category)
-        if p_path:
-            return p_path
+        try:
+            p_path = download_single_pexels_video(api_key, fallback_kw, index, orientation, filename_prefix, category)
+            if p_path:
+                return p_path
+        except Exception as p_err:
+            print(f"Category default Pexels search failed for '{fallback_kw}': {p_err}")
 
-        raise Exception(f"Failed to download B-roll for keyword '{kw}' and fallback '{fallback_kw}'")
+        # 4. Zero-Fail Local B-Roll Fallback
+        fallback_dir = Path("assets/fallback_broll")
+        if fallback_dir.exists():
+            local_clips = list(fallback_dir.glob("*.mp4"))
+            if local_clips:
+                chosen_local = random.choice(local_clips)
+                shutil.copy(chosen_local, clip_path)
+                print(f"LOCAL B-ROLL FALLBACK: Copied '{chosen_local.name}' to '{clip_path}' for keyword '{kw}'")
+                return clip_path
+
+        print(f"Warning: No local B-roll fallback found in {fallback_dir}. Returning None for index {index}.")
+        return None
 
     video_paths = [None] * limit
     with concurrent.futures.ThreadPoolExecutor(max_workers=limit) as executor:
@@ -1764,10 +1778,22 @@ def download_pexels_videos(api_key: str, keywords: List[str], category: str, ori
             except Exception as e:
                 print(f"Error fetching B-roll clip {idx}: {e}")
                 
-    # Fallback for any failed downloads by duplicating successful ones
+    # Fallback for any failed downloads by duplicating successful ones or utilizing local fallback assets
     successful = [p for p in video_paths if p is not None]
     if not successful:
-        raise Exception("All Pexels downloads failed.")
+        print("WARNING: All remote B-roll downloads failed. Utilizing local fallback_broll directory...")
+        fallback_dir = Path("assets/fallback_broll")
+        fallback_clips = list(fallback_dir.glob("*.mp4")) if fallback_dir.exists() else []
+        if not fallback_clips:
+            raise RuntimeError("CRITICAL B-ROLL FAILURE: All remote downloads failed and no local B-roll clips exist in assets/fallback_broll/.")
+        
+        for i in range(limit):
+            dup_path = f"{filename_prefix}_clip_{i}.mp4"
+            chosen_local = random.choice(fallback_clips)
+            shutil.copy(chosen_local, dup_path)
+            video_paths[i] = dup_path
+            print(f"Local B-roll seeded: Copied {chosen_local} to {dup_path}")
+        return video_paths
     
     for i in range(limit):
         if video_paths[i] is None:
@@ -2903,106 +2929,8 @@ def upload_to_instagram(video_path: str, description: str, ig_account_id: str, a
 
 
 # ---------------------------------------------------------------------------
-# 7. 60-DAY HEARTBEAT & GIT PERSISTENCE
+# 7. GIT TELEMETRY & STATE PERSISTENCE HELPER
 # ---------------------------------------------------------------------------
-def update_heartbeat_and_push() -> None:
-    print("Updating heartbeat...")
-    timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    
-    # Define git environment
-    git_env = {
-        **os.environ,
-        "GIT_AUTHOR_NAME": "github-actions[bot]",
-        "GIT_AUTHOR_EMAIL": "github-actions[bot]@users.noreply.github.com",
-        "GIT_COMMITTER_NAME": "github-actions[bot]",
-        "GIT_COMMITTER_EMAIL": "github-actions[bot]@users.noreply.github.com",
-    }
-    
-    try:
-        # 1. Fetch origin to know the latest remote state
-        subprocess.run(["git", "fetch", "origin"], check=True, env=git_env)
-        
-        # 2. Merge past_topics.json programmatically with remote version
-        local_topics = []
-        if os.path.exists("past_topics.json"):
-            try:
-                with open("past_topics.json", "r", encoding="utf-8") as f:
-                    local_topics = json.load(f)
-            except Exception as e:
-                print("Failed to read local past_topics.json:", e)
-                
-        remote_topics = []
-        try:
-            show_proc = subprocess.run(
-                ["git", "show", "origin/main:past_topics.json"],
-                capture_output=True, text=True, check=True, env=git_env
-            )
-            remote_topics = json.loads(show_proc.stdout)
-        except Exception as e:
-            print("Failed to read remote past_topics.json (falling back to local only):", e)
-            remote_topics = local_topics
-            
-        # Combine lists removing duplicates (by title/timestamp)
-        merged_topics = list(remote_topics)
-        seen_keys = { (item.get("title"), item.get("timestamp")) for item in remote_topics }
-        
-        for item in local_topics:
-            key = (item.get("title"), item.get("timestamp"))
-            if key not in seen_keys:
-                merged_topics.append(item)
-                seen_keys.add(key)
-                
-        # Preserve full history database without truncation
-        
-        # Save merged topics locally
-        with open("past_topics.json", "w", encoding="utf-8") as f:
-            json.dump(merged_topics, f, indent=2)
-            
-        # Write heartbeat
-        with open("heartbeat.txt", "w", encoding="utf-8") as f:
-            f.write(timestamp)
-            
-        # 3. Align git index to origin/main without discarding our merged files
-        subprocess.run(["git", "reset", "origin/main"], check=True, env=git_env)
-        
-        # 4. Add files
-        subprocess.run(["git", "add", "heartbeat.txt"], check=True, env=git_env)
-        if os.path.exists("past_topics.json"):
-            subprocess.run(["git", "add", "past_topics.json"], check=True, env=git_env)
-            
-        # 5. Commit & Push
-        status = subprocess.run(["git", "status", "--porcelain"],
-                                capture_output=True, text=True, env=git_env)
-        if status.stdout.strip():
-            subprocess.run(
-                ["git", "commit", "-m", f"Automated heartbeat: {timestamp} [skip ci]"],
-                check=True, env=git_env
-            )
-            # Push with retry
-            for attempt in range(3):
-                try:
-                    subprocess.run(["git", "push", "origin", "main"], check=True, env=git_env)
-                    print("Heartbeat pushed successfully.")
-                    break
-                except Exception as push_err:
-                    print(f"Push attempt {attempt+1} failed: {push_err}")
-                    if attempt < 2:
-                        print("Retrying git fetch, merge, and reset...")
-                        subprocess.run(["git", "fetch", "origin"], check=True, env=git_env)
-                        subprocess.run(["git", "reset", "origin/main"], check=True, env=git_env)
-                        with open("past_topics.json", "w", encoding="utf-8") as f:
-                            json.dump(merged_topics, f, indent=2)
-                        with open("heartbeat.txt", "w", encoding="utf-8") as f:
-                            f.write(timestamp)
-                        subprocess.run(["git", "add", "heartbeat.txt", "past_topics.json"], check=True, env=git_env)
-                        subprocess.run(
-                            ["git", "commit", "-m", f"Automated heartbeat: {timestamp} [skip ci]"],
-                            check=True, env=git_env
-                        )
-        else:
-            print("No changes to commit for heartbeat.")
-    except Exception as e:
-        print("Git heartbeat failed:", e)
 
 
 # ---------------------------------------------------------------------------
@@ -3355,8 +3283,12 @@ def run_daily_upload_pipeline_once() -> None:
         except Exception as log_err:
             print("Failed to log pipeline telemetry:", log_err)
 
-        # 4. Heartbeat commit
-        update_heartbeat_and_push()
+        # 4. Safe state & telemetry git push
+        try:
+            from safe_git_push import safe_git_push
+            safe_git_push("Persist telemetry logs and pipeline state [skip ci]", ["past_topics.json", "dashboard/app/data/run_history.json"])
+        except Exception as push_err:
+            print("Notice: Automated git state push skipped/encountered error:", push_err)
 
     finally:
         # Clean up rendered video file and thumbnail

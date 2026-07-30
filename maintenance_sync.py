@@ -3,7 +3,7 @@ import json
 import urllib.request
 from pathlib import Path
 
-LOGS_FILE = Path("logs/run_history.json")
+LOGS_FILE = Path("dashboard/app/data/run_history.json")
 
 import re
 

@@ -4,21 +4,21 @@ import datetime
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-LOGS_DIR = Path("logs")
-LOGS_FILE = LOGS_DIR / "run_history.json"
+DASHBOARD_DATA_FILE = Path("dashboard/app/data/run_history.json")
+MAX_RUN_HISTORY_ENTRIES = 100
 
 
 def ensure_logs_dir():
-    LOGS_DIR.mkdir(exist_ok=True)
-    if not LOGS_FILE.exists():
-        with open(LOGS_FILE, "w", encoding="utf-8") as f:
+    DASHBOARD_DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if not DASHBOARD_DATA_FILE.exists():
+        with open(DASHBOARD_DATA_FILE, "w", encoding="utf-8") as f:
             json.dump([], f, indent=2)
 
 
 def load_run_history() -> List[Dict[str, Any]]:
     ensure_logs_dir()
     try:
-        with open(LOGS_FILE, "r", encoding="utf-8") as f:
+        with open(DASHBOARD_DATA_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
         print(f"Error loading run_history.json: {e}")
@@ -42,7 +42,7 @@ def log_pipeline_run(
     ass_subtitle_engine: Optional[str] = None,
     generation_mode: Optional[str] = "SINGLE_SCRIPT_LEGACY"
 ) -> None:
-    """Log a complete pipeline run entry with deep production attributes to logs/run_history.json."""
+    """Log a complete pipeline run entry with deep production attributes to dashboard/app/data/run_history.json (capped at 100 entries)."""
     ensure_logs_dir()
     history = load_run_history()
 
@@ -89,16 +89,20 @@ def log_pipeline_run(
     }
 
     history.append(run_entry)
+    # Enforce strict 100-entry rolling window cap to prevent git bloat
+    if len(history) > MAX_RUN_HISTORY_ENTRIES:
+        history = history[-MAX_RUN_HISTORY_ENTRIES:]
 
-    with open(LOGS_FILE, "w", encoding="utf-8") as f:
+    with open(DASHBOARD_DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, indent=2)
 
-    try:
-        dash_file = Path("dashboard/app/data/run_history.json")
-        dash_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(dash_file, "w", encoding="utf-8") as f:
-            json.dump(history, f, indent=2)
-    except Exception as dash_err:
-        print("Warning saving dashboard data file:", dash_err)
+    # Clean up legacy logs/run_history.json if present
+    legacy_log = Path("logs/run_history.json")
+    if legacy_log.exists():
+        try:
+            legacy_log.unlink()
+            print(f"Removed legacy telemetry file '{legacy_log}'.")
+        except Exception as e:
+            print(f"Could not remove legacy telemetry file '{legacy_log}': {e}")
 
-    print(f"Deep production telemetry logged for GitHub Run #{run_num} to {LOGS_FILE} successfully.")
+    print(f"Deep production telemetry logged for GitHub Run #{run_num} to {DASHBOARD_DATA_FILE} (total entries: {len(history)}).")

@@ -24,13 +24,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Fetch Issue Context
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh issue view ${{ github.event.issue.number }} --json title,body,comments > issue_context.json
-
 
       - name: Extract Prompt
         id: extract_prompt
@@ -85,30 +86,10 @@ jobs:
 
       - name: Run Antigravity AI Bot
         env:
-          # GitHub CLI Token (use default secrets.GITHUB_TOKEN)
+          # Least Privilege Security Scoping (Only LLM API Keys & Repo Token)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-          # Core API Keys
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-
-          # YouTube Data API Credentials
-          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
-          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
-          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-          YT_PLAYLIST_SPACE: ${{ secrets.YT_PLAYLIST_SPACE }}
-          YT_PLAYLIST_HISTORY: ${{ secrets.YT_PLAYLIST_HISTORY }}
-          YT_PLAYLIST_TECH: ${{ secrets.YT_PLAYLIST_TECH }}
-
-          # TikTok Content Posting API Credentials
-          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
-          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
-          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
-
-          # Meta Graph API Credentials (Instagram & Facebook Reels)
-          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
-          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
-          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
         run: |
           python bot_agent.py
 
@@ -137,7 +118,3 @@ jobs:
           if [ -f main.py ]; then
             python -m py_compile main.py
           fi
-
-      - name: Commit and Push Changes
-        run: |
-          python safe_git_push.py "Antigravity Bot: Fulfill user request from issue #${{ github.event.issue.number }} [skip ci]"
