@@ -34,6 +34,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer
 } from "recharts";
 import rawRunHistory from "./data/run_history.json";
@@ -709,8 +710,14 @@ export default function TelemetryDashboard() {
   const totalYouTubeLikes = activeRuns.reduce((acc, r) => acc + (r.youtube_stats?.likes || 0), 0);
 
   const chronologicalDates = Object.keys(runsByDate).sort();
-  const chartData = chronologicalDates.map((date) => {
-    const dayRuns = runsByDate[date];
+
+  // Upload pipeline charts: QA score, render time, daily run volume
+  const uploadChartData = chronologicalDates.map((date) => {
+    const dayRuns = runsByDate[date].filter((r) => {
+      const wf = r.workflow_type || "DAILY_SHORTS";
+      return wf === "DAILY_SHORTS" || wf === "WEEKLY_LONGFORM";
+    });
+    if (dayRuns.length === 0) return null;
     const topScore = Number(Math.max(...dayRuns.map((r) => getRunWinningScore(r))).toFixed(2));
     const avgRender = dayRuns.reduce((a, b) => a + b.render_time_seconds, 0) / dayRuns.length;
     return {
@@ -719,7 +726,25 @@ export default function TelemetryDashboard() {
       renderTime: Number(avgRender.toFixed(1)),
       count: dayRuns.length
     };
-  });
+  }).filter(Boolean) as { date: string; topScore: number; renderTime: number; count: number }[];
+
+  // Ops pipeline charts: execution duration + pass/fail stacked bar
+  const opsChartData = chronologicalDates.map((date) => {
+    const dayRuns = runsByDate[date].filter((r) => {
+      const wf = r.workflow_type || "DAILY_SHORTS";
+      return wf === "SELF_HEALING" || wf === "BOT_MAINTENANCE";
+    });
+    if (dayRuns.length === 0) return null;
+    const avgExec = dayRuns.reduce((a, b) => a + b.render_time_seconds, 0) / dayRuns.length;
+    const passed = dayRuns.filter(r => r.status === "SUCCESS").length;
+    const failed = dayRuns.filter(r => r.status !== "SUCCESS").length;
+    return {
+      date,
+      execTime: Number(avgExec.toFixed(1)),
+      passed,
+      failed
+    };
+  }).filter(Boolean) as { date: string; execTime: number; passed: number; failed: number }[];
 
   const getCategoryBadgeColor = (cat: string) => {
     switch (cat?.toLowerCase()) {
@@ -1016,44 +1041,126 @@ export default function TelemetryDashboard() {
         </div>
       </div>
 
-      {/* ANALYTICS RECHARTS GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
-          <h3 className="text-md font-bold text-white flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#FFBF00]" />
-            Auto-QA Tournament Winning Scores
-          </h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
-                <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} />
-                <YAxis domain={[4, 10]} stroke="#9ca3af" fontSize={12} />
-                <Tooltip contentStyle={{ backgroundColor: "#131b2e", borderColor: "#1f2d4d", borderRadius: "12px" }} />
-                <Line type="monotone" dataKey="topScore" stroke="#FFBF00" strokeWidth={3} dot={{ r: 5 }} />
-              </LineChart>
-            </ResponsiveContainer>
+      {/* ANALYTICS RECHARTS GRID — CONTEXT-AWARE PER PIPELINE TYPE */}
+      {(workflowTab === "ALL" || workflowTab === "DAILY_SHORTS" || workflowTab === "WEEKLY_LONGFORM") && (
+        <>
+          {/* Upload Pipeline Analytics: 3-chart grid */}
+          <div className="flex items-center gap-2 px-1">
+            <Video className="w-4 h-4 text-[#00FF66]" />
+            <span className="text-xs font-bold uppercase tracking-wider text-[#00FF66]">Upload Pipeline Analytics</span>
+            <div className="flex-1 h-px bg-[#1f2d4d]" />
           </div>
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
+              <h3 className="text-md font-bold text-white flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-[#FFBF00]" />
+                Auto-QA Winning Score Trend
+              </h3>
+              <p className="text-xs text-gray-400">Daily peak tournament score from 5-variant evaluation</p>
+              <div className="h-52">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={uploadChartData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
+                    <XAxis dataKey="date" stroke="#9ca3af" fontSize={10} />
+                    <YAxis domain={[5, 10]} stroke="#9ca3af" fontSize={11} />
+                    <Tooltip contentStyle={{ backgroundColor: "#0b0f19", borderColor: "#FFBF00", borderRadius: "12px" }} formatter={(v: any) => [`${v}/10`, "Peak QA Score"]} />
+                    <Line type="monotone" dataKey="topScore" stroke="#FFBF00" strokeWidth={3} dot={{ r: 4, fill: "#FFBF00" }} activeDot={{ r: 7 }} />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
 
-        <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
-          <h3 className="text-md font-bold text-white flex items-center gap-2">
-            <Clock className="w-5 h-5 text-[#00E5FF]" />
-            Execution Duration (Seconds)
-          </h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
-                <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} />
-                <YAxis stroke="#9ca3af" fontSize={12} />
-                <Tooltip contentStyle={{ backgroundColor: "#131b2e", borderColor: "#1f2d4d", borderRadius: "12px" }} />
-                <Bar dataKey="renderTime" fill="#00E5FF" radius={[6, 6, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
+              <h3 className="text-md font-bold text-white flex items-center gap-2">
+                <Clock className="w-5 h-5 text-[#00E5FF]" />
+                Avg Render Duration
+              </h3>
+              <p className="text-xs text-gray-400">Pipeline render time in seconds per daily session</p>
+              <div className="h-52">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={uploadChartData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
+                    <XAxis dataKey="date" stroke="#9ca3af" fontSize={10} />
+                    <YAxis stroke="#9ca3af" fontSize={11} />
+                    <Tooltip contentStyle={{ backgroundColor: "#0b0f19", borderColor: "#00E5FF", borderRadius: "12px" }} formatter={(v: any) => [`${v}s`, "Render Time"]} />
+                    <Bar dataKey="renderTime" fill="#00E5FF" radius={[6, 6, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
+              <h3 className="text-md font-bold text-white flex items-center gap-2">
+                <Activity className="w-5 h-5 text-[#00FF66]" />
+                Daily Run Volume
+              </h3>
+              <p className="text-xs text-gray-400">Number of upload pipeline executions per day</p>
+              <div className="h-52">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={uploadChartData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
+                    <XAxis dataKey="date" stroke="#9ca3af" fontSize={10} />
+                    <YAxis allowDecimals={false} stroke="#9ca3af" fontSize={11} />
+                    <Tooltip contentStyle={{ backgroundColor: "#0b0f19", borderColor: "#00FF66", borderRadius: "12px" }} formatter={(v: any) => [v, "Runs"]} />
+                    <Bar dataKey="count" fill="#00FF66" radius={[6, 6, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
+
+      {(workflowTab === "ALL" || workflowTab === "SELF_HEALING" || workflowTab === "BOT_MAINTENANCE") && opsChartData.length > 0 && (
+        <>
+          {/* Ops / Maintenance Pipeline Analytics: 2-chart grid */}
+          <div className="flex items-center gap-2 px-1">
+            <ShieldCheck className="w-4 h-4 text-cyan-400" />
+            <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">Ops & Maintenance Analytics</span>
+            <div className="flex-1 h-px bg-[#1f2d4d]" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
+              <h3 className="text-md font-bold text-white flex items-center gap-2">
+                <Clock className="w-5 h-5 text-cyan-400" />
+                Diagnostic Execution Duration
+              </h3>
+              <p className="text-xs text-gray-400">Avg execution time of self-healing & bot maintenance runs per day</p>
+              <div className="h-52">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={opsChartData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
+                    <XAxis dataKey="date" stroke="#9ca3af" fontSize={10} />
+                    <YAxis stroke="#9ca3af" fontSize={11} />
+                    <Tooltip contentStyle={{ backgroundColor: "#0b0f19", borderColor: "#22d3ee", borderRadius: "12px" }} formatter={(v: any) => [`${v}s`, "Exec Duration"]} />
+                    <Bar dataKey="execTime" fill="#22d3ee" radius={[6, 6, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className="bg-[#131b2e] p-6 rounded-2xl border border-[#1f2d4d] space-y-4">
+              <h3 className="text-md font-bold text-white flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-[#00FF66]" />
+                Daily Ops Pass / Fail Ratio
+              </h3>
+              <p className="text-xs text-gray-400">Daily count of successful vs failed ops pipeline runs</p>
+              <div className="h-52">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={opsChartData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1f2d4d" />
+                    <XAxis dataKey="date" stroke="#9ca3af" fontSize={10} />
+                    <YAxis allowDecimals={false} stroke="#9ca3af" fontSize={11} />
+                    <Tooltip contentStyle={{ backgroundColor: "#0b0f19", borderColor: "#00FF66", borderRadius: "12px" }} />
+                    <Bar dataKey="passed" name="Passed" stackId="a" fill="#00FF66" radius={[0, 0, 0, 0]} />
+                    <Bar dataKey="failed" name="Failed" stackId="a" fill="#ef4444" radius={[6, 6, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* DAILY INSPECTOR MATRIX (CALENDAR DATE DROPDOWN & DEDICATED INSPECTOR WORKFLOW SECTIONS) */}
       {selectedDayRuns.length > 0 && (
