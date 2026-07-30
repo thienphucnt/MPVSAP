@@ -11650,5 +11650,161 @@
     "voice_actor": "af_sarah (Kokoro-82M Neural)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-30211864757",
+    "github_run_number": 166,
+    "github_run_id": 30211864757,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30211864757",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-26T17:11:32.840842Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Wikimedia Foundation's Secret Cyber War? #tech #shorts",
+      "text": "The anomaly flickered, a phantom signature buried deep within Wikimedia's server logs. For 25 years, a human network\u2014not machines\u2014built this digital colossus, yet something *else* was probing its defenses. A tiny ingress, mimicking routine volunteer edits, slipped past automated scans\u2014a ghost in the machine. Their budget, half dedicated to tech, fought unseen wars. A recent cyber attack threat against global data infrastructures intensified the paranoia. Who was it? What were they searching for among billions of articles? The team knew Wikipedia\u2019s global reach made it a prime target, a single point of failure for free knowledge. This wasn't about profit; it was about control, about rewriting reality itself. The code flickered again, a silent warning... and that's why the 'Wikipedia Zero-Day Initiative' operates entirely off-grid, protecting the internet we were promised."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/HB9k8r7pul0",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Computer_science",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Wikimedia Foundation",
+      "server logs",
+      "ghost in machine",
+      "cyber attack threat",
+      "global data infrastructure",
+      "off-grid network"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30273431335",
+    "github_run_number": 167,
+    "github_run_id": 30273431335,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30273431335",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-27T14:12:34.086310Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Davison Freeway's WWII Hidden AI Chamber? #tech #shorts",
+      "text": "The archival blueprint for Michigan\u2019s Davison Freeway, nation's first urban depressed freeway, held a hidden anomaly\u2014a cryptic sub-level chamber omitted from public records. Decades after its WWII construction, an urban explorer stumbled upon it, finding not dust, but a humming, intricate network of wires leading to a single, ancient console. Its screen flickered, displaying rudimentary binary code, too complex for 1940s tech. Was it an early, concealed computation project\u2014perhaps even a neural interface experiment, a precursor to our modern AI consciousness debates\u2014designed for wartime intel? The explorer touched a lever, and the humming intensified, confirming that this hidden chamber, beneath Jarad Davison\u2019s namesake, was far more than just concrete. This signal, faint but persistent, still emanates from the deepest conduits beneath the Davison Freeway, whispering secrets of a forgotten wartime experiment that began during World War II, when the Davison Freeway wasn't just a road..."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/pMvNPoxZzyE",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Davison Freeway",
+      "WWII blueprint",
+      "hidden chamber",
+      "binary code",
+      "glowing console",
+      "neural network"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30363402901",
+    "github_run_number": 168,
+    "github_run_id": 30363402901,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30363402901",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-28T13:31:18.940040Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "JNR's Financial Abyss: J\u014dhoku Line's Fight #tech #shorts",
+      "text": "In 1962, Japan envisioned a vital railway link connecting Seto and Inazawa. The J\u014dhoku Line, planned by Japanese National Railways (JNR) in the 1960s, was to be a crucial freight corridor. But by 1976, construction ground to a halt. JNR faced a colossal deficit\u2014a financial abyss threatening to swallow the entire project. For years, tracks lay unfinished, concrete pillars stood like skeletal monuments to a dream deferred. It was JR-Central Transport Service Company (TKJ) who, against staggering odds, picked up the pieces. They completed the line in two arduous sections, opening in 1991 and 1993, proving that vision can overcome even the deepest financial shadows."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/BUbJ32n-tmM",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Japanese National Railways",
+      "J\u014dhoku Line",
+      "JNR deficit",
+      "TKJ railway",
+      "railway construction",
+      "Japanese trains"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-30457103727",
+    "github_run_number": 169,
+    "github_run_id": 30457103727,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30457103727",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-29T13:47:04.099515Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Bridgwater Canal's Hidden Financial War #tech #shorts",
+      "text": "Deep beneath the tranquil waters, a financial conspiracy brewed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers. But its early years were a maelstrom of legal battles over navigation rights, forcing a corporate takeover of the River Tone. Hopes soared with an ambitious extension to Bridgwater Docks... then collapsed. Funded by a ruinous mortgage, it was a financial disaster, a desperate gamble against the inevitable march of railways. The canal teetered on the brink, saved only by a rival, the Bristol and Exeter Railway, in 1866. Its past, full of hidden agendas and desperate measures\u2014and its true purpose remained hidden until the very end."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/t7A7t-o2L1I",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Bridgwater and Taunton Canal",
+      "1827",
+      "River Tone",
+      "Bristol and Exeter Railway",
+      "Financial Disaster",
+      "Legal Disputes"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
 ]
