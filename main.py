@@ -331,6 +331,45 @@ def master_tts_audio(input_wav: str, output_wav: str) -> str:
         return input_wav
 
 
+def trim_trailing_silence(audio_path: str, silence_threshold_db: float = -45.0, padding_ms: float = 50.0) -> str:
+    """
+    Analyzes audio samples from the end backward and trims trailing silence below silence_threshold_db,
+    leaving a padding_ms (default 50ms) room-tone decay buffer for seamless looping speech cadence.
+    """
+    try:
+        import soundfile as sf
+        import numpy as np
+
+        data, samplerate = sf.read(audio_path)
+        if len(data) == 0:
+            return audio_path
+
+        if data.ndim > 1:
+            amplitude = np.max(np.abs(data), axis=1)
+        else:
+            amplitude = np.abs(data)
+
+        amplitude_db = 20 * np.log10(np.maximum(amplitude, 1e-7))
+        above_thresh_indices = np.where(amplitude_db > silence_threshold_db)[0]
+
+        if len(above_thresh_indices) == 0:
+            return audio_path
+
+        last_sample_idx = above_thresh_indices[-1]
+        padding_samples = int((padding_ms / 1000.0) * samplerate)
+        trim_end_idx = min(len(data), last_sample_idx + padding_samples)
+
+        if trim_end_idx < len(data):
+            trimmed_data = data[:trim_end_idx]
+            sf.write(audio_path, trimmed_data, samplerate)
+            print(f"Trimmed trailing silence: reduced audio duration by {((len(data) - trim_end_idx) / samplerate):.3f}s (padding: {padding_ms}ms).")
+
+        return audio_path
+    except Exception as e:
+        print("Trailing silence trim notice:", e)
+        return audio_path
+
+
 def generate_srt_file(subs_list: List[Tuple[Tuple[float, float], str]], output_srt_path: str) -> str:
     """Generate standard .srt caption file for native YouTube Closed Captions API upload."""
     def format_srt_time(seconds: float) -> str:
@@ -1146,8 +1185,10 @@ def generate_content(
                 "Each variant MUST have its own unique, punchy, standalone title written organically for that specific angle. "
                 "STRICTLY PROHIBITED: Do NOT prepend angle names or category prefixes to titles (e.g., NEVER write 'Scientific Breakthrough: ...' or 'Suspenseful Mystery: ...'). "
                 "Every title must sound like a natural, standalone viral YouTube Shorts title under 50 characters.\n"
-                "2. INFINITE LOOP SCRIPT ENGINEERING (STRICT RULE): The script MUST be engineered for a seamless audio and narrative loop. "
-                "The final sentence of the script MUST grammatically and logically lead directly into the first sentence of the script.\n"
+                "2. SYNTACTIC OPEN-LOOP SCRIPT ENGINEERING (STRICT RULE): The script MUST be engineered for a 100% seamless audio and narrative loop. "
+                "The final sentence of the script MUST NOT be a complete independent clause, CTA, or duplicate of the hook line. "
+                "MANDATORY RULE: The final line MUST end in an incomplete syntactic setup phrase or colon/conjunction (e.g., '...and that is why people still ask:', '...leaving scientists to wonder:', '...which is why you should never ask:'). "
+                "When the video loops from the end back to second 0, the final setup phrase MUST flow naturally and syntactically directly into the opening hook line as one continuous spoken sentence.\n"
                 "3. STORY STRUCTURE (STRICTLY NO LISTICLES): Tell a fast-paced 130-word story (0-3s HOOK open loop, 3-45s Escalating Conflict, 45-60s Resolution & Loop CTA).\n"
                 "4. PROPER NOUN VISUAL KEYWORDS: Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
                 f"Tone: {cat_info['tone']}.\n"
@@ -1656,9 +1697,10 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
             words = asyncio.run(synthesize_speech_and_get_timestamps(script_text, fallback_voice, audio_path))
             voice_used = f"{fallback_voice} (Edge-TTS Fallback)"
 
-    # Apply Studio Audio Mastering Chain (80Hz Highpass filter, 2.5kHz EQ Boost, Compand Compressor)
+    # Apply Studio Audio Mastering Chain (80Hz Highpass filter, 2500Hz EQ Boost, Compand Compressor)
     mastered_audio_path = f"{clean_topic}_mastered.wav"
     audio_path = master_tts_audio(audio_path, mastered_audio_path)
+    audio_path = trim_trailing_silence(audio_path, silence_threshold_db=-45.0, padding_ms=50.0)
 
     subs_list = []
     for start_sec, end_sec, text in words:
@@ -2262,7 +2304,8 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
     mixed_audio_path = f"mixed-audio-{os.getpid()}.wav"
 
     audio_clip = AudioFileClip(audio_path)
-    audio_duration = audio_clip.duration
+    # Quantize total audio render duration to exact 30fps integer frame multiples (round(dur * 30) / 30)
+    audio_duration = round(audio_clip.duration * 30.0) / 30.0
 
     # --- Build multi-clip background with Ken Burns zoom effect & Seamless Visual Loop Split ---
     clips = []
@@ -2278,7 +2321,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         c0_full = VideoFileClip(video_paths[0]).resize(newsize=config.resolution)
         c0_dur = c0_full.duration
 
-        split_dur = min(1.5, max(0.4, c0_dur / 4.0))
+        split_dur = round(min(1.5, max(0.4, c0_dur / 4.0)) * 30.0) / 30.0
 
         # End clip: primary asset from 0 to split_dur
         c_end_clip = c0_full.subclip(0, min(c0_dur, split_dur)).set_duration(split_dur)
@@ -2287,7 +2330,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         mid_paths = video_paths[1:]
         rem_dur = max(1.0, audio_duration - split_dur)
         num_seq = 1 + len(mid_paths)
-        per_seq_dur = rem_dur / float(num_seq)
+        per_seq_dur = round((rem_dur / float(num_seq)) * 30.0) / 30.0
 
         # Start clip: primary asset from split_dur to split_dur + per_seq_dur
         c_start_end_time = min(c0_dur, split_dur + per_seq_dur)
@@ -2297,7 +2340,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         c_start_clip = c_start_clip.set_duration(per_seq_dur)
 
         # Process start clip
-        def create_zoom_filter(dur_val):
+        def create_zoom_filter(dur_val, start_scale=1.0, end_scale=1.15):
             last_valid_frame = [None]
             def zoom_filter(get_frame, t):
                 try:
@@ -2319,7 +2362,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
                     target_w, target_h = config.resolution
                     progress = min(1.0, max(0.0, float(t) / max(0.01, float(dur_val))))
-                    scale = 1.0 + 0.15 * progress
+                    scale = start_scale + (end_scale - start_scale) * progress
 
                     new_w = max(target_w, int(target_w * scale))
                     new_h = max(target_h, int(target_h * scale))
@@ -2342,7 +2385,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     return np.full((config.resolution[1], config.resolution[0], 3), 128, dtype=np.uint8)
             return zoom_filter
 
-        clips.append(c_start_clip.fl(create_zoom_filter(per_seq_dur)))
+        clips.append(c_start_clip.fl(create_zoom_filter(per_seq_dur, start_scale=1.0, end_scale=1.15)))
 
         # Process mid clips
         for mid_path in mid_paths:
@@ -2352,13 +2395,13 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             else:
                 mc = mc.subclip(0, min(mc.duration, per_seq_dur + 0.5))
             mc = mc.set_duration(per_seq_dur)
-            clips.append(mc.fl(create_zoom_filter(per_seq_dur)))
+            clips.append(mc.fl(create_zoom_filter(per_seq_dur, start_scale=1.0, end_scale=1.15)))
 
-        # Process end clip
-        clips.append(c_end_clip.fl(create_zoom_filter(split_dur)))
+        # Process end clip - zoom scale returns from 1.15 to 1.0 to perfectly match start clip scale (1.0) with ZERO zoom snap!
+        clips.append(c_end_clip.fl(create_zoom_filter(split_dur, start_scale=1.15, end_scale=1.0)))
 
     else:
-        per_clip_duration = audio_duration / float(num_clips)
+        per_clip_duration = round((audio_duration / float(num_clips)) * 30.0) / 30.0
         for i, v_path in enumerate(video_paths):
             c = VideoFileClip(v_path).resize(newsize=config.resolution)
             if c.duration < per_clip_duration:
@@ -2368,7 +2411,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             c = c.set_duration(per_clip_duration)
             clips.append(c)
 
-    bg_clip = concatenate_videoclips(clips)
+    bg_clip = concatenate_videoclips(clips).set_duration(audio_duration)
 
     # Add dynamic retention overlays (Visual Progress Bar & CTA Subscribe Overlay)
     retention_overlays = []
@@ -2430,11 +2473,11 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     music_clip = m.volumex(0.35)
                     music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
 
-                    # Broadcast-Grade Audio Engineering: Sidechain Dynamic Ducking & EBU R128 Loudness Normalization
-                    # Spoken voiceover [0:a] dynamically compresses background music [1:a] (-18dB to -22dB during speech),
-                    # restoring full music presence during pauses, followed by broadcast LUFS normalization (-16.0 LUFS, -1.5 dBTP).
+                    # Broadcast-Grade Audio Engineering: Seamless Loop Crossfade & Sidechain Dynamic Ducking & EBU R128 Loudness Normalization
+                    fade_out_start = max(0.0, audio_duration - 0.8)
                     filtergraph = (
-                        "[1:a][0:a]sidechaincompress=threshold=0.08:ratio=10:attack=10:release=150[ducked]; "
+                        f"[1:a]afade=t=in:st=0:d=0.8,afade=t=out:st={fade_out_start:.2f}:d=0.8[music_faded]; "
+                        "[music_faded][0:a]sidechaincompress=threshold=0.08:ratio=10:attack=10:release=150[ducked]; "
                         "[0:a][ducked]amix=inputs=2:duration=first:weights=1.0 0.25[mixed]; "
                         "[mixed]loudnorm=I=-16:TP=-1.5:LRA=11[out]"
                     )

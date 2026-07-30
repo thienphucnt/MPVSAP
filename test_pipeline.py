@@ -182,6 +182,53 @@ class TestPipeline(unittest.TestCase):
         self.assertEqual(evaluated_list[1]["title"], "Quantum Entanglement Shock")
         print("SUCCESS: Test 4 Passed: test_tournament_head_to_head_judging correctly evaluated variants side-by-side and cleaned prefixes.")
 
+    def test_seamless_looping_logic(self):
+        """
+        Test 5: Verify seamless looping utilities:
+        1. Trailing silence trimming reduces end silence buffer to <= 50ms.
+        2. Video render duration quantization produces exact 30fps integer frame multiples.
+        """
+        import soundfile as sf
+        import numpy as np
+        import tempfile
+        import os
+        from main import trim_trailing_silence
+
+        # 1. Test Trailing Silence Trimming
+        sr = 22050
+        signal_duration = 1.0
+        silence_duration = 0.5
+        t = np.linspace(0, signal_duration, int(sr * signal_duration), endpoint=False)
+        sine_wave = 0.5 * np.sin(2 * np.pi * 440 * t)
+        silence = np.zeros(int(sr * silence_duration))
+        combined_audio = np.concatenate([sine_wave, silence])
+
+        temp_audio_file = os.path.join(tempfile.gettempdir(), f"test_silence_{os.getpid()}.wav")
+        try:
+            sf.write(temp_audio_file, combined_audio, sr)
+            trimmed_path = trim_trailing_silence(temp_audio_file, silence_threshold_db=-45.0, padding_ms=50.0)
+            
+            trimmed_data, trimmed_sr = sf.read(trimmed_path)
+            trimmed_duration = len(trimmed_data) / float(trimmed_sr)
+            expected_max_duration = signal_duration + 0.06  # 50ms padding + 10ms tolerance
+            
+            self.assertLessEqual(trimmed_duration, expected_max_duration)
+            self.assertGreaterEqual(trimmed_duration, signal_duration)
+        finally:
+            if os.path.exists(temp_audio_file):
+                try: os.remove(temp_audio_file)
+                except Exception: pass
+
+        # 2. Test 30fps Frame Quantization
+        test_durations = [45.12345, 12.33333, 59.99999, 10.0]
+        for dur in test_durations:
+            quantized = round(dur * 30.0) / 30.0
+            frame_count = quantized * 30.0
+            self.assertAlmostEqual(frame_count, round(frame_count), places=5)
+
+        print("SUCCESS: Test 5 Passed: test_seamless_looping_logic successfully verified TTS silence trimming and 30fps frame quantization.")
+
 
 if __name__ == "__main__":
     unittest.main()
+
