@@ -134,6 +134,54 @@ class TestPipeline(unittest.TestCase):
         self.assertEqual(kwargs["body"]["snippet"]["topLevelComment"]["snippet"]["textOriginal"], "What is the most mysterious phenomenon in the universe?")
         print("SUCCESS: Test 3 Passed: test_top_level_comment_posting correctly inserted topLevelComment via YouTube Data API.")
 
+    def test_tournament_head_to_head_judging(self):
+        """
+        Test 4: Verify evaluate_tournament_variants conducts a side-by-side head-to-head comparison
+        of all candidate variants in a single evaluation call and cleans prepended category prefixes.
+        """
+        from main import evaluate_tournament_variants
+
+        mock_client = MagicMock()
+        mock_config = MagicMock(is_short=True)
+
+        candidates = [
+            {
+                "angle": "Cosmic Terror",
+                "title": "Cosmic Terror: The Void Phantom",
+                "script": "Deep space anomaly flickering in dark void...",
+                "topic": "Void Anomaly"
+            },
+            {
+                "angle": "Quantum Paradox",
+                "title": "Quantum Entanglement Shock",
+                "script": "Subatomic particles communicating instantly across galaxy...",
+                "topic": "Quantum Mechanics"
+            }
+        ]
+
+        mock_eval_response = MagicMock(text="""{
+            "evaluations": [
+                {"variant_id": 1, "score": 9.60, "critique": "Terrifying hook open loop with high retention."},
+                {"variant_id": 2, "score": 9.20, "critique": "Strong quantum science pacing."}
+            ],
+            "winning_variant_id": 1
+        }""")
+
+        with patch("main.gemini_generate_with_retry", return_value=mock_eval_response):
+            evaluated_list, winner = evaluate_tournament_variants(
+                client=mock_client,
+                model_name="gemini-2.5-flash",
+                variants=candidates,
+                source_title="Deep Space Anomaly",
+                config=mock_config
+            )
+
+        self.assertEqual(len(evaluated_list), 2)
+        self.assertEqual(winner["score"], 9.60)
+        self.assertEqual(winner["title"], "The Void Phantom") # Stripped 'Cosmic Terror: ' prefix!
+        self.assertEqual(evaluated_list[1]["title"], "Quantum Entanglement Shock")
+        print("SUCCESS: Test 4 Passed: test_tournament_head_to_head_judging correctly evaluated variants side-by-side and cleaned prefixes.")
+
 
 if __name__ == "__main__":
     unittest.main()

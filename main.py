@@ -148,6 +148,38 @@ CATEGORIES = {
 }
 
 
+# Category-Specific Dynamic Angle Pools for Tournament Narrative Variety
+CATEGORY_ANGLE_POOLS = {
+    "space": [
+        "Cosmic Terror",
+        "Quantum Paradox",
+        "Existential Scale",
+        "Hidden Physics",
+        "Rogue Worlds",
+        "Astronomical Mystery",
+        "Deep Void Anomaly"
+    ],
+    "history": [
+        "Forgotten Cover-Ups",
+        "Bizarre Laws",
+        "Tragic Miscalculations",
+        "Everyday Absurdities",
+        "Secret Conspiracies",
+        "Untold Historical Irony",
+        "Wartime Secrets"
+    ],
+    "tech": [
+        "Dangerous Breakthroughs",
+        "Invisible Takeovers",
+        "Accidental Inventions",
+        "Economic Disruption",
+        "Physical Impossibilities",
+        "Cyber Security Anomalies",
+        "AI Frontier Paradox"
+    ]
+}
+
+
 class VideoFormatConfig:
     def __init__(self, format_type: str = "short"):
         self.format_type = format_type
@@ -733,6 +765,111 @@ def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
     }
 
 
+def evaluate_tournament_variants(
+    client: genai.Client,
+    model_name: str,
+    variants: List[dict],
+    source_title: str,
+    config: VideoFormatConfig
+) -> Tuple[List[dict], dict]:
+    """
+    Pass 2 Side-by-Side Comparative Auto-QA Tournament Evaluator:
+    Evaluates all 5 candidate variants in a SINGLE comparative prompt to eliminate positional bias,
+    grade hook strength & retention head-to-head, and select the true highest-scoring winner based on merit.
+    """
+    candidates_text = ""
+    for idx, v in enumerate(variants):
+        candidates_text += (
+            f"--- VARIANT #{idx+1} (Angle: {v.get('angle', 'Angle')}) ---\n"
+            f"Title: '{v.get('title')}'\n"
+            f"Script Text:\n\"\"\"{v.get('script')}\"\"\"\n\n"
+        )
+
+    eval_prompt = (
+        "You are a master YouTube Content Analytics Judge conducting a head-to-head tournament evaluation.\n"
+        "Compare the following candidate video scripts side-by-side on a fine-grained 0.00 to 10.00 scale.\n\n"
+        f"Source Article Subject: '{source_title}'\n\n"
+        f"{candidates_text}"
+        "HEAD-TO-HEAD JUDGING CRITERIA (SCORE EACH VARIANT FROM 0.00 TO 10.00 WITH 2 DECIMAL PLACES):\n"
+        "1. Hook Strength (0-3s open loop, zero fluff, immediate curiosity gap)\n"
+        "2. Narrative Retention (escalating conflict/pacing, zero listicles or top-3 formats)\n"
+        "3. Natural Organic Title (no prepended category names or awkward prefixes like 'Scientific Breakthrough: ...', punchy title synergy)\n"
+        "4. Absence of Generic AI Tropes ('in a world where', 'delve into', etc.)\n"
+        "5. Seamless Loop CTA (ending phrase leads smoothly back to hook)\n\n"
+        "Return ONLY a JSON object in exactly this format:\n"
+        "{\n"
+        '  "evaluations": [\n'
+        '    {\n'
+        '      "variant_id": 1,\n'
+        '      "score": 9.45,\n'
+        '      "critique": "<2-sentence critique highlighting top strengths and relative comparative ranking>"\n'
+        '    },\n'
+        '    ... (exactly one evaluation entry per candidate variant in matching order)\n'
+        '  ],\n'
+        '  "winning_variant_id": 1\n'
+        "}"
+    )
+
+    try:
+        resp = gemini_generate_with_retry(client, model_name, eval_prompt)
+        text = resp.text.strip()
+        if text.startswith("```json"):
+            text = text[7:]
+        if text.endswith("```"):
+            text = text[:-3]
+        text = text.strip()
+        
+        data = json.loads(text)
+        evals = data.get("evaluations", [])
+
+        evaluated_list = []
+        for idx, candidate in enumerate(variants):
+            ev = evals[idx] if idx < len(evals) else {}
+            score = round(float(ev.get("score", 8.5)), 2)
+            critique = ev.get("critique", "Evaluated in head-to-head tournament.").strip()
+            
+            clean_title = re.sub(
+                r'^(Suspenseful Mystery|Scientific Breakthrough|Dramatic Conflict|Existential Wonder|Action Mystery|Cosmic Terror|Quantum Paradox|Existential Scale|Hidden Physics|Rogue Worlds|Forgotten Cover-Ups|Bizarre Laws|Tragic Miscalculations|Everyday Absurdities|Secret Conspiracies|Dangerous Breakthroughs|Invisible Takeovers|Accidental Inventions|Economic Disruption|Physical Impossibilities):\s*',
+                '', candidate["title"], flags=re.IGNORECASE
+            ).strip()
+            candidate["title"] = clean_title
+
+            evaluated_list.append({
+                "variant_id": idx + 1,
+                "angle": candidate.get("angle", f"Variant {idx+1}"),
+                "title": clean_title,
+                "word_count": len(candidate.get("script", "").split()),
+                "hook": candidate.get("script", "")[:100] + "...",
+                "score": score,
+                "critique": critique,
+                "candidate": candidate
+            })
+
+        evaluated_list.sort(key=lambda x: x["score"], reverse=True)
+        winner_entry = evaluated_list[0]
+        return evaluated_list, winner_entry
+    except Exception as e:
+        print("Head-to-Head Auto-QA Evaluator parsing fallback:", e)
+        fallback_list = []
+        for idx, candidate in enumerate(variants):
+            clean_title = re.sub(
+                r'^(Suspenseful Mystery|Scientific Breakthrough|Dramatic Conflict|Existential Wonder|Action Mystery):\s*',
+                '', candidate["title"], flags=re.IGNORECASE
+            ).strip()
+            candidate["title"] = clean_title
+            fallback_list.append({
+                "variant_id": idx + 1,
+                "angle": candidate.get("angle", f"Variant {idx+1}"),
+                "title": clean_title,
+                "word_count": len(candidate.get("script", "").split()),
+                "hook": candidate.get("script", "")[:100] + "...",
+                "score": 8.50,
+                "critique": "Evaluated with default head-to-head fallback.",
+                "candidate": candidate
+            })
+        return fallback_list, fallback_list[0]
+
+
 def evaluate_script_quality(
     client: genai.Client,
     model_name: str,
@@ -964,6 +1101,11 @@ def generate_content(
         except Exception as hist_err:
             print("Notice: Failed to ingest run_history.json for few-shot prompt injection:", hist_err)
 
+    cat_pool_key = cat_info.get("db_key", "space")
+    angle_pool = CATEGORY_ANGLE_POOLS.get(cat_pool_key, CATEGORY_ANGLE_POOLS["space"])
+    selected_angles = random.sample(angle_pool, min(5, len(angle_pool)))
+    formatted_angles_str = ", ".join([f"{i+1}-{angle}" for i, angle in enumerate(selected_angles)])
+
     session_rejections = []
     max_qa_retries = 3
 
@@ -988,29 +1130,26 @@ def generate_content(
                 "{\n"
                 '  "variants": [\n'
                 '    {\n'
-                '      "angle": "Suspenseful Mystery",\n'
+                '      "angle": "<Angle Name>",\n'
                 '      "script": "<130-word story script>",\n'
                 '      "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
-                '      "title": "<click-worthy title under 50 chars>",\n'
+                '      "title": "<standalone viral title under 50 chars>",\n'
                 '      "description": "<2-sentence summary with 5 hashtags including #nichefactsshorts>",\n'
                 '      "topic": "<2-3 words naming core concept>"\n'
                 '    },\n'
-                '    ... (exactly 5 distinct candidate variants exploring 5 different angles: 1-Suspenseful Mystery, 2-Scientific Breakthrough, 3-Dramatic Conflict, 4-Existential Wonder, 5-Action Mystery)\n'
+                f'    ... (exactly 5 distinct candidate variants exploring 5 different angles: {formatted_angles_str})\n'
                 '  ]\n'
                 "}\n\n"
                 f"{source_text_prompt}"
-                "DIRECTIVES FOR HIGH AUDIENCE RETENTION ACROSS ALL 5 VARIANTS:\n"
-                "1. INFINITE LOOP SCRIPT ENGINEERING (STRICT RULE): The script MUST be engineered for a seamless audio and narrative loop. "
-                "The final sentence of the script MUST grammatically and logically lead directly into the first sentence of the script "
-                "(e.g., Ending: '...and that is why nobody ever suspected that' -> Beginning: 'This ancient secret was buried for centuries...'). "
-                "When auto-replayed on YouTube Shorts, the viewer must not realize it restarted.\n"
-                "2. STORY STRUCTURE (STRICTLY NO LISTICLES / TOP 3 FORMATS): Each variant must tell a fast-paced 130-word story based on the source text.\n"
-                "   - Seconds 0-3 (THE HOOK): Immediate dramatic, mysterious, or shocking open loop line. NO channel greetings.\n"
-                "   - Seconds 3-45 (NARRATIVE & CONFLICT): Build escalating tension or reveal an unexpected mystery/conflict.\n"
-                "   - Seconds 45-60 (PAYOFF & LOOP CTA): Deliver a mind-bending resolution ending with a 3-second loop CTA.\n"
-                "3. DRAMATIC PACING: Force natural pauses using ellipses (...) and em-dashes (—).\n"
+                "DIRECTIVES FOR HIGH AUDIENCE RETENTION & ORGANIC NARRATIVE ANGLES:\n"
+                f"1. ORGANIC VARIANT TITLES (STRICT RULE): Generate 5 distinct candidate variants exploring these 5 narrative angles: {formatted_angles_str}. "
+                "Each variant MUST have its own unique, punchy, standalone title written organically for that specific angle. "
+                "STRICTLY PROHIBITED: Do NOT prepend angle names or category prefixes to titles (e.g., NEVER write 'Scientific Breakthrough: ...' or 'Suspenseful Mystery: ...'). "
+                "Every title must sound like a natural, standalone viral YouTube Shorts title under 50 characters.\n"
+                "2. INFINITE LOOP SCRIPT ENGINEERING (STRICT RULE): The script MUST be engineered for a seamless audio and narrative loop. "
+                "The final sentence of the script MUST grammatically and logically lead directly into the first sentence of the script.\n"
+                "3. STORY STRUCTURE (STRICTLY NO LISTICLES): Tell a fast-paced 130-word story (0-3s HOOK open loop, 3-45s Escalating Conflict, 45-60s Resolution & Loop CTA).\n"
                 "4. PROPER NOUN VISUAL KEYWORDS: Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
-                "5. ENTITY-SPECIFIC TITLES & TOPICS: Every variant title and topic MUST be specific and entity-rich, naming exact locations, historical figures, years, or distinct scientific mechanisms (e.g. '1858 London Great Stink Sewage Crisis', 'Einstein Quantum Entanglement Paradox') rather than generic phrase titles.\n"
                 f"Tone: {cat_info['tone']}.\n"
                 "Under no circumstances mention regional politics or Vietnamese history."
                 f"{dynamic_exclude}"
@@ -1076,7 +1215,7 @@ def generate_content(
                             "angle": v_angle
                         })
             except Exception as e:
-                print("WARNING: Could not parse multi-variant JSON response ??? falling back to manual extract.", e)
+                print("WARNING: Could not parse multi-variant JSON response falling back to manual extract.", e)
 
             if not parsed_variants:
                 parsed_variants.append({
@@ -1088,40 +1227,34 @@ def generate_content(
                     "angle": "Fallback"
                 })
 
-            print(f"\n--- RUNNING 5-VARIANT AUTO-QA TOURNAMENT ({len(parsed_variants)} VARIANTS) ---")
-            evaluated_variants = []
-
+            valid_candidates = []
             for idx, candidate in enumerate(parsed_variants):
-                v_title = candidate["title"]
-                v_topic = candidate["topic"]
-                v_script = candidate["script"]
-                v_angle = candidate["angle"]
+                v_title = candidate.get("title", "")
+                v_topic = candidate.get("topic", "")
+                v_script = candidate.get("script", "")
+                v_angle = candidate.get("angle", f"Variant {idx+1}")
 
-                # 1. Check duplicate guardrail
                 is_dup, reason = is_duplicate_topic(v_title, v_topic, v_script, past_topics)
                 if is_dup:
                     print(f"  [REJECTED DUP] Variant {idx+1} ('{v_angle}'): {reason}")
-                    continue
+                else:
+                    valid_candidates.append(candidate)
 
-                # 2. Evaluate Auto-QA Score
-                score, critique = evaluate_script_quality(client, model_name, v_script, v_title, source_data.get("title", ""), config)
-                print(f"  [TOURNAMENT EVAL] Variant {idx+1} ('{v_angle}') -> Score: {score}/10 | Title: '{v_title}' | Critique: {critique}")
-                evaluated_variants.append({
-                    "candidate": candidate,
-                    "score": score,
-                    "critique": critique
-                })
+            if not valid_candidates:
+                valid_candidates = parsed_variants[:1]
 
-            # Sort by score descending
-            evaluated_variants.sort(key=lambda x: x["score"], reverse=True)
+            print(f"\n--- RUNNING HEAD-TO-HEAD SIDE-BY-SIDE AUTO-QA TOURNAMENT ({len(valid_candidates)} VARIANTS) ---")
+            evaluated_variants, winner_entry = evaluate_tournament_variants(
+                client, model_name, valid_candidates, source_data.get("title", ""), config
+            )
 
-            if evaluated_variants and evaluated_variants[0]["score"] >= 8:
-                winner = evaluated_variants[0]["candidate"]
-                w_score = evaluated_variants[0]["score"]
-                print(f"\n[TOURNAMENT WINNER] Selected Variant ('{winner['angle']}') with Score {w_score}/10!")
-                print("Winning Title:", winner["title"])
-                print("Winning Topic:", winner["topic"])
-                
+            w_score = winner_entry["score"]
+            winner = winner_entry["candidate"]
+            print(f"\n[TOURNAMENT WINNER] Selected Variant ('{winner.get('angle')}') with Score {w_score}/10!")
+            print("Winning Title:", winner["title"])
+            print("Winning Topic:", winner["topic"])
+
+            if w_score >= 8.0:
                 win_segments = [{
                     "script": winner["script"],
                     "visual_keywords": winner["visual_keywords"],
@@ -1129,27 +1262,26 @@ def generate_content(
                 }]
                 all_variants_logged = [
                     {
-                        "variant_id": i + 1,
-                        "angle": ev["candidate"].get("angle", f"Variant {i+1}"),
-                        "title": ev["candidate"]["title"],
-                        "word_count": len(ev["candidate"]["script"].split()),
-                        "hook": ev["candidate"]["script"][:100] + "...",
+                        "variant_id": ev["variant_id"],
+                        "angle": ev["angle"],
+                        "title": ev["title"],
+                        "word_count": ev["word_count"],
+                        "hook": ev["hook"],
                         "score": ev["score"],
                         "critique": ev["critique"]
                     }
-                    for i, ev in enumerate(evaluated_variants)
+                    for ev in evaluated_variants
                 ]
                 winning_script_logged = {
                     "title": winner["title"],
                     "text": winner["script"],
                     "score": w_score,
-                    "critique": evaluated_variants[0]["critique"]
+                    "critique": winner_entry["critique"]
                 }
                 return winner["title"], winner["description"], win_segments, all_variants_logged, winning_script_logged
             else:
-                top_score = evaluated_variants[0]['score'] if evaluated_variants else 0
-                print(f"\n[TOURNAMENT RE-TRY] Top variant scored {top_score}/10 (< 8 threshold). Re-prompting for fresh tournament...")
-                session_rejections.append(f"Tournament Top Score: {top_score}/10 (< 8 threshold).")
+                print(f"\n[TOURNAMENT RE-TRY] Top variant scored {w_score}/10 (< 8 threshold). Re-prompting for fresh tournament...")
+                session_rejections.append(f"Tournament Top Score: {w_score}/10 (< 8 threshold).")
                 time.sleep(1)
                 continue
 
