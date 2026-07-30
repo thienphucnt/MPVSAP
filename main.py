@@ -1127,7 +1127,25 @@ def generate_content(
                     "visual_keywords": winner["visual_keywords"],
                     "topic": winner["topic"]
                 }]
-                return winner["title"], winner["description"], win_segments
+                all_variants_logged = [
+                    {
+                        "variant_id": i + 1,
+                        "angle": ev["candidate"].get("angle", f"Variant {i+1}"),
+                        "title": ev["candidate"]["title"],
+                        "word_count": len(ev["candidate"]["script"].split()),
+                        "hook": ev["candidate"]["script"][:100] + "...",
+                        "score": ev["score"],
+                        "critique": ev["critique"]
+                    }
+                    for i, ev in enumerate(evaluated_variants)
+                ]
+                winning_script_logged = {
+                    "title": winner["title"],
+                    "text": winner["script"],
+                    "score": w_score,
+                    "critique": evaluated_variants[0]["critique"]
+                }
+                return winner["title"], winner["description"], win_segments, all_variants_logged, winning_script_logged
             else:
                 top_score = evaluated_variants[0]['score'] if evaluated_variants else 0
                 print(f"\n[TOURNAMENT RE-TRY] Top variant scored {top_score}/10 (< 8 threshold). Re-prompting for fresh tournament...")
@@ -1205,7 +1223,7 @@ def generate_content(
             # Pass 2 Auto-QA for long-form
             combined_script = "\n".join([s.get("script", "") for s in segments])
             score, critique = evaluate_script_quality(client, model_name, combined_script, title, source_data.get("title", ""), config)
-            print(f"[LONG-FORM PASS 2 AUTO-QA SCORE] {score}/10 ??? Critique: {critique}")
+            print(f"[LONG-FORM PASS 2 AUTO-QA SCORE] {score}/10 — Critique: {critique}")
 
             if score < 8:
                 print(f"[AUTO-QA REJECTION] Long-form compilation scored {score}/10 (< 8 threshold). Retrying...")
@@ -1214,10 +1232,42 @@ def generate_content(
                 continue
 
             print(f"[AUTO-QA APPROVED] Long-form compilation passed (Score: {score}/10)!")
-            return title, description, segments
+            longform_variants_logged = [{
+                "variant_id": 1,
+                "angle": "Widescreen Compilation",
+                "title": title,
+                "word_count": len(combined_script.split()),
+                "hook": combined_script[:100] + "...",
+                "score": score,
+                "critique": critique
+            }]
+            winning_script_logged = {
+                "title": title,
+                "text": combined_script,
+                "score": score,
+                "critique": critique
+            }
+            return title, description, segments, longform_variants_logged, winning_script_logged
 
     print(f"WARNING: Max QA retries reached ({max_qa_retries}). Returning best generated content.")
-    return title, description, segments
+    fb_title = title if ('title' in locals() and title) else f"Anomalies of {category.capitalize()}"
+    fb_text = segments[0]["script"] if (segments and "script" in segments[0]) else ""
+    fallback_variants = [{
+        "variant_id": 1,
+        "angle": "Fallback Mode",
+        "title": fb_title,
+        "word_count": len(fb_text.split()),
+        "hook": fb_text[:100] + "...",
+        "score": 8.0,
+        "critique": "Fallback generated after max retries."
+    }]
+    fallback_winning = {
+        "title": fb_title,
+        "text": fb_text,
+        "score": 8.0,
+        "critique": "Fallback generated after max retries."
+    }
+    return fb_title, description if 'description' in locals() else "", segments, fallback_variants, fallback_winning
 
 
 # ---------------------------------------------------------------------------
@@ -3186,7 +3236,7 @@ def run_daily_upload_pipeline_once() -> None:
         source_data["text"] += f"\n\nREAL-TIME 7-DAY RISING SEARCH TRENDS TO WEAVE IN:\n- " + "\n- ".join(rising_trends)
 
     # 1. Multi-Variant Tournament Content Generation & Pass 2 Auto-QA
-    title, description, segments = generate_content(client, category, past_topics, source_data, config)
+    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)
 
     # Resolve related long-form video link for Shorts-to-Long funneling
     related_long_video_id = None

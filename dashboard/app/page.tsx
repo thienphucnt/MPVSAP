@@ -695,6 +695,9 @@ export default function TelemetryDashboard() {
     if (run.script_variants && run.script_variants.length > 0) {
       return Math.max(...run.script_variants.map((v) => v.score));
     }
+    if ((run.winning_script as any)?.score) {
+      return Number((run.winning_script as any).score);
+    }
     return 8.5;
   };
 
