@@ -2938,7 +2938,7 @@ def post_top_level_engagement_comment(youtube, video_id: str, winning_script_tex
         "- No hashtags, quotes, or markdown formatting."
     )
     try:
-        response = gemini_generate_with_retry(client, prompt, model_chain=["gemini-2.5-flash", "gemini-2.0-flash"])
+        response = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
         question = response.text.strip().replace('"', '').replace('\n', ' ')
         print(f"Generated Engagement Question: '{question}'")
 
