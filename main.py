@@ -2543,19 +2543,143 @@ def generate_thumbnail(title: str, category: str, pexels_key: str, output_path: 
     return output_path
 
 
+class AuthError(Exception):
+    """Custom exception raised when YouTube OAuth credential verification fails."""
+    pass
+
+
+def verify_youtube_auth(client_id: str, client_secret: str, refresh_token: str) -> Credentials:
+    """
+    Pre-flight YouTube OAuth validation.
+    Verifies refresh token and attempts token refresh before heavy rendering or API calls start.
+    Raises AuthError if credentials are missing, invalid, or expired.
+    """
+    if not (client_id and client_secret and refresh_token):
+        raise AuthError("YouTube API credentials incomplete (YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET, or YOUTUBE_REFRESH_TOKEN missing).")
+
+    try:
+        from google.auth.transport.requests import Request
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=["https://www.googleapis.com/auth/youtube"]
+        )
+        creds.refresh(Request())
+        print("SUCCESS: Pre-flight YouTube OAuth Check PASSED: Refresh token validated successfully.")
+        return creds
+    except Exception as e:
+        err_msg = f"YouTube OAuth Pre-flight Check FAILED: {e}"
+        print(f"CRITICAL AUTH FAILURE: {err_msg}")
+        raise AuthError(err_msg) from e
+
+
+def render_long_form_segments_and_concat(
+    segments: List[dict],
+    category: str,
+    pexels_key: str,
+    config: VideoFormatConfig,
+    output_path: str = "final_output.mp4"
+) -> Tuple[str, List[float]]:
+    """
+    Chunked Long-Form Video Rendering Engine:
+    Renders each segment individually as segment_0.mp4, segment_1.mp4, etc.
+    Generates a segments.txt file and performs a zero-re-encoding FFmpeg stream copy concatenation:
+    'ffmpeg -f concat -safe 0 -i segments.txt -c copy final_output.mp4'
+    Returns (output_path, segment_durations).
+    """
+    print(f"\n=== STARTING CHUNKED LONG-FORM RENDERING ({len(segments)} SEGMENTS) ===")
+    rendered_segment_files = []
+    segment_durations = []
+
+    for idx, seg in enumerate(segments):
+        print(f"\n--- [CHUNK {idx+1}/{len(segments)}] Rendering Segment: {seg['topic']} ---")
+        seg_audio_path, seg_subs_list, _ = generate_audio_and_subtitles(
+            seg["script"], category, f"longform_seg_{idx}"
+        )
+
+        try:
+            from moviepy.editor import AudioFileClip
+            ac = AudioFileClip(seg_audio_path)
+            dur = ac.duration
+            ac.close()
+        except Exception:
+            dur = 45.0
+        segment_durations.append(dur)
+
+        seg_video_paths = download_pexels_videos(
+            pexels_key,
+            seg["visual_keywords"],
+            category,
+            orientation="landscape",
+            filename_prefix=f"seg{idx}"
+        )
+
+        segment_output = f"segment_{idx}.mp4"
+        assemble_video(
+            video_paths=seg_video_paths,
+            audio_path=seg_audio_path,
+            subs_list=seg_subs_list,
+            output_path=segment_output,
+            category=category,
+            config=config,
+            mix_music=True
+        )
+        rendered_segment_files.append(segment_output)
+
+        if os.path.exists(seg_audio_path):
+            try: os.remove(seg_audio_path)
+            except Exception: pass
+
+    segments_txt_path = "segments.txt"
+    print(f"\n--- Writing FFmpeg Concat Manifest ({segments_txt_path}) ---")
+    with open(segments_txt_path, "w", encoding="utf-8") as f:
+        for seg_file in rendered_segment_files:
+            f.write(f"file '{seg_file}'\n")
+
+    print(f"Concatenating {len(rendered_segment_files)} segment MP4 files via FFmpeg stream copy...")
+    concat_cmd = [
+        "ffmpeg", "-y",
+        "-f", "concat",
+        "-safe", "0",
+        "-i", segments_txt_path,
+        "-c", "copy",
+        output_path
+    ]
+    res = subprocess.run(concat_cmd, capture_output=True, text=True)
+    if res.returncode != 0:
+        print("FFmpeg stream copy concat error output:", res.stderr)
+        raise RuntimeError(f"FFmpeg stream copy concatenation failed with exit code {res.returncode}: {res.stderr}")
+
+    print(f"SUCCESS: Long-Form Chunked Compilation successfully completed! Output: {output_path}")
+
+    # Clean up intermediate segment MP4 files
+    for seg_file in rendered_segment_files:
+        if os.path.exists(seg_file):
+            try: os.remove(seg_file)
+            except Exception: pass
+
+    return output_path, segment_durations
+
+
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER WITH PINNED COMMENT
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None, subs_list: Optional[List] = None) -> Optional[str]:
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None, subs_list: Optional[List] = None, pre_verified_creds: Optional[Credentials] = None) -> Optional[str]:
     print("Uploading to YouTube...")
-    creds = Credentials(
-        token=None,
-        refresh_token=refresh_token,
-        token_uri="https://oauth2.googleapis.com/token",
-        client_id=client_id,
-        client_secret=client_secret,
-        scopes=["https://www.googleapis.com/auth/youtube"]
-    )
+    if pre_verified_creds is not None:
+        creds = pre_verified_creds
+    else:
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=["https://www.googleapis.com/auth/youtube"]
+        )
     youtube = build("youtube", "v3", credentials=creds)
 
     cat_data = CATEGORIES.get(category, CATEGORIES[list(CATEGORIES.keys())[0]])
@@ -3004,10 +3128,23 @@ def run_daily_upload_pipeline_once() -> None:
         except Exception as e:
             print("Failed to load past topics:", e)
 
-    # Sync past uploaded videos dynamically from YouTube if keys are available
-    youtube_client_id = os.environ.get("YOUTUBE_CLIENT_ID")
+    youtube_client_id     = os.environ.get("YOUTUBE_CLIENT_ID")
     youtube_client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
     youtube_refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
+
+    # Step 2: Fail-Fast YouTube Auth Pre-flight Check
+    verified_youtube_creds = None
+    if not args.dry_run:
+        try:
+            print("\n--- STAGE 0: YOUTUBE OAUTH PRE-FLIGHT AUTH CHECK ---")
+            verified_youtube_creds = verify_youtube_auth(
+                youtube_client_id, youtube_client_secret, youtube_refresh_token
+            )
+        except AuthError as auth_err:
+            print(f"\nCRITICAL PRE-FLIGHT AUTH FAILURE: {auth_err}")
+            print("Aborting pipeline execution to save Gemini API quota and compute resources.")
+            sys.exit(1)
+
     if youtube_client_id and youtube_client_secret and youtube_refresh_token:
         past_topics = sync_topics_from_youtube(
             youtube_client_id,
@@ -3082,63 +3219,10 @@ def run_daily_upload_pipeline_once() -> None:
         video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category, orientation="portrait")
         assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)
     else:
-        # Long-form path: single-pass rendering to avoid nested re-encoding
-        all_video_paths = []
-        all_audio_paths = []
-        all_subs_list = []
-        segment_durations = []
-        current_time = 0.0
-
-        for idx, seg in enumerate(segments):
-            print(f"\n--- Preparing Segment {idx + 1}/{len(segments)}: {seg['topic']} ---")
-            seg_audio_path, seg_subs_list, actual_voice_used = generate_audio_and_subtitles(seg["script"], category, f"longform_seg_{idx}")
-            
-            # Record segment audio duration for automated description chapters
-            try:
-                ac = AudioFileClip(seg_audio_path)
-                dur = ac.duration
-                segment_durations.append(dur)
-                ac.close()
-            except Exception as e:
-                print("Failed to read audio clip duration:", e)
-                dur = 45.0 # default fallback
-                segment_durations.append(dur)
-                
-            # Offset subtitles for the current segment to align with concatenated audio timeline
-            for (start, end), text in seg_subs_list:
-                all_subs_list.append(((start + current_time, end + current_time), text))
-            
-            # Download Pexels clips with unique prefixes to prevent filename collision
-            seg_video_paths = download_pexels_videos(
-                pexels_key, 
-                seg["visual_keywords"], 
-                category, 
-                orientation="landscape",
-                filename_prefix=f"seg{idx}"
-            )
-            all_video_paths.extend(seg_video_paths)
-            all_audio_paths.append(seg_audio_path)
-            current_time += dur
-
-        # Concatenate all segment audio files into a single master audio track
-        print("\n--- Concatenating all segment audio files ---")
-        audio_clips = [AudioFileClip(p) for p in all_audio_paths]
-        concat_audio = concatenate_audioclips(audio_clips)
-        master_audio_path = f"master_audio_{os.getpid()}.wav"
-        concat_audio.write_audiofile(master_audio_path, fps=44100, logger=None)
-        concat_audio.close()
-        for ac in audio_clips:
-            ac.close()
-
-        # Clean up individual segment audio files now that they are merged
-        for p in all_audio_paths:
-            try:
-                os.remove(p)
-            except Exception:
-                pass
-
-        # Call assemble_video to perform the single-pass video render and burn all subtitles
-        assemble_video(all_video_paths, master_audio_path, all_subs_list, output_path, category, config, mix_music=True)
+        # Long-form chunked rendering + zero-re-encoding FFmpeg stream copy concatenation
+        output_path, segment_durations = render_long_form_segments_and_concat(
+            segments, category, pexels_key, config, output_path
+        )
 
         # Generate automated description chapters using actual durations
         timestamps = []
@@ -3176,14 +3260,15 @@ def run_daily_upload_pipeline_once() -> None:
 
         # 3. Upload to platforms (Only upload to TikTok/Meta for Shorts)
         uploaded_video_id = None
-        current_subs = subs_list if config.is_short else all_subs_list
+        current_subs = subs_list if config.is_short else []
         if youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
                 uploaded_video_id = upload_to_youtube(
                     output_path, title, description,
                     youtube_client_id, youtube_client_secret, youtube_refresh_token,
                     playlist_id, category, thumbnail_path, related_long_video_id,
-                    subs_list=current_subs
+                    subs_list=current_subs,
+                    pre_verified_creds=verified_youtube_creds
                 )
                 
                 # Append to past_topics ONLY upon successful upload to YouTube
