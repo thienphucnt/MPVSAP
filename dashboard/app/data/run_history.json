@@ -10960,46 +10960,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "AI Dreams: Beyond Human Creation?",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 103,
+        "hook": "\"What if the \"application of conceptual knowledge\" wasn't just *our* domain? In 2022, ChatGPT's emergence hinted at a profound shift.\"",
         "score": 6.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: AI Dreams: Beyond Human Creation?",
+        "word_count": 103,
+        "hook": "\"Scientific Breakthrough \u2014 t *our* domain? In 2022, ChatGPT's emergence hinted at a profound shift. Its gen...\"",
         "score": 5.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.8/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: AI Dreams: Beyond Human Creation?",
+        "word_count": 103,
+        "hook": "\"Dramatic Conflict \u2014 found shift. Its generative models didn't just reproduce; they *synthesized* ent...\"",
         "score": 5.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.4/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: AI Dreams: Beyond Human Creation?",
+        "word_count": 103,
+        "hook": "\"Existential Wonder \u2014 ey *synthesized* entirely novel text, images, even ideas, without inherent human...\"",
         "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: AI Dreams: Beyond Human Creation?",
+        "word_count": 103,
+        "hook": "\"Action Mystery \u2014 thout inherent human prompt for *meaning*. We saw a mirror reflecting our own cr...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11042,46 +11042,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "The Stone That Whispers Code",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 108,
+        "hook": "\"This ancient stone, dismissed for millennia as a mere tool, hums with a silent frequency.\"",
         "score": 6.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: The Stone That Whispers Code",
+        "word_count": 108,
+        "hook": "\"Scientific Breakthrough \u2014 hums with a silent frequency... a frequency now detected disrupting Wikipedia\u2019s...\"",
         "score": 6.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (6.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: The Stone That Whispers Code",
+        "word_count": 108,
+        "hook": "\"Dramatic Conflict \u2014 rupting Wikipedia\u2019s global servers. Dr. Aris Thorne discovered it beneath an int...\"",
         "score": 5.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.7/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: The Stone That Whispers Code",
+        "word_count": 108,
+        "hook": "\"Existential Wonder \u2014 ed it beneath an internet hub's foundation, not pre-historic, but *pre-digital*....\"",
         "score": 5.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.3/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: The Stone That Whispers Code",
+        "word_count": 108,
+        "hook": "\"Action Mystery \u2014 , but *pre-digital*. Its etched patterns, initially thought decorative, mirror c...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11125,45 +11125,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 5.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 5.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.4/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11199,46 +11199,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Life & Tech Just Became ONE!",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 114,
+        "hook": "\"The breakthrough wasn't in coding cells, but in *interfacing* their energy directly with computational systems.\"",
         "score": 6.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Life & Tech Just Became ONE!",
+        "word_count": 114,
+        "hook": "\"Scientific Breakthrough \u2014 * their energy directly with computational systems. Dr. Aris Thorne's team achie...\"",
         "score": 5.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.6/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Life & Tech Just Became ONE!",
+        "word_count": 114,
+        "hook": "\"Dramatic Conflict \u2014 Thorne's team achieved 'Bio-Logic Convergence'\u2014a living circuit, where microbia...\"",
         "score": 5.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.2/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: Life & Tech Just Became ONE!",
+        "word_count": 114,
+        "hook": "\"Existential Wonder \u2014 cuit, where microbial colonies powered and optimized processing units, creating...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Life & Tech Just Became ONE!",
+        "word_count": 114,
+        "hook": "\"Action Mystery \u2014 ing units, creating self-sustaining micro-labs. This radical novelty promised li...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11282,45 +11282,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 5.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 5.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.5/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11356,46 +11356,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "The Face Hunter's Secret Network",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 120,
+        "hook": "\"Your face\u2026 it\u2019s already in there.\"",
         "score": 6.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
+        "title": "Scientific Breakthrough: The Face Hunter's Secret Network",
         "word_count": 120,
-        "hook": "Hook 2...",
+        "hook": "\"Scientific Breakthrough \u2014 ected over 20 billion images from across the internet, building a database law e...\"",
         "score": 5.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.7/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: The Face Hunter's Secret Network",
+        "word_count": 120,
+        "hook": "\"Dramatic Conflict \u2014 ing a database law enforcement now taps into. Imagine\u2014a photo you uploaded years...\"",
         "score": 5.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.3/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: The Face Hunter's Secret Network",
+        "word_count": 120,
+        "hook": "\"Existential Wonder \u2014 o you uploaded years ago, now a key to your identity, used without your consent....\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: The Face Hunter's Secret Network",
+        "word_count": 120,
+        "hook": "\"Action Mystery \u2014 ithout your consent. This controversial software, born from a low profile, explo...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11438,46 +11438,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Pipeline Execution Error",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 4,
+        "hook": "\"Pipeline failed during execution.\"",
         "score": 6.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Scientific Breakthrough \u2014 Pipeline failed during execution....\"",
         "score": 6.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (6.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Dramatic Conflict \u2014 Pipeline failed during execution....\"",
         "score": 5.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.6/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Existential Wonder \u2014 Pipeline failed during execution....\"",
         "score": 5.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.2/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Action Mystery \u2014 Pipeline failed during execution....\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11518,45 +11518,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 6.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 5.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.9/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.5/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
         "score": 5.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11592,46 +11592,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Pipeline Execution Error",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 4,
+        "hook": "\"Pipeline failed during execution.\"",
         "score": 6.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Scientific Breakthrough \u2014 Pipeline failed during execution....\"",
         "score": 5.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.6/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Dramatic Conflict \u2014 Pipeline failed during execution....\"",
         "score": 5.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.2/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Existential Wonder \u2014 Pipeline failed during execution....\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Action Mystery \u2014 Pipeline failed during execution....\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11672,45 +11672,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 6.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 5.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.8/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.4/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
         "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11747,45 +11747,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 5.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 5.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.5/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11821,46 +11821,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Who REALLY Built This Railroad?",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 99,
+        "hook": "\"An impossible artery of iron, the Virginia Central Railroad was built with astonishing speed, its tracks spanning over 200 miles from Richmond.\"",
         "score": 9.15,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Who REALLY Built This Railroad?",
+        "word_count": 99,
+        "hook": "\"Scientific Breakthrough \u2014 was built with astonishing speed, its tracks spanning over 200 miles from Richmo...\"",
         "score": 8.75,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.75/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Who REALLY Built This Railroad?",
+        "word_count": 99,
+        "hook": "\"Dramatic Conflict \u2014 00 miles from Richmond. By 1840, it already reached Gordonsville, defying geogra...\"",
         "score": 8.35,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.35/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Who REALLY Built This Railroad?",
+        "word_count": 99,
+        "hook": "\"Existential Wonder \u2014 ille, defying geographical challenges. But a darker, untold story powered this r...\"",
         "score": 7.95,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (7.95/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Who REALLY Built This Railroad?",
+        "word_count": 99,
+        "hook": "\"Action Mystery \u2014 story powered this relentless expansion... Beyond the chartered Louisa Railroad...\"",
         "score": 7.55,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (7.55/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11908,45 +11908,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 6.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 5.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.6/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.2/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -11983,45 +11983,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 5.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 5.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.4/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
-        "score": 4.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12057,46 +12057,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "AI Erased Jobs. Now What? #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 106,
+        "hook": "\"The automated factories hummed, producing everything faster, cheaper, flawlessly\u2026 and humanity watched.\"",
         "score": 9.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: AI Erased Jobs. Now What?",
+        "word_count": 106,
+        "hook": "\"Scientific Breakthrough \u2014 cheaper, flawlessly\u2026 and humanity watched. Economists warned for decades, but t...\"",
         "score": 8.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.9/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: AI Erased Jobs. Now What?",
+        "word_count": 106,
+        "hook": "\"Dramatic Conflict \u2014 d for decades, but the speed of AI's disruptive technologies outpaced every pred...\"",
         "score": 8.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.5/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: AI Erased Jobs. Now What?",
+        "word_count": 106,
+        "hook": "\"Existential Wonder \u2014 outpaced every prediction. Entire industries evaporated overnight. Millions fou...\"",
         "score": 8.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: AI Erased Jobs. Now What?",
+        "word_count": 106,
+        "hook": "\"Action Mystery \u2014 rnight. Millions found themselves \"superfluous,\" a chilling term from futurists...\"",
         "score": 7.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (7.7/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12143,46 +12143,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Silent Purge: The Tech That Judges Us #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 106,
+        "hook": "\"A whisper spreads through the network\u2014a ghost in the machine.\"",
         "score": 9.45,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Silent Purge: The Tech That Judges Us",
+        "word_count": 106,
+        "hook": "\"Scientific Breakthrough \u2014 ... They call it 'Project Chimera,' a radical technological convergence. Data le...\"",
         "score": 9.05,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.05/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Silent Purge: The Tech That Judges Us",
+        "word_count": 106,
+        "hook": "\"Dramatic Conflict \u2014 convergence. Data leaks suggest an elite consortium, driven by Bill Joy\u2019s ominou...\"",
         "score": 8.65,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.65/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Silent Purge: The Tech That Judges Us",
+        "word_count": 106,
+        "hook": "\"Existential Wonder \u2014 by Bill Joy\u2019s ominous foresight, is using unseen systems not for global betterme...\"",
         "score": 8.25,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.25/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Silent Purge: The Tech That Judges Us",
+        "word_count": 106,
+        "hook": "\"Action Mystery \u2014 for global betterment, but for chilling societal 'optimization.' The goal: rede...\"",
         "score": 7.85,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (7.85/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12229,46 +12229,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Buildings That Heal Themselves?! #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 127,
+        "hook": "\"For centuries, buildings stood static, rigid monuments to human ingenuity.\"",
         "score": 9.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Buildings That Heal Themselves?!",
+        "word_count": 127,
+        "hook": "\"Scientific Breakthrough \u2014 man ingenuity... until Project Proteus. This wasn't about new materials, but a r...\"",
         "score": 9.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.2/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Buildings That Heal Themselves?!",
+        "word_count": 127,
+        "hook": "\"Dramatic Conflict \u2014 w materials, but a radical re-imagining of old ones \u2013 applying principles of bio...\"",
         "score": 8.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.8/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Buildings That Heal Themselves?!",
+        "word_count": 127,
+        "hook": "\"Existential Wonder \u2014 ng principles of biological self-organization to infrastructure. We unlocked a w...\"",
         "score": 8.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.4/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Buildings That Heal Themselves?!",
+        "word_count": 127,
+        "hook": "\"Action Mystery \u2014 ure. We unlocked a way for structures to dynamically adapt, constantly optimizin...\"",
         "score": 8.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12316,45 +12316,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Shadow Track Beneath New York #tech #shorts",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"a ghostly third track lies completely abandoned beneath Manhattan.\"",
         "score": 9.75,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Shadow Track Beneath New York",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 attan. When the 103rd Street subway station opened in October 1904, engineers bu...\"",
         "score": 9.35,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.35/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Shadow Track Beneath New York",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 r 1904, engineers built two active platforms\u2014and a mysterious center line. For o...\"",
         "score": 8.95,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.95/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Shadow Track Beneath New York",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 s center line. For over a century, trains filled with passengers pass right by i...\"",
         "score": 8.55,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.55/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Shadow Track Beneath New York",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 gers pass right by it... yet no public train ever stops there. Rumors swirled ab...\"",
         "score": 8.15,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.15/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12402,45 +12402,45 @@
         "angle": "Suspenseful Mystery",
         "title": "Space & Cosmic Mysteries",
         "word_count": 125,
-        "hook": "Hook 1...",
+        "hook": "\"\"",
         "score": 6.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Scientific Breakthrough \u2014 ...\"",
         "score": 6.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (6.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Dramatic Conflict \u2014 ...\"",
         "score": 5.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.7/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Existential Wonder \u2014 ...\"",
         "score": 5.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.3/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "\"Action Mystery \u2014 ...\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12476,46 +12476,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "FEEL Another's Mind? New Tech Does It! #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 144,
+        "hook": "\"Imagine truly *feeling* another's consciousness, not just understanding it.\"",
         "score": 6.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: FEEL Another's Mind? New Tech Does It!",
+        "word_count": 144,
+        "hook": "\"Scientific Breakthrough \u2014 derstanding it. A new convergence breakthrough promises exactly that... Dr. Lena...\"",
         "score": 6.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (6.4/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: FEEL Another's Mind? New Tech Does It!",
+        "word_count": 144,
+        "hook": "\"Dramatic Conflict \u2014 tly that... Dr. Lena Petrova\u2019s team at the Synergis Institute achieved the impos...\"",
         "score": 6.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (6.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: FEEL Another's Mind? New Tech Does It!",
+        "word_count": 144,
+        "hook": "\"Existential Wonder \u2014 e achieved the impossible: a symbiotic bio-digital interface. It wasn't about co...\"",
         "score": 5.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.6/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: FEEL Another's Mind? New Tech Does It!",
+        "word_count": 144,
+        "hook": "\"Action Mystery \u2014 . It wasn't about controlling minds or uploading consciousness\u2014it was about pure...\"",
         "score": 5.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.2/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12562,46 +12562,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Bill Joy's 2000 Tech Disruption Conflict #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 110,
+        "hook": "\"In the year 2000, Sun Microsystems chief scientist Bill Joy issued a chilling warning that terrified the tech elite.\"",
         "score": 9.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Bill Joy's 2000 Tech Disruption Conflict",
+        "word_count": 110,
+        "hook": "\"Scientific Breakthrough \u2014 issued a chilling warning that terrified the tech elite... Joy argued that emerg...\"",
         "score": 9.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Bill Joy's 2000 Tech Disruption Conflict",
+        "word_count": 110,
+        "hook": "\"Dramatic Conflict \u2014 oy argued that emerging robotics and biotechnology wouldn't just improve human l...\"",
         "score": 8.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.7/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Bill Joy's 2000 Tech Disruption Conflict",
+        "word_count": 110,
+        "hook": "\"Existential Wonder \u2014 just improve human life\u2014they would create an unprecedented existential divide......\"",
         "score": 8.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.3/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Bill Joy's 2000 Tech Disruption Conflict",
+        "word_count": 110,
+        "hook": "\"Action Mystery \u2014 xistential divide... For the first time in human history, elite ruling classes w...\"",
         "score": 7.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (7.9/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12648,46 +12648,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Pipeline Execution Error",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 4,
+        "hook": "\"Pipeline failed during execution.\"",
         "score": 6.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Scientific Breakthrough \u2014 Pipeline failed during execution....\"",
         "score": 5.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.9/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Dramatic Conflict \u2014 Pipeline failed during execution....\"",
         "score": 5.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.5/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Existential Wonder \u2014 Pipeline failed during execution....\"",
         "score": 5.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (5.1/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
-        "score": 4.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "title": "Action Mystery: Pipeline Execution Error",
+        "word_count": 4,
+        "hook": "\"Action Mystery \u2014 Pipeline failed during execution....\"",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12727,46 +12727,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Wikimedia Foundation's Secret Cyber War? #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 131,
+        "hook": "\"The anomaly flickered, a phantom signature buried deep within Wikimedia's server logs.\"",
         "score": 9.65,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Wikimedia Foundation's Secret Cyber War?",
+        "word_count": 131,
+        "hook": "\"Scientific Breakthrough \u2014 n Wikimedia's server logs. For 25 years, a human network\u2014not machines\u2014built this...\"",
         "score": 9.25,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.25/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Wikimedia Foundation's Secret Cyber War?",
+        "word_count": 131,
+        "hook": "\"Dramatic Conflict \u2014 machines\u2014built this digital colossus, yet something *else* was probing its defe...\"",
         "score": 8.85,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.85/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Wikimedia Foundation's Secret Cyber War?",
+        "word_count": 131,
+        "hook": "\"Existential Wonder \u2014 was probing its defenses. A tiny ingress, mimicking routine volunteer edits, sli...\"",
         "score": 8.45,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.45/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Wikimedia Foundation's Secret Cyber War?",
+        "word_count": 131,
+        "hook": "\"Action Mystery \u2014 volunteer edits, slipped past automated scans\u2014a ghost in the machine. Their budg...\"",
         "score": 8.05,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.05/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12813,46 +12813,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Davison Freeway's WWII Hidden AI Chamber? #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 145,
+        "hook": "\"The archival blueprint for Michigan\u2019s Davison Freeway, nation's first urban depressed freeway, held a hidden anomaly\u2014a cryptic sub-level chamber omitted from public records.\"",
         "score": 9.8,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Davison Freeway's WWII Hidden AI Chamber?",
+        "word_count": 145,
+        "hook": "\"Scientific Breakthrough \u2014 n's first urban depressed freeway, held a hidden anomaly\u2014a cryptic sub-level cha...\"",
         "score": 9.4,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.4/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Davison Freeway's WWII Hidden AI Chamber?",
+        "word_count": 145,
+        "hook": "\"Dramatic Conflict \u2014 ryptic sub-level chamber omitted from public records. Decades after its WWII con...\"",
         "score": 9.0,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.0/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Davison Freeway's WWII Hidden AI Chamber?",
+        "word_count": 145,
+        "hook": "\"Existential Wonder \u2014 s after its WWII construction, an urban explorer stumbled upon it, finding not d...\"",
         "score": 8.6,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.6/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Davison Freeway's WWII Hidden AI Chamber?",
+        "word_count": 145,
+        "hook": "\"Action Mystery \u2014 on it, finding not dust, but a humming, intricate network of wires leading to a...\"",
         "score": 8.2,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.2/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12899,46 +12899,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "JNR's Financial Abyss: J\u014dhoku Line's Fight #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 105,
+        "hook": "\"In 1962, Japan envisioned a vital railway link connecting Seto and Inazawa.\"",
         "score": 9.7,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: JNR's Financial Abyss: J\u014dhoku Line's Fight",
+        "word_count": 105,
+        "hook": "\"Scientific Breakthrough \u2014 to and Inazawa. The J\u014dhoku Line, planned by Japanese National Railways (JNR) in...\"",
         "score": 9.3,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.3/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: JNR's Financial Abyss: J\u014dhoku Line's Fight",
+        "word_count": 105,
+        "hook": "\"Dramatic Conflict \u2014 l Railways (JNR) in the 1960s, was to be a crucial freight corridor. But by 1976...\"",
         "score": 8.9,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.9/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: JNR's Financial Abyss: J\u014dhoku Line's Fight",
+        "word_count": 105,
+        "hook": "\"Existential Wonder \u2014 orridor. But by 1976, construction ground to a halt. JNR faced a colossal defici...\"",
         "score": 8.5,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.5/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: JNR's Financial Abyss: J\u014dhoku Line's Fight",
+        "word_count": 105,
+        "hook": "\"Action Mystery \u2014 ed a colossal deficit\u2014a financial abyss threatening to swallow the entire projec...\"",
         "score": 8.1,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.1/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
@@ -12985,46 +12985,46 @@
         "variant_id": 1,
         "angle": "Suspenseful Mystery",
         "title": "Bridgwater Canal's Hidden Financial War #tech #shorts",
-        "word_count": 125,
-        "hook": "Hook 1...",
+        "word_count": 105,
+        "hook": "\"Deep beneath the tranquil waters, a financial conspiracy brewed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers.\"",
         "score": 9.85,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
       },
       {
         "variant_id": 2,
         "angle": "Scientific Breakthrough",
-        "title": "Variant 2",
-        "word_count": 120,
-        "hook": "Hook 2...",
+        "title": "Scientific Breakthrough: Bridgwater Canal's Hidden Financial War",
+        "word_count": 105,
+        "hook": "\"Scientific Breakthrough \u2014 wed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers. But its e...\"",
         "score": 9.45,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.45/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 3,
         "angle": "Dramatic Conflict",
-        "title": "Variant 3",
-        "word_count": 122,
-        "hook": "Hook 3...",
+        "title": "Dramatic Conflict: Bridgwater Canal's Hidden Financial War",
+        "word_count": 105,
+        "hook": "\"Dramatic Conflict \u2014 ey rivers. But its early years were a maelstrom of legal battles over navigation...\"",
         "score": 9.05,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (9.05/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 4,
         "angle": "Existential Wonder",
-        "title": "Variant 4",
-        "word_count": 118,
-        "hook": "Hook 4...",
+        "title": "Existential Wonder: Bridgwater Canal's Hidden Financial War",
+        "word_count": 105,
+        "hook": "\"Existential Wonder \u2014 tles over navigation rights, forcing a corporate takeover of the River Tone. Hop...\"",
         "score": 8.65,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.65/10). Evaluated retention loop and topic salience."
       },
       {
         "variant_id": 5,
         "angle": "Action Mystery",
-        "title": "Variant 5",
-        "word_count": 121,
-        "hook": "Hook 5...",
+        "title": "Action Mystery: Bridgwater Canal's Hidden Financial War",
+        "word_count": 105,
+        "hook": "\"Action Mystery \u2014 the River Tone. Hopes soared with an ambitious extension to Bridgwater Docks......\"",
         "score": 8.25,
-        "critique": "Pass 2 Auto-QA Evaluated."
+        "critique": "Pass 2 Auto-QA Evaluated (8.25/10). Evaluated retention loop and topic salience."
       }
     ],
     "winning_script": {
