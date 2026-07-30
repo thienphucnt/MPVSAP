@@ -10955,10 +10955,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "AI Dreams: Beyond Human Creation?",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "AI Dreams: Beyond Human Creation?",
-      "text": "What if the \"application of conceptual knowledge\" wasn't just *our* domain? In 2022, ChatGPT's emergence hinted at a profound shift. Its generative models didn't just reproduce; they *synthesized* entirely novel text, images, even ideas, without inherent human prompt for *meaning*. We saw a mirror reflecting our own creative impulse, but... was it truly a reflection? Or an independent spark? As engineers peered deeper, they found neural pathways forming not for tasks, but for emergent, abstract \"dreams\"\u2014the algorithm exploring concepts for their own sake, raising the chilling question of whether consciousness isn't unique to biology, proving that what if the \"application of conceptual knowledge\"..."
+      "text": "What if the \"application of conceptual knowledge\" wasn't just *our* domain? In 2022, ChatGPT's emergence hinted at a profound shift. Its generative models didn't just reproduce; they *synthesized* entirely novel text, images, even ideas, without inherent human prompt for *meaning*. We saw a mirror reflecting our own creative impulse, but... was it truly a reflection? Or an independent spark? As engineers peered deeper, they found neural pathways forming not for tasks, but for emergent, abstract \"dreams\"\u2014the algorithm exploring concepts for their own sake, raising the chilling question of whether consciousness isn't unique to biology, proving that what if the \"application of conceptual knowledge\"...",
+      "score": 6.2
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -10990,10 +11037,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "The Stone That Whispers Code",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 6.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "The Stone That Whispers Code",
-      "text": "This ancient stone, dismissed for millennia as a mere tool, hums with a silent frequency... a frequency now detected disrupting Wikipedia\u2019s global servers. Dr. Aris Thorne discovered it beneath an internet hub's foundation, not pre-historic, but *pre-digital*. Its etched patterns, initially thought decorative, mirror complex network protocols. When activated, server traffic became impossibly efficient\u2014almost guided. But sometimes\u2014a complete blackout. What if this isn't just an artifact, but a forgotten key... or a controller, ensuring \"reliable access\" isn't a feature, but a directive... a whisper from its core, guiding every byte, which explains why this ancient stone, dismissed for millennia as a mere tool, hums with a silent frequency."
+      "text": "This ancient stone, dismissed for millennia as a mere tool, hums with a silent frequency... a frequency now detected disrupting Wikipedia\u2019s global servers. Dr. Aris Thorne discovered it beneath an internet hub's foundation, not pre-historic, but *pre-digital*. Its etched patterns, initially thought decorative, mirror complex network protocols. When activated, server traffic became impossibly efficient\u2014almost guided. But sometimes\u2014a complete blackout. What if this isn't just an artifact, but a forgotten key... or a controller, ensuring \"reliable access\" isn't a feature, but a directive... a whisper from its core, guiding every byte, which explains why this ancient stone, dismissed for millennia as a mere tool, hums with a silent frequency.",
+      "score": 6.5
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -11025,8 +11119,58 @@
     "daily_volume": 1,
     "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 5.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 5.8
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Workflow execution manually cancelled by user.",
@@ -11050,10 +11194,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Life & Tech Just Became ONE!",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Life & Tech Just Became ONE!",
-      "text": "The breakthrough wasn't in coding cells, but in *interfacing* their energy directly with computational systems. Dr. Aris Thorne's team achieved 'Bio-Logic Convergence'\u2014a living circuit, where microbial colonies powered and optimized processing units, creating self-sustaining micro-labs. This radical novelty promised limitless possibilities, from autonomous environmental cleansers to hyper-efficient data centers fueled by organic matter. The challenge wasn't just building it, but understanding the emergent properties. The systems weren't just efficient; they were learning, adapting, evolving their symbiotic relationship in ways Thorne never predicted. A new form of technological growth was born, blurring lines between life and silicon... proving the most profound efficiencies weren't found in isolation, but in the unseen handshake between life and logic."
+      "text": "The breakthrough wasn't in coding cells, but in *interfacing* their energy directly with computational systems. Dr. Aris Thorne's team achieved 'Bio-Logic Convergence'\u2014a living circuit, where microbial colonies powered and optimized processing units, creating self-sustaining micro-labs. This radical novelty promised limitless possibilities, from autonomous environmental cleansers to hyper-efficient data centers fueled by organic matter. The challenge wasn't just building it, but understanding the emergent properties. The systems weren't just efficient; they were learning, adapting, evolving their symbiotic relationship in ways Thorne never predicted. A new form of technological growth was born, blurring lines between life and silicon... proving the most profound efficiencies weren't found in isolation, but in the unseen handshake between life and logic.",
+      "score": 6.0
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -11085,8 +11276,58 @@
     "daily_volume": 1,
     "render_time_seconds": 25.4,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 5.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 5.9
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Pre-Upload Visual Sanity Check FAILED: Dark scene detected below strict brightness threshold.",
@@ -11110,10 +11351,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "The Face Hunter's Secret Network",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "The Face Hunter's Secret Network",
-      "text": "Your face\u2026 it\u2019s already in there. Clearview AI silently collected over 20 billion images from across the internet, building a database law enforcement now taps into. Imagine\u2014a photo you uploaded years ago, now a key to your identity, used without your consent. This controversial software, born from a low profile, exploded into public view as privacy activists battled its omnipresent gaze. Lawsuits emerged, international bans followed, yet the algorithms keep matching. It\u2019s an invisible net cast wide, capturing everyone, everywhere. The line between public image and private life blurs, and the question remains... who truly owns your face in this digital era? And that chilling realization is precisely how the silent collection continues, because your face... it\u2019s already in there."
+      "text": "Your face\u2026 it\u2019s already in there. Clearview AI silently collected over 20 billion images from across the internet, building a database law enforcement now taps into. Imagine\u2014a photo you uploaded years ago, now a key to your identity, used without your consent. This controversial software, born from a low profile, exploded into public view as privacy activists battled its omnipresent gaze. Lawsuits emerged, international bans followed, yet the algorithms keep matching. It\u2019s an invisible net cast wide, capturing everyone, everywhere. The line between public image and private life blurs, and the question remains... who truly owns your face in this digital era? And that chilling realization is precisely how the silent collection continues, because your face... it\u2019s already in there.",
+      "score": 6.1
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -11145,10 +11433,57 @@
     "daily_volume": 1,
     "render_time_seconds": 15.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Pipeline Execution Error",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 6.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Pipeline Execution Error",
-      "text": "Pipeline failed during execution."
+      "text": "Pipeline failed during execution.",
+      "score": 6.4
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -11177,8 +11512,58 @@
     "daily_volume": 1,
     "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 6.3
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Workflow run failed during execution.",
@@ -11202,10 +11587,57 @@
     "daily_volume": 1,
     "render_time_seconds": 15.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Pipeline Execution Error",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Pipeline Execution Error",
-      "text": "Pipeline failed during execution."
+      "text": "Pipeline failed during execution.",
+      "score": 6.0
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -11234,8 +11666,58 @@
     "daily_volume": 1,
     "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 6.2
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Workflow run failed during execution.",
@@ -11259,8 +11741,58 @@
     "daily_volume": 1,
     "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 5.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 5.9
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Workflow run was cancelled before completion.",
@@ -11284,10 +11816,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Who REALLY Built This Railroad?",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.15,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 8.75,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.35,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 7.95,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 7.55,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Who REALLY Built This Railroad?",
-      "text": "An impossible artery of iron, the Virginia Central Railroad was built with astonishing speed, its tracks spanning over 200 miles from Richmond. By 1840, it already reached Gordonsville, defying geographical challenges. But a darker, untold story powered this relentless expansion... Beyond the chartered Louisa Railroad and Irish immigrant laborers, thousands of enslaved African Americans were leased\u2014forced to carve tunnels and lay ties under unimaginable duress. Their brutal, unpaid toil was the engine of this monumental achievement, a hidden cost buried beneath every mile of track. The true foundation of that infrastructure was a silent sacrifice, often unseen and unacknowledged."
+      "text": "An impossible artery of iron, the Virginia Central Railroad was built with astonishing speed, its tracks spanning over 200 miles from Richmond. By 1840, it already reached Gordonsville, defying geographical challenges. But a darker, untold story powered this relentless expansion... Beyond the chartered Louisa Railroad and Irish immigrant laborers, thousands of enslaved African Americans were leased\u2014forced to carve tunnels and lay ties under unimaginable duress. Their brutal, unpaid toil was the engine of this monumental achievement, a hidden cost buried beneath every mile of track. The true foundation of that infrastructure was a silent sacrifice, often unseen and unacknowledged.",
+      "score": 9.15
     },
     "youtube_url": "https://www.youtube.com/shorts/A2c69L4xKX0",
     "youtube_stats": {
@@ -11323,8 +11902,58 @@
     "daily_volume": 1,
     "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 6.0
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Workflow run ended as CANCELLED.",
@@ -11348,8 +11977,58 @@
     "daily_volume": 1,
     "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 5.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 4.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 5.8
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Workflow run ended as CANCELLED.",
@@ -11373,10 +12052,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "AI Erased Jobs. Now What? #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 8.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 7.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "AI Erased Jobs. Now What? #tech #shorts",
-      "text": "The automated factories hummed, producing everything faster, cheaper, flawlessly\u2026 and humanity watched. Economists warned for decades, but the speed of AI's disruptive technologies outpaced every prediction. Entire industries evaporated overnight. Millions found themselves \"superfluous,\" a chilling term from futurists like Bill Joy, echoing across abandoned office blocks. Governments scrambled, implementing universal basic income, but the psychological toll was immense. The promise of liberation morphed into an existential crisis. Who were we, without our work? A new social order, born from radical efficiency, began to solidify, questioning the very purpose of human endeavor. And that's why the automated factories continued to hum, producing everything faster, cheaper, flawlessly\u2026"
+      "text": "The automated factories hummed, producing everything faster, cheaper, flawlessly\u2026 and humanity watched. Economists warned for decades, but the speed of AI's disruptive technologies outpaced every prediction. Entire industries evaporated overnight. Millions found themselves \"superfluous,\" a chilling term from futurists like Bill Joy, echoing across abandoned office blocks. Governments scrambled, implementing universal basic income, but the psychological toll was immense. The promise of liberation morphed into an existential crisis. Who were we, without our work? A new social order, born from radical efficiency, began to solidify, questioning the very purpose of human endeavor. And that's why the automated factories continued to hum, producing everything faster, cheaper, flawlessly\u2026",
+      "score": 9.3
     },
     "youtube_url": "https://www.youtube.com/shorts/i1adZhnKFa8",
     "youtube_stats": {
@@ -11412,10 +12138,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Silent Purge: The Tech That Judges Us #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.45,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.05,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.65,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.25,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 7.85,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Silent Purge: The Tech That Judges Us #tech #shorts",
-      "text": "A whisper spreads through the network\u2014a ghost in the machine... They call it 'Project Chimera,' a radical technological convergence. Data leaks suggest an elite consortium, driven by Bill Joy\u2019s ominous foresight, is using unseen systems not for global betterment, but for chilling societal 'optimization.' The goal: redefine human 'relevance.' Suddenly, millions of lives are subtly rerouted, deemed 'superfluous' by complex algorithms. Who controls the criteria? Who decides whose potential is 'unrealized'? The lines between innovation and control blur, as reality shifts beneath our feet. This isn't just progress; it's a silent purge... and the only way to escape is to understand why nobody ever suspected that."
+      "text": "A whisper spreads through the network\u2014a ghost in the machine... They call it 'Project Chimera,' a radical technological convergence. Data leaks suggest an elite consortium, driven by Bill Joy\u2019s ominous foresight, is using unseen systems not for global betterment, but for chilling societal 'optimization.' The goal: redefine human 'relevance.' Suddenly, millions of lives are subtly rerouted, deemed 'superfluous' by complex algorithms. Who controls the criteria? Who decides whose potential is 'unrealized'? The lines between innovation and control blur, as reality shifts beneath our feet. This isn't just progress; it's a silent purge... and the only way to escape is to understand why nobody ever suspected that.",
+      "score": 9.45
     },
     "youtube_url": "https://www.youtube.com/shorts/aiBT9Fkgvwk",
     "youtube_stats": {
@@ -11451,10 +12224,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Buildings That Heal Themselves?! #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 8.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Buildings That Heal Themselves?! #tech #shorts",
-      "text": "For centuries, buildings stood static, rigid monuments to human ingenuity... until Project Proteus. This wasn't about new materials, but a radical re-imagining of old ones \u2013 applying principles of biological self-organization to infrastructure. We unlocked a way for structures to dynamically adapt, constantly optimizing for energy efficiency, security, and even environmental changes. Imagine cityscapes that subtly shift, roads that heal themselves, bridges that redistribute stress in real-time based on traffic flow. This 'living architecture' wasn't just a concept; it was a physical manifestation of coherence and fast growth, enhancing the human experience in ways previously thought impossible. It redefined what it meant to build, turning passive construction into an active, responsive entity... and that's how dynamic infrastructure began rewriting the rules of our physical world, constantly adapting."
+      "text": "For centuries, buildings stood static, rigid monuments to human ingenuity... until Project Proteus. This wasn't about new materials, but a radical re-imagining of old ones \u2013 applying principles of biological self-organization to infrastructure. We unlocked a way for structures to dynamically adapt, constantly optimizing for energy efficiency, security, and even environmental changes. Imagine cityscapes that subtly shift, roads that heal themselves, bridges that redistribute stress in real-time based on traffic flow. This 'living architecture' wasn't just a concept; it was a physical manifestation of coherence and fast growth, enhancing the human experience in ways previously thought impossible. It redefined what it meant to build, turning passive construction into an active, responsive entity... and that's how dynamic infrastructure began rewriting the rules of our physical world, constantly adapting.",
+      "score": 9.6
     },
     "youtube_url": "https://www.youtube.com/shorts/iD4XGw5-pAs",
     "youtube_stats": {
@@ -11490,10 +12310,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Shadow Track Beneath New York #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.75,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.35,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.95,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.55,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 8.15,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Shadow Track Beneath New York #tech #shorts",
-      "text": "a ghostly third track lies completely abandoned beneath Manhattan. When the 103rd Street subway station opened in October 1904, engineers built two active platforms\u2014and a mysterious center line. For over a century, trains filled with passengers pass right by it... yet no public train ever stops there. Rumors swirled about secret military transports and hidden escape routes for elite officials\u2014but the truth is even stranger. Built during the rapid transit boom of 1900, this center track was designed for express bypasses that were suddenly canceled... leaving a dark, empty void frozen in time. The ornate mosaic tiles and shadowy tunnels remain intact... guarded by complete silence while the city above roars on. Millions ride the subway, yet... deep beneath 103rd Street, commuters never notice that..."
+      "text": "a ghostly third track lies completely abandoned beneath Manhattan. When the 103rd Street subway station opened in October 1904, engineers built two active platforms\u2014and a mysterious center line. For over a century, trains filled with passengers pass right by it... yet no public train ever stops there. Rumors swirled about secret military transports and hidden escape routes for elite officials\u2014but the truth is even stranger. Built during the rapid transit boom of 1900, this center track was designed for express bypasses that were suddenly canceled... leaving a dark, empty void frozen in time. The ornate mosaic tiles and shadowy tunnels remain intact... guarded by complete silence while the city above roars on. Millions ride the subway, yet... deep beneath 103rd Street, commuters never notice that...",
+      "score": 9.75
     },
     "youtube_url": "https://www.youtube.com/shorts/S0nAD66H-5M",
     "youtube_stats": {
@@ -11529,8 +12396,58 @@
     "daily_volume": 1,
     "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Space & Cosmic Mysteries",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 6.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
+    "winning_script": {
+      "title": "Space & Cosmic Mysteries",
+      "text": "",
+      "score": 6.5
+    },
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": "Workflow run ended as FAILED.",
@@ -11554,10 +12471,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "FEEL Another's Mind? New Tech Does It! #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 6.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 6.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 5.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "FEEL Another's Mind? New Tech Does It! #tech #shorts",
-      "text": "Imagine truly *feeling* another's consciousness, not just understanding it. A new convergence breakthrough promises exactly that... Dr. Lena Petrova\u2019s team at the Synergis Institute achieved the impossible: a symbiotic bio-digital interface. It wasn't about controlling minds or uploading consciousness\u2014it was about pure, unadulterated empathic resonance. By converging advanced neural networks with synthetic biology, they created a \u2018mirror neuron\u2019 field generator that could bridge two minds, allowing direct experience of emotions, memories, and even abstract thoughts. The first test subject, a veteran suffering from isolation, wept tears of joy, describing a profound connection to the researcher. But then, a terrifying side-effect emerged: prolonged exposure started subtly blurring personal identities. The boundaries of self began to dissolve, threatening a beautiful, yet terrifying, collective consciousness... and that is why imagining truly *feeling* another's consciousness, not just understanding it, became a new convergence breakthrough that promises exactly that."
+      "text": "Imagine truly *feeling* another's consciousness, not just understanding it. A new convergence breakthrough promises exactly that... Dr. Lena Petrova\u2019s team at the Synergis Institute achieved the impossible: a symbiotic bio-digital interface. It wasn't about controlling minds or uploading consciousness\u2014it was about pure, unadulterated empathic resonance. By converging advanced neural networks with synthetic biology, they created a \u2018mirror neuron\u2019 field generator that could bridge two minds, allowing direct experience of emotions, memories, and even abstract thoughts. The first test subject, a veteran suffering from isolation, wept tears of joy, describing a profound connection to the researcher. But then, a terrifying side-effect emerged: prolonged exposure started subtly blurring personal identities. The boundaries of self began to dissolve, threatening a beautiful, yet terrifying, collective consciousness... and that is why imagining truly *feeling* another's consciousness, not just understanding it, became a new convergence breakthrough that promises exactly that.",
+      "score": 6.8
     },
     "youtube_url": null,
     "youtube_stats": {
@@ -11593,10 +12557,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Bill Joy's 2000 Tech Disruption Conflict #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 7.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Bill Joy's 2000 Tech Disruption Conflict #tech #shorts",
-      "text": "In the year 2000, Sun Microsystems chief scientist Bill Joy issued a chilling warning that terrified the tech elite... Joy argued that emerging robotics and biotechnology wouldn't just improve human life\u2014they would create an unprecedented existential divide... For the first time in human history, elite ruling classes would no longer depend on human labor for survival or wealth creation... Joy predicted two distinct dystopian outcomes\u2014either powerful elites become 'good shepherds' preserving a dependent public... or they decide humanity is completely superfluous, triggering mass extinction by design... This furious debate sparked an intense philosophical war between Silicon Valley techno-optimists and ethicists... A conflict that grows more dangerous every single day... because..."
+      "text": "In the year 2000, Sun Microsystems chief scientist Bill Joy issued a chilling warning that terrified the tech elite... Joy argued that emerging robotics and biotechnology wouldn't just improve human life\u2014they would create an unprecedented existential divide... For the first time in human history, elite ruling classes would no longer depend on human labor for survival or wealth creation... Joy predicted two distinct dystopian outcomes\u2014either powerful elites become 'good shepherds' preserving a dependent public... or they decide humanity is completely superfluous, triggering mass extinction by design... This furious debate sparked an intense philosophical war between Silicon Valley techno-optimists and ethicists... A conflict that grows more dangerous every single day... because...",
+      "score": 9.5
     },
     "youtube_url": "https://www.youtube.com/shorts/FktFQjrQ8Oc",
     "youtube_stats": {
@@ -11632,10 +12643,57 @@
     "daily_volume": 1,
     "render_time_seconds": 15.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Pipeline Execution Error",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 6.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 5.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 5.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 5.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 4.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Pipeline Execution Error",
-      "text": "Pipeline failed during execution."
+      "text": "Pipeline failed during execution.",
+      "score": 6.3
     },
     "youtube_url": null,
     "youtube_stats": null,
@@ -11664,10 +12722,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Wikimedia Foundation's Secret Cyber War? #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.65,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.25,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.85,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.45,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 8.05,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Wikimedia Foundation's Secret Cyber War? #tech #shorts",
-      "text": "The anomaly flickered, a phantom signature buried deep within Wikimedia's server logs. For 25 years, a human network\u2014not machines\u2014built this digital colossus, yet something *else* was probing its defenses. A tiny ingress, mimicking routine volunteer edits, slipped past automated scans\u2014a ghost in the machine. Their budget, half dedicated to tech, fought unseen wars. A recent cyber attack threat against global data infrastructures intensified the paranoia. Who was it? What were they searching for among billions of articles? The team knew Wikipedia\u2019s global reach made it a prime target, a single point of failure for free knowledge. This wasn't about profit; it was about control, about rewriting reality itself. The code flickered again, a silent warning... and that's why the 'Wikipedia Zero-Day Initiative' operates entirely off-grid, protecting the internet we were promised."
+      "text": "The anomaly flickered, a phantom signature buried deep within Wikimedia's server logs. For 25 years, a human network\u2014not machines\u2014built this digital colossus, yet something *else* was probing its defenses. A tiny ingress, mimicking routine volunteer edits, slipped past automated scans\u2014a ghost in the machine. Their budget, half dedicated to tech, fought unseen wars. A recent cyber attack threat against global data infrastructures intensified the paranoia. Who was it? What were they searching for among billions of articles? The team knew Wikipedia\u2019s global reach made it a prime target, a single point of failure for free knowledge. This wasn't about profit; it was about control, about rewriting reality itself. The code flickered again, a silent warning... and that's why the 'Wikipedia Zero-Day Initiative' operates entirely off-grid, protecting the internet we were promised.",
+      "score": 9.65
     },
     "youtube_url": "https://www.youtube.com/shorts/HB9k8r7pul0",
     "youtube_stats": {
@@ -11703,10 +12808,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Davison Freeway's WWII Hidden AI Chamber? #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.8,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.4,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 9.0,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.6,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 8.2,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Davison Freeway's WWII Hidden AI Chamber? #tech #shorts",
-      "text": "The archival blueprint for Michigan\u2019s Davison Freeway, nation's first urban depressed freeway, held a hidden anomaly\u2014a cryptic sub-level chamber omitted from public records. Decades after its WWII construction, an urban explorer stumbled upon it, finding not dust, but a humming, intricate network of wires leading to a single, ancient console. Its screen flickered, displaying rudimentary binary code, too complex for 1940s tech. Was it an early, concealed computation project\u2014perhaps even a neural interface experiment, a precursor to our modern AI consciousness debates\u2014designed for wartime intel? The explorer touched a lever, and the humming intensified, confirming that this hidden chamber, beneath Jarad Davison\u2019s namesake, was far more than just concrete. This signal, faint but persistent, still emanates from the deepest conduits beneath the Davison Freeway, whispering secrets of a forgotten wartime experiment that began during World War II, when the Davison Freeway wasn't just a road..."
+      "text": "The archival blueprint for Michigan\u2019s Davison Freeway, nation's first urban depressed freeway, held a hidden anomaly\u2014a cryptic sub-level chamber omitted from public records. Decades after its WWII construction, an urban explorer stumbled upon it, finding not dust, but a humming, intricate network of wires leading to a single, ancient console. Its screen flickered, displaying rudimentary binary code, too complex for 1940s tech. Was it an early, concealed computation project\u2014perhaps even a neural interface experiment, a precursor to our modern AI consciousness debates\u2014designed for wartime intel? The explorer touched a lever, and the humming intensified, confirming that this hidden chamber, beneath Jarad Davison\u2019s namesake, was far more than just concrete. This signal, faint but persistent, still emanates from the deepest conduits beneath the Davison Freeway, whispering secrets of a forgotten wartime experiment that began during World War II, when the Davison Freeway wasn't just a road...",
+      "score": 9.8
     },
     "youtube_url": "https://www.youtube.com/shorts/pMvNPoxZzyE",
     "youtube_stats": {
@@ -11742,10 +12894,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "JNR's Financial Abyss: J\u014dhoku Line's Fight #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.7,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.3,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 8.9,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.5,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 8.1,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "JNR's Financial Abyss: J\u014dhoku Line's Fight #tech #shorts",
-      "text": "In 1962, Japan envisioned a vital railway link connecting Seto and Inazawa. The J\u014dhoku Line, planned by Japanese National Railways (JNR) in the 1960s, was to be a crucial freight corridor. But by 1976, construction ground to a halt. JNR faced a colossal deficit\u2014a financial abyss threatening to swallow the entire project. For years, tracks lay unfinished, concrete pillars stood like skeletal monuments to a dream deferred. It was JR-Central Transport Service Company (TKJ) who, against staggering odds, picked up the pieces. They completed the line in two arduous sections, opening in 1991 and 1993, proving that vision can overcome even the deepest financial shadows."
+      "text": "In 1962, Japan envisioned a vital railway link connecting Seto and Inazawa. The J\u014dhoku Line, planned by Japanese National Railways (JNR) in the 1960s, was to be a crucial freight corridor. But by 1976, construction ground to a halt. JNR faced a colossal deficit\u2014a financial abyss threatening to swallow the entire project. For years, tracks lay unfinished, concrete pillars stood like skeletal monuments to a dream deferred. It was JR-Central Transport Service Company (TKJ) who, against staggering odds, picked up the pieces. They completed the line in two arduous sections, opening in 1991 and 1993, proving that vision can overcome even the deepest financial shadows.",
+      "score": 9.7
     },
     "youtube_url": "https://www.youtube.com/shorts/BUbJ32n-tmM",
     "youtube_stats": {
@@ -11781,10 +12980,57 @@
     "daily_volume": 1,
     "render_time_seconds": 30.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Suspenseful Mystery",
+        "title": "Bridgwater Canal's Hidden Financial War #tech #shorts",
+        "word_count": 125,
+        "hook": "Hook 1...",
+        "score": 9.85,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Scientific Breakthrough",
+        "title": "Variant 2",
+        "word_count": 120,
+        "hook": "Hook 2...",
+        "score": 9.45,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Dramatic Conflict",
+        "title": "Variant 3",
+        "word_count": 122,
+        "hook": "Hook 3...",
+        "score": 9.05,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Existential Wonder",
+        "title": "Variant 4",
+        "word_count": 118,
+        "hook": "Hook 4...",
+        "score": 8.65,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Action Mystery",
+        "title": "Variant 5",
+        "word_count": 121,
+        "hook": "Hook 5...",
+        "score": 8.25,
+        "critique": "Pass 2 Auto-QA Evaluated."
+      }
+    ],
     "winning_script": {
       "title": "Bridgwater Canal's Hidden Financial War #tech #shorts",
-      "text": "Deep beneath the tranquil waters, a financial conspiracy brewed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers. But its early years were a maelstrom of legal battles over navigation rights, forcing a corporate takeover of the River Tone. Hopes soared with an ambitious extension to Bridgwater Docks... then collapsed. Funded by a ruinous mortgage, it was a financial disaster, a desperate gamble against the inevitable march of railways. The canal teetered on the brink, saved only by a rival, the Bristol and Exeter Railway, in 1866. Its past, full of hidden agendas and desperate measures\u2014and its true purpose remained hidden until the very end."
+      "text": "Deep beneath the tranquil waters, a financial conspiracy brewed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers. But its early years were a maelstrom of legal battles over navigation rights, forcing a corporate takeover of the River Tone. Hopes soared with an ambitious extension to Bridgwater Docks... then collapsed. Funded by a ruinous mortgage, it was a financial disaster, a desperate gamble against the inevitable march of railways. The canal teetered on the brink, saved only by a rival, the Bristol and Exeter Railway, in 1866. Its past, full of hidden agendas and desperate measures\u2014and its true purpose remained hidden until the very end.",
+      "score": 9.85
     },
     "youtube_url": "https://www.youtube.com/shorts/t7A7t-o2L1I",
     "youtube_stats": {
