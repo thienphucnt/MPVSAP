@@ -171,12 +171,33 @@ def main():
 
     client = genai.Client(api_key=api_key)
 
+    # Load permanent Agent Constitution (.agyrules) if present
+    agyrules_path = Path(".agyrules")
+    constitution_text = ""
+    if agyrules_path.exists():
+        try:
+            constitution_text = agyrules_path.read_text(encoding="utf-8").strip()
+            print("Successfully loaded permanent Agent Constitution (.agyrules).")
+        except Exception as err:
+            print("Notice: Could not load .agyrules:", err)
+
     system_instruction = (
         "You are Antigravity, a powerful autonomous agentic AI coding assistant running on a GitHub Actions VM. "
         "Your goal is to inspect the codebase and implement the user's issue request completely. "
         "You have full tool capabilities to list directory structures, read code files, write/update code files, "
         "and execute shell commands (e.g. running python scripts, compiling code, or running tests). "
-        "You are given the full conversation history of the GitHub issue thread for context. "
+        "You are given the full conversation history of the GitHub issue thread for context.\n\n"
+    )
+
+    if constitution_text:
+        system_instruction += (
+            f"PERMANENT AGENT CONSTITUTION & DIRECTIVES (.agyrules):\n"
+            f"==================================================\n"
+            f"{constitution_text}\n"
+            f"==================================================\n\n"
+        )
+
+    system_instruction += (
         "Instructions:\n"
         "1. Inspect files and search contents to understand the repository structure.\n"
         "2. Make the edits necessary to resolve the prompt.\n"
