@@ -43,6 +43,44 @@ def apply_unified_diff(original_lines, diff_text):
     return patched
 
 
+AUTHENTICATION_ERRORS = [
+    r"invalid_grant",
+    r"Token expired or revoked",
+    r"YouTube OAuth Pre-flight Check FAILED",
+    r"google\.auth\.exceptions\.RefreshError",
+    r"AuthError"
+]
+
+ENVIRONMENT_ERRORS = [
+    r"429 RESOURCE_EXHAUSTED",
+    r"Quota exceeded",
+    r"No space left on device",
+    r"ENOSPC"
+]
+
+
+def classify_log_deterministically(log_text: str):
+    """
+    Pre-flight deterministic log classifier to instantly detect non-code environment
+    and authentication errors without calling LLM models or burning API quota.
+    """
+    for pattern in AUTHENTICATION_ERRORS:
+        if re.search(pattern, log_text, re.IGNORECASE):
+            return (
+                "STATUS: ENVIRONMENT_AUTH_EXPIRED\n"
+                "EXPLANATION: YouTube OAuth refresh token is expired or revoked. "
+                "Manual token re-authentication is required. No code modification can fix expired OAuth credentials."
+            )
+    for pattern in ENVIRONMENT_ERRORS:
+        if re.search(pattern, log_text, re.IGNORECASE):
+            return (
+                "STATUS: TRANSIENT_INFRASTRUCTURE\n"
+                "EXPLANATION: Runner resource quota or disk space is exhausted. "
+                "No code modification can resolve infrastructure or quota limits."
+            )
+    return None
+
+
 def main():
     print("Starting AI Self-Healing Diagnostic script...")
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -68,6 +106,16 @@ def main():
     # Safety guard: never accept a file with fewer than 90% of original lines or fewer than 2800
     MIN_ACCEPTABLE_LINES = max(2800, int(original_line_count * 0.90))
     print(f"Original main.py: {original_line_count} lines. Min acceptable after fix: {MIN_ACCEPTABLE_LINES} lines.")
+
+    # Deterministic Pre-Flight Classifier
+    deterministic_result = classify_log_deterministically(log_content)
+    if deterministic_result:
+        print("\n--- DETERMINISTIC PRE-FLIGHT DIAGNOSIS ---")
+        print(deterministic_result)
+        print("\nSkipping LLM code modification loop as error is non-code environmental/auth.")
+        sys.exit(0)
+
+    # Trim log to last 200 lines to keep prompts compact
 
     # Trim log to last 200 lines to keep prompts compact
     log_lines = log_content.splitlines()

@@ -2427,15 +2427,23 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         start_time = random.uniform(0, max_start)
                         m = m.subclip(start_time, start_time + audio_duration)
 
-                    music_clip = m.volumex(0.24)
+                    music_clip = m.volumex(0.35)
                     music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
 
-                    # Mix using ffmpeg with broadcast-standard LUFS normalization (-14.0 LUFS, -1.0 dBTP)
+                    # Broadcast-Grade Audio Engineering: Sidechain Dynamic Ducking & EBU R128 Loudness Normalization
+                    # Spoken voiceover [0:a] dynamically compresses background music [1:a] (-18dB to -22dB during speech),
+                    # restoring full music presence during pauses, followed by broadcast LUFS normalization (-16.0 LUFS, -1.5 dBTP).
+                    filtergraph = (
+                        "[1:a][0:a]sidechaincompress=threshold=0.08:ratio=10:attack=10:release=150[ducked]; "
+                        "[0:a][ducked]amix=inputs=2:duration=first:weights=1.0 0.25[mixed]; "
+                        "[mixed]loudnorm=I=-16:TP=-1.5:LRA=11[out]"
+                    )
                     cmd = [
                         "ffmpeg", "-y",
                         "-i", audio_path,
                         "-i", music_temp_path,
-                        "-filter_complex", "amix=inputs=2:duration=first:dropout_transition=0,loudnorm=I=-14:TP=-1.0:LRA=11",
+                        "-filter_complex", filtergraph,
+                        "-map", "[out]",
                         "-c:a", "pcm_s16le",
                         mixed_audio_path
                     ]

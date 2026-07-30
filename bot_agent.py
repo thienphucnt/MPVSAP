@@ -278,6 +278,51 @@ def main():
                         )
                     response = chat.send_message(tool_responses)
                     
+                # Test Shielding Gate: Run test_pipeline.py and self-correct on failure
+                print("\n--- AGENT TEST SHIELDING GATE ---")
+                max_test_retries = 3
+                test_passed = False
+
+                for test_attempt in range(max_test_retries):
+                    print(f"Running unit test validation (attempt {test_attempt + 1}/{max_test_retries})...")
+                    test_res = subprocess.run([sys.executable, "-m", "unittest", "test_pipeline.py"], capture_output=True, text=True)
+                    if test_res.returncode == 0:
+                        print("SUCCESS: Test Shielding Gate passed! All unit tests green.")
+                        test_passed = True
+                        break
+                    else:
+                        print(f"WARNING: Test Shielding Gate failed (Exit Code {test_res.returncode}). Feedback sent to agent.")
+                        test_feedback = (
+                            f"CRITICAL TEST FAILURE: Unit test suite failed after your code changes.\n"
+                            f"Returncode: {test_res.returncode}\n"
+                            f"Stdout:\n{test_res.stdout}\n"
+                            f"Stderr:\n{test_res.stderr}\n\n"
+                            f"Please inspect the failure traceback above, modify the code using write_file, and fix the broken tests!"
+                        )
+                        response = chat.send_message(test_feedback)
+                        for sub_step in range(5):
+                            sub_calls = response.function_calls
+                            if not sub_calls:
+                                break
+                            sub_responses = []
+                            for call in sub_calls:
+                                func_name = call.name
+                                func_args = call.args
+                                if func_name in tool_map:
+                                    try:
+                                        res_val = tool_map[func_name](**func_args)
+                                    except Exception as ex:
+                                        res_val = f"Error executing tool: {ex}"
+                                else:
+                                    res_val = f"Error: Tool '{func_name}' is not recognized."
+                                sub_responses.append(
+                                    types.Part.from_function_response(name=func_name, response={"result": res_val})
+                                )
+                            response = chat.send_message(sub_responses)
+
+                if not test_passed:
+                    print("Notice: Proceeding with warnings as test shielding exhausted retries.")
+
                 print("\nAgent run completed. Response summary:")
                 print(response.text)
                 Path("bot_comment.md").write_text(

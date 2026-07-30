@@ -13,6 +13,9 @@ tiktok_credentials.json
 *.mp4
 *.wav
 *.mp3
+segments.txt
+*.ass
+temp_no_subs_*.mp4
 temp/
 scratch/
 output/
