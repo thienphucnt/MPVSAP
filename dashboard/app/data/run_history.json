@@ -2275,30 +2275,29 @@
     "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
-    "id": "run-heal-29750687163",
+    "id": "run-29467532728",
     "github_run_number": 92,
-    "github_run_id": 29750687163,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29750687163",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T14:27:04Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
+    "github_run_id": 29467532728,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29467532728",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-07-16T02:50:21Z",
+    "category": "Space & Cosmic Mysteries",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #92",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-29476492148",
@@ -8006,5 +8005,37 @@
     "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+  },
+  {
+    "id": "run-30700499678",
+    "github_run_number": 173,
+    "github_run_id": 30700499678,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30700499678",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-01T12:56:01.375327Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3635, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3467, in run_daily_upload_pipeline_once\n    assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 2622, in assemble_video\n    final_clip.write_videofile(\n  File \"<decorator-gen-55>\", line 2, in write_videofile\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 54, in requires_duration\n    return f(clip, *a, **k)\n           ^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-54>\", line 2, in write_videofile\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 135, in use_clip_fps_by_default\n    return f(clip, *new_a, **new_kw)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-53>\", line 2, in write_videofile\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 22, in convert_masks_to_RGB\n    return f(clip, *a, **k)\n           ^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/VideoClip.py\", line 300, in write_videofile\n    ffmpeg_write_video(self, filename, fps, codec,\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/io/ffmpeg_writer.py\", line 220, in ffmpeg_write_video\n    for t,frame in clip.iter_frames(logger=logger, with_times=True,\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/Clip.py\", line 472, in iter_frames\n    frame = self.get_frame(t)\n            ^^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-11>\", line 2, in get_frame\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 89, in wrapper\n    return f(*new_a, **new_kw)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/Clip.py\", line 93, in get_frame\n    return self.make_frame(t)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/compositing/CompositeVideoClip.py\", line 111, in make_frame\n    f = c.blit_on(f, t)\n        ^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/VideoClip.py\", line 527, in blit_on\n    img = self.get_frame(ct)\n          ^^^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-11>\", line 2, in get_frame\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 89, in wrapper\n    return f(*new_a, **new_kw)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/Clip.py\", line 93, in get_frame\n    return self.make_frame(t)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/compositing/CompositeVideoClip.py\", line 111, in make_frame\n    f = c.blit_on(f, t)\n        ^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/VideoClip.py\", line 527, in blit_on\n    img = self.get_frame(ct)\n          ^^^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-11>\", line 2, in get_frame\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 89, in wrapper\n    return f(*new_a, **new_kw)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/Clip.py\", line 93, in get_frame\n    return self.make_frame(t)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/compositing/concatenate.py\", line 83, in make_frame\n    return clips[i].get_frame(t - tt[i])\n           ~~~~~^^^\nIndexError: list index out of range\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
   }
 ]
