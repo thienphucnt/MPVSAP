@@ -2397,21 +2397,32 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             mc = mc.set_duration(per_seq_dur)
             clips.append(mc.fl(create_zoom_filter(per_seq_dur, start_scale=1.0, end_scale=1.15)))
 
+        # Process end clip - allocate remaining duration + 0.2s safety margin to prevent MoviePy concat index out of range
+        dur_so_far = sum(c.duration for c in clips)
+        end_clip_dur = max(0.5, round((audio_duration - dur_so_far + 0.2) * 30.0) / 30.0)
+        c_end_clip = c0_full.subclip(0, min(c0_dur, end_clip_dur))
+        if c_end_clip.duration < end_clip_dur:
+            c_end_clip = loop(c_end_clip, duration=end_clip_dur + 0.5)
+        c_end_clip = c_end_clip.set_duration(end_clip_dur)
+
         # Process end clip - zoom scale returns from 1.15 to 1.0 to perfectly match start clip scale (1.0) with ZERO zoom snap!
-        clips.append(c_end_clip.fl(create_zoom_filter(split_dur, start_scale=1.15, end_scale=1.0)))
+        clips.append(c_end_clip.fl(create_zoom_filter(end_clip_dur, start_scale=1.15, end_scale=1.0)))
 
     else:
         per_clip_duration = round((audio_duration / float(num_clips)) * 30.0) / 30.0
         for i, v_path in enumerate(video_paths):
             c = VideoFileClip(v_path).resize(newsize=config.resolution)
-            if c.duration < per_clip_duration:
-                c = loop(c, duration=per_clip_duration + 0.5)
+            clip_dur = per_clip_duration + 0.2 if i == num_clips - 1 else per_clip_duration
+            if c.duration < clip_dur:
+                c = loop(c, duration=clip_dur + 0.5)
             else:
-                c = c.subclip(0, min(c.duration, per_clip_duration + 0.5))
-            c = c.set_duration(per_clip_duration)
+                c = c.subclip(0, min(c.duration, clip_dur + 0.5))
+            c = c.set_duration(clip_dur)
             clips.append(c)
 
-    bg_clip = concatenate_videoclips(clips).set_duration(audio_duration)
+    # Concatenate clips and safely bound to exact audio_duration with safety buffer
+    concat_raw = concatenate_videoclips(clips)
+    bg_clip = concat_raw.subclip(0, min(concat_raw.duration, audio_duration))
 
     # Add dynamic retention overlays (Visual Progress Bar & CTA Subscribe Overlay)
     retention_overlays = []
