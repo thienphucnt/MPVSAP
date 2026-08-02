@@ -1,31 +1,5 @@
 [
   {
-    "id": "run-heal-29767176303",
-    "github_run_number": 93,
-    "github_run_id": 29767176303,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29767176303",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T18:18:11Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #93",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29489972700",
     "github_run_number": 94,
     "github_run_id": 29489972700,
@@ -5721,5 +5695,92 @@
     "voice_actor": "af_sarah (Kokoro-82M Neural)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-30733357141",
+    "github_run_number": 174,
+    "github_run_id": 30733357141,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30733357141",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-02T05:05:14.218431Z",
+    "category": "Scary Space Mysteries",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 3,
+        "angle": "Quantum Paradox",
+        "title": "Universe Needs YOU to Exist?",
+        "word_count": 118,
+        "hook": "Does the universe need us to exist? Quantum mechanics suggests particles only 'decide' their state w...",
+        "score": 9.72,
+        "critique": "This variant delivers an exceptionally strong, philosophical hook and a title that instantly sparks curiosity, directly engaging the viewer with a profound question. The script brilliantly escalates a quantum paradox to a cosmic scale, maintaining high retention with its mind-bending implications and concluding with a perfectly looping CTA."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Hidden Physics",
+        "title": "Universe's Silent Architect?",
+        "word_count": 125,
+        "hook": "Could a phantom force subtly twist entire galaxies? The golden age of cosmology, with observatories ...",
+        "score": 9.6,
+        "critique": "This script excels with an immediate, intriguing hook and a powerful title that perfectly synergizes with its 'invisible hand' narrative. It maintains strong narrative tension by introducing a scientific anomaly and then proposing a fascinating theoretical explanation."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Astronomical Mystery",
+        "title": "Universe's Rhythmic Alarm Clock?",
+        "word_count": 116,
+        "hook": "A cosmic clockwork is ticking far beyond our galaxy. During the 'golden age of cosmology,' scientist...",
+        "score": 9.36,
+        "critique": "Featuring an excellent, evocative title and a strong narrative built around a specific scientific mystery, this script effectively captures the 'cosmic clockwork' concept. It poses clear alternative explanations, driving curiosity, though its hook is slightly less direct than the top contenders."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Existential Scale",
+        "title": "Universe's Last Goodbye?",
+        "word_count": 122,
+        "hook": "Imagine staring into the cosmic abyss, realizing vast stretches of the universe are already forever ...",
+        "score": 9.36,
+        "critique": "This script stands out for its strong emotional resonance and a highly evocative title that sets a poignant tone. It effectively communicates a profound, isolating truth about the expanding universe, creating a vivid narrative that leaves a lasting impression, though its hook is a bit longer than ideal."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Rogue Worlds",
+        "title": "Dark Worlds, Hidden Life?",
+        "word_count": 113,
+        "hook": "Imagine worlds adrift in the cosmic dark, forever unlit by any star. The 'golden age of cosmology' h...",
+        "score": 8.8,
+        "critique": "While offering a compelling visual hook and two interesting 'what if' scenarios, this variant suffers slightly from a less unique opener and a somewhat clunky phrase like 'alien planet discovery.' It generally holds attention but doesn't quite reach the narrative heights of its competitors."
+      }
+    ],
+    "winning_script": {
+      "title": "Universe Needs YOU to Exist?",
+      "text": "Does the universe need us to exist? Quantum mechanics suggests particles only 'decide' their state when observed. Extend this paradox to the cosmos. In the 'golden age of cosmology', we observe a stable, expanding universe, but what about the vast unobserved voids? Could unobserved regions remain in a superposition of chaotic possibilities, only 'collapsing' into a defined state upon interaction or observation? This unsettling thought implies our very existence, our persistent gaze through instruments like the James Webb Space Telescope, might be actively 'freezing' reality into its coherent form, preventing a universal quantum 'smear'. It's a mind-bending idea that makes us question the fabric of reality itself, leading some to ask: if no one's watching, what really happens...",
+      "score": 9.72,
+      "critique": "This variant delivers an exceptionally strong, philosophical hook and a title that instantly sparks curiosity, directly engaging the viewer with a profound question. The script brilliantly escalates a quantum paradox to a cosmic scale, maintaining high retention with its mind-bending implications and concluding with a perfectly looping CTA."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/kUU5idG_pIU",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Golden_age_of_cosmology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Schr\u00f6dinger's Cat",
+      "Quantum superposition",
+      "Observer effect",
+      "James Webb Space Telescope",
+      "Cosmic void",
+      "Universal reality"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
   }
 ]
