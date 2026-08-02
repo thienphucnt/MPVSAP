@@ -635,7 +635,15 @@ def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict])
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            try:
+                browser = p.chromium.launch(headless=True)
+            except Exception as launch_err:
+                if "Executable doesn't exist" in str(launch_err) or "playwright install" in str(launch_err):
+                    print("Notice: Playwright Chromium executable missing. Auto-installing Chromium binary...")
+                    subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=True)
+                    browser = p.chromium.launch(headless=True)
+                else:
+                    raise launch_err
             context = browser.new_context(
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
             )
@@ -3011,7 +3019,10 @@ def post_top_level_engagement_comment(youtube, video_id: str, winning_script_tex
         print(f"SUCCESS: Posted top-level engagement comment on video {video_id}! Comment ID: {comment_id}")
         return comment_id
     except Exception as e:
-        print(f"Notice: Failed to post top-level engagement comment on video {video_id}: {e}")
+        if "insufficientPermissions" in str(e) or "insufficient authentication scopes" in str(e):
+            print(f"Notice: Skipped top-level comment on video {video_id} (OAuth refresh token has upload-only scope. To enable auto-commenting, run 'python scripts/get_youtube_token.py' to update YOUTUBE_REFRESH_TOKEN).")
+        else:
+            print(f"Notice: Failed to post top-level engagement comment on video {video_id}: {e}")
         return None
 
 

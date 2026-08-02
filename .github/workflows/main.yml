@@ -53,7 +53,7 @@ jobs:
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-chromium-v1
+          key: ${{ runner.os }}-playwright-${{ hashFiles('requirements.txt') }}
 
       - name: Install Playwright Chromium Browser (if not cached)
         if: steps.playwright-cache.outputs.cache-hit != 'true'
