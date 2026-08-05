@@ -143,9 +143,12 @@ CATEGORIES = {
         "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
         "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"],
         "title_hashtags": "#tech #shorts",
-        "yt_category_id": "28"
+        "yt_category_id": "23"
     }
 }
+
+# Global tracker for telemetry logging of the actual selected background music track
+LAST_SELECTED_MUSIC_TRACK = "space_track_1.mp3"
 
 
 # Category-Specific Dynamic Angle Pools for Tournament Narrative Variety
@@ -2479,6 +2482,8 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
             if music_files:
                 music_path = random.choice(music_files)
+                global LAST_SELECTED_MUSIC_TRACK
+                LAST_SELECTED_MUSIC_TRACK = music_path.name
                 print(f"Selected background music: {music_path.name}")
                 try:
                     m = AudioFileClip(str(music_path))
@@ -2489,16 +2494,16 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         start_time = random.uniform(0, max_start)
                         m = m.subclip(start_time, start_time + audio_duration)
 
-                    music_clip = m.volumex(0.35)
+                    music_clip = m.volumex(0.70)
                     music_clip.write_audiofile(music_temp_path, fps=44100, logger=None)
 
-                    # Broadcast-Grade Audio Engineering: Seamless Loop Crossfade & Sidechain Dynamic Ducking & EBU R128 Loudness Normalization
+                    # Broadcast-Grade Audio Engineering: Balanced Ambience Level, Gentle Sidechain Ducking & EBU R128 (-14 LUFS / -1.0 dBTP)
                     fade_out_start = max(0.0, audio_duration - 0.8)
                     filtergraph = (
                         f"[1:a]afade=t=in:st=0:d=0.8,afade=t=out:st={fade_out_start:.2f}:d=0.8[music_faded]; "
-                        "[music_faded][0:a]sidechaincompress=threshold=0.08:ratio=10:attack=10:release=150[ducked]; "
-                        "[0:a][ducked]amix=inputs=2:duration=first:weights=1.0 0.25[mixed]; "
-                        "[mixed]loudnorm=I=-16:TP=-1.5:LRA=11[out]"
+                        "[music_faded][0:a]sidechaincompress=threshold=0.15:ratio=3:attack=20:release=250[ducked]; "
+                        "[0:a][ducked]amix=inputs=2:duration=first:weights=1.0 0.50[mixed]; "
+                        "[mixed]loudnorm=I=-14:TP=-1.0:LRA=11[out]"
                     )
                     cmd = [
                         "ffmpeg", "-y",
@@ -3617,7 +3622,7 @@ def run_daily_upload_pipeline_once() -> None:
                 youtube_url=yt_short_url,
                 error_traceback=None,
                 source_url=source_data.get("url"),
-                music_track="space_track_1.mp3",
+                music_track=LAST_SELECTED_MUSIC_TRACK,
                 search_keywords=seg.get("visual_keywords", []) if 'seg' in locals() else [],
                 voice_actor=actual_voice_used if 'actual_voice_used' in locals() else ("af_sarah (Kokoro-82M)" if category == "history" else "am_michael (Kokoro-82M)"),
                 visual_asset_types="Salience-Zoomed 4K Clips",
