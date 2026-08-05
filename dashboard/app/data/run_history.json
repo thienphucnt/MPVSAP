@@ -325,36 +325,29 @@
     "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
-    "id": "run-30730551383",
+    "id": "run-28860206757",
     "github_run_number": 14,
-    "github_run_id": 30730551383,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30730551383",
+    "github_run_id": 28860206757,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28860206757",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-02T03:36:53.645083Z",
-    "category": "space",
+    "timestamp": "2026-07-07T10:42:58Z",
+    "category": "Space & Cosmic Mysteries",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 15.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "Pipeline Execution Error",
-      "text": "Pipeline failed during execution."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3635, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3470, in run_daily_upload_pipeline_once\n    output_path, segment_durations = render_long_form_segments_and_concat(\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 2923, in render_long_form_segments_and_concat\n    assemble_video(\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 2622, in assemble_video\n    final_clip.write_videofile(\n  File \"<decorator-gen-55>\", line 2, in write_videofile\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 54, in requires_duration\n    return f(clip, *a, **k)\n           ^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-54>\", line 2, in write_videofile\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 135, in use_clip_fps_by_default\n    return f(clip, *new_a, **new_kw)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-53>\", line 2, in write_videofile\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 22, in convert_masks_to_RGB\n    return f(clip, *a, **k)\n           ^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/VideoClip.py\", line 300, in write_videofile\n    ffmpeg_write_video(self, filename, fps, codec,\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/io/ffmpeg_writer.py\", line 220, in ffmpeg_write_video\n    for t,frame in clip.iter_frames(logger=logger, with_times=True,\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/Clip.py\", line 472, in iter_frames\n    frame = self.get_frame(t)\n            ^^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-11>\", line 2, in get_frame\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 89, in wrapper\n    return f(*new_a, **new_kw)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/Clip.py\", line 93, in get_frame\n    return self.make_frame(t)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/compositing/CompositeVideoClip.py\", line 111, in make_frame\n    f = c.blit_on(f, t)\n        ^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/VideoClip.py\", line 527, in blit_on\n    img = self.get_frame(ct)\n          ^^^^^^^^^^^^^^^^^^\n  File \"<decorator-gen-11>\", line 2, in get_frame\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/decorators.py\", line 89, in wrapper\n    return f(*new_a, **new_kw)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/Clip.py\", line 93, in get_frame\n    return self.make_frame(t)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/moviepy/video/compositing/concatenate.py\", line 83, in make_frame\n    return clips[i].get_frame(t - tt[i])\n           ~~~~~^^^\nIndexError: list index out of range\n",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_ambient_cinematic.mp3",
-    "search_keywords": [
-      "cosmic void",
-      "astrophysics",
-      "deep space"
-    ],
-    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "error_traceback": "Workflow run failed during execution.",
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-28872186978",
@@ -2336,74 +2329,25 @@
     "github_run_number": 94,
     "github_run_id": 29489972700,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29489972700",
+    "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-16T10:12:07Z",
-    "category": "Tech",
+    "category": "Space & Cosmic Mysteries",
     "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 41.21,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_2.mp3",
-    "search_keywords": [
-      "your brain could control robots soon #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Your Brain Could Control Robots Soon #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Your Brain Could Control Robots Soon #tech #shorts",
-        "score": 8.42,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Your Brain Could Control Robots Soon #tech #shorts",
-      "text": "Exploring Your Brain Could Control Robots Soon #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 202,
-    "youtube_stats": null,
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29780311916",
-    "github_run_number": 94,
-    "github_run_id": 29780311916,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29780311916",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-20T21:28:27Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #94",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-29504678145",
@@ -8078,6 +8022,258 @@
       "James Webb Space Telescope",
       "Cosmic void",
       "Universal reality"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+  },
+  {
+    "id": "run-30748732338",
+    "github_run_number": 175,
+    "github_run_id": 30748732338,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30748732338",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-02T12:56:30.619945Z",
+    "category": "Scary Space Mysteries",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 5,
+        "angle": "Hidden Physics",
+        "title": "The Universe's Secret Pause Button",
+        "word_count": 96,
+        "hook": "What if the universe occasionally hits a localized 'pause button'? New Hubble Space Telescope data r...",
+        "score": 9.98,
+        "critique": "An absolute masterclass, this variant features an exceptionally creative and impactful 'pause button' analogy for its hook and title, instantly capturing immense curiosity. Its narrative builds tension expertly, describing a truly unsettling layer of hidden physics with flawless execution, making it the standout winner."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Astronomical Mystery",
+        "title": "The Galaxy That Beats Like a Heart",
+        "word_count": 111,
+        "hook": "Imagine a galaxy where every star blinks in perfect unison. Far across billions of light-years, the ...",
+        "score": 9.93,
+        "critique": "This variant excels with an incredibly strong, visual hook and a perfectly integrated title, making the 'heartbeat galaxy' concept instantly compelling. The narrative flawlessly escalates the mystery towards profound implications, positioning it as a top contender."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Deep Void Anomaly",
+        "title": "The Void That Hides Itself",
+        "word_count": 105,
+        "hook": "What if the void isn't just empty, but actively hostile to observation? Deep in intergalactic space,...",
+        "score": 9.86,
+        "critique": "Presenting a deeply intriguing paradox of a 'void that hides itself', this script offers a strong philosophical hook and a well-constructed narrative. Its powerful concept and seamless loop make it a very strong entry, just slightly behind the absolute best in vivid imagery."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Rogue Worlds",
+        "title": "Planet X: Powered by Mystery",
+        "word_count": 103,
+        "hook": "Imagine a planet, adrift in eternal darkness, yet teeming with internal heat. The James Webb Space T...",
+        "score": 9.65,
+        "critique": "The 'rogue planet' concept is solid with a good, vivid hook and compelling narrative escalation towards an 'artificial origin'. While strong, the 'Planet X' prefix in the title feels slightly less unique compared to its competitors, preventing a higher overall score."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Quantum Paradox",
+        "title": "Reality Glitching in Space",
+        "word_count": 104,
+        "hook": "What if the universe's fundamental rules aren't always consistent? At a distant deep-space laborator...",
+        "score": 9.63,
+        "critique": "This variant tackles a fascinating quantum paradox, delivering a strong conceptual hook and explaining complex ideas effectively. However, a slight repetition in the closing call-to-action makes it feel marginally less seamless than the top entries."
+      }
+    ],
+    "winning_script": {
+      "title": "The Universe's Secret Pause Button",
+      "text": "What if the universe occasionally hits a localized 'pause button'? New Hubble Space Telescope data reveals a bizarre 'stutter' effect in galaxy clusters. Instead of smooth expansion, light and matter in specific, geometrically precise regions briefly decelerate, almost like a temporary freeze-frame. This isn't gravity or dark matter; its transient, localized nature defies all known forces. The 'Chronos Field,' as some call it, suggests a hidden physics at play, a field that can momentarily suppress or dampen fundamental interactions within its boundaries. Its very existence forces us to confront a new, unsettling layer of hidden physics:",
+      "score": 9.98,
+      "critique": "An absolute masterclass, this variant features an exceptionally creative and impactful 'pause button' analogy for its hook and title, instantly capturing immense curiosity. Its narrative builds tension expertly, describing a truly unsettling layer of hidden physics with flawless execution, making it the standout winner."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/d6J7lqV_WJo",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Astronomy",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Hubble Space Telescope",
+      "spacetime stutter",
+      "cosmic suppression field",
+      "anomalous deceleration",
+      "geometric anomalies",
+      "unknown force"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+  },
+  {
+    "id": "run-30821397267",
+    "github_run_number": 176,
+    "github_run_id": 30821397267,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30821397267",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-03T14:15:21.085633Z",
+    "category": "Scary Space Mysteries",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Cosmic Terror",
+        "title": "Unseen Terror Lurks Beyond Galaxies",
+        "word_count": 132,
+        "hook": "entity, whose existence alone shatters our understanding of reality and sends shivers down the spine...",
+        "score": 9.42,
+        "critique": "This variant excels with an exceptional hook and masterful narrative escalation, creating a profound sense of cosmic terror that's immediately gripping. Its seamless loop CTA perfectly reinforces the chilling, open-ended mystery, making it the most consistently high-performing script."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Existential Scale",
+        "title": "Your Existence Means Nothing",
+        "word_count": 134,
+        "hook": "insignificance within the vast, uncaring cosmic ballet that predates our very sun. Imagine the Vehic...",
+        "score": 9.36,
+        "critique": "Boasting an incredibly provocative and clickable title, this variant masterfully escalates existential scale through compelling analogies, creating deep contemplation. It delivers a powerful emotional punch, placing it just marginally behind Variant 1 in overall impact."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Deep Void Anomaly",
+        "title": "Void Hides Impossible Anti-Gravity!",
+        "word_count": 129,
+        "hook": "presence, hidden within the void beyond the Kuiper Belt, an impossible pocket of anti-matter. Astron...",
+        "score": 9.12,
+        "critique": "A solid contender, this variant builds its mystery effectively from a subtle hum to a profound inversion of physical laws with a compelling CTA. While strong and consistently good, it doesn't quite achieve the peak emotional intensity or unique title brilliance of the top two scripts."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Quantum Paradox",
+        "title": "Star Breaks Reality Itself!",
+        "word_count": 120,
+        "hook": "anomaly, a defiance of reality where cause and effect unravel at a cosmic scale. Deep within a seemi...",
+        "score": 9.04,
+        "critique": "The 'Quantum Paradox' angle is incredibly original, featuring a highly impactful title and a mind-bending core concept. While strong, its narrative occasionally leans more descriptive than purely escalating, and the CTA is slightly less potent compared to top contenders."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Astronomical Mystery",
+        "title": "JWST Finds Object Defying Physics!",
+        "word_count": 123,
+        "hook": "enigma, an object defying all known astrophysics, hiding in the cosmic cold. The James Webb Telescop...",
+        "score": 9.04,
+        "critique": "This script offers a strong, specific mystery, leveraging recognizable astronomical references like JWST and 'Oumuamua for an excellent hook and title. However, its seamless loop CTA is significantly weaker than the others, which slightly detracts from an otherwise strong narrative."
+      }
+    ],
+    "winning_script": {
+      "title": "Unseen Terror Lurks Beyond Galaxies",
+      "text": "entity, whose existence alone shatters our understanding of reality and sends shivers down the spine of every deep space explorer. Far past the farthest reaches observed by the James Webb Telescope, something truly vast exists. Imagine a gravitational signature, so immense it warps spacetime across light-years, yet emits no light, no radio waves, nothing. Not a black hole, not dark matter, but a structure so ancient it predates galaxies. Astronomers detected only a repeating, rhythmic 'void pulse,' a silent cosmic heartbeat emanating from what should be empty space. Early theoretical models suggest it's not a natural phenomenon, but something constructed, or perhaps, a living entity beyond comprehension, quietly observing the universe's slow ballet of creation and destruction, leaving us to face the truth that beyond our visible universe lurks a silent, watching...",
+      "score": 9.42,
+      "critique": "This variant excels with an exceptional hook and masterful narrative escalation, creating a profound sense of cosmic terror that's immediately gripping. Its seamless loop CTA perfectly reinforces the chilling, open-ended mystery, making it the most consistently high-performing script."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/Wlc6suH0aJ4",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Spaceflight",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "James Webb Telescope",
+      "Cosmic horror",
+      "Gravitational anomaly",
+      "Void pulse",
+      "Ancient structure",
+      "Unseen entity"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+  },
+  {
+    "id": "run-30915000731",
+    "github_run_number": 177,
+    "github_run_id": 30915000731,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30915000731",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-04T13:45:23.577289Z",
+    "category": "Scary Space Mysteries",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Existential Scale",
+        "title": "Are We Shrinking with the Cosmos?",
+        "word_count": 136,
+        "hook": "What if the universe isn't getting bigger, but *we* are getting smaller? For decades, astronomers ob...",
+        "score": 9.85,
+        "critique": "This variant stands out with its exceptionally strong, personalized hook and title, masterfully weaving an existential dilemma that immediately captivates. The seamless loop CTA perfectly reinforces the central, mind-bending premise, leaving the viewer deeply curious and wanting more."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Quantum Paradox",
+        "title": "Your Thoughts Control the Universe?",
+        "word_count": 137,
+        "hook": "Imagine if your every thought subtly shifted cosmic reality. Quantum mechanics tells us particles ex...",
+        "score": 9.75,
+        "critique": "With a brilliantly personal and provocative title and hook, this variant creates an immediate, high-stakes curiosity that effectively scales quantum mechanics. The narrative expertly escalates the paradox, and its seamless loop ending draws the viewer back into the core question with impressive finesse."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Hidden Physics",
+        "title": "Spacetime Has a Secret Memory!",
+        "word_count": 137,
+        "hook": "Did you know spacetime itself might have a memory? When massive objects collide, like black holes, t...",
+        "score": 9.2,
+        "critique": "This script presents a compelling mystery with a strong, intriguing title and hook regarding spacetime's hidden memory, building a solid narrative flow. While effective, its ending loop, though good, doesn't echo the initial premise quite as tightly or provocatively as the top contenders."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Rogue Worlds",
+        "title": "Dead Systems Drift to Earth!",
+        "word_count": 127,
+        "hook": "Beyond our sun's comforting reach, dead worlds drift in absolute darkness. These aren't just rogue p...",
+        "score": 9.15,
+        "critique": "This variant offers a visually rich and thrilling premise of rogue systems, delivering a strong, action-oriented title and engaging, escalating narrative. While highly imaginative and creating a tangible threat, its hook is slightly less philosophical than others, and the CTA is more of a traditional cliffhanger than a conceptual loop."
+      }
+    ],
+    "winning_script": {
+      "title": "Are We Shrinking with the Cosmos?",
+      "text": "What if the universe isn't getting bigger, but *we* are getting smaller? For decades, astronomers observed the accelerating expansion of space, attributing it to dark energy. But a chilling alternative theory suggests the fundamental constants of physics, perhaps even the very fabric of spacetime itself, are slowly contracting. Imagine every distant galaxy, every nebulae, every light year measurement shifting, not because the void between them grows, but because our perception, our very atomic structure, is subtly shrinking. Our cosmic journey isn't outward exploration but an ever-decreasing scale, making every grand vista merely a fleeting glimpse before it becomes too vast for our diminishing forms to grasp, leaving scientists to constantly question: what if our universal journey is not one of outward exploration but one of ever-decreasing scale, making every cosmic vista merely a fleeting glimpse before...",
+      "score": 9.85,
+      "critique": "This variant stands out with its exceptionally strong, personalized hook and title, masterfully weaving an existential dilemma that immediately captivates. The seamless loop CTA perfectly reinforces the central, mind-bending premise, leaving the viewer deeply curious and wanting more."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/s-O291s2JGI",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Spaceflight",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Hubble Telescope",
+      "expanding universe",
+      "dark energy",
+      "contracting spacetime",
+      "cosmic vista",
+      "dwarfed galaxies"
     ],
     "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
