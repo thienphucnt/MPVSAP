@@ -4,3 +4,4 @@
 2. **SPEC-IN-REPO:** Save all audit reports, architecture plans, and walk-throughs to the `docs/specs/` directory. Do not clutter the root folder.
 3. **TEST SHIELDING:** Before committing any code, you MUST run the local test suite (e.g., `python -m unittest test_pipeline.py`) or syntax checks. If tests fail, self-correct the code. Do not push failing code.
 4. **DEFINITION OF DONE (DoD):** Never declare a task complete until it passes syntax checks, passes unit tests, and satisfies the explicit constraints of the prompt. Include raw terminal output (like test times and results) in your final walkthrough.
+5. **EFFICIENT TIMER SCHEDULING:** When executing full local video rendering (`main.py`), schedule single long-duration background wait timers (e.g. 180–240 seconds / 3–4 minutes) based on measured render duration rather than rapid 15–30s polling loops to conserve token budget.
