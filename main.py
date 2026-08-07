@@ -2555,6 +2555,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             audio_codec="aac",
             threads=2,
             preset="ultrafast",
+            ffmpeg_params=["-pix_fmt", "yuv420p"],
             logger=None
         )
 
@@ -2563,10 +2564,17 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         verify_rendered_video_visuals(temp_no_subs)
         
         print("Burning ASS subtitles using FFmpeg...")
+        escaped_ass_path = os.path.abspath(ass_path).replace("\\", "/").replace(":", "\\:")
         cmd = [
             get_ffmpeg_binary(), "-y",
             "-i", temp_no_subs,
-            "-vf", f"ass={ass_path}",
+            "-vf", f"ass='{escaped_ass_path}'",
+            "-c:v", "libx264",
+            "-preset", "ultrafast",
+            "-crf", "20",
+            "-pix_fmt", "yuv420p",
+            "-g", "30",
+            "-movflags", "+faststart",
             "-c:a", "copy",
             output_path
         ]
@@ -2662,6 +2670,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             audio_codec="aac",
             threads=2,
             preset="ultrafast",
+            ffmpeg_params=["-pix_fmt", "yuv420p"],
             logger=None
         )
         final_clip.close()
