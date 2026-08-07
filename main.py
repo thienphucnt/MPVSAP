@@ -952,15 +952,15 @@ def evaluate_script_quality(
         f"Script Title: '{title}'\n"
         f"Script Text:\n\"\"\"{script}\"\"\"\n\n"
         "EVALUATION CRITERIA (SCORE EACH FROM 0.00 TO 10.00 WITH 2 DECIMAL PLACES):\n"
-        "1. hook_open_loop (Weight 15%): Immediate 0-3s curiosity gap, dramatic impact, zero greetings/fluff.\n"
+        "1. hook_open_loop (Weight 15%): Immediate 0-3s inverted pyramid hook stating extreme outcome/curiosity gap (STRICTLY BAN academic 'On [Date]' openings).\n"
         "2. fact_specificity (Weight 15%): Presence of real dates, proper names, quantities, avoiding vague generalities.\n"
         "3. narrative_pacing (Weight 15%): Escalating tension or mystery arc (STRICTLY BAN listicles or 'Top 3' formats).\n"
         "4. absence_of_cliches (Weight 10%): Total absence of generic AI tropes ('in a world where', 'have you ever wondered', 'delve into', 'testament to').\n"
         "5. payoff_satisfaction (Weight 10%): High-impact resolution or mind-bending revelation.\n"
-        "6. seamless_loop_cta (Weight 10%): Final phrase connects smoothly back to opening hook word for endless loops.\n"
+        "6. seamless_loop_cta (Weight 10%): Final phrase semantically and grammatically bridges smoothly back into opening hook line.\n"
         "7. title_synergy (Weight 10%): Title front-loads curiosity without clickbait deception.\n"
-        "8. rhythmic_flow (Weight 5%): Rhythmic speech pacing with strategic ellipses (...) and em-dashes (???).\n"
-        "9. visual_opportunity (Weight 5%): Rich presence of specific entities for B-roll image & video retrieval.\n"
+        "8. rhythmic_flow (Weight 5%): Rhythmic speech pacing with strategic ellipses (...) and em-dashes (—).\n"
+        "9. visual_opportunity (Weight 5%): Concrete, literal visual keywords (STRICTLY BAN abstract terms like 'disaster', 'catastrophe', 'event').\n"
         "10. emotional_resonance (Weight 5%): Sparks awe, mystery, shock, or intense curiosity.\n\n"
         "Return ONLY a JSON object in exactly this format (use float numbers with 2 decimal places):\n"
         "{\n"
@@ -1209,12 +1209,16 @@ def generate_content(
                 "Each variant MUST have its own unique, punchy, standalone title written organically for that specific angle. "
                 "STRICTLY PROHIBITED: Do NOT prepend angle names or category prefixes to titles (e.g., NEVER write 'Scientific Breakthrough: ...' or 'Suspenseful Mystery: ...'). "
                 "Every title must sound like a natural, standalone viral YouTube Shorts title under 50 characters.\n"
-                "2. SYNTACTIC OPEN-LOOP SCRIPT ENGINEERING (STRICT RULE): The script MUST be engineered for a 100% seamless audio and narrative loop. "
-                "The final sentence of the script MUST NOT be a complete independent clause, CTA, or duplicate of the hook line. "
-                "MANDATORY RULE: The final line MUST end in an incomplete syntactic setup phrase or colon/conjunction (e.g., '...and that is why people still ask:', '...leaving scientists to wonder:', '...which is why you should never ask:'). "
-                "When the video loops from the end back to second 0, the final setup phrase MUST flow naturally and syntactically directly into the opening hook line as one continuous spoken sentence.\n"
-                "3. STORY STRUCTURE (STRICTLY NO LISTICLES): Tell a fast-paced 130-word story (0-3s HOOK open loop, 3-45s Escalating Conflict, 45-60s Resolution & Loop CTA).\n"
-                "4. PROPER NOUN VISUAL KEYWORDS: Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
+                "2. INVERTED PYRAMID NARRATIVE HOOK (STRICT RULE): The script MUST NOT start with academic, chronological, or slow date-first openings (e.g. NEVER start with 'On [Date], ...' or 'In [Year], ...'). "
+                "The VERY FIRST sentence (0-3s) MUST immediately state the most extreme outcome or establish a high-curiosity gap (e.g., 'How did a 14-inch drill bit swallow an entire lake?'). "
+                "Historical context, background details, and specific dates MUST be pushed to the second sentence or later.\n"
+                "3. SEMANTIC LOOP BRIDGING ALIGNMENT (STRICT RULE): The script MUST be engineered for a 100% seamless audio, grammatical, and narrative loop. "
+                "The final line MUST NOT be a complete independent clause, CTA, or duplicate of the hook line. "
+                "MANDATORY RULE: The final line MUST end in an incomplete setup phrase ending in a colon or conjunction (e.g., '...leaving hydrologists to repeatedly ask:', '...and that is why people still question:', '...which makes experts constantly wonder:'). "
+                "When the video loops from the end back to second 0, the final setup phrase MUST semantically and grammatically support transitioning seamlessly into the high-curiosity opening hook line (Sentence 1) as one continuous spoken sentence.\n"
+                "4. CONCRETE B-ROLL VISUAL KEYWORDS (STRICT RULE): In visual_keywords, generate 5-6 literal, concrete, scene-specific visual descriptors that align directly with physical elements of the story (e.g., 'waterfall flowing backwards', 'underground dark cave', 'massive ocean wave', 'drilling rig on water'). "
+                "STRICTLY PROHIBITED: Heavily penalized for using abstract nouns or generic disaster terminology (e.g. NEVER use 'catastrophe', 'collapse', 'fallout', 'disaster', 'event', 'tragedy', 'mystery'). "
+                "Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
                 f"Tone: {cat_info['tone']}.\n"
                 "Under no circumstances mention regional politics or Vietnamese history."
                 f"{dynamic_exclude}"
@@ -1739,11 +1743,16 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 # 4. PEXELS VIDEO DOWNLOADER
 # ---------------------------------------------------------------------------
 def sanitize_search_query(query: str) -> str:
-    """Sanitize keyword query string to remove special characters and control parameters."""
+    """Sanitize keyword query string to remove special characters, abstract terms, and control parameters."""
     if not query:
         return ""
     clean = re.sub(r"[^\w\s\-\']", " ", query)
-    return re.sub(r"\s+", " ", clean).strip()
+    abstract_words = {
+        "catastrophe", "collapse", "fallout", "disaster", "event", "tragedy",
+        "mystery", "outcome", "consequence", "phenomenon", "incident"
+    }
+    words = [w for w in clean.split() if w.lower() not in abstract_words]
+    return " ".join(words).strip()
 
 
 WIKIMEDIA_HEADERS = {
