@@ -1,29 +1,5 @@
 [
   {
-    "id": "run-heal-29797699734",
-    "github_run_number": 95,
-    "github_run_id": 29797699734,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29797699734",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T03:08:00Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": null,
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": null,
-    "music_track": null,
-    "search_keywords": [],
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine"
-  },
-  {
     "id": "run-29519434694",
     "github_run_number": 96,
     "github_run_id": 29519434694,
@@ -5957,6 +5933,89 @@
       "Ancient Texts",
       "Sophia Palaiologina",
       "Historical Mystery"
+    ],
+    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+  },
+  {
+    "id": "run-1786061620",
+    "github_run_number": 101,
+    "github_run_id": 101,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-07T07:13:40.292551Z",
+    "category": "Morbid or Silly History Facts",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 5,
+        "angle": "Forgotten Cover-Ups",
+        "title": "The Hole That Drank Lake Peigneur",
+        "word_count": 115,
+        "hook": "On November twenty, 1980, an oil drilling rig owned by Texaco was operating on Lake Peigneur when a ...",
+        "score": 9.7,
+        "critique": "Takes the top spot due to unmatched narrative retention\u2014the stakes rapidly escalate from a stuck drill bit to a massive lake-swallowing whirlpool and reversed waterfall. The hook commands instant attention and the title is masterfully punchy and organic."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Everyday Absurdities",
+        "title": "When Windows Became a Luxury",
+        "word_count": 119,
+        "hook": "In 1696, King William III introduced a bizarre government tax in England that punished citizens simp...",
+        "score": 9.5,
+        "critique": "Features one of the strongest curiosity gaps by introducing a absurd tax on sunlight, driving rapid societal consequences and physical landscape changes. The title synergy is exceptional and clean of any generic AI formatting."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Untold Historical Irony",
+        "title": "The Lethal Beat of Royal Music",
+        "word_count": 125,
+        "hook": "In 1687, composer Jean-Baptiste Lully was commissioned to write a grand anthem celebrating King Loui...",
+        "score": 9.35,
+        "critique": "Delivers an immediate curiosity gap with incredible personal stakes and steady narrative escalation culminating in ironic tragedy. The seamless ending loop connects smoothly back into the opening hook, though it ranks slightly behind Variant 5 in visual retention scale."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Secret Conspiracies",
+        "title": "The Plot to Dim Your Light",
+        "word_count": 105,
+        "hook": "In 1924, top executives from world-leading lighting manufacturers gathered in Geneva for a secret me...",
+        "score": 9.15,
+        "critique": "Brilliant coverage of planned obsolescence with a super clean narrative arc and an alluring, click-worthy title. The loop CTA transitions naturally back to the beginning, maintaining high continuous viewer engagement."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Wartime Secrets",
+        "title": "The Avian Guidance System",
+        "word_count": 112,
+        "hook": "During World War II, modern electronic radar systems were completely unreliable, forcing top militar...",
+        "score": 8.9,
+        "critique": "Extremely engaging mid-century history script with zero AI fluff and a punchy title concept. While the narrative pacing is solid, the psychological premise feels slightly less viscerally escalated than the top contenders."
+      }
+    ],
+    "winning_script": {
+      "title": "The Hole That Drank Lake Peigneur",
+      "text": "On November twenty, 1980, an oil drilling rig owned by Texaco was operating on Lake Peigneur when a fourteen-inch drill bit unexpectedly got stuck. Unbeknownst to workers, the drill miscalculated coordinates and pierced directly into an underground salt mine beneath the lakebed. Water instantly poured down into the puncture, dissolving massive salt caverns and creating a terrifying underwater vortex. The growing whirlpool swallowed the entire oil rig, eleven barges, a tugboat, sixty acres of surrounding land, and an entire botanical garden. The canal flow reversed direction, dragging Gulf of Mexico salt water inland to form a massive temporary waterfall. Corporate executives scrambled to settle massive lawsuits to quiet the public fallout, making hydrologists repeatedly analyze...",
+      "score": 9.7,
+      "critique": "Takes the top spot due to unmatched narrative retention\u2014the stakes rapidly escalate from a stuck drill bit to a massive lake-swallowing whirlpool and reversed waterfall. The hook commands instant attention and the title is masterfully punchy and organic."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://www.worldhistory.org/",
+    "music_track": "alchemists_tower.mp3",
+    "search_keywords": [
+      "Lake Peigneur",
+      "Texaco oil rig",
+      "underwater whirlpool collapse",
+      "salt mine cavern",
+      "draining lake vortex",
+      "aerial catastrophe view"
     ],
     "voice_actor": "af_heart (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
