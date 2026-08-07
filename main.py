@@ -955,12 +955,12 @@ def evaluate_script_quality(
         "1. hook_open_loop (Weight 15%): Immediate 0-3s inverted pyramid hook stating extreme outcome/curiosity gap (STRICTLY BAN academic 'On [Date]' openings).\n"
         "2. fact_specificity (Weight 15%): Presence of real dates, proper names, quantities, avoiding vague generalities.\n"
         "3. narrative_pacing (Weight 15%): Escalating tension or mystery arc (STRICTLY BAN listicles or 'Top 3' formats).\n"
-        "4. absence_of_cliches (Weight 10%): Total absence of generic AI tropes ('in a world where', 'have you ever wondered', 'delve into', 'testament to').\n"
+        "4. absence_of_cliches (Weight 10%): Total absence of generic AI tropes, unexpanded acronyms ('WWI', 'US'), or unphonetic abbreviations.\n"
         "5. payoff_satisfaction (Weight 10%): High-impact resolution or mind-bending revelation.\n"
         "6. seamless_loop_cta (Weight 10%): Final phrase semantically and grammatically bridges smoothly back into opening hook line.\n"
         "7. title_synergy (Weight 10%): Title front-loads curiosity without clickbait deception.\n"
         "8. rhythmic_flow (Weight 5%): Rhythmic speech pacing with strategic ellipses (...) and em-dashes (—).\n"
-        "9. visual_opportunity (Weight 5%): Concrete, literal visual keywords (STRICTLY BAN abstract terms like 'disaster', 'catastrophe', 'event').\n"
+        "9. visual_opportunity (Weight 5%): Atmospheric visual keywords suitable for Pexels modern lifestyle library (STRICTLY BAN unexecutable historical terms like 'French soldiers' or 'Panzer tank').\n"
         "10. emotional_resonance (Weight 5%): Sparks awe, mystery, shock, or intense curiosity.\n\n"
         "Return ONLY a JSON object in exactly this format (use float numbers with 2 decimal places):\n"
         "{\n"
@@ -1216,9 +1216,13 @@ def generate_content(
                 "The final line MUST NOT be a complete independent clause, CTA, or duplicate of the hook line. "
                 "MANDATORY RULE: The final line MUST end in an incomplete setup phrase ending in a colon or conjunction (e.g., '...leaving hydrologists to repeatedly ask:', '...and that is why people still question:', '...which makes experts constantly wonder:'). "
                 "When the video loops from the end back to second 0, the final setup phrase MUST semantically and grammatically support transitioning seamlessly into the high-curiosity opening hook line (Sentence 1) as one continuous spoken sentence.\n"
-                "4. CONCRETE B-ROLL VISUAL KEYWORDS (STRICT RULE): In visual_keywords, generate 5-6 literal, concrete, scene-specific visual descriptors that align directly with physical elements of the story (e.g., 'waterfall flowing backwards', 'underground dark cave', 'massive ocean wave', 'drilling rig on water'). "
-                "STRICTLY PROHIBITED: Heavily penalized for using abstract nouns or generic disaster terminology (e.g. NEVER use 'catastrophe', 'collapse', 'fallout', 'disaster', 'event', 'tragedy', 'mystery'). "
-                "Include exact proper nouns with capitalization ('Albert Einstein', 'Apollo 11') as first keyword for specific entities.\n"
+                "4. PEXELS ATMOSPHERIC B-ROLL RULE (STRICT RULE): The stock footage library (Pexels) is a modern lifestyle video collection and DOES NOT contain archival historical footage, specific military vehicles (e.g. 'Panzers'), or period-accurate soldiers. "
+                "STRICTLY PROHIBITED: Do NOT request specific historical vehicles or soldiers (e.g. NEVER write 'French soldiers', 'German Panzer tank', 'Maginot Line fortress', 'Roman legionary'). "
+                "REQUIRE: You MUST translate all historical nouns into generic, moody, timeless cinematic equivalents. In visual_keywords, generate 5-6 atmospheric visual descriptors (e.g., 'barbed wire fence in fog', 'abandoned concrete bunker', 'dark moody forest', 'vintage paper map', 'heavy military boots walking'). "
+                "STRICTLY PROHIBITED: Heavily penalized for using abstract nouns or generic disaster terminology (e.g. NEVER use 'catastrophe', 'collapse', 'fallout', 'disaster', 'event', 'tragedy', 'mystery').\n"
+                "5. PHONETIC EXPANSION RULE FOR TTS (STRICT RULE): All acronyms, historical abbreviations, numbers, and symbols MUST be written out phonetically exactly as spoken. "
+                "STRICTLY PROHIBITED: Do NOT write abbreviations or acronyms like 'WWI', 'WWII', 'WW1', 'WW2', 'US', 'UK', '$5M', or '$100'. "
+                "REQUIRE: Always write them fully out phonetically, e.g. write 'World War One', 'World War Two', 'United States', 'United Kingdom', 'five million dollars', 'one hundred dollars'.\n"
                 f"Tone: {cat_info['tone']}.\n"
                 "Under no circumstances mention regional politics or Vietnamese history."
                 f"{dynamic_exclude}"
@@ -1549,17 +1553,23 @@ def ensure_kokoro_model_files() -> Tuple[Path, Path]:
 
 
 def sanitize_script_for_tts(text: str) -> str:
-    """Strip all markdown symbols (*, _, #, ~, [], {}, (), stage directions) so TTS never pronounces punctuation names."""
+    """Strip all markdown symbols and apply phonetic acronym expansions so TTS engine pronounces terms naturally."""
     if not text:
         return ""
     # 1. Remove stage directions inside brackets/parentheses like [gasp], (pause), [laughter]
     clean = re.sub(r'\[.*?\]', '', text)
     clean = re.sub(r'\([^\)]*(?:pause|gasp|sigh|music|laughter|chuckle)[^\)]*\)', '', clean, flags=re.IGNORECASE)
     
-    # 2. Strip markdown emphasis (*bold*, **bold**, _italic_, __italic__, ~strike~, #headers, `code`)
+    # 2. Phonetic expansion fallback for common acronyms & abbreviations
+    clean = re.sub(r'\bWWI\b|\bWW1\b', 'World War One', clean, flags=re.IGNORECASE)
+    clean = re.sub(r'\bWWII\b|\bWW2\b', 'World War Two', clean, flags=re.IGNORECASE)
+    clean = re.sub(r'\bUS\b', 'United States', clean)
+    clean = re.sub(r'\bUK\b', 'United Kingdom', clean)
+    
+    # 3. Strip markdown emphasis (*bold*, **bold**, _italic_, __italic__, ~strike~, #headers, `code`)
     clean = re.sub(r'[*_~`#]+', '', clean)
     
-    # 3. Clean up quotation marks & whitespace
+    # 4. Clean up quotation marks & whitespace
     clean = re.sub(r'["“”‘’]', '', clean)
     clean = re.sub(r'\s+', ' ', clean).strip()
     return clean
@@ -1743,10 +1753,26 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 # 4. PEXELS VIDEO DOWNLOADER
 # ---------------------------------------------------------------------------
 def sanitize_search_query(query: str) -> str:
-    """Sanitize keyword query string to remove special characters, abstract terms, and control parameters."""
+    """Sanitize keyword query string to remove special characters, abstract terms, and convert specific historical terms to cinematic equivalents."""
     if not query:
         return ""
     clean = re.sub(r"[^\w\s\-\']", " ", query)
+    
+    # Translate specific historical/military terms that fail on Pexels modern lifestyle API
+    term_map = {
+        "french soldiers": "military boots walking",
+        "german soldiers": "military boots walking",
+        "panzer tank": "military vehicle",
+        "panzer": "military vehicle",
+        "maginot line": "abandoned bunker",
+        "wwi soldiers": "trench fog",
+        "wwii soldiers": "military boots"
+    }
+    query_lower = clean.lower().strip()
+    for k, v in term_map.items():
+        if k in query_lower:
+            clean = re.sub(re.escape(k), v, clean, flags=re.IGNORECASE)
+
     abstract_words = {
         "catastrophe", "collapse", "fallout", "disaster", "event", "tragedy",
         "mystery", "outcome", "consequence", "phenomenon", "incident"
