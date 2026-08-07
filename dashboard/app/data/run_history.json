@@ -1,53 +1,5 @@
 [
   {
-    "id": "run-29534600630",
-    "github_run_number": 97,
-    "github_run_id": 29534600630,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29534600630",
-    "timestamp": "2026-07-16T21:04:05Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 25.26,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_4.mp3",
-    "search_keywords": [
-      "unbelievable! history's most bizarre & unsettling realities",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Unbelievable! History's Most Bizarre & Unsettling Realities",
-        "word_count": 88,
-        "hook": "Quick fact: Unbelievable! History's Most Bizarre & Unsettling Realities",
-        "score": 8.79,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Unbelievable! History's Most Bizarre & Unsettling Realities",
-      "text": "Exploring Unbelievable! History's Most Bizarre & Unsettling Realities...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": "Video deleted / removed from YouTube channel due to background frame rendering issue.",
-    "global_run_number": 208,
-    "youtube_stats": null,
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
     "id": "run-heal-29823008336",
     "github_run_number": 97,
     "github_run_id": 29823008336,
@@ -6108,6 +6060,89 @@
       "foggy coastal cliff at dawn",
       "leather briefcase in water",
       "shadowy figure walking"
+    ],
+    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+  },
+  {
+    "id": "run-1786064762",
+    "github_run_number": 101,
+    "github_run_id": 101,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-07T08:06:02.549379Z",
+    "category": "Morbid or Silly History Facts",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 2,
+        "angle": "Untold Historical Irony",
+        "title": "Navy Predicted Pearl Harbor?",
+        "word_count": 117,
+        "hook": "The United States Navy successfully \"attacked\" Pearl Harbor years before the real devastation. In ni...",
+        "score": 9.65,
+        "critique": "This variant captures top spot with an irresistible historical irony hook and perfectly paced narrative escalation detailing the 1932 naval exercises. The title is punchy and organic, and the ending line connects seamlessly back into the opening sentence."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Tragic Miscalculations",
+        "title": "The Ship Too Big To Fail!",
+        "word_count": 109,
+        "hook": "A ship so ambitious, it was designed for a future that hadn't arrived, costing millions of dollars i...",
+        "score": 9.4,
+        "critique": "An exceptional tragic miscalculation breakdown that pairs a clean, cinematic title with rapid narrative escalation regarding the Great Eastern. It falls just short of Variant 2 only because the initial opening line is slightly more abstract than the immediate punch of the Pearl Harbor simulation."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Everyday Absurdities",
+        "title": "Your Handshake's Twisted Past!",
+        "word_count": 102,
+        "hook": "Your everyday handshake started as a literal life-or-death weapon check. Imagine ancient times, appr...",
+        "score": 8.95,
+        "critique": "Strong everyday relatability makes the opening hook immediately engaging, and the shift from weapon-checking to Quaker equality offers good pacing. The title feels slightly informal with the exclamation mark, but the seamless loop CTA works flawlessly."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Bizarre Laws",
+        "title": "Roman Dad's Wild Power!",
+        "word_count": 108,
+        "hook": "Ancient Roman fathers held a terrifying legal power over their sons, a power almost unbelievable tod...",
+        "score": 8.7,
+        "critique": "The three-strikes legal twist provides a solid mid-script climax that keeps retention high. While the loop transition is smooth, the title 'Roman Dad's Wild Power!' feels a bit juvenile compared to the sophistication of Variant 2 and 5."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Secret Conspiracies",
+        "title": "Europe's Missing Dark Age?",
+        "word_count": 132,
+        "hook": "European history hides a century deliberately erased from records, not a period of simple decline. B...",
+        "score": 8.45,
+        "critique": "The conspiracy hook creates an immediate curiosity gap, and the trailing CTA loops smoothly into the opening sentence. However, reliance on unsubstantiated pseudo-historical framing lowers narrative credibility compared to the grounded historical irony of higher-ranking variants."
+      }
+    ],
+    "winning_script": {
+      "title": "Navy Predicted Pearl Harbor?",
+      "text": "The United States Navy successfully \"attacked\" Pearl Harbor years before the real devastation. In nineteen thirty-two, during a major fleet exercise, the aircraft carrier United States Ship Lexington, then named Carrier Vessel Number Two, launched a simulated air raid on the Hawaiian naval base. This mock attack, executed with startling precision on a Sunday morning, mirrored the actual Japanese surprise attack almost a decade later. Admiral Harry Yarnell, commanding the opposing force, demonstrated the vulnerability of the base to an air assault, proving that aerial power could negate traditional naval defenses. Despite the clear warning embedded in these annual exercises throughout the nineteen thirties, the lessons weren't fully integrated into defensive strategies, leaving commanders to later lament:",
+      "score": 9.65,
+      "critique": "This variant captures top spot with an irresistible historical irony hook and perfectly paced narrative escalation detailing the 1932 naval exercises. The title is punchy and organic, and the ending line connects seamlessly back into the opening sentence."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "epic_dark_trap.mp3",
+    "search_keywords": [
+      "vintage naval maps",
+      "ocean sunrise",
+      "aerial view of ships",
+      "war room strategy table",
+      "military officer silhouette",
+      "old film reel effect"
     ],
     "voice_actor": "af_heart (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
