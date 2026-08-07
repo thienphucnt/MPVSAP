@@ -316,11 +316,24 @@ def is_power_word(word: str) -> bool:
     return clean in power_words
 
 
+def get_ffmpeg_binary() -> str:
+    """Resolve valid FFmpeg binary path across system PATH and imageio_ffmpeg binaries."""
+    import shutil
+    sys_ffmpeg = shutil.which("ffmpeg")
+    if sys_ffmpeg:
+        return sys_ffmpeg
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        return "ffmpeg"
+
+
 def master_tts_audio(input_wav: str, output_wav: str) -> str:
     """Master TTS audio with Studio Audio Chain (80Hz Highpass filter, 2500Hz EQ boost, dynamic compand compressor)."""
     try:
         cmd = [
-            "ffmpeg", "-y",
+            get_ffmpeg_binary(), "-y",
             "-i", input_wav,
             "-af", "highpass=f=80,equalizer=f=2500:width_type=o:width=1:g=2,compand=attacks=0.02:decays=0.2:points=-60/-60|-24/-12|-12/-6|0/-3:gain=2",
             "-c:a", "pcm_s16le",
@@ -1946,7 +1959,7 @@ def download_single_pexels_video(api_key: str, kw: str, index: int, orientation:
                         # (mean_b~0.04) due to tone mapping collapse. FFmpeg normalises
                         # colour space to safe SDR before MoviePy ever touches the file.
                         transcode_cmd = [
-                            "ffmpeg", "-y", "-i", raw_path,
+                            get_ffmpeg_binary(), "-y", "-i", raw_path,
                             "-vf", "scale=trunc(iw/2)*2:trunc(ih/2)*2",
                             "-c:v", "libx264", "-preset", "ultrafast",
                             "-crf", "23", "-pix_fmt", "yuv420p",
@@ -2506,7 +2519,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                         "[mixed]loudnorm=I=-14:TP=-1.0:LRA=11[out]"
                     )
                     cmd = [
-                        "ffmpeg", "-y",
+                        get_ffmpeg_binary(), "-y",
                         "-i", audio_path,
                         "-i", music_temp_path,
                         "-filter_complex", filtergraph,
@@ -2521,8 +2534,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     print("Failed to mix background music, using voice-only:", e)
                 finally:
                     if os.path.exists(music_temp_path):
-                        try:
-                            os.remove(music_temp_path)
+                        try: os.remove(music_temp_path)
                         except Exception:
                             pass
 
@@ -2552,7 +2564,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         
         print("Burning ASS subtitles using FFmpeg...")
         cmd = [
-            "ffmpeg", "-y",
+            get_ffmpeg_binary(), "-y",
             "-i", temp_no_subs,
             "-vf", f"ass={ass_path}",
             "-c:a", "copy",
@@ -2967,7 +2979,7 @@ def render_long_form_segments_and_concat(
 
     print(f"Concatenating {len(rendered_segment_files)} segment MP4 files via FFmpeg stream copy...")
     concat_cmd = [
-        "ffmpeg", "-y",
+        get_ffmpeg_binary(), "-y",
         "-f", "concat",
         "-safe", "0",
         "-i", segments_txt_path,
@@ -3377,6 +3389,8 @@ def run_daily_upload_pipeline_once() -> None:
     parser.add_argument("--category", choices=["space", "history", "tech"], help="Force script category selection")
     parser.add_argument("--format", choices=["short", "long"], default="short", help="Format of video to generate")
     parser.add_argument("--dry-run", action="store_true", help="Perform content generation and TTS without video rendering")
+    parser.add_argument("--no-upload", action="store_true", help="Render video to project folder without uploading to social platforms")
+    parser.add_argument("--output", type=str, default="generated_short.mp4", help="Output filename for rendered video")
     args = parser.parse_args()
 
     # Route content selection using 7-day locked category rotation
@@ -3406,9 +3420,9 @@ def run_daily_upload_pipeline_once() -> None:
     youtube_client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
     youtube_refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
 
-    # Step 2: Fail-Fast YouTube Auth Pre-flight Check
+    # Step 2: Fail-Fast YouTube Auth Pre-flight Check (Skipped in --no-upload mode)
     verified_youtube_creds = None
-    if not args.dry_run:
+    if not args.dry_run and not args.no_upload:
         try:
             print("\n--- STAGE 0: YOUTUBE OAUTH PRE-FLIGHT AUTH CHECK ---")
             verified_youtube_creds = verify_youtube_auth(
@@ -3483,7 +3497,7 @@ def run_daily_upload_pipeline_once() -> None:
         sys.exit(0)
 
     # 2. Rendering block
-    output_path = "final_output.mp4"
+    output_path = args.output if (args.no_upload or args.output != "generated_short.mp4") else "final_output.mp4"
     thumbnail_path = None
 
     if config.is_short:
@@ -3532,10 +3546,16 @@ def run_daily_upload_pipeline_once() -> None:
         cat_info = CATEGORIES[category]
         playlist_id = os.environ.get(cat_info["playlist_env"])
 
-        # 3. Upload to platforms (Only upload to TikTok/Meta for Shorts)
+        # 3. Upload to platforms (Skipped in --no-upload mode)
         uploaded_video_id = None
         current_subs = subs_list if config.is_short else []
-        if youtube_client_id and youtube_client_secret and youtube_refresh_token:
+
+        if args.no_upload:
+            print(f"\n============================================================")
+            print(f" SUCCESS: Full Short video rendered and preserved at:")
+            print(f" {os.path.abspath(output_path)}")
+            print(f"============================================================\n")
+        elif youtube_client_id and youtube_client_secret and youtube_refresh_token:
             try:
                 winning_script_text = winning_variant.get("script") or winning_variant.get("text") if (config.is_short and 'winning_variant' in locals()) else segments[0].get("script")
                 uploaded_video_id = upload_to_youtube(
@@ -3581,7 +3601,7 @@ def run_daily_upload_pipeline_once() -> None:
         else:
             print("YouTube credentials missing, skipping.")
 
-        if config.is_short:
+        if config.is_short and not args.no_upload:
             if tiktok_client_key and tiktok_client_secret and tiktok_refresh_token:
                 try:
                     upload_to_tiktok(output_path, title,
@@ -3640,13 +3660,14 @@ def run_daily_upload_pipeline_once() -> None:
             print("Notice: Automated git state push skipped/encountered error:", push_err)
 
     finally:
-        # Clean up rendered video file and thumbnail
-        try:
-            op = Path(output_path)
-            if op.exists():
-                op.unlink()
-        except Exception as e:
-            print(f"Could not remove {output_path}:", e)
+        # Clean up rendered video file (Preserved if --no-upload is set)
+        if not args.no_upload:
+            try:
+                op = Path(output_path)
+                if op.exists():
+                    op.unlink()
+            except Exception as e:
+                print(f"Could not remove {output_path}:", e)
         if thumbnail_path and os.path.exists(thumbnail_path):
             try:
                 os.remove(thumbnail_path)
