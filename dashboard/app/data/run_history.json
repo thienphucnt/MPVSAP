@@ -1,53 +1,5 @@
 [
   {
-    "id": "run-29551012642",
-    "github_run_number": 98,
-    "github_run_id": 29551012642,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29551012642",
-    "timestamp": "2026-07-17T02:52:54Z",
-    "category": "History",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 33.21,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_2.mp3",
-    "search_keywords": [
-      "deleted video",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Deleted video",
-        "word_count": 88,
-        "hook": "Quick fact: Deleted video",
-        "score": 8.49,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Deleted video",
-      "text": "Exploring Deleted video...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 210,
-    "youtube_stats": null,
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
     "id": "run-heal-29837713758",
     "github_run_number": 98,
     "github_run_id": 29837713758,
@@ -6200,6 +6152,93 @@
       "strategy table",
       "antique clock",
       "old paper"
+    ],
+    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+  },
+  {
+    "id": "run-31178830007",
+    "github_run_number": 180,
+    "github_run_id": 31178830007,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/31178830007",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-07T12:39:31.620866Z",
+    "category": "Morbid or Silly History Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Bizarre Laws",
+        "title": "Night's Curfew, Forever Detained?",
+        "word_count": 100,
+        "hook": "Imagine being detained indefinitely just for being in the wrong place after sunset. This was reality...",
+        "score": 9.15,
+        "critique": "Variant 1 delivers a powerful immediate hook and maintains seamless narrative flow without relying on clunky quoted trope phrases. It integrates its open loop transition effectively and features a punchy, organic title that creates instant viewer interest."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Wartime Secrets",
+        "title": "World War Two's Greatest Deception!",
+        "word_count": 99,
+        "hook": "Imagine an entire army that existed only as a brilliant illusion. During World War Two, the United S...",
+        "score": 8.45,
+        "critique": "The Ghost Army hook is visually arresting and sets up an engaging narrative dynamic with high retention potential. Its main flaw stems from awkward inline buzzwords and a slightly disjointed loop back to the opening line."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Tragic Miscalculations",
+        "title": "Roman Empire's Poisonous Secret!",
+        "word_count": 103,
+        "hook": "A groundbreaking Roman invention secretly poisoned its own empire. Ancient Rome's advanced aqueducts...",
+        "score": 8.25,
+        "critique": "This variant presents a compelling, high-stakes curiosity gap regarding Roman lead pipes that drives strong viewer interest. However, heavy reliance on multiple unnatural quoted phrases breaks script immersion and weakens the final loop."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Secret Conspiracies",
+        "title": "Medieval Shadow Empire Revealed!",
+        "word_count": 94,
+        "hook": "A shadowy order of assassins once shaped medieval empires from unseen fortresses. Beyond the crusade...",
+        "score": 8.1,
+        "critique": "The narrative surrounding the Nizari Ismailis builds solid historical intrigue with good pacing throughout. However, the artificial inclusion of quoted keyphrases detracts from tone, keeping it just behind the top contenders."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Untold Historical Irony",
+        "title": "Great Wall's Hidden Flaw!",
+        "word_count": 99,
+        "hook": "The ultimate defense against invaders surprisingly became a symbol of vulnerability. China\u2019s magnifi...",
+        "score": 7.85,
+        "critique": "While the core concept around the Great Wall's strategic limitations is strong, the script suffers from unnatural forced keyword phrasing like 'empire collapse reason'. Additionally, the end transition into the hook creates a grammatically awkward loop."
+      }
+    ],
+    "winning_script": {
+      "title": "Night's Curfew, Forever Detained?",
+      "text": "Imagine being detained indefinitely just for being in the wrong place after sunset. This was reality in medieval England, where 'stranger' laws empowered towns to hold anyone without a clear reason for being within city gates after dark. It fostered deep suspicion, forcing travelers to justify their very presence. This bizarre legal framework, a product of fragmented local authorities, created invisible barriers and fear, acting as an early, oppressive form of urban control. The forgotten history of these restrictive statutes shows how local communities once guarded their boundaries with startling legal severity, leaving residents and visitors alike to repeatedly ask:",
+      "score": 9.15,
+      "critique": "Variant 1 delivers a powerful immediate hook and maintains seamless narrative flow without relying on clunky quoted trope phrases. It integrates its open loop transition effectively and features a punchy, organic title that creates instant viewer interest."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/_gzRtaJQIGw",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://www.worldhistory.org/",
+    "music_track": "alchemists_tower.mp3",
+    "search_keywords": [
+      "medieval town gates",
+      "moonlit alley",
+      "ancient parchment scroll",
+      "historical town square",
+      "lantern light",
+      "traveler silhouette"
     ],
     "voice_actor": "af_heart (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
