@@ -1,53 +1,5 @@
 [
   {
-    "id": "run-29519434694",
-    "github_run_number": 96,
-    "github_run_id": 29519434694,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29519434694",
-    "timestamp": "2026-07-16T17:21:33Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 42.96,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_2.mp3",
-    "search_keywords": [
-      "the universe's most terrifying empty space #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe's Most Terrifying Empty Space #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe's Most Terrifying Empty Space #space #shorts",
-        "score": 8.5,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universe's Most Terrifying Empty Space #space #shorts",
-      "text": "Exploring The Universe's Most Terrifying Empty Space #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 206,
-    "youtube_stats": null,
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
     "id": "run-heal-29807961026",
     "github_run_number": 96,
     "github_run_id": 29807961026,
@@ -6016,6 +5968,89 @@
       "salt mine cavern",
       "draining lake vortex",
       "aerial catastrophe view"
+    ],
+    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+  },
+  {
+    "id": "run-1786062680",
+    "github_run_number": 101,
+    "github_run_id": 101,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-07T07:31:20.432455Z",
+    "category": "Morbid or Silly History Facts",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 4,
+        "angle": "Untold Historical Irony",
+        "title": "France's \"Unbreakable\" Wall Failed!",
+        "word_count": 98,
+        "hook": "France spent billions building the Maginot Line, an \"impenetrable\" fortress meant to deter invasion,...",
+        "score": 9.78,
+        "critique": "This is a brilliantly executed script, leveraging a universally understood historical irony with a powerful, direct hook and title. The narrative expertly unfolds the strategic failure, culminating in a highly resonant and thought-provoking loop CTA that solidifies its winning position."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Tragic Miscalculations",
+        "title": "Pearl Harbor's Eerie Practice!",
+        "word_count": 92,
+        "hook": "America's own fleet successfully 'destroyed' Pearl Harbor years before the real attack! The USS Lexi...",
+        "score": 9.74,
+        "critique": "This variant delivers an incredibly strong, tragic hook about self-simulated destruction that immediately captures attention. Its narrative effectively builds the irony, making it a powerful contender, only slightly edged out by the universal strategic lesson of the Maginot Line."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Secret Conspiracies",
+        "title": "Alexandria's Lost Knowledge Cover-Up?",
+        "word_count": 90,
+        "hook": "What if the Great Library of Alexandria wasn't just accidentally burned, but systematically purged o...",
+        "score": 9.72,
+        "critique": "This script excels with a captivating 'what if' conspiracy theory, offering an intriguing twist on a well-known historical event. It builds a strong sense of mystery and intrigue, placing it among the top contenders for its thought-provoking angle."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Everyday Absurdities",
+        "title": "Absurdly Tall Renaissance Shoes!",
+        "word_count": 99,
+        "hook": "Imagine needing servants just to walk down the street because your shoes were two feet tall! During ...",
+        "score": 9.38,
+        "critique": "The script effectively uses an absurd historical fashion trend to create an engaging and visually imaginative hook. While entertaining, its overall impact and the depth of its closing reflection are slightly less profound than the more strategically or conspiratorially focused narratives."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Bizarre Laws",
+        "title": "Romans Banned Your Funeral Cries!",
+        "word_count": 93,
+        "hook": "Imagine a law dictating how loudly you could cry at a funeral! Ancient Rome, usually known for its s...",
+        "score": 9.3,
+        "critique": "The hook presents a uniquely bizarre historical law that sparks immediate curiosity, bolstered by a clear and punchy title. While engaging, its narrative intensity and the broader philosophical takeaway are slightly less compelling compared to the top-tier variants."
+      }
+    ],
+    "winning_script": {
+      "title": "France's \"Unbreakable\" Wall Failed!",
+      "text": "France spent billions building the Maginot Line, an \"impenetrable\" fortress meant to deter invasion, only for it to be completely outmaneuvered! After the horrors of WWI, France invested massively in this elaborate system of concrete forts, artillery, and tunnels along its German border, believing it would guarantee security. Yet, German forces simply bypassed the entire complex in 1940, invading through the Ardennes forest and neutral Belgium. The very defense designed to prevent a repeat of trench warfare became a monument to strategic inflexibility, proving that sometimes the strongest defense is the biggest weakness, which makes strategists still question:",
+      "score": 9.78,
+      "critique": "This is a brilliantly executed script, leveraging a universally understood historical irony with a powerful, direct hook and title. The narrative expertly unfolds the strategic failure, culminating in a highly resonant and thought-provoking loop CTA that solidifies its winning position."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "grave_matters.mp3",
+    "search_keywords": [
+      "Maginot Line fortress",
+      "underground bunker",
+      "French soldiers",
+      "German Panzer tanks",
+      "Ardennes forest map",
+      "abandoned fortifications"
     ],
     "voice_actor": "af_heart (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
