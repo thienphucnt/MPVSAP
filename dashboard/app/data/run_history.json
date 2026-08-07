@@ -1,31 +1,5 @@
 [
   {
-    "id": "run-heal-29823008336",
-    "github_run_number": 97,
-    "github_run_id": 29823008336,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29823008336",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T10:38:42Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
-    "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #97",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
-  },
-  {
     "id": "run-29551012642",
     "github_run_number": 98,
     "github_run_id": 29551012642,
@@ -6143,6 +6117,89 @@
       "war room strategy table",
       "military officer silhouette",
       "old film reel effect"
+    ],
+    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+  },
+  {
+    "id": "run-1786065575",
+    "github_run_number": 101,
+    "github_run_id": 101,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-07T08:19:35.405526Z",
+    "category": "Morbid or Silly History Facts",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 3,
+        "angle": "Untold Historical Irony",
+        "title": "The World's Most Dangerous Inventor",
+        "word_count": 122,
+        "hook": "A brilliant inventor created two of the most destructive pollutants in human history before being ki...",
+        "score": 9.65,
+        "critique": "Boasts an unforgettable, highly ironic hook paired with a perfectly escalating biographical narrative about history's most disastrous inventor. The title-to-script synergy is exceptional and the seamless grammatical loop creates maximum replay potential."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Bizarre Laws",
+        "title": "The Law That Made Sunlight Illegal",
+        "word_count": 124,
+        "hook": "A strange government law forced thousands of homeowners to brick up their windows to avoid paying a ...",
+        "score": 9.4,
+        "critique": "Features an extremely high-CTR title and hook regarding the British window tax that delivers immediate novelty. The cause-and-effect narrative remains vibrant throughout, finishing with a seamlessly executed loop transition."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Secret Conspiracies",
+        "title": "The Secret Fake City Built to Fool Bombers",
+        "word_count": 121,
+        "hook": "An entire fake metropolis was built in secret to trick enemy bombers into destroying a shadow city. ...",
+        "score": 9.25,
+        "critique": "The script hooks viewers immediately with a striking military trickery premise and maintains relentless momentum up to its secret blueprint cover-up. Its seamless loop back to the opening statement creates a flawless end-to-end user retention cycle."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Forgotten Cover-Ups",
+        "title": "The Hidden Aerosol Experiment on Cities",
+        "word_count": 115,
+        "hook": "Toxic chemical clouds were secretly sprayed over unsuspecting neighborhoods to test biological warfa...",
+        "score": 9.1,
+        "critique": "Delivers an immensely gripping opening hook regarding covert domestic aerosol testing that drives high urgency. The story pacing is fast and trope-free, though the resolution lacks the dramatic personal irony seen in top-ranking competitors."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Tragic Miscalculations",
+        "title": "The Floating Fortress That Sunk in Minutes",
+        "word_count": 120,
+        "hook": "A massive ocean battleship collapsed and sank just thirteen hundred meters into its very first voyag...",
+        "score": 8.85,
+        "critique": "Captures immediate intrigue with the rapid sinking of Sweden's prized warship, backed by strong title synergy. However, slightly clunky phrasing near the climax ('empire collapse reason') briefly disrupts narrative flow."
+      }
+    ],
+    "winning_script": {
+      "title": "The World's Most Dangerous Inventor",
+      "text": "A brilliant inventor created two of the most destructive pollutants in human history before being killed by his own mechanical bed. Thomas Midgley Junior first gained international fame by adding lead to gasoline, causing widespread environmental brain damage across the globe. He then invented chlorofluorocarbons, which unknowingly punched a massive hole in Earth's protective ozone layer. Decades later, after contracting severe polio, the disabled scientist constructed an elaborate system of ropes and pulleys to lift himself out of bed every morning. In a dark twist of fate, the complex ropes tangled around his neck in nineteen forty-four, strangling the forgotten inventor inside his own home. His life remains an extraordinary story of dangerous consequences, which is why science historians continually retell how:",
+      "score": 9.65,
+      "critique": "Boasts an unforgettable, highly ironic hook paired with a perfectly escalating biographical narrative about history's most disastrous inventor. The title-to-script synergy is exceptional and the seamless grammatical loop creates maximum replay potential."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": "https://www.worldhistory.org/",
+    "music_track": "dark_history_lofi.mp3",
+    "search_keywords": [
+      "vintage map",
+      "old archive room",
+      "historical document",
+      "strategy table",
+      "antique clock",
+      "old paper"
     ],
     "voice_actor": "af_heart (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
