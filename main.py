@@ -1216,10 +1216,11 @@ def generate_content(
                 "The final line MUST NOT be a complete independent clause, CTA, or duplicate of the hook line. "
                 "MANDATORY RULE: The final line MUST end in an incomplete setup phrase ending in a colon or conjunction (e.g., '...leaving hydrologists to repeatedly ask:', '...and that is why people still question:', '...which makes experts constantly wonder:'). "
                 "When the video loops from the end back to second 0, the final setup phrase MUST semantically and grammatically support transitioning seamlessly into the high-curiosity opening hook line (Sentence 1) as one continuous spoken sentence.\n"
-                "4. PEXELS ATMOSPHERIC B-ROLL RULE (STRICT RULE): The stock footage library (Pexels) is a modern lifestyle video collection and DOES NOT contain archival historical footage, specific military vehicles (e.g. 'Panzers'), or period-accurate soldiers. "
-                "STRICTLY PROHIBITED: Do NOT request specific historical vehicles or soldiers (e.g. NEVER write 'French soldiers', 'German Panzer tank', 'Maginot Line fortress', 'Roman legionary'). "
-                "REQUIRE: You MUST translate all historical nouns into generic, moody, timeless cinematic equivalents. In visual_keywords, generate 5-6 atmospheric visual descriptors (e.g., 'barbed wire fence in fog', 'abandoned concrete bunker', 'dark moody forest', 'vintage paper map', 'heavy military boots walking'). "
-                "STRICTLY PROHIBITED: Heavily penalized for using abstract nouns or generic disaster terminology (e.g. NEVER use 'catastrophe', 'collapse', 'fallout', 'disaster', 'event', 'tragedy', 'mystery').\n"
+                "4. PEXELS ATMOSPHERIC B-ROLL & VISUAL CONTEXT FILTERING (STRICT RULE): The stock footage library (Pexels) is a modern lifestyle video collection. "
+                "For history and space categories, modern office and corporate environments are STRICTLY PROHIBITED (e.g. NEVER request 'office', 'corporate', 'meeting', 'voting', 'ballot', 'business suit', 'conference room', 'boardroom', 'cubicle'). "
+                "You MUST translate all historical, military, or organizational concepts into atmospheric outdoor or cinematic historical equivalents (e.g. 'vintage map', 'old archive room', 'foggy coastline', 'historical document', 'ancient ruins', 'strategy table'). "
+                "STRICTLY PROHIBITED: Do NOT request specific historical vehicles or period-accurate soldiers ('French soldiers', 'Panzer tank'). "
+                "STRICTLY PROHIBITED: Abstract nouns or generic disaster terminology ('catastrophe', 'collapse', 'disaster', 'event', 'tragedy', 'mystery').\n"
                 "5. PHONETIC EXPANSION RULE FOR TTS (STRICT RULE): All acronyms, historical abbreviations, numbers, and symbols MUST be written out phonetically exactly as spoken. "
                 "STRICTLY PROHIBITED: Do NOT write abbreviations or acronyms like 'WWI', 'WWII', 'WW1', 'WW2', 'US', 'UK', '$5M', or '$100'. "
                 "REQUIRE: Always write them fully out phonetically, e.g. write 'World War One', 'World War Two', 'United States', 'United Kingdom', 'five million dollars', 'one hundred dollars'.\n"
@@ -1678,7 +1679,7 @@ def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path:
     voice_name = voice_map.get(db_key, "af_heart")
 
     print(f"Synthesizing Local Kokoro-82M Neural Speech (voice='{voice_name}', category='{db_key}')...")
-    samples, sample_rate = kokoro.create(clean_text, voice=voice_name, speed=0.98, lang="en-us")
+    samples, sample_rate = kokoro.create(clean_text, voice=voice_name, speed=1.0, lang="en-us")
     sf.write(audio_path, samples, sample_rate)
 
     total_duration = len(samples) / float(sample_rate)
@@ -1753,11 +1754,24 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 # 4. PEXELS VIDEO DOWNLOADER
 # ---------------------------------------------------------------------------
 def sanitize_search_query(query: str) -> str:
-    """Sanitize keyword query string to remove special characters, abstract terms, and convert specific historical terms to cinematic equivalents."""
+    """Sanitize keyword query string to remove special characters, abstract/corporate terms, and convert specific historical terms to cinematic equivalents."""
     if not query:
         return ""
     clean = re.sub(r"[^\w\s\-\']", " ", query)
     
+    # Corporate & modern office terms strictly banned for history & space categories -> translate to atmospheric equivalents
+    corporate_term_map = {
+        "office": "old archive room",
+        "corporate": "historical document",
+        "meeting": "strategy table",
+        "voting": "parliament chamber",
+        "ballot": "ancient scroll",
+        "business suit": "vintage formal attire",
+        "conference room": "council hall",
+        "boardroom": "strategy room",
+        "cubicle": "archive desk"
+    }
+
     # Translate specific historical/military terms that fail on Pexels modern lifestyle API
     term_map = {
         "french soldiers": "military boots walking",
@@ -1768,6 +1782,8 @@ def sanitize_search_query(query: str) -> str:
         "wwi soldiers": "trench fog",
         "wwii soldiers": "military boots"
     }
+    term_map.update(corporate_term_map)
+
     query_lower = clean.lower().strip()
     for k, v in term_map.items():
         if k in query_lower:
@@ -1775,7 +1791,8 @@ def sanitize_search_query(query: str) -> str:
 
     abstract_words = {
         "catastrophe", "collapse", "fallout", "disaster", "event", "tragedy",
-        "mystery", "outcome", "consequence", "phenomenon", "incident"
+        "mystery", "outcome", "consequence", "phenomenon", "incident",
+        "office", "corporate", "meeting", "voting", "ballot", "business", "cubicle"
     }
     words = [w for w in clean.split() if w.lower() not in abstract_words]
     return " ".join(words).strip()
@@ -2574,6 +2591,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                             pass
 
     bg_clip = bg_clip.set_audio(final_audio_clip)
+    bg_clip = bg_clip.set_duration(audio_duration)
 
     # Try high-performance FFmpeg ASS subtitle burning first
     ass_path = f"subtitles_{os.getpid()}.ass"
