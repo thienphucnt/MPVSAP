@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-1786065575",
-    "github_run_number": 101,
-    "github_run_id": 101,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-07T08:19:35.405526Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 3,
-        "angle": "Untold Historical Irony",
-        "title": "The World's Most Dangerous Inventor",
-        "word_count": 122,
-        "hook": "A brilliant inventor created two of the most destructive pollutants in human history before being ki...",
-        "score": 9.65,
-        "critique": "Boasts an unforgettable, highly ironic hook paired with a perfectly escalating biographical narrative about history's most disastrous inventor. The title-to-script synergy is exceptional and the seamless grammatical loop creates maximum replay potential."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Bizarre Laws",
-        "title": "The Law That Made Sunlight Illegal",
-        "word_count": 124,
-        "hook": "A strange government law forced thousands of homeowners to brick up their windows to avoid paying a ...",
-        "score": 9.4,
-        "critique": "Features an extremely high-CTR title and hook regarding the British window tax that delivers immediate novelty. The cause-and-effect narrative remains vibrant throughout, finishing with a seamlessly executed loop transition."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Secret Conspiracies",
-        "title": "The Secret Fake City Built to Fool Bombers",
-        "word_count": 121,
-        "hook": "An entire fake metropolis was built in secret to trick enemy bombers into destroying a shadow city. ...",
-        "score": 9.25,
-        "critique": "The script hooks viewers immediately with a striking military trickery premise and maintains relentless momentum up to its secret blueprint cover-up. Its seamless loop back to the opening statement creates a flawless end-to-end user retention cycle."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Forgotten Cover-Ups",
-        "title": "The Hidden Aerosol Experiment on Cities",
-        "word_count": 115,
-        "hook": "Toxic chemical clouds were secretly sprayed over unsuspecting neighborhoods to test biological warfa...",
-        "score": 9.1,
-        "critique": "Delivers an immensely gripping opening hook regarding covert domestic aerosol testing that drives high urgency. The story pacing is fast and trope-free, though the resolution lacks the dramatic personal irony seen in top-ranking competitors."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Tragic Miscalculations",
-        "title": "The Floating Fortress That Sunk in Minutes",
-        "word_count": 120,
-        "hook": "A massive ocean battleship collapsed and sank just thirteen hundred meters into its very first voyag...",
-        "score": 8.85,
-        "critique": "Captures immediate intrigue with the rapid sinking of Sweden's prized warship, backed by strong title synergy. However, slightly clunky phrasing near the climax ('empire collapse reason') briefly disrupts narrative flow."
-      }
-    ],
-    "winning_script": {
-      "title": "The World's Most Dangerous Inventor",
-      "text": "A brilliant inventor created two of the most destructive pollutants in human history before being killed by his own mechanical bed. Thomas Midgley Junior first gained international fame by adding lead to gasoline, causing widespread environmental brain damage across the globe. He then invented chlorofluorocarbons, which unknowingly punched a massive hole in Earth's protective ozone layer. Decades later, after contracting severe polio, the disabled scientist constructed an elaborate system of ropes and pulleys to lift himself out of bed every morning. In a dark twist of fate, the complex ropes tangled around his neck in nineteen forty-four, strangling the forgotten inventor inside his own home. His life remains an extraordinary story of dangerous consequences, which is why science historians continually retell how:",
-      "score": 9.65,
-      "critique": "Boasts an unforgettable, highly ironic hook paired with a perfectly escalating biographical narrative about history's most disastrous inventor. The title-to-script synergy is exceptional and the seamless grammatical loop creates maximum replay potential."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": "https://www.worldhistory.org/",
-    "music_track": "dark_history_lofi.mp3",
-    "search_keywords": [
-      "vintage map",
-      "old archive room",
-      "historical document",
-      "strategy table",
-      "antique clock",
-      "old paper"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
-  },
-  {
     "id": "run-29599385571",
     "github_run_number": 102,
     "github_run_id": 29599385571,
@@ -6438,6 +6355,93 @@
       "future tech"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-31946493777",
+    "github_run_number": 189,
+    "github_run_id": 31946493777,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/31946493777",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-16T12:17:46.501601Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 3,
+        "angle": "AI Frontier Paradox",
+        "title": "AI Solves, Humans Don't Grasp",
+        "word_count": 101,
+        "hook": "An artificial intelligence designed to decipher complex cosmic phenomena delivered a solution so ali...",
+        "score": 9.55,
+        "critique": "This script stands out with its incredibly thought-provoking and current paradox, featuring an immediate, mind-bending hook and a title that perfectly encapsulates its core dilemma. It expertly builds a narrative around intelligence surpassing human comprehension, creating a powerful, reflective loop."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Cyber Security Anomalies",
+        "title": "Invisible Hand in the Machine",
+        "word_count": 129,
+        "hook": "Cities worldwide were baffled when infrastructure seemed to develop a mind of its own, subtly defyin...",
+        "score": 9.45,
+        "critique": "This script masterfully weaves a chilling narrative of subtle digital sabotage, boasting an immediate, baffling hook and a title that perfectly captures its insidious nature. Its strength lies in building a pervasive, untraceable threat that feels very current."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Accidental Inventions",
+        "title": "Super Glue's Super Flop",
+        "word_count": 109,
+        "hook": "Imagine trying to create a transparent gun sight and accidentally inventing the world's strongest bo...",
+        "score": 9.3,
+        "critique": "A charming tale of accidental invention, this script delivers a strong, paradoxical hook and a wonderfully playful title that instantly conveys its central theme. The narrative flows smoothly, effectively highlighting how mistakes can lead to monumental breakthroughs."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Dangerous Breakthroughs",
+        "title": "Earth's Shield: Betrayed",
+        "word_count": 110,
+        "hook": "The chemical compound that revolutionized refrigeration and aerosols also quietly tore a hole in our...",
+        "score": 9.25,
+        "critique": "Delivering a stark warning about unintended consequences, this script effectively uses a strong, urgent hook and a dramatic title to convey a powerful message. It clearly explains a complex scientific betrayal, leaving a lasting impression about the true cost of innovation."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Economic Disruption",
+        "title": "Silver Flood, Value Crash",
+        "word_count": 103,
+        "hook": "Vast amounts of silver, once a symbol of wealth, flowed into Europe from the New World, paradoxicall...",
+        "score": 9.2,
+        "critique": "This script effectively presents a fascinating historical economic paradox, opening with a strong, curiosity-inducing hook and a punchy, descriptive title. It clearly illustrates the counter-intuitive effects of abundance on value, despite a slightly less impactful closing loop."
+      }
+    ],
+    "winning_script": {
+      "title": "AI Solves, Humans Don't Grasp",
+      "text": "An artificial intelligence designed to decipher complex cosmic phenomena delivered a solution so alien, humanity couldn't grasp it. Scientists fed the \"Oracle AI\" gigabytes of astrophysical data, hoping to unlock secrets of dark matter distribution. The AI returned a model of spacetime interaction that perfectly predicted observed anomalies, yet its underlying logic defied all known physics. It didn't use equations or familiar constructs; it was a pure, functional representation. While the predictions were flawless, no human could reverse-engineer its internal reasoning. We had the answer, but no understanding, creating a profound paradox: intelligence that surpasses our comprehension, forcing us to ask:",
+      "score": 9.55,
+      "critique": "This script stands out with its incredibly thought-provoking and current paradox, featuring an immediate, mind-bending hook and a title that perfectly encapsulates its core dilemma. It expertly builds a narrative around intelligence surpassing human comprehension, creating a powerful, reflective loop."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/1nJbu5i7GJA",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "cosmic nebula",
+      "complex data visualization",
+      "glowing neural network",
+      "scientific laboratory",
+      "abstract AI interface",
+      "human pondering"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
