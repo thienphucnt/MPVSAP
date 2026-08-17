@@ -2429,304 +2429,100 @@
     "github_run_number": 98,
     "github_run_id": 29551012642,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29551012642",
+    "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-17T02:52:54Z",
-    "category": "History",
+    "category": "Space & Cosmic Mysteries",
     "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 33.21,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_2.mp3",
-    "search_keywords": [
-      "deleted video",
-      "history facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Deleted video",
-        "word_count": 88,
-        "hook": "Quick fact: Deleted video",
-        "score": 8.49,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Deleted video",
-      "text": "Exploring Deleted video...",
-      "hashtags": [
-        "#history",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#FFBF00"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 210,
-    "youtube_stats": null,
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29837713758",
-    "github_run_number": 98,
-    "github_run_id": 29837713758,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29837713758",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T14:08:34Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #98",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-29559728648",
     "github_run_number": 99,
     "github_run_id": 29559728648,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29559728648",
+    "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-17T06:19:55Z",
-    "category": "Tech",
+    "category": "Space & Cosmic Mysteries",
     "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 28.56,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_4.mp3",
-    "search_keywords": [
-      "\ud83e\udd2f your brain will connect! unbelievable tech breakthroughs",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "\ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
-        "word_count": 88,
-        "hook": "Quick fact: \ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
-        "score": 8.48,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "\ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs",
-      "text": "Exploring \ud83e\udd2f Your Brain Will Connect! Unbelievable Tech Breakthroughs...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/AgDc10roFfc",
-    "error_traceback": null,
-    "global_run_number": 212,
-    "youtube_stats": {
-      "views": 159,
-      "likes": 15,
-      "comments": 5
-    },
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29853670288",
-    "github_run_number": 99,
-    "github_run_id": 29853670288,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29853670288",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T17:36:33Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #99",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-29572018392",
     "github_run_number": 100,
     "github_run_id": 29572018392,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29572018392",
+    "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-17T10:01:13Z",
-    "category": "Space",
+    "category": "Space & Cosmic Mysteries",
     "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 36.88,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_2.mp3",
-    "search_keywords": [
-      "beyond our grasp: 10 unsettling cosmic horrors revealed",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
-        "word_count": 88,
-        "hook": "Quick fact: Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
-        "score": 8.92,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed",
-      "text": "Exploring Beyond Our Grasp: 10 Unsettling Cosmic Horrors Revealed...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 214,
-    "youtube_stats": null,
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29870044517",
-    "github_run_number": 100,
-    "github_run_id": 29870044517,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29870044517",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-21T21:27:38Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #100",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-29585203694",
     "github_run_number": 101,
     "github_run_id": 29585203694,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29585203694",
+    "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-07-17T13:45:31Z",
-    "category": "Tech",
+    "category": "Space & Cosmic Mysteries",
     "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 35.39,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_4.mp3",
-    "search_keywords": [
-      "they built a sun... in a lab! #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "They Built a Sun... In a Lab! #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: They Built a Sun... In a Lab! #tech #shorts",
-        "score": 8.56,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "They Built a Sun... In a Lab! #tech #shorts",
-      "text": "Exploring They Built a Sun... In a Lab! #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/Qo2v4wUnl4Q",
-    "error_traceback": null,
-    "global_run_number": 216,
-    "youtube_stats": {
-      "views": 134,
-      "likes": 11,
-      "comments": 3
-    },
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
-    "id": "run-heal-29887673135",
-    "github_run_number": 101,
-    "github_run_id": 29887673135,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29887673135",
-    "workflow_type": "SELF_HEALING",
-    "timestamp": "2026-07-22T03:08:37Z",
-    "category": "System Diagnostics",
-    "status": "SKIPPED",
-    "generation_mode": "SELF_HEALING_DIAGNOSTICS",
-    "render_time_seconds": 1.2,
-    "lufs_target": "N/A",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "AI Self-Healing Check #101",
-      "text": "Parsed failed run logs, diagnosed zero syntax errors, system healthy."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
     "error_traceback": null,
-    "source_url": "https://github.com/thienphucnt/MPVSAP/actions",
-    "music_track": "N/A",
-    "voice_actor": "N/A",
-    "visual_asset_types": "Automated Log Inspector",
-    "ass_subtitle_engine": "N/A"
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-1786061620",
