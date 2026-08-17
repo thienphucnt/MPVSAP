@@ -6,6 +6,7 @@ import random
 import difflib
 from pathlib import Path
 from google import genai
+from google.genai import types
 
 
 def apply_unified_diff(original_lines, diff_text):
@@ -167,9 +168,11 @@ def main():
         for attempt in range(max_retries):
             try:
                 print(f"Attempting diagnosis using model: {current_model}...")
+                gen_config = types.GenerateContentConfig(automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True))
                 response = client.models.generate_content(
                     model=current_model,
-                    contents=prompt
+                    contents=prompt,
+                    config=gen_config
                 )
                 success = True
                 break

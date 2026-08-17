@@ -32,6 +32,7 @@ from typing import List, Tuple, Optional
 
 # Google APIs
 from google import genai
+from google.genai import types
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -566,7 +567,8 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
             for attempt in range(max_retries):
                 try:
                     print(f"Trying Gemini model: {current_model} (pass {outer_pass + 1}/3)...")
-                    response = client.models.generate_content(model=current_model, contents=prompt)
+                    gen_config = types.GenerateContentConfig(automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True))
+                    response = client.models.generate_content(model=current_model, contents=prompt, config=gen_config)
                     return response
                 except Exception as e:
                     last_error = e
