@@ -1,57 +1,5 @@
 [
   {
-    "id": "run-29633445469",
-    "github_run_number": 105,
-    "github_run_id": 29633445469,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29633445469",
-    "timestamp": "2026-07-18T06:07:25Z",
-    "category": "Tech",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 39.23,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Tech",
-    "music_track": "tech_track_4.mp3",
-    "search_keywords": [
-      "invisible computers are watching us #tech #shorts",
-      "tech facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "Invisible Computers Are Watching Us #tech #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: Invisible Computers Are Watching Us #tech #shorts",
-        "score": 8.73,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "Invisible Computers Are Watching Us #tech #shorts",
-      "text": "Exploring Invisible Computers Are Watching Us #tech #shorts...",
-      "hashtags": [
-        "#tech",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/6YmqxLwwFA8",
-    "error_traceback": null,
-    "global_run_number": 224,
-    "youtube_stats": {
-      "views": 156,
-      "likes": 14,
-      "comments": 3
-    },
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
     "id": "run-heal-30017972047",
     "github_run_number": 105,
     "github_run_id": 30017972047,
@@ -6112,6 +6060,93 @@
       "dark space"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+  },
+  {
+    "id": "run-32638824158",
+    "github_run_number": 196,
+    "github_run_id": 32638824158,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/32638824158",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-08-23T12:18:10.158293Z",
+    "category": "Scary Space Mysteries",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 4,
+        "angle": "Deep Void Anomaly",
+        "title": "The Universe's Glitch Zone",
+        "word_count": 139,
+        "hook": "There's a region in the deep void where light itself seems to warp and time might unravel, a true gl...",
+        "score": 9.68,
+        "critique": "This script delivers an exceptionally strong, enigmatic hook about a \"glitch zone\" that warps light and time, supported by a modern and catchy title. It builds a powerful sense of an existential cosmic anomaly, leaving the audience with profound questions about reality itself."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Astronomical Mystery",
+        "title": "Cosmic Echo: The Missing Event",
+        "word_count": 144,
+        "hook": "The universe just witnessed a supernova explosion, yet the star responsible completely vanished. Sci...",
+        "score": 9.66,
+        "critique": "This script masterfully presents a compelling cosmic paradox, with a title that perfectly encapsulates its intriguing mystery. Its escalating narrative effectively challenges fundamental astrophysical models, creating a strong sense of wonder and urgency."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Rogue Worlds",
+        "title": "Shadow Planets Haunt Cosmos",
+        "word_count": 132,
+        "hook": "Billions of planets wander the interstellar void, untethered from any star, and one could be silentl...",
+        "score": 9.62,
+        "critique": "This variant excels with its immediate, tangible threat of rogue planets and a highly evocative title. It effectively balances scientific concept with speculative danger, maintaining strong narrative engagement."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Hidden Physics",
+        "title": "Space's Strange Gravity Field",
+        "word_count": 129,
+        "hook": "Our farthest space probes are experiencing inexplicable pushes and pulls, hinting at a hidden physic...",
+        "score": 9.26,
+        "critique": "The script offers an intriguing hook about unexplained gravitational forces affecting space probes, building a solid mystery around hidden physics. While strong, its implications feel slightly less universally impactful than other variants."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Existential Scale",
+        "title": "We're Tiny. The Universe Doesn't Care.",
+        "word_count": 123,
+        "hook": "Human spaceflight is a fragile whisper against the universe's terrifying indifference, and one cosmi...",
+        "score": 9.2,
+        "critique": "The script provides a stark, existential commentary on human fragility in the face of cosmic indifference, with a highly relatable and punchy title. Its ending CTA, however, feels slightly less targeted than other variants."
+      }
+    ],
+    "winning_script": {
+      "title": "The Universe's Glitch Zone",
+      "text": "There's a region in the deep void where light itself seems to warp and time might unravel, a true glitch in the cosmic matrix. Observatories have picked up baffling light signatures from an area far beyond our galaxy, where electromagnetic waves appear to stretch and compress in ways no known physics can explain. It's not a black hole, nor a supernova remnant; it's a pervasive anomaly influencing everything within its incomprehensibly vast boundary, distorting the very light that reaches us. Could it be an echo of the universe's birth, a remnant of a primal force, or a crack in spacetime itself? This discovery hints at fundamental flaws in our understanding of reality, suggesting that the very fabric of existence isn't as uniform as we assumed. It\u2019s a silent, disturbing secret held by the cosmos, leaving cosmologists to repeatedly ask:",
+      "score": 9.68,
+      "critique": "This script delivers an exceptionally strong, enigmatic hook about a \"glitch zone\" that warps light and time, supported by a modern and catchy title. It builds a powerful sense of an existential cosmic anomaly, leaving the audience with profound questions about reality itself."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/AydehxFM77Q",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Spaceflight",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "Cosmic void",
+      "shimmering light",
+      "distorted nebula",
+      "abstract energy field",
+      "star cluster",
+      "space telescope view"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
   }
