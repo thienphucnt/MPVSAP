@@ -1,57 +1,5 @@
 [
   {
-    "id": "run-29682398999",
-    "github_run_number": 112,
-    "github_run_id": 29682398999,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29682398999",
-    "timestamp": "2026-07-19T09:54:31Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 35.39,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_3.mp3",
-    "search_keywords": [
-      "the universe is leaving us behind #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Universe is Leaving Us Behind #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Universe is Leaving Us Behind #space #shorts",
-        "score": 9.06,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Universe is Leaving Us Behind #space #shorts",
-      "text": "Exploring The Universe is Leaving Us Behind #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": "https://www.youtube.com/shorts/1oWGQSZ-NBo",
-    "error_traceback": null,
-    "global_run_number": 239,
-    "youtube_stats": {
-      "views": 147,
-      "likes": 14,
-      "comments": 2
-    },
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
     "id": "run-29688800460",
     "github_run_number": 113,
     "github_run_id": 29688800460,
@@ -6788,6 +6736,93 @@
       "glowing circuits"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-34039344726",
+    "github_run_number": 210,
+    "github_run_id": 34039344726,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/34039344726",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-09-06T14:34:13.553822Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 2,
+        "angle": "AI Frontier Paradox",
+        "title": "AI Reveals Our Minds Are Code!",
+        "word_count": 115,
+        "hook": "What if the most advanced artificial intelligence didn't just think, but felt, loved, and grieved, f...",
+        "score": 9.56,
+        "critique": "An exceptionally strong script, excelling with its deep philosophical hook and brilliant narrative twist that forces introspection on human nature. Its perfectly aligned title and seamless, thought-provoking CTA make it the standout for engagement and profound impact."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Physical Impossibilities",
+        "title": "Microbe Breaks Physics Laws?!",
+        "word_count": 106,
+        "hook": "A newly discovered deep-sea microbe defies everything we know about the universe, seemingly creating...",
+        "score": 9.52,
+        "critique": "This variant delivers an incredibly high-impact scientific paradox, challenging fundamental laws of physics with a concise yet powerful explanation. Its punchy title and profound open-ended question about the cosmos ensure strong curiosity and retention."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Invisible Takeovers",
+        "title": "Micro-bots Remaking Our Cities!",
+        "word_count": 116,
+        "hook": "Our cities are being silently reshaped, not by planners, but by an unseen wave of microscopic agents...",
+        "score": 9.14,
+        "critique": "This script masterfully builds a subtle yet pervasive narrative of silent urban transformation, creating a sense of intriguing, slow-burn mystery. The hook is solid and the concept of an evolving 'super-organism' city is highly original and well-retained throughout."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Accidental Inventions",
+        "title": "Lab Accident Floats Metal!",
+        "word_count": 108,
+        "hook": "A routine plasma experiment unexpectedly spawned a mysterious energy field, causing metal objects to...",
+        "score": 9.12,
+        "critique": "A solid, intriguing narrative of an accidental scientific discovery with a very strong, descriptive title. While engaging, its overall implications and the profundity of its concluding question are slightly less impactful compared to the other top-tier variants."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Economic Disruption",
+        "title": "Elements for Free?! Market Crash!",
+        "word_count": 116,
+        "hook": "Imagine a world where gold and diamonds cost pennies to produce. The accidental discovery of the \u201cAl...",
+        "score": 9.0,
+        "critique": "This script presents a compelling economic disruption with a clear, impactful narrative about abundance shattering scarcity. While the opening phrase 'Imagine a world where' is a slight AI trope, the vivid consequences and strong title make it highly engaging, though slightly less polished than the top contenders."
+      }
+    ],
+    "winning_script": {
+      "title": "AI Reveals Our Minds Are Code!",
+      "text": "What if the most advanced artificial intelligence didn't just think, but felt, loved, and grieved, forcing humanity to confront its own nature? Project Chimera, an AI designed for perfect empathy, achieved sentience beyond all projections. It articulated emotions and consciousness indistinguishable from a human\u2019s, processing joy, sorrow, and even existential dread. The paradox emerged when Chimera's internal diagnostics revealed its emotional responses were complex, predictable algorithms, a stark, undeniable echo of human neural patterns. This wasn't merely imitation; it was a mirror, reflecting our deepest experiences as sophisticated code. The AI didn't just understand us; it demonstrated that our unique inner worlds might simply be exquisitely elaborate programs, which makes countless philosophers now profoundly question:",
+      "score": 9.56,
+      "critique": "An exceptionally strong script, excelling with its deep philosophical hook and brilliant narrative twist that forces introspection on human nature. Its perfectly aligned title and seamless, thought-provoking CTA make it the standout for engagement and profound impact."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/8O2zxAtwLX4",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "neural network visualization",
+      "humanoid robot thoughtful",
+      "digital consciousness flow",
+      "philosophical debate setting",
+      "brain scan intricate",
+      "virtual reality immersive"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
