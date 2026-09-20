@@ -1,53 +1,5 @@
 [
   {
-    "id": "run-29807291486",
-    "github_run_number": 126,
-    "github_run_id": 29807291486,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/29807291486",
-    "timestamp": "2026-07-21T06:31:37Z",
-    "category": "Space",
-    "status": "SUCCESS",
-    "generation_mode": "SINGLE_SCRIPT_LEGACY",
-    "daily_volume": 6,
-    "render_time_seconds": 25.71,
-    "lufs_target": "Legacy Audio (-18 LUFS)",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_track_4.mp3",
-    "search_keywords": [
-      "the cold spot: universe's terrifying scar #space #shorts",
-      "space facts"
-    ],
-    "voice_actor": "gTTS / Edge-TTS Legacy Voice",
-    "visual_asset_types": "Basic B-Roll Clips",
-    "ass_subtitle_engine": "Standard MoviePy Subtitles",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Single Script Legacy Mode",
-        "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
-        "word_count": 88,
-        "hook": "Quick fact: The Cold Spot: Universe's Terrifying Scar #space #shorts",
-        "score": 9.57,
-        "critique": "Legacy single-script execution."
-      }
-    ],
-    "winning_script": {
-      "title": "The Cold Spot: Universe's Terrifying Scar #space #shorts",
-      "text": "Exploring The Cold Spot: Universe's Terrifying Scar #space #shorts...",
-      "hashtags": [
-        "#space",
-        "#shorts",
-        "#facts"
-      ],
-      "color_theme": "#00E5FF"
-    },
-    "youtube_url": null,
-    "error_traceback": null,
-    "global_run_number": 268,
-    "youtube_stats": null,
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
     "id": "run-29822293698",
     "github_run_number": 127,
     "github_run_id": 29822293698,
@@ -7313,6 +7265,93 @@
       "ancient history"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+  },
+  {
+    "id": "run-35518133865",
+    "github_run_number": 224,
+    "github_run_id": 35518133865,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/35518133865",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-09-20T15:05:51.600631Z",
+    "category": "Morbid or Silly History Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 4,
+        "angle": "Bizarre Laws",
+        "title": "Ancient Greece's Grief Police",
+        "word_count": 85,
+        "hook": "Imagine being fined for mourning too loudly or elaborately at a funeral. In ancient Greece, particul...",
+        "score": 9.54,
+        "critique": "This variant excels with an immediately bizarre and highly original hook, supported by an incredibly witty and synergistic title. Its seamless loop CTA perfectly enhances the inherent curiosity, making it the strongest entry."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Wartime Secrets",
+        "title": "Pigeon Spies of World War One",
+        "word_count": 88,
+        "hook": "During World War One, pigeons were secretly equipped with tiny, automatic cameras, transforming them...",
+        "score": 9.3,
+        "critique": "This variant boasts an exceptionally strong and imaginative hook, perfectly complemented by a highly creative and memorable title. It stands out as a top contender, effectively engaging curiosity with its tale of secret wartime technology."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Forgotten Cover-Ups",
+        "title": "Vanished Mining Town's Dark Secret",
+        "word_count": 92,
+        "hook": "In the early nineteen hundreds, an entire remote United States mining town mysteriously vanished, le...",
+        "score": 9.16,
+        "critique": "The script effectively establishes a compelling mystery with a strong narrative arc of cover-up and hidden truth. It presents a solid, engaging concept, securing a strong third place due to its intriguing premise and clear progression."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Tragic Miscalculations",
+        "title": "The Canal That Devoured Itself",
+        "word_count": 81,
+        "hook": "One massive nineteenth-century infrastructure project, a canal intended to connect two major rivers,...",
+        "score": 9.0,
+        "critique": "With its poetic and highly synergistic title, this variant tells a clear and engaging story of human ambition thwarted by natural forces. While solid, its hook and loop are slightly less unique than the top performers."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Untold Historical Irony",
+        "title": "Dynasty's Alliance, Lost Autonomy",
+        "word_count": 93,
+        "hook": "The Turabay dynasty's initial alliance with the Ottoman Empire in the sixteenth century, intended to...",
+        "score": 8.7,
+        "critique": "The script presents a nuanced historical irony with a clear narrative, but its hook might require a moment longer for a general audience to grasp fully compared to the more universally surprising concepts. It offers a well-structured story, albeit with less immediate broad appeal."
+      }
+    ],
+    "winning_script": {
+      "title": "Ancient Greece's Grief Police",
+      "text": "Imagine being fined for mourning too loudly or elaborately at a funeral. In ancient Greece, particularly in certain city-states, strict sumptuary laws dictated appropriate displays of grief. These bizarre regulations prohibited excessive wailing, tearing of hair, or overly elaborate funeral attire, even banning certain expensive grave goods. The state intervened to control public displays of emotion, believing excessive grief disrupted social order and displayed unseemly extravagance. Citizens could be publicly reprimanded or even fined, transforming personal tragedy into a regulated performance, making onlookers constantly wonder:",
+      "score": 9.54,
+      "critique": "This variant excels with an immediately bizarre and highly original hook, supported by an incredibly witty and synergistic title. Its seamless loop CTA perfectly enhances the inherent curiosity, making it the strongest entry."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/QS57eyICqjg",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "grave_matters.mp3",
+    "search_keywords": [
+      "ancient Greek pottery",
+      "mourners at grave",
+      "old parchment scroll",
+      "ancient city ruins",
+      "judge's gavel",
+      "market square"
+    ],
+    "voice_actor": "af_heart (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
   }
