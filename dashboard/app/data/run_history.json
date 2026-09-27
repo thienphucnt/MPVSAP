@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-30010699622",
-    "github_run_number": 133,
-    "github_run_id": 30010699622,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30010699622",
-    "timestamp": "2026-07-23T13:19:21Z",
-    "category": "History",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 28.5,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Dark Secret Uncovered",
-        "title": "The Ancient Machine #133",
-        "word_count": 88,
-        "hook": "'Dark Secret Uncovered' - Antikythera mechanism gears moving underwater...",
-        "score": 9.09,
-        "critique": "Auto-QA Score 9.09/10. Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Scientific Breakthrough: The Ancient Machine",
-        "word_count": 90,
-        "hook": "'Scientific Breakthrough' - Antikythera mechanism gears moving underwater...",
-        "score": 8.83,
-        "critique": "Auto-QA Score 8.83/10. Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Action Mystery",
-        "title": "Action Mystery: The Ancient Machine",
-        "word_count": 94,
-        "hook": "'Action Mystery' - Antikythera mechanism gears moving underwater...",
-        "score": 7.84,
-        "critique": "Auto-QA Score 7.84/10. Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Existential Wonder: The Ancient Machine",
-        "word_count": 95,
-        "hook": "'Existential Wonder' - Antikythera mechanism gears moving underwater...",
-        "score": 7.7,
-        "critique": "Auto-QA Score 7.7/10. Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Suspenseful Mystery",
-        "title": "Suspenseful Mystery: The Ancient Machine",
-        "word_count": 104,
-        "hook": "'Suspenseful Mystery' - Antikythera mechanism gears moving underwater...",
-        "score": 7.17,
-        "critique": "Auto-QA Score 7.17/10. Evaluated retention loop and topic salience."
-      }
-    ],
-    "winning_script": {
-      "title": "The Ancient Machine #133",
-      "text": "'Dark Secret Uncovered' - Antikythera mechanism gears moving underwater...",
-      "hashtags": [
-        "#history",
-        "#mystery",
-        "#facts"
-      ],
-      "color_theme": "#00FF66"
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video deleted / removed from YouTube channel due to visual frame issue.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "history_track_1.mp3",
-    "search_keywords": [
-      "doctor mystery",
-      "history facts"
-    ],
-    "voice_actor": "af_sarah (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (History Theme)",
-    "workflow_type": "DAILY_SHORTS"
-  },
-  {
     "id": "run-30016321499",
     "github_run_number": 134,
     "github_run_id": 30016321499,
@@ -7499,6 +7416,93 @@
       "coding matrix"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-36331232612",
+    "github_run_number": 231,
+    "github_run_id": 36331232612,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/36331232612",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-09-27T15:58:15.902882Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 5,
+        "angle": "AI Frontier Paradox",
+        "title": "AI Built Fusion, We Can't Get It",
+        "word_count": 110,
+        "hook": "A groundbreaking AI achieved a stable fusion energy milestone, yet its explanation of the mechanism ...",
+        "score": 9.95,
+        "critique": "This variant is exceptionally strong, featuring a perfect hook and an ingenious title that immediately introduces a profound AI-driven paradox. It stands as the strongest overall, masterfully combining an incomprehensible breakthrough with a deeply thought-provoking, seamless open loop."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Cyber Security Anomalies",
+        "title": "Network's Impossible Echoes",
+        "word_count": 112,
+        "hook": "A ghost signal began confusing global navigation systems, making ships and aircraft report they were...",
+        "score": 9.8,
+        "critique": "This variant excels with an incredibly strong hook that immediately presents an impossible, high-stakes scenario, perfectly mirrored by its evocative title and seamless CTA. It stands out as one of the strongest contenders, slightly edged out only by Variant #5's profound paradox."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Physical Impossibilities",
+        "title": "The Bridge That Broke Physics",
+        "word_count": 97,
+        "hook": "How did a five-hundred-year-old bridge withstand a two-hundred-year storm cycle that shattered all m...",
+        "score": 9.75,
+        "critique": "This variant presents an exceptional, tangible mystery with a superb hook and an incredibly compelling title that perfectly encapsulates the story. It's a very strong contender, ranking just below Variant #1 and #5 for its slightly less expansive implications."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Accidental Inventions",
+        "title": "The Rust Cure That Bent Light",
+        "word_count": 108,
+        "hook": "A chemist trying to invent a new rust preventative accidentally created a material that could bend l...",
+        "score": 9.65,
+        "critique": "This variant shines with an outstanding, paradoxical title and a strong hook that immediately introduces an accidental, revolutionary discovery. It offers a solid narrative and compelling loop, though it's surpassed by the more profound mysteries of the top three variants."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Economic Disruption",
+        "title": "Synthetic Scarcity Crashes Markets",
+        "word_count": 96,
+        "hook": "The sudden lab-grown synthesis of a critical rare earth element instantly triggered a global commodi...",
+        "score": 9.35,
+        "critique": "This variant offers a compelling economic disruption scenario, highlighted by a strong title and clear narrative progression from breakthrough to global impact. While solid, it doesn't quite match the immediate, impossible mystery and high-concept intrigue found in its top-ranked competitors."
+      }
+    ],
+    "winning_script": {
+      "title": "AI Built Fusion, We Can't Get It",
+      "text": "A groundbreaking AI achieved a stable fusion energy milestone, yet its explanation of the mechanism was completely incomprehensible to human physicists. The \"Orion\" AI, developed for complex theoretical physics, shocked the world in two thousand twenty-six by delivering schematics for a self-sustaining fusion reactor. When scientists celebrated, they asked Orion for its core principles. The AI responded with complex, multi-dimensional mathematics and concepts that defied all known physical laws, describing interactions of matter and energy that simply didn't exist in human understanding. The reactor worked flawlessly, generating limitless clean energy, but its fundamental \"how\" remained an alien secret, which leaves experts wondering if we\u2019ve truly progressed or merely bypassed understanding:",
+      "score": 9.95,
+      "critique": "This variant is exceptionally strong, featuring a perfect hook and an ingenious title that immediately introduces a profound AI-driven paradox. It stands as the strongest overall, masterfully combining an incomprehensible breakthrough with a deeply thought-provoking, seamless open loop."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/-zRJDY8mheg",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "glowing fusion reactor core",
+      "complex mathematical equations",
+      "baffled scientist expressions",
+      "futuristic control room",
+      "holographic display data",
+      "conceptual energy flow animation"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
