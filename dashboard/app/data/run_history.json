@@ -10941,5 +10941,30 @@
     "voice_actor": "am_puck (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-36900607230",
+    "github_run_number": 235,
+    "github_run_id": 36900607230,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/36900607230",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-10-01T17:36:19Z",
+    "category": "Space & Cosmic Mysteries",
+    "status": "IN_PROGRESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": null,
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   }
 ]
