@@ -1,87 +1,5 @@
 [
   {
-    "id": "run-30144594840",
-    "github_run_number": 147,
-    "github_run_id": 30144594840,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30144594840",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-07-25T04:53:59.086500Z",
-    "category": "Exciting Tech Facts",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "Life & Tech Just Became ONE!",
-        "word_count": 114,
-        "hook": "\"The breakthrough wasn't in coding cells, but in *interfacing* their energy directly with computational systems.\"",
-        "score": 6.0,
-        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Scientific Breakthrough: Life & Tech Just Became ONE!",
-        "word_count": 114,
-        "hook": "\"Scientific Breakthrough \u2014 * their energy directly with computational systems. Dr. Aris Thorne's team achie...\"",
-        "score": 5.6,
-        "critique": "Pass 2 Auto-QA Evaluated (5.6/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Dramatic Conflict: Life & Tech Just Became ONE!",
-        "word_count": 114,
-        "hook": "\"Dramatic Conflict \u2014 Thorne's team achieved 'Bio-Logic Convergence'\u2014a living circuit, where microbia...\"",
-        "score": 5.2,
-        "critique": "Pass 2 Auto-QA Evaluated (5.2/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Existential Wonder: Life & Tech Just Became ONE!",
-        "word_count": 114,
-        "hook": "\"Existential Wonder \u2014 cuit, where microbial colonies powered and optimized processing units, creating...\"",
-        "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Action Mystery: Life & Tech Just Became ONE!",
-        "word_count": 114,
-        "hook": "\"Action Mystery \u2014 ing units, creating self-sustaining micro-labs. This radical novelty promised li...\"",
-        "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
-      }
-    ],
-    "winning_script": {
-      "title": "Life & Tech Just Became ONE!",
-      "text": "The breakthrough wasn't in coding cells, but in *interfacing* their energy directly with computational systems. Dr. Aris Thorne's team achieved 'Bio-Logic Convergence'\u2014a living circuit, where microbial colonies powered and optimized processing units, creating self-sustaining micro-labs. This radical novelty promised limitless possibilities, from autonomous environmental cleansers to hyper-efficient data centers fueled by organic matter. The challenge wasn't just building it, but understanding the emergent properties. The systems weren't just efficient; they were learning, adapting, evolving their symbiotic relationship in ways Thorne never predicted. A new form of technological growth was born, blurring lines between life and silicon... proving the most profound efficiencies weren't found in isolation, but in the unseen handshake between life and logic.",
-      "score": 6.0
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "Dr. Aris Thorne",
-      "Glowing petri dish",
-      "Microbial cultures",
-      "Circuit board with bioluminescence",
-      "Microscope view",
-      "Energy flow diagram"
-    ],
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
-  },
-  {
     "id": "run-30144969478",
     "github_run_number": 148,
     "github_run_id": 30144969478,
@@ -7635,6 +7553,84 @@
       "medieval artifact"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+  },
+  {
+    "id": "run-38157292267",
+    "github_run_number": 245,
+    "github_run_id": 38157292267,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/38157292267",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-10-11T16:56:53.620081Z",
+    "category": "Morbid or Silly History Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 4,
+        "angle": "Forgotten Cover-Ups",
+        "title": "The Dreadnought's Hidden Shame",
+        "word_count": 128,
+        "hook": "A one hundred million dollar warship, Germany's dreadnought S.M.S. Helgoland, built for dominance, m...",
+        "score": 9.58,
+        "critique": "With an incredibly potent title and a hook that immediately introduces mystery and potential scandal, this script masterfully creates a strong curiosity gap. The narrative builds excellent suspense around a 'forgotten cover-up,' leading to a highly engaging open-ended conclusion."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Untold Historical Irony",
+        "title": "Naval Giant's Shocking Boredom",
+        "word_count": 137,
+        "hook": "A one hundred million dollar warship, Germany's dreadnought S.M.S. Helgoland, was engineered for unp...",
+        "score": 9.54,
+        "critique": "This script boasts a strong hook contrasting immense power with surprising inactivity, captured perfectly by its punchy title. Its narrative expertly highlights the irony of unutilized might, setting up a compelling open loop for further exploration."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Bizarre Laws",
+        "title": "The Official History Lie",
+        "word_count": 129,
+        "hook": "Imagine a past where the very recounting of history was subject to official decree, legally demandin...",
+        "score": 8.94,
+        "critique": "The script presents an intriguing 'what if' scenario about officially mandated historical narratives with a provocative title. While effective, the initial 'imagine a past where' hook feels slightly less direct and common than other variants."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Everyday Absurdities",
+        "title": "Ancient Eras Erased By Memory",
+        "word_count": 130,
+        "hook": "Entire eras of human experience could vanish from memory, not by conflict or catastrophe, but by the...",
+        "score": 8.7,
+        "critique": "This variant offers a thought-provoking angle on the fragility of pre-academic history and the loss of knowledge. However, its hook is more contemplative than immediately shocking, and the narrative has less inherent conflict compared to the dreadnought-focused options."
+      }
+    ],
+    "winning_script": {
+      "title": "The Dreadnought's Hidden Shame",
+      "text": "A one hundred million dollar warship, Germany's dreadnought S.M.S. Helgoland, built for dominance, mysteriously saw shockingly limited action during World War One. Its powerful thirty point five centimeter guns were mostly silent. Launched in one thousand nine hundred nine, this pinnacle of naval engineering seemed destined for glory. Yet, official records downplayed its inactivity, perhaps to protect national morale or high-ranking reputations. Was it strategic cowardice, a series of failed secret missions, or simply gross incompetence that prevented this formidable vessel from engaging Britain\u2019s Royal Navy more aggressively? The truth of its underutilization, shrouded in wartime secrecy, became a forgotten cover-up. Historians now comb through fragmented evidence, searching for answers, compelling naval historians to tirelessly search for the true, forgotten reasons why this formidable dreadnought ultimately achieved so...",
+      "score": 9.58,
+      "critique": "With an incredibly potent title and a hook that immediately introduces mystery and potential scandal, this script masterfully creates a strong curiosity gap. The narrative builds excellent suspense around a 'forgotten cover-up,' leading to a highly engaging open-ended conclusion."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/z9KPqJ4OoLk",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
+    "music_track": "grave_matters.mp3",
+    "search_keywords": [
+      "vintage battleship",
+      "smoke on water",
+      "naval officer",
+      "old battle maps",
+      "sealed documents",
+      "stormy sky"
+    ],
+    "voice_actor": "af_heart (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
   }
