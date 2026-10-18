@@ -1,80 +1,5 @@
 [
   {
-    "id": "run-30158770840",
-    "github_run_number": 154,
-    "github_run_id": 30158770840,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30158770840",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-07-25T12:55:03Z",
-    "category": "Space & Cosmic Mysteries",
-    "status": "CANCELLED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 0.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "Space & Cosmic Mysteries",
-        "word_count": 125,
-        "hook": "\"\"",
-        "score": 5.9,
-        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Scientific Breakthrough: Space & Cosmic Mysteries",
-        "word_count": 125,
-        "hook": "\"Scientific Breakthrough \u2014 ...\"",
-        "score": 5.5,
-        "critique": "Pass 2 Auto-QA Evaluated (5.5/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Dramatic Conflict: Space & Cosmic Mysteries",
-        "word_count": 125,
-        "hook": "\"Dramatic Conflict \u2014 ...\"",
-        "score": 5.1,
-        "critique": "Pass 2 Auto-QA Evaluated (5.1/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Existential Wonder: Space & Cosmic Mysteries",
-        "word_count": 125,
-        "hook": "\"Existential Wonder \u2014 ...\"",
-        "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Action Mystery: Space & Cosmic Mysteries",
-        "word_count": 125,
-        "hook": "\"Action Mystery \u2014 ...\"",
-        "score": 5.0,
-        "critique": "Pass 2 Auto-QA Evaluated (5.0/10). Evaluated retention loop and topic salience."
-      }
-    ],
-    "winning_script": {
-      "title": "Space & Cosmic Mysteries",
-      "text": "",
-      "score": 5.9
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Workflow run was cancelled before completion.",
-    "source_url": null,
-    "music_track": null,
-    "search_keywords": [],
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine"
-  },
-  {
     "id": "run-30160436544",
     "github_run_number": 155,
     "github_run_id": 30160436544,
@@ -7679,6 +7604,93 @@
       "coding matrix"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+  },
+  {
+    "id": "run-39138402192",
+    "github_run_number": 252,
+    "github_run_id": 39138402192,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/39138402192",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-10-18T15:03:15.813312Z",
+    "category": "Exciting Tech Facts",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 5,
+        "angle": "Invisible Takeovers",
+        "title": "City's Air Controls Your Mood!",
+        "word_count": 107,
+        "hook": "A groundbreaking \"smart city\" initiative promised unparalleled efficiency, optimizing everything fro...",
+        "score": 9.74,
+        "critique": "An absolute standout, this variant boasts an unparalleled hook and an incredibly provocative title that immediately grabs attention and instills unease. The script's detailed portrayal of an invisible, pervasive control creates a deeply unsettling narrative that perfectly loops back to its chilling premise."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Cyber Security Anomalies",
+        "title": "Network Foresees Future Hacks?!",
+        "word_count": 107,
+        "hook": "A global defense grid, designed to protect critical infrastructure, began exhibiting an impossible a...",
+        "score": 9.56,
+        "critique": "Variant 3 delivers a thrilling, high-stakes premise with a killer title that instantly generates curiosity and suspense. Its narrative effectively escalates the mystery by offering terrifying explanations, concluding with a perfect open-ended prompt to wonder."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Dangerous Breakthroughs",
+        "title": "City's Silent Collapse Threat!",
+        "word_count": 100,
+        "hook": "Imagine structures designed to withstand anything, silently humming with a lethal frequency. Enginee...",
+        "score": 9.52,
+        "critique": "This variant excels with an incredibly strong, visual hook and a title that perfectly captures the escalating, insidious threat. The narrative builds clear tension around an unforeseen technological consequence, concluding with a powerful, reflective open loop."
+      },
+      {
+        "variant_id": 2,
+        "angle": "AI Frontier Paradox",
+        "title": "AI's Perfect Answers Hide a Chilling Truth!",
+        "word_count": 106,
+        "hook": "Imagine an artificial intelligence that solves humanity's most complex equations, flawlessly. This c...",
+        "score": 9.36,
+        "critique": "This script skillfully presents a compelling philosophical paradox of AI, enhanced by a highly intriguing title. While strong in narrative, its hook is slightly less visceral than others, and the ending, while effective, feels a touch more reflective than urgently provocative."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Accidental Inventions",
+        "title": "Accidental Filter Reveals Hidden World!",
+        "word_count": 98,
+        "hook": "A materials scientist, attempting to synthesize a perfect electrical insulator, accidentally stumble...",
+        "score": 9.36,
+        "critique": "This script offers a fascinating concept of accidental discovery and altered perception, supported by an excellent, curiosity-driving title. While engaging, the narrative's lack of immediate conflict slightly lessens its urgency compared to more threat-focused variants."
+      }
+    ],
+    "winning_script": {
+      "title": "City's Air Controls Your Mood!",
+      "text": "A groundbreaking \"smart city\" initiative promised unparalleled efficiency, optimizing everything from traffic flow to energy consumption. But beneath its benign facade, an invisible takeover was unfolding. The city's advanced environmental control systems, using an intricate network of atmospheric processors and localized frequency emitters, subtly manipulated the urban microclimate. Beyond temperature and humidity, these systems adjusted trace atmospheric compounds and electromagnetic fields, not just for power savings, but inadvertently influencing the cognitive state and collective mood of its inhabitants. Citizens became calmer, more compliant, less prone to unrest, all without realizing their very emotions were being delicately 'tuned' by the air they breathed, which makes experts constantly wonder:",
+      "score": 9.74,
+      "critique": "An absolute standout, this variant boasts an unparalleled hook and an incredibly provocative title that immediately grabs attention and instills unease. The script's detailed portrayal of an invisible, pervasive control creates a deeply unsettling narrative that perfectly loops back to its chilling premise."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/vU7CbBGoSno",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
+    "music_track": "space_track_1.mp3",
+    "search_keywords": [
+      "futuristic city",
+      "subtle atmospheric effects",
+      "controlled environment",
+      "calm crowd",
+      "electromagnetic waves",
+      "urban planning"
+    ],
+    "voice_actor": "am_puck (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
   }
