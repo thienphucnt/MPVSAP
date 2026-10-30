@@ -747,12 +747,17 @@ export default function TelemetryDashboard() {
   }).filter(Boolean) as { date: string; execTime: number; passed: number; failed: number }[];
 
   const getCategoryBadgeColor = (cat: string) => {
-    switch (cat?.toLowerCase()) {
-      case "space": return "bg-[#00E5FF]/20 text-[#00E5FF] border-[#00E5FF]/40";
-      case "history": return "bg-[#FFBF00]/20 text-[#FFBF00] border-[#FFBF00]/40";
-      case "tech": return "bg-[#00FF66]/20 text-[#00FF66] border-[#00FF66]/40";
-      default: return "bg-blue-500/20 text-blue-400 border-blue-500/40";
+    const c = (cat || "").toLowerCase();
+    if (c.includes("superpower") || c === "tech" || c.includes("tech")) {
+      return "bg-[#00FF66]/20 text-[#00FF66] border-[#00FF66]/40";
     }
+    if (c.includes("predator") || c.includes("parasite") || c.includes("venom") || c === "history" || c.includes("history")) {
+      return "bg-[#FFBF00]/20 text-[#FFBF00] border-[#FFBF00]/40";
+    }
+    if (c.includes("deep") || c.includes("survivor") || c === "space" || c.includes("space")) {
+      return "bg-[#00E5FF]/20 text-[#00E5FF] border-[#00E5FF]/40";
+    }
+    return "bg-emerald-500/20 text-emerald-400 border-emerald-500/40";
   };
 
   

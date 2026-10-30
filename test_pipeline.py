@@ -228,6 +228,94 @@ class TestPipeline(unittest.TestCase):
 
         print("SUCCESS: Test 5 Passed: test_seamless_looping_logic successfully verified TTS silence trimming and 30fps frame quantization.")
 
+    def test_wildlife_species_ingestion_and_few_shot_scoring(self):
+        """
+        Test 6: Verify MPVSAP 3.0 WildApex Shorts Wildlife & Bizarre Biology Refactoring:
+        1. All 4 sub-pillars in CATEGORIES use YouTube Category ID '15' (Pets & Animals) and @WildApexShorts watermark.
+        2. Curated species ingestion (fetch_wikipedia_source_text) selects an unused biological species.
+        3. get_run_score prioritizes real YouTube views > 0 and falls back to winning_script['score'] when views == 0 or None.
+        4. sanitize_script_opening strips leading lowercase conjunction fragments and capitalizes Sentence 1.
+        5. generate_ass_file groups Shorts captions into 2-to-3 word phrase chunks at y=1120 (MarginV=800).
+        """
+        import tempfile
+        from main import (
+            CATEGORIES,
+            WATERMARK_HANDLE,
+            VideoFormatConfig,
+            fetch_wikipedia_source_text,
+            generate_ass_file,
+            get_run_score,
+            sanitize_script_opening,
+        )
+
+        # 1. Verify 4 Wildlife Pillars & Category ID 15
+        self.assertEqual(len(CATEGORIES), 4)
+        for cat_name, cat_meta in CATEGORIES.items():
+            self.assertEqual(cat_meta["yt_category_id"], "15", f"Expected yt_category_id '15' for {cat_name}")
+        self.assertEqual(WATERMARK_HANDLE, "@WildApexShorts")
+
+        # 2. Verify Curated Species Ingestion via mocked HTTP_SESSION
+        mock_wiki_resp = MagicMock()
+        mock_wiki_resp.json.return_value = {
+            "query": {
+                "pages": {
+                    "12345": {
+                        "title": "Peacock mantis shrimp",
+                        "extract": (
+                            "The peacock mantis shrimp (Odontodactylus scyllarus) is a large stomatopod native to the "
+                            "Indo-Pacific. It strikes prey with club-like appendages accelerating at over 10,000 Gs "
+                            "and generating cavitation bubbles that shatter shells."
+                        ) * 3
+                    }
+                }
+            }
+        }
+        with patch("main.HTTP_SESSION.get", return_value=mock_wiki_resp):
+            src = fetch_wikipedia_source_text("Bizarre Biological Superpowers", [])
+            self.assertEqual(src["title"], "Peacock mantis shrimp")
+            self.assertIn("cavitation bubbles", src["text"])
+
+        # 3. Verify get_run_score hybrid view + QA scoring
+        run_zero_views = {"youtube_stats": {"views": 0}, "winning_script": {"score": 9.65}}
+        run_none_stats = {"youtube_stats": None, "winning_script": {"score": 9.40}}
+        run_high_views = {"youtube_stats": {"views": 250}, "winning_script": {"score": 9.10}}
+        self.assertAlmostEqual(get_run_score(run_zero_views), 9.65, places=2)
+        self.assertAlmostEqual(get_run_score(run_none_stats), 9.40, places=2)
+        self.assertGreater(get_run_score(run_high_views), get_run_score(run_zero_views))
+
+        # 4. Verify sanitize_script_opening strips lowercase fragments
+        cleaned_hook = sanitize_script_opening("...that this six-inch shrimp punches like a bullet.")
+        self.assertEqual(cleaned_hook, "This six-inch shrimp punches like a bullet.")
+
+        # 5. Verify 2-to-3 word phrase chunking & safe-zone MarginV in generate_ass_file
+        short_cfg = VideoFormatConfig("short")
+        self.assertEqual(short_cfg.sub_fontsize, 74)
+        self.assertEqual(short_cfg.sub_position, ("center", 1120))
+        self.assertEqual(short_cfg.clip_count, 8)
+
+        sample_subs = [
+            ((0.0, 0.3), "THIS"),
+            ((0.3, 0.6), "MANTIS"),
+            ((0.6, 0.9), "SHRIMP"),
+            ((0.9, 1.2), "SHATTERS"),
+            ((1.2, 1.5), "GLASS."),
+        ]
+        temp_ass = os.path.join(tempfile.gettempdir(), f"test_wildapex_{os.getpid()}.ass")
+        try:
+            generate_ass_file(sample_subs, temp_ass, "Bizarre Biological Superpowers", short_cfg)
+            with open(temp_ass, "r", encoding="utf-8") as f:
+                ass_content = f.read()
+            self.assertIn(",800,1", ass_content)  # Default style MarginV = 1920 - 1120 = 800
+            self.assertIn("@WildApexShorts", ass_content)
+            # 5 words should be grouped into 2 phrase dialogue events (+ 1 watermark dialogue event = 3 total)
+            dialogue_lines = [line for line in ass_content.splitlines() if line.startswith("Dialogue:")]
+            self.assertEqual(len(dialogue_lines), 3)
+        finally:
+            if os.path.exists(temp_ass):
+                os.remove(temp_ass)
+
+        print("SUCCESS: Test 6 Passed: test_wildlife_species_ingestion_and_few_shot_scoring verified WildApex 3.0 architecture.")
+
 
 if __name__ == "__main__":
     unittest.main()

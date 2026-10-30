@@ -108,78 +108,152 @@ HTTP_SESSION.headers.update({
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 })
 
-# Global mapping for our three distinct content buckets
+# Global mapping for our four unified Extreme Wildlife & Biology sub-pillars
 CATEGORIES = {
-    "Scary Space Mysteries": {
-        "db_key": "space",
+    "Bizarre Biological Superpowers": {
+        "db_key": "superpowers",
         "playlist_env": "YT_PLAYLIST_SPACE",
-        "topic_desc": "a terrifying, real-life space mystery or unsettling astrophysics fact",
-        "tone": "grounded but deeply ominous",
+        "topic_desc": "an organism with a real, verifiable biological superpower that seems to break physics or aging (e.g. biological immortality, cavitation punch, limb/brain regeneration, extreme thermal or sonic weapons)",
+        "tone": "authoritative, punchy, visceral scientific documentary",
         "music_subfolder": "space",
-        "kw_examples": "space: 'neutron star', 'black hole', 'supernova', 'galaxy', 'meteor'",
-        "kw_defaults": ["dark space", "outer space", "nebula galaxy", "black hole", "cosmic abyss", "supernova"],
-        "yt_tags": ["shorts", "nichefactsshorts", "space", "astrophysics", "cosmos", "universe"],
-        "title_hashtags": "#space #shorts",
-        "yt_category_id": "28"
+        "kw_examples": "superpowers: 'mantis shrimp closeup', 'jellyfish underwater', 'octopus reef', 'axolotl amphibian', 'coral reef macro'",
+        "kw_defaults": ["jellyfish underwater", "octopus closeup", "coral reef underwater", "tropical fish swimming", "deep blue ocean", "marine life closeup", "shrimp underwater", "sea turtle"],
+        "yt_tags": ["shorts", "animals", "wildlife", "nature", "biology", "animalfacts"],
+        "title_hashtags": "#animals #nature #shorts",
+        "yt_category_id": "15"
     },
-    "Morbid or Silly History Facts": {
-        "db_key": "history",
+    "Apex Predators & Deadly Matchups": {
+        "db_key": "predators",
         "playlist_env": "YT_PLAYLIST_HISTORY",
-        "topic_desc": "a bizarre, morbid, funny, or unsettling real historical fact (e.g. strange ancient customs, odd ruler behaviors)",
-        "tone": "factual, compelling, but highly entertaining",
+        "topic_desc": "lethal hunting mechanics, evolutionary combat adaptations, and surprising real-world predator-prey matchups",
+        "tone": "high-tension, authoritative, visceral wildlife documentary",
         "music_subfolder": "history",
-        "kw_examples": "history: 'ancient ruins', 'vintage map', 'medieval armor', 'roman colosseum', 'egyptian pyramid'",
-        "kw_defaults": ["ancient history", "historical document", "medieval artifact", "castle ruins", "old map"],
-        "yt_tags": ["shorts", "nichefactsshorts", "history", "ancient", "historyfacts", "didyouknow"],
-        "title_hashtags": "#history #shorts",
-        "yt_category_id": "23"
+        "kw_examples": "predators: 'lion hunting', 'grizzly bear', 'crocodile water', 'great white shark', 'eagle flying'",
+        "kw_defaults": ["lioness hunting", "grizzly bear", "crocodile underwater", "shark swimming", "hawk flying", "wild predator", "cheetah running", "wolf pack"],
+        "yt_tags": ["shorts", "wildlife", "predators", "nature", "animals", "survival"],
+        "title_hashtags": "#wildlife #predators #shorts",
+        "yt_category_id": "15"
     },
-    "Exciting Tech Facts": {
-        "db_key": "tech",
+    "Mind-Control Parasites & Venom": {
+        "db_key": "parasites",
         "playlist_env": "YT_PLAYLIST_TECH",
-        "topic_desc": "an exciting, mind-bending, or futuristic technology fact (e.g. quantum computing breakthrough, weird coding history, AI advancements)",
-        "tone": "thrilling, cutting-edge, and highly engaging",
+        "topic_desc": "visceral biological horror grounded in 100% real zoology: host-hijacking parasites, neurotoxins, and lethal venoms",
+        "tone": "dark, gripping, scientifically accurate zoological thriller",
         "music_subfolder": "tech",
-        "kw_examples": "technology: 'futuristic server room', 'cyberpunk code', 'quantum computer', 'robotic arm', 'artificial intelligence'",
-        "kw_defaults": ["future tech", "computer server", "glowing circuits", "ai neural network", "coding matrix"],
-        "yt_tags": ["shorts", "nichefactsshorts", "technology", "tech", "futurism", "science"],
-        "title_hashtags": "#tech #shorts",
-        "yt_category_id": "23"
+        "kw_examples": "parasites: 'praying mantis macro', 'ants colony', 'scorpion closeup', 'wasp insect', 'venomous snake'",
+        "kw_defaults": ["ants macro", "praying mantis", "scorpion closeup", "spider web macro", "rattlesnake closeup", "poisonous frog", "wasp macro", "beetle closeup"],
+        "yt_tags": ["shorts", "biology", "parasites", "venom", "naturefacts", "science"],
+        "title_hashtags": "#nature #biology #shorts",
+        "yt_category_id": "15"
+    },
+    "Deep Sea & Prehistoric Survivors": {
+        "db_key": "deep_sea",
+        "playlist_env": "YT_PLAYLIST_SPACE",
+        "topic_desc": "abyssal deep-sea anomalies and living fossils that have survived multiple mass extinctions unchanged",
+        "tone": "ominous, awe-inspiring, scientifically grounded ocean documentary",
+        "music_subfolder": "space",
+        "kw_examples": "deep_sea: 'deep sea jellyfish', 'shark underwater dark', 'giant squid ocean', 'crab underwater', 'bioluminescent fish'",
+        "kw_defaults": ["deep sea underwater", "bioluminescent jellyfish", "shark dark water", "ocean abyss", "crab ocean floor", "stingray swimming", "octopus dark ocean", "eel underwater"],
+        "yt_tags": ["shorts", "ocean", "deepsea", "marinebiology", "wildlife", "animals"],
+        "title_hashtags": "#ocean #deepsea #shorts",
+        "yt_category_id": "15"
     }
 }
 
+LEGACY_CATEGORY_ALIASES = {
+    "superpowers": "Bizarre Biological Superpowers",
+    "predators": "Apex Predators & Deadly Matchups",
+    "parasites": "Mind-Control Parasites & Venom",
+    "deep_sea": "Deep Sea & Prehistoric Survivors",
+    "space": "Bizarre Biological Superpowers",
+    "scary space mysteries": "Bizarre Biological Superpowers",
+    "history": "Apex Predators & Deadly Matchups",
+    "morbid or silly history facts": "Apex Predators & Deadly Matchups",
+    "tech": "Mind-Control Parasites & Venom",
+    "exciting tech facts": "Mind-Control Parasites & Venom",
+}
+
+
+def resolve_category_name(category: str) -> str:
+    """Resolve any category name or db_key (including legacy 'space'/'history'/'tech') to a canonical CATEGORIES key."""
+    if category in CATEGORIES:
+        return category
+    low = (category or "").lower().strip()
+    if low in LEGACY_CATEGORY_ALIASES:
+        return LEGACY_CATEGORY_ALIASES[low]
+    for k, v in CATEGORIES.items():
+        if v.get("db_key") == low or k.lower() == low:
+            return k
+    return "Bizarre Biological Superpowers"
+
+
+def get_category_info(category: str) -> dict:
+    """Safely return the category configuration dictionary for any canonical or legacy category string."""
+    return CATEGORIES[resolve_category_name(category)]
+
+
 # Global tracker for telemetry logging of the actual selected background music track
-LAST_SELECTED_MUSIC_TRACK = "space_track_1.mp3"
+LAST_SELECTED_MUSIC_TRACK = "dark_space_abyss.mp3"
 
 
 # Category-Specific Dynamic Angle Pools for Tournament Narrative Variety
 CATEGORY_ANGLE_POOLS = {
+    "superpowers": [
+        "Physics-Defying Anatomy",
+        "Biological Immortality",
+        "Cellular Regeneration",
+        "Sonic & Thermal Weapons",
+        "Evolutionary Cheat Codes",
+        "Extreme Survival Limits",
+        "Microscopic Titans"
+    ],
+    "predators": [
+        "Lethal Hunting Mechanics",
+        "Apex Predator Showdown",
+        "Evolutionary Overkill",
+        "Unstoppable Bite Force",
+        "Stealth Ambush Tactics",
+        "Venom Immunity",
+        "Pack Strategy Mastery"
+    ],
+    "parasites": [
+        "Neural Host Hijacking",
+        "Biochemical Mind Control",
+        "Lethal Neurotoxin Cocktail",
+        "Parasitic Body Snatchers",
+        "Venomous Precision",
+        "Zombie Behavior Manipulation",
+        "Chemical Warfare"
+    ],
+    "deep_sea": [
+        "Abyssal Zone Nightmares",
+        "Prehistoric Living Fossils",
+        "Crushing Pressure Adaptations",
+        "Bioluminescent Lures",
+        "Mass Extinction Survivors",
+        "Alien Ocean Anatomy",
+        "Deep Trench Giants"
+    ],
     "space": [
-        "Cosmic Terror",
-        "Quantum Paradox",
-        "Existential Scale",
-        "Hidden Physics",
-        "Rogue Worlds",
-        "Astronomical Mystery",
-        "Deep Void Anomaly"
+        "Physics-Defying Anatomy",
+        "Biological Immortality",
+        "Cellular Regeneration",
+        "Sonic & Thermal Weapons",
+        "Evolutionary Cheat Codes"
     ],
     "history": [
-        "Forgotten Cover-Ups",
-        "Bizarre Laws",
-        "Tragic Miscalculations",
-        "Everyday Absurdities",
-        "Secret Conspiracies",
-        "Untold Historical Irony",
-        "Wartime Secrets"
+        "Lethal Hunting Mechanics",
+        "Apex Predator Showdown",
+        "Evolutionary Overkill",
+        "Unstoppable Bite Force",
+        "Stealth Ambush Tactics"
     ],
     "tech": [
-        "Dangerous Breakthroughs",
-        "Invisible Takeovers",
-        "Accidental Inventions",
-        "Economic Disruption",
-        "Physical Impossibilities",
-        "Cyber Security Anomalies",
-        "AI Frontier Paradox"
+        "Neural Host Hijacking",
+        "Biochemical Mind Control",
+        "Lethal Neurotoxin Cocktail",
+        "Parasitic Body Snatchers",
+        "Venomous Precision"
     ]
 }
 
@@ -189,9 +263,9 @@ class VideoFormatConfig:
         self.format_type = format_type
         if format_type == "short":
             self.resolution = (1080, 1920)
-            self.sub_fontsize = 85
-            self.sub_position = ('center', 1350)
-            self.clip_count = 3
+            self.sub_fontsize = 74
+            self.sub_position = ('center', 1120)
+            self.clip_count = 8
             self.segment_count = 1
             self.is_short = True
         else:
@@ -203,7 +277,7 @@ class VideoFormatConfig:
             self.is_short = False
 
 
-WATERMARK_HANDLE = os.getenv("WATERMARK_HANDLE", "@NicheFactsShorts")
+WATERMARK_HANDLE = os.getenv("WATERMARK_HANDLE", "@WildApexShorts")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
 
@@ -253,16 +327,16 @@ def get_or_create_cta_asset() -> str:
 
 def get_theme_colors(category: str) -> Tuple[Tuple[int, int, int], str, str]:
     """Return (RGB tuple for progress bar, ASS color tag, Hex string) for category."""
-    cat_lower = category.lower()
-    if "history" in cat_lower:
+    cat_lower = (category or "").lower()
+    if any(k in cat_lower for k in ["predator", "matchup", "history"]):
         return (255, 191, 0), "&H0000BFFF", "#FFBF00"  # Amber Gold
-    elif "tech" in cat_lower:
+    elif any(k in cat_lower for k in ["parasite", "venom", "tech"]):
         return (0, 255, 102), "&H0066FF00", "#00FF66"  # Electric Green
     else:
-        return (0, 229, 255), "&H00FFFF00", "#00E5FF"  # Neon Cyan (Space)
+        return (0, 229, 255), "&H00FFFF00", "#00E5FF"  # Neon Cyan (Superpowers & Deep Sea)
 
 
-def create_progress_bar_clip(duration: float, resolution: Tuple[int, int], category: str = "space") -> VideoClip:
+def create_progress_bar_clip(duration: float, resolution: Tuple[int, int], category: str = "superpowers") -> VideoClip:
     """Generate a 5-pixel high solid accent progress bar at the bottom scaling 0% -> 100% over video duration."""
     w, h = resolution
     bar_height = 5
@@ -312,7 +386,9 @@ def is_power_word(word: str) -> bool:
     power_words = {
         "secret", "banned", "exploded", "classified", "hidden", "shocking", 
         "deadly", "mystery", "discovered", "unknown", "stolen", "impossible", 
-        "unseen", "ancient", "forbidden", "fatal", "insane", "monster", "warning"
+        "unseen", "ancient", "forbidden", "fatal", "insane", "monster", "warning",
+        "venom", "lethal", "parasite", "predator", "immortal", "boils", "paralyzes",
+        "zombie", "crushing", "toxic", "neurotoxin", "hijacks", "survive"
     }
     return clean in power_words
 
@@ -417,41 +493,53 @@ def generate_srt_file(subs_list: List[Tuple[Tuple[float, float], str]], output_s
 # STATIC ROTATING KEYWORD BANK (replaces pytrends - no external API needed)
 # ---------------------------------------------------------------------------
 _TRENDING_KEYWORDS = {
+    "superpowers": [
+        ["biological immortality", "cavitation shockwave", "limb regeneration", "cryptobiosis survival", "electroreception"],
+        ["bioluminescent defense", "thermal chemical spray", "echolocation sonar", "camouflage chromatophores", "magnetic navigation"],
+        ["acoustic mimicry", "freeze tolerance", "radiation resistance", "hydrostatic skeleton", "regenerative stem cells"],
+        ["infrared pit organs", "superhydrophobic skin", "sonic stun weapon", "autotomy defense", "metabolic hibernation"],
+        ["dermal armor plates", "high-speed strike", "photosynthetic symbiosis", "anti-freeze blood proteins", "pressure adaptation"],
+    ],
+    "predators": [
+        ["apex bite force", "ambush hunting mechanics", "venom immunity", "pack hunting coordination", "stealth camouflage"],
+        ["raptor talon grip", "constrictor asphyxiation", "cooperative pod hunting", "ballistic tongue strike", "nocturnal night vision"],
+        ["electro-sensory hunting", "crushing jaw pressure", "high-speed pursuit", "territorial dominance", "venomous fang delivery"],
+        ["aerial dive velocity", "aquatic ambush", "armored prey defense", "endurance persistence hunting", "keen olfactory tracking"],
+        ["apex predator showdown", "evolutionary arms race", "lethal claw mechanics", "hypercarnivore diet", "surprise counterattack"],
+    ],
+    "parasites": [
+        ["zombie ant fungus", "neural host manipulation", "neurotoxin paralysis", "parasitoid wasp lifecycle", "hemotoxic venom"],
+        ["tongue-eating isopod", "dopamine brain hijack", "cone snail insulin shock", "cytotoxic tissue venom", "host behavior control"],
+        ["brood parasitism", "cardiotoxic marine venom", "microscopic brain parasite", "biochemical puppet master", "venomous barb defense"],
+        ["symbiotic manipulation", "anticoagulant saliva", "sensory hijack", "deadly neurotoxic peptide", "metamorphic host control"],
+        ["chemical mimicry", "aposematic warning colors", "lethal sting mechanism", "parasitic castration", "nervous system override"],
+    ],
+    "deep_sea": [
+        ["abyssal zone gigantism", "transparent head anatomy", "hydrothermal vent survival", "bioluminescent photophores", "living fossil species"],
+        ["hadal trench pressure", "hinged pharyngeal jaws", "vampire squid filaments", "blue copper blood", "prehistoric shark anatomy"],
+        ["chemosynthetic bacteria", "abyssal ambush lure", "mass extinction survivor", "gelatinous decompression", "deep sea scavengers"],
+        ["infrared deep sea vision", "detritus marine snow", "bioluminescent ink cloud", "cartilaginous skeleton", "ancient marine lineage"],
+        ["cold seep ecosystem", "pelagic midnight zone", "giant deep-sea isopod", "pressurized cellular membranes", "echinoderm regeneration"],
+    ],
+    # Legacy fallbacks for unit tests
     "space": [
-        ["black hole event horizon", "neutron star collision", "dark matter secrets", "james webb telescope", "mars colony"],
-        ["supernova explosion", "alien planet discovery", "solar storm warning", "asteroid danger", "space debris crisis"],
-        ["wormhole theory", "gamma ray burst", "exoplanet atmosphere", "galaxy merger", "cosmic microwave background"],
-        ["moon water discovery", "saturn ring mystery", "interstellar travel", "quantum gravity", "spacetime fabric"],
-        ["universe expansion secrets", "dark energy mystery", "pulsar timing", "stellar nursery", "cosmic void"],
+        ["biological immortality", "cavitation shockwave", "limb regeneration", "cryptobiosis survival", "electroreception"],
     ],
     "history": [
-        ["ancient civilization secrets", "lost empire discovery", "hidden history facts", "medieval mystery", "archaeological bombshell"],
-        ["untold war story", "ancient engineering mystery", "forgotten culture", "historical cover-up", "buried kingdom"],
-        ["roman empire secrets", "egyptian mystery", "viking discovery", "aztec hidden truth", "silk road secrets"],
-        ["world war hidden facts", "ancient weapon technology", "lost city found", "historical conspiracy", "ancient trade route"],
-        ["forgotten inventor", "suppressed history", "ancient disaster", "empire collapse reason", "mysterious artifact"],
+        ["apex bite force", "ambush hunting mechanics", "venom immunity", "pack hunting coordination", "stealth camouflage"],
     ],
     "tech": [
-        ["ai consciousness debate", "quantum computer breakthrough", "neural interface brain", "robot rights", "deepfake danger"],
-        ["semiconductor crisis", "fusion energy milestone", "biotech breakthrough", "space tech startup", "cyber attack threat"],
-        ["chatgpt competitor", "autonomous vehicle crash", "surveillance technology", "data privacy scandal", "tech monopoly"],
-        ["battery technology leap", "crispr gene editing", "smart city failure", "drone swarm military", "satellite internet"],
-        ["metaverse collapse", "crypto regulation", "open source ai", "hydrogen fuel cell", "brain chip implant"],
+        ["zombie ant fungus", "neural host manipulation", "neurotoxin paralysis", "parasitoid wasp lifecycle", "hemotoxic venom"],
     ],
 }
 
 
 def fetch_trending_category_keywords(category: str) -> List[str]:
     """Return a rotating set of high-engagement category keywords (no external API, no rate limits)."""
-    cat_lower = category.lower()
-    db_key = "space"
-    if "history" in cat_lower:
-        db_key = "history"
-    elif "tech" in cat_lower:
-        db_key = "tech"
+    cat_info = get_category_info(category)
+    db_key = cat_info.get("db_key", "superpowers")
 
-    keyword_pool = _TRENDING_KEYWORDS.get(db_key, _TRENDING_KEYWORDS["space"])
-    # Rotate through pools based on current day-of-week to ensure variety
+    keyword_pool = _TRENDING_KEYWORDS.get(db_key, _TRENDING_KEYWORDS["superpowers"])
     import datetime
     day_index = datetime.date.today().weekday() % len(keyword_pool)
     selected = keyword_pool[day_index]
@@ -466,7 +554,7 @@ def send_webhook_notification(title: str, message: str, status: str = "success",
 
     color = 0x00FF00 if status == "success" else 0xFF0000
     embed = {
-        "title": f"???? Pipeline Alert: {status.upper()}",
+        "title": f"🔔 Pipeline Alert: {status.upper()}",
         "description": message,
         "color": color,
         "fields": [
@@ -495,15 +583,19 @@ def sanitize_metadata(title: str, description: str, is_short: bool, category: st
     clean_title = re.sub(r'#\S+', '', title)
     clean_title = re.sub(r'\s+', ' ', clean_title).strip()
 
-    cat_info = CATEGORIES.get(category, {})
-    db_key = cat_info.get("db_key", "space")
+    cat_info = get_category_info(category)
+    db_key = cat_info.get("db_key", "superpowers")
 
     title_hashtags_map = {
-        "space": "#space #shorts",
-        "history": "#history #shorts",
-        "tech": "#tech #shorts"
+        "superpowers": "#animals #nature #shorts",
+        "predators": "#wildlife #predators #shorts",
+        "parasites": "#nature #biology #shorts",
+        "deep_sea": "#ocean #deepsea #shorts",
+        "space": "#animals #nature #shorts",
+        "history": "#wildlife #predators #shorts",
+        "tech": "#nature #biology #shorts"
     }
-    title_tag = title_hashtags_map.get(db_key, "#shorts")
+    title_tag = cat_info.get("title_hashtags") or title_hashtags_map.get(db_key, "#animals #shorts")
 
     if is_short and title_tag not in clean_title:
         max_base_len = 70 - len(title_tag) - 1
@@ -521,11 +613,15 @@ def sanitize_metadata(title: str, description: str, is_short: bool, category: st
     clean_desc = re.sub(r'\s+', ' ', clean_desc).strip()
 
     desc_hashtags_map = {
-        "space": ["#shorts", "#nichefacts", "#space", "#astrophysics", "#facts"],
-        "history": ["#shorts", "#nichefacts", "#history", "#historyfacts", "#untoldstories"],
-        "tech": ["#shorts", "#nichefacts", "#tech", "#technology", "#science"]
+        "superpowers": ["#shorts", "#animals", "#wildlife", "#nature", "#biology"],
+        "predators": ["#shorts", "#wildlife", "#predators", "#animals", "#nature"],
+        "parasites": ["#shorts", "#biology", "#nature", "#wildlife", "#science"],
+        "deep_sea": ["#shorts", "#ocean", "#deepsea", "#marinebiology", "#wildlife"],
+        "space": ["#shorts", "#animals", "#wildlife", "#nature", "#biology"],
+        "history": ["#shorts", "#wildlife", "#predators", "#animals", "#nature"],
+        "tech": ["#shorts", "#biology", "#nature", "#wildlife", "#science"]
     }
-    default_tags = desc_hashtags_map.get(db_key, ["#shorts", "#nichefacts", "#facts"])
+    default_tags = desc_hashtags_map.get(db_key, ["#shorts", "#animals", "#wildlife", "#nature", "#biology"])
 
     valid_tags = []
     for tag in hashtags:
@@ -608,48 +704,89 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
 # 1. CATEGORY ROTATION, SOURCE INGESTION & TWO-PASS AUTO-QA GENERATION
 # ---------------------------------------------------------------------------
 def get_rotating_category(target_date: Optional[datetime.date] = None) -> str:
-    """Calculate 7-consecutive-day locked category rotation (Week 1: Space, Week 2: History, Week 3: Tech)."""
+    """Calculate daily rotating sub-pillar inside the single WildApex Shorts Wildlife & Bizarre Biology umbrella."""
     if target_date is None:
         target_date = datetime.datetime.utcnow().date()
     anchor_date = datetime.date(2026, 1, 1)
     days_elapsed = max(0, (target_date - anchor_date).days)
-    week_index = (days_elapsed // 7) % 3
-    rotation = [
-        "Scary Space Mysteries",
-        "Morbid or Silly History Facts",
-        "Exciting Tech Facts"
-    ]
-    selected = rotation[week_index]
-    print(f"7-Day Category Lock: Day {(days_elapsed % 7) + 1}/7 of Week {week_index + 1} -> Locked Category: '{selected}'")
+    rotation = list(CATEGORIES.keys())
+    sub_pillar_index = days_elapsed % len(rotation)
+    selected = rotation[sub_pillar_index]
+    print(f"WildApex Daily Sub-Pillar Rotation: Day {days_elapsed + 1} -> Sub-Pillar #{sub_pillar_index + 1}/{len(rotation)}: '{selected}'")
     return selected
 
 
+_CURATED_SPECIES_SEED_BANK = {
+    "superpowers": [
+        "Peacock mantis shrimp", "Pistol shrimp", "Tardigrade", "Immortal jellyfish",
+        "Axolotl", "Bombardier beetle", "Electric eel", "Platypus",
+        "Star-nosed mole", "Lyrebird", "Mimic octopus", "Cuttlefish",
+        "Horned lizard", "Archerfish", "Hairy frog", "Iberian ribbed newt",
+        "Naked mole-rat", "Wood frog", "Antarctic icefish", "Peregrine falcon",
+        "Saharan silver ant", "Leafcutter ant", "Ironclad beetle", "Echidna",
+        "Flying snake", "Basilisk lizard", "Gerenuk", "Kangaroo rat",
+        "Sea cucumber", "Planarian", "Geoduck", "Pangolin"
+    ],
+    "predators": [
+        "Honey badger", "Orca", "Saltwater crocodile", "Komodo dragon",
+        "Secretarybird", "Harpy eagle", "Jaguar", "Polar bear",
+        "Wolverine", "Cassowary", "Mantis", "Dragonfly",
+        "Giant otter", "Leopard seal", "Golden eagle", "Eurasian eagle-owl",
+        "Nile crocodile", "Great white shark", "Tiger", "Snow leopard",
+        "African wild dog", "Spotted hyena", "Goshawk", "Shrike",
+        "Tasmanian devil", "Fossa", "Black mamba", "King cobra",
+        "Goliath birdeater", "Giant centipede", "Bull shark", "caracal"
+    ],
+    "parasites": [
+        "Ophiocordyceps unilateralis", "Emerald cockroach wasp", "Cymothoa exigua", "Sacculina",
+        "Leucochloridium paradoxum", "Toxoplasma gondii", "Hairworm", "Tarantula hawk",
+        "Cone snail", "Box jellyfish", "Blue-ringed octopus", "Inland taipan",
+        "poison dart frog", "Stonefish", "Brazilian wandering spider", "Sydney funnel-web spider",
+        "Deathstalker", "Bullet ant", "Asian giant hornet", "Gila monster",
+        "Slow loris", "Komodo dragon", "Boomslang", "Gaboon viper",
+        "Botfly", "Candiru", "Vampire bat", "Cookiecutter shark",
+        "Lamprey", "Portuguese man o' war", "Irukandji jellyfish", "Pufferfish"
+    ],
+    "deep_sea": [
+        "Giant squid", "Colossal squid", "Goblin shark", "Vampire squid",
+        "Anglerfish", "Barreleye", "Frilled shark", "Coelacanth",
+        "Nautilus", "Horseshoe crab", "Giant isopod", "Japanese spider crab",
+        "Pacific viperfish", "Gulper eel", "Black swallower", "Sperm whale",
+        "Megamouth shark", "Greenland shark", "Oarfish", "Dumbo octopus",
+        "Giant siphonophore", "Bigfin squid", "Hydrothermal vent", "Giant tube worm",
+        "Yeti crab", "Scaly-foot gastropod", "Pelican eel", "Dragonfish",
+        "Cookiecutter shark", "Hagfish", "Chimaera", "Tuatara"
+    ]
+}
+_CURATED_SPECIES_SEED_BANK["space"] = _CURATED_SPECIES_SEED_BANK["deep_sea"]
+_CURATED_SPECIES_SEED_BANK["history"] = _CURATED_SPECIES_SEED_BANK["predators"]
+_CURATED_SPECIES_SEED_BANK["tech"] = _CURATED_SPECIES_SEED_BANK["superpowers"]
+
+
 def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict]) -> dict:
-    """Ingest rich source text using headless Playwright Chromium, with fail-safe Wikipedia fallback."""
-    print(f"Launching Playwright Headless Scraping for category '{category}'...")
-    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
-    
-    category_sources = {
-        "space": [
-            "https://apod.nasa.gov/apod/astropix.html",
-            "https://en.wikipedia.org/wiki/Portal:Spaceflight",
-            "https://en.wikipedia.org/wiki/Portal:Astronomy"
-        ],
-        "history": [
-            "https://www.worldhistory.org/",
-            "https://en.wikipedia.org/wiki/Portal:History",
-            "https://en.wikipedia.org/wiki/Portal:Archaeology"
-        ],
-        "tech": [
-            "https://en.wikipedia.org/wiki/Portal:Computer_science",
-            "https://en.wikipedia.org/wiki/Portal:Technology",
-            "https://en.wikipedia.org/wiki/Emerging_technologies"
-        ]
-    }
-    
-    urls = category_sources.get(db_key, category_sources["space"])
-    random.shuffle(urls)
-    
+    """Ingest rich biological species source text using headless Playwright Chromium, with fail-safe Wikipedia API fallback."""
+    print(f"Launching Playwright Headless Scraping for wildlife category '{category}'...")
+    cat_info = get_category_info(category)
+    db_key = cat_info.get("db_key", "superpowers")
+
+    existing_titles = {item.get("title", "").lower().strip() for item in past_topics}
+    existing_topics = {item.get("topic", "").lower().strip() for item in past_topics if item.get("topic")}
+
+    seed_pool = list(_CURATED_SPECIES_SEED_BANK.get(db_key, _CURATED_SPECIES_SEED_BANK["superpowers"]))
+    random.shuffle(seed_pool)
+
+    # Filter out species that already appear in past_topics
+    unused_species = [
+        sp for sp in seed_pool
+        if sp.lower() not in existing_titles
+        and sp.lower() not in existing_topics
+        and not any(sp.lower() in t for t in existing_titles | existing_topics)
+    ]
+    if not unused_species:
+        unused_species = seed_pool
+
+    urls = [f"https://en.wikipedia.org/wiki/{sp.replace(' ', '_')}" for sp in unused_species[:5]]
+
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
@@ -666,19 +803,21 @@ def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict])
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
             )
             page = context.new_page()
-            
+
             for target_url in urls:
                 try:
                     page.goto(target_url, timeout=15000, wait_until="domcontentloaded")
-                    time.sleep(1)
-                    title = page.title().strip()
-                    
-                    paragraphs = page.locator("p").all_inner_texts()
+                    time.sleep(0.5)
+                    title = page.title().replace(" - Wikipedia", "").strip()
+
+                    paragraphs = page.locator("#mw-content-text p").all_inner_texts()
+                    if not paragraphs:
+                        paragraphs = page.locator("p").all_inner_texts()
                     clean_text = " ".join([p.strip() for p in paragraphs if len(p.strip()) > 35])
                     words = clean_text.split()[:1200]
-                    
+
                     if len(words) >= 80:
-                        print(f"Playwright successfully scraped '{title}' ({len(words)} words) from {target_url}")
+                        print(f"Playwright successfully scraped species '{title}' ({len(words)} words) from {target_url}")
                         browser.close()
                         return {
                             "title": title,
@@ -690,43 +829,90 @@ def fetch_playwright_scraped_source_text(category: str, past_topics: List[dict])
             browser.close()
     except Exception as e:
         print(f"Playwright scraper error ({e}). Falling back to Wikipedia API...")
-        
+
     return fetch_wikipedia_source_text(category, past_topics)
 
 
 def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
-    """Fetch raw, high-quality article text from Wikipedia REST/Action APIs for source grounding."""
-    print(f"Fetching raw Wikipedia source text for category '{category}'...")
-    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
-    category_queries = {
-        "space": [
-            "Category:Featured_articles_about_astronomy",
-            "Category:Space_exploration",
-            "Category:Astronomical_objects",
-            "Category:Cosmology"
-        ],
-        "history": [
-            "Category:Featured_articles_about_history",
-            "Category:Historical_events",
-            "Category:Archaeological_discoveries",
-            "Category:Medieval_history"
-        ],
-        "tech": [
-            "Category:Featured_articles_about_technology",
-            "Category:Computing_breakthroughs",
-            "Category:Emerging_technologies",
-            "Category:Artificial_intelligence"
-        ]
-    }
+    """Fetch raw, verified zoological and biological species articles from Wikipedia REST/Action APIs."""
+    print(f"Fetching raw Wikipedia biological source text for category '{category}'...")
+    cat_info = get_category_info(category)
+    db_key = cat_info.get("db_key", "superpowers")
 
-    headers = {"User-Agent": "MPVSAP-ContentPipeline/1.0 (https://github.com/thienphucnt/MPVSAP; bot@nichefacts.org)"}
+    headers = {"User-Agent": "MPVSAP-WildApexPipeline/3.0 (https://github.com/thienphucnt/MPVSAP; bot@wildapex.org)"}
     existing_titles = {item.get("title", "").lower().strip() for item in past_topics}
     existing_topics = {item.get("topic", "").lower().strip() for item in past_topics if item.get("topic")}
 
-    query_list = category_queries.get(db_key, category_queries["space"])
-    random.shuffle(query_list)
-
     cm_url = "https://en.wikipedia.org/w/api.php"
+
+    # 1. Primary: Curated Species Seed Bank (guarantees concrete animal/species focus)
+    seed_pool = list(_CURATED_SPECIES_SEED_BANK.get(db_key, _CURATED_SPECIES_SEED_BANK["superpowers"]))
+    random.shuffle(seed_pool)
+
+    for species_name in seed_pool:
+        norm_sp = species_name.lower().strip()
+        if norm_sp in existing_titles or norm_sp in existing_topics or any(norm_sp in t for t in existing_titles | existing_topics):
+            continue
+        try:
+            ex_params = {
+                "action": "query",
+                "format": "json",
+                "prop": "extracts",
+                "exintro": False,
+                "explaintext": True,
+                "redirects": 1,
+                "titles": species_name
+            }
+            er = HTTP_SESSION.get(cm_url, params=ex_params, headers=headers, timeout=12)
+            er.raise_for_status()
+            pages_dict = er.json().get("query", {}).get("pages", {})
+            for pid, pdata in pages_dict.items():
+                if pid == "-1":
+                    continue
+                page_title = pdata.get("title", species_name).strip()
+                extract = pdata.get("extract", "").strip()
+                if len(extract) > 250:
+                    words = extract.split()[:1200]
+                    trimmed_text = " ".join(words)
+                    print(f"Successfully ingested curated Wikipedia species: '{page_title}' ({len(words)} words)")
+                    return {
+                        "title": page_title,
+                        "text": trimmed_text,
+                        "url": f"https://en.wikipedia.org/wiki/{page_title.replace(' ', '_')}"
+                    }
+        except Exception as e:
+            print(f"Wikipedia curated species query error for '{species_name}': {e}")
+
+    # 2. Secondary: Wikipedia Zoological & Biological Categories
+    category_queries = {
+        "superpowers": [
+            "Category:Bioluminescence",
+            "Category:Electroreception",
+            "Category:Extremophiles",
+            "Category:Animal_locomotion"
+        ],
+        "predators": [
+            "Category:Predators",
+            "Category:Apex_predators",
+            "Category:Carnivorans",
+            "Category:Birds_of_prey"
+        ],
+        "parasites": [
+            "Category:Venomous_animals",
+            "Category:Parasites",
+            "Category:Parasitoid_wasps",
+            "Category:Neurotoxins"
+        ],
+        "deep_sea": [
+            "Category:Deep_sea_fish",
+            "Category:Cephalopods",
+            "Category:Living_fossils",
+            "Category:Abyssal_zone"
+        ]
+    }
+
+    query_list = list(category_queries.get(db_key, category_queries["superpowers"]))
+    random.shuffle(query_list)
 
     for cat_title in query_list:
         cm_params = {
@@ -741,8 +927,6 @@ def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
             r = HTTP_SESSION.get(cm_url, params=cm_params, headers=headers, timeout=12)
             r.raise_for_status()
             pages = r.json().get("query", {}).get("categorymembers", [])
-
-            # Shuffle candidates to avoid pick bias
             random.shuffle(pages)
 
             for chosen in pages:
@@ -751,7 +935,6 @@ def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
                 if norm_p in existing_titles or norm_p in existing_topics or len(page_title) < 3:
                     continue
 
-                # Fetch extract
                 ex_params = {
                     "action": "query",
                     "format": "json",
@@ -768,7 +951,7 @@ def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
                     if len(extract) > 200:
                         words = extract.split()[:1200]
                         trimmed_text = " ".join(words)
-                        print(f"Successfully ingested Wikipedia article: '{page_title}' ({len(words)} words)")
+                        print(f"Successfully ingested Wikipedia biological article: '{page_title}' ({len(words)} words)")
                         return {
                             "title": page_title,
                             "text": trimmed_text,
@@ -777,57 +960,71 @@ def fetch_wikipedia_source_text(category: str, past_topics: List[dict]) -> dict:
         except Exception as e:
             print(f"Wikipedia query error for {cat_title}: {e}")
 
-    # General search fallback if category members fail
-    try:
-        search_params = {
-            "action": "query",
-            "format": "json",
-            "list": "search",
-            "srsearch": f"{category} discovery mystery breakthrough history science",
-            "srlimit": 30
-        }
-        sr = HTTP_SESSION.get(cm_url, params=search_params, headers=headers, timeout=12)
-        sr.raise_for_status()
-        search_pages = sr.json().get("query", {}).get("search", [])
-        random.shuffle(search_pages)
-
-        for chosen in search_pages:
-            page_title = chosen.get("title", "").strip()
-            norm_p = page_title.lower()
-            if norm_p in existing_titles or norm_p in existing_topics:
-                continue
-
-            ex_params = {
-                "action": "query",
-                "format": "json",
-                "prop": "extracts",
-                "exintro": False,
-                "explaintext": True,
-                "titles": page_title
-            }
-            er = HTTP_SESSION.get(cm_url, params=ex_params, headers=headers, timeout=12)
-            er.raise_for_status()
-            pages_dict = er.json().get("query", {}).get("pages", {})
-            for pid, pdata in pages_dict.items():
-                extract = pdata.get("extract", "").strip()
-                if len(extract) > 200:
-                    words = extract.split()[:1200]
-                    trimmed_text = " ".join(words)
-                    print(f"Successfully ingested Wikipedia article via search: '{page_title}' ({len(words)} words)")
-                    return {
-                        "title": page_title,
-                        "text": trimmed_text,
-                        "url": f"https://en.wikipedia.org/wiki/{page_title.replace(' ', '_')}"
-                    }
-    except Exception as e:
-        print(f"Wikipedia search fallback error: {e}")
-
-    print("Fallback: Ingestion default used.")
+    print("Fallback: Biological ingestion default used.")
     return {
-        "title": f"Fascinating {category.capitalize()} Phenomenon",
-        "text": f"Detailed astronomical and historical records concerning {category} discovery...",
-        "url": ""
+        "title": "Peacock Mantis Shrimp",
+        "text": (
+            "The peacock mantis shrimp (Odontodactylus scyllarus) is a marine crustacean renowned for possessing "
+            "the fastest and most powerful raptorial strike in the animal kingdom. Its club-like appendages accelerate "
+            "at over 10,000 Gs, reaching speeds of 23 meters per second (50 mph) underwater. The impact is so fast "
+            "that it vaporizes the surrounding water into cavitation bubbles, which collapse with a secondary shockwave "
+            "capable of shattering crab shells and aquarium glass, while briefly emitting a flash of sonoluminescence."
+        ),
+        "url": "https://en.wikipedia.org/wiki/Odontodactylus_scyllarus"
     }
+
+
+_ANGLE_PREFIX_STRIP_REGEX = re.compile(
+    r'^(Suspenseful Mystery|Scientific Breakthrough|Dramatic Conflict|Existential Wonder|Action Mystery|'
+    r'Cosmic Terror|Quantum Paradox|Existential Scale|Hidden Physics|Rogue Worlds|'
+    r'Forgotten Cover-Ups|Bizarre Laws|Tragic Miscalculations|Everyday Absurdities|Secret Conspiracies|'
+    r'Dangerous Breakthroughs|Invisible Takeovers|Accidental Inventions|Economic Disruption|Physical Impossibilities|'
+    r'Biomechanical Weaponry|Evolutionary Cheat Code|Sensory Superpower|Cellular Immortality|Extreme Survival Adaptation|'
+    r'Lethal Ambush Mechanics|Head-to-Head Apex Matchup|Pack Hunting Strategy|Bite Force & Crushing Power|Apex Counter-Defense|'
+    r'Neuro-Hijacking Mind Control|Biochemical Venom Cocktail|Host Body Puppetry|Microscopic Invasion|Evolutionary Nightmare|'
+    r'Abyssal Crushing Pressure|Living Fossil Survivor|Bioluminescent Lure|Giant Deep-Sea Anomaly|Prehistoric Predator):\s*',
+    flags=re.IGNORECASE
+)
+
+
+def sanitize_script_opening(script: str) -> str:
+    """
+    Strip leading punctuation, ellipses, lowercase conjunction fragments, or broken loop artifacts
+    from the start of a script and ensure the first alphabetical character is capitalized.
+    """
+    if not script:
+        return ""
+    cleaned = script.strip()
+    # Strip leading punctuation, ellipses, dashes, colons, quotes
+    cleaned = re.sub(r'^[\.\,\;\:\!\?\-\—\–\'\"\“\”\‘\’\s]+', '', cleaned).strip()
+    # Strip leading lowercase relative/conjunction fragments left over by bad LLM loop completions
+    cleaned = re.sub(
+        r'^(that|which|and|but|so|or|because|while|whereas|although|though|as)\s+(?=[a-z])',
+        '',
+        cleaned
+    ).strip()
+    # Capitalize the very first alphabetical character
+    for i, ch in enumerate(cleaned):
+        if ch.isalpha():
+            cleaned = cleaned[:i] + ch.upper() + cleaned[i+1:]
+            break
+    return cleaned
+
+
+def get_run_score(item: dict) -> float:
+    """
+    Calculate composite few-shot ranking score for a historical pipeline run.
+    Prioritizes real YouTube view performance (views > 0) while falling back to Auto-QA tournament score
+    when views == 0 or None.
+    """
+    yt_stats = item.get("youtube_stats") or {}
+    views = yt_stats.get("views")
+    ws_score = (item.get("winning_script") or {}).get("score")
+    top_score = item.get("score")
+    qa_score = float(ws_score if isinstance(ws_score, (int, float)) else (top_score if isinstance(top_score, (int, float)) else 0.0))
+    if views is not None and isinstance(views, (int, float)) and views > 0:
+        return float(views) * 100.0 + qa_score
+    return qa_score
 
 
 def evaluate_tournament_variants(
@@ -856,11 +1053,12 @@ def evaluate_tournament_variants(
         f"Source Article Subject: '{source_title}'\n\n"
         f"{candidates_text}"
         "HEAD-TO-HEAD JUDGING CRITERIA (SCORE EACH VARIANT FROM 0.00 TO 10.00 WITH 2 DECIMAL PLACES):\n"
-        "1. Hook Strength (0-3s open loop, zero fluff, immediate curiosity gap)\n"
-        "2. Narrative Retention (escalating conflict/pacing, zero listicles or top-3 formats)\n"
-        "3. Natural Organic Title (no prepended category names or awkward prefixes like 'Scientific Breakthrough: ...', punchy title synergy)\n"
-        "4. Absence of Generic AI Tropes ('in a world where', 'delve into', etc.)\n"
-        "5. Seamless Loop CTA (ending phrase leads smoothly back to hook)\n\n"
+        "1. Hook Strength (0-3s visceral biological shock open loop, zero fluff, immediate curiosity gap)\n"
+        "2. Narrative Retention & Pacing (80-95 word tight biomechanical escalation, zero listicles or top-3 formats)\n"
+        "3. Natural Organic Title (no prepended category names or awkward prefixes like 'Biomechanical Weaponry: ...', punchy title synergy)\n"
+        "4. Absence of Generic AI Tropes ('in a world where', 'delve into', 'nature is full of wonders', etc.)\n"
+        "5. Seamless Loop CTA (ending phrase leads smoothly back to hook)\n"
+        "6. Factual Scientific Accuracy & Clean Opening Grammar (IMMEDIATE 0.0 SCORE PENALTY if the script invents fictional labs, fake names, or sci-fi fiction, or starts with a lowercase fragment)\n\n"
         "Return ONLY a JSON object in exactly this format:\n"
         "{\n"
         '  "evaluations": [\n'
@@ -893,11 +1091,9 @@ def evaluate_tournament_variants(
             score = round(float(ev.get("score", 8.5)), 2)
             critique = ev.get("critique", "Evaluated in head-to-head tournament.").strip()
             
-            clean_title = re.sub(
-                r'^(Suspenseful Mystery|Scientific Breakthrough|Dramatic Conflict|Existential Wonder|Action Mystery|Cosmic Terror|Quantum Paradox|Existential Scale|Hidden Physics|Rogue Worlds|Forgotten Cover-Ups|Bizarre Laws|Tragic Miscalculations|Everyday Absurdities|Secret Conspiracies|Dangerous Breakthroughs|Invisible Takeovers|Accidental Inventions|Economic Disruption|Physical Impossibilities):\s*',
-                '', candidate["title"], flags=re.IGNORECASE
-            ).strip()
+            clean_title = _ANGLE_PREFIX_STRIP_REGEX.sub('', candidate["title"]).strip()
             candidate["title"] = clean_title
+            candidate["script"] = sanitize_script_opening(candidate.get("script", ""))
 
             evaluated_list.append({
                 "variant_id": idx + 1,
@@ -917,11 +1113,9 @@ def evaluate_tournament_variants(
         print("Head-to-Head Auto-QA Evaluator parsing fallback:", e)
         fallback_list = []
         for idx, candidate in enumerate(variants):
-            clean_title = re.sub(
-                r'^(Suspenseful Mystery|Scientific Breakthrough|Dramatic Conflict|Existential Wonder|Action Mystery):\s*',
-                '', candidate["title"], flags=re.IGNORECASE
-            ).strip()
+            clean_title = _ANGLE_PREFIX_STRIP_REGEX.sub('', candidate["title"]).strip()
             candidate["title"] = clean_title
+            candidate["script"] = sanitize_script_opening(candidate.get("script", ""))
             fallback_list.append({
                 "variant_id": idx + 1,
                 "angle": candidate.get("angle", f"Variant {idx+1}"),
@@ -1103,7 +1297,7 @@ def generate_content(
     Pass 2: Score & rank all 5 variants with Pass 2 Auto-QA Evaluator. Select #1 highest scorer (>= 8/10).
     """
     model_name = "gemini-2.5-flash"
-    cat_info = CATEGORIES[category]
+    cat_info = get_category_info(category)
     db_category = cat_info["db_key"]
 
     all_past_topics = [item.get("topic") for item in past_topics if item.get("topic")]
@@ -1123,7 +1317,7 @@ def generate_content(
             "If a concept is listed above or closely related to a listed concept, it is STRICTLY PROHIBITED."
         )
 
-    # Task 1: Historical Prompt Injection (Self-Improving Scripts)
+    # Task 1: Historical Prompt Injection (Self-Improving Scripts — strictly filtered to Wildlife Biology pillars)
     few_shot_instruction = ""
     run_history_path = Path("dashboard/app/data/run_history.json")
     if run_history_path.exists():
@@ -1131,21 +1325,13 @@ def generate_content(
             with open(run_history_path, "r", encoding="utf-8") as f:
                 history_entries = json.load(f)
             
-            # Filter for successful runs
+            valid_wildlife_cats = set(CATEGORIES.keys()) | {"superpowers", "predators", "parasites", "deep_sea"}
             successful_runs = [
                 entry for entry in history_entries
-                if entry.get("status") == "SUCCESS" and entry.get("winning_script")
+                if entry.get("status") == "SUCCESS"
+                and entry.get("winning_script")
+                and entry.get("category") in valid_wildlife_cats
             ]
-
-            def get_run_score(item: dict) -> float:
-                yt_stats = item.get("youtube_stats") or {}
-                views = yt_stats.get("views")
-                if views is not None and isinstance(views, (int, float)):
-                    return float(views)
-                score = item.get("score")
-                if score is not None and isinstance(score, (int, float)):
-                    return float(score)
-                return 0.0
 
             sorted_runs = sorted(successful_runs, key=get_run_score, reverse=True)
             top_3_runs = sorted_runs[:3]
@@ -1159,15 +1345,15 @@ def generate_content(
 
             if top_scripts:
                 few_shot_instruction = (
-                    "\n\nHere are 3 highly successful past scripts to study for pacing and hook structure:\n"
+                    "\n\nHere are 3 highly successful past WildApex wildlife scripts to study for pacing and hook structure:\n"
                     + "\n\n".join(top_scripts) + "\n"
                 )
-                print(f"Injected {len(top_scripts)} top-performing past scripts as few-shot study examples.")
+                print(f"Injected {len(top_scripts)} top-performing past wildlife scripts as few-shot study examples.")
         except Exception as hist_err:
             print("Notice: Failed to ingest run_history.json for few-shot prompt injection:", hist_err)
 
-    cat_pool_key = cat_info.get("db_key", "space")
-    angle_pool = CATEGORY_ANGLE_POOLS.get(cat_pool_key, CATEGORY_ANGLE_POOLS["space"])
+    cat_pool_key = cat_info.get("db_key", "superpowers")
+    angle_pool = CATEGORY_ANGLE_POOLS.get(cat_pool_key, CATEGORY_ANGLE_POOLS["superpowers"])
     selected_angles = random.sample(angle_pool, min(5, len(angle_pool)))
     formatted_angles_str = ", ".join([f"{i+1}-{angle}" for i, angle in enumerate(selected_angles)])
 
@@ -1191,16 +1377,17 @@ def generate_content(
 
         if config.is_short:
             prompt = (
-                "You are an elite YouTube Shorts Director. Complete the following tasks and return ONLY a valid JSON object without markdown tags:\n"
+                "You are an elite Wildlife & Bizarre Biology YouTube Shorts Director (in the visceral, fast-paced style of Casual Geographic and Zack D. Films). "
+                "Complete the following tasks and return ONLY a valid JSON object without markdown tags:\n"
                 "{\n"
                 '  "variants": [\n'
                 '    {\n'
                 '      "angle": "<Angle Name>",\n'
-                '      "script": "<130-word story script>",\n'
-                '      "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6"],\n'
+                '      "script": "<80 to 95 word visceral biology story script>",\n'
+                '      "visual_keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5", "keyword6", "keyword7", "keyword8"],\n'
                 '      "title": "<standalone viral title under 50 chars>",\n'
-                '      "description": "<2-sentence summary with 5 hashtags including #nichefactsshorts>",\n'
-                '      "topic": "<2-3 words naming core concept>"\n'
+                '      "description": "<2-sentence summary with 3 hashtags including #shorts #wildlife #animals>",\n'
+                '      "topic": "<2-3 words naming the exact animal or biological mechanism>"\n'
                 '    },\n'
                 f'    ... (exactly 5 distinct candidate variants exploring 5 different angles: {formatted_angles_str})\n'
                 '  ]\n'
@@ -1211,16 +1398,18 @@ def generate_content(
                 "Each variant MUST have its own unique, punchy, standalone title written organically for that specific angle. "
                 "STRICTLY PROHIBITED: Do NOT prepend angle names or category prefixes to titles (e.g., NEVER write 'Scientific Breakthrough: ...' or 'Suspenseful Mystery: ...'). "
                 "Every title must sound like a natural, standalone viral YouTube Shorts title under 50 characters.\n"
-                "2. INVERTED PYRAMID NARRATIVE HOOK (STRICT RULE): The script MUST NOT start with academic, chronological, or slow date-first openings (e.g. NEVER start with 'On [Date], ...' or 'In [Year], ...'). "
-                "The VERY FIRST sentence (0-3s) MUST immediately state the most extreme outcome or establish a high-curiosity gap (e.g., 'How did a 14-inch drill bit swallow an entire lake?'). "
-                "Historical context, background details, and specific dates MUST be pushed to the second sentence or later.\n"
-                "3. SEMANTIC LOOP BRIDGING ALIGNMENT (STRICT RULE): The script MUST be engineered for a 100% seamless audio, grammatical, and narrative loop. "
-                "The final line MUST NOT be a complete independent clause, CTA, or duplicate of the hook line. "
-                "MANDATORY RULE: The final line MUST end in an incomplete setup phrase ending in a colon or conjunction (e.g., '...leaving hydrologists to repeatedly ask:', '...and that is why people still question:', '...which makes experts constantly wonder:'). "
-                "When the video loops from the end back to second 0, the final setup phrase MUST semantically and grammatically support transitioning seamlessly into the high-curiosity opening hook line (Sentence 1) as one continuous spoken sentence.\n"
-                "4. PEXELS ATMOSPHERIC B-ROLL & VISUAL CONTEXT FILTERING (STRICT RULE): The stock footage library (Pexels) is a modern lifestyle video collection. "
-                "For history and space categories, modern office and corporate environments are STRICTLY PROHIBITED (e.g. NEVER request 'office', 'corporate', 'meeting', 'voting', 'ballot', 'business suit', 'conference room', 'boardroom', 'cubicle'). "
-                "You MUST translate all historical, military, or organizational concepts into atmospheric outdoor or cinematic historical equivalents (e.g. 'vintage map', 'old archive room', 'foggy coastline', 'historical document', 'ancient ruins', 'strategy table'). "
+                "2. STRICT ANTI-HALLUCINATION GUARDRAIL (ZERO FICTION): Every single claim, number, anatomical mechanism, and species name MUST come strictly from verified zoological/biological facts in the provided Source Text Extract. "
+                "NEVER invent fictional researchers, fake laboratories, sci-fi stories, or unverified dates.\n"
+                "3. 4-BEAT CASUAL GEOGRAPHIC / ZACK D. FILMS STRUCTURE (80 TO 95 WORDS STRICT TARGET): "
+                "Each script MUST be strictly 80 to 95 words (~30 to 35 seconds) and follow this exact 4-beat arc:\n"
+                "   - Beat 1: Visceral Biological Shock Hook (0-3s): The VERY FIRST sentence MUST begin with a capitalized full subject or question word (NEVER start with a lowercase conjunction or fragment like 'that ...') and state an immediate, visceral biological shock (e.g., 'This six-inch shrimp punches with the force of a twenty-two caliber bullet.'). NEVER start with 'On [Date], ...' or 'In [Year], ...'.\n"
+                "   - Beat 2: The Anatomical Mechanism (3-15s): Explain the exact biomechanical or biochemical weapon (e.g., cavitation bubbles, neurotoxins, spring-loaded raptorial clubs).\n"
+                "   - Beat 3: The Visceral Payoff / Matchup Outcome (15-30s): Deliver the astonishing real-world consequence to prey or predators.\n"
+                "   - Beat 4: Seamless Loop Bridge (30-35s): The final line MUST end in an incomplete setup phrase ending in a colon or conjunction (e.g., '...which is why marine biologists still marvel at how:', '...leaving predators helpless against a creature where:') that grammatically and semantically bridges seamlessly back into Sentence 1.\n"
+                "4. PEXELS WILDLIFE B-ROLL & VISUAL CONTEXT FILTERING (STRICT RULE): Provide 8 concrete, visual wildlife/nature search queries in `visual_keywords` (e.g., 'mantis shrimp macro', 'coral reef predator', 'lion stalking prey', 'jellyfish glowing dark water'). "
+                "The stock footage library (Pexels) is a modern lifestyle and nature video collection. "
+                "Modern office and corporate environments are STRICTLY PROHIBITED (e.g. NEVER request 'office', 'corporate', 'meeting', 'voting', 'ballot', 'business suit', 'conference room', 'boardroom', 'cubicle'). "
+                "You MUST translate any organizational or historical concepts into atmospheric outdoor or nature equivalents (e.g. 'vintage map', 'old archive room', 'foggy coastline', 'historical document'). "
                 "STRICTLY PROHIBITED: Do NOT request specific historical vehicles or period-accurate soldiers ('French soldiers', 'Panzer tank'). "
                 "STRICTLY PROHIBITED: Abstract nouns or generic disaster terminology ('catastrophe', 'collapse', 'disaster', 'event', 'tragedy', 'mystery').\n"
                 "5. PHONETIC EXPANSION RULE FOR TTS (STRICT RULE): All acronyms, historical abbreviations, numbers, and symbols MUST be written out phonetically exactly as spoken. "
@@ -1232,25 +1421,25 @@ def generate_content(
             )
         else:
             prompt = (
-                "You are an elite Documentary Director producing a widescreen long-form compilation. "
+                "You are an elite Wildlife & Natural History Documentary Director producing a widescreen long-form compilation. "
                 "Complete the following tasks and return ONLY a valid JSON object without markdown formatting:\n"
                 "{\n"
-                '  "title": "<Click-worthy widescreen title between 40 and 60 characters>",\n'
-                '  "description": "<Punchy description with 5 relevant hashtags at the end including #nichefacts>",\n'
+                '  "title": "<Click-worthy widescreen wildlife title between 40 and 60 characters>",\n'
+                '  "description": "<Punchy description with 3 relevant hashtags at the end including #wildlife #nature #documentary>",\n'
                 '  "segments": [\n'
                 '    {\n'
-                '      "script": "<engaging 95-word script>",\n'
-                '      "visual_keywords": ["literal_keyword1", "literal_keyword2", "literal_keyword3"],\n'
-                '      "topic": "<2-3 words naming core concept>"\n'
+                '      "script": "<engaging 95-word factual wildlife biology script>",\n'
+                '      "visual_keywords": ["wildlife_keyword1", "wildlife_keyword2", "wildlife_keyword3"],\n'
+                '      "topic": "<2-3 words naming the animal species or adaptation>"\n'
                 '    },\n'
                 '    ... (exactly 10 candidate segments)\n'
                 '  ]\n'
                 "}\n\n"
                 f"{source_text_prompt}"
                 "DIRECTIVES FOR HIGH AUDIENCE RETENTION:\n"
-                "1. COMPILATION STRUCTURE: Write 10 distinct, highly detailed candidate segments based on ingested source data.\n"
-                "2. NO REPETITIVE INTROS/OUTROS: Only Segment 1 contains a hook (0-15s). Middle segments (2-9) contain raw facts. Only Segment 10 appends a subscribe CTA.\n"
-                "3. PROPER NOUN B-ROLL: In visual_keywords, include specific proper nouns with capitalization for specific entities.\n\n"
+                "1. COMPILATION STRUCTURE: Write 10 distinct, 100% factual zoological/biological segments based on verified animal adaptations.\n"
+                "2. NO REPETITIVE INTROS/OUTROS: Only Segment 1 contains a hook (0-15s). Middle segments (2-9) contain raw biomechanical facts. Only Segment 10 appends a subscribe CTA.\n"
+                "3. CONCRETE WILDLIFE B-ROLL: In visual_keywords, include concrete animal and habitat search terms.\n\n"
                 "Under no circumstances should the script mention regional politics, state officials, or Vietnamese history."
                 f"{dynamic_exclude}"
             )
@@ -1276,7 +1465,7 @@ def generate_content(
                 for var in raw_vars:
                     v_title = var.get("title", "").strip()
                     v_desc = var.get("description", "").strip()
-                    v_script = var.get("script", "").strip()
+                    v_script = sanitize_script_opening(var.get("script", "").strip())
                     v_kw = var.get("visual_keywords", [])
                     v_topic = var.get("topic", "").strip()
                     v_angle = var.get("angle", "Story Variant").strip()
@@ -1668,20 +1857,14 @@ def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path:
     model_path, voices_path = ensure_kokoro_model_files()
     kokoro = Kokoro(str(model_path), str(voices_path))
 
-    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
-    # Top 1-rated 5-star flagship voices for maximum realism and natural human pacing:
-    # af_heart: 5-star flagship female voice (History & Stories)
-    # am_fenrir: 5-star cinematic narrative male voice (Space & Cosmic Mysteries)
-    # am_puck: 5-star dynamic conversational male voice (Exciting Tech Facts)
-    voice_map = {
-        "space": "am_fenrir",
-        "history": "af_heart",
-        "tech": "am_puck"
-    }
-    voice_name = voice_map.get(db_key, "af_heart")
+    cat_info = get_category_info(category)
+    db_key = cat_info.get("db_key", "superpowers")
+    # Unified WildApex Narrator Voice Identity:
+    # am_fenrir: 5-star cinematic narrative male voice across all Wildlife Biology pillars
+    voice_name = "am_fenrir"
 
-    print(f"Synthesizing Local Kokoro-82M Neural Speech (voice='{voice_name}', category='{db_key}')...")
-    samples, sample_rate = kokoro.create(clean_text, voice=voice_name, speed=1.0, lang="en-us")
+    print(f"Synthesizing Local Kokoro-82M Neural Speech (voice='{voice_name}', speed=1.08, category='{db_key}')...")
+    samples, sample_rate = kokoro.create(clean_text, voice=voice_name, speed=1.08, lang="en-us")
     sf.write(audio_path, samples, sample_rate)
 
     total_duration = len(samples) / float(sample_rate)
@@ -1717,9 +1900,7 @@ def generate_audio_and_subtitles(script_text: str, category: str, topic: str = "
 
     words = []
     voice_used = ""
-    db_key = CATEGORIES.get(category, {}).get("db_key", category.lower())
-    voice_map = {"space": "am_fenrir", "history": "af_heart", "tech": "am_puck"}
-    kokoro_voice = voice_map.get(db_key, "af_heart")
+    kokoro_voice = "am_fenrir"
 
     try:
         print(f"Generating Local Neural TTS voiceover via Kokoro-82M ONNX ({kokoro_voice})...")
@@ -1969,11 +2150,11 @@ def make_image_video_clip(image_path: str, duration: float, target_res: Tuple[in
 
 def download_single_pexels_video(api_key: str, kw: str, index: int, orientation: str, filename_prefix: str, category: str) -> Optional[str]:
     """Download a single background clip from Pexels API matching the keyword."""
-    cat_info = CATEGORIES[category]
+    cat_info = get_category_info(category)
     headers = {"Authorization": api_key}
     search_url = "https://api.pexels.com/videos/search"
     clean_kw = sanitize_search_query(kw)
-    params = {"query": clean_kw if clean_kw else "space", "orientation": orientation, "size": "medium", "per_page": 5}
+    params = {"query": clean_kw if clean_kw else "wildlife", "orientation": orientation, "size": "medium", "per_page": 5}
     
     try:
         resp = HTTP_SESSION.get(search_url, headers=headers, params=params, timeout=15)
@@ -2052,7 +2233,7 @@ def download_single_pexels_video(api_key: str, kw: str, index: int, orientation:
 
 def download_pexels_videos(api_key: str, keywords: List[str], category: str, orientation: str = "portrait", limit: int = 6, filename_prefix: str = "bg") -> List[str]:
     print("Preparing download of background video clips from Pexels and Wikimedia...")
-    cat_info = CATEGORIES[category]
+    cat_info = get_category_info(category)
     
     # Guarantee enough keywords
     default_pool = cat_info["kw_defaults"]
@@ -2214,7 +2395,7 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
     
     sub_y = config.sub_position[1]
     margin_v = play_res_y - sub_y
-    watermark_margin_v = max(40, int(play_res_y * 0.20))  # Lower-center safe zone anchored below main captions
+    watermark_margin_v = max(40, int(play_res_y * 0.14))  # Lower-center safe zone anchored at y=1651 (MarginV=268)
     
     lines = [
         "[Script Info]",
@@ -2241,18 +2422,19 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
     
     _, theme_ass_color, _ = get_theme_colors(category)
 
-    def get_ass_color_tag(word: str) -> str:
-        clean = re.sub(r"[^\w]", "", word.upper())
+    def format_styled_word(word: str) -> str:
+        w_upper = word.upper().strip()
+        clean = re.sub(r"[^\w]", "", w_upper)
         fillers = {
             "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
             "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
             "FROM", "ARE", "WERE", "BEEN", "BUT", "SO", "IF", "THEY", "THEIR", "YOU", "YOUR"
         }
         if clean in fillers:
-            return ""
-        if is_power_word(word):
-            return f"{{\\fscx120\\fscy120\\1c&H0000FFFF}}"
-        return f"{{\\1c{theme_ass_color}}}"
+            return f"{{\\1c&H00FFFFFF}}{w_upper}"
+        if is_power_word(w_upper):
+            return f"{{\\fscx115\\fscy115\\1c&H0000FFFF}}{w_upper}{{\\fscx100\\fscy100\\1c&H00FFFFFF}}"
+        return f"{{\\1c{theme_ass_color}}}{w_upper}{{\\1c&H00FFFFFF}}"
         
     if not config.is_short:
         # Group single-word cues into phrases of 3-5 words (targeting 4)
@@ -2297,14 +2479,38 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
                 line_text = f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{line_text}"
                 lines.append(line_text)
     else:
-        # Standard one-word-at-a-time flashing for Shorts
-        for (start, end), text in subs_list:
-            start_str = format_ass_time(start)
-            end_str = format_ass_time(end)
-            word_text = text.upper().strip()
-            color_tag = get_ass_color_tag(word_text)
-            line_text = f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{color_tag}{word_text}"
-            lines.append(line_text)
+        # High-Impact 2-to-3 Word Phrase Chunks for Shorts (eliminates single-word strobe fatigue)
+        short_phrases = []
+        current_chunk = []
+        current_chars = 0
+        for item in subs_list:
+            (start, end), word = item
+            w_clean = word.upper().strip()
+            if current_chunk and (len(current_chunk) >= 3 or (current_chars + len(w_clean) > 18 and len(current_chunk) >= 2)):
+                short_phrases.append(current_chunk)
+                current_chunk = []
+                current_chars = 0
+            current_chunk.append(item)
+            current_chars += len(w_clean) + 1
+            if w_clean.endswith(('.', '?', '!', ',', ';', ':', '—', '–')) or (len(current_chunk) >= 2 and is_power_word(w_clean)):
+                short_phrases.append(current_chunk)
+                current_chunk = []
+                current_chars = 0
+        if current_chunk:
+            short_phrases.append(current_chunk)
+
+        for p_idx, phrase in enumerate(short_phrases):
+            p_start = phrase[0][0][0]
+            p_end = phrase[-1][0][1]
+            if p_idx < len(short_phrases) - 1:
+                next_p_start = short_phrases[p_idx + 1][0][0][0]
+                if 0.0 <= (next_p_start - p_end) <= 0.15:
+                    p_end = next_p_start
+            start_str = format_ass_time(p_start)
+            end_str = format_ass_time(p_end)
+            styled_words = [format_styled_word(w_txt) for (_, _), w_txt in phrase]
+            phrase_text = " ".join(styled_words)
+            lines.append(f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{phrase_text}")
         
     with open(output_ass_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
@@ -2513,11 +2719,11 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
             print("Failed to add progress bar clip:", pbar_err)
 
         try:
-            # 2. Automated CTA Overlay in final 5 seconds
+            # 2. Automated CTA Overlay in final 3.5 seconds (positioned in lower-center safe zone y=1459 below captions)
             cta_asset_path = get_or_create_cta_asset()
-            cta_start = max(0.0, audio_duration - 5.0)
+            cta_start = max(0.0, audio_duration - 3.5)
             cta_dur = audio_duration - cta_start
-            cta_y = int(config.resolution[1] * 0.70)
+            cta_y = int(config.resolution[1] * 0.76)
             cta_clip = (
                 ImageClip(cta_asset_path)
                 .set_start(cta_start)
@@ -2538,7 +2744,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         music_dir = Path("music")
         music_temp_path = f"temp-music-{os.getpid()}.wav"
 
-        cat_info = CATEGORIES[category]
+        cat_info = get_category_info(category)
         cat_music_dir = music_dir / cat_info["music_subfolder"]
         target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
 
@@ -2808,7 +3014,7 @@ def download_pexels_image(pexels_key: str, query: str) -> Optional[str]:
 def generate_thumbnail(title: str, category: str, pexels_key: str, output_path: str = "thumbnail.jpg") -> Optional[str]:
     print("Generating widescreen thumbnail (1280x720)...")
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
-    cat_info = CATEGORIES[category]
+    cat_info = get_category_info(category)
     
     # 1. Acquire backdrop image
     bg_query = random.choice(cat_info["kw_defaults"])
@@ -3110,7 +3316,7 @@ def post_top_level_engagement_comment(youtube, video_id: str, winning_script_tex
 # ---------------------------------------------------------------------------
 # 6A. YOUTUBE UPLOADER WITH PINNED COMMENT
 # ---------------------------------------------------------------------------
-def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "space", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None, subs_list: Optional[List] = None, pre_verified_creds: Optional[Credentials] = None, client: Optional[genai.Client] = None, winning_script_text: Optional[str] = None) -> Optional[str]:
+def upload_to_youtube(video_path: str, title: str, description: str, client_id: str, client_secret: str, refresh_token: str, playlist_id: Optional[str] = None, category: str = "superpowers", thumbnail_path: Optional[str] = None, related_video_id: Optional[str] = None, subs_list: Optional[List] = None, pre_verified_creds: Optional[Credentials] = None, client: Optional[genai.Client] = None, winning_script_text: Optional[str] = None) -> Optional[str]:
     print("Uploading to YouTube...")
     if pre_verified_creds is not None:
         creds = pre_verified_creds
@@ -3125,8 +3331,8 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         )
     youtube = build("youtube", "v3", credentials=creds)
 
-    cat_data = CATEGORIES.get(category, CATEGORIES[list(CATEGORIES.keys())[0]])
-    category_id = cat_data.get("yt_category_id", "28")
+    cat_data = get_category_info(category)
+    category_id = cat_data.get("yt_category_id", "15")
 
     body = {
         "snippet": {
@@ -3138,7 +3344,7 @@ def upload_to_youtube(video_path: str, title: str, description: str, client_id: 
         "status": {
             "privacyStatus": "public",
             "selfDeclaredMadeForKids": False,
-            "containsSyntheticMedia": True # CRITICAL COMPLIANCE
+            "containsSyntheticMedia": False  # Real Pexels stock wildlife footage + standard narration does not require Altered Content penalty label
         }
     }
 
@@ -3400,12 +3606,14 @@ def sync_topics_from_youtube(client_id: str, client_secret: str, refresh_token: 
 
                 if vid not in existing_vids and title.lower().strip() not in existing_titles:
                     title_lower = title.lower()
-                    if "#space" in title_lower or "space" in title_lower or "cosmic" in title_lower:
-                        cat = "space"
-                    elif "#history" in title_lower or "war" in title_lower or "history" in title_lower:
-                        cat = "history"
+                    if any(w in title_lower for w in ["parasite", "venom", "wasp", "toxin", "spider"]):
+                        cat = "parasites"
+                    elif any(w in title_lower for w in ["deep", "shark", "squid", "ocean", "abyss"]):
+                        cat = "deep_sea"
+                    elif any(w in title_lower for w in ["predator", "badger", "crocodile", "orca", "eagle", "lion"]):
+                        cat = "predators"
                     else:
-                        cat = "tech"
+                        cat = "superpowers"
 
                     new_items.append({
                         "category": cat,
@@ -3450,22 +3658,20 @@ def run_daily_upload_pipeline_once() -> None:
 
     # Parse command line overrides
     parser = argparse.ArgumentParser(description="Automated video generation pipeline")
-    parser.add_argument("--category", choices=["space", "history", "tech"], help="Force script category selection")
+    parser.add_argument(
+        "--category",
+        choices=["superpowers", "predators", "parasites", "deep_sea", "space", "history", "tech"],
+        help="Force script category selection"
+    )
     parser.add_argument("--format", choices=["short", "long"], default="short", help="Format of video to generate")
     parser.add_argument("--dry-run", action="store_true", help="Perform content generation and TTS without video rendering")
     parser.add_argument("--no-upload", action="store_true", help="Render video to project folder without uploading to social platforms")
     parser.add_argument("--output", type=str, default="generated_short.mp4", help="Output filename for rendered video")
     args = parser.parse_args()
 
-    # Route content selection using 7-day locked category rotation
-    category_keys = list(CATEGORIES.keys())
+    # Route content selection using daily sub-pillar rotation across the Wildlife Biology umbrella
     if args.category:
-        if args.category == "space":
-            category = category_keys[0]
-        elif args.category == "history":
-            category = category_keys[1]
-        else:
-            category = category_keys[2]
+        category = resolve_category_name(args.category)
         print(f"CLI Override: selected category '{category}'")
     else:
         category = get_rotating_category()
@@ -3506,7 +3712,8 @@ def run_daily_upload_pipeline_once() -> None:
         )
 
     # Resolve database key for history lookup/storage
-    db_category = CATEGORIES[category]["db_key"]
+    cat_info = get_category_info(category)
+    db_category = cat_info["db_key"]
 
     print(f"Loaded {len(past_topics)} past topic entries for exclusion checks.")
 
@@ -3568,7 +3775,7 @@ def run_daily_upload_pipeline_once() -> None:
         # Standard Shorts path (single segment)
         seg = segments[0]
         audio_path, subs_list, actual_voice_used = generate_audio_and_subtitles(seg["script"], category, seg["topic"])
-        video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category, orientation="portrait")
+        video_paths = download_pexels_videos(pexels_key, seg["visual_keywords"], category, orientation="portrait", limit=config.clip_count)
         assemble_video(video_paths, audio_path, subs_list, output_path, category, config, mix_music=True)
     else:
         # Long-form chunked rendering + zero-re-encoding FFmpeg stream copy concatenation
@@ -3607,7 +3814,7 @@ def run_daily_upload_pipeline_once() -> None:
         fb_page_id            = os.environ.get("FB_PAGE_ID")
 
         # Resolve target YouTube Playlist ID from environment variables
-        cat_info = CATEGORIES[category]
+        cat_info = get_category_info(category)
         playlist_id = os.environ.get(cat_info["playlist_env"])
 
         # 3. Upload to platforms (Skipped in --no-upload mode)

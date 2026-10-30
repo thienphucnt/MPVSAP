@@ -53,7 +53,80 @@ def check_video_live_oembed(video_id: str) -> bool:
     except Exception:
         return False
 
-from typing import Tuple
+from typing import Tuple, Set
+
+
+def sync_youtube_video_statistics(history: list) -> Tuple[list, int, Set[str]]:
+    """
+    Batch-query YouTube Data API v3 videos().list(part='statistics,status') (up to 50 IDs per request)
+    to populate real viewCount, likeCount, and commentCount into entry['youtube_stats'].
+    Returns (history, stats_updated_count, existing_channel_video_ids).
+    """
+    client_id = os.environ.get("YOUTUBE_CLIENT_ID")
+    client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
+    refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
+
+    existing_channel_vids: Set[str] = set()
+    stats_updated = 0
+
+    if not (client_id and client_secret and refresh_token):
+        print("Notice: YouTube OAuth credentials not set in environment; skipping live view/like statistics sync.")
+        return history, 0, existing_channel_vids
+
+    try:
+        from google.oauth2.credentials import Credentials
+        from google.auth.transport.requests import Request
+        from googleapiclient.discovery import build
+
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=["https://www.googleapis.com/auth/youtube"]
+        )
+        creds.refresh(Request())
+        youtube = build("youtube", "v3", credentials=creds)
+
+        vid_to_entries = {}
+        for entry in history:
+            yt_url = entry.get("youtube_url")
+            if yt_url:
+                vid = yt_url.split("/")[-1].split("?")[0].strip()
+                if vid:
+                    vid_to_entries.setdefault(vid, []).append(entry)
+
+        all_vids = list(vid_to_entries.keys())
+        for i in range(0, len(all_vids), 50):
+            batch_ids = all_vids[i:i + 50]
+            resp = youtube.videos().list(
+                part="statistics,status",
+                id=",".join(batch_ids)
+            ).execute()
+
+            for item in resp.get("items", []):
+                vid = item.get("id")
+                if not vid:
+                    continue
+                existing_channel_vids.add(vid)
+                stats = item.get("statistics", {})
+                new_stats = {
+                    "views": int(stats.get("viewCount", 0)),
+                    "likes": int(stats.get("likeCount", 0)),
+                    "comments": int(stats.get("commentCount", 0))
+                }
+                for entry in vid_to_entries.get(vid, []):
+                    old_stats = entry.get("youtube_stats")
+                    if old_stats != new_stats:
+                        entry["youtube_stats"] = new_stats
+                        stats_updated += 1
+
+        print(f"--> [MAINTENANCE SYNC] Synced live YouTube statistics for {len(existing_channel_vids)} videos ({stats_updated} entries updated).")
+    except Exception as e:
+        print(f"Notice: Live YouTube statistics sync encountered an error: {e}")
+
+    return history, stats_updated, existing_channel_vids
 
 def sync_github_cancelled_or_failed_runs(history: list) -> Tuple[list, int]:
     """Query GitHub API with full pagination to detect and persist any missing or status-updated workflow runs in run_history.json."""
@@ -126,7 +199,7 @@ def sync_github_cancelled_or_failed_runs(history: list) -> Tuple[list, int]:
                             "github_run_url": run.get("html_url"),
                             "workflow_type": "DAILY_SHORTS",
                             "timestamp": run.get("created_at"),
-                            "category": "Space & Cosmic Mysteries",
+                            "category": "Bizarre Biological Superpowers",
                             "status": final_status,
                             "generation_mode": "5_VARIANT_TOURNAMENT",
                             "daily_volume": 1,
@@ -140,7 +213,7 @@ def sync_github_cancelled_or_failed_runs(history: list) -> Tuple[list, int]:
                             "source_url": None,
                             "music_track": None,
                             "search_keywords": [],
-                            "voice_actor": "am_michael (Kokoro-82M)",
+                            "voice_actor": "am_fenrir (Kokoro-82M)",
                             "visual_asset_types": "Salience-Zoomed 4K Clips",
                             "ass_subtitle_engine": "FFmpeg ASS Engine"
                         }
@@ -173,6 +246,9 @@ def run_maintenance_sync():
     # 1. Sync cancelled or failed GitHub runs missing from history
     history, added_runs_count = sync_github_cancelled_or_failed_runs(history)
 
+    # 2. Sync live YouTube viewCount, likeCount, and commentCount via YouTube Data API v3
+    history, stats_updated_count, authenticated_existing_vids = sync_youtube_video_statistics(history)
+
     # Collect video IDs
     video_entries = []
     for entry in history:
@@ -186,12 +262,16 @@ def run_maintenance_sync():
         print("No video URLs found in run history to audit.")
         return
 
-    print(f"Auditing {len(video_entries)} videos from telemetry logs via public oEmbed API...")
+    print(f"Auditing {len(video_entries)} videos from telemetry logs...")
     updated_count = 0
     live_vids = set()
     removed_vids = set()
 
     for vid, entry in video_entries:
+        # If authenticated YouTube API confirmed the video exists on the channel (public or private), keep it valid
+        if vid in authenticated_existing_vids:
+            live_vids.add(vid)
+            continue
         is_live = check_video_live_oembed(vid)
         if is_live:
             live_vids.add(vid)
@@ -205,14 +285,14 @@ def run_maintenance_sync():
             entry["error_traceback"] = "Video automatically detected as removed via oEmbed audit."
             updated_count += 1
 
-    if added_runs_count > 0 or updated_count > 0:
+    if added_runs_count > 0 or updated_count > 0 or stats_updated_count > 0:
         with open(LOGS_FILE, "w", encoding="utf-8") as f:
             json.dump(history, f, indent=2)
         dash_data = Path("dashboard/app/data/run_history.json")
         dash_data.parent.mkdir(parents=True, exist_ok=True)
         with open(dash_data, "w", encoding="utf-8") as f:
             json.dump(history, f, indent=2)
-        print(f"SUCCESS: Persisted {added_runs_count} missing runs & {updated_count} video status updates to {LOGS_FILE} and {dash_data}!")
+        print(f"SUCCESS: Persisted {added_runs_count} missing runs, {stats_updated_count} live stats updates & {updated_count} video status updates to {LOGS_FILE}!")
 
     # Synchronize past_topics.json by removing topics of deleted videos (unless another live video shares the topic)
     past_topics_file = Path("past_topics.json")
