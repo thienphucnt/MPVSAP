@@ -314,6 +314,56 @@ class TestPipeline(unittest.TestCase):
             if os.path.exists(temp_ass):
                 os.remove(temp_ass)
 
+        # 6. Verify Clause-Locked Acoustic-Valley Alignment & Clause-Boundary Phrase Chunking
+        import numpy as np
+        from main import align_clause_words_to_acoustic_valleys, sanitize_script_for_tts
+
+        self.assertEqual(sanitize_script_for_tts("It’s Earth’s living relic."), "It's Earth's living relic.")
+
+        mock_kokoro = MagicMock()
+        mock_kokoro.tokenizer.phonemize.side_effect = lambda w, lang="en-us": w
+        mock_kokoro.tokenizer.tokenize.side_effect = lambda p: list(p)
+        sr = 24000
+        # 1.2s synthetic waveform with a clear silence valley around t=0.45s
+        t_arr = np.linspace(0, 1.2, int(1.2 * sr), endpoint=False)
+        env = np.ones_like(t_arr)
+        env[(t_arr >= 0.42) & (t_arr <= 0.48)] = 0.01
+        synth_wave = (0.5 * env * np.sin(2 * np.pi * 220 * t_arr)).astype(np.float32)
+        aligned = align_clause_words_to_acoustic_valleys(mock_kokoro, "Our oceans?", synth_wave, sr, 2.00)
+        self.assertEqual(len(aligned), 2)
+        self.assertEqual(aligned[0][2], "OUR")
+        self.assertEqual(aligned[1][2], "OCEANS?")
+        self.assertAlmostEqual(aligned[0][0], 2.00, places=2)
+        self.assertAlmostEqual(aligned[1][1], 3.20, places=2)
+        # Internal boundary should snap into the acoustic valley [2.42, 2.48]
+        self.assertTrue(2.40 <= aligned[0][1] <= 2.50, f"Expected boundary in valley [2.40, 2.50], got {aligned[0][1]}")
+
+        # Verify generate_ass_file never merges across punctuation and splits SYMBIOTIC GAMMAPROTEOBACTERIA
+        boundary_subs = [
+            ((2.0, 2.45), "OUR"),
+            ((2.45, 2.98), "OCEANS?"),
+            ((3.24, 3.55), "MEET"),
+            ((3.55, 4.17), "SCALY-FOOT,"),
+            ((25.72, 26.51), "SYMBIOTIC"),
+            ((26.51, 27.67), "GAMMAPROTEOBACTERIA,"),
+        ]
+        temp_ass_2 = os.path.join(tempfile.gettempdir(), f"test_wildapex_sync_{os.getpid()}.ass")
+        try:
+            generate_ass_file(boundary_subs, temp_ass_2, "Deep Sea & Prehistoric Survivors", short_cfg)
+            with open(temp_ass_2, "r", encoding="utf-8") as f:
+                ass_2 = f.read()
+            default_cues = [line for line in ass_2.splitlines() if line.startswith("Dialogue:") and ",Default," in line]
+            # Expect 4 distinct cues: [OUR OCEANS?], [MEET SCALY-FOOT], [SYMBIOTIC], [GAMMAPROTEOBACTERIA]
+            self.assertEqual(len(default_cues), 4)
+            self.assertIn("OCEANS?", default_cues[0])
+            self.assertNotIn("MEET", default_cues[0])
+            self.assertIn("SYMBIOTIC", default_cues[2])
+            self.assertNotIn("GAMMAPROTEOBACTERIA", default_cues[2])
+            self.assertIn("GAMMAPROTEOBACTERIA", default_cues[3])
+        finally:
+            if os.path.exists(temp_ass_2):
+                os.remove(temp_ass_2)
+
         print("SUCCESS: Test 6 Passed: test_wildlife_species_ingestion_and_few_shot_scoring verified WildApex 3.0 architecture.")
 
 

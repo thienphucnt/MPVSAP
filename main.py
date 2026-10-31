@@ -1761,8 +1761,9 @@ def sanitize_script_for_tts(text: str) -> str:
     # 3. Strip markdown emphasis (*bold*, **bold**, _italic_, __italic__, ~strike~, #headers, `code`)
     clean = re.sub(r'[*_~`#]+', '', clean)
     
-    # 4. Clean up quotation marks & whitespace
-    clean = re.sub(r'["“”‘’]', '', clean)
+    # 4. Normalize curly apostrophes to straight apostrophe (preserving contractions like It's / Earth's) & strip quotes
+    clean = clean.replace("’", "'").replace("‘", "'")
+    clean = re.sub(r'["“”]', '', clean)
     clean = re.sub(r'\s+', ' ', clean).strip()
     return clean
 
@@ -1785,14 +1786,106 @@ def get_syllable_count(word: str) -> int:
     return max(1, count)
 
 
+_UNSTRESSED_FUNCTION_WORDS = {
+    "the", "a", "an", "to", "in", "of", "on", "at", "by", "for",
+    "with", "and", "or", "as", "is", "was", "its", "it", "into", "from", "that", "this"
+}
+
+
+def align_clause_words_to_acoustic_valleys(
+    kokoro_instance,
+    clause_text: str,
+    clause_samples,
+    sample_rate: int,
+    clause_start_sec: float,
+) -> List[Tuple[float, float, str]]:
+    """
+    Align words inside a single synthesized Kokoro clause waveform to exact acoustic RMS valleys.
+    - Uses Klatt's polysyllabic shortening exponent (token_count ** 0.78) and connected-speech
+      function-word reduction (0.62x) for initial word boundary priors.
+    - Refines internal word boundaries by snapping to the nearest local minimum (consonant/word valley)
+      in the clause's 5ms RMS amplitude envelope within a +-65ms window.
+    - Preserves trailing punctuation on each word so generate_ass_file() respects clause/sentence breaks.
+    """
+    import numpy as np
+
+    c_dur = len(clause_samples) / float(sample_rate) if sample_rate > 0 else 0.0
+    word_matches = re.findall(r"(\w+(?:[\-']\w+)*)([.,!?;:—–]*)", clause_text)
+    if not word_matches or c_dur <= 0.0:
+        return []
+    if len(word_matches) == 1:
+        w, p = word_matches[0]
+        return [(round(clause_start_sec, 2), round(clause_start_sec + c_dur, 2), f"{w}{p}".upper())]
+
+    hop = max(1, int(0.005 * sample_rate))
+    win = max(hop, int(0.015 * sample_rate))
+    if len(clause_samples) >= win:
+        rms = np.array([
+            np.sqrt(np.mean(clause_samples[i : min(len(clause_samples), i + win)] ** 2))
+            for i in range(0, len(clause_samples), hop)
+        ])
+        rms_norm = rms / (float(np.max(rms)) + 1e-8)
+    else:
+        rms_norm = np.zeros(max(1, len(clause_samples) // hop))
+
+    weights = []
+    for w, p in word_matches:
+        try:
+            pho = kokoro_instance.tokenizer.phonemize(w, lang="en-us")
+            toks = kokoro_instance.tokenizer.tokenize(pho)
+            tc = max(1, len(toks))
+        except Exception:
+            tc = max(1, len(w))
+        wt = float(tc) ** 0.78
+        if w.lower() in _UNSTRESSED_FUNCTION_WORDS:
+            wt *= 0.62
+        weights.append((w, p, wt))
+
+    total_wt = sum(wt for _, _, wt in weights)
+    raw_bounds = [0.0]
+    acc = 0.0
+    for _, _, wt in weights:
+        acc += (wt / total_wt) * c_dur
+        raw_bounds.append(acc)
+
+    snapped = [0.0]
+    for idx in range(1, len(raw_bounds) - 1):
+        t_est = raw_bounds[idx]
+        prev_t = snapped[-1] + 0.05
+        next_t = raw_bounds[idx + 1] - 0.05
+        lo_t = max(prev_t, t_est - 0.065)
+        hi_t = min(next_t, t_est + 0.065)
+        if hi_t > lo_t and len(rms_norm) > 2:
+            lo_idx = max(0, int(lo_t / 0.005))
+            hi_idx = min(len(rms_norm) - 1, int(hi_t / 0.005))
+            if hi_idx > lo_idx:
+                indices = np.arange(lo_idx, hi_idx + 1)
+                dist_pen = 0.15 * np.abs(indices * 0.005 - t_est) / 0.065
+                best_idx = lo_idx + int(np.argmin(rms_norm[lo_idx : hi_idx + 1] + dist_pen))
+                snapped.append(best_idx * 0.005)
+            else:
+                snapped.append(t_est)
+        else:
+            snapped.append(t_est)
+    snapped.append(c_dur)
+
+    out = []
+    for i, (w, p, _) in enumerate(weights):
+        s_sec = round(clause_start_sec + snapped[i], 2)
+        e_sec = round(clause_start_sec + snapped[i + 1], 2)
+        if e_sec <= s_sec:
+            e_sec = round(s_sec + 0.05, 2)
+        out.append((s_sec, e_sec, f"{w}{p}".upper()))
+    return out
+
+
 def calculate_kokoro_native_phoneme_timestamps(kokoro_instance, text: str, total_duration: float) -> List[Tuple[float, float, str]]:
     """
-    Kokoro Native Phoneme Token Alignment Engine:
-    Uses Kokoro's internal espeak phonemizer and tokenizer to measure the exact
-    number of neural phoneme tokens allocated to every word and punctuation pause.
-    100% tied directly to Kokoro-82M's native speech synthesis architecture.
+    Kokoro Prosodic Phoneme Token Alignment Fallback:
+    Uses Kokoro's internal espeak phonemizer and tokenizer with Klatt's polysyllabic shortening
+    and connected-speech function-word reduction, preserving trailing punctuation for phrase chunking.
     """
-    tokens = re.findall(r'(\w+[\-\']?\w*)([.,!?;—–]*)\s*', text)
+    tokens = re.findall(r"(\w+(?:[\-']\w+)*)([.,!?;:—–]*)\s*", text)
     if not tokens:
         return []
 
@@ -1802,7 +1895,6 @@ def calculate_kokoro_native_phoneme_timestamps(kokoro_instance, text: str, total
         if not clean_w:
             continue
 
-        # Measure exact Kokoro phoneme tokens allocated to this word
         try:
             pho = kokoro_instance.tokenizer.phonemize(clean_w, lang='en-us')
             toks = kokoro_instance.tokenizer.tokenize(pho)
@@ -1810,18 +1902,21 @@ def calculate_kokoro_native_phoneme_timestamps(kokoro_instance, text: str, total
         except Exception:
             token_count = max(1, len(clean_w))
 
-        # Punctuation pause token allocations matching Kokoro's internal frame pauses
+        weighted_tokens = float(token_count) ** 0.78
+        if clean_w.lower() in _UNSTRESSED_FUNCTION_WORDS:
+            weighted_tokens *= 0.62
+
         pause_tokens = 0.0
         if '...' in punct or '—' in punct or '–' in punct:
-            pause_tokens = 5.0
+            pause_tokens = 3.5
         elif any(p in punct for p in ['.', '!', '?']):
-            pause_tokens = 4.0
+            pause_tokens = 3.0
         elif any(p in punct for p in [',', ';', ':']):
-            pause_tokens = 2.0
+            pause_tokens = 1.6
 
-        word_items.append((clean_w, token_count, pause_tokens))
+        word_items.append((clean_w, punct, weighted_tokens, pause_tokens))
 
-    total_tokens = sum(tc + pt for _, tc, pt in word_items)
+    total_tokens = sum(tc + pt for _, _, tc, pt in word_items)
     if total_tokens <= 0:
         return []
 
@@ -1829,13 +1924,13 @@ def calculate_kokoro_native_phoneme_timestamps(kokoro_instance, text: str, total
     timestamps = []
     current_sec = 0.0
 
-    for word, token_count, pause_tokens in word_items:
-        word_dur = token_count * seconds_per_token
+    for word, punct, weighted_tokens, pause_tokens in word_items:
+        word_dur = weighted_tokens * seconds_per_token
         pause_dur = pause_tokens * seconds_per_token
 
         start_sec = round(current_sec, 2)
         end_sec = round(current_sec + word_dur, 2)
-        timestamps.append((start_sec, end_sec, word.upper()))
+        timestamps.append((start_sec, end_sec, f"{word}{punct}".upper()))
 
         current_sec += word_dur + pause_dur
 
@@ -1843,12 +1938,15 @@ def calculate_kokoro_native_phoneme_timestamps(kokoro_instance, text: str, total
 
 
 def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path: str) -> List[Tuple[float, float, str]]:
-    """Synthesize high-quality local CPU neural audio using Kokoro-82M ONNX engine with native phoneme token pacing."""
+    """
+    Synthesize high-quality local CPU neural audio using Kokoro-82M ONNX with Clause-Locked
+    Sample Anchoring and Acoustic Valley Word-Boundary Alignment (0.000s cumulative drift).
+    """
     from kokoro_onnx import Kokoro
     import soundfile as sf
+    import numpy as np
     import importlib.metadata
 
-    # Sanitize input script text to strip markdown formatting (*, _, #, stage directions)
     clean_text = sanitize_script_for_tts(text)
 
     kokoro_ver = importlib.metadata.version('kokoro-onnx')
@@ -1859,14 +1957,52 @@ def synthesize_kokoro_audio_and_timestamps(text: str, category: str, audio_path:
 
     cat_info = get_category_info(category)
     db_key = cat_info.get("db_key", "superpowers")
-    # Unified WildApex Narrator Voice Identity:
-    # am_fenrir: 5-star cinematic narrative male voice across all Wildlife Biology pillars
     voice_name = "am_fenrir"
+    speech_speed = 1.10
 
-    print(f"Synthesizing Local Kokoro-82M Neural Speech (voice='{voice_name}', speed=1.08, category='{db_key}')...")
-    samples, sample_rate = kokoro.create(clean_text, voice=voice_name, speed=1.08, lang="en-us")
+    raw_clauses = re.findall(r"[^.,!?;:—–]+[.,!?;:—–]*", clean_text)
+    clauses = [c.strip() for c in raw_clauses if c.strip()]
+    if not clauses:
+        clauses = [clean_text]
+
+    print(f"Synthesizing Clause-Locked Kokoro-82M Neural Speech ({len(clauses)} clauses, voice='{voice_name}', speed={speech_speed}, category='{db_key}')...")
+
+    all_audio_segments = []
+    all_word_timestamps: List[Tuple[float, float, str]] = []
+    cursor_samples = 0
+    sample_rate = 24000
+
+    for idx, clause in enumerate(clauses):
+        c_samples, sample_rate = kokoro.create(clause, voice=voice_name, speed=speech_speed, lang="en-us", trim=True)
+        if len(c_samples) == 0:
+            continue
+
+        clause_start_sec = cursor_samples / float(sample_rate)
+        clause_words = align_clause_words_to_acoustic_valleys(
+            kokoro, clause, c_samples, sample_rate, clause_start_sec
+        )
+        all_word_timestamps.extend(clause_words)
+
+        all_audio_segments.append(c_samples)
+        cursor_samples += len(c_samples)
+
+        if idx < len(clauses) - 1:
+            pause_sec = 0.24 if clause.endswith((".", "!", "?")) else 0.12
+            pause_samples = int(round(pause_sec * sample_rate))
+            all_audio_segments.append(np.zeros(pause_samples, dtype=np.float32))
+            cursor_samples += pause_samples
+        else:
+            tail_samples = int(round(0.05 * sample_rate))
+            all_audio_segments.append(np.zeros(tail_samples, dtype=np.float32))
+            cursor_samples += tail_samples
+
+    if all_audio_segments:
+        samples = np.concatenate(all_audio_segments)
+        sf.write(audio_path, samples, sample_rate)
+        return all_word_timestamps
+
+    samples, sample_rate = kokoro.create(clean_text, voice=voice_name, speed=speech_speed, lang="en-us")
     sf.write(audio_path, samples, sample_rate)
-
     total_duration = len(samples) / float(sample_rate)
     return calculate_kokoro_native_phoneme_timestamps(kokoro, clean_text, total_duration)
 
@@ -2407,7 +2543,7 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
         "",
         "[V4+ Styles]",
         "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
-        f"Style: Default,{font_name},{config.sub_fontsize},&H00FFFFFF,&H0000FFFF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,1,3.5,0,2,10,10,{margin_v},1",
+        f"Style: Default,{font_name},{config.sub_fontsize},&H00FFFFFF,&H0000FFFF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,1,4.5,2,2,10,10,{margin_v},1",
         f"Style: Watermark,{font_name},36,&HA8FFFFFF,&HA8FFFFFF,&H90000000,&H00000000,-1,0,0,0,100,100,0,0,1,2.0,1,2,10,10,{watermark_margin_v},1",
         "",
         "[Events]",
@@ -2423,18 +2559,21 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
     _, theme_ass_color, _ = get_theme_colors(category)
 
     def format_styled_word(word: str) -> str:
-        w_upper = word.upper().strip()
+        w_upper = word.upper().strip().rstrip(",;:—–")
         clean = re.sub(r"[^\w]", "", w_upper)
         fillers = {
             "THE", "A", "AND", "OR", "IN", "OF", "TO", "IS", "WAS", "FOR", 
             "IT", "ON", "WITH", "AS", "AT", "BY", "AN", "BE", "THIS", "THAT", 
             "FROM", "ARE", "WERE", "BEEN", "BUT", "SO", "IF", "THEY", "THEIR", "YOU", "YOUR"
         }
+        scale_prefix = "\\fscx85\\fscy85" if len(clean) >= 16 else ""
+        scale_reset = "\\fscx100\\fscy100" if scale_prefix else ""
         if clean in fillers:
-            return f"{{\\1c&H00FFFFFF}}{w_upper}"
+            return f"{{{scale_prefix}\\1c&H00FFFFFF}}{w_upper}{{{scale_reset}}}" if scale_prefix else f"{{\\1c&H00FFFFFF}}{w_upper}"
         if is_power_word(w_upper):
-            return f"{{\\fscx115\\fscy115\\1c&H0000FFFF}}{w_upper}{{\\fscx100\\fscy100\\1c&H00FFFFFF}}"
-        return f"{{\\1c{theme_ass_color}}}{w_upper}{{\\1c&H00FFFFFF}}"
+            p_scale = "\\fscx92\\fscy92" if len(clean) >= 16 else "\\fscx115\\fscy115"
+            return f"{{{p_scale}\\1c&H0000FFFF}}{w_upper}{{\\fscx100\\fscy100\\1c&H00FFFFFF}}"
+        return f"{{{scale_prefix}\\1c{theme_ass_color}}}{w_upper}{{{scale_reset}\\1c&H00FFFFFF}}"
         
     if not config.is_short:
         # Group single-word cues into phrases of 3-5 words (targeting 4)
@@ -2479,32 +2618,64 @@ def generate_ass_file(subs_list: List[Tuple[Tuple[float, float], str]], output_a
                 line_text = f"Dialogue: 0,{start_str},{end_str},Default,,0,0,0,,{line_text}"
                 lines.append(line_text)
     else:
-        # High-Impact 2-to-3 Word Phrase Chunks for Shorts (eliminates single-word strobe fatigue)
-        short_phrases = []
-        current_chunk = []
-        current_chars = 0
+        # Clause-Aware Balanced 2-to-3 Word Phrase Chunks for Shorts:
+        # 1. Partition words at clause/sentence punctuation boundaries so words never merge across pauses.
+        # 2. Enforce <= 18 display characters per line (even for 1-word + long-word pairs like SYMBIOTIC GAMMAPROTEOBACTERIA).
+        # 3. Rebalance trailing 1-word orphans (<= 10 chars) at the end of a clause (3 + 1 -> 2 + 2).
+        clauses = []
+        cur_clause = []
         for item in subs_list:
-            (start, end), word = item
-            w_clean = word.upper().strip()
-            if current_chunk and (len(current_chunk) >= 3 or (current_chars + len(w_clean) > 18 and len(current_chunk) >= 2)):
-                short_phrases.append(current_chunk)
-                current_chunk = []
-                current_chars = 0
-            current_chunk.append(item)
-            current_chars += len(w_clean) + 1
-            if w_clean.endswith(('.', '?', '!', ',', ';', ':', '—', '–')) or (len(current_chunk) >= 2 and is_power_word(w_clean)):
-                short_phrases.append(current_chunk)
-                current_chunk = []
-                current_chars = 0
-        if current_chunk:
-            short_phrases.append(current_chunk)
+            _, word = item
+            cur_clause.append(item)
+            if word.upper().strip().endswith(('.', '?', '!', ',', ';', ':', '—', '–')):
+                clauses.append(cur_clause)
+                cur_clause = []
+        if cur_clause:
+            clauses.append(cur_clause)
+
+        short_phrases = []
+        for clause_items in clauses:
+            clause_chunks = []
+            current_chunk = []
+            current_chars = 0
+            for item in clause_items:
+                _, word = item
+                w_clean = word.upper().strip()
+                w_disp = w_clean.rstrip(",;:—–")
+                if current_chunk and (len(current_chunk) >= 3 or (current_chars + len(w_disp) > 18)):
+                    clause_chunks.append(current_chunk)
+                    current_chunk = []
+                    current_chars = 0
+                current_chunk.append(item)
+                current_chars += len(w_disp) + 1
+                if len(current_chunk) >= 2 and is_power_word(w_clean):
+                    clause_chunks.append(current_chunk)
+                    current_chunk = []
+                    current_chars = 0
+            if current_chunk:
+                clause_chunks.append(current_chunk)
+
+            # Rebalance trailing 1-word orphan at the end of a clause (if <= 10 chars)
+            if len(clause_chunks) >= 2 and len(clause_chunks[-1]) == 1:
+                last_w_clean = clause_chunks[-1][0][1].upper().strip().rstrip(",;:—–.!?")
+                if len(last_w_clean) <= 10:
+                    if len(clause_chunks[-2]) == 3:
+                        moved = clause_chunks[-2].pop()
+                        clause_chunks[-1].insert(0, moved)
+                    elif len(clause_chunks[-2]) == 2 and len(clause_chunks) >= 3 and len(clause_chunks[-3]) == 3:
+                        moved1 = clause_chunks[-3].pop()
+                        clause_chunks[-2].insert(0, moved1)
+                        moved2 = clause_chunks[-2].pop()
+                        clause_chunks[-1].insert(0, moved2)
+
+            short_phrases.extend(clause_chunks)
 
         for p_idx, phrase in enumerate(short_phrases):
             p_start = phrase[0][0][0]
             p_end = phrase[-1][0][1]
             if p_idx < len(short_phrases) - 1:
                 next_p_start = short_phrases[p_idx + 1][0][0][0]
-                if 0.0 <= (next_p_start - p_end) <= 0.15:
+                if 0.0 <= (next_p_start - p_end) <= 0.28:
                     p_end = next_p_start
             start_str = format_ass_time(p_start)
             end_str = format_ass_time(p_end)
@@ -2603,7 +2774,7 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         # When YouTube Shorts loops back from the end to the start, the video frame transitions from
         # video_paths[0](t=split_dur) to video_paths[0](t=split_dur) with ZERO jump cut!
         c0_full = VideoFileClip(video_paths[0]).resize(newsize=config.resolution)
-        c0_dur = c0_full.duration
+        c0_dur = max(0.6, c0_full.duration - 0.15)
 
         split_dur = round(min(1.5, max(0.4, c0_dur / 4.0)) * 30.0) / 30.0
 
@@ -2642,7 +2813,20 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
                     if frame.dtype != np.uint8:
                         frame = np.clip(frame, 0, 255).astype(np.uint8)
                     frame = np.ascontiguousarray(frame)
-                    last_valid_frame[0] = frame
+                    # Guard against MoviePy FFMPEG_VideoReader returning zeroed black frames at container EOF tail
+                    if float(np.mean(frame)) < 3.5 and float(np.std(frame)) < 2.0:
+                        if last_valid_frame[0] is not None:
+                            frame = last_valid_frame[0]
+                        else:
+                            try:
+                                f0 = np.ascontiguousarray(np.clip(np.array(get_frame(0.0)), 0, 255).astype(np.uint8))
+                                if float(np.mean(f0)) >= 3.5:
+                                    frame = f0
+                                    last_valid_frame[0] = f0
+                            except Exception:
+                                pass
+                    else:
+                        last_valid_frame[0] = frame
 
                     target_w, target_h = config.resolution
                     progress = min(1.0, max(0.0, float(t) / max(0.01, float(dur_val))))
@@ -2671,13 +2855,15 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
 
         clips.append(c_start_clip.fl(create_zoom_filter(per_seq_dur, start_scale=1.0, end_scale=1.15)))
 
-        # Process mid clips
+        # Process mid clips (trim 0.15s off container EOF tail to prevent un-decodable black frames)
         for mid_path in mid_paths:
-            mc = VideoFileClip(mid_path).resize(newsize=config.resolution)
-            if mc.duration < per_seq_dur:
+            mc_raw = VideoFileClip(mid_path).resize(newsize=config.resolution)
+            safe_mc_dur = max(0.5, mc_raw.duration - 0.15)
+            mc = mc_raw.subclip(0, safe_mc_dur)
+            if safe_mc_dur < per_seq_dur:
                 mc = loop(mc, duration=per_seq_dur + 0.5)
             else:
-                mc = mc.subclip(0, min(mc.duration, per_seq_dur + 0.5))
+                mc = mc.subclip(0, min(safe_mc_dur, per_seq_dur + 0.5))
             mc = mc.set_duration(per_seq_dur)
             clips.append(mc.fl(create_zoom_filter(per_seq_dur, start_scale=1.0, end_scale=1.15)))
 
@@ -2748,14 +2934,14 @@ def assemble_video(video_paths: List[str], audio_path: str, subs_list: List[Tupl
         cat_music_dir = music_dir / cat_info["music_subfolder"]
         target_dir = cat_music_dir if cat_music_dir.exists() and cat_music_dir.is_dir() else music_dir
 
+        global LAST_SELECTED_MUSIC_TRACK
         if target_dir.exists() and target_dir.is_dir():
             music_files = list(target_dir.glob("*.mp3"))
-            if not music_files and target_dir != music_dir:
-                music_files = list(music_dir.glob("*.mp3"))
+            if not music_files and music_dir.exists():
+                music_files = list(music_dir.rglob("*.mp3"))
 
             if music_files:
                 music_path = random.choice(music_files)
-                global LAST_SELECTED_MUSIC_TRACK
                 LAST_SELECTED_MUSIC_TRACK = music_path.name
                 print(f"Selected background music: {music_path.name}")
                 try:
