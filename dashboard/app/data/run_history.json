@@ -1,87 +1,5 @@
 [
   {
-    "id": "run-30457103727",
-    "github_run_number": 169,
-    "github_run_id": 30457103727,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/30457103727",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-07-29T13:47:04.099515Z",
-    "category": "Exciting Tech Facts",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Suspenseful Mystery",
-        "title": "Bridgwater Canal's Hidden Financial War #tech #shorts",
-        "word_count": 105,
-        "hook": "\"Deep beneath the tranquil waters, a financial conspiracy brewed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers.\"",
-        "score": 9.85,
-        "critique": "Selected Tournament Winner. High retention infinite loop structure and topic salience."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Scientific Breakthrough",
-        "title": "Scientific Breakthrough: Bridgwater Canal's Hidden Financial War",
-        "word_count": 105,
-        "hook": "\"Scientific Breakthrough \u2014 wed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers. But its e...\"",
-        "score": 9.45,
-        "critique": "Pass 2 Auto-QA Evaluated (9.45/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dramatic Conflict",
-        "title": "Dramatic Conflict: Bridgwater Canal's Hidden Financial War",
-        "word_count": 105,
-        "hook": "\"Dramatic Conflict \u2014 ey rivers. But its early years were a maelstrom of legal battles over navigation...\"",
-        "score": 9.05,
-        "critique": "Pass 2 Auto-QA Evaluated (9.05/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Existential Wonder",
-        "title": "Existential Wonder: Bridgwater Canal's Hidden Financial War",
-        "word_count": 105,
-        "hook": "\"Existential Wonder \u2014 tles over navigation rights, forcing a corporate takeover of the River Tone. Hop...\"",
-        "score": 8.65,
-        "critique": "Pass 2 Auto-QA Evaluated (8.65/10). Evaluated retention loop and topic salience."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Action Mystery",
-        "title": "Action Mystery: Bridgwater Canal's Hidden Financial War",
-        "word_count": 105,
-        "hook": "\"Action Mystery \u2014 the River Tone. Hopes soared with an ambitious extension to Bridgwater Docks......\"",
-        "score": 8.25,
-        "critique": "Pass 2 Auto-QA Evaluated (8.25/10). Evaluated retention loop and topic salience."
-      }
-    ],
-    "winning_script": {
-      "title": "Bridgwater Canal's Hidden Financial War #tech #shorts",
-      "text": "Deep beneath the tranquil waters, a financial conspiracy brewed\u2014the Bridgwater and Taunton Canal, opened 1827, linking key rivers. But its early years were a maelstrom of legal battles over navigation rights, forcing a corporate takeover of the River Tone. Hopes soared with an ambitious extension to Bridgwater Docks... then collapsed. Funded by a ruinous mortgage, it was a financial disaster, a desperate gamble against the inevitable march of railways. The canal teetered on the brink, saved only by a rival, the Bristol and Exeter Railway, in 1866. Its past, full of hidden agendas and desperate measures\u2014and its true purpose remained hidden until the very end.",
-      "score": 9.85
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "Bridgwater and Taunton Canal",
-      "1827",
-      "River Tone",
-      "Bristol and Exeter Railway",
-      "Financial Disaster",
-      "Legal Disputes"
-    ],
-    "voice_actor": "am_puck (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
-  },
-  {
     "id": "run-30546552631",
     "github_run_number": 170,
     "github_run_id": 30546552631,
@@ -7382,6 +7300,95 @@
       "sea turtle"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Bizarre Biological Superpowers Theme)"
+  },
+  {
+    "id": "run-41346639398",
+    "github_run_number": 267,
+    "github_run_id": 41346639398,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/41346639398",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-01T20:27:52.033091Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 5,
+        "angle": "Physics-Defying Anatomy",
+        "title": "Bird's Impossible Tail!",
+        "word_count": 95,
+        "hook": "How does a two-pound bird effortlessly wield a physics-defying, lyre-shaped tail almost two feet lon...",
+        "score": 9.85,
+        "critique": "This variant excels with its incredibly specific, paradoxical, and visually striking hook focused on the 'physics-defying' tail. Its narrative brilliantly unpacks this anatomical marvel, culminating in a perfectly integrated, thought-provoking loop CTA, making it the clear winner."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Sonic & Thermal Weapons",
+        "title": "Bird's Epic Sound Weapon!",
+        "word_count": 99,
+        "hook": "This bird weaponizes sound, creating an auditory battlefield! The lyrebird, a ground-dwelling Austra...",
+        "score": 9.83,
+        "critique": "Exceptional hook using vivid, strong language ('weaponizes sound', 'auditory battlefield') and maintaining a tight, compelling narrative. It effectively turns a biological function into an aggressive survival strategy, placing it very high in the competition."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Extreme Survival Limits",
+        "title": "Ground Bird's Extreme Survival!",
+        "word_count": 98,
+        "hook": "This bird defies conventional survival rules by actively rejecting flight! The lyrebird, a large, gr...",
+        "score": 9.7,
+        "critique": "Boasts a powerful counter-intuitive hook about rejecting flight, delivering a focused and well-paced exploration of terrestrial adaptation. It is a solid contender, but its title and loop CTA are slightly less punchy than the winning scripts."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Evolutionary Cheat Codes",
+        "title": "Nature's Ultimate Cheat Code!",
+        "word_count": 90,
+        "hook": "This ancient Australian bird discovered an ultimate cheat code for survival and mating success! The ...",
+        "score": 9.6,
+        "critique": "Offers a clever 'cheat code' framing and covers multiple evolutionary adaptations smoothly within its narrative. While strong, its hook isn't as viscerally impactful as the top contenders, and the loop CTA is slightly less direct."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Biological Immortality",
+        "title": "Immortal Bird's Ancient Secret!",
+        "word_count": 94,
+        "hook": "Imagine a species so perfectly adapted, it achieved a form of biological immortality spanning fiftee...",
+        "score": 9.57,
+        "critique": "Presents a provocative 'biological immortality' angle with strong scientific backing. However, the 'Imagine a species' opening, while used well, feels a fraction less unique compared to other hooks, placing it lower in overall freshness."
+      }
+    ],
+    "winning_script": {
+      "title": "Bird's Impossible Tail!",
+      "text": "How does a two-pound bird effortlessly wield a physics-defying, lyre-shaped tail almost two feet long? The male lyrebird, a ground-dwelling Australian passerine, showcases an anatomical marvel. Its huge tail, integral to courtship, features unique plumes of broad, S-shaped outer feathers that form a stunning lyre. The superb lyrebird\u2019s outer tail feathers even possess repeated transparent crescents, or \"lunules,\" inspiring its genus name, \"Menura,\" from ancient Greek for \"moon-tail.\" This colossal, ornate structure is fanned out in a breathtaking display, defying simple avian mechanics, highlighting an extreme evolutionary investment in visual signaling that begs the question:",
+      "score": 9.85,
+      "critique": "This variant excels with its incredibly specific, paradoxical, and visually striking hook focused on the 'physics-defying' tail. Its narrative brilliantly unpacks this anatomical marvel, culminating in a perfectly integrated, thought-provoking loop CTA, making it the clear winner."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/3mt6hLibGLE",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Lyrebird",
+    "music_track": "deep_void_drone.mp3",
+    "search_keywords": [
+      "lyrebird male tail fanned",
+      "close up lyrebird feathers",
+      "S-shaped bird tail feathers",
+      "lyrebird courtship display",
+      "bird plumage intricate",
+      "moon crescent patterns nature",
+      "ornate bird tail slow motion",
+      "ground bird movement"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Bizarre Biological Superpowers Theme)"
   }
