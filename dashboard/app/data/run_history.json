@@ -1,30 +1,5 @@
 [
   {
-    "id": "run-31389014071",
-    "github_run_number": 183,
-    "github_run_id": 31389014071,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/31389014071",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-10T12:38:58Z",
-    "category": "Space & Cosmic Mysteries",
-    "status": "SUCCESS",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 0.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": null,
-    "music_track": null,
-    "search_keywords": [],
-    "voice_actor": "am_michael (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine"
-  },
-  {
     "id": "run-31492023697",
     "github_run_number": 184,
     "github_run_id": 31492023697,
@@ -7817,6 +7792,95 @@
       "shark dark water"
     ],
     "voice_actor": "am_michael (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Deep Sea & Prehistoric Survivors Theme)"
+  },
+  {
+    "id": "run-42519602422",
+    "github_run_number": 281,
+    "github_run_id": 42519602422,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/42519602422",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-08T20:24:10.708123Z",
+    "category": "Deep Sea & Prehistoric Survivors",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 4,
+        "angle": "Bioluminescent Lures",
+        "title": "Ocean's Invisible Electric Sense!",
+        "word_count": 86,
+        "hook": "What hunts in eternal darkness without needing a single glimmer of light or a bioluminescent lure? T...",
+        "score": 9.8,
+        "critique": "This script features an exceptionally clever hook that challenges common deep-sea hunting assumptions, then delivers a crystal-clear and fascinating explanation of the goblin shark's invisible electric sense. Its unique angle, perfect title synergy, and seamless narrative flow create maximum intrigue and retention, making it the strongest overall performer."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Abyssal Zone Nightmares",
+        "title": "Nightmare Hunter From The Abyss!",
+        "word_count": 90,
+        "hook": "Imagine a horror from one hundred twenty-five million years ago, lurking in the black abyss. The gob...",
+        "score": 9.6,
+        "critique": "This variant powerfully uses a 'horror' angle, crafting an incredibly visceral image of the goblin shark as a 'nightmare from the abyss,' reinforced by striking descriptions of its hunting strike. Its consistent thematic intensity, coupled with strong descriptive language, makes it exceptionally compelling and memorable."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Alien Ocean Anatomy",
+        "title": "Ocean's Pink Alien Hunter!",
+        "word_count": 92,
+        "hook": "What is this creature with a snout like an ancient blade and skin the color of a deep-sea sunset? Th...",
+        "score": 9.45,
+        "critique": "This script excels with a visually stunning hook and vivid description of the goblin shark's 'alien' anatomy, immediately capturing curiosity with evocative language like 'ancient blade' and 'deep-sea sunset.' Its tight narrative efficiently showcases unique biomechanical features, making it a strong contender for high viewer engagement."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Deep Trench Giants",
+        "title": "Ancient Behemoth of the Deep!",
+        "word_count": 89,
+        "hook": "Can a \"living fossil\" from one hundred twenty-five million years ago still dominate the ocean\u2019s deep...",
+        "score": 9.15,
+        "critique": "Effectively portraying the goblin shark as an 'ancient behemoth' through impressive size statistics and recent depth confirmations, this script delivers a strong sense of scale and resilience. While compelling, its focus on physical presence and habitat is slightly less dynamic than the detailed biomechanical hunting narratives found in the top-scoring variants."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Crushing Pressure Adaptations",
+        "title": "Deepest Hunter's Secret Weapon!",
+        "word_count": 94,
+        "hook": "How does a shark thrive thousands of meters deep, where the pressure could crush a steel beam? The g...",
+        "score": 9.0,
+        "critique": "The hook effectively poses a compelling question about extreme deep-sea survival, clearly explaining the goblin shark's adaptations to crushing pressure with factual details. While solid and informative, its narrative is slightly less viscerally exciting compared to variants that leverage the creature's more 'alien' or 'nightmarish' qualities."
+      }
+    ],
+    "winning_script": {
+      "title": "Ocean's Invisible Electric Sense!",
+      "text": "What hunts in eternal darkness without needing a single glimmer of light or a bioluminescent lure? The goblin shark possesses an incredible secret: its long, flat snout is a biological antenna. Covered with ampullae of Lorenzini, it senses the minute electric fields generated by teleosts, cephalopods, and crustaceans lurking in the lightless deep. This ancient predator doesn't wait for light; it feels its prey. When detected, its unique, protrusible jaws snap forward with terrifying speed, capturing meals that never saw it coming, a perfect hunter where:",
+      "score": 9.8,
+      "critique": "This script features an exceptionally clever hook that challenges common deep-sea hunting assumptions, then delivers a crystal-clear and fascinating explanation of the goblin shark's invisible electric sense. Its unique angle, perfect title synergy, and seamless narrative flow create maximum intrigue and retention, making it the strongest overall performer."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/xRHrZMmTu2U",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Goblin_shark",
+    "music_track": "slowed_dark_cello.mp3",
+    "search_keywords": [
+      "ampullae of Lorenzini pores",
+      "electrical fish sensory",
+      "deep sea predator hunting",
+      "dark ocean current",
+      "invisible prey detection",
+      "goblin shark snout",
+      "underwater electric pulses",
+      "ocean abyss unknown"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Deep Sea & Prehistoric Survivors Theme)"
   }
