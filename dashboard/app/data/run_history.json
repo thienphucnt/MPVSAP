@@ -4930,82 +4930,24 @@
     "github_run_id": 32847168884,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/32847168884",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-25T12:25:49.084014Z",
-    "category": "Scary Space Mysteries",
-    "status": "FAILED",
+    "timestamp": "2026-08-25T12:21:43Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 3,
-        "angle": "3-Existential Scale",
-        "title": "Star Older Than Time?",
-        "word_count": 107,
-        "hook": "A singular, incredibly ancient star, far older than the universe's estimated age, has been discovere...",
-        "score": 9.8,
-        "critique": "This variant is exceptionally strong, presenting the ultimate cosmic paradox: a star older than the universe, with an incredibly impactful hook and a perfectly punchy title. Its narrative escalation directly challenges the Big Bang itself, making it the clear winning script."
-      },
-      {
-        "variant_id": 4,
-        "angle": "4-Cosmic Terror",
-        "title": "Reality's Silent Unraveling",
-        "word_count": 103,
-        "hook": "A growing region of space, dubbed the 'Whispering Null Zone,' exhibits unsettling fluctuations in fu...",
-        "score": 9.74,
-        "critique": "Generating a profound sense of cosmic terror, this script excels with its high-stakes hook about fluctuating fundamental physical constants and a perfectly aligned title. The narrative expertly escalates the threat to reality itself, securing a very close second place due to its chilling implications."
-      },
-      {
-        "variant_id": 1,
-        "angle": "1-Quantum Paradox",
-        "title": "Reality's Cosmic Glitch?",
-        "word_count": 118,
-        "hook": "A celestial object defies every law of known physics: a 'ghost galaxy' gravitationally interacting w...",
-        "score": 9.62,
-        "critique": "This script masterfully introduces a compelling cosmic paradox with an excellent hook about a 'ghost galaxy' and perfect title synergy. Its strength lies in presenting an 'impossible connection' that deeply challenges foundational physics, securing a strong third place."
-      },
-      {
-        "variant_id": 2,
-        "angle": "2-Deep Void Anomaly",
-        "title": "The Universe's Echoing Void",
-        "word_count": 115,
-        "hook": "The universe\u2019s emptiest regions are unexpectedly emitting complex gravitational wave patterns, far b...",
-        "score": 9.54,
-        "critique": "The concept of an 'echoing void' emitting powerful gravitational waves is highly intriguing, supported by a strong, mysterious title and effective narrative escalation. It performs very well in generating immediate curiosity about unseen dynamics, placing a respectable fourth."
-      },
-      {
-        "variant_id": 5,
-        "angle": "5-Hidden Physics",
-        "title": "Galaxies That 'Bounce' Back?",
-        "word_count": 98,
-        "hook": "Galactic clusters, after colossal mergers, exhibit an inexplicable, consistent 'bounce' or recoil ef...",
-        "score": 9.46,
-        "critique": "The 'bouncing galaxies' concept is visually striking and introduces a fascinating unknown repulsive force that defies expected models. While solid in all aspects, its overall impact and existential gravity are slightly less potent compared to the top contenders, placing fifth in this highly competitive group."
-      }
-    ],
-    "winning_script": {
-      "title": "Star Older Than Time?",
-      "text": "A singular, incredibly ancient star, far older than the universe's estimated age, has been discovered, forcing cosmologists to question fundamental assumptions about the Big Bang itself. Designated 'Methuselah Star,' it shows an elemental composition suggesting it formed before the cosmic microwave background radiation, implying a timeline paradox. This impossible object challenges the very fabric of established astrophysics, hinting at a universe vastly more complex and ancient than previously thought. Its existence suggests either a flaw in our age calculations for the cosmos, or that stars could form under conditions predating the universe\u2019s official beginning, unsettlingly pushing the boundaries of our cosmic understanding, and making humanity constantly wonder:",
-      "score": 9.8,
-      "critique": "This variant is exceptionally strong, presenting the ultimate cosmic paradox: a star older than the universe, with an incredibly impactful hook and a perfectly punchy title. Its narrative escalation directly challenges the Big Bang itself, making it the clear winning script."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Astronomy",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "ancient star",
-      "cosmic dawn visualization",
-      "primordial galaxy rendering",
-      "starlight across galaxies",
-      "deep space observatory",
-      "vast universe panorama"
-    ],
-    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-32968325667",
@@ -12793,7 +12735,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/uEpvQKTQke4",
     "youtube_stats": {
-      "views": 1011,
+      "views": 1012,
       "likes": 16,
       "comments": 0
     },
@@ -12882,7 +12824,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/bijRC6lQe6o",
     "youtube_stats": {
-      "views": 1182,
+      "views": 1186,
       "likes": 28,
       "comments": 0
     },
@@ -12971,7 +12913,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/vI8ZrKNLSiw",
     "youtube_stats": {
-      "views": 1240,
+      "views": 1245,
       "likes": 20,
       "comments": 0
     },
@@ -13060,7 +13002,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/zoBk5TaOiOs",
     "youtube_stats": {
-      "views": 367,
+      "views": 373,
       "likes": 13,
       "comments": 0
     },
@@ -13149,7 +13091,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 982,
+      "views": 984,
       "likes": 24,
       "comments": 0
     },
@@ -13177,6 +13119,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/43984930639",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-17T00:10:00.349778Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44020896237",
+    "github_run_number": 298,
+    "github_run_id": 44020896237,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44020896237",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-17T05:02:50.923346Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
