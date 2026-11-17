@@ -4905,82 +4905,24 @@
     "github_run_id": 32726642034,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/32726642034",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-24T12:24:37.410211Z",
-    "category": "Scary Space Mysteries",
-    "status": "FAILED",
+    "timestamp": "2026-08-24T12:21:11Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Astronomical Mystery",
-        "title": "Comet Explodes With Mystery!",
-        "word_count": 102,
-        "hook": "A distant comet just exploded with twenty thousand times its normal light, and scientists have no re...",
-        "score": 9.6,
-        "critique": "This variant excels by blending factual details with a compelling, well-articulated mystery, making it highly engaging without over-sensationalizing. Its title and looping CTA are perfectly aligned, offering a clean and natural narrative."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Cosmic Terror",
-        "title": "Comet Awakens Cosmic Fear!",
-        "word_count": 110,
-        "hook": "A distant comet just screamed into blinding light, not naturally, but as if awakened by a cosmic ter...",
-        "score": 9.46,
-        "critique": "This variant masterfully commits to its 'cosmic terror' angle with a powerfully dramatic hook and consistently evocative language throughout. It's exceptionally engaging and leaves a chilling open loop, though its sensationalism might be slightly beyond the typical APOD scope."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Hidden Physics",
-        "title": "Comet Reveals New Physics!",
-        "word_count": 104,
-        "hook": "Our universe just revealed a hidden law of physics through a dim comet, which inexplicably exploded ...",
-        "score": 9.1,
-        "critique": "Offering a compelling promise of scientific discovery, this variant boasts a strong hook and an excellent looping CTA. However, its repetitive use of 'dark matter secrets' and some slightly generic phrasing subtly detract from its overall polish."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Deep Void Anomaly",
-        "title": "Void Anomaly Shakes Comet!",
-        "word_count": 105,
-        "hook": "Something unseen in the deep void just caused a faint comet to flare twenty thousand times brighter,...",
-        "score": 8.8,
-        "critique": "While its hook is strong and the narrative escalates effectively, this variant occasionally drifts into overly poetic or slightly generic AI phrasing. The looping CTA, though relevant, is not as precisely tied to the opening as the top contenders."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Quantum Paradox",
-        "title": "Quantum Comet Shocks Science!",
-        "word_count": 106,
-        "hook": "Classical physics cannot explain why a faint comet just became twenty thousand times brighter, hinti...",
-        "score": 8.22,
-        "critique": "This variant's ambitious 'quantum paradox' angle feels stretched thin, utilizing more noticeable AI tropes and making a scientific leap that might alienate a general audience. The broad, philosophical ending diminishes the direct connection back to the comet's specific event."
-      }
-    ],
-    "winning_script": {
-      "title": "Comet Explodes With Mystery!",
-      "text": "A distant comet just exploded with twenty thousand times its normal light, and scientists have no real answers why. Periodic Comet two hundred twenty P McNaught is typically so faint, requiring powerful telescopes to spot. But two surprising outbursts this year transformed it into a blazing spectacle, visible with simple binoculars. Orbiting between Mars and Jupiter with a period of over five years, this comet now sports a bright green head and a short dust tail, captured ten days ago from South Africa. The cause remains unknown, though theories range from subsurface gas release to 'comet quakes,' leaving astronomers to constantly question:",
-      "score": 9.6,
-      "critique": "This variant excels by blending factual details with a compelling, well-articulated mystery, making it highly engaging without over-sensationalizing. Its title and looping CTA are perfectly aligned, offering a clean and natural narrative."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://apod.nasa.gov/apod/astropix.html",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "green comet nucleus",
-      "distant star field",
-      "telescope lens flare",
-      "cosmic dust cloud",
-      "bright nebula glow",
-      "observatory dome night"
-    ],
-    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-32847168884",
@@ -10395,7 +10337,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/tKTHruFRWsw",
     "youtube_stats": {
-      "views": 1202,
+      "views": 1203,
       "likes": 24,
       "comments": 0
     },
@@ -12584,7 +12526,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/5pohzptcDmo",
     "youtube_stats": {
-      "views": 702,
+      "views": 697,
       "likes": 21,
       "comments": 0
     },
@@ -12673,7 +12615,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/VyfjgrrikZQ",
     "youtube_stats": {
-      "views": 506,
+      "views": 497,
       "likes": 9,
       "comments": 0
     },
@@ -12851,7 +12793,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/uEpvQKTQke4",
     "youtube_stats": {
-      "views": 1010,
+      "views": 1011,
       "likes": 16,
       "comments": 0
     },
@@ -12940,7 +12882,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/bijRC6lQe6o",
     "youtube_stats": {
-      "views": 1141,
+      "views": 1182,
       "likes": 28,
       "comments": 0
     },
@@ -13029,7 +12971,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/vI8ZrKNLSiw",
     "youtube_stats": {
-      "views": 1199,
+      "views": 1240,
       "likes": 20,
       "comments": 0
     },
@@ -13118,8 +13060,8 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/zoBk5TaOiOs",
     "youtube_stats": {
-      "views": 268,
-      "likes": 10,
+      "views": 367,
+      "likes": 13,
       "comments": 0
     },
     "error_traceback": null,
@@ -13207,8 +13149,8 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 0,
-      "likes": 0,
+      "views": 982,
+      "likes": 24,
       "comments": 0
     },
     "error_traceback": null,
@@ -13227,5 +13169,37 @@
     "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Deep Sea & Prehistoric Survivors Theme)"
+  },
+  {
+    "id": "run-43984930639",
+    "github_run_number": 297,
+    "github_run_id": 43984930639,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/43984930639",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-17T00:10:00.349778Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
   }
 ]
