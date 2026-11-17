@@ -4955,82 +4955,24 @@
     "github_run_id": 32968325667,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/32968325667",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-26T12:27:24.482125Z",
-    "category": "Scary Space Mysteries",
-    "status": "FAILED",
+    "timestamp": "2026-08-26T12:23:38Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Cosmic Terror",
-        "title": "What if light itself VANISHED?",
-        "word_count": 136,
-        "hook": "Entire stellar systems are vanishing, not into black holes, but into an unnatural, expanding darknes...",
-        "score": 9.96,
-        "critique": "This script boasts an immediate, visceral cosmic horror hook, presenting a truly terrifying and unique concept of light itself vanishing. Its narrative escalates masterfully towards the chilling implication of a cosmic entity, ensuring high audience retention and a powerful emotional response."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Quantum Paradox",
-        "title": "Universe's Future Is ALREADY Written?",
-        "word_count": 132,
-        "hook": "Scientists are observing subtle, inexplicable ripples in spacetime that seem to *precede* major cosm...",
-        "score": 9.96,
-        "critique": "A masterful exploration of a profound quantum paradox, this script immediately hooks with a mind-bending premise and expertly escalates its implications for causality and free will. Its perfectly aligned title and thought-provoking narrative make it an exceptionally strong contender, almost tying for the top spot with its intellectual depth."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Deep Void Anomaly",
-        "title": "Void's Unsettling Whisper!",
-        "word_count": 137,
-        "hook": "Deep in the coldest, emptiest reaches of intergalactic space, something is humming, a vast, ultra-lo...",
-        "score": 9.82,
-        "critique": "The script successfully builds a captivating mystery around an intelligent signal from the cosmic void, using vivid imagery and an evocative title. Its strength lies in presenting multiple intriguing possibilities for the signal's origin, making it highly engaging, though perhaps a hair less impactful than the top two's core concepts."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Hidden Physics",
-        "title": "Universe's Secret Frequency!",
-        "word_count": 142,
-        "hook": "What if the fundamental laws of physics aren't constant across the cosmos, but subtly shift, creatin...",
-        "score": 9.72,
-        "critique": "This script crafts an intriguing premise about fluctuating physical laws across the cosmos, offering clear examples and building towards a compelling 'multiverse of physics' concept. While strong in intellectual curiosity and unique in its angle, it doesn't quite evoke the same level of existential dread or immediate terror as the leading variants."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Rogue Worlds",
-        "title": "Rogue Planet's HIDDEN Heartbeat!",
-        "word_count": 129,
-        "hook": "Deep in the interstellar void, millions of planets drift without a sun, yet some harbor a shocking s...",
-        "score": 9.3,
-        "critique": "This variant successfully introduces a plausible yet fascinating scientific concept, clearly explaining its mechanisms and profound implications for the search for life beyond stars. While well-structured and engaging, it slightly lacks the raw, immediate terror or mind-bending paradox found in the top-ranked scripts."
-      }
-    ],
-    "winning_script": {
-      "title": "What if light itself VANISHED?",
-      "text": "Entire stellar systems are vanishing, not into black holes, but into an unnatural, expanding darkness. Astronomers call them 'Null-Zones', regions where light simply ceases to exist, not bent, but utterly extinguished. This phenomenon isn't about immense gravity; spectra show no redshift, merely an abrupt absence of photons at a defined boundary. Imagine staring at a star, then watching its light flicker out like a faulty bulb, not dimming, but just\u2026 gone. Theories range from exotic matter fields to a fundamental breakdown in the laws of electromagnetism within these zones. The most unsettling aspect is their growth: slow, inexorable, consuming everything in their path, leaving behind pockets of perfect, absolute night. It suggests an unknown cosmic entity is literally deleting light, piece by piece, from the universe. This silent erasure of the cosmos leaves scientists grappling with:",
-      "score": 9.96,
-      "critique": "This script boasts an immediate, visceral cosmic horror hook, presenting a truly terrifying and unique concept of light itself vanishing. Its narrative escalates masterfully towards the chilling implication of a cosmic entity, ensuring high audience retention and a powerful emotional response."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Astronomy",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "disappearing stars",
-      "black void",
-      "ominous galaxy",
-      "cosmic darkness",
-      "broken light",
-      "deep space horror"
-    ],
-    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33117811758",
@@ -12646,7 +12588,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/wjguDaPEt94",
     "youtube_stats": {
-      "views": 169,
+      "views": 162,
       "likes": 3,
       "comments": 0
     },
@@ -12735,7 +12677,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/uEpvQKTQke4",
     "youtube_stats": {
-      "views": 1012,
+      "views": 1010,
       "likes": 16,
       "comments": 0
     },
@@ -12824,7 +12766,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/bijRC6lQe6o",
     "youtube_stats": {
-      "views": 1186,
+      "views": 1188,
       "likes": 28,
       "comments": 0
     },
@@ -12913,7 +12855,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/vI8ZrKNLSiw",
     "youtube_stats": {
-      "views": 1245,
+      "views": 1250,
       "likes": 20,
       "comments": 0
     },
@@ -13002,7 +12944,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/zoBk5TaOiOs",
     "youtube_stats": {
-      "views": 373,
+      "views": 383,
       "likes": 13,
       "comments": 0
     },
@@ -13091,7 +13033,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 984,
+      "views": 991,
       "likes": 24,
       "comments": 0
     },
@@ -13151,6 +13093,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44020896237",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-17T05:02:50.923346Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44199315904",
+    "github_run_number": 299,
+    "github_run_id": 44199315904,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44199315904",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-17T23:29:13.321802Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
