@@ -4980,82 +4980,24 @@
     "github_run_id": 33117811758,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33117811758",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-27T21:25:43.446395Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
+    "timestamp": "2026-08-27T21:22:04Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 3,
-        "angle": "Forgotten Cover-Ups",
-        "title": "Radium Girls' Tragic Secret!",
-        "word_count": 109,
-        "hook": "Imagine your workplace secretly poisoning you, then denying everything for years! In the early ninet...",
-        "score": 9.87,
-        "critique": "This variant is a masterclass in emotional impact, opening with an incredibly strong and resonant hook that evokes immediate outrage and empathy. The narrative is compelling, detailing a chilling injustice that builds to a powerful reveal, complemented by a perfectly fitting title and CTA."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Tragic Miscalculations",
-        "title": "Bridge Collapse Disaster!",
-        "word_count": 116,
-        "hook": "A newly built bridge collapsed in a storm, taking a passenger train and seventy-five lives with it! ...",
-        "score": 9.61,
-        "critique": "An extremely powerful script that delivers a dramatic, tragic hook with immediate impact and high stakes. The narrative is expertly structured, detailing the catastrophic event and its underlying causes with compelling clarity, ensuring strong retention and a meaningful concluding question."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Wartime Secrets",
-        "title": "Rocket Wheel of DOOM Failed!",
-        "word_count": 123,
-        "hook": "A giant, rocket-powered wheel was supposed to win World War Two, but it failed spectacularly! During...",
-        "score": 9.5,
-        "critique": "A fantastic script that grabs attention instantly with a high-stakes, dramatic failure. The narrative unfolds with exciting detail and a strong sense of chaos, making for a truly engaging story about wartime invention gone wrong."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Bizarre Laws",
-        "title": "Crying Laws? You'd Be Fined!",
-        "word_count": 112,
-        "hook": "Imagine being fined for *not* crying enough at a funeral! Ancient Roman laws sometimes dictated publ...",
-        "score": 9.17,
-        "critique": "This script excels with a highly original and counter-intuitive hook, immediately sparking curiosity about bizarre historical regulations. While its narrative is more conceptual than event-driven, it effectively compares past and present values, leading to a thoughtful conclusion."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Everyday Absurdities",
-        "title": "Human Alarm Clocks!",
-        "word_count": 109,
-        "hook": "Before alarm clocks, a specialized job involved knocking on people's windows with a stick! In indust...",
-        "score": 9.1,
-        "critique": "This script offers a delightful and intriguing glimpse into a forgotten profession, with a clear and concise hook that immediately piques interest. The narrative is engaging in its description of an 'everyday absurdity,' making the historical context highly relatable and thought-provoking."
-      }
-    ],
-    "winning_script": {
-      "title": "Radium Girls' Tragic Secret!",
-      "text": "Imagine your workplace secretly poisoning you, then denying everything for years! In the early nineteen hundreds, young women, known as the Radium Girls, were employed to paint luminous watch dials using radium-based paint. They were encouraged to 'lip-point' their brushes, ingesting deadly radium with every stroke. When they began suffering horrific illnesses like jaw necrosis and anemia, their employers, including the United States Radium Corporation, vehemently denied any link. Doctors were pressured, and diagnoses were suppressed. It took years of agonizing legal battles, often fought from their deathbeds, for these women to expose the truth and establish workers' rights, revealing a chilling conspiracy that leaves many to frequently question:",
-      "score": 9.87,
-      "critique": "This variant is a masterclass in emotional impact, opening with an incredibly strong and resonant hook that evokes immediate outrage and empathy. The narrative is compelling, detailing a chilling injustice that builds to a powerful reveal, complemented by a perfectly fitting title and CTA."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "alchemists_tower.mp3",
-    "search_keywords": [
-      "vintage watch dials",
-      "old factory interior",
-      "medical records old",
-      "newspaper headlines vintage",
-      "laboratory equipment retro",
-      "courtroom empty"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33213087248",
@@ -12143,7 +12085,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Gn4Dzlc3BRM",
     "youtube_stats": {
-      "views": 570,
+      "views": 571,
       "likes": 17,
       "comments": 0
     },
@@ -13033,8 +12975,8 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 991,
-      "likes": 24,
+      "views": 992,
+      "likes": 25,
       "comments": 0
     },
     "error_traceback": null,
@@ -13125,6 +13067,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44199315904",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-17T23:29:13.321802Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44234835588",
+    "github_run_number": 300,
+    "github_run_id": 44234835588,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44234835588",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-18T04:11:53.327512Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
