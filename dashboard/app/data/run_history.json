@@ -5005,82 +5005,24 @@
     "github_run_id": 33213087248,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33213087248",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-28T21:37:43.122763Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
+    "timestamp": "2026-08-28T21:33:36Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 5,
-        "angle": "Untold Historical Irony",
-        "title": "Their Own Belief Doomed Them!",
-        "word_count": 126,
-        "hook": "The enemy\u2019s greatest strength was used to orchestrate their greatest defeat. The D-Day deception cam...",
-        "score": 9.6,
-        "critique": "This is the strongest variant, boasting a deeply intellectual hook that weaponizes the enemy's own beliefs, creating a profound historical irony. Its narrative masterfully escalates this psychological warfare, perfectly synergizing with its brilliant title and reflective CTA."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Forgotten Cover-Ups",
-        "title": "D-Day's Secret Near Miss!",
-        "word_count": 131,
-        "hook": "A nearly catastrophic blunder almost exposed D-Day\u2019s biggest secret. Amidst the monumental success o...",
-        "score": 9.5,
-        "critique": "Outstanding for its high-stakes \"near miss\" hook and detailed exploration of vulnerabilities that almost unraveled D-Day's success, this script builds significant tension. The excellent title and specific examples make for a highly engaging and unique perspective, placing it very high."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Tragic Miscalculations",
-        "title": "Ghosts Invaded the Wrong Coast?",
-        "word_count": 129,
-        "hook": "A massive army was left stranded, believing ghosts were invading. German forces held strong in Calai...",
-        "score": 9.45,
-        "critique": "This variant excels with its immediate, high-intrigue \"ghosts invading\" hook and a powerful, open-ended CTA that leaves viewers wanting to understand the full story. Its narrative effectively conveys the tragic human cost of the deception, making it a strong contender."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Secret Conspiracies",
-        "title": "D-Day's Deepest Deception!",
-        "word_count": 128,
-        "hook": "A secret cabal tricked the entire world into believing a phantom invasion. Elite Allied planners wov...",
-        "score": 9.25,
-        "critique": "The \"secret cabal\" angle provides an exceptionally strong, conspiratorial hook, with the narrative expertly detailing the layers of internal and external deception. While strong, its CTA is slightly less compelling than the top variants, keeping it just outside the highest echelon."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Wartime Secrets",
-        "title": "D-Day's Invisible Invasion!",
-        "word_count": 130,
-        "hook": "Ghost armies and phantom navies appeared from thin air during World War Two. During World War Two, t...",
-        "score": 9.1,
-        "critique": "This variant shines with its vivid \"invisible invasion\" title and focus on the ingenious technological methods behind the deception. However, its narrative leans more informative than dramatically suspenseful compared to other options, slightly tempering its overall impact."
-      }
-    ],
-    "winning_script": {
-      "title": "Their Own Belief Doomed Them!",
-      "text": "The enemy\u2019s greatest strength was used to orchestrate their greatest defeat. The D-Day deception campaigns, Operations Taxable, Glimmer, and Big Drum, held a profound historical irony: the German's own intelligence and strategic biases were brilliantly weaponized against them. Their entrenched belief that the main Allied invasion would target Calais, bolstered by months of Allied \"noise,\" became their downfall. Every German reinforcement sent to Calais, every anti-invasion measure enacted there, was a direct consequence of believing the phantom fleets. The more resources they poured into defending the wrong coast, the weaker their real defenses became at Normandy. This self-fulfilling prophecy, driven by Allied cunning, turned their perceived defensive strength into a fatal vulnerability. The entire elaborate charade unfolded like a tragic play, leading historians to perpetually observe:",
-      "score": 9.6,
-      "critique": "This is the strongest variant, boasting a deeply intellectual hook that weaponizes the enemy's own beliefs, creating a profound historical irony. Its narrative masterfully escalates this psychological warfare, perfectly synergizing with its brilliant title and reflective CTA."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "alchemists_tower.mp3",
-    "search_keywords": [
-      "shifting sand dunes",
-      "empty bunkers",
-      "deserted coast",
-      "strategic maps",
-      "bewildered soldiers",
-      "quiet battlefield"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33261339217",
@@ -12085,7 +12027,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Gn4Dzlc3BRM",
     "youtube_stats": {
-      "views": 571,
+      "views": 570,
       "likes": 17,
       "comments": 0
     },
@@ -12619,7 +12561,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/uEpvQKTQke4",
     "youtube_stats": {
-      "views": 1010,
+      "views": 1009,
       "likes": 16,
       "comments": 0
     },
@@ -12708,7 +12650,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/bijRC6lQe6o",
     "youtube_stats": {
-      "views": 1188,
+      "views": 1194,
       "likes": 28,
       "comments": 0
     },
@@ -12797,7 +12739,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/vI8ZrKNLSiw",
     "youtube_stats": {
-      "views": 1250,
+      "views": 1241,
       "likes": 20,
       "comments": 0
     },
@@ -12886,7 +12828,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/zoBk5TaOiOs",
     "youtube_stats": {
-      "views": 383,
+      "views": 384,
       "likes": 13,
       "comments": 0
     },
@@ -12975,7 +12917,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 992,
+      "views": 1007,
       "likes": 25,
       "comments": 0
     },
@@ -13099,6 +13041,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44234835588",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-18T04:11:53.327512Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44415867676",
+    "github_run_number": 301,
+    "github_run_id": 44415867676,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44415867676",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-18T22:57:15.290155Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
