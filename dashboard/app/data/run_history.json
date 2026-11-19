@@ -5030,82 +5030,24 @@
     "github_run_id": 33261339217,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33261339217",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-29T15:54:58.760318Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
+    "timestamp": "2026-08-29T15:50:30Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Untold Historical Irony",
-        "title": "Graves That Guard Ancient Truths",
-        "word_count": 94,
-        "hook": "The most accurate historians of ancient civilizations aren't dusty scrolls; they're the forgotten de...",
-        "score": 9.45,
-        "critique": "This variant excels with its profound, ironic hook and perfect title synergy, making it an exceptional fit for a history channel exploring how we uncover truth. Its seamless loop CTA masterfully reinforces the central theme of continuous archaeological discovery and insight."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Forgotten Cover-Ups",
-        "title": "The Sugar Industry's Big Lie",
-        "word_count": 80,
-        "hook": "For decades, you were fed a lie about what truly made you sick, orchestrated by powerful interests. ...",
-        "score": 9.3,
-        "critique": "Boasting a highly relevant and personal hook about modern historical cover-ups, this variant is supported by a strong narrative and direct title. Its impact and contemporary relevance are high, and the CTA effectively encourages ongoing expert inquiry."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Secret Conspiracies",
-        "title": "History's Secret Rewrites",
-        "word_count": 83,
-        "hook": "Imagine history itself being a carefully crafted lie, designed to control millions for centuries. An...",
-        "score": 9.2,
-        "critique": "Variant 2 offers a compelling hook by questioning the very nature of historical records and builds a strong narrative around powerful deceptions. While very strong, its open-ended CTA feels slightly less unique and specific than Variant 1's focused historical inquiry."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Everyday Absurdities",
-        "title": "Deadly Green Decor",
-        "word_count": 78,
-        "hook": "Your great-grandparents' wallpaper might have been a silent killer, beautiful but laced with poison....",
-        "score": 9.0,
-        "critique": "Variant 4 features an excellent, personal hook that immediately grabs attention with a shocking historical detail about everyday dangers. Its CTA, however, feels a bit narrow by specifying 'doctors,' making the continuous loop less universally impactful than other variants."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Wartime Secrets",
-        "title": "Ghost Ships of World War One",
-        "word_count": 81,
-        "hook": "Imagine a warship disguised as an innocent merchant vessel, luring enemy submarines to their doom. D...",
-        "score": 8.9,
-        "critique": "This script delivers a strong, specific hook about wartime deception and maintains a clear, engaging narrative about Q-ships. However, its niche historical focus might have slightly less broad appeal for a general history channel compared to more overarching themes."
-      }
-    ],
-    "winning_script": {
-      "title": "Graves That Guard Ancient Truths",
-      "text": "The most accurate historians of ancient civilizations aren't dusty scrolls; they're the forgotten dead. While official records often glorified rulers, tombs filled with everyday objects, buried to accompany the deceased, paint an incredibly detailed picture of daily life. An ancient civilization's elaborate preparations for the afterlife, involving burying vast quantities of goods, ironically provide the most detailed and accurate archaeological data about their culture and beliefs. These lost empire discoveries reveal hidden history facts, proving that what was meant for the underworld became our clearest window into their world, leaving archaeologists to constantly wonder:",
-      "score": 9.45,
-      "critique": "This variant excels with its profound, ironic hook and perfect title synergy, making it an exceptional fit for a history channel exploring how we uncover truth. Its seamless loop CTA masterfully reinforces the central theme of continuous archaeological discovery and insight."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://www.worldhistory.org/",
-    "music_track": "alchemists_tower.mp3",
-    "search_keywords": [
-      "ancient tomb interior",
-      "excavated pottery fragments",
-      "ceremonial artifacts",
-      "ancient scrolls on table",
-      "archaeological dig site",
-      "sunrise over desert ruins"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33320084291",
@@ -12828,7 +12770,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/zoBk5TaOiOs",
     "youtube_stats": {
-      "views": 384,
+      "views": 386,
       "likes": 13,
       "comments": 0
     },
@@ -12917,7 +12859,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 1007,
+      "views": 995,
       "likes": 25,
       "comments": 0
     },
@@ -13073,6 +13015,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44415867676",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-18T22:57:15.290155Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44455462921",
+    "github_run_number": 302,
+    "github_run_id": 44455462921,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44455462921",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-19T04:05:10.917960Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
