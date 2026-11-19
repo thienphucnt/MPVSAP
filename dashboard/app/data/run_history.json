@@ -5055,82 +5055,24 @@
     "github_run_id": 33320084291,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33320084291",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-30T15:40:29.345029Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
+    "timestamp": "2026-08-30T15:35:43Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 4,
-        "angle": "Forgotten Cover-Ups",
-        "title": "Space Secrets Buried!",
-        "word_count": 109,
-        "hook": "What secrets did the Cold War space race force into oblivion? Leroy Gordon Cooper Junior's record-se...",
-        "score": 9.64,
-        "critique": "This variant excels with an incredibly strong, specific hook that hints at a tangible, buried secret ('a series of severe e...'), immediately creating immense curiosity. It brilliantly ties a specific historical event to the broader theme of historical suppression and narrative control, making it a perfect fit for a 'Portal:History' deep dive and achieving a near-perfect looping CTA."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Secret Conspiracies",
-        "title": "Who REALLY Writes History?",
-        "word_count": 128,
-        "hook": "The official story of history might be a carefully constructed illusion. What if the systematic stud...",
-        "score": 9.56,
-        "critique": "This variant offers a compelling, conspiratorial hook that directly challenges the nature of historical truth, resonating strongly with the 'Portal:History' subject. Its narrative expertly balances a broad philosophical question with a specific tantalizing example, ensuring excellent retention and a seamless loop back to the core mystery of who controls the past."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Bizarre Laws",
-        "title": "The History YOU Can't Study!",
-        "word_count": 111,
-        "hook": "Imagine a law that literally prohibited studying *certain* past events! In some ancient societies, m...",
-        "score": 9.36,
-        "critique": "Offering a unique and highly intriguing angle on 'The History YOU Can't Study,' this variant effectively connects historical anecdotes to the persistent struggle between history and propaganda. The hook is excellent, directly engaging the viewer with a relatable, almost unbelievable concept, and the narrative builds strong conceptual links."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Tragic Miscalculations",
-        "title": "Space Race Near-Disaster!",
-        "word_count": 108,
-        "hook": "A hidden flaw almost ended the United States' longest solo space mission prematurely. Leroy Gordon C...",
-        "score": 8.8,
-        "critique": "While providing a strong, specific hook about a near-disaster, this variant's focus on technical miscalculations slightly deviates from a broader 'Portal:History' exploration of history itself. The narrative is engaging for the event but lacks the deeper thematic connection to the *process* of history that other variants achieve."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Untold Historical Irony",
-        "title": "The Lone Astronaut's Irony",
-        "word_count": 117,
-        "hook": "The man who embodied the future of American spaceflight also marked the end of an era. Leroy Gordon ...",
-        "score": 8.56,
-        "critique": "This script presents a thoughtful historical irony with a clear, reflective narrative. However, its hook and overall tone are less 'click-bait' and curiosity-driven for a YouTube audience compared to the more suspenseful or conspiratorial angles, making it a less impactful opener."
-      }
-    ],
-    "winning_script": {
-      "title": "Space Secrets Buried!",
-      "text": "What secrets did the Cold War space race force into oblivion? Leroy Gordon Cooper Junior's record-setting Mercury-Atlas nine mission in nineteen sixty-three was celebrated as a triumph, yet historical records hint at \"a series of severe e...\"\u2014details mysteriously absent from most public accounts. Was this omission a calculated move to protect national morale and project an image of invincibility against rival nations? The systematic study of history often involves source criticism, but what happens when entire sources are conveniently 'lost' or re-framed? This deliberate suppression of critical moments, perhaps a near-catastrophe during reentry or a critical system failure, points to a forgotten cover-up designed to maintain a perfect narrative:",
-      "score": 9.64,
-      "critique": "This variant excels with an incredibly strong, specific hook that hints at a tangible, buried secret ('a series of severe e...'), immediately creating immense curiosity. It brilliantly ties a specific historical event to the broader theme of historical suppression and narrative control, making it a perfect fit for a 'Portal:History' deep dive and achieving a near-perfect looping CTA."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "grave_matters.mp3",
-    "search_keywords": [
-      "redacted document",
-      "dark archive room",
-      "old film reel",
-      "shadowy figures",
-      "classified stamp",
-      "forgotten monument"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33424268664",
@@ -12325,7 +12267,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/VyfjgrrikZQ",
     "youtube_stats": {
-      "views": 497,
+      "views": 498,
       "likes": 9,
       "comments": 0
     },
@@ -12592,7 +12534,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/bijRC6lQe6o",
     "youtube_stats": {
-      "views": 1194,
+      "views": 1193,
       "likes": 28,
       "comments": 0
     },
@@ -12770,7 +12712,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/zoBk5TaOiOs",
     "youtube_stats": {
-      "views": 386,
+      "views": 382,
       "likes": 13,
       "comments": 0
     },
@@ -12859,7 +12801,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 995,
+      "views": 996,
       "likes": 25,
       "comments": 0
     },
@@ -13047,6 +12989,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44455462921",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-19T04:05:10.917960Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44633528994",
+    "github_run_number": 303,
+    "github_run_id": 44633528994,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44633528994",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-19T23:03:06.640633Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
