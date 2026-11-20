@@ -5080,82 +5080,24 @@
     "github_run_id": 33424268664,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33424268664",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-08-31T18:22:11.999147Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
+    "timestamp": "2026-08-31T18:18:18Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 5,
-        "angle": "Untold Historical Irony",
-        "title": "Plastic: Saving Elephants, Killing Oceans!",
-        "word_count": 99,
-        "hook": "Plastic was invented to save elephants, but now it threatens oceans and countless species. In the mi...",
-        "score": 9.66,
-        "critique": "Variant #5 stands out with an exceptionally potent hook that immediately establishes a profound historical irony with massive contemporary relevance, driving instant engagement. The title is a masterclass in concise, impactful storytelling, perfectly encapsulating the script's compelling narrative arc and making it the strongest overall contender."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Tragic Miscalculations",
-        "title": "Bridge Vanished in the Wind!",
-        "word_count": 112,
-        "hook": "A massive bridge vanished into icy waters, taking seventy-five lives with it during a brutal storm. ...",
-        "score": 9.52,
-        "critique": "This script masterfully uses a dramatic historical disaster as its hook, weaving a clear and compelling narrative around a tragic miscalculation. The title is punchy and immediately communicates the story's gravity, making it highly clickable."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Secret Conspiracies",
-        "title": "Templars: The Sudden Purge!",
-        "word_count": 102,
-        "hook": "One of history's wealthiest and most powerful orders fell in a single, coordinated purge across Euro...",
-        "score": 9.5,
-        "critique": "Variant #3 excels with a powerful hook that immediately introduces a sweeping historical conspiracy, delivered through a strong and coherent narrative. The title is perfectly aligned, using a high-interest keyword to draw viewers into the dramatic tale."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Everyday Absurdities",
-        "title": "Death in Your Victorian Walls!",
-        "word_count": 105,
-        "hook": "Victorian families unknowingly poisoned themselves for a vibrant green home. The culprit was Scheele...",
-        "score": 9.48,
-        "critique": "This variant grabs attention with an incredibly strong, relatable hook about everyday historical dangers, perfectly setting up its fascinating premise. Its title is remarkably punchy and vivid, promising a dark, intriguing reveal that compels immediate viewing."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Bizarre Laws",
-        "title": "Ancient Rome's Weird Grief Rule!",
-        "word_count": 115,
-        "hook": "Imagine being fined for crying too loudly at a funeral in ancient Rome. These weren't arbitrary outb...",
-        "score": 9.36,
-        "critique": "This variant delivers an incredibly strong and immediate hook, leveraging a bizarre historical law to quickly engage the viewer. Its title perfectly complements the script's intriguing premise, creating a strong initial draw."
-      }
-    ],
-    "winning_script": {
-      "title": "Plastic: Saving Elephants, Killing Oceans!",
-      "text": "Plastic was invented to save elephants, but now it threatens oceans and countless species. In the mid-nineteenth century, billiard balls, combs, and piano keys were made from ivory, driving elephant populations to the brink. In eighteen sixty-nine, a competition was launched to find an ivory substitute. John Wesley Hyatt invented celluloid, the first commercially successful plastic, aiming to save elephants and other animals from human consumption. Initially hailed as a revolutionary, eco-friendly material, plastic's durability and cheap production ironically led to its widespread, unchecked use, resulting in the massive environmental crisis we face today, leaving ecologists to repeatedly ask:",
-      "score": 9.66,
-      "critique": "Variant #5 stands out with an exceptionally potent hook that immediately establishes a profound historical irony with massive contemporary relevance, driving instant engagement. The title is a masterclass in concise, impactful storytelling, perfectly encapsulating the script's compelling narrative arc and making it the strongest overall contender."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://www.worldhistory.org/",
-    "music_track": "grave_matters.mp3",
-    "search_keywords": [
-      "elephant herd",
-      "forest deforestation",
-      "old laboratory equipment",
-      "plastic waste ocean",
-      "scientific discovery",
-      "modern recycling"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33527093042",
@@ -12801,7 +12743,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/crKbPUbZpGQ",
     "youtube_stats": {
-      "views": 996,
+      "views": 998,
       "likes": 25,
       "comments": 0
     },
@@ -13021,6 +12963,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44633528994",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-19T23:03:06.640633Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44670820427",
+    "github_run_number": 304,
+    "github_run_id": 44670820427,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44670820427",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-20T03:57:45.031231Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
