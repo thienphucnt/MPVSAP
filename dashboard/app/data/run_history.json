@@ -5105,82 +5105,24 @@
     "github_run_id": 33527093042,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33527093042",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-01T15:44:30.035421Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
+    "timestamp": "2026-09-01T15:39:42Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 5,
-        "angle": "5-Tragic Miscalculations",
-        "title": "Atlantis' Real Doom: A Fault Line",
-        "word_count": 139,
-        "hook": "The legendary city of Atlantis, if it existed, might not have sunk due to divine wrath, but a catast...",
-        "score": 9.63,
-        "critique": "This variant is a standout winner, combining an incredibly strong, debunking hook with a highly clickable title that immediately piques interest. The narrative unfolds compellingly and concludes with a powerful, reflective loop that extends the core idea's relevance, solidifying its first-place ranking."
-      },
-      {
-        "variant_id": 3,
-        "angle": "3-Untold Historical Irony",
-        "title": "Rome's Sanitation Irony: Death by Lead",
-        "word_count": 127,
-        "hook": "Ancient Rome, famed for its advanced aqueducts and public baths, ironically poisoned its own elite w...",
-        "score": 9.57,
-        "critique": "This script masterfully uses irony from the first sentence and maintains a compelling narrative with a strong, organic title. Its excellent hook and thought-provoking closing loop make it a very strong competitor, narrowly missing the top spot."
-      },
-      {
-        "variant_id": 1,
-        "angle": "1-Secret Conspiracies",
-        "title": "Hidden Builders of Ancient Megaliths",
-        "word_count": 118,
-        "hook": "The true builders of Earth\u2019s most colossal ancient structures remain officially unknown. For centuri...",
-        "score": 9.56,
-        "critique": "This variant excels with an immediately captivating mystery and a perfectly synergistic title that promises intrigue. Its seamless loop effectively reinforces the core conspiracy, making it a strong contender among the top entries."
-      },
-      {
-        "variant_id": 4,
-        "angle": "4-Everyday Absurdities",
-        "title": "The Great Hair Powder Tax of 1795",
-        "word_count": 131,
-        "hook": "In seventeen ninety-five, the British government imposed a tax on hair powder, transforming a daily ...",
-        "score": 9.52,
-        "critique": "This variant offers a uniquely engaging 'everyday absurdity' story with a great hook and title that promise entertainment. The seamless loop perfectly ties back to the profound impact of a seemingly trivial historical event, making it a well-rounded and strong entry."
-      },
-      {
-        "variant_id": 2,
-        "angle": "2-Wartime Secrets",
-        "title": "Secret Ingredient That Won World War",
-        "word_count": 134,
-        "hook": "The most critical wartime secret of World War Two wasn't a weapon, but a seemingly mundane plant: th...",
-        "score": 9.38,
-        "critique": "The title and initial hook are exceptionally strong, promising a truly unexpected revelation about wartime strategy. However, the ending loop feels slightly more like a conclusion than an open-ended invitation to further exploration, ranking it lower in that specific aspect."
-      }
-    ],
-    "winning_script": {
-      "title": "Atlantis' Real Doom: A Fault Line",
-      "text": "The legendary city of Atlantis, if it existed, might not have sunk due to divine wrath, but a catastrophic geological 'tragic miscalculation'. Many ancient accounts describe a highly advanced civilization tragically lost to the sea. Modern geological theories suggest that if such an island empire thrived in an active seismic zone, any grand 'ancient engineering mystery' or ambitious coastal city planning would be inherently vulnerable. A colossal earthquake, combined with a tsunami, could have triggered a complete collapse into the ocean, burying an entire kingdom in moments. The builders, perhaps underestimating the true power of tectonic forces or miscalculating long-term seismic activity, sealed their own fate, leaving behind a haunting 'buried kingdom' legend, which makes experts constantly wonder: if similar miscalculations could lead to the demise of modern coastal cities today, given humanity's continuous push to build on unstable",
-      "score": 9.63,
-      "critique": "This variant is a standout winner, combining an incredibly strong, debunking hook with a highly clickable title that immediately piques interest. The narrative unfolds compellingly and concludes with a powerful, reflective loop that extends the core idea's relevance, solidifying its first-place ranking."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://www.worldhistory.org/",
-    "music_track": "grave_matters.mp3",
-    "search_keywords": [
-      "underwater ruins",
-      "seismic activity map",
-      "cracked earth",
-      "tsunami waves",
-      "ancient city models",
-      "geological fault line"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33648632786",
@@ -12476,7 +12418,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/bijRC6lQe6o",
     "youtube_stats": {
-      "views": 1193,
+      "views": 1195,
       "likes": 28,
       "comments": 0
     },
@@ -12565,7 +12507,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/vI8ZrKNLSiw",
     "youtube_stats": {
-      "views": 1241,
+      "views": 1242,
       "likes": 20,
       "comments": 0
     },
@@ -12995,6 +12937,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44670820427",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-20T03:57:45.031231Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44830088322",
+    "github_run_number": 305,
+    "github_run_id": 44830088322,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44830088322",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-20T22:47:05.950417Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
