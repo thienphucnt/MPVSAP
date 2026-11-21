@@ -5130,82 +5130,24 @@
     "github_run_id": 33648632786,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33648632786",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-02T15:36:07.024339Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
+    "timestamp": "2026-09-02T15:27:14Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Everyday Absurdities",
-        "title": "Rome's Weirdest \"Laundry Detergent\"!",
-        "word_count": 136,
-        "hook": "Your clothes were cleaned with *that*?! Ancient Roman laundries, called fullonicae, often used human...",
-        "score": 9.5,
-        "critique": "This script excels with an immediately repulsive yet fascinating hook, maintaining strong narrative retention as it details a surprising historical practice. Its seamless loop CTA effectively broadens the discussion while echoing the initial curiosity."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Tragic Miscalculations",
-        "title": "Vikings' American Dream Turned Nightmare!",
-        "word_count": 122,
-        "hook": "Imagine traveling across an ocean, only to be outsmarted by a land you discovered! The Viking sagas ...",
-        "score": 9.28,
-        "critique": "Featuring a highly engaging title and an ironic, dramatic hook, this script delivers a well-structured narrative about historical miscalculation. Its final call to action, though thematically relevant, is weakened by an incomplete concluding phrase."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Secret Conspiracies",
-        "title": "Who REALLY Burned Alexandria's Library?",
-        "word_count": 141,
-        "hook": "One of history's greatest treasures vanished in flames, but *why*? The legendary Library of Alexandr...",
-        "score": 9.16,
-        "critique": "It masterfully crafts a compelling mystery with a potent hook and a narrative that effectively explores multiple theories. The abrupt and incomplete ending phrase significantly diminishes its otherwise excellent seamless loop potential."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Forgotten Cover-Ups",
-        "title": "Rome's Ultimate Erase Button!",
-        "word_count": 122,
-        "hook": "Imagine being so hated, a whole empire tried to erase your existence! In ancient Rome, 'Damnatio Mem...",
-        "score": 9.16,
-        "critique": "This variant uses an outstanding, modern analogy in its title and a powerful hook to introduce a fascinating historical practice with strong narrative progression. Similar to others, its closing CTA is left unfinished, preventing it from achieving a perfect loop."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Bizarre Laws",
-        "title": "Why Romans Couldn't Wear Purple!",
-        "word_count": 148,
-        "hook": "Imagine being banned from wearing your favorite color! In the mighty Roman Empire, the vibrant hue o...",
-        "score": 9.02,
-        "critique": "The hook is strong, drawing viewers in with a relatable restriction, and the narrative effectively explains the economic and social reasons behind the law. However, the ending CTA feels incomplete, leaving the final prompt too open-ended."
-      }
-    ],
-    "winning_script": {
-      "title": "Rome's Weirdest \"Laundry Detergent\"!",
-      "text": "Your clothes were cleaned with *that*?! Ancient Roman laundries, called fullonicae, often used human urine as their primary cleaning agent. The ammonia in urine was a powerful bleaching and degreasing agent, making it ideal for scrubbing away dirt and grime from wool tunics and togas. Workers would collect urine from public restrooms and even from large pots left on street corners for passersby to use! This pungent fluid was then stomped into clothing by barefoot laborers, a process that was as effective as it was undeniably smelly. While the practice might seem disgusting to us today, it was a vital part of Roman hygiene and textile care, highlighting just how resourceful\u2014or perhaps desperate\u2014they were for an effective cleaning solution: making us wonder, what other common household products have a surprisingly crude history that we've forgotten about?",
-      "score": 9.5,
-      "critique": "This script excels with an immediately repulsive yet fascinating hook, maintaining strong narrative retention as it details a surprising historical practice. Its seamless loop CTA effectively broadens the discussion while echoing the initial curiosity."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://www.worldhistory.org/",
-    "music_track": "grave_matters.mp3",
-    "search_keywords": [
-      "ancient Roman street",
-      "amphorae",
-      "laundry hanging",
-      "Roman laundromat",
-      "barefoot laborer",
-      "textile workshop"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33772133746",
@@ -12329,7 +12271,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/uEpvQKTQke4",
     "youtube_stats": {
-      "views": 1009,
+      "views": 1010,
       "likes": 16,
       "comments": 0
     },
@@ -12969,6 +12911,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44830088322",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-20T22:47:05.950417Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44863179936",
+    "github_run_number": 306,
+    "github_run_id": 44863179936,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44863179936",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-21T03:54:16.691816Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
