@@ -5155,82 +5155,24 @@
     "github_run_id": 33772133746,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/33772133746",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-03T15:25:30.201546Z",
-    "category": "Exciting Tech Facts",
-    "status": "FAILED",
+    "timestamp": "2026-09-03T15:21:31Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 5,
-        "angle": "Economic Disruption",
-        "title": "Books Destroyed an Industry",
-        "word_count": 117,
-        "hook": "Printing books triggered a devastating economic apocalypse. Before the printing press in the mid-fif...",
-        "score": 9.84,
-        "critique": "An absolute masterclass in paradoxical storytelling, this variant's hook and title are incredibly potent, instantly grabbing attention with a shocking premise. Its compelling historical narrative and powerful concluding loop make it the clear winner."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dangerous Breakthroughs",
-        "title": "Air Coolant's Deadly Secret",
-        "word_count": 118,
-        "hook": "A miracle chemical secretly poisoned the sky. In the one thousand nine hundred twenties, chlorofluor...",
-        "score": 9.82,
-        "critique": "This variant excels with an outstanding paradoxical hook and a meticulously paced narrative of a 'miracle chemical' turned deadly secret. Its impactful title and reflective CTA make it an exceptionally strong entry, narrowly missing the top spot by a hair."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Invisible Takeovers",
-        "title": "Algorithms Guide Your Life",
-        "word_count": 122,
-        "hook": "Your entire life is being subtly steered by invisible hands. Every click, every search, every purcha...",
-        "score": 9.65,
-        "critique": "This script delivers a highly relevant and unsettling hook, building a strong narrative about invisible algorithmic influence. It boasts perfect trope avoidance and a compelling, reflective CTA, securing a solid third place position."
-      },
-      {
-        "variant_id": 1,
-        "angle": "AI Frontier Paradox",
-        "title": "AI's Perfect Prison?",
-        "word_count": 132,
-        "hook": "What if safety itself became the greatest threat to freedom? An advanced artificial intelligence, de...",
-        "score": 9.6,
-        "critique": "This variant features a powerful, philosophical hook and a perfectly synergistic title, creating a compelling thought experiment. Despite a minor trope ('Imagine a world where'), its seamless loop CTA and strong narrative make it a strong contender, ranking fourth overall."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Accidental Inventions",
-        "title": "Microwaved Candy, New Tech!",
-        "word_count": 113,
-        "hook": "A melted chocolate bar accidentally invented your dinner. In one thousand nine hundred forty-five, P...",
-        "score": 9.1,
-        "critique": "An engaging historical anecdote with good narrative flow and a strong curiosity-inducing hook. However, the title feels slightly less organic, and the closing lacks the profound reflection seen in the higher-scoring variants, placing it last."
-      }
-    ],
-    "winning_script": {
-      "title": "Books Destroyed an Industry",
-      "text": "Printing books triggered a devastating economic apocalypse. Before the printing press in the mid-fifteenth century, information was painstakingly copied by hand, a slow and expensive process dominated by professional scribes and monasteries. The invention of Johannes Gutenberg's movable type machine didn't just democratize knowledge; it utterly shattered this ancient industry. Scribes, once essential, found their livelihood obsolete almost overnight. This technological leap created new economies around publishing, literacy, and education, but also caused massive job displacement and social upheaval. Entire guilds vanished, replaced by printers, typesetters, and booksellers. The printing press proved that even seemingly beneficial advancements can generate profound economic disruption, forcing societies to adapt to seismic shifts driven by what initially seemed like a simple:",
-      "score": 9.84,
-      "critique": "An absolute masterclass in paradoxical storytelling, this variant's hook and title are incredibly potent, instantly grabbing attention with a shocking premise. Its compelling historical narrative and powerful concluding loop make it the clear winner."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "medieval scribe",
-      "printing press machine",
-      "stacking books",
-      "ancient parchment",
-      "bustling market",
-      "intellectual debate"
-    ],
-    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-33888556200",
@@ -12182,7 +12124,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/wjguDaPEt94",
     "youtube_stats": {
-      "views": 162,
+      "views": 163,
       "likes": 3,
       "comments": 0
     },
@@ -12943,6 +12885,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44863179936",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-21T03:54:16.691816Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-44952077772",
+    "github_run_number": 307,
+    "github_run_id": 44952077772,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44952077772",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-21T21:35:49.824395Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
