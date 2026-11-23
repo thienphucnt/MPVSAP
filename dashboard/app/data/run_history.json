@@ -725,36 +725,29 @@
     "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
-    "id": "run-44991471559",
+    "id": "run-28946118916",
     "github_run_number": 30,
-    "github_run_id": 44991471559,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44991471559",
+    "github_run_id": 28946118916,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28946118916",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-11-22T05:58:48.628415Z",
-    "category": "space",
-    "status": "FAILED",
+    "timestamp": "2026-07-08T13:24:50Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 15.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
     "script_variants": [],
-    "winning_script": {
-      "title": "Pipeline Execution Error",
-      "text": "Pipeline failed during execution."
-    },
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
-    "music_track": "space_ambient_cinematic.mp3",
-    "search_keywords": [
-      "cosmic void",
-      "astrophysics",
-      "deep space"
-    ],
-    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-28954209954",
@@ -11241,7 +11234,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Rrm8TjejF4U",
     "youtube_stats": {
-      "views": 1073,
+      "views": 1074,
       "likes": 30,
       "comments": 0
     },
@@ -12810,6 +12803,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45073254153",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-22T21:42:22.070137Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-45107014675",
+    "github_run_number": 310,
+    "github_run_id": 45107014675,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45107014675",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-23T03:40:19.830948Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
