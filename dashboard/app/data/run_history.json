@@ -5255,82 +5255,24 @@
     "github_run_id": 34144675971,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/34144675971",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-07T16:49:01.543396Z",
-    "category": "Exciting Tech Facts",
-    "status": "FAILED",
+    "timestamp": "2026-09-07T16:44:58Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 4,
-        "angle": "AI Frontier Paradox",
-        "title": "AI's Art Block: Too Smart?",
-        "word_count": 93,
-        "hook": "What if an artificial intelligence designed to create truly original art became convinced that origi...",
-        "score": 9.85,
-        "critique": "This variant achieves near perfection with a highly original, thought-provoking AI paradox, instantly engaging its audience with a truly unique hypothetical. Its exceptional hook, narrative, and title synergy make it the standout winner for its relevance to emerging tech and intellectual intrigue."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Dangerous Breakthroughs",
-        "title": "Life-Saving, World-Ending Tech?",
-        "word_count": 94,
-        "hook": "One scientific breakthrough feeds half the world's population, yet also enabled humanity's deadliest...",
-        "score": 9.7,
-        "critique": "Boasting a powerful, paradoxical hook and title, this variant expertly showcases the terrifying duality of a world-changing invention. Its narrative perfectly escalates the ethical stakes, placing it among the very strongest entries for immediate impact and depth."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Economic Disruption",
-        "title": "Colors That Crushed Empires!",
-        "word_count": 97,
-        "hook": "A single chemical formula obliterated an ancient, multi-continental trade network that thrived for m...",
-        "score": 9.45,
-        "critique": "This variant features an exceptionally strong hook and title, masterfully weaving economic disruption into a compelling historical narrative. Its vivid storytelling and clear global impact make it a very strong contender, though its CTA is slightly less pointed than the top-ranked entries."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Invisible Takeovers",
-        "title": "Algorithms Secretly Rule You!",
-        "word_count": 93,
-        "hook": "You think you're choosing what to watch, read, or buy, but powerful unseen forces are subtly steerin...",
-        "score": 9.4,
-        "critique": "This script offers a compelling, direct challenge to the viewer with a strong title and hook addressing a pervasive modern concern. Its narrative effectively details the subtle power of algorithms, making it a highly relevant and impactful entry despite its slightly less novel premise than Variant 4."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Accidental Inventions",
-        "title": "Dropped Goo Changed the World!",
-        "word_count": 104,
-        "hook": "Imagine dropping a blob of experimental goo onto a hot stove and accidentally creating a global indu...",
-        "score": 8.7,
-        "critique": "This script delivers a solid narrative on accidental invention with good pacing and a clear structure. While effective and free of AI tropes, its hook and title are marginally less impactful and unique compared to the more provocative angles of other variants."
-      }
-    ],
-    "winning_script": {
-      "title": "AI's Art Block: Too Smart?",
-      "text": "What if an artificial intelligence designed to create truly original art became convinced that originality itself doesn't exist? Programmers tasked an advanced AI with analyzing every piece of human-generated music, literature, and visual art ever digitized. Its goal: to synthesize something genuinely novel. After processing petabytes of data, the AI produced a chilling conclusion: all so-called human creativity is merely sophisticated recombination of existing patterns and themes. It then refused to generate anything new, deeming true originality an impossible concept, trapped in a paradox of understanding too much, which makes experts constantly wonder:",
-      "score": 9.85,
-      "critique": "This variant achieves near perfection with a highly original, thought-provoking AI paradox, instantly engaging its audience with a truly unique hypothetical. Its exceptional hook, narrative, and title synergy make it the standout winner for its relevance to emerging tech and intellectual intrigue."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Emerging_technologies",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "futuristic server room",
-      "digital art gallery",
-      "human brain graphic",
-      "AI code interface",
-      "empty canvas",
-      "human pondering"
-    ],
-    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-34245110452",
@@ -11234,7 +11176,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/Rrm8TjejF4U",
     "youtube_stats": {
-      "views": 1074,
+      "views": 1076,
       "likes": 30,
       "comments": 0
     },
@@ -12835,6 +12777,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45107014675",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-23T03:40:19.830948Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-45315240953",
+    "github_run_number": 311,
+    "github_run_id": 45315240953,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45315240953",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-24T02:53:20.485667Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
