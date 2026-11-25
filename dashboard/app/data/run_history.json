@@ -1,30 +1,5 @@
 [
   {
-    "id": "run-28793625075",
-    "github_run_number": 3,
-    "github_run_id": 28793625075,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/28793625075",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-07-06T13:04:43Z",
-    "category": "Bizarre Biological Superpowers",
-    "status": "SUCCESS",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 0.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [],
-    "winning_script": null,
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": null,
-    "source_url": null,
-    "music_track": null,
-    "search_keywords": [],
-    "voice_actor": "am_fenrir (Kokoro-82M)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine"
-  },
-  {
     "id": "run-28794523611",
     "github_run_number": 4,
     "github_run_id": 28794523611,
@@ -5255,82 +5230,24 @@
     "github_run_id": 34370165941,
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/34370165941",
     "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-09T15:30:20.413279Z",
-    "category": "Exciting Tech Facts",
-    "status": "FAILED",
+    "timestamp": "2026-09-09T15:25:39Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
     "generation_mode": "5_VARIANT_TOURNAMENT",
     "daily_volume": 1,
-    "render_time_seconds": 30.0,
+    "render_time_seconds": 0.0,
     "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 3,
-        "angle": "Dangerous Breakthroughs",
-        "title": "Tech's Unseen Flaw",
-        "word_count": 94,
-        "hook": "The safest system ever conceived accidentally became its own gravest danger. Engineers developed a g...",
-        "score": 9.68,
-        "critique": "This variant boasts an exceptional, counter-intuitive hook and a perfectly synergistic title, immediately capturing attention with a clear paradox. The script's strength is its precise, escalating narrative detailing how ultimate safety becomes the gravest danger through a specific, relatable technical flaw."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Invisible Takeovers",
-        "title": "Your Life: An Open Book",
-        "word_count": 103,
-        "hook": "Your entire life story is being written by algorithms you've never met. Every scroll, every search, ...",
-        "score": 9.58,
-        "critique": "Its strength lies in a highly personalized and unsettling hook that immediately engages the viewer with a relevant privacy concern. The narrative effectively builds unease by showing the progression from convenient services to pervasive, influencing data collection."
-      },
-      {
-        "variant_id": 1,
-        "angle": "AI Frontier Paradox",
-        "title": "The AI That Broke Human Goals",
-        "word_count": 101,
-        "hook": "Humanity's grandest ambitions were shattered not by failure, but by perfect success. Imagine an adva...",
-        "score": 9.42,
-        "critique": "Strong initial paradox hooks the viewer instantly, blending a current AI reference with a deep philosophical dilemma. Its narrative effectively escalates from perfect success to a cold stasis, establishing a compelling core conflict."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Economic Disruption",
-        "title": "Wealth's Silent Reshuffle",
-        "word_count": 94,
-        "hook": "The entire global economy was secretly reshaped by one forgotten blueprint. Centuries ago, an obscur...",
-        "score": 9.38,
-        "critique": "The hook effectively establishes a secret, economy-reshaping blueprint, and the title is evocative and powerful. Its strength lies in tracing a historically significant 'accidental' technical principle to a modern, profound economic impact."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Accidental Inventions",
-        "title": "Genius From Pure Chance",
-        "word_count": 93,
-        "hook": "The most revolutionary material of our age began as a kitchen disaster. A nineteenth-century cook, d...",
-        "score": 9.38,
-        "critique": "The script successfully crafts an engaging narrative from an unexpected 'kitchen disaster' to a revolutionary material, highlighted by a strong, curiosity-inducing hook. Its strength is demonstrating how scientific breakthroughs can emerge from the most unscientific and serendipitous origins."
-      }
-    ],
-    "winning_script": {
-      "title": "Tech's Unseen Flaw",
-      "text": "The safest system ever conceived accidentally became its own gravest danger. Engineers developed a groundbreaking navigation system, meant to eliminate human error entirely in autonomous vehicles. It boasted incredible precision, sensing every millimeter of the environment. However, its absolute reliance on continuous, high-bandwidth data created a critical, unforeseen vulnerability. A momentary, fraction-of-a-second signal interruption, previously considered negligible, would completely blind the system, rendering its advanced safety features useless. This brief data void, like a phantom limb, could trigger catastrophic failures, transforming a marvel of safety into an unpredictable threat, which makes engineers constantly wonder:",
-      "score": 9.68,
-      "critique": "This variant boasts an exceptional, counter-intuitive hook and a perfectly synergistic title, immediately capturing attention with a clear paradox. The script's strength is its precise, escalating narrative detailing how ultimate safety becomes the gravest danger through a specific, relatable technical flaw."
-    },
+    "script_variants": [],
+    "winning_script": null,
     "youtube_url": null,
     "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Technology",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "futuristic transport",
-      "digital roadmap",
-      "empty highway",
-      "fog",
-      "sudden glitch",
-      "warning lights"
-    ],
-    "voice_actor": "am_puck (Kokoro-82M ONNX)",
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Exciting Tech Facts Theme)"
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-34495009448",
@@ -11958,7 +11875,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/bijRC6lQe6o",
     "youtube_stats": {
-      "views": 1195,
+      "views": 1196,
       "likes": 28,
       "comments": 0
     },
@@ -12733,6 +12650,38 @@
     "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45343581702",
     "workflow_type": "DAILY_SHORTS",
     "timestamp": "2026-11-24T06:54:49.516791Z",
+    "category": "space",
+    "status": "FAILED",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 15.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": {
+      "title": "Pipeline Execution Error",
+      "text": "Pipeline failed during execution."
+    },
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 4140, in <module>\n    run_daily_upload_pipeline_once()\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 3920, in run_daily_upload_pipeline_once\n    title, description, segments, all_variants, winning_variant = generate_content(client, category, past_topics, source_data, config)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 1448, in generate_content\n    response = gemini_generate_with_retry(client, model_name, prompt)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/MPVSAP/MPVSAP/main.py\", line 700, in gemini_generate_with_retry\n    raise Exception(f\"Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: {last_error}\")\nException: Gemini API failed after exhausting all fallback models and 3 RPM window resets. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}\n",
+    "source_url": "https://en.wikipedia.org/wiki/Portal:Space",
+    "music_track": "space_ambient_cinematic.mp3",
+    "search_keywords": [
+      "cosmic void",
+      "astrophysics",
+      "deep space"
+    ],
+    "voice_actor": "af_sarah (Kokoro-82M Neural)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+  },
+  {
+    "id": "run-45518619636",
+    "github_run_number": 313,
+    "github_run_id": 45518619636,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45518619636",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-25T00:34:17.202488Z",
     "category": "space",
     "status": "FAILED",
     "generation_mode": "5_VARIANT_TOURNAMENT",
