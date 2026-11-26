@@ -1,162 +1,5 @@
 [
   {
-    "id": "run-34764816303",
-    "github_run_number": 217,
-    "github_run_id": 34764816303,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/34764816303",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-13T15:14:16.350409Z",
-    "category": "Scary Space Mysteries",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Astronomical Mystery",
-        "title": "Star Just Vanished Without a Trace!",
-        "word_count": 119,
-        "hook": "A colossal star, hundreds of times the sun's mass, simply vanished from existence in a single cosmic...",
-        "score": 9.8,
-        "critique": "This variant earns top marks for its immediate, impossible hook and perfectly synergistic title, which together create an escalating mystery of cosmic erasure. It masterfully pulls the audience into a profound scientific dilemma, making it the strongest entry in this evaluation."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Deep Void Anomaly",
-        "title": "Dark Zone Eats Spacecraft Whole!",
-        "word_count": 113,
-        "hook": "A routine deep-space probe, designed to withstand extreme conditions, was annihilated by an anomaly ...",
-        "score": 9.7,
-        "critique": "A very close second place, this script excels with a vivid, relatable incident involving a probe and a mysterious 'dark zone' that actively consumes light. Its detailed progression and strong title create a highly engaging and slightly more grounded cosmic mystery."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Rogue Worlds",
-        "title": "Planet From Nowhere Just Appeared!",
-        "word_count": 122,
-        "hook": "A colossal, ice-covered \"rogue world\" the size of Neptune just appeared from the interstellar void, ...",
-        "score": 9.45,
-        "critique": "This variant offers a compelling, albeit less impossible, near-future threat with the rogue world heading towards our solar system, placing it firmly in the upper mid-range. Its strength is in connecting a vast cosmic phenomenon to potential local implications and stimulating curiosity about extreme life."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Cosmic Terror",
-        "title": "The Universe Just Went SILENT",
-        "word_count": 105,
-        "hook": "The universe itself just went horrifyingly silent, as if a cosmic switch was flipped, and we barely ...",
-        "score": 9.4,
-        "critique": "While strong with its chilling, dramatic hook and escalation of cosmic terror, the concept of 'silence' is slightly less immediately tangible than a physical vanishing. It's a solid mid-range performer, effectively suggesting an indifferent, unknown force controlling the universe."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Hidden Physics",
-        "title": "Universe Has a Secret \"Echo\" Loop!",
-        "word_count": 113,
-        "hook": "What if the universe isn't just expanding, but periodically \"resets\" certain physical laws in a hidd...",
-        "score": 9.3,
-        "critique": "Exploring a profound theoretical 'what if' regarding fundamental physical laws, this script builds from anomalous observations to grand universal theories. However, its abstract nature makes its hook slightly less immediate and visceral compared to the concrete events described in the higher-ranked variants."
-      }
-    ],
-    "winning_script": {
-      "title": "Star Just Vanished Without a Trace!",
-      "text": "A colossal star, hundreds of times the sun's mass, simply vanished from existence in a single cosmic blink. For weeks, telescopes scanned the newly identified system in a distant galaxy. One moment, it was there, a vibrant beacon; the next, an empty void. No supernova explosion, no gamma-ray burst, no black hole signature\u2014just profound nothingness. This wasn't merely a dimming; it was an absolute erasure of light and matter. Scientists scrambled, theorizing everything from an unknown dark energy interaction to a new type of celestial body acting as a cosmic eraser, defying every known principle of stellar evolution. This impossible disappearance has sparked desperate new theories that probe the very fabric of reality itself, leaving astronomers to constantly wonder:",
-      "score": 9.8,
-      "critique": "This variant earns top marks for its immediate, impossible hook and perfectly synergistic title, which together create an escalating mystery of cosmic erasure. It masterfully pulls the audience into a profound scientific dilemma, making it the strongest entry in this evaluation."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Spaceflight",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "distant galaxy",
-      "starlight fading",
-      "empty space",
-      "cosmic dust clouds",
-      "observatory telescope",
-      "glowing nebula"
-    ],
-    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
-  },
-  {
-    "id": "run-34872854794",
-    "github_run_number": 218,
-    "github_run_id": 34872854794,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/34872854794",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-14T17:11:28.372864Z",
-    "category": "Scary Space Mysteries",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Rogue Worlds",
-        "title": "A World That COULD Hit Earth?!",
-        "word_count": 120,
-        "hook": "Imagine a planet, not orbiting any star, silently hurtling through the cosmic void, a truly rogue wo...",
-        "score": 9.7,
-        "critique": "This variant excels with an incredibly strong, relatable threat in its hook and a compelling narrative about mysterious rogue worlds. It masterfully creates a sense of wonder and danger, making it the top contender for broad audience engagement."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Cosmic Terror",
-        "title": "The Black Hole's Twisted Escape",
-        "word_count": 108,
-        "hook": "What happens when a star, accelerated by a supermassive black hole, is violently ejected from its ga...",
-        "score": 9.6,
-        "critique": "Offering a highly dramatic and vivid concept, this variant immediately hooks with the terrifying image of hypervelocity stars as cosmic bullets. Its intense pacing and compelling imagery make it a very close second to variant #1 in overall impact."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Existential Scale",
-        "title": "Humanity's Cosmic Blink",
-        "word_count": 112,
-        "hook": "Every galaxy we see contains billions of stars, but the universe itself spans ninety-three billion l...",
-        "score": 8.9,
-        "critique": "This script beautifully conveys the immense scale of the universe, creating a contemplative and humbling narrative. While effective, its hook offers less immediate dramatic tension compared to the more visceral concepts in variants #1 and #3."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Quantum Paradox",
-        "title": "Reality: Just a Cosmic Illusion?",
-        "word_count": 105,
-        "hook": "Quantum mechanics suggests that at the universe's most fundamental level, spacetime isn't smooth but...",
-        "score": 8.8,
-        "critique": "This variant explores a fascinating and profound scientific paradox, using a thought-provoking title and concept. However, the abstract nature of 'quantum foam' might slightly limit its immediate appeal to a very broad audience compared to the more direct cosmic events."
-      }
-    ],
-    "winning_script": {
-      "title": "A World That COULD Hit Earth?!",
-      "text": "Imagine a planet, not orbiting any star, silently hurtling through the cosmic void, a truly rogue world with no sun to guide it. These interstellar wanderers are thought to outnumber all the stars in our galaxy, born from chaotic gravitational shifts or supernova explosions that rip them from their home systems. Undetectable by conventional telescopes, these dark giants possess subsurface oceans heated by tidal forces from their own gravity, potentially teeming with life in perpetual night. The James Webb Telescope offers new hope for spotting these elusive bodies, but their unpredictable trajectories mean any one of them could be silently heading for a catastrophic gravitational encounter, leaving scientists to wonder how many more might be out there, poised to unleash:",
-      "score": 9.7,
-      "critique": "This variant excels with an incredibly strong, relatable threat in its hook and a compelling narrative about mysterious rogue worlds. It masterfully creates a sense of wonder and danger, making it the top contender for broad audience engagement."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Astronomy",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "space nebula",
-      "dark planet",
-      "starfield",
-      "lonely journey",
-      "cosmic collision",
-      "uncharted space"
-    ],
-    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
-  },
-  {
     "id": "run-34990852143",
     "github_run_number": 219,
     "github_run_id": 34990852143,
@@ -3833,7 +3676,8 @@
     "youtube_stats": {
       "views": 1203,
       "likes": 24,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.44
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Scaly-foot_gastropod",
@@ -3922,7 +3766,8 @@
     "youtube_stats": {
       "views": 1568,
       "likes": 20,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.88
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Black_swallower",
@@ -4011,7 +3856,8 @@
     "youtube_stats": {
       "views": 488,
       "likes": 8,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.58
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Star-nosed_mole",
@@ -4100,7 +3946,8 @@
     "youtube_stats": {
       "views": 693,
       "likes": 27,
-      "comments": 1
+      "comments": 1,
+      "outlier_multiplier": 0.83
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Lyrebird",
@@ -4189,7 +4036,8 @@
     "youtube_stats": {
       "views": 1083,
       "likes": 27,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.3
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Tiger",
@@ -4278,7 +4126,8 @@
     "youtube_stats": {
       "views": 1353,
       "likes": 29,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.62
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/King_cobra",
@@ -4367,7 +4216,8 @@
     "youtube_stats": {
       "views": 217,
       "likes": 3,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.26
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Gila_monster",
@@ -4456,7 +4306,8 @@
     "youtube_stats": {
       "views": 835,
       "likes": 10,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.0
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Botfly",
@@ -4545,7 +4396,8 @@
     "youtube_stats": {
       "views": 4,
       "likes": 0,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.0
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Giant_squid",
@@ -4634,7 +4486,8 @@
     "youtube_stats": {
       "views": 1961,
       "likes": 41,
-      "comments": 1
+      "comments": 1,
+      "outlier_multiplier": 2.35
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Sperm_whale",
@@ -4723,7 +4576,8 @@
     "youtube_stats": {
       "views": 439,
       "likes": 11,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.53
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Mimic_octopus",
@@ -4812,7 +4666,8 @@
     "youtube_stats": {
       "views": 1098,
       "likes": 14,
-      "comments": 1
+      "comments": 1,
+      "outlier_multiplier": 1.31
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Naked_mole-rat",
@@ -4901,7 +4756,8 @@
     "youtube_stats": {
       "views": 1082,
       "likes": 23,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.3
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Goliath_birdeater",
@@ -4990,7 +4846,8 @@
     "youtube_stats": {
       "views": 1027,
       "likes": 23,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.23
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Honey_badger",
@@ -5079,7 +4936,8 @@
     "youtube_stats": {
       "views": 804,
       "likes": 11,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.96
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Hairworm",
@@ -5168,7 +5026,8 @@
     "youtube_stats": {
       "views": 238,
       "likes": 2,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.29
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Portuguese_man_o'_war",
@@ -5257,7 +5116,8 @@
     "youtube_stats": {
       "views": 1014,
       "likes": 13,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.21
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Pacific_viperfish",
@@ -5346,7 +5206,8 @@
     "youtube_stats": {
       "views": 1015,
       "likes": 19,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.22
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Goblin_shark",
@@ -5399,7 +5260,8 @@
     "youtube_stats": {
       "views": 1118,
       "likes": 15,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.34
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Geoduck",
@@ -5488,7 +5350,8 @@
     "youtube_stats": {
       "views": 1076,
       "likes": 30,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.29
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Komodo_dragon",
@@ -5577,7 +5440,8 @@
     "youtube_stats": {
       "views": 768,
       "likes": 17,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.92
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Harpy_eagle",
@@ -5666,7 +5530,8 @@
     "youtube_stats": {
       "views": 392,
       "likes": 11,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.47
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Spotted_hyena",
@@ -5755,7 +5620,8 @@
     "youtube_stats": {
       "views": 570,
       "likes": 17,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.68
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Cookiecutter_shark",
@@ -5844,7 +5710,8 @@
     "youtube_stats": {
       "views": 252,
       "likes": 6,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.3
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/poison_dart_frog",
@@ -5933,7 +5800,8 @@
     "youtube_stats": {
       "views": 337,
       "likes": 13,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.4
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Coelacanth",
@@ -6022,7 +5890,8 @@
     "youtube_stats": {
       "views": 697,
       "likes": 21,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.83
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Pelican_eel",
@@ -6111,7 +5980,8 @@
     "youtube_stats": {
       "views": 498,
       "likes": 9,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.6
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Cuttlefish",
@@ -6200,7 +6070,8 @@
     "youtube_stats": {
       "views": 163,
       "likes": 3,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.2
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Leafcutter_ant",
@@ -6289,7 +6160,8 @@
     "youtube_stats": {
       "views": 1010,
       "likes": 16,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.21
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Saltwater_crocodile",
@@ -6378,7 +6250,8 @@
     "youtube_stats": {
       "views": 1196,
       "likes": 28,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.43
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Nile_crocodile",
@@ -6467,7 +6340,8 @@
     "youtube_stats": {
       "views": 1242,
       "likes": 20,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.49
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Gaboon_viper",
@@ -6485,6 +6359,31 @@
     "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
     "visual_asset_types": "Salience-Zoomed 4K Clips",
     "ass_subtitle_engine": "FFmpeg ASS Engine (Mind-Control Parasites & Venom Theme)"
+  },
+  {
+    "id": "run-43682213102",
+    "github_run_number": 29,
+    "github_run_id": 43682213102,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/43682213102",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-11-15T05:42:16Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "SUCCESS",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": null,
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": null,
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
   },
   {
     "id": "run-43760837382",
@@ -6556,7 +6455,8 @@
     "youtube_stats": {
       "views": 382,
       "likes": 13,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.46
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Irukandji_jellyfish",
@@ -6645,7 +6545,8 @@
     "youtube_stats": {
       "views": 998,
       "likes": 25,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 1.2
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Scaly-foot_gastropod",
@@ -7049,6 +6950,31 @@
     "ass_subtitle_engine": "FFmpeg ASS Subtitle Engine (Anton-Regular)"
   },
   {
+    "id": "run-44991471559",
+    "github_run_number": 30,
+    "github_run_id": 44991471559,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/44991471559",
+    "workflow_type": "WEEKLY_LONGFORM",
+    "timestamp": "2026-11-22T05:55:38Z",
+    "category": "Bizarre Biological Superpowers",
+    "status": "FAILED",
+    "generation_mode": "LONGFORM_COMPILATION",
+    "daily_volume": 1,
+    "render_time_seconds": 0.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [],
+    "winning_script": null,
+    "youtube_url": null,
+    "youtube_stats": null,
+    "error_traceback": "Workflow run failed during execution.",
+    "source_url": null,
+    "music_track": null,
+    "search_keywords": [],
+    "voice_actor": "am_fenrir (Kokoro-82M)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine"
+  },
+  {
     "id": "run-45073254153",
     "github_run_number": 309,
     "github_run_id": 45073254153,
@@ -7306,7 +7232,8 @@
     "youtube_stats": {
       "views": 0,
       "likes": 0,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.0
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/African_wild_dog",
