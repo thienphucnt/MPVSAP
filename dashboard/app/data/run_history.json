@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-34990852143",
-    "github_run_number": 219,
-    "github_run_id": 34990852143,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/34990852143",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-15T15:53:50.534740Z",
-    "category": "Scary Space Mysteries",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 3,
-        "angle": "Quantum Paradox",
-        "title": "Light Speed Isn't Constant",
-        "word_count": 111,
-        "hook": "The speed of light isn't constant everywhere, but subtly fluctuates across billions of light-years, ...",
-        "score": 9.86,
-        "critique": "This variant is the clear winner, leveraging a foundational physics challenge ('light speed isn't constant') with a profound, observation-influenced twist for an incredibly strong hook and narrative. Its seamless loop CTA and perfectly aligned title reinforce its top-tier engagement and intellectual curiosity."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Cosmic Terror",
-        "title": "Space Forgets Its Own Laws",
-        "word_count": 109,
-        "hook": "Entire cosmic laws are being forgotten, not broken, as astronomers detect regions of space where fun...",
-        "score": 9.7,
-        "critique": "This script excels with its unique 'forgotten laws' hook and masterful narrative escalation of cosmic terror, making it a highly engaging and unsettling read. Its strong thematic consistency and effective title place it second overall among the candidates."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Hidden Physics",
-        "title": "Gravity Has A Secret Pulse",
-        "word_count": 117,
-        "hook": "Gravity isn't a constant pull, but rather a sequence of undetectable, rapid 'pulses' across the univ...",
-        "score": 9.44,
-        "critique": "This variant introduces an intriguing concept of 'pulsing gravity' that effectively challenges fundamental physics and offers compelling explanations for cosmic anomalies. Its strong hook and consistent narrative are slightly let down by a less unique concluding call to action, positioning it as a solid middle-performer."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Astronomical Mystery",
-        "title": "Ghost Galaxies Haunt Space",
-        "word_count": 107,
-        "hook": "Entire galaxies vanish from the cosmic microwave background, yet remain optically visible, a ghostly...",
-        "score": 9.3,
-        "critique": "This script presents a compelling paradox of 'ghost galaxies' that skillfully builds mystery around cosmic visibility, demonstrating strong narrative flow. While effective, slightly generic phrasing in the mid-section and a less specific CTA place it in the lower half of the competition."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Rogue Worlds",
-        "title": "Black Hole's Living World",
-        "word_count": 105,
-        "hook": "A black hole drifts through interstellar space, not just devouring, but sustaining a bizarre, glowin...",
-        "score": 9.12,
-        "critique": "While offering a fascinating concept of life around black holes, this variant's narrative felt slightly less grounded and its concluding CTA was less impactful than others. It ranks lowest primarily due to a comparatively weaker loop and a less urgent sense of discovery."
-      }
-    ],
-    "winning_script": {
-      "title": "Light Speed Isn't Constant",
-      "text": "The speed of light isn't constant everywhere, but subtly fluctuates across billions of light-years, seemingly influenced by observation, a macroscopic quantum paradox. Distant galactic events show minute, inexplicable variations in light travel time, as if the universe itself has an uncertainty principle applied to its most fundamental constant. Some radical theories suggest our own act of observing the cosmos might subtly 'collapse' these variations, determining the light's final speed at the point of detection. This implies reality's deepest rules aren't fixed, but are in a constant state of cosmic flux, awaiting interaction, leaving cosmologists to grapple with a universe that might literally be defined by how, or even if, we're watching:",
-      "score": 9.86,
-      "critique": "This variant is the clear winner, leveraging a foundational physics challenge ('light speed isn't constant') with a profound, observation-influenced twist for an incredibly strong hook and narrative. Its seamless loop CTA and perfectly aligned title reinforce its top-tier engagement and intellectual curiosity."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Spaceflight",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "galaxy clusters",
-      "light trails",
-      "observatory telescope",
-      "cosmic background",
-      "abstract light patterns",
-      "star fields"
-    ],
-    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
-  },
-  {
     "id": "run-35116829763",
     "github_run_number": 220,
     "github_run_id": 35116829763,
@@ -7256,6 +7173,72 @@
       "threads_post": "Nature's evolutionary arms race is wild:\n\nMeet the African wild dog \u2014 one of nature's most extreme evolutionary specialists. The African wild dog , also called painted dog and Cape hunting dog, is a wild canine native to sub-Saharan Africa.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/eeC3a3FGNCQ\n\nWhich species has the most extreme survival adaptation?",
       "youtube_community_poll": {
         "question": "Why the African wild dog Defies Biology \u2014 Would you survive an encounter with this adaptation?",
+        "options": [
+          "Zero chance \u2014 instant knockout",
+          "Only with deep-sea / kevlar gear",
+          "Nature needs to nerf this species",
+          "Do a predator vs. prey matchup next!"
+        ]
+      }
+    }
+  },
+  {
+    "id": "run-45757416558",
+    "github_run_number": 317,
+    "github_run_id": 45757416558,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45757416558",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-26T04:50:29.306138Z",
+    "category": "Apex Predators & Deadly Matchups",
+    "status": "SUCCESS",
+    "generation_mode": "EXTRACTIVE_ZOO_CONTINUITY",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Encyclopedia Extractive Continuity",
+        "title": "Why the Caracal Defies Biology",
+        "word_count": 90,
+        "hook": "Meet the Caracal \u2014 one of nature's most extreme evolutionary specialists. The caracal is a wild cat ...",
+        "score": 8.6,
+        "critique": "Synthesized via Encyclopedia-Grounded Continuity Engine (All configured LLM providers exhausted. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are )."
+      }
+    ],
+    "winning_script": {
+      "title": "Why the Caracal Defies Biology",
+      "text": "Meet the Caracal \u2014 one of nature's most extreme evolutionary specialists. The caracal is a wild cat native to Africa, the Middle East, Central Asia, and arid areas of Pakistan and northwestern India. It reaches 40\u201350 cm at the shoulder and weighs 8\u201319 kg . It stalks its prey until it is within 5 m of it, after which it runs it down and kills it with a bite to the throat or to the back of the neck. Which is why wildlife biologists still marvel at how nature engineered:",
+      "score": 8.6,
+      "critique": "Synthesized via Encyclopedia-Grounded Continuity Engine (All configured LLM providers exhausted. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are )."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/ufm86_yMxrI",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/caracal",
+    "music_track": "cinematic_nightcore_empire.mp3",
+    "search_keywords": [
+      "Caracal wildlife",
+      "Caracal animal",
+      "Caracal nature",
+      "lioness hunting",
+      "grizzly bear",
+      "crocodile underwater",
+      "shark swimming",
+      "hawk flying"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Apex Predators & Deadly Matchups Theme)",
+    "social_posts": {
+      "x_post": "Meet the Caracal \u2014 one of nature's most extreme evolutionary specialists.\n\nThe caracal is a wild cat native to Africa, the Middle East, Central Asia, and arid areas of Pakistan and northwestern India.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/ufm86_yMxrI\n\n#wildlife",
+      "threads_post": "Nature's evolutionary arms race is wild:\n\nMeet the Caracal \u2014 one of nature's most extreme evolutionary specialists. The caracal is a wild cat native to Africa, the Middle East, Central Asia, and arid areas of Pakistan and northwestern India.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/ufm86_yMxrI\n\nWhich species has the most extreme survival adaptation?",
+      "youtube_community_poll": {
+        "question": "Why the Caracal Defies Biology \u2014 Would you survive an encounter with this adaptation?",
         "options": [
           "Zero chance \u2014 instant knockout",
           "Only with deep-sea / kevlar gear",
