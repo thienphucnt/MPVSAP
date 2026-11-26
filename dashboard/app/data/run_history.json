@@ -7147,10 +7147,10 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/eeC3a3FGNCQ",
     "youtube_stats": {
-      "views": 0,
-      "likes": 0,
+      "views": 663,
+      "likes": 15,
       "comments": 0,
-      "outlier_multiplier": 0.0
+      "outlier_multiplier": 0.79
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/African_wild_dog",
@@ -7216,7 +7216,8 @@
     "youtube_stats": {
       "views": 0,
       "likes": 0,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.0
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/caracal",
