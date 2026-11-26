@@ -366,6 +366,332 @@ class TestPipeline(unittest.TestCase):
 
         print("SUCCESS: Test 6 Passed: test_wildlife_species_ingestion_and_few_shot_scoring verified WildApex 3.0 architecture.")
 
+    def test_threads_content_factory_enhancements(self):
+        """
+        Test 7: Verify all 3 Phases of the @libknowsai AI Content Factory Upgrade:
+        - Phase 1: Multi-source Europe PMC + anatomical extract prioritization, outlier_multiplier scoring,
+                   viewer comment mining, and 5-result Wikimedia search loop (skipping SVG in result[0]).
+        - Phase 2: OpenCV salience-tracked aspect-preserving crop, kinetic ASS pop-in tag,
+                   mood-matched BGM track selection, and dual-voice ('duo') Kokoro synthesis routing.
+        - Phase 3: Multi-language YouTube localizations (es, pt, hi, de, fr, ja, ko) and social distribution bundle.
+        """
+        import tempfile
+        from pathlib import Path
+        import numpy as np
+        from main import (
+            VideoFormatConfig,
+            fetch_europepmc_scientific_facts,
+            find_video_salience_center,
+            generate_ass_file,
+            generate_social_distribution_posts,
+            generate_youtube_localizations,
+            get_run_score,
+            prepare_aspect_cropped_clip,
+            prioritize_biological_extract_sections,
+            search_wikimedia_image,
+            select_mood_matched_music,
+        )
+        from maintenance_sync import mine_youtube_viewer_comments
+
+        # --- Phase 1A: Europe PMC + Biological Section Prioritization ---
+        long_extract = (" ".join(["Taxonomic classification history."] * 150)) + " The mantis shrimp strike force reaches 1,500 Newtons with lethal cavitation venom."
+        prioritized = prioritize_biological_extract_sections(long_extract, max_words=620)
+        self.assertIn("1,500 Newtons", prioritized)
+
+        mock_pmc_resp = MagicMock(status_code=200)
+        mock_pmc_resp.json.return_value = {
+            "resultList": {
+                "result": [
+                    {"abstractText": "<b>Odontodactylus scyllarus</b> generates cavitation bubbles collapsing at high pressure and temperature."}
+                ]
+            }
+        }
+        with patch("main.HTTP_SESSION.get", return_value=mock_pmc_resp):
+            pmc_text = fetch_europepmc_scientific_facts("Odontodactylus scyllarus")
+            self.assertIn("EUROPE PMC", pmc_text)
+            self.assertIn("cavitation bubbles", pmc_text)
+            self.assertNotIn("<b>", pmc_text)
+
+        # --- Phase 1B: Outlier Multiplier in get_run_score & Viewer Comment Mining ---
+        baseline_run = {"youtube_stats": {"views": 200, "outlier_multiplier": 1.0}, "winning_script": {"score": 9.5}}
+        outlier_run = {"youtube_stats": {"views": 200, "outlier_multiplier": 3.0}, "winning_script": {"score": 9.5}}
+        self.assertGreater(get_run_score(outlier_run), get_run_score(baseline_run))
+
+        mock_yt = MagicMock()
+        mock_yt.commentThreads().list().execute.return_value = {
+            "items": [
+                {
+                    "snippet": {
+                        "topLevelComment": {
+                            "snippet": {
+                                "textDisplay": "Can you do the Pistol Shrimp vs Mantis Shrimp next?",
+                                "likeCount": 14
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        with patch("maintenance_sync.VIEWER_SIGNALS_FILE", Path(tempfile.gettempdir()) / f"test_signals_{os.getpid()}.json") as tmp_sig_path:
+            try:
+                signals = mine_youtube_viewer_comments(mock_yt, ["vid_001"], max_videos=1)
+                self.assertTrue(any("Pistol Shrimp" in s["comment_text"] for s in signals))
+            finally:
+                if tmp_sig_path.exists():
+                    tmp_sig_path.unlink()
+
+        # --- Phase 1C: 5-Result Wikimedia Loop (skips SVG at index 0, selects JPG at index 1) ---
+        search_resp = MagicMock(status_code=200)
+        search_resp.json.return_value = {
+            "query": {
+                "search": [
+                    {"title": "File:Diagram.svg"},
+                    {"title": "File:ScalyFootSnail.jpg"},
+                ]
+            }
+        }
+        info_resp = MagicMock(status_code=200)
+        info_resp.json.return_value = {
+            "query": {
+                "pages": {
+                    "1": {"title": "File:Diagram.svg", "imageinfo": [{"url": "https://upload.wikimedia.org/Diagram.svg"}]},
+                    "2": {"title": "File:ScalyFootSnail.jpg", "imageinfo": [{"url": "https://upload.wikimedia.org/ScalyFootSnail.jpg"}]},
+                }
+            }
+        }
+        with patch("main.HTTP_SESSION.get", side_effect=[search_resp, info_resp]), patch("time.sleep"):
+            resolved_url = search_wikimedia_image("Scaly-foot gastropod")
+            self.assertEqual(resolved_url, "https://upload.wikimedia.org/ScalyFootSnail.jpg")
+
+        # --- Phase 2A: OpenCV Saliency Center & Aspect-Preserving Crop ---
+        dummy_clip = MagicMock()
+        dummy_clip.duration = 2.0
+        dummy_clip.size = (1920, 1080)
+        # Create synthetic frame with bright high-edge patch on the right side (x ~ 1400)
+        test_frame = np.zeros((1080, 1920, 3), dtype=np.uint8)
+        test_frame[300:700, 1300:1600] = 255
+        test_frame[320:680:4, 1320:1580:4] = 0
+        dummy_clip.get_frame.return_value = test_frame
+        dummy_clip.fl_image.side_effect = lambda fn: dummy_clip
+
+        cx, cy = find_video_salience_center(dummy_clip)
+        self.assertGreater(cx, 0.55, f"Expected salience center cx > 0.55 for right-side subject, got {cx}")
+        cropped_clip, (crop_cx, crop_cy) = prepare_aspect_cropped_clip(dummy_clip, (1080, 1920))
+        self.assertEqual(cropped_clip.size, (1080, 1920))
+        self.assertAlmostEqual(crop_cx, cx, places=3)
+
+        # --- Phase 2B: Kinetic ASS Pop-In Tag & Mood-Matched BGM Selection ---
+        short_cfg = VideoFormatConfig("short")
+        temp_ass = os.path.join(tempfile.gettempdir(), f"test_kinetic_{os.getpid()}.ass")
+        try:
+            generate_ass_file([((0.0, 0.4), "APEX"), ((0.4, 0.8), "STRIKE.")], temp_ass, "Apex Predators & Deadly Matchups", short_cfg)
+            with open(temp_ass, "r", encoding="utf-8") as f:
+                ass_text = f.read()
+            self.assertIn(r"{\fscx114\fscy114\t(0,75,\fscx100\fscy100)}", ass_text)
+        finally:
+            if os.path.exists(temp_ass):
+                os.remove(temp_ass)
+
+        tracks = [Path("dark_space_abyss.mp3"), Path("epic_dark_trap.mp3"), Path("tech_house_pulse.mp3")]
+        chosen_abyss = select_mood_matched_music(tracks, "Deep Sea & Prehistoric Survivors", [((0, 1), "ABYSS"), ((1, 2), "TRENCH"), ((2, 3), "OCEAN")])
+        self.assertEqual(chosen_abyss.name, "dark_space_abyss.mp3")
+        chosen_combat = select_mood_matched_music(tracks, "Apex Predators & Deadly Matchups", [((0, 1), "PREDATOR"), ((1, 2), "BITE"), ((2, 3), "AMBUSH")])
+        self.assertEqual(chosen_combat.name, "epic_dark_trap.mp3")
+
+        # --- Phase 2C: Dual-Voice ('duo') Contrast Hook Routing in Kokoro Synthesis ---
+        from main import synthesize_kokoro_audio_and_timestamps
+        mock_kokoro_inst = MagicMock()
+        mock_kokoro_inst.create.return_value = (np.ones(2400, dtype=np.float32) * 0.1, 24000)
+        mock_kokoro_inst.tokenizer.phonemize.side_effect = lambda w, lang="en-us": w
+        mock_kokoro_inst.tokenizer.tokenize.side_effect = lambda p: list(p)
+        temp_duo_wav = os.path.join(tempfile.gettempdir(), f"test_duo_{os.getpid()}.wav")
+        try:
+            with patch("main.ensure_kokoro_model_files", return_value=(Path("dummy.onnx"), Path("dummy.bin"))), \
+                 patch("kokoro_onnx.Kokoro", return_value=mock_kokoro_inst):
+                duo_words = synthesize_kokoro_audio_and_timestamps(
+                    "This shrimp punches like a bullet. Its club boils water into plasma.",
+                    "Bizarre Biological Superpowers",
+                    temp_duo_wav,
+                    voice_mode="duo"
+                )
+            self.assertEqual(len(duo_words), 12)
+            voices_called = [call.kwargs.get("voice") for call in mock_kokoro_inst.create.call_args_list]
+            self.assertEqual(voices_called, ["af_heart", "am_fenrir"])
+        finally:
+            if os.path.exists(temp_duo_wav):
+                os.remove(temp_duo_wav)
+
+        # --- Phase 3: Multi-Language YouTube Localization & Social Distribution Bundle ---
+        mock_loc_resp = MagicMock(text="""{
+            "es": {"title": "El camarón mantis letal #shorts", "description": "Golpea como una bala."},
+            "pt": {"title": "A lagosta-boxeadora mortal #shorts", "description": "Soco supersônico."},
+            "hi": {"title": "मैंटिस श्रिम्प का प्रहार #shorts", "description": "गोली जैसी रफ्तार।"},
+            "de": {"title": "Der tödliche Fangschreckenkrebs #shorts", "description": "Schlägt wie eine Kugel."},
+            "fr": {"title": "La crevette-mante mortelle #shorts", "description": "Une frappe supersonique."},
+            "ja": {"title": "モンハナシャコの衝撃 #shorts", "description": "弾丸のようなパンチ。"},
+            "ko": {"title": "갯가재의 치명적인 펀치 #shorts", "description": "총알 같은 위력."}
+        }""")
+        with patch("main.gemini_generate_with_retry", return_value=mock_loc_resp):
+            locs = generate_youtube_localizations(MagicMock(), "The Lethal Mantis Shrimp #shorts", "Punches like a bullet.")
+            self.assertEqual(len(locs), 7)
+            self.assertIn("es", locs)
+            self.assertIn("ja", locs)
+
+        social_posts = generate_social_distribution_posts(
+            title="The Lethal Mantis Shrimp #shorts",
+            winning_script_text="This six-inch crustacean punches with the velocity of a twenty-two caliber bullet. Its strike boils water into cavitation plasma.",
+            youtube_url="https://www.youtube.com/shorts/abc123xyz",
+            category="Bizarre Biological Superpowers"
+        )
+        self.assertIn("x_post", social_posts)
+        self.assertIn("threads_post", social_posts)
+        self.assertIn("youtube_community_poll", social_posts)
+        self.assertIn("https://www.youtube.com/shorts/abc123xyz", social_posts["x_post"])
+
+        print("SUCCESS: Test 7 Passed: test_threads_content_factory_enhancements verified all 3 phases.")
+
+    def test_permanent_llm_resilience_and_telemetry_cap(self):
+        """
+        Test 8: Verify Permanent CI/CD & LLM Resilience Architecture:
+        1. HTTP 402 ('prepayment credits are depleted') trips immediate circuit breaker with ZERO sleep calls.
+        2. Multi-provider failover routes from a 402 Gemini client to OpenAI-compatible secondary provider (Groq).
+        3. generate_content() engages Encyclopedia-Grounded Continuity Engine when all cloud LLMs are depleted.
+        4. self_heal.classify_log_deterministically() classifies 402 billing depletion deterministically.
+        5. maintenance_sync.sync_github_cancelled_or_failed_runs() enforces the 100-entry rolling telemetry cap.
+        """
+        import json as _json
+        from main import (
+            _DEPLETED_GEMINI_CLIENT_IDS,
+            VideoFormatConfig,
+            gemini_generate_with_retry,
+            generate_content,
+            is_llm_billing_or_auth_error,
+        )
+        from self_heal import classify_log_deterministically
+        from maintenance_sync import sync_github_cancelled_or_failed_runs
+
+        err_402 = Exception(
+            "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': "
+            "'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects', "
+            "'status': 'RESOURCE_EXHAUSTED'}}"
+        )
+        self.assertTrue(is_llm_billing_or_auth_error(err_402))
+        self.assertFalse(is_llm_billing_or_auth_error(Exception("429 RESOURCE_EXHAUSTED: RPM limit reached, retry in 15s")))
+
+        # 1. Verify instant 402 circuit breaker (0 sleeps, 1 API attempt, cached depletion on 2nd call)
+        depleted_client = MagicMock()
+        depleted_client.models.generate_content.side_effect = err_402
+        _DEPLETED_GEMINI_CLIENT_IDS.discard(id(depleted_client))
+
+        env_clean = {
+            "GEMINI_API_KEY": "primary_only",
+            "GEMINI_API_KEY_FALLBACK": "",
+            "GEMINI_API_KEY_FREE": "",
+            "GEMINI_API_KEY_2": "",
+            "GROQ_API_KEY": "",
+            "OPENROUTER_API_KEY": "",
+            "OPENAI_API_KEY": "",
+        }
+        with patch.dict(os.environ, env_clean, clear=False), patch("time.sleep") as mock_sleep:
+            with self.assertRaises(RuntimeError):
+                gemini_generate_with_retry(depleted_client, "gemini-2.5-flash", "Test prompt")
+            mock_sleep.assert_not_called()
+            self.assertEqual(depleted_client.models.generate_content.call_count, 1)
+            self.assertIn(id(depleted_client), _DEPLETED_GEMINI_CLIENT_IDS)
+
+            # Second call in same process should bypass depleted_client in 0 API calls
+            with self.assertRaises(RuntimeError):
+                gemini_generate_with_retry(depleted_client, "gemini-2.5-flash", "Second prompt")
+            self.assertEqual(depleted_client.models.generate_content.call_count, 1)
+
+        # 2. Verify automatic failover to Groq OpenAI-compatible endpoint when Gemini is circuit-broken
+        mock_groq_http = MagicMock(status_code=200)
+        mock_groq_http.json.return_value = {
+            "choices": [{"message": {"content": '{"status": "failover_ok"}'}}]
+        }
+        with patch.dict(os.environ, {**env_clean, "GROQ_API_KEY": "gsk_test_dummy"}, clear=False), \
+             patch("main.HTTP_SESSION.post", return_value=mock_groq_http):
+            fb_res = gemini_generate_with_retry(depleted_client, "gemini-2.5-flash", "Failover prompt")
+            self.assertEqual(fb_res.text, '{"status": "failover_ok"}')
+            self.assertEqual(fb_res.provider, "groq")
+
+        # 3. Verify Encyclopedia-Grounded Continuity Engine in generate_content when all LLMs fail
+        sample_source = {
+            "title": "Shrike",
+            "url": "https://en.wikipedia.org/wiki/Shrike",
+            "text": (
+                "Shrikes are predatory passerine birds known as butcherbirds for their habit of impaling captured prey "
+                "on sharp thorns and barbed wire. Using a hooked, raptor-like tomial tooth on the upper beak, a shrike "
+                "severs the cervical vertebrae of insects, lizards, and rodents with violent head-shaking accelerations. "
+                "Impaling prey allows the shrike to tear flesh without talons and detoxify poisonous lubber grasshoppers "
+                "over 48 hours."
+            ),
+        }
+        with patch.dict(os.environ, env_clean, clear=False):
+            title, desc, segs, variants_log, win_log = generate_content(
+                depleted_client,
+                "Apex Predators & Deadly Matchups",
+                [],
+                sample_source,
+                VideoFormatConfig("short"),
+            )
+        self.assertEqual(len(segs), 1)
+        word_cnt = len(segs[0]["script"].split())
+        self.assertTrue(65 <= word_cnt <= 105, f"Expected ~80-95 word continuity script, got {word_cnt} words")
+        self.assertIn("Shrike", segs[0]["script"])
+        self.assertEqual(segs[0]["topic"], "Shrike")
+        self.assertGreaterEqual(len(segs[0]["visual_keywords"]), 5)
+        self.assertIn("Continuity Engine", win_log["critique"])
+
+        # 4. Verify deterministic 402 classification in self_heal.py
+        diag = classify_log_deterministically(str(err_402))
+        self.assertIsNotNone(diag)
+        self.assertIn("ENVIRONMENT_BILLING_DEPLETED", diag)
+
+        # 5. Verify 100-entry rolling telemetry cap in maintenance_sync.py (ancient runs skipped)
+        rolling_100 = [
+            {
+                "id": f"run-{200 + i}",
+                "github_run_number": 200 + i,
+                "github_run_id": 10000 + i,
+                "workflow_type": "DAILY_SHORTS",
+                "timestamp": f"2026-11-{(i // 5) + 1:02d}T12:00:00Z",
+                "status": "SUCCESS",
+            }
+            for i in range(100)
+        ]
+        fake_gh_payload = _json.dumps({
+            "workflow_runs": [
+                {
+                    "id": 99999,
+                    "run_number": 300,
+                    "name": "Daily Shorts Generator & Uploader",
+                    "status": "completed",
+                    "conclusion": "success",
+                    "created_at": "2026-11-26T00:00:00Z",
+                    "html_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/99999",
+                },
+                {
+                    "id": 11,
+                    "run_number": 11,
+                    "name": "Daily Shorts Generator & Uploader",
+                    "status": "completed",
+                    "conclusion": "failure",
+                    "created_at": "2026-07-10T00:00:00Z",
+                    "html_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/11",
+                },
+            ]
+        }).encode("utf-8")
+        mock_ctx = MagicMock()
+        mock_ctx.__enter__.return_value.read.return_value = fake_gh_payload
+        with patch("urllib.request.urlopen", return_value=mock_ctx):
+            synced_hist, mod_cnt = sync_github_cancelled_or_failed_runs(list(rolling_100))
+        self.assertEqual(len(synced_hist), 100)
+        self.assertTrue(any(e.get("github_run_id") == 99999 for e in synced_hist))
+        self.assertFalse(any(e.get("github_run_id") == 11 for e in synced_hist))
+
+        print("SUCCESS: Test 8 Passed: test_permanent_llm_resilience_and_telemetry_cap verified all permanent fixes.")
+
 
 if __name__ == "__main__":
     unittest.main()

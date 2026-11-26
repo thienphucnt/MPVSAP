@@ -17,12 +17,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 1
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -43,17 +43,48 @@ jobs:
             sudo sed -i 's/none/read,write/g' /etc/ImageMagick-7/policy.xml
           fi
 
-      - name: Install Python Dependencies & Playwright Browser
+      - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install --no-cache-dir --upgrade -r requirements.txt
-          python -m playwright install chromium --with-deps
+
+      - name: Resolve Playwright Version
+        id: pw-ver
+        run: |
+          PW_VER=$(python -c "import importlib.metadata; print(importlib.metadata.version('playwright'))")
+          echo "version=$PW_VER" >> $GITHUB_OUTPUT
+          echo "Resolved Playwright version: $PW_VER"
+
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v6
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.pw-ver.outputs.version }}
+
+      - name: Install Playwright Chromium Browser
+        run: |
+          if [ "${{ steps.playwright-cache.outputs.cache-hit }}" != "true" ]; then
+            python -m playwright install chromium --with-deps
+          else
+            python -m playwright install-deps chromium
+          fi
 
       - name: Cache Kokoro TTS Model Weights
-        uses: actions/cache@v4
+        uses: actions/cache@v6
+        id: kokoro-cache
         with:
           path: ~/.cache/kokoro
-          key: kokoro-onnx-v1.0
+          key: kokoro-onnx-v1.0-v4
+
+      - name: Pre-Download Kokoro TTS Model Assets (if not cached)
+        if: steps.kokoro-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.cache/kokoro
+          curl -L --retry 5 --retry-delay 2 --connect-timeout 20 -o ~/.cache/kokoro/kokoro-v1.0.onnx.tmp "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx"
+          mv ~/.cache/kokoro/kokoro-v1.0.onnx.tmp ~/.cache/kokoro/kokoro-v1.0.onnx
+          curl -L --retry 5 --retry-delay 2 --connect-timeout 20 -o ~/.cache/kokoro/voices-v1.0.bin.tmp "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
+          mv ~/.cache/kokoro/voices-v1.0.bin.tmp ~/.cache/kokoro/voices-v1.0.bin
 
       - name: Validate Kokoro TTS Assets Integrity
         run: |
@@ -61,8 +92,13 @@ jobs:
 
       - name: Run Widescreen Pipeline & Publish
         env:
-          # Core API Keys & Webhook Monitoring
+          # Core & Multi-Provider LLM Failover Pool
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_FALLBACK: ${{ secrets.GEMINI_API_KEY_FALLBACK }}
+          GEMINI_API_KEY_FREE: ${{ secrets.GEMINI_API_KEY_FREE }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           WATERMARK_HANDLE: ${{ secrets.WATERMARK_HANDLE }}
@@ -77,8 +113,18 @@ jobs:
         run: |
           python main.py --format long
 
-      - name: Reset Self-Healing Counter & Persist State
-        if: always()
+      - name: Reset Self-Healing Counter on Success
+        if: success()
         run: |
           if [ -f heal_attempts.txt ]; then echo "0" > heal_attempts.txt; fi
-          python safe_git_push.py "Reset heal counter after successful long-form run [skip ci]"
+
+      - name: Persist Telemetry Logs & Pipeline State
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python maintenance_sync.py || true
+          python safe_git_push.py "Sync telemetry state after long-form run [skip ci]"

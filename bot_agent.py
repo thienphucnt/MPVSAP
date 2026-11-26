@@ -208,11 +208,12 @@ def main():
     import time
     import random
 
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest", "gemini-pro-latest"]
+    model_fallback_chain = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-flash-lite-latest", "gemini-2.5-pro"]
     success = False
     
     for model in model_fallback_chain:
         max_retries = 3
+        billing_aborted = False
         for attempt in range(max_retries):
             try:
                 print(f"Starting agent run using model: {model} (attempt {attempt + 1}/{max_retries})...")
@@ -333,10 +334,15 @@ def main():
                 success = True
                 break
             except Exception as e:
-                is_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA", "RATE_LIMIT"])
+                err_s = str(e)
+                err_u = err_s.upper()
+                if "402" in err_s or "PREPAYMENT CREDITS" in err_u or "API_KEY_INVALID" in err_u:
+                    print(f"Billing/Auth error on GEMINI_API_KEY ({err_s[:180]}). Aborting retries...")
+                    billing_aborted = True
+                    break
+                is_rate_limit = any(err in err_u for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA", "RATE_LIMIT"])
                 if is_rate_limit and attempt < max_retries - 1:
-                    # Parse dynamic retry delay from Gemini API response
-                    match = re.search(r"retry in ([0-9\.]+)s", str(e))
+                    match = re.search(r"retry in ([0-9\.]+)s", err_s)
                     if match:
                         wait_time = float(match.group(1)) + random.uniform(1, 3)
                         print(f"Gemini API requested wait. Sleeping for {wait_time:.2f}s before retry...")
@@ -347,7 +353,7 @@ def main():
                 else:
                     print(f"Error executing agent with {model}: {e}. Trying next fallback...")
                     break
-        if success:
+        if success or billing_aborted:
             break
 
     if not success:

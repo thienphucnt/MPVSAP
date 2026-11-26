@@ -36,7 +36,6 @@ env/
 # Logs & Diagnostics
 *.log
 failed_logs.txt
-heal_attempts.txt
 issue_context.json
 bot_comment.md
 final_comment.md

@@ -40,7 +40,8 @@ def log_pipeline_run(
     voice_actor: Optional[str] = None,
     visual_asset_types: Optional[str] = None,
     ass_subtitle_engine: Optional[str] = None,
-    generation_mode: Optional[str] = "SINGLE_SCRIPT_LEGACY"
+    generation_mode: Optional[str] = "SINGLE_SCRIPT_LEGACY",
+    social_posts: Optional[Dict[str, Any]] = None
 ) -> None:
     """Log a complete pipeline run entry with deep production attributes to dashboard/app/data/run_history.json (capped at 100 entries)."""
     ensure_logs_dir()
@@ -85,7 +86,8 @@ def log_pipeline_run(
         "search_keywords": search_keywords or ["cosmic void", "astrophysics", "deep space"],
         "voice_actor": voice_actor or "af_sarah (Kokoro-82M Neural)",
         "visual_asset_types": visual_asset_types or "Salience-Zoomed 4K Clips",
-        "ass_subtitle_engine": ass_subtitle_engine or "FFmpeg ASS Subtitle Engine (Anton-Regular)"
+        "ass_subtitle_engine": ass_subtitle_engine or "FFmpeg ASS Subtitle Engine (Anton-Regular)",
+        "social_posts": social_posts
     }
 
     history.append(run_entry)

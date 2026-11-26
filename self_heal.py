@@ -49,35 +49,56 @@ AUTHENTICATION_ERRORS = [
     r"Token expired or revoked",
     r"YouTube OAuth Pre-flight Check FAILED",
     r"google\.auth\.exceptions\.RefreshError",
-    r"AuthError"
+    r"AuthError",
+    r"API_KEY_INVALID",
+    r"API key not valid",
+]
+
+BILLING_ERRORS = [
+    r"402 RESOURCE_EXHAUSTED",
+    r"'code':\s*402",
+    r'"code":\s*402',
+    r"prepayment credits are depleted",
+    r"ai\.google\.dev/gemini-api/docs/billing",
 ]
 
 ENVIRONMENT_ERRORS = [
     r"429 RESOURCE_EXHAUSTED",
+    r"All configured LLM providers exhausted",
     r"Quota exceeded",
     r"No space left on device",
-    r"ENOSPC"
+    r"ENOSPC",
+    r"503 UNAVAILABLE",
 ]
 
 
 def classify_log_deterministically(log_text: str):
     """
-    Pre-flight deterministic log classifier to instantly detect non-code environment
-    and authentication errors without calling LLM models or burning API quota.
+    Pre-flight deterministic log classifier to instantly detect non-code environment,
+    billing, and authentication errors without calling LLM models or burning API quota.
     """
+    for pattern in BILLING_ERRORS:
+        if re.search(pattern, log_text, re.IGNORECASE):
+            return (
+                "STATUS: ENVIRONMENT_BILLING_DEPLETED\n"
+                "EXPLANATION: Google AI Studio prepaid credits on GEMINI_API_KEY are depleted (HTTP 402). "
+                "Generate a free-tier API key in a new unbilled AI Studio project (https://aistudio.google.com/apikey) "
+                "or top up billing at https://ai.studio/projects, then update GEMINI_API_KEY in GitHub Secrets. "
+                "No code modification can resolve external API billing depletion."
+            )
     for pattern in AUTHENTICATION_ERRORS:
         if re.search(pattern, log_text, re.IGNORECASE):
             return (
                 "STATUS: ENVIRONMENT_AUTH_EXPIRED\n"
-                "EXPLANATION: YouTube OAuth refresh token is expired or revoked. "
-                "Manual token re-authentication is required. No code modification can fix expired OAuth credentials."
+                "EXPLANATION: OAuth or API credential is expired, invalid, or revoked. "
+                "Manual credential rotation is required. No code modification can fix expired credentials."
             )
     for pattern in ENVIRONMENT_ERRORS:
         if re.search(pattern, log_text, re.IGNORECASE):
             return (
                 "STATUS: TRANSIENT_INFRASTRUCTURE\n"
-                "EXPLANATION: Runner resource quota or disk space is exhausted. "
-                "No code modification can resolve infrastructure or quota limits."
+                "EXPLANATION: Runner resource quota, upstream API rate limit, or disk space is exhausted. "
+                "No code modification can resolve transient infrastructure or quota limits."
             )
     return None
 
@@ -156,46 +177,104 @@ def main():
         "```"
     )
 
-    print("Sending diagnosis request to Gemini...")
+    print("Sending diagnosis request to LLM...")
 
-    model_fallback_chain = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]
+    model_fallback_chain = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-flash-lite-latest", "gemma-3-27b-it"]
     max_retries = 3
     response = None
     last_error = None
 
-    for current_model in model_fallback_chain:
-        success = False
-        for attempt in range(max_retries):
-            try:
-                print(f"Attempting diagnosis using model: {current_model}...")
-                gen_config = types.GenerateContentConfig(automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True))
-                response = client.models.generate_content(
-                    model=current_model,
-                    contents=prompt,
-                    config=gen_config
-                )
-                success = True
-                break
-            except Exception as e:
-                last_error = e
-                is_quota_or_rate_limit = any(err in str(e).upper() for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
-                is_transient = any(err in str(e) or err in str(e).upper() for err in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "HIGH DEMAND"])
+    candidate_keys = [k.strip() for k in (api_key or "").split(",") if k.strip()]
+    for extra_env in ("GEMINI_API_KEY_FALLBACK", "GEMINI_API_KEY_FREE"):
+        ev = os.environ.get(extra_env, "").strip()
+        if ev and ev not in candidate_keys:
+            candidate_keys.append(ev)
 
-                if is_quota_or_rate_limit:
-                    print(f"Model {current_model} quota exceeded. Trying next fallback...")
+    for key_idx, active_key in enumerate(candidate_keys):
+        active_client = genai.Client(api_key=active_key) if key_idx > 0 else client
+        key_depleted = False
+        for current_model in model_fallback_chain:
+            success = False
+            for attempt in range(max_retries):
+                try:
+                    print(f"Attempting diagnosis using model: {current_model} (key #{key_idx + 1})...")
+                    gen_config = types.GenerateContentConfig(automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True))
+                    response = active_client.models.generate_content(
+                        model=current_model,
+                        contents=prompt,
+                        config=gen_config
+                    )
+                    success = True
                     break
+                except Exception as e:
+                    last_error = e
+                    err_s = str(e)
+                    err_u = err_s.upper()
+                    if "402" in err_s or "PREPAYMENT CREDITS" in err_u or "API_KEY_INVALID" in err_u:
+                        print(f"Gemini key #{key_idx + 1} billing depleted or invalid (402/Auth). Skipping remaining models on this key...")
+                        key_depleted = True
+                        break
+                    if "404" in err_s or "NOT_FOUND" in err_u:
+                        print(f"Model {current_model} unavailable (404). Trying next model...")
+                        break
 
-                if is_transient and attempt < max_retries - 1:
-                    wait_time = (2 ** attempt) + random.uniform(0, 1)
-                    print(f"Gemini API busy on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
-                    time.sleep(wait_time)
-                else:
-                    raise
-        if success:
+                    is_quota_or_rate_limit = any(err in err_u for err in ["429", "RESOURCE_EXHAUSTED", "QUOTA"])
+                    is_transient = any(err in err_u for err in ["503", "UNAVAILABLE", "HIGH DEMAND"])
+
+                    if is_quota_or_rate_limit:
+                        print(f"Model {current_model} quota exceeded. Trying next fallback...")
+                        break
+
+                    if is_transient and attempt < max_retries - 1:
+                        wait_time = (2 ** attempt) + random.uniform(0, 1)
+                        print(f"Gemini API busy on {current_model} (attempt {attempt + 1}/{max_retries}). Retrying in {wait_time:.2f}s: {e}")
+                        time.sleep(wait_time)
+                    else:
+                        break
+            if success or key_depleted:
+                break
+        if response is not None:
             break
 
+    # Optional OpenAI-compatible fallback (Groq / OpenRouter / OpenAI)
     if response is None:
-        raise Exception(f"AI Self-Healing failed to contact any Gemini model. Last error: {last_error}")
+        import json as _json
+        import urllib.request as _urlreq
+        for prov_name, env_var, endpoint, m_id in [
+            ("Groq", "GROQ_API_KEY", "https://api.groq.com/openai/v1/chat/completions", "llama-3.3-70b-versatile"),
+            ("OpenRouter", "OPENROUTER_API_KEY", "https://openrouter.ai/api/v1/chat/completions", "meta-llama/llama-3.3-70b-instruct:free"),
+            ("OpenAI", "OPENAI_API_KEY", "https://api.openai.com/v1/chat/completions", "gpt-4o-mini"),
+        ]:
+            pkey = os.environ.get(env_var, "").strip()
+            if not pkey:
+                continue
+            try:
+                req_body = _json.dumps({
+                    "model": m_id,
+                    "messages": [{"role": "user", "content": prompt}],
+                    "temperature": 0.2,
+                }).encode("utf-8")
+                req = _urlreq.Request(
+                    endpoint,
+                    data=req_body,
+                    headers={"Authorization": f"Bearer {pkey}", "Content-Type": "application/json"},
+                    method="POST",
+                )
+                with _urlreq.urlopen(req, timeout=30) as r:
+                    payload_resp = _json.loads(r.read().decode("utf-8"))
+                    txt = payload_resp["choices"][0]["message"]["content"]
+                    response = type("_Resp", (), {"text": txt})()
+                    print(f"Diagnosis completed via {prov_name} ({m_id}).")
+                    break
+            except Exception as fb_e:
+                last_error = fb_e
+
+    if response is None:
+        print(
+            f"Notice: AI Self-Healing skipped LLM code patching because all configured LLM APIs are currently unavailable "
+            f"(Last error: {last_error}). Exiting cleanly to avoid cascading false-failure alerts."
+        )
+        sys.exit(0)
 
     analysis = response.text.strip()
     print("Received diagnosis from Gemini.")

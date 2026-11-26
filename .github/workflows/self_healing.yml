@@ -2,7 +2,9 @@ name: AI Self-Healing & Diagnostics
 
 on:
   workflow_run:
-    workflows: ["Daily Shorts Generator & Uploader"]
+    workflows:
+      - "Daily Shorts Generator & Uploader"
+      - "Weekly Widescreen Long-Form Generator & Uploader"
     types:
       - completed
 
@@ -18,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 1
 
@@ -30,7 +32,6 @@ jobs:
           CURRENT=0
           if [ -f "$COUNTER_FILE" ]; then
             CURRENT=$(cat "$COUNTER_FILE" | tr -d '[:space:]')
-            # Validate it's a number
             if ! [[ "$CURRENT" =~ ^[0-9]+$ ]]; then
               CURRENT=0
             fi
@@ -48,7 +49,7 @@ jobs:
 
       - name: Set up Python 3.11
         if: steps.check_counter.outputs.should_continue == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -71,8 +72,16 @@ jobs:
           python self_heal.py
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_FALLBACK: ${{ secrets.GEMINI_API_KEY_FALLBACK }}
+          GEMINI_API_KEY_FREE: ${{ secrets.GEMINI_API_KEY_FREE }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      - name: Log Diagnosis Summary
+      - name: Persist Heal Counter & Log Diagnosis Summary
         if: steps.check_counter.outputs.should_continue == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          python safe_git_push.py "Record self-healing diagnostic attempt [skip ci]" heal_attempts.txt || true
           echo "Self-healing diagnostic completed."
