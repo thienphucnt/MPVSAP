@@ -94,3 +94,39 @@ Recent verified runs & uploaded Shorts recorded in [`dashboard/app/data/run_hist
 | #317 | `45757416558` | `SUCCESS` | `EXTRACTIVE_ZOO_CONTINUITY` | `https://www.youtube.com/shorts/ufm86_yMxrI` (`Caracal`) |
 | #318 | `45916846666` | `SUCCESS` | `EXTRACTIVE_ZOO_CONTINUITY` | `https://www.youtube.com/shorts/jweZRMA8-8g` (`Box jellyfish`) |
 | #319 | `45942463877` | `SUCCESS` | `EXTRACTIVE_ZOO_CONTINUITY` | `https://www.youtube.com/shorts/n9uSWySHgJw` (`Synanceia`) |
+| #320 | `46016674708` | `SUCCESS` | `5_VARIANT_TOURNAMENT` | `https://www.youtube.com/shorts/M7gdIEGtfCE` (`Zombie Ant Fungus Behavior`) |
+
+---
+
+## 4. Free-Tier Gemini 3.x / Gemma 4 Cascade Upgrade (Commit `03ef08d`)
+
+After rotating `GEMINI_API_KEY` (`2026-11-27T14:23:52Z`) and verifying active model IDs via `client.models.list()`, the model cascade across [`main.py`](file:///C:/Users/Admin/Documents/antigravity/vibrant-hawking/main.py#L768-L780), [`self_heal.py`](file:///C:/Users/Admin/Documents/antigravity/vibrant-hawking/self_heal.py#L182-L189), [`bot_agent.py`](file:///C:/Users/Admin/Documents/antigravity/vibrant-hawking/bot_agent.py#L211-L218), and [`test_pipeline.py`](file:///C:/Users/Admin/Documents/antigravity/vibrant-hawking/test_pipeline.py#L618-L641) was upgraded to leverage the full ~29.9K RPD Free-Tier pool:
+- **Script Generation & Head-to-Head Auto-QA:** `gemini-3.8-flash` -> `gemini-3.6-flash` -> `gemini-4-hydrogen` -> `gemini-3.5-flash-lite` (500 RPD) -> `gemini-3.1-flash-lite` (500 RPD) -> `gemini-3-flash-preview` -> `gemini-2.5-flash` -> `gemini-2.5-flash-lite` -> `gemini-flash-latest` -> `gemini-flash-lite-latest` -> `gemma-4-31b-it` (14.4K RPD) -> `gemma-4-26b-a4b-it` (14.4K RPD).
+- **Metadata Tasks (`generate_youtube_localizations()`, `post_top_level_engagement_comment()`):** Routed directly to `gemini-3.5-flash-lite` (15 RPM / 500 RPD) to preserve the flagship 20 RPD Flash pool.
+
+### Local Verification (`03ef08d`)
+
+```text
+> python -m py_compile main.py maintenance_sync.py self_heal.py bot_agent.py logger.py safe_git_push.py test_pipeline.py; if ($?) { python -m unittest -v test_pipeline.py }
+...
+Ran 8 tests in 2.343s
+
+OK
+```
+
+### Live GitHub Actions Verification (`46016674708` / Run #320, `8m45s`)
+
+```text
+Resolved Playwright version: 1.65.2
+Cache restored from key: Linux-playwright-1.65.2
+Cache restored from key: kokoro-onnx-v1.0-v4
+Generating Multi-Variant Tournament scripts for category 'Mind-Control Parasites & Venom' (attempt 1/3) using gemini-3.8-flash...
+Model gemini-3.8-flash failed (503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporar). Trying next fallback model...
+Trying Gemini [primary] model: gemini-3.6-flash (pass 1/2)...
+[TOURNAMENT WINNER] Selected Variant ('Zombie Behavior Manipulation') with Score 9.6/10!
+Trying Gemini [primary] model: gemini-3.5-flash-lite (pass 1/2)...
+Generated multi-language YouTube localizations for 7 languages: ['es', 'pt', 'hi', 'de', 'fr', 'ja', 'ko']
+YouTube upload successful! Video ID: M7gdIEGtfCE
+Deep production telemetry logged for GitHub Run #320 to dashboard/app/data/run_history.json (total entries: 100).
+--> [MAINTENANCE SYNC] Synced live YouTube statistics for 38 videos (37 entries updated, median views=835.0).
+```
