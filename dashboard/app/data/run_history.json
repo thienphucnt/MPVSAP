@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-35116829763",
-    "github_run_number": 220,
-    "github_run_id": 35116829763,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/35116829763",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-16T15:44:45.022504Z",
-    "category": "Scary Space Mysteries",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 1,
-        "angle": "Existential Scale",
-        "title": "Space Isn't Empty. It's WORSE.",
-        "word_count": 134,
-        "hook": "The terrifying truth is the void between galaxies isn't empty, but a scaffold of something ancient, ...",
-        "score": 9.77,
-        "critique": "This variant delivers a supremely chilling and existential hook, painting a picture of pervasive cosmic surveillance that perfectly aligns with its alarming title. Its narrative builds beautifully from illusion to terrifying organism, making it the strongest contender for immediate and lasting viewer intrigue."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Rogue Worlds",
-        "title": "A DEAD Universe Just Touched Ours.",
-        "word_count": 120,
-        "hook": "Imagine our universe brushing against a colossal, inert fragment of a universe that died billions of...",
-        "score": 9.7,
-        "critique": "Featuring a powerful cosmic horror angle, this variant delivers an immediate jolt with its 'dead universe' concept and vivid descriptions of reality unraveling. Its strong title synergy and escalating dread place it very close to the top, just a hair behind the leading variant's pervasive sense of existential dread."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Hidden Physics",
-        "title": "The Universe Is UNRAVELING!",
-        "word_count": 111,
-        "hook": "Scientists are observing a subtle, accelerating degradation in the universe's fundamental constants....",
-        "score": 9.67,
-        "critique": "This variant presents a sophisticated and subtle cosmic horror, skillfully escalating from 'degradation' to the universe 'unraveling' with precise, evocative language. Its compelling premise and narrative flow are excellent, but it just misses the highest impact found in the top-ranked entries."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Astronomical Mystery",
-        "title": "Galaxies Form Impossible Patterns.",
-        "word_count": 122,
-        "hook": "Some galactic clusters display statistically impossible alignments, defying all known physics. Imagi...",
-        "score": 9.57,
-        "critique": "This script offers a compelling astronomical mystery with a strong hook about impossible galactic alignments that effectively builds the concept of a cosmic design. While well-structured and intriguing, its narrative impact is slightly less visceral than the top contenders."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Quantum Paradox",
-        "title": "Reality Just GLITCHED.",
-        "word_count": 117,
-        "hook": "What if the fabric of reality itself isn't solid, allowing objects to occasionally phase right throu...",
-        "score": 9.53,
-        "critique": "This script proposes a fascinating quantum paradox, effectively scaling up microscopic phenomena to a personal, unsettling level with a punchy, modern title. Its exploration of reality's fragility is engaging, though it lacks the sheer scale or primal fear of the higher-ranked variants."
-      }
-    ],
-    "winning_script": {
-      "title": "Space Isn't Empty. It's WORSE.",
-      "text": "The terrifying truth is the void between galaxies isn't empty, but a scaffold of something ancient, immense, and silently watching. Our understanding of cosmic emptiness might be a profound illusion, covering a living, breathing reality of incomprehensible scale. Imagine vast, invisible structures permeating the intergalactic medium, exerting subtle influence over everything we perceive. This isn't dark matter or dark energy, but a foundational, unacknowledged layer of existence so immense that our entire galaxy is merely a microscopic cell within its folds. This silent presence challenges the very notion of isolated existence, suggesting we are embedded in a cosmic organism of unimaginable proportions. Its silent, unfathomable processes dictate the universe's ultimate fate, making us question if we're truly alone, or just a part of something far grander and more terrifying, leaving astrophysicists to endlessly debate:",
-      "score": 9.77,
-      "critique": "This variant delivers a supremely chilling and existential hook, painting a picture of pervasive cosmic surveillance that perfectly aligns with its alarming title. Its narrative builds beautifully from illusion to terrifying organism, making it the strongest contender for immediate and lasting viewer intrigue."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:Astronomy",
-    "music_track": "space_track_1.mp3",
-    "search_keywords": [
-      "cosmic void",
-      "shimmering energy",
-      "vast nebula",
-      "galactic clusters",
-      "cosmic filament",
-      "unknown entity outline"
-    ],
-    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Scary Space Mysteries Theme)"
-  },
-  {
     "id": "run-35242325291",
     "github_run_number": 221,
     "github_run_id": 35242325291,
@@ -7240,6 +7157,72 @@
       "threads_post": "Nature's evolutionary arms race is wild:\n\nMeet the Caracal \u2014 one of nature's most extreme evolutionary specialists. The caracal is a wild cat native to Africa, the Middle East, Central Asia, and arid areas of Pakistan and northwestern India.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/ufm86_yMxrI\n\nWhich species has the most extreme survival adaptation?",
       "youtube_community_poll": {
         "question": "Why the Caracal Defies Biology \u2014 Would you survive an encounter with this adaptation?",
+        "options": [
+          "Zero chance \u2014 instant knockout",
+          "Only with deep-sea / kevlar gear",
+          "Nature needs to nerf this species",
+          "Do a predator vs. prey matchup next!"
+        ]
+      }
+    }
+  },
+  {
+    "id": "run-45916846666",
+    "github_run_number": 318,
+    "github_run_id": 45916846666,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45916846666",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-27T00:30:37.629987Z",
+    "category": "Mind-Control Parasites & Venom",
+    "status": "SUCCESS",
+    "generation_mode": "EXTRACTIVE_ZOO_CONTINUITY",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Encyclopedia Extractive Continuity",
+        "title": "Why the Box jellyfish Defies Biology",
+        "word_count": 86,
+        "hook": "Meet the Box jellyfish \u2014 one of nature's most extreme evolutionary specialists. Some species of box ...",
+        "score": 8.6,
+        "critique": "Synthesized via Encyclopedia-Grounded Continuity Engine (All configured LLM providers exhausted. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are )."
+      }
+    ],
+    "winning_script": {
+      "title": "Why the Box jellyfish Defies Biology",
+      "text": "Meet the Box jellyfish \u2014 one of nature's most extreme evolutionary specialists. Some species of box jellyfish produce potent venom delivered by contact with their tentacles. As a result, box jellyfish can move more rapidly than other jellyfish; speeds of up to 1.5 metres per second have been recorded. There are about 15 tentacles on each corner. Each tentacle has about 500,000 cnidocytes, containing nematocysts, a harpoon-shaped microscopic mechanism that injects venom into the victim. Which is why wildlife biologists still marvel at how nature engineered:",
+      "score": 8.6,
+      "critique": "Synthesized via Encyclopedia-Grounded Continuity Engine (All configured LLM providers exhausted. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are )."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/jweZRMA8-8g",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Box_jellyfish",
+    "music_track": "tech_house_pulse.mp3",
+    "search_keywords": [
+      "Box jellyfish wildlife",
+      "Box jellyfish animal",
+      "Box jellyfish nature",
+      "ants macro",
+      "praying mantis",
+      "scorpion closeup",
+      "spider web macro",
+      "rattlesnake closeup"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Mind-Control Parasites & Venom Theme)",
+    "social_posts": {
+      "x_post": "Meet the Box jellyfish \u2014 one of nature's most extreme evolutionary specialists.\n\nSome species of box jellyfish produce potent venom delivered by contact with their tentacles.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/jweZRMA8-8g\n\n#wildlife #biology #nature",
+      "threads_post": "Nature's evolutionary arms race is wild:\n\nMeet the Box jellyfish \u2014 one of nature's most extreme evolutionary specialists. Some species of box jellyfish produce potent venom delivered by contact with their tentacles.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/jweZRMA8-8g\n\nWhich species has the most extreme survival adaptation?",
+      "youtube_community_poll": {
+        "question": "Why the Box jellyfish Defies Biology \u2014 Would you survive an encounter with this adaptation?",
         "options": [
           "Zero chance \u2014 instant knockout",
           "Only with deep-sea / kevlar gear",
