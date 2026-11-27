@@ -3425,7 +3425,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/tKTHruFRWsw",
     "youtube_stats": {
-      "views": 1203,
+      "views": 1204,
       "likes": 24,
       "comments": 0,
       "outlier_multiplier": 1.21
@@ -6981,10 +6981,10 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/eeC3a3FGNCQ",
     "youtube_stats": {
-      "views": 1209,
+      "views": 1215,
       "likes": 22,
       "comments": 0,
-      "outlier_multiplier": 1.21
+      "outlier_multiplier": 1.22
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/African_wild_dog",
@@ -7048,7 +7048,7 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/ufm86_yMxrI",
     "youtube_stats": {
-      "views": 1074,
+      "views": 1080,
       "likes": 30,
       "comments": 1,
       "outlier_multiplier": 1.08
@@ -7115,10 +7115,10 @@
     },
     "youtube_url": "https://www.youtube.com/shorts/jweZRMA8-8g",
     "youtube_stats": {
-      "views": 0,
-      "likes": 0,
+      "views": 254,
+      "likes": 2,
       "comments": 0,
-      "outlier_multiplier": 0.0
+      "outlier_multiplier": 0.25
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Box_jellyfish",
@@ -7184,7 +7184,8 @@
     "youtube_stats": {
       "views": 0,
       "likes": 0,
-      "comments": 0
+      "comments": 0,
+      "outlier_multiplier": 0.0
     },
     "error_traceback": null,
     "source_url": "https://en.wikipedia.org/wiki/Stonefish",
