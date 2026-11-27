@@ -179,7 +179,14 @@ def main():
 
     print("Sending diagnosis request to LLM...")
 
-    model_fallback_chain = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-flash-lite-latest", "gemma-3-27b-it"]
+    model_fallback_chain = [
+        "gemini-3.8-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.1-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-flash-latest",
+        "gemma-4-31b-it",
+    ]
     max_retries = 3
     response = None
     last_error = None

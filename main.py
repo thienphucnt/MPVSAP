@@ -706,13 +706,13 @@ def _call_openai_compatible_fallbacks(prompt: str) -> Tuple[Optional[_LLMTextRes
             "Groq",
             os.environ.get("GROQ_API_KEY", "").strip(),
             "https://api.groq.com/openai/v1/chat/completions",
-            ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"],
+            ["openai/gpt-oss-120b", "qwen/qwen3-32b", "llama-3.3-70b-versatile"],
         ),
         (
             "OpenRouter",
             os.environ.get("OPENROUTER_API_KEY", "").strip(),
             "https://openrouter.ai/api/v1/chat/completions",
-            ["meta-llama/llama-3.3-70b-instruct:free", "google/gemma-3-27b-it:free"],
+            ["openrouter/free", "meta-llama/llama-3.3-70b-instruct:free", "google/gemma-3-27b-it:free"],
         ),
         (
             "OpenAI",
@@ -764,8 +764,21 @@ def gemini_generate_with_retry(client: genai.Client, model: str, prompt: str, ma
     2. Trips an instant process-wide circuit breaker on HTTP 402 (depleted prepay credits) or invalid API keys (0s wasted sleep).
     3. Fails over across secondary/free-tier Gemini keys (GEMINI_API_KEY_FALLBACK / GEMINI_API_KEY_FREE) and OpenAI-compatible providers (Groq, OpenRouter, OpenAI).
     """
-    # Cost-safe Flash + Gemma model chain (never escalates to expensive Pro models unless explicitly requested)
-    base_chain = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-flash-lite-latest", "gemma-3-27b-it"]
+    # Cost-safe Flash + Gemma 4 Free-Tier cascade (~29.9K combined RPD, never escalates to Pro unless requested)
+    base_chain = [
+        "gemini-3.8-flash",          # 5 RPM, 250K TPM, 20 RPD (flagship free Flash)
+        "gemini-3.6-flash",          # 5 RPM, 250K TPM, 20 RPD
+        "gemini-4-hydrogen",         # 5 RPM, 250K TPM, 20 RPD
+        "gemini-3.5-flash-lite",     # 15 RPM, 250K TPM, 500 RPD (high-volume Flash Lite)
+        "gemini-3.1-flash-lite",     # 15 RPM, 250K TPM, 500 RPD
+        "gemini-3-flash-preview",    # 5 RPM, 250K TPM, 20 RPD
+        "gemini-2.5-flash",          # 5 RPM, 250K TPM, 20 RPD
+        "gemini-2.5-flash-lite",     # 10 RPM, 250K TPM, 20 RPD
+        "gemini-flash-latest",       # rolling Flash alias
+        "gemini-flash-lite-latest",  # rolling Flash Lite alias
+        "gemma-4-31b-it",            # 30 RPM, 16K TPM, 14.4K RPD
+        "gemma-4-26b-a4b-it",        # 30 RPM, 16K TPM, 14.4K RPD
+    ]
     if model and "pro" in model.lower():
         model_fallback_chain = [model] + [m for m in base_chain if m != model]
     elif model in base_chain:
@@ -1750,7 +1763,7 @@ def generate_content(
     global ACTIVE_GENERATION_MODE_OVERRIDE
     ACTIVE_GENERATION_MODE_OVERRIDE = None
 
-    model_name = "gemini-2.5-flash"
+    model_name = "gemini-3.8-flash"
     cat_info = get_category_info(category)
     db_category = cat_info["db_key"]
 
@@ -4158,7 +4171,7 @@ def post_top_level_engagement_comment(youtube, video_id: str, winning_script_tex
         "- No hashtags, quotes, or markdown formatting."
     )
     try:
-        response = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
+        response = gemini_generate_with_retry(client, "gemini-3.5-flash-lite", prompt)
         question = response.text.strip().replace('"', '').replace('\n', ' ')
         print(f"Generated Engagement Question: '{question}'")
 
@@ -4207,7 +4220,7 @@ def generate_youtube_localizations(client: genai.Client, title: str, description
         f"Original Description:\n{description}\n"
     )
     try:
-        resp = gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
+        resp = gemini_generate_with_retry(client, "gemini-3.5-flash-lite", prompt)
         text = resp.text.strip()
         if text.startswith("```json"):
             text = text[7:]

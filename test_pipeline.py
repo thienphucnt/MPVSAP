@@ -615,6 +615,31 @@ class TestPipeline(unittest.TestCase):
             self.assertEqual(fb_res.text, '{"status": "failover_ok"}')
             self.assertEqual(fb_res.provider, "groq")
 
+        # 2b. Verify 429 fast-switch cascade across active Free-Tier chain & Flash-Lite start tier
+        rate_limited_client = MagicMock()
+        rate_limited_client.models.generate_content.side_effect = [
+            Exception("429 RESOURCE_EXHAUSTED: Rate limit exceeded, retry in 20s"),
+            MagicMock(text="ok_from_3_6_flash"),
+        ]
+        _DEPLETED_GEMINI_CLIENT_IDS.discard(id(rate_limited_client))
+        with patch.dict(os.environ, env_clean, clear=False), patch("time.sleep") as mock_sleep:
+            rl_res = gemini_generate_with_retry(rate_limited_client, "gemini-3.8-flash", "Cascade prompt")
+            self.assertEqual(rl_res.text, "ok_from_3_6_flash")
+            mock_sleep.assert_not_called()
+            called_models = [c.kwargs.get("model") for c in rate_limited_client.models.generate_content.call_args_list]
+            self.assertEqual(called_models, ["gemini-3.8-flash", "gemini-3.6-flash"])
+
+        lite_client = MagicMock()
+        lite_client.models.generate_content.return_value = MagicMock(text="ok_from_flash_lite")
+        _DEPLETED_GEMINI_CLIENT_IDS.discard(id(lite_client))
+        with patch.dict(os.environ, env_clean, clear=False):
+            lite_res = gemini_generate_with_retry(lite_client, "gemini-3.5-flash-lite", "Localization prompt")
+            self.assertEqual(lite_res.text, "ok_from_flash_lite")
+            self.assertEqual(
+                lite_client.models.generate_content.call_args.kwargs.get("model"),
+                "gemini-3.5-flash-lite",
+            )
+
         # 3. Verify Encyclopedia-Grounded Continuity Engine in generate_content when all LLMs fail
         sample_source = {
             "title": "Shrike",

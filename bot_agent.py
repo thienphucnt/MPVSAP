@@ -208,7 +208,14 @@ def main():
     import time
     import random
 
-    model_fallback_chain = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-flash-lite-latest", "gemini-2.5-pro"]
+    model_fallback_chain = [
+        "gemini-3.8-flash",
+        "gemini-3.6-flash",
+        "gemini-4-hydrogen",
+        "gemini-3.5-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-flash-latest",
+    ]
     success = False
     
     for model in model_fallback_chain:
