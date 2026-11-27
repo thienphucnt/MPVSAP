@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-35242325291",
-    "github_run_number": 221,
-    "github_run_id": 35242325291,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/35242325291",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-17T15:50:45.410842Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 4,
-        "angle": "Wartime Secrets",
-        "title": "The Ghost Army That Fooled Hitler!",
-        "word_count": 130,
-        "hook": "A secret army of artists and designers deceived Hitler's forces, saving thousands of lives during Wo...",
-        "score": 9.45,
-        "critique": "This variant excels with its brilliantly original hook and vivid narrative details, making the 'Ghost Army' an utterly captivating story. Its precise pacing and thematic consistency position it as the strongest overall, perfectly balancing surprise and historical depth."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Untold Historical Irony",
-        "title": "Peace Prize Winner of DEATH!",
-        "word_count": 118,
-        "hook": "A Nobel Peace Prize winner unleashed one of World War One's most horrifying weapons. This staggering...",
-        "score": 9.35,
-        "critique": "The profound historical irony and ethical dilemma presented in this script make for an exceptionally compelling narrative with excellent retention. It stands out for its human drama and the impactful contrast between saving lives and creating WMDs."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Bizarre Laws",
-        "title": "Dying Here Is ILLEGAL!",
-        "word_count": 144,
-        "hook": "Imagine a place where dying is actually against the law. This bizarre legislation isn't from a dysto...",
-        "score": 9.2,
-        "critique": "This script boasts an incredibly strong and immediate hook, instantly captivating with its bizarre premise. Its narrative effectively explores the unusual historical rationale, making it a highly memorable and engaging piece compared to others."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Secret Conspiracies",
-        "title": "Rome's Lost Legion Mystery!",
-        "word_count": 140,
-        "hook": "An entire Roman legion vanished, sparking a historical conspiracy that baffles experts today. This i...",
-        "score": 9.1,
-        "critique": "The script effectively introduces a classic historical conspiracy, detailing various theories behind the Roman Ninth Legion's disappearance with good narrative flow. It's a solid entry that leverages established mystery but doesn't quite achieve the same unexpected 'wow' factor as the top contenders."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Forgotten Cover-Ups",
-        "title": "Ancient World's LOST Weapon!",
-        "word_count": 124,
-        "hook": "The ancient world's most devastating weapon was so secret, its formula was utterly erased from histo...",
-        "score": 8.8,
-        "critique": "This variant successfully frames Greek Fire as a fascinating ancient mystery, skillfully building curiosity around its lost formula and deliberate historical erasure. While strong, its initial intrigue might be slightly overshadowed by the more shocking or ironic angles of other entries."
-      }
-    ],
-    "winning_script": {
-      "title": "The Ghost Army That Fooled Hitler!",
-      "text": "A secret army of artists and designers deceived Hitler's forces, saving thousands of lives during World War Two. This was the United States' Two Hundred Thirty-third Headquarters Special Troops, known as the \"Ghost Army.\" Their mission: create battlefield illusions to fool German intelligence. Using inflatable tanks, sound trucks playing recordings of troop movements, and fake radio traffic, these creative soldiers staged elaborate deceptions, making German reconnaissance believe entire divisions were present where only a handful of men stood. Operating in complete secrecy, their existence remained classified for over forty years, a testament to their critical role in Operation Fortitude and other crucial Allied maneuvers. Their ingenious tactics altered troop distributions and diverted attacks, forever changing the landscape of battlefield deception and proving that perception can be the deadliest weapon in:",
-      "score": 9.45,
-      "critique": "This variant excels with its brilliantly original hook and vivid narrative details, making the 'Ghost Army' an utterly captivating story. Its precise pacing and thematic consistency position it as the strongest overall, perfectly balancing surprise and historical depth."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://www.worldhistory.org/",
-    "music_track": "alchemists_tower.mp3",
-    "search_keywords": [
-      "vintage military vehicle",
-      "inflatable tanks",
-      "camouflage netting",
-      "strategy map",
-      "old radio equipment",
-      "forest landscape"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
-  },
-  {
     "id": "run-35361615722",
     "github_run_number": 222,
     "github_run_id": 35361615722,
@@ -7224,6 +7141,72 @@
       "threads_post": "Nature's evolutionary arms race is wild:\n\nMeet the Box jellyfish \u2014 one of nature's most extreme evolutionary specialists. Some species of box jellyfish produce potent venom delivered by contact with their tentacles.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/jweZRMA8-8g\n\nWhich species has the most extreme survival adaptation?",
       "youtube_community_poll": {
         "question": "Why the Box jellyfish Defies Biology \u2014 Would you survive an encounter with this adaptation?",
+        "options": [
+          "Zero chance \u2014 instant knockout",
+          "Only with deep-sea / kevlar gear",
+          "Nature needs to nerf this species",
+          "Do a predator vs. prey matchup next!"
+        ]
+      }
+    }
+  },
+  {
+    "id": "run-45942463877",
+    "github_run_number": 319,
+    "github_run_id": 45942463877,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/45942463877",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-27T04:55:36.081333Z",
+    "category": "Mind-Control Parasites & Venom",
+    "status": "SUCCESS",
+    "generation_mode": "EXTRACTIVE_ZOO_CONTINUITY",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Encyclopedia Extractive Continuity",
+        "title": "Why the Synanceia Defies Biology",
+        "word_count": 89,
+        "hook": "Meet the Synanceia \u2014 one of nature's most extreme evolutionary specialists. When the stonefish is di...",
+        "score": 8.6,
+        "critique": "Synthesized via Encyclopedia-Grounded Continuity Engine (All configured LLM providers exhausted. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are )."
+      }
+    ],
+    "winning_script": {
+      "title": "Why the Synanceia Defies Biology",
+      "text": "Meet the Synanceia \u2014 one of nature's most extreme evolutionary specialists. When the stonefish is disturbed, it may inject an amount of venom proportional to the amount of pressure applied to it. The venom of Synanceia consists of a proteinaceous toxin called verrucotoxin , which modulates Ca2+ channel activity through the \u03b2-adrenoceptor-cAMP-PKA pathway. Stonefish stings can occur on the beach, not just in the water, since stonefish can survive out of the water for up to 24 hours. Which is why wildlife biologists still marvel at how nature engineered:",
+      "score": 8.6,
+      "critique": "Synthesized via Encyclopedia-Grounded Continuity Engine (All configured LLM providers exhausted. Last error: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are )."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/n9uSWySHgJw",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Stonefish",
+    "music_track": "tech_house_pulse.mp3",
+    "search_keywords": [
+      "Synanceia wildlife",
+      "Synanceia animal",
+      "Synanceia nature",
+      "ants macro",
+      "praying mantis",
+      "scorpion closeup",
+      "spider web macro",
+      "rattlesnake closeup"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Mind-Control Parasites & Venom Theme)",
+    "social_posts": {
+      "x_post": "Meet the Synanceia \u2014 one of nature's most extreme evolutionary specialists.\n\nWhen the stonefish is disturbed, it may inject an amount of venom proportional to the amount of pressure applied to it.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/n9uSWySHgJw\n\n#wildlife #bi",
+      "threads_post": "Nature's evolutionary arms race is wild:\n\nMeet the Synanceia \u2014 one of nature's most extreme evolutionary specialists. When the stonefish is disturbed, it may inject an amount of venom proportional to the amount of pressure applied to it.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/n9uSWySHgJw\n\nWhich species has the most extreme survival adaptation?",
+      "youtube_community_poll": {
+        "question": "Why the Synanceia Defies Biology \u2014 Would you survive an encounter with this adaptation?",
         "options": [
           "Zero chance \u2014 instant knockout",
           "Only with deep-sea / kevlar gear",
