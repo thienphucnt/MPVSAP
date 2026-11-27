@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-35361615722",
-    "github_run_number": 222,
-    "github_run_id": 35361615722,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/35361615722",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-18T15:22:37.536672Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 3,
-        "angle": "Tragic Miscalculations",
-        "title": "Army Fought ITSELF?! Unbelievable Blunder",
-        "word_count": 105,
-        "hook": "An entire army tragically fought itself in the dead of night, resulting in thousands of casualties f...",
-        "score": 9.7,
-        "critique": "With an absolutely shocking premise, this script boasts exceptional hook strength and a perfectly optimized YouTube title that screams viral potential. The narrative's rapid escalation and tight loop CTA make it the clear frontrunner for sheer engagement and memorability in this competition."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Untold Historical Irony",
-        "title": "Dynamite's Peace Prize Irony",
-        "word_count": 97,
-        "hook": "The very inventor of dynamite, a substance synonymous with destruction, later funded the world's mos...",
-        "score": 9.54,
-        "critique": "This script masterfully leverages profound irony, featuring an outstanding hook and a title that succinctly communicates its powerful paradox. Its compelling narrative arc and strong, reflective CTA make it a very close second, delivering strong intellectual and emotional resonance."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Secret Conspiracies",
-        "title": "The Missing Royal Heirs Mystery",
-        "word_count": 103,
-        "hook": "Two young princes vanished from the Tower of London, sparking centuries of whispered accusations and...",
-        "score": 9.4,
-        "critique": "This variant delivers a classic historical mystery with an excellent hook and a perfectly aligned title and narrative, demonstrating strong narrative retention. It offers a solid loop CTA, positioning it as a top-tier contender, only slightly edged out by more dramatic and unexpected narratives."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Bizarre Laws",
-        "title": "Rome's Wild Fashion Police",
-        "word_count": 118,
-        "hook": "Imagine a law dictating the exact colors you *couldn't* wear in public, threatening your entire fami...",
-        "score": 9.18,
-        "critique": "This variant features a strong hook and an excellently crafted, punchy title that effectively captures the bizarre nature of ancient Roman law. While highly engaging, its ending loop is slightly less focused than the top contenders, placing it firmly in the middle of the pack."
-      },
-      {
-        "variant_id": 4,
-        "angle": "Wartime Secrets",
-        "title": "World War One's Secret Killer Ships!",
-        "word_count": 97,
-        "hook": "Imagine seemingly defenseless merchant ships sailing into enemy waters, secretly packed with enough ...",
-        "score": 9.14,
-        "critique": "The concept of 'Q-ships' is inherently fascinating, with a solid 'imagine' hook and a well-structured narrative detailing the deceptive tactic. Despite its strengths and clean execution, it doesn't quite achieve the same level of universal shock or emotional depth as some of the higher-ranked variants."
-      }
-    ],
-    "winning_script": {
-      "title": "Army Fought ITSELF?! Unbelievable Blunder",
-      "text": "An entire army tragically fought itself in the dead of night, resulting in thousands of casualties from friendly fire! This unbelievable blunder occurred during the Battle of Kar\u00e1nsebes in seventeen eighty-eight, involving the Imperial Austrian Army. Scouts, searching for Ottoman forces, encountered a group of Wallachian Romani selling schnapps. Drunkenness ensued, leading to an argument and a single gunshot. In the ensuing confusion, officers shouted 'Turci! Turci!' (Turks! Turks!), which sounded like 'T\u00f6r\u00f6k! T\u00f6r\u00f6k!' in Hungarian-speaking units, causing panic. The entire army, numbering around one hundred thousand, descended into chaos, firing on its own bewildered comrades in the darkness, forcing military strategists to always wonder:",
-      "score": 9.7,
-      "critique": "With an absolutely shocking premise, this script boasts exceptional hook strength and a perfectly optimized YouTube title that screams viral potential. The narrative's rapid escalation and tight loop CTA make it the clear frontrunner for sheer engagement and memorability in this competition."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "alchemists_tower.mp3",
-    "search_keywords": [
-      "battlefield fog",
-      "military encampment",
-      "confused soldiers",
-      "night skirmish",
-      "historical conflict",
-      "mountain pass"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
-  },
-  {
     "id": "run-35450221753",
     "github_run_number": 223,
     "github_run_id": 35450221753,
@@ -7208,6 +7125,108 @@
       "threads_post": "Nature's evolutionary arms race is wild:\n\nMeet the Synanceia \u2014 one of nature's most extreme evolutionary specialists. When the stonefish is disturbed, it may inject an amount of venom proportional to the amount of pressure applied to it.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/n9uSWySHgJw\n\nWhich species has the most extreme survival adaptation?",
       "youtube_community_poll": {
         "question": "Why the Synanceia Defies Biology \u2014 Would you survive an encounter with this adaptation?",
+        "options": [
+          "Zero chance \u2014 instant knockout",
+          "Only with deep-sea / kevlar gear",
+          "Nature needs to nerf this species",
+          "Do a predator vs. prey matchup next!"
+        ]
+      }
+    }
+  },
+  {
+    "id": "run-46016674708",
+    "github_run_number": 320,
+    "github_run_id": 46016674708,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/46016674708",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-27T14:39:59.194307Z",
+    "category": "Mind-Control Parasites & Venom",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Zombie Behavior Manipulation",
+        "title": "Nature's Parasitic Puppet Master",
+        "word_count": 89,
+        "hook": "A parasitic fungus forces rainforest carpenter ants to march to their own execution. Ophiocordyceps ...",
+        "score": 9.6,
+        "critique": "Delivers an unmatched visceral hook that creates immediate shock value, complemented by a perfect 91-word biomechanical pacing structure. Its ending phrase seamlessly loops directly back into the opening sentence, making it the strongest overall performer."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Parasitic Body Snatchers",
+        "title": "The Real Life Body Snatcher",
+        "word_count": 89,
+        "hook": "This tropical fungus physically hijacks an ant's body before erupting from its skull. Ophiocordyceps...",
+        "score": 9.35,
+        "critique": "Boasts an exceptional opening hook and crisp 89-word narrative escalation with fascinating scientific nuance regarding hyperparasites. It ranks closely behind Variant #1, only hindered by a slightly more conventional title."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Venomous Precision",
+        "title": "The Precision Mind Hijacker",
+        "word_count": 94,
+        "hook": "A targeted rainforest pathogen controls ant brains with terrifying physical precision. Ophiocordycep...",
+        "score": 8.85,
+        "critique": "Features strong scientific precision and clear escalation, but the opening hook lacks the immediate biological shock of Variant #1. At 97 words, it slightly exceeds the ideal 80-95 word pacing target."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Lethal Neurotoxin Cocktail",
+        "title": "The Fungal Bio Weapon",
+        "word_count": 85,
+        "hook": "Potent host-modulating metabolites turn an innocent insect into a helpless, self-sacrificing zombie....",
+        "score": 8.7,
+        "critique": "Incorporate great biochemical context and pharmaceutical takeaway, but opens with dense technical jargon ('host-modulating metabolites') that dampens the initial 3-second hook punchiness. The pacing remains solid at 86 words."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Biochemical Mind Control",
+        "title": "Fungal Mind Control In The Jungle",
+        "word_count": 92,
+        "hook": "What transforms a healthy rainforest carpenter ant into a brainwashed victim? The fungus Ophiocordyc...",
+        "score": 8.3,
+        "critique": "Uses an interrogative opening question hook which reduces initial 0-3s visceral impact compared to direct declarative shock statements. Additionally, the ending CTA phrase creates an awkward grammatical transition back into a question format."
+      }
+    ],
+    "winning_script": {
+      "title": "Nature's Parasitic Puppet Master",
+      "text": "A parasitic fungus forces rainforest carpenter ants to march to their own execution. Ophiocordyceps unilateralis targets ants of the tribe Camponotini, altering their behavioral patterns entirely. The infected host abandons its canopy nest and descends to the humid forest floor. There, the ant clamps its mandibles onto the major vein beneath a leaf. Over four to ten days, the host dies while a fungal fruiting body bursts directly through its head, rupturing to spray infectious spores onto the colony below. It is a terrifying biological takeover that proves how:",
+      "score": 9.6,
+      "critique": "Delivers an unmatched visceral hook that creates immediate shock value, complemented by a perfect 91-word biomechanical pacing structure. Its ending phrase seamlessly loops directly back into the opening sentence, making it the strongest overall performer."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/M7gdIEGtfCE",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Ophiocordyceps_unilateralis",
+    "music_track": "tech_house_pulse.mp3",
+    "search_keywords": [
+      "rainforest canopy ant",
+      "carpenter ant macro",
+      "fungus growing on leaf",
+      "tropical jungle floor",
+      "microscopic fungal spores",
+      "ant mandibles leaf vein",
+      "humid rainforest environment",
+      "zombie ant fungus macro"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Mind-Control Parasites & Venom Theme)",
+    "social_posts": {
+      "x_post": "A parasitic fungus forces rainforest carpenter ants to march to their own execution.\n\nOphiocordyceps unilateralis targets ants of the tribe Camponotini, altering their behavioral patterns entirely.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/M7gdIEGtfCE\n\n#wildlife #b",
+      "threads_post": "Nature's evolutionary arms race is wild:\n\nA parasitic fungus forces rainforest carpenter ants to march to their own execution. Ophiocordyceps unilateralis targets ants of the tribe Camponotini, altering their behavioral patterns entirely.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/M7gdIEGtfCE\n\nWhich species has the most extreme survival adaptation?",
+      "youtube_community_poll": {
+        "question": "Nature's Parasitic Puppet Master \u2014 Would you survive an encounter with this adaptation?",
         "options": [
           "Zero chance \u2014 instant knockout",
           "Only with deep-sea / kevlar gear",
