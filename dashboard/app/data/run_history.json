@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-35450221753",
-    "github_run_number": 223,
-    "github_run_id": 35450221753,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/35450221753",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-19T15:00:26.653384Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 4,
-        "angle": "Tragic Miscalculations",
-        "title": "Lake Vanished INSTANTLY!",
-        "word_count": 110,
-        "hook": "How did a fourteen-inch drill bit swallow an entire one-hundred-and-thirty-acre lake? In nineteen ei...",
-        "score": 9.82,
-        "critique": "This variant delivers an incredibly strong and specific hook that creates immediate, astonishing curiosity, supported by a dramatic and vivid narrative. The title is perfectly punchy, making it the most compelling and highest-scoring script for immediate impact."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Secret Conspiracies",
-        "title": "Fairytale's Dark Secret!",
-        "word_count": 120,
-        "hook": "A beloved fairytale hides a horrifying real-life child disappearance! The chilling legend of the Pie...",
-        "score": 9.7,
-        "critique": "With a highly intriguing hook about a dark fairytale secret, this script immediately grabs attention and maintains strong narrative retention by exploring various compelling theories. Its title is excellent, setting up the mystery perfectly."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Bizarre Laws",
-        "title": "King Banned Tennis?!",
-        "word_count": 134,
-        "hook": "Imagine a king banning one of the world's most popular sports! In the late fourteen hundreds, King C...",
-        "score": 9.64,
-        "critique": "This script boasts a powerful, clear hook and a well-structured narrative explaining the unusual royal decree. Its title is punchy and perfectly aligns with the opening, making it a strong contender for viewer engagement."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Wartime Secrets",
-        "title": "Secret War Pigeons!",
-        "word_count": 111,
-        "hook": "These silent, feathered heroes carried life-or-death secrets through enemy lines! During World War O...",
-        "score": 9.56,
-        "critique": "The script uses evocative language to introduce a surprising historical role for carrier pigeons, maintaining a clear and informative narrative. Its intriguing title sets up a story of unconventional wartime heroism effectively."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Everyday Absurdities",
-        "title": "Your Carrots Are FAKE!",
-        "word_count": 113,
-        "hook": "Everything you know about carrots is a lie; they weren't always orange! For thousands of years, carr...",
-        "score": 9.52,
-        "critique": "The script uses a relatable everyday item to deliver a surprising twist, effectively creating a curiosity gap right from the start. It successfully traces the historical transformation of carrots, making a seemingly mundane topic engaging."
-      }
-    ],
-    "winning_script": {
-      "title": "Lake Vanished INSTANTLY!",
-      "text": "How did a fourteen-inch drill bit swallow an entire one-hundred-and-thirty-acre lake? In nineteen eighty, a drilling rig prospecting for salt near Lake Peigneur, Louisiana, accidentally punctured the ceiling of a massive underground salt mine. What followed was an unprecedented hydrological nightmare. The lake's fresh water rapidly began draining into the gaping hole, creating a whirlpool that consumed the drilling rig, several barges, a tugboat, and even some land. The nine oil rigs on the lake also tumbled into the vortex. Within hours, the entire lake had vanished, replaced by a temporary crater, a stark reminder of humanity's catastrophic miscalculations when probing the Earth's hidden depths, leaving hydrologists to repeatedly ask:",
-      "score": 9.82,
-      "critique": "This variant delivers an incredibly strong and specific hook that creates immediate, astonishing curiosity, supported by a dramatic and vivid narrative. The title is perfectly punchy, making it the most compelling and highest-scoring script for immediate impact."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "grave_matters.mp3",
-    "search_keywords": [
-      "aerial lake view",
-      "swirling water",
-      "industrial rig",
-      "sinking boat",
-      "empty lakebed",
-      "cracked earth"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
-  },
-  {
     "id": "run-35518133865",
     "github_run_number": 224,
     "github_run_id": 35518133865,
@@ -7228,6 +7145,108 @@
       "threads_post": "Nature's evolutionary arms race is wild:\n\nA parasitic fungus forces rainforest carpenter ants to march to their own execution. Ophiocordyceps unilateralis targets ants of the tribe Camponotini, altering their behavioral patterns entirely.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/M7gdIEGtfCE\n\nWhich species has the most extreme survival adaptation?",
       "youtube_community_poll": {
         "question": "Nature's Parasitic Puppet Master \u2014 Would you survive an encounter with this adaptation?",
+        "options": [
+          "Zero chance \u2014 instant knockout",
+          "Only with deep-sea / kevlar gear",
+          "Nature needs to nerf this species",
+          "Do a predator vs. prey matchup next!"
+        ]
+      }
+    }
+  },
+  {
+    "id": "run-46085333153",
+    "github_run_number": 321,
+    "github_run_id": 46085333153,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/46085333153",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-28T00:17:04.371672Z",
+    "category": "Mind-Control Parasites & Venom",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 1,
+        "angle": "Zombie Behavior Manipulation",
+        "title": "The Wasp That Performs Brain Surgery",
+        "word_count": 84,
+        "hook": "The emerald jewel wasp performs precision brain surgery to turn living roaches into obedient zombies...",
+        "score": 9.72,
+        "critique": "Variant 1 delivers a flawless visceral hook and tracks the exact behavioral cascade\u2014including the compulsive grooming phase and antenna steering\u2014with pristine narrative pacing. Its seamless loop back into the opening hook is grammatically airtight and makes this the definitive tournament winner."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Lethal Neurotoxin Cocktail",
+        "title": "Two Stings To Steal A Mind",
+        "word_count": 89,
+        "hook": "Two surgical stings are all it takes to dismantle a cockroach's nervous system completely. The femal...",
+        "score": 9.42,
+        "critique": "Featuring an exceptional organic title and precise neurobiological accuracy regarding the two surgical stings, this variant builds intense biomechanical momentum. It falls just shy of Variant 1 due to a marginally stiffer transition phrase in its final loop hook."
+      },
+      {
+        "variant_id": 2,
+        "angle": "Biochemical Mind Control",
+        "title": "Erasing Fear With A Single Sting",
+        "word_count": 85,
+        "hook": "A single chemical strike can completely erase an animal's instinct to run for its life. The twenty-t...",
+        "score": 9.15,
+        "critique": "The biochemical breakdown of octopamine receptors and the 'dog on a leash' analogy create tremendous clarity and retention. However, framing the entire premise around a 'single sting' compromises technical nuance given the species' signature two-stage thoracic-then-cerebral stinging sequence."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Chemical Warfare",
+        "title": "The Ultimate Chemical Hijack",
+        "word_count": 87,
+        "hook": "A predatory wasp uses biological chemical warfare to hijack another creature's central nervous comma...",
+        "score": 8.85,
+        "critique": "Effectively weaves scientific terminology with Latin nomenclature and correctly identifies the receptor pathways. However, the tonal slip into gaming slang with 'ultimate headshot' detracts from the polished biomechanical tension established in the opening lines."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Parasitic Body Snatchers",
+        "title": "Buried Alive Inside A Monster's Nest",
+        "word_count": 91,
+        "hook": "This metallic jewel wasp turns a living cockroach into a fresh subterranean buffet. The female emera...",
+        "score": 8.6,
+        "critique": "Rich in late-stage parasitic detail such as the chocolate-colored cocoon and external larval feeding, this script excels in visual gross-out factor. It loses points on the loop execution, where connecting 'where:' back into 'This metallic jewel wasp' creates an awkward grammatical stumble."
+      }
+    ],
+    "winning_script": {
+      "title": "The Wasp That Performs Brain Surgery",
+      "text": "The emerald jewel wasp performs precision brain surgery to turn living roaches into obedient zombies. Delivering a calculated first sting to the thoracic ganglion, the wasp temporarily paralyzes the front legs. She then drives a second stinger directly into the head ganglia, deliberately shutting down the victim's natural escape reflex. The submissive cockroach meticulously grooms itself, surrendering all will before being led by its chewed antennae straight into a dark underground tomb. Larvae slowly consume the living host from the inside out, proving that:",
+      "score": 9.72,
+      "critique": "Variant 1 delivers a flawless visceral hook and tracks the exact behavioral cascade\u2014including the compulsive grooming phase and antenna steering\u2014with pristine narrative pacing. Its seamless loop back into the opening hook is grammatically airtight and makes this the definitive tournament winner."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/BBpjItfelkc",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Emerald_cockroach_wasp",
+    "music_track": "tech_house_pulse.mp3",
+    "search_keywords": [
+      "emerald jewel wasp macro",
+      "wasp stinging cockroach",
+      "tropical forest floor insect",
+      "metallic green wasp iridescent",
+      "wasp dragging insect",
+      "burrow entrance soil debris",
+      "wasp larva feeding macro",
+      "insects crawling forest leaf"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Mind-Control Parasites & Venom Theme)",
+    "social_posts": {
+      "x_post": "The emerald jewel wasp performs precision brain surgery to turn living roaches into obedient zombies.\n\nDelivering a calculated first sting to the thoracic ganglion, the wasp temporarily paralyzes the front legs.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/BBpjItfelkc",
+      "threads_post": "Nature's evolutionary arms race is wild:\n\nThe emerald jewel wasp performs precision brain surgery to turn living roaches into obedient zombies. Delivering a calculated first sting to the thoracic ganglion, the wasp temporarily paralyzes the front legs.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/BBpjItfelkc\n\nWhich species has the most extreme survival adaptation?",
+      "youtube_community_poll": {
+        "question": "The Wasp That Performs Brain Surgery \u2014 Would you survive an encounter with this adaptation?",
         "options": [
           "Zero chance \u2014 instant knockout",
           "Only with deep-sea / kevlar gear",
