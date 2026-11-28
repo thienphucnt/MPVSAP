@@ -1,88 +1,5 @@
 [
   {
-    "id": "run-35518133865",
-    "github_run_number": 224,
-    "github_run_id": 35518133865,
-    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/35518133865",
-    "workflow_type": "DAILY_SHORTS",
-    "timestamp": "2026-09-20T15:05:51.600631Z",
-    "category": "Morbid or Silly History Facts",
-    "status": "FAILED",
-    "generation_mode": "5_VARIANT_TOURNAMENT",
-    "daily_volume": 1,
-    "render_time_seconds": 30.0,
-    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
-    "script_variants": [
-      {
-        "variant_id": 4,
-        "angle": "Bizarre Laws",
-        "title": "Ancient Greece's Grief Police",
-        "word_count": 85,
-        "hook": "Imagine being fined for mourning too loudly or elaborately at a funeral. In ancient Greece, particul...",
-        "score": 9.54,
-        "critique": "This variant excels with an immediately bizarre and highly original hook, supported by an incredibly witty and synergistic title. Its seamless loop CTA perfectly enhances the inherent curiosity, making it the strongest entry."
-      },
-      {
-        "variant_id": 1,
-        "angle": "Wartime Secrets",
-        "title": "Pigeon Spies of World War One",
-        "word_count": 88,
-        "hook": "During World War One, pigeons were secretly equipped with tiny, automatic cameras, transforming them...",
-        "score": 9.3,
-        "critique": "This variant boasts an exceptionally strong and imaginative hook, perfectly complemented by a highly creative and memorable title. It stands out as a top contender, effectively engaging curiosity with its tale of secret wartime technology."
-      },
-      {
-        "variant_id": 2,
-        "angle": "Forgotten Cover-Ups",
-        "title": "Vanished Mining Town's Dark Secret",
-        "word_count": 92,
-        "hook": "In the early nineteen hundreds, an entire remote United States mining town mysteriously vanished, le...",
-        "score": 9.16,
-        "critique": "The script effectively establishes a compelling mystery with a strong narrative arc of cover-up and hidden truth. It presents a solid, engaging concept, securing a strong third place due to its intriguing premise and clear progression."
-      },
-      {
-        "variant_id": 3,
-        "angle": "Tragic Miscalculations",
-        "title": "The Canal That Devoured Itself",
-        "word_count": 81,
-        "hook": "One massive nineteenth-century infrastructure project, a canal intended to connect two major rivers,...",
-        "score": 9.0,
-        "critique": "With its poetic and highly synergistic title, this variant tells a clear and engaging story of human ambition thwarted by natural forces. While solid, its hook and loop are slightly less unique than the top performers."
-      },
-      {
-        "variant_id": 5,
-        "angle": "Untold Historical Irony",
-        "title": "Dynasty's Alliance, Lost Autonomy",
-        "word_count": 93,
-        "hook": "The Turabay dynasty's initial alliance with the Ottoman Empire in the sixteenth century, intended to...",
-        "score": 8.7,
-        "critique": "The script presents a nuanced historical irony with a clear narrative, but its hook might require a moment longer for a general audience to grasp fully compared to the more universally surprising concepts. It offers a well-structured story, albeit with less immediate broad appeal."
-      }
-    ],
-    "winning_script": {
-      "title": "Ancient Greece's Grief Police",
-      "text": "Imagine being fined for mourning too loudly or elaborately at a funeral. In ancient Greece, particularly in certain city-states, strict sumptuary laws dictated appropriate displays of grief. These bizarre regulations prohibited excessive wailing, tearing of hair, or overly elaborate funeral attire, even banning certain expensive grave goods. The state intervened to control public displays of emotion, believing excessive grief disrupted social order and displayed unseemly extravagance. Citizens could be publicly reprimanded or even fined, transforming personal tragedy into a regulated performance, making onlookers constantly wonder:",
-      "score": 9.54,
-      "critique": "This variant excels with an immediately bizarre and highly original hook, supported by an incredibly witty and synergistic title. Its seamless loop CTA perfectly enhances the inherent curiosity, making it the strongest entry."
-    },
-    "youtube_url": null,
-    "youtube_stats": null,
-    "error_traceback": "Video automatically detected as removed via oEmbed audit.",
-    "source_url": "https://en.wikipedia.org/wiki/Portal:History",
-    "music_track": "grave_matters.mp3",
-    "search_keywords": [
-      "ancient Greek pottery",
-      "mourners at grave",
-      "old parchment scroll",
-      "ancient city ruins",
-      "judge's gavel",
-      "market square"
-    ],
-    "voice_actor": "af_heart (Kokoro-82M ONNX)",
-    "visual_asset_types": "Salience-Zoomed 4K Clips",
-    "ass_subtitle_engine": "FFmpeg ASS Engine (Morbid or Silly History Facts Theme)"
-  },
-  {
     "id": "run-35631030510",
     "github_run_number": 225,
     "github_run_id": 35631030510,
@@ -7248,6 +7165,108 @@
       "threads_post": "Nature's evolutionary arms race is wild:\n\nThe emerald jewel wasp performs precision brain surgery to turn living roaches into obedient zombies. Delivering a calculated first sting to the thoracic ganglion, the wasp temporarily paralyzes the front legs.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/BBpjItfelkc\n\nWhich species has the most extreme survival adaptation?",
       "youtube_community_poll": {
         "question": "The Wasp That Performs Brain Surgery \u2014 Would you survive an encounter with this adaptation?",
+        "options": [
+          "Zero chance \u2014 instant knockout",
+          "Only with deep-sea / kevlar gear",
+          "Nature needs to nerf this species",
+          "Do a predator vs. prey matchup next!"
+        ]
+      }
+    }
+  },
+  {
+    "id": "run-46108422867",
+    "github_run_number": 322,
+    "github_run_id": 46108422867,
+    "github_run_url": "https://github.com/thienphucnt/MPVSAP/actions/runs/46108422867",
+    "workflow_type": "DAILY_SHORTS",
+    "timestamp": "2026-11-28T04:46:24.910377Z",
+    "category": "Deep Sea & Prehistoric Survivors",
+    "status": "SUCCESS",
+    "generation_mode": "5_VARIANT_TOURNAMENT",
+    "daily_volume": 1,
+    "render_time_seconds": 30.0,
+    "lufs_target": "-14.0 LUFS (-1.0 dBTP)",
+    "script_variants": [
+      {
+        "variant_id": 2,
+        "angle": "Alien Ocean Anatomy",
+        "title": "The Living Blood Sack of the Ocean Floor",
+        "word_count": 87,
+        "hook": "Hagfish wear their own skin like a loose, blood-filled sock. This naked outer sheath attaches to the...",
+        "score": 9.7,
+        "critique": "Delivers an extraordinary visceral hook with the 'loose, blood-filled sock' image that hooks viewers within the first second. The biomechanical escalation flows perfectly, culminating in a flawless, grammatically seamless infinite loop back to the opening statement."
+      },
+      {
+        "variant_id": 3,
+        "angle": "Abyssal Zone Nightmares",
+        "title": "The Jawless Scavenger With Moving Teeth",
+        "word_count": 87,
+        "hook": "Horny keratin teeth slide horizontally to rip flesh inside the pitch-black ocean. Hagfish lack verti...",
+        "score": 8.85,
+        "critique": "Features a strong, sensory-driven opening focused on horizontal keratin teeth ripping flesh in the deep. Pacing is disciplined and punchy throughout, though the loop transition feels slightly more abrupt than Variant 2."
+      },
+      {
+        "variant_id": 1,
+        "angle": "Prehistoric Living Fossils",
+        "title": "The Three Hundred Million Year Old Slime Beast",
+        "word_count": 83,
+        "hook": "Hagfish have survived on Earth for over three hundred ten million years without growing a true backb...",
+        "score": 8.35,
+        "critique": "Solid factual narrative and clean word count, but the opening hook relies on familiar evolutionary trivia rather than immediate visceral shock. The loop transition functions grammatically, though it lacks the sheer viral punch of more biomechanically shocking angles."
+      },
+      {
+        "variant_id": 5,
+        "angle": "Mass Extinction Survivors",
+        "title": "The Slime Eel That Outlived Dinosaurs",
+        "word_count": 90,
+        "hook": "Modern hagfish survived the dinosaur apocalypse completely unchanged for one hundred million years. ...",
+        "score": 8.2,
+        "critique": "Combines extinction survival history with great anatomical specifics regarding the subcutaneous blood volume. However, the ending clause stumbles slightly into lexical redundancy ('survivor where: Modern hagfish survived...'), weakening the infinite loop effect."
+      },
+      {
+        "variant_id": 4,
+        "angle": "Deep Trench Giants",
+        "title": "The Four Foot Slime Monster of the Deep",
+        "word_count": 94,
+        "hook": "Eptatretus goliath stretches over four feet long as the ultimate titan among slime eels. While typic...",
+        "score": 7.9,
+        "critique": "Opens with an academic species profile tone that reads more like a standard nature documentary than an urgent high-retention Short. While the anatomical details are scientifically accurate, the retention curve is softer and the curiosity gap narrower."
+      }
+    ],
+    "winning_script": {
+      "title": "The Living Blood Sack of the Ocean Floor",
+      "text": "Hagfish wear their own skin like a loose, blood-filled sock. This naked outer sheath attaches to the body only along the center ridge of the back and at specialized slime glands. Incredibly, nearly one third of the creature's entire blood volume fills this loose pocket. Beneath the skin, hagfish possess no true fins and no vertically hinged jaws, navigating with sensory barbels and simple eyespots. When predators bite, the loose sheath rolls away unharmed while fibrous slime clogs the attacker's mouth. Nature engineered this grotesque adaptation because:",
+      "score": 9.7,
+      "critique": "Delivers an extraordinary visceral hook with the 'loose, blood-filled sock' image that hooks viewers within the first second. The biomechanical escalation flows perfectly, culminating in a flawless, grammatically seamless infinite loop back to the opening statement."
+    },
+    "youtube_url": "https://www.youtube.com/shorts/XxonskaPPWI",
+    "youtube_stats": {
+      "views": 0,
+      "likes": 0,
+      "comments": 0
+    },
+    "error_traceback": null,
+    "source_url": "https://en.wikipedia.org/wiki/Hagfish",
+    "music_track": "dark_space_abyss.mp3",
+    "search_keywords": [
+      "hagfish skin macro",
+      "deep sea eel swimming",
+      "underwater marine creature close-up",
+      "strange ocean animal",
+      "pink deep sea fish",
+      "scavenger on ocean floor",
+      "marine biology organism",
+      "ocean depths dark water"
+    ],
+    "voice_actor": "am_fenrir (Kokoro-82M ONNX)",
+    "visual_asset_types": "Salience-Zoomed 4K Clips",
+    "ass_subtitle_engine": "FFmpeg ASS Engine (Deep Sea & Prehistoric Survivors Theme)",
+    "social_posts": {
+      "x_post": "Hagfish wear their own skin like a loose, blood-filled sock.\n\nThis naked outer sheath attaches to the body only along the center ridge of the back and at specialized slime glands.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/XxonskaPPWI\n\n#wildlife #biology #nature",
+      "threads_post": "Nature's evolutionary arms race is wild:\n\nHagfish wear their own skin like a loose, blood-filled sock. This naked outer sheath attaches to the body only along the center ridge of the back and at specialized slime glands.\n\nWatch the 35s breakdown: https://www.youtube.com/shorts/XxonskaPPWI\n\nWhich species has the most extreme survival adaptation?",
+      "youtube_community_poll": {
+        "question": "The Living Blood Sack of the Ocean Floor \u2014 Would you survive an encounter with this adaptation?",
         "options": [
           "Zero chance \u2014 instant knockout",
           "Only with deep-sea / kevlar gear",
